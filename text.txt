@@ -1,2 +1,30 @@
 git is a version control system.
 git is free software
+
+--1.git 创建版本库，使用git init命令将当前目录作为git版本库（注意，文件目录不能是中文，目录必须是一个空目录）
+$ mkdir learngit //创建版本库目录
+$ cd learngit	 //进入目录	
+$ pwd			 //输出当前路径
+/Users/michael/learngit
+
+git init		
+
+--2.git 单个文件提交
+git add file*.xxx ...
+
+--3.git 多个文件提交,-m "说明"
+git commit -m "xxx"
+
+--4.查看版本库状态git status
+$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#    modified:   readme.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+//命令可以让我们时刻掌握仓库当前的状态，
+//上面的命令告诉我们，readme.txt被修改过了，但还没有准备提交的修改。
+

@@ -1,5 +1,65 @@
-git is a version control system.
-git is free software
+
+git:
+name:lijie
+email：13068326391@163
+
+githubl
+user：lingfe
+email：13068326391@163.com
+pwd：lingfe20170511
+
+ssh key:lingfe-ssh-20170511
+
+
+马云:
+https://git.oschina.net/shuimuyuan/shuimuyun_git.git
+git@git.oschina.net:shuimuyun/shuimuyun_git.git
+
+$ git remote add shuimuyun_mayun_origin git@git.oschina.net:shuimuyun/shuimuyun_git.git
+$ git push -u shuimuyun_mayun_origin master
+
+
+
+github:
+https://github.com/lingfe/shuimuyun.git
+git@github.com:lingfe/shuimuyun.git
+
+$ git remote add shuimuyun_origin git@github.com:lingfe/shuimuyun_git.git
+$ git push -u shuimuyun_origin master
+
+
+--创建远程库
+$ git remote add shuimuyun_origin git@github.com:lingfe/shuimuyun_git.git
+远程库的名字就是：	shuimuyun_origin
+GitHub账户名：		lingfe
+本地版本库：		shuimuyun_git.git
+
+$ git push -u shuimuyun_origin master
+The authenticity of host 'github.com (192.30.253.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.
+Counting objects: 9, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (9/9), 2.07 KiB | 0 bytes/s, done.
+Total 9 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), done.
+To github.com:lingfe/shuimuyun_git.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from shuimuyun_origin.
+
+
+--本地推送到远程库
+$ git push -u shuimuyun_origin master
+远程库的名字就是：	shuimuyun_origin
+
+从现在起，只要本地作了提交，就可以通过命令：
+$ git push shuimuyun_origin master
+把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！
+
+
+
 
 --1.git 创建版本库，使用git init命令将当前目录作为git版本库（注意，文件目录不能是中文，目录必须是一个空目录）
 $ mkdir learngit //创建版本库目录
@@ -89,3 +149,7 @@ git reset命令既可以回退版本，也可以把暂存区的修改回退到�
 
 --12.删除工作区的文件
 $ rm test.txt
+
+--13.创建远程仓库密匙
+$ ssh-keygen -t rsa -C "13068326391@163.com"
+

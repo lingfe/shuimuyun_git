@@ -1,0 +1,191 @@
+安装数据库
+    localhost:3000/Frontend/?i=setup&model=User&fill=true
+        备注 : 3000 => 端口号
+               User => 安装的模型名称 (不添加 model = User 即安装所有模型)
+               fill => 填充数据 (true 允许填充 , false 不允许填充)
+
+index.php 文件数据配置
+	$myApp::$Database->hostName = "localhost";
+	$myApp::$Database->hostPort = "3306";
+	$myApp::$Database->name     = "suimuyun";       // 数据库名称
+	$myApp::$Database->charset  = "utf8";           // 数据库编码方式
+	$myApp::$Database->user     = "root";           // 数据库用户名
+	$myApp::$Database->password = "ayhyvrui";       // 数据库登录密码
+
+	$myApp::$Security->NotAuthorityActions	= [     // 不需要强制确权的接口
+		'Authority'    => ['login']
+	];
+
+	$myApp::$Security->forceAuthority		= true;				// 强制认证使用
+	$myApp::$Security->authorityModelName	= 'Admin';			// 用于认证的模型名称
+	$myApp::$Security->AuthorityInterface      = 'login';              // 认证接口 （指定验证帝国身份证真伪的机构）
+
+	$myApp::$Security->AuthorityInterface      = 'login';              // 认证接口 （指定验证帝国身份证真伪的机构）
+	$myApp::$Security->AutoGotoAuthorityInterface     = true;    // 自动重定向到认证接口（开启或者关闭没有认真过身份证的人用车带他去 指定验证帝国身份证真伪的机构 进行认证）
+
+	$myApp->run();
+
+
+
++ suimuyun
+    + alipaydirect          支付宝支付 (非专业技术人员,请勿改动)
+    + alipayRecharge        支付宝充值 (非专业技术人员,请勿改动)
+    + assets                框架样式 (非专业技术人员,请勿改动)
+    + Backend               封装后台文件
+    + CarouselPhotos        轮播图片文件
+    + Frontend              封装前端文件
+            + Interface         前端接口文件夹
+            + public            前端公共资源文件夹
+            + View              前端视图文件夹
+            
+    + Model                 数据库模型  (非专业技术人员,请勿改动)
+    + NetEasyMake           封装框架文件    (非专业技术人员,请勿改动)
+    + phpqrcode             二维码生成文件  (非专业技术人员,请勿改动)
+    + public                公共资源文件
+    + realNameCert_Photos   实名认证图片文件
+    + Shopping_Photos       商品图片文件
+    + userShopApply_Photos  会员店铺申请图片文件
+    + WxpayAPI              微信支付  (非专业技术人员,请勿改动)
+    + WxRecharge            微信充值  (非专业技术人员,请勿改动)
+    + admin                 后台管理入口 (非专业技术人员,请勿改动)
+    + index                 前端入口文件 (非专业技术人员,请勿改动)
+
+
+
+************************** 以下是模型文件说明 *************************
+
+    + Model                 数据库模型  (非专业技术人员,请勿改动)
+            + AAAAAA                会员账单日志模型
+            + ADConfig              推广配置模型
+            + Address               会员地址模型
+            + ADInfo                推广信息模型
+            + Admin                 管理员模型
+            + Alipay                支付信息配置模型
+            + AlipayOrder           支付订单模型
+            + BaseInfo              基本信息模型
+            + Carousel              轮播图片模型
+            + Collection            会员收藏商品模型
+            + Comments              会员对商品评论模型
+            + Commodity             商品模型
+            + CommodityClass        商品类别模型
+            + CommodityPhoto        商品图片模型
+            + Distribution          配送日志模型
+            + FXConfig              推荐会分享提成
+            + HotSeach              热搜商品
+            + IndustryCategory      行业类型模型
+            + latestGoods           最新商品模型
+            + MobileAttachSMS       手机短信管理
+            + Opinion               意见反馈
+            + Order                 订单
+            + RealNameCERT          实名认证模型
+            + Recommend             推介商品模型
+            + SecurityConfig        安全配置模型
+            + Service               客服信息模型
+            + Shop                  商户店铺模型
+            + ShopCart              购物车模型
+            + ShopOrder             商户订单模型
+            + User                  会员模型
+            + UserBankCar           会员银行卡模型
+            + UserBill              会员账单日志
+            + UserWithdrawls        会员提现日志
+
+
+**************************** 以下是 前端接口 文件说明 ******************************
+ + Frontend              封装前端文件
+            + Interface         前端接口文件夹
+                    + AboutShuiMuYun                关于我们
+                    + AlipayOrder                   支付订单
+                    + Authority                     安全认证接口
+                    + BaseInfo                      基本信息接口
+                    + FindBackPasswordApply         申请找回密码
+                    + FindBackPasswordReset         重置密码
+                    + Home                          首页
+                    + IndustryCategory              行业类别
+                    + LoginHelp                     登录帮助
+                    + LogisticsRecord               物流记录
+                    + MasterSuiMuYun                玩转水木云
+                    + ModifyShopping                修改商品
+                    + Opinion                       意见反馈
+                    + OrderBuyer                    支付订单
+                    + OrderDetail                   订单详情
+                    + OrderInfo                     订单信息列表
+                    + OrderSeller                   商户订单信息
+                    + PasswordResetRequestSueecss   申请密码重置成功
+                    + PasswordResetSueecss          申请密码重置成功返回界面
+                    + QrCode                        商户二维码
+                    + RealNameHelp                  实名认证帮助
+                    + Recharge                      钱包充值
+                    + SafetyHelp                    安全帮助
+                    + ServiceAgreement              服务协议
+                    + SetUpShopHelp                 申请店铺帮助
+                    + ShopApply                     店铺申请
+                    + ShopingCart                   购物车
+                    + ShopManager                   商品管理
+                    + ShoppingCollection            商品收藏
+                    + success                       支付成功
+                    + TestPaper                     试卷
+                    + TransLateApply                快客申请
+                    + TranslateExam                 快客考试
+                    + TranslateFeeQuery             快客费用查询
+                    + TranslateHome                 快客首页
+                    + TranslateInfo                 快客信息
+                    + TranslateLogin                快客登录
+                    + TranslateLootOrder            快客下单
+                    + TranslateNetworkQuery         快客查询
+                    + TranslateOnlineOrder          快客在线下单
+                    + User                          会员
+                    + UserAddress                   会员地址
+                    + UserBaseInfo                  会员基本信息
+                    + UserList                      推介会员列表
+                    + UserLogin                     登录
+                    + UserMobileAttach              用户手机验证
+                    + UserPasswordModify            用户修改密码
+                    + UserRealNameCERT              实名认证
+                    + UserRegister                  注册
+                    + UserShop                      商户信息
+                    + Wallet                        提现
+                    
+                    
+                    
+**************************** 以下是 后台接口 文件说明 ******************************
+    + Backend               封装后台文件
+            + Interface         后台接口文件夹
+                    + AddAdmin              添加管理员
+                    + AdminManager          管理员信息列表
+                    + Advertising           广告图片管理
+                    + AdvertisingSev        修改广告图片
+                    + Alipay                支付配置接口
+                    + Authority             安全认证接口
+                    + BaseInfo              基本信息
+                    + BaseInfoModify        修改基本信息
+                    + FinancialCenter       财务中心
+                    + FinancialManager      财务数据
+                    + FXConfig              推荐商户奖励
+                    + Goods                 商品管理
+                    + GoodsCate             商品类型
+                    + GoodsCateSev          修改商品类型
+                    + GoodsSev              修改商品
+                    + HistoryOrder          历史订单
+                    + Home                  首页
+                    + HotCommodity          热搜商品
+                    + LatestGoods           最新商品
+                    + login                 管理员登录
+                    + ManagerData           数据管理
+                    + Opinion               意见反馈
+                    + OpinionInfo           反馈信息
+                    + Order                 订单
+                    + OrderDetail           订单详情
+                    + QQService             客服中心
+                    + Recomond              推荐商品
+                    + ReturnCommodity       商品信息
+                    + Settlement            结算
+                    + Shop                  店铺审核
+                    + ShopCate              店铺类别
+                    + ShopCateSev           修改店铺类型
+                    + ShopInfo              店铺详情
+                    + ShopManager           店铺管理
+                    + ShopSev               修改店铺信息
+                    + UserCertification     用户实名认证
+                    + UserCertificationSev  审核实名认证
+                    + UserOrder             用户订单
+                    + UserSev               修改会员信息

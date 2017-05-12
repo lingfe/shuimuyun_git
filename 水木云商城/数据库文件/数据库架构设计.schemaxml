@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">suimuyun</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="a-a-a-a-a-a" view="colnames">
+<left>183</left>
+<top>21</top>
+<width>89</width>
+<height>160</height>
+<sql_create_table>CREATE TABLE `a-a-a-a-a-a` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `money` float NOT NULL DEFAULT '0' COMMENT '金额',
+  `method` tinyint(4) NOT NULL DEFAULT '0' COMMENT '账单类型',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
+  `with_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="a-d-config" view="colnames">
+<left>53</left>
+<top>22</top>
+<width>95</width>
+<height>160</height>
+<sql_create_table>CREATE TABLE `a-d-config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `keyword` varchar(64) NOT NULL COMMENT '项目关键字',
+  `name` varchar(100) NOT NULL DEFAULT '' COMMENT '项目名称',
+  `content` text COMMENT '项目值',
+  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '项目值的类型',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `keyword` (`keyword`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="address" view="colnames">
+<left>325</left>
+<top>22</top>
+<width>101</width>
+<height>194</height>
+<sql_create_table>CREATE TABLE `address` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '地址所属会员',
+  `title` varchar(100) NOT NULL DEFAULT '' COMMENT '地址标题',
+  `address` varchar(255) DEFAULT NULL COMMENT '地址值',
+  `pos_lng` double DEFAULT NULL COMMENT '经度坐标',
+  `pos_lat` double DEFAULT NULL COMMENT '纬度坐标',
+  `is_default` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否默认地址 0表示默认， 非0表示默认',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `title` (`title`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="a-d-info" view="colnames">
+<left>564</left>
+<top>474</top>
+<width>95</width>
+<height>160</height>
+<sql_create_table>CREATE TABLE `a-d-info` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `keyword` varchar(64) NOT NULL COMMENT '项目关键字',
+  `name` varchar(100) NOT NULL DEFAULT '' COMMENT '项目名称',
+  `content` text COMMENT '项目值',
+  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '项目值的类型',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `keyword` (`keyword`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="admin" view="colnames">
+<left>329</left>
+<top>349</top>
+<width>154</width>
+<height>279</height>
+<sql_create_table>CREATE TABLE `admin` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL DEFAULT '' COMMENT '会员名称',
+  `password` varchar(128) NOT NULL DEFAULT '' COMMENT '会员密码',
+  `safe_email` varchar(128) NOT NULL DEFAULT '' COMMENT '安全邮箱',
+  `nick` varchar(40) DEFAULT NULL COMMENT '昵称',
+  `register_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '注册时间',
+  `last_login_at` timestamp NULL DEFAULT NULL COMMENT '最后一次登录时间',
+  `last_login_ip` varchar(40) DEFAULT NULL COMMENT '最后一次登录IP',
+  `disable_timeout_at` timestamp NULL DEFAULT NULL COMMENT '禁用结束时间',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '当前状态 (USER_STATUS 中的任意一种状态)',
+  `auth_token` varchar(32) DEFAULT NULL,
+  `auth_access` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`) USING BTREE,
+  UNIQUE KEY `nick` (`nick`) USING BTREE,
+  UNIQUE KEY `auth_token` (`auth_token`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="alipay" view="colnames">
+<left>544</left>
+<top>317</top>
+<width>161</width>
+<height>126</height>
+<sql_create_table>CREATE TABLE `alipay` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `alipaydirect_partner` varchar(255) NOT NULL,
+  `alipaydirect_key` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="alipay-order" view="colnames">
+<left>715</left>
+<top>465</top>
+<width>108</width>
+<height>177</height>
+<sql_create_table>CREATE TABLE `alipay-order` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_no` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL,
+  `marks` longtext COMMENT '订单留言',
+  `is_success` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="base-info" view="colnames">
+<left>500</left>
+<top>32</top>
+<width>95</width>
+<height>160</height>
+<sql_create_table>CREATE TABLE `base-info` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `keyword` varchar(64) NOT NULL COMMENT '项目关键字',
+  `name` varchar(100) NOT NULL DEFAULT '' COMMENT '项目名称',
+  `content` text COMMENT '项目值',
+  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '项目值的类型',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `keyword` (`keyword`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="carousel" view="colnames">
+<left>940</left>
+<top>189</top>
+<width>121</width>
+<height>177</height>
+<sql_create_table>CREATE TABLE `carousel` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `photo_path` varchar(255) NOT NULL DEFAULT '' COMMENT '图片路径',
+  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '轮播标题',
+  `contents` longtext COMMENT '内容',
+  `contents_tow` longtext COMMENT '订单金额',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上传时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="collection" view="colnames">
+<left>1115</left>
+<top>186</top>
+<width>117</width>
+<height>177</height>
+<sql_create_table>CREATE TABLE `collection` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏所属会员id',
+  `shop_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏所属店铺id',
+  `com_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏所属商品id',
+  `collection_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '收藏时间',
+  `is_com` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否是商品收藏',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="comments" view="colnames">
+<left>1019</left>
+<top>397</top>
+<width>123</width>
+<height>194</height>
+<sql_create_table>CREATE TABLE `comments` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL COMMENT '会员id',
+  `com_id` int(10) unsigned NOT NULL COMMENT '商品id',
+  `user_name` varchar(50) NOT NULL DEFAULT '' COMMENT '会员名称',
+  `contents` longtext COMMENT '评论内容',
+  `com_level` int(11) NOT NULL DEFAULT '0' COMMENT '评级',
+  `comments_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '评论时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

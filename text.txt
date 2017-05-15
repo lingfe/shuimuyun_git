@@ -3,7 +3,7 @@
 GitHub:	http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000
 
 码云:	http://git.mydoc.io/?t=154712
-
+4444
 
 --1.git 创建版本库，使用git init命令将当前目录作为git版本库（注意，文件目录不能是中文，目录必须是一个空目录）
 $ mkdir learngit //创建版本库目录

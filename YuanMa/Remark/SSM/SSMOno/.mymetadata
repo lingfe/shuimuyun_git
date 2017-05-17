@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SSMOno"
+  id="myeclipse.1476944642124"
+  context-root="/SSMOno"
+  j2ee-spec="5.0"
+  archive="SSMOno.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

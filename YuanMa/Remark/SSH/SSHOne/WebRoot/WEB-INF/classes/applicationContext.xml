@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	
+	<!-- 配置加载jdbc.properties -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<!-- 配置mysql数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${myDriverClass}"></property>
+		<property name="username" value="${myUserName}"></property>
+		<property name="password" value="${myPassword}"></property>
+		<property name="url" value="${myUrl}"></property>
+	</bean>
+	
+	<!-- 配置sessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="dataSource"	ref="dataSource"></property>
+	</bean>
+	
+	<!-- Aop配置映射dao层 -->	
+	<bean id="employeeDao" class="com.zuxia.dao.impl.EmployeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="departmentDaoImpl" class="com.zuxia.dao.impl.DepartmentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<!-- 配置Service -->
+	<bean id="employeeService" class="com.zuxia.service.impl.EmployeeServiceImpl">
+		<property name="employeeDaoImpl" ref="employeeDao"></property>
+		<property name="departmentDaoImpl" ref="departmentDaoImpl"></property>
+	</bean>
+	
+	<!-- 配置事务 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:advice id="txtAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="remove*" propagation="REQUIRED"/>
+			<tx:method name="query*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置aop（面向切面对象） -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.zuxia.service.IEmployeeService.*(..))" id="myPointCut"/>
+		<aop:advisor advice-ref="txtAdvice" pointcut-ref="myPointCut"/>
+	</aop:config>
+	
+	<!-- 配置Action -->
+	<bean id="employeeAction" class="com.zuxia.action.EmployeeAction" scope="prototype">
+		<property name="employeeServiceImpl" ref="employeeService"></property>
+	</bean>
+		
+</beans>

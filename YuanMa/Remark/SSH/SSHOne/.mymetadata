@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SSHOne"
+  id="myeclipse.1476968062594"
+  context-root="/SSHOne"
+  j2ee-spec="5.0"
+  archive="SSHOne.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

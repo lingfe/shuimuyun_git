@@ -30,9 +30,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			收货人姓名:<input type="text" name="shouhuoNmae"><br/>
 			收货人电话:<input type="text" name="shouhuoShone"><br/>
 			收货人地址:<input type="text" name="shouhuoAddress"><br/>
-			取货时间:<input type="datetime-local" name="quhuoDate"><br/>
-			运费:<input type="month" name="kaikeProies"><br/>
+			取货时间:<input type="date" name="quhuoDate"><br/>
+			运费:<input type="text" name="kaikeProies"><br/>
 			
+			到达时间:<input type="date" name="okDate"><br/>
+			商品名称:<input type="text" name="shopName"><br/>
+			商品重量:<input type="number" name="shopzholiang"><br/>
+			商品价格:<input type="text" name="shopprices"><br/>
+			商品规格:<input type="text" name="shopGuige"><br/>
+			上架时间:<input type="date" name="shopDate"><br/>
+			<br/>
+			<input type="submit"/>
 		</form>
   </body>
 </html>

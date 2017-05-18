@@ -8,7 +8,7 @@ import com.yyf.model.UserEntity;
 /**
  * 
   * 文件名：	R_xiaordertabService.java
-  * 描述： 	下单，服务层
+  * 描述： 	下单交互实现接口
   * 修改人：	lijie
   * 修改时间：	2017年5月16日 下午4:54:16
   * 修改内容：

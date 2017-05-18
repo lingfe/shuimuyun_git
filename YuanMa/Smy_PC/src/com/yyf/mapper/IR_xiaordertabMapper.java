@@ -19,11 +19,10 @@ import com.yyf.model.UserEntity;
   * //public interface IR_xiaordertabMapper  extends InterJDBC<R_xiaordertab>{
  */
 public interface IR_xiaordertabMapper  extends InterJDBC<R_xiaordertab>{	
-	@Insert("INSERT INTO "
-			+ "R_xiaordertab(xiaId,) "
-			+ "VALUES()")
-	@Override
+	@Insert("insert  into `xiaordertab`(`xiaId`,`kuaikeName`,`kuaikePhone`,`kuaikeAddress`,`shouhuoName`,`shouhuoShone`,`shouhuoAddress`,`quhouDate`,`kaikePrioes`,`status`,`okDate`,`shopName`,`Shopzholiang`,`ShopNumer`,`Shopprices`,`shopguige`,`Shopdate`) "
+			+ "values (#{xiaId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{shouhuoNmae},#{shouhuoShone},#{shouhuoAddress},#{quhuoDate},#{kaikeProies},#{status},#{okDate},#{shopName},#{shopzholiang},#{shopNumer},#{shopprices},#{shopGuige},#{shopDate})")
 	void add(R_xiaordertab t);
+	
 	
 	@Select("SELECT * FROM R_xiaordertab ")
 	@Override

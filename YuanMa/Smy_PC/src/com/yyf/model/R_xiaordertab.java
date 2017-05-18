@@ -2,6 +2,8 @@ package com.yyf.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 
   * 文件名：R_xiaordertab.java
@@ -20,21 +22,6 @@ public class R_xiaordertab {
 		this.xiaId = xiaId;
 	}
 	
-	private String shopId;//商品id	`shopId` VARCHAR(64) NOT NULL,
-	public String getShopId() {
-		return shopId;
-	}
-	public void setShopId(String shopId) {
-		this.shopId = shopId;
-	}
-	
-	private String kuaikeId;//快客id	  		`kuaikeId` VARCHAR(64) NOT NULL,
-	public String getKuaikeId() {
-		return kuaikeId;
-	}
-	public void setKuaikeId(String kuaikeId) {
-		this.kuaikeId = kuaikeId;
-	}
 	
 	private String kuaikeName;//快客名称     		`kuaikeName` VARCHAR(11) NOT NULL,
 	public String getKuaikeName() {
@@ -84,6 +71,7 @@ public class R_xiaordertab {
 		this.shouhuoAddress = shouhuoAddress;
 	}
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")  
 	private Date quhuoDate;//去获取时间			`quhouDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	public Date getQuhuoDate() {
 		return quhuoDate;
@@ -108,6 +96,7 @@ public class R_xiaordertab {
 		this.status = status;
 	}
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")  
 	private Date okDate;//到达时间				`okDate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'
 	public Date getOkDate() {
 		return okDate;
@@ -115,14 +104,56 @@ public class R_xiaordertab {
 	public void setOkDate(Date okDate) {
 		this.okDate = okDate;
 	}
-	@Override
-	public String toString() {
-		return "R_xiaordertab [xiaId=" + xiaId + ", shopId=" + shopId + ", kuaikeId=" + kuaikeId + ", kuaikeName="
-				+ kuaikeName + ", kuaikePhone=" + kuaikePhone + ", kuaikeAddress=" + kuaikeAddress + ", shouhuoNmae="
-				+ shouhuoNmae + ", shouhuoShone=" + shouhuoShone + ", shouhuoAddress=" + shouhuoAddress + ", quhuoDate="
-				+ quhuoDate + ", kaikeProies=" + kaikeProies + ", status=" + status + ", okDate=" + okDate + "]";
+
+	private String shopName;//  `shopName` VARCHAR(64) NOT NULL COMMENT '商品名称',
+	public String getShopName() {
+		return shopName;
+	}
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
+
+
+	private float shopzholiang;// `Shopzholiang` FLOAT NOT NULL COMMENT '商品重量',
+	public float getShopzholiang() {
+		return shopzholiang;
+	}
+	public void setShopzholiang(float shopzholiang) {
+		this.shopzholiang = shopzholiang;
 	}
 	
+	private int shopNumer;//`ShopNumer`INT(11) NOT NULL DEFAULT 0 COMMENT '库存',
+	public int getShopNumer() {
+		return shopNumer;
+	}
+	public void setShopNumer(int shopNumer) {
+		this.shopNumer = shopNumer;
+	}
+	
+	private float shopprices;// `Shopprices` FLOAT NOT NULL COMMENT '商品价格',
+	public float getShopprices() {
+		return shopprices;
+	}
+	public void setShopprices(float shopprices) {
+		this.shopprices = shopprices;
+	}
+	
+	private String shopGuige;//  `shopguige` varchar(100) NOT NULL COMMENT '商品规格',
+	public String getShopGuige() {
+		return shopGuige;
+	}
+	public void setShopGuige(String shopGuige) {
+		this.shopGuige = shopGuige;
+	}
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")  
+	private Date shopDate;//  `Shopdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '上架时间',
+	public Date getShopDate() {
+		return shopDate;
+	}
+	public void setShopDate(Date shopDate) {
+		this.shopDate = shopDate;
+	}
 	
 	
 }

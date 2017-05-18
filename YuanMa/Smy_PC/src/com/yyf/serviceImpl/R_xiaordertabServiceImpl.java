@@ -12,7 +12,7 @@ import com.yyf.service.R_xiaordertabService;
  * 
   * 文件名：	R_xiaordertabServiceImpl.java
   * 描述： 	下单交互实现类
-  * 修改人：	 杨杰
+  * 修改人：	lijie
   * 修改时间：	2017年5月18日 上午9:22:53
   * 修改内容：
  */

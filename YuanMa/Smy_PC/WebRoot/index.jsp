@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -141,7 +142,20 @@
 
 <body class="login_body">
 
-
+<c:forEach items="${query }" var="st">
+	<table>
+		<thead>
+			<tr>
+				<th>商品名称</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${st.shopName}</td>
+			</tr>
+		</tbody>
+	</table>
+</c:forEach>
 	<!--用户登陆-->
 	<div class="login_div">
 		<div class="col-xs-12 login_title">登录</div>

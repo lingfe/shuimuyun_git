@@ -1,17 +1,11 @@
 package com.yyf.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
-import javax.ws.rs.Path;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,15 +28,28 @@ public class R_xiaordertabController {
 	private R_xiaordertabService r_xiaordertabService;
 
 
-
+	/**
+	 * 
+	 * 获取下单数据集合
+	 * @author 	lijie    
+	 * @created 2017年5月18日 下午3:13:16  
+	 * @return list
+	 */
+	@RequestMapping(value="/list",method=RequestMethod.GET)
+	public String xiaorderList(Map<String, Object> map){
+		List<R_xiaordertab> query = r_xiaordertabService.query();
+		map.put("query", query);
+		
+		return "index";
+	}
+	
 	/**
 	 * 
 	 * 添加下单纪录
-	 * 
-	 * @author lijie
+	 * @author 	lijie
 	 * @created 2017年5月16日 下午5:12:24
-	 * @param 实体数据
-	 * @return URL
+	 * @param 	实体数据
+	 * @return	URL
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(R_xiaordertab tab) {

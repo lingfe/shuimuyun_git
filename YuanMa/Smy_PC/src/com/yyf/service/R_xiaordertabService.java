@@ -41,4 +41,6 @@ public interface  R_xiaordertabService {
 	 * @return 结果
 	 */
 	public int queryCount();
+	
+	
 }

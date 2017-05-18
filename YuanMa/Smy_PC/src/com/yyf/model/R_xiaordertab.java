@@ -6,10 +6,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 
-  * 文件名：R_xiaordertab.java
-  * 描述：   下单实体表
-  * 修改人： 杨杰
-  * 修改时间：2017年5月16日 下午3:49:20
+  * 文件名：	R_xiaordertab.java
+  * 描述：   	下单实体表
+  * 修改人：	lijie
+  * 修改时间：	2017年5月16日 下午3:49:20
   * 修改内容：
  */
 public class R_xiaordertab {

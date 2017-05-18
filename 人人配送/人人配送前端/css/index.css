@@ -1,0 +1,69 @@
+/*****首页开始*******/
+.header{background: #e5e5e5;}
+.conttent_p{float: left;margin-top: 5px;}
+.conttent_p a:nth-of-type(1){color: #ff6d46;padding-right: 5px;border-right: 1px solid #acacac; }
+.conttent_p a:nth-of-type(2){color: #757575;padding-left: 5px;border-left: 1px solid #f8f8f8;}
+.content_u li img{max-width: 80%;max-height: 80%;padding-right: 5px;}
+.content_u{margin-top: 5px;}
+.content_u li{float: right;}
+.content_u li:nth-of-type(2){padding-right:10px;}
+.content_u{float: right;}
+
+/*轮播*/
+.left-ico,.right-ico{top:49%;background: none!important;}
+/*导航*/
+header{width:100%;background:white;}
+header a{color:#929292;font-size: 16px;font-weight: bold;}
+header a:hover{color:#ff6d46;background: none!important;}
+header .navlist{padding-top:12px;}
+header .navbtn{margin-top: 0px!important;}
+header ul li{text-align: center;}
+.ren_nav{margin-left: 30px!important;}
+
+/*按钮*/
+.ren_aj1{ height: 60px; line-height:60px; margin: 0px 20%;background: #ff6d46; text-align: center;border-radius: 5px;margin-top: 50PX; cursor: pointer;}
+.ren_aj1 img{right: 20px;position: relative;top: -8px;}
+.ren_aj1 span{color: #ffffff;font-size:30px;font-family: "华文中宋";}
+.ren_aj2{ height: 60px; line-height:60px; margin: 0px 20%;background: #96d626; text-align: center;border-radius: 5px;margin-top: 30PX; cursor: pointer;}
+.ren_aj2 img{right: 20px;position: relative;top: -8px;}
+.ren_aj2 span{color: #ffffff;font-size:30px;font-family: "华文中宋";}
+/*底部开始*/
+footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;background-size:cover; clear: both;}
+.fooeter1 ul li{text-align:center;line-height: 40px; font-size: 1.2em;color: #8f8f8f;}
+.fooeter1 ul li a{color: #8f8f8f;font-size: 0.8em;}
+.fooeter1 ul{margin-top: 20px;border-right: 1px solid #bebebe;}
+.fooeter2 ul li{text-indent: 20px; line-height: 40px; font-size:1.2em;color: #8f8f8f;}
+.fooeter2 ul li a{color: #8f8f8f;font-size: 0.8em;}
+.fooeter2 ul li img{margin-right: 10px;}
+.fooeter2 ul{margin-top: 20px;border-left: 1px solid #fbfbfb; border-right: 1px solid #bebebe;}
+.fooeter1{padding-right: 0px!important;padding-left: 0px!important;}
+.fooeter2{padding-right: 0px!important;padding-left: 0px!important;}
+.fooeter3{padding-right: 0px!important;padding-left: 0px!important;}
+.fooeter4{padding-right: 0px!important;padding-left: 0px!important;}
+.fooeter3 ul li{text-align:center;line-height: 40px; font-size:1.2em;color: #8f8f8f;}
+.fooeter3 ul li a{color: #8f8f8f;font-size: 0.8em;}
+.fooeter3 ul{margin-top: 20px;border-left: 1px solid #fbfbfb;border-right: 1px solid #bebebe;}
+.fooeter4 ul li{line-height: 40px; font-size: 1.2em;color: #8f8f8f;text-indent: 20px;}
+.fooeter4 ul li a{color: #8f8f8f;font-size: 0.8em;padding-left: 10px;}
+.fooeter4 ul{margin-top: 20px;border-left: 1px solid #fbfbfb; }
+/****注册开始*****/
+/*进度条开始*/
+.setbacks {width:96%; height: 120px; margin-left:2%; margin-right: 2%; }
+.setbacks_1 {width:80%; height: 13px; margin-left: 3%; margin-right: 3%; margin-top: 73px; border-radius: 10px; background-color: #EAE8EA;}
+.setbacks_2 {height: 13px; margin-left: 3%; border-radius: 10px; position: absolute; z-index: 6; top: 73px; background-color: #AEDD27;}
+.setbacks_3 {width:94%;margin-left: 3%; margin-right: 3%; position: absolute; z-index: 7; top: 57px;}
+.setbacks_3 li {width: 100px; float: left; text-align: center;}
+.setbacks_3 li a { text-decoration: none;}
+.setbacks_3_1 {width:40px; height: 40px; border:5px solid #EAE8EA; border-radius: 100%; line-height: 30px; text-align: center; font-size: 16px; background-color: #C1C1C1; color: #FFF;}
+.setbacks_3_2 {font-size: 16px; padding-top: 10px; color:#cccccc;}
+.setbacks_3_1_c {width:40px; height: 40px; border:5px solid #96d626; border-radius: 100%; line-height: 30px; text-align: center; font-size: 16px; background-color: #8BC200; color: #FFF;}
+.setbacks_3_2_c {font-size: 16px; padding-top: 10px; color:#96d626;}
+/*进度条结束*/
+/*表单开始*/
+.zhuce_right{width: 100%;border: 2px solid #d1d1d1;}
+.zhuce_xing{width: 80%;margin: 20px auto;}
+.zhuce_xing label{width: 18%;text-align: right;font-size: 1.3em;color: #666666;}
+.zhuce_xing input{outline: none; border: 1px solid #d1d1d1;width: 60%;height: 40px; border-radius: 5px;}
+.zhuce_dizhi{width: 80%;margin: 20px auto;}
+.zhuce_dizhi label{width: 18%;text-align: right;font-size: 1.3em;color: #666666;}
+.zhuce_dizhi select{width: 16%;outline: none; border: 1px solid #d1d1d1;height: 30px;}

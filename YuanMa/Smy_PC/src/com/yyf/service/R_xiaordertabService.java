@@ -3,7 +3,6 @@ package com.yyf.service;
 import java.util.List;
 
 import com.yyf.model.R_xiaordertab;
-import com.yyf.model.UserEntity;
 
 /**
  * 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -269,6 +270,16 @@
 		</div>
 	</div>
 
+	<form action="login" method="post">
+		账号：<input type="text" name="kuaikeName" id="username" /> <br /> 
+		密码：<input type="password" name="password" id="password" /> <br/>
+		     <input type="submit" value="登陆" id="sub" />&nbsp;&nbsp;
+		     <a href="reg.jsp"><input  type="button" value="注册"/></a>
 
+	</form>
+	
+	
+	
 </body>
 </html>
+

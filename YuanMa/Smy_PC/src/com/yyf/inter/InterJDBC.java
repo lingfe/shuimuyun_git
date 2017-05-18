@@ -2,8 +2,6 @@ package com.yyf.inter;
 
 import java.util.List;
 
-import com.yyf.model.R_xiaordertab;
-import com.yyf.model.UserEntity;
 
 /**
  * 
@@ -31,7 +29,7 @@ public interface InterJDBC<T> {
 	 * @created 2017年5月16日 下午4:40:16  
 	 * @return 数据集合
 	 */
-	public List<R_xiaordertab> query();
+	public List<T> query();
 	
 	/**
 	 * 

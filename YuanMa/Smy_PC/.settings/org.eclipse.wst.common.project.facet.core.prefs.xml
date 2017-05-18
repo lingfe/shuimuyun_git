@@ -18,4 +18,9 @@
       <attribute name="version-id" value="jersey_1.1"/>
     </node>
   </facet>
+  <facet id="me.spring">
+    <node name="libprov">
+      <attribute name="provider-id" value="spring-no-op-library-provider"/>
+    </node>
+  </facet>
 </root>

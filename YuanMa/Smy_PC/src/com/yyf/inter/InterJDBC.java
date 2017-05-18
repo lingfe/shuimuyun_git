@@ -2,8 +2,6 @@ package com.yyf.inter;
 
 import java.util.List;
 
-import com.yyf.model.UserEntity;
-
 /**
  * 
   * 文件名：InterJDBC.java

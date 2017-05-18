@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Select;
 
 import com.yyf.inter.InterJDBC;
 import com.yyf.model.R_xiaordertab;
-import com.yyf.model.UserEntity;
 
 /**
  * 

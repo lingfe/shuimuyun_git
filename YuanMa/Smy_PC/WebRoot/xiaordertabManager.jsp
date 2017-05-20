@@ -42,5 +42,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<br/>
 			<input type="submit"/>
 		</form>
+		
+		
+		<form action="upload.do" method="post" enctype="multipart/form-data">  
+			快客名称:<input type="text" name="kuaikeName"  ><br/>
+			快客电话:<input type="text" name="kuaikePhone"><br/>
+			快客地址:<input type="text" name="kuaikeAddress"><br/>
+			登录密码:<input type="password" name="password"><br/>
+			身份证复印件文件:<input type="file" name="file1" /><br/>
+			手持身份证正反面:<input type="file" name="file2" /><br/>
+			申请时间:<input type="Date" name="kuaikeShengqingDate"><br/>
+			<input type="submit" value="Submit" />
+		</form>  
   </body>
 </html>

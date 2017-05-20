@@ -31,10 +31,10 @@ public interface R_kuaiketabMapper {
 	 * @param kuaiketab 快客信息实体对象
 	 * @return
 	 */
-	@Insert("INSERT INTO kuaiketab(kuaikeId,kuaikeName,kuaikePhone,kuaikeAddress,kuaikeShenfenF,"
-			+ "kuaikeShenfenZ,kuaikeShouchiSFZ,kuaikeStatus,kuaikeShengqingDate,password,loginDate)"
-			+ " VALUES(#{kuaikeId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{kuaikeShenfenF},"
-			+ "#{kuaikeShenfenZ},#{kuaikeShouchiSFZ},#{kuaikeStatus},#{kuaikeShengqingDate},"
+	@Insert("INSERT INTO kuaiketab(kuaikeId,kuaikeName,kuaikePhone,kuaikeAddress,"
+			+ "kuaikeShenfenZF,kuaikeShouchiSFZ,kuaikeStatus,kuaikeShengqingDate,password,loginDate)"
+			+ " VALUES(#{kuaikeId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},"
+			+ "#{kuaikeShenfenZF},#{kuaikeShouchiSFZ},#{kuaikeStatus},#{kuaikeShengqingDate},"
 			+ "#{password},#{loginDate})")
 	public int addUser(R_kuaiketab kuaiketab);
 }

@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-     <img alt="" src="${fileUrl }"/>  
+     <img alt="" src="${fileUrl1 }"/>  
+     <img alt="" src="${fileUrl2 }"/>  
   </body>
 </html>

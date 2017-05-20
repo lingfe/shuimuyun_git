@@ -14,6 +14,17 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class R_xiaordertab {
 
+	@Override
+	public String toString() {
+		return "R_xiaordertab [xiaId=" + xiaId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
+				+ ", kuaikeAddress=" + kuaikeAddress + ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone
+				+ ", shouhuoAddress=" + shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhuoDate="
+				+ quhuoDate + ", kaikeProies=" + kaikeProies + ", status=" + status + ", okDate=" + okDate
+				+ ", shopName=" + shopName + ", shopzholiang=" + shopzholiang + ", shopNumer=" + shopNumer
+				+ ", shopprices=" + shopprices + ", shopGuige=" + shopGuige + ", shopDate=" + shopDate + "]";
+	}
+
+
 	private String xiaId;//下单id	`xiaId` VARCHAR(64) NOT NULL,
 	public String getXiaId() {
 		return xiaId;
@@ -47,20 +58,20 @@ public class R_xiaordertab {
 		this.kuaikeAddress = kuaikeAddress;
 	}
 	
-	private String shouhuoNmae;//收货人名称 		`shouhuoName` VARCHAR(11) NOT NULL,
+	private String shouhuoName;//收货人名称 		`shouhuoName` VARCHAR(11) NOT NULL,
 	public String getShouhuoNmae() {
-		return shouhuoNmae;
+		return shouhuoName;
 	}
-	public void setShouhuoNmae(String shouhuoNmae) {
-		this.shouhuoNmae = shouhuoNmae;
+	public void setShouhuoNmae(String shouhuoName) {
+		this.shouhuoName = shouhuoName;
 	}
 	
-	private String shouhuoShone;//收货人电话	`shouhuoShone` VARCHAR(11) NOT NULL,
+	private String shouhuoPhone;//收货人电话	`shouhuoShone` VARCHAR(11) NOT NULL,
 	public String getShouhuoShone() {
-		return shouhuoShone;
+		return shouhuoPhone;
 	}
-	public void setShouhuoShone(String shouhuoShone) {
-		this.shouhuoShone = shouhuoShone;
+	public void setShouhuoShone(String shouhuoPhone) {
+		this.shouhuoPhone = shouhuoPhone;
 	}
 	
 	private String shouhuoAddress;//收货人地址	`shouhuoAddress` VARCHAR(100) NOT NULL,
@@ -71,6 +82,15 @@ public class R_xiaordertab {
 		this.shouhuoAddress = shouhuoAddress;
 	}
 	
+	private String shouhuoAddressInfo;//收货人地址详情
+	public String getShouhuoAddressInfo() {
+		return shouhuoAddressInfo;
+	}
+	public void setShouhuoAddressInfo(String shouhuoAddressInfo) {
+		this.shouhuoAddressInfo = shouhuoAddressInfo;
+	}
+
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")  
 	private Date quhuoDate;//去获取时间			`quhouDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	public Date getQuhuoDate() {
@@ -88,7 +108,7 @@ public class R_xiaordertab {
 		this.kaikeProies = kaikeProies;
 	}
 	
-	private int status;//订单状态				`status` TINYINT(4) NOT NULL,
+	private int status;//订单状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)			`status` TINYINT(4) NOT NULL,
 	public int getStatus() {
 		return status;
 	}

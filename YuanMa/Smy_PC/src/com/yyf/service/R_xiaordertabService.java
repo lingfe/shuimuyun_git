@@ -2,6 +2,9 @@ package com.yyf.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.yyf.mapper.IR_xiaordertabMapper;
 import com.yyf.model.R_xiaordertab;
 
 /**
@@ -16,12 +19,42 @@ public interface  R_xiaordertabService {
 	
 	/**
 	 * 
+	 * 下单的详细信息
+	 * @author lijie     
+	 * @created 2017年5月19日 下午2:45:51  
+	 * @param xiaId 下单id
+	 * @return 实体数据
+	 */
+	R_xiaordertab xiaorderInfo(String xiaId);
+	
+	/**
+	 * 
 	 * 添加
 	 * @author lijie     
 	 * @created 2017年5月16日 下午4:39:15  
 	 * @param 实体数据
 	 */
 	public void add(R_xiaordertab tab);
+	
+
+	/**
+	 * 根据id删除下单记录
+	 * @author lijie 
+	 * @created 2017年5月19日 上午11:36:19  
+	 * @param xiaId	下单id
+	 */
+	void delete(String xiaId);
+	
+
+	/**
+	 * 
+	 * 修改下单的状态
+	 * @author lijie     
+	 * @created 2017年5月19日 上午11:31:18  
+	 * @param status	状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)
+	 * @param xiaId		下单id
+	 */
+	void updateStatus(int status, String xiaId);
 	
 	/**
 	 * 

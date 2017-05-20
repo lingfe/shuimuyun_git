@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -24,8 +24,6 @@
 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
-
-
 		/*用户登陆*/
 		$('#login').click(function() {
 			var name_state = $('#name');

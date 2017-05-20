@@ -112,10 +112,10 @@ public interface R_kuaiketabMapper {
 	 * @param kuaiketab 快客信息实体对象
 	 * @return 返回 数值  0代表失败   1代表成功 
 	 */
-	@Insert("INSERT INTO kuaiketab(kuaikeId,kuaikeName,kuaikePhone,kuaikeAddress,kuaikeShenfenF,"
-			+ "kuaikeShenfenZ,kuaikeShouchiSFZ,kuaikeStatus,kuaikeShengqingDate,password,loginDate)"
-			+ " VALUES(#{kuaikeId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{kuaikeShenfenF},"
-			+ "#{kuaikeShenfenZ},#{kuaikeShouchiSFZ},#{kuaikeStatus},#{kuaikeShengqingDate},"
+	@Insert("INSERT INTO kuaiketab(kuaikeId,kuaikeName,kuaikePhone,kuaikeAddress,"
+			+ "kuaikeShenfenZF,kuaikeShouchiSFZ,kuaikeStatus,kuaikeShengqingDate,password,loginDate)"
+			+ " VALUES(#{kuaikeId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},"
+			+ "#{kuaikeShenfenZF},#{kuaikeShouchiSFZ},#{kuaikeStatus},#{kuaikeShengqingDate},"
 			+ "#{password},#{loginDate})")
 	public int addUser(R_kuaiketab kuaiketab);
 }

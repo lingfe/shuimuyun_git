@@ -2,6 +2,8 @@ package com.yyf.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 文件名：R_kuaiketab.java 描述： 快客申请(注册)/登陆 修改人： 杨杰 修改时间：2017年5月17日 下午5:39:54 修改内容：
  */
@@ -11,11 +13,17 @@ public class R_kuaiketab {
 	private String kuaikeName; // 姓名
 	private String kuaikePhone;// 电话
 	private String kuaikeAddress;// 地址
+<<<<<<< HEAD
 	private String kuaikeShenfenZF;// 身份证正面
+=======
+	private String kuaikeShenfenZF;// 身份证正反面
+>>>>>>> ae7d28f39d398a5bb3ab4b261f96640d1d3da268
 	private String kuaikeShouchiSFZ;// 手持身份证正反面
 	private Integer kuaikeStatus;// 状态
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date kuaikeShengqingDate;// 快客申请时间
 	private String password;// 密码
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date loginDate;// 登陆时间
 
 	public String getKuaikeId() {
@@ -50,9 +58,19 @@ public class R_kuaiketab {
 		this.kuaikeAddress = kuaikeAddress;
 	}
 
+<<<<<<< HEAD
 	
 
 	
+=======
+	public String getkuaikeShenfenZ() {
+		return kuaikeShenfenZF;
+	}
+
+	public void setkuaikeShenfenZ(String kuaikeShenfenZF) {
+		this.kuaikeShenfenZF = kuaikeShenfenZF;
+	}
+>>>>>>> ae7d28f39d398a5bb3ab4b261f96640d1d3da268
 
 	public String getKuaikeShouchiSFZ() {
 		return kuaikeShouchiSFZ;
@@ -98,8 +116,18 @@ public class R_kuaiketab {
 		return kuaikeShenfenZF;
 	}
 
+<<<<<<< HEAD
 	public void setKuaikeShenfenZF(String kuaikeShenfenZF) {
 		this.kuaikeShenfenZF = kuaikeShenfenZF;
+=======
+	@Override
+	public String toString() {
+		return "R_userEntity [kuaikeId=" + kuaikeId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
+				+ ", kuaikeAddress=" + kuaikeAddress + ", kuaikeShenfenF=" +  ", kuaikeShenfenZF="
+				+ kuaikeShenfenZF + ", kuaikeShouchiSFZ=" + kuaikeShouchiSFZ + ", kuaikeStatus=" + kuaikeStatus
+				+ ", kuaikeShengqingDate=" + kuaikeShengqingDate + ", password=" + password + ", loginDate=" + loginDate
+				+ "]";
+>>>>>>> ae7d28f39d398a5bb3ab4b261f96640d1d3da268
 	}
 
 	
@@ -121,8 +149,13 @@ public class R_kuaiketab {
 	 * @param loginDate           快客登陆记录时间    系统默认时间
 	 */
 	public R_kuaiketab(String kuaikeId, String kuaikeName, String kuaikePhone, String kuaikeAddress,
+<<<<<<< HEAD
 			String kuaikeShenfenZF, String kuaikeShouchiSFZ, Integer kuaikeStatus, Date kuaikeShengqingDate,
 			String password, Date loginDate) {
+=======
+			String kuaikeShenfenZF, String kuaikeShouchiSFZ, Integer kuaikeStatus,
+			Date kuaikeShengqingDate, String password, Date loginDate) {
+>>>>>>> ae7d28f39d398a5bb3ab4b261f96640d1d3da268
 		super();
 		this.kuaikeId = kuaikeId;
 		this.kuaikeName = kuaikeName;

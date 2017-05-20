@@ -24,6 +24,11 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	private IR_xiaordertabMapper ir_xiaordertabMapper;
 	
 	@Override
+	public R_xiaordertab xiaorderInfo(String xiaId) {
+		return ir_xiaordertabMapper.xiaorderInfo(xiaId);
+	}
+	
+	@Override
 	public void add(R_xiaordertab tab) {
 		ir_xiaordertabMapper.add(tab);
 	}
@@ -36,6 +41,16 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	@Override
 	public int queryCount() {
 		return ir_xiaordertabMapper.queryCount();
+	}
+
+	@Override
+	public void delete(String xiaId) {
+		ir_xiaordertabMapper.delete(xiaId);
+	}
+
+	@Override
+	public void updateStatus(int status, String xiaId) {
+		ir_xiaordertabMapper.updateStatus(status, xiaId);
 	}
 
 }

@@ -21,7 +21,11 @@ import com.yyf.model.R_xiaordertab;
   * 修改内容：
   * //public interface IR_xiaordertabMapper  extends InterJDBC<R_xiaordertab>{
  */
+<<<<<<< HEAD
+public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab>{	
+=======
 public interface IR_xiaordertabMapper  extends InterJDBC<R_xiaordertab>{	
+>>>>>>> ae7d28f39d398a5bb3ab4b261f96640d1d3da268
 	
 
 	/**

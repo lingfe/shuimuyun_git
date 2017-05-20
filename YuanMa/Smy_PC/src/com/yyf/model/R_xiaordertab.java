@@ -176,4 +176,53 @@ public class R_xiaordertab {
 	}
 	
 	
+	public R_xiaordertab() {
+		super();
+	}
+	
+	/**
+	 * @param xiaId             下单ID   主键  唯一标示 
+	 * @param kuaikeName        快客姓名    
+	 * @param kuaikePhone       快客手机号 
+	 * @param kuaikeAddress     快客住址       详情地址
+	 * @param shouhuoNmae       收货人姓名
+	 * @param shouhuoShone      收货人电话 
+	 * @param shouhuoAddress    收货人地址     详情地址
+	 * @param quhuoDate         取货时间         系统定义
+	 * @param kaikeProies       快客运费
+	 * @param status            订单状态          默认为0
+	 * @param okDate            货物到达时间   系统定义
+	 * @param shopName          商品名称    
+	 * @param shopzholiang      商品重量    
+	 * @param shopNumer         商品数量   
+	 * @param shopprices        商品价格       
+	 * @param shopGuige         商品规格
+	 * @param shopDate          上架时间        系统定义
+	 */
+	public R_xiaordertab(String xiaId, String kuaikeName, String kuaikePhone, String kuaikeAddress, String shouhuoNmae,
+			String shouhuoShone, String shouhuoAddress, Date quhuoDate, Float kaikeProies, int status, Date okDate,
+			String shopName, float shopzholiang, int shopNumer, float shopprices, String shopGuige, Date shopDate) {
+		super();
+		this.xiaId = xiaId;
+		this.kuaikeName = kuaikeName;
+		this.kuaikePhone = kuaikePhone;
+		this.kuaikeAddress = kuaikeAddress;
+		this.shouhuoNmae = shouhuoNmae;
+		this.shouhuoShone = shouhuoShone;
+		this.shouhuoAddress = shouhuoAddress;
+		this.quhuoDate = quhuoDate;
+		this.kaikeProies = kaikeProies;
+		this.status = status;
+		this.okDate = okDate;
+		this.shopName = shopName;
+		this.shopzholiang = shopzholiang;
+		this.shopNumer = shopNumer;
+		this.shopprices = shopprices;
+		this.shopGuige = shopGuige;
+		this.shopDate = shopDate;
+	}
+	
+	
+	
+	
 }

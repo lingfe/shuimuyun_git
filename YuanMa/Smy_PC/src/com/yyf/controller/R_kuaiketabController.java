@@ -94,10 +94,10 @@ public class R_kuaiketabController {
 
 		kuaiketabService.addUser(tab);
 
-		model.addAttribute("fileUrl1", request.getContextPath() + "/upload/" + fileName1);
-		model.addAttribute("fileUrl2", request.getContextPath() + "/upload/" + fileName2);
+		//model.addAttribute("fileUrl1", request.getContextPath() + "/upload/" + fileName1);
+		//model.addAttribute("fileUrl2", request.getContextPath() + "/upload/" + fileName2);
 
-		return "result";
+		return "index";
 	}
 
 	/**

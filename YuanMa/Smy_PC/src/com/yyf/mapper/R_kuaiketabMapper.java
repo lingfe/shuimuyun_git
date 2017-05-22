@@ -112,9 +112,9 @@ public interface R_kuaiketabMapper {
 	 * @return
 	 */
 	@Insert("INSERT INTO kuaiketab(kuaikeId,kuaikeName,kuaikePhone,kuaikeAddress,"
-			+ "kuaikeShenfenZF,kuaikeShouchiSFZ,kuaikeStatus,kuaikeShengqingDate,password,loginDate)"
+			+ "kuaikeShenfenZF,kuaikeShouchiSFZ,kuaikeStatus,kuaikeShengqingDate,password,loginDate,kuaikeAddressInfo)"
 			+ " VALUES(#{kuaikeId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},"
 			+ "#{kuaikeShenfenZF},#{kuaikeShouchiSFZ},#{kuaikeStatus},#{kuaikeShengqingDate},"
-			+ "#{password},#{loginDate})")
+			+ "#{password},#{loginDate},#{kuaikeAddressInfo})")
 	public int addUser(R_kuaiketab kuaiketab);
 }

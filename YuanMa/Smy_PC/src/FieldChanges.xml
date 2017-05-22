@@ -8,7 +8,8 @@
 	alter table table1 add transactor varchar(10) not Null;
 	alter table table1 add id int unsigned not Null auto_increment primary key
  -->
- 
+ <!-- 快客表 ,添加字段详细地址   lijie 2017-05-22  -->
+ alter table kuaiketab add kuaikeAddressInfo varchar(10) not Null COMMENT "快客详细地址";
  		
  
  </insertChanges>

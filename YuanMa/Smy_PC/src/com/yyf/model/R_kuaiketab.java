@@ -135,5 +135,16 @@ public class R_kuaiketab {
 		this.password = password;
 		this.loginDate = loginDate;
 	}
+	
+	//详细地址   lijie  add  2017-05-22
+	private String kuaikeAddressInfo;
+
+	public String getKuaikeAddressInfo() {
+		return kuaikeAddressInfo;
+	}
+
+	public void setKuaikeAddressInfo(String kuaikeAddressInfo) {
+		this.kuaikeAddressInfo = kuaikeAddressInfo;
+	}
 
 }

@@ -58,11 +58,11 @@ public class R_kuaiketab {
 		this.kuaikeAddress = kuaikeAddress;
 	}
 
-	public String getkuaikeShenfenZ() {
+	public String getKuaikeShenfenZF() {
 		return kuaikeShenfenZF;
 	}
 
-	public void setkuaikeShenfenZ(String kuaikeShenfenZF) {
+	public void setKuaikeShenfenZF(String kuaikeShenfenZF) {
 		this.kuaikeShenfenZF = kuaikeShenfenZF;
 	}
 

@@ -54,9 +54,9 @@ public class R_kuaiketabController {
 		String path = request.getSession().getServletContext().getRealPath("upload");
 		// 文件1
 		String fileName1 = file1.getOriginalFilename();
-		// System.out.println(path);
-		// System.out.println(request.getContextPath());
-		// System.out.println(fileName1);
+		 System.out.println(path);
+		 System.out.println(request.getContextPath());
+		 System.out.println(fileName1);
 		File targetFile1 = new File(path, fileName1);
 		if (!targetFile1.exists()) {
 			targetFile1.mkdirs();
@@ -80,13 +80,15 @@ public class R_kuaiketabController {
 		// 保存成功后开始赋值
 		tab.setKuaikeId(UUID.randomUUID().toString());
 		// 身份证复印件文件
-		tab.setkuaikeShenfenZ(request.getContextPath() + "/upload/" + fileName1);
+		tab.setKuaikeShenfenZF(request.getContextPath() + "/upload/" + fileName1);
 		// 手拿身份证图片
 		tab.setKuaikeShouchiSFZ(request.getContextPath() + "/upload/" + fileName2);
 		// 登录时间
 		tab.setLoginDate(new Date());
 		// 状态,默认
 		tab.setKuaikeStatus(0);
+		
+		System.out.println(tab.toString());
 
 		kuaiketabService.addUser(tab);
 

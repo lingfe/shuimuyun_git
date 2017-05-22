@@ -142,7 +142,7 @@ $(function(){
 				$(".hidden5_5").hide();
 				$(".img5").show();	
 			}
-
+/*
 		  //详情地址
 	$("#jiedao").blur(function() {
 	   
@@ -165,7 +165,7 @@ $(function(){
 			      	$(".img7").show();
 				}
 			}
-		})
+		})*/
   //验证码
   $("#yanpwd").blur(function() {
 			var valuepwd=$(this).val();
@@ -194,14 +194,14 @@ $(function(){
      
 $("#btn").click(function(){      
     var form=document.forms[0];
-     
-     if(statu7 == true&& statu6 == true&&statu5 == true&&statu4 == true&&statu3 == true&&statu2 == true&&statu1 == true)
+     alert("12344556");
+      if(statu7 == true&& statu6 == true&&statu5 == true&&statu4 == true&&statu3 == true&&statu2 == true&&statu1 == true)
        {
 		form.submit();  
 		}else{
        		return false;
         }     
-})
+});
 
 
 });
@@ -235,7 +235,7 @@ $(function(){
 	
 	console.log(num);
 	$(".zhuce_"+num+"").css("display","block").siblings().css("display","none");
-	 
+	
 	});
 	
 });

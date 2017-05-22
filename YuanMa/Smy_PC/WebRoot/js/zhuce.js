@@ -192,9 +192,9 @@ $(function(){
 
      //获取图片
      
-$("#btn").click(function(){      
+$("#btn").click(function(){ 
+	alert(1);
     var form=document.forms[0];
-     
      if(statu7 == true&& statu6 == true&&statu5 == true&&statu4 == true&&statu3 == true&&statu2 == true&&statu1 == true)
        {
 		form.submit();  
@@ -206,23 +206,11 @@ $("#btn").click(function(){
 
 });
 
-//找回密码的切换
-$(function(){
-   $(".zhao_ren1").css("display","block");
-	$(".zhao_b>li").click(function(){
-		  $(this).addClass("zhao_r").siblings().removeClass("zhao_r");
-		var num=$(this).index();
-		console.log(num);
-		$(".que"+num+"").css("display","block").siblings().css("display","none");
-	})
-	
-})
 
 
 //登录切换
 $(function(){
-   $(".zhuce_1").css("display","block");
-   $(".zhuce_0").css("display","none");
+   
 	$(".zhuce_left>button").click(function(){
 		var num=$(this).index();
 		if(num==1){
@@ -230,12 +218,14 @@ $(function(){
 		}else{
 			$(".zhuce_left>div").show();
 		}
-	
 	$(this).css({"background":"#ff6d46","color":"white","border":"none"}).siblings("button").css({"background":"white","color":"#9d9d9d","border":"1px solid #8a8a8a"});
-	
 	console.log(num);
 	$(".zhuce_"+num+"").css("display","block").siblings().css("display","none");
 	 
 	});
 	
 });
+
+
+	
+	

@@ -8,23 +8,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
-    <title>登陆注册</title>
-	<link rel="stylesheet" type="text/css" href="css/common.css"/>
-	<link rel="stylesheet" type="text/css" href="css/index.css"/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
-	<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
-
-  </head>
-  
+   	    <meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">    
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
+  		<meta charset="UTF-8">
+		<meta http-equiv = "X-UA-Compatible" cotent = "IE=edge,chrome=1"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
+		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
+	   
+	</head>
 	<body>
 		<!--导航开始-->
 		<header>
 			<div class="container">
 				<nav class="nav navlist" role="navigation">
 					<div class="navbar-header" style="margin-right: 60px;">
-						<a href="index.html" class="logo"><img src="images/logo.png" /></a>
+						<a href="index.jsp" class="logo"><img src="images/logo.png" /></a>
 						<a href="#" class="navbar-btn navbar-toggle navbtn" data-toggle="collapse" data-target="#myCollapse">
 							<img src="images/nav-btn.png"/>
 						</a>
@@ -32,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="collapse navbar-collapse navColl" id="myCollapse">
 						<ul class="nav navbar-nav pull-left ren_nav">
 							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-							<li class="active"><a href="index.html" style="color: #ff6d46;">人人配送</a></li>
+							<li class="active"><a href="index.jsp" style="color: #ff6d46;">人人配送</a></li>
 							<li><a href="aboutUs.html">公众号</a></li>
 							<li><a href="service.html">关于人人配送</a></li>
 						</ul>
@@ -46,14 +52,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 
 			   <div class="zhuce_left col-lg-2 col-md-2 col-sm-2 col-xs-2">
 			   	
-			   	     <button style="clear: both;">登&nbsp&nbsp录</button>
-			   	     <button class="logo_b">注 &nbsp&nbsp册</button>
-			   	     <div style="position: relative;left: 93.1%; top:-109px; z-index: 999; border: white 1px dashed !important; display: none;"><img src="images/t003_03.png"/></div>
+			   	     <button style="clear: both; background: #ff6d46; color: white;"class="logo_b">登&nbsp&nbsp录</button>
+			   	     <button >注 &nbsp&nbsp册</button>
+			   	     <div style="position: relative;left: 93.1%; top:-109px; z-index: 999; border: white 1px dashed !important;"><img src="images/t003_03.png"/></div>
 			   </div>
 			  <!--右变开始-->
 			  <div class="zhuce_right col-lg-10 col-md-10 col-sm-10 col-xs-10">
 				<!--注册--> 
-				<div class="zhuce_1" >
+				<div class="zhuce_1" style="display: none;" >
 					 <!--进度条-->	
 					<div class="setbacks">
 						<!--进度条底层-->
@@ -317,12 +323,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 	  	<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
 			 	  	<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
 			 	  	<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
-			 	  </ul>
-			 	  
-			 </div>
-			 
+			 	  </ul>	  
+			 </div> 
 		</footer>
-	
 	</body>
 </html>
 <script src="js/login.js" type="text/javascript" charset="utf-8"></script>

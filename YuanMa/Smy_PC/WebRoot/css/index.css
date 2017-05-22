@@ -106,8 +106,8 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 /*左边开始*/
 .zhuce_left{width: 100%;margin-top: 260px;}
 .zhuce_left button{width: 90%;margin: 10px auto;height:40px;line-height: 40px;border: 1px solid #8a8a8a;border-radius: 5px;outline: none;background: white;color: #9d9d9d;font-size: 1.2em;}
-.zhuce_left button:nth-of-type(1){width: 90%;margin: 10px auto;height:40px;line-height: 40px;border: 1px solid #8a8a8a;border-radius: 5px;outline: none;background: white;color: #9d9d9d;font-size: 1.2em;}
-.zhuce_left button:nth-of-type(2){background: #ff6d46;color: white;width: 90%;margin: 10px auto;height:40px;line-height: 40px;font-size: 1.2em;outline:none;border: 1px solid #8a8a8a;border-radius: 5px;font-size:1.2em;}
+.zhuce_left button{width: 90%;margin: 10px auto;height:40px;line-height: 40px;border: 1px solid #8a8a8a;border-radius: 5px;outline: none;background: white;color: #9d9d9d;font-size: 1.2em;}
+/*.zhuce_left button{background: #ff6d46;color: white;width: 90%;margin: 10px auto;height:40px;line-height: 40px;font-size: 1.2em;outline:none;border: 1px solid #8a8a8a;border-radius: 5px;font-size:1.2em;}*/
 .logo_b{background: #ff6d46;color: white;border: none;width: 90%;margin: 10px auto;height:40px;line-height: 40px;font-size: 1.2em;outline:none;border: 1px solid #8a8a8a;border-radius: 5px;font-size:1.2em;}
 /*左边图标*/
 .zhuce_tuleft{position: absolute;top: 332px;left: -27px;}
@@ -117,7 +117,7 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 .zhao_b{float: left;width:62%;margin-left:26%;}
 .zhao_b li{width: 20%; float: left;margin-right: 20px;font-size: 1.6em;font-family: "宋体";height: 40px;line-height: 40px;border: 1px solid #d1d1d1;border-bottom: none;text-align: center;color: #a5a5a5;cursor: pointer;border-radius:5px 5px 0px 0px;}
 .zhao_c{margin: 0 auto; width: 80%;border: 1px solid #d1d1d1;margin-top: -10px;}
-.zhao_r{color: white!important;background: #96d626;}
+.zhao_r{color: white!important;background: #96d626;border: 1px solid #96d626; border-bottom: none;}
 /*进度条开始*/
 .setbackss {width:63%; height: 120px; margin-left:21%; margin-right: 2%; }
 .setbacks_11 {width:80%; height: 13px; margin-left: 3%; margin-right: 3%; margin-top: 73px; border-radius: 10px; background-color: #EAE8EA;}
@@ -135,7 +135,7 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 /***********登录**********/
 .box{
 	
-	width: 1000px;	
+	
 	position: relative;
 	overflow: hidden;
 	
@@ -317,3 +317,14 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 			-moz-user-select: none;
 	-webkit-user-select: none;
 }
+
+/*********审核开始*************/
+.shen_d{width: 100%;margin:50px auto;color: #333333;text-align: center;font-family: "宋体";font-size: 1.2em;}
+.shenhe{width: 60%;margin: 0 auto;}
+.shenhe p:nth-of-type(1){font-size: 1.4em;color: #333333;font-family: "宋体";}
+.shenhe p:nth-of-type(2){font-size: 1.4em;color: #333333;font-family: "宋体"; text-align: center;margin: 30px auto;}
+.shenhe p:nth-of-type(2) span{margin-right: 15px; color: #ff6d46;font-size: 1.68em;}
+.shen_a{width: 100%;text-align: center;font-size: 1.2em;color: #c6c6c6;height: 100px;}
+
+#img0{position: absolute; max-width: 100%;max-height:100% ;top: 0px; left: 0px;}
+#img1{position: absolute; max-width: 100%;max-height:100% ;top: 0px; left: 0px;}

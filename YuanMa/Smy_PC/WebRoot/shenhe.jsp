@@ -1,33 +1,29 @@
-
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<base href="<%=basePath%>">
-
-
+  <head>
+    <base href="<%=basePath%>">
+    
+    
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="expires" content="0">
+		<meta http-equiv="expires" content="0">    
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
 		<meta charset="UTF-8">
 		<meta http-equiv = "X-UA-Compatible" cotent = "IE=edge,chrome=1"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-		<title>首页</title>
+		<title>审核</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/common.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
 		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>		
-        <script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<div class="header">
@@ -64,45 +60,80 @@
 			</div>
 		</header>
 		<!--导航结束-->
+		<!--内容开始-->
+		<div class="zhao_top">
+			<div class="zhao_a">找回密码</div>
+			 <ul class="zhao_b">
+			 	<li>手机找回</li>
+			 	<li class="zhao_r">人工找回</li>
+			 </ul>
+			 <div style="clear: both;"></div>
+		</div>
 		
-		<!--轮播开始-->
-		<div class="carousel slide" id="myCarousel">
-			<!--<轮播项目-->
-			<div class="carousel-inner">
-				<div class="item active"><img src="images/001.jpg"/></div>
-				<div class="item"><img src="images/001.jpg"/></div>
-				<div class="item"><img src="images/001.jpg"/></div>
-				<div class="item"><img src="images/001.jpg"/></div>
-				<div class="item"><img src="images/001.jpg"/></div>
-			</div>
-			<!--轮播指标-->
-			<ul class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-				<li data-target="#myCarousel" data-slide-to="3"></li>
-				<li data-target="#myCarousel" data-slide-to="4"></li>
-				<li data-target="#myCarousel" data-slide-to="5"></li>
-			</ul>
-			<!--轮播导航-->
-			<a href="#myCarousel" class="carousel-control left left-ico" data-slide="prev">
-				<img src="images/left.png" />
-			</a>
-			<a href="#myCarousel" class="carousel-control right  right-ico" data-slide="next">
-				<img src="images/right.png" />
-			</a>
-		</div>
-		<!--轮播结束-->
-		<!--按钮开始-->
-		<div class="ren_aj1 flex1">
-			 <img src="images/a001_03.png"/>
-			 <span>我要抢单</span>
-		</div>
-		<div class="ren_aj2 flex1">
-			 <img src="images/a002_03.png"/>
-			 <span>我要下单</span>
-		</div>
-		<div style="clear: both;"></div>
+		<div class="zhao_c">
+			<!--人工找回密码-->
+			<div class="zhao_ren1 que1" style="display: block;">
+			        <!--进度条-->	
+					<div class="setbackss">
+						<!--进度条底层-->
+						<div class="setbacks_11"></div>
+						<!--进度条中层-->
+						<div class="setbacks_22" style="width:28%;top: 233px; " ></div>
+						<!--进度条顶层-->
+						<ul class="setbacks_33" style="top: 216px;">
+							<li>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									  <td align="center">
+										<a href="yianxiekuaike.html">
+											<p class="setbacks_3_1_cc">1</p>
+											<p class="setbacks_3_2_cc">填写快客信息</p>
+										</a>
+									  </td>
+									</tr>
+								</table>
+							</li>
+							<li>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									  <td align="center">
+										<a href="shenhe.html">
+											<p class="setbacks_3_1_cc">2</p>
+											<p class="setbacks_3_2_cc">审核</p>
+										</a>
+									  </td>
+									</tr>
+								</table>
+							</li>
+							<li>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									  <td align="center">
+										<a href="zhuanyepeixun.html">
+											<p class="setbacks_3_11">3</p>
+											<p class="setbacks_3_22">专业培训</p>
+										</a>
+									  </td>
+									</tr>
+								</table>
+							</li>
+							
+						</ul>
+						<div class="clear"></div>
+					</div>
+    	           <!--内容开始-->
+    	           <p class="shen_d">正在审核中，请耐心等待...</p>
+    	           <div class="shenhe">
+    	           	   <p>预计等待倒计时：</p>
+    	           	   <p><span>10</span>分钟</p>
+    	           </div>
+    	           <div class="shen_a"> 若等待时间过长，可拨打11111进行密码找回</div>
+    	           
+    	           
+		 </div>
+		    
+   </div>
+		
 		<!--底部开始-->
 		<footer>
 			<div class="col-lg-1"></div>

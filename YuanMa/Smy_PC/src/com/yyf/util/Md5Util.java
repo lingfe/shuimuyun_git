@@ -1,4 +1,4 @@
-package com.capech.core.utils;
+package com.yyf.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

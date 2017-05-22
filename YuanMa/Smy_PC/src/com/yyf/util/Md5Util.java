@@ -8,8 +8,8 @@ public class Md5Util {
 	}
 	
 	public static void main(String[] args) {
-		String pwd="123456";
+		String pwd="123456asdasf@#4";
+		System.out.println(md5(pwd)+"//");
 		System.out.println(md5(pwd));
-		
 	}
 }

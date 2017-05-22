@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.service.R_kuaiketabService;
+import com.yyf.util.Md5Util;
 
 /**
  * 文件名：R_kuaiketabController.java 描述： 用户登陆注册 修改人： 杨杰 修改时间：2017年5月18日 下午3:46:47
@@ -81,6 +82,8 @@ public class R_kuaiketabController {
 
 		// 保存成功后开始赋值
 		tab.setKuaikeId(UUID.randomUUID().toString());
+		//密码加密
+		tab.setPassword(Md5Util.md5(tab.getPassword()));
 		// 身份证复印件文件
 		tab.setKuaikeShenfenZF(request.getContextPath() + "/upload/" + fileName1);
 		// 手拿身份证图片

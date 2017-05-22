@@ -17,5 +17,6 @@ public final class ErrorShow {
 	public static final String XIADAN_NO_0="下单状态不为0，不能删除";
 	
 	/**  **/
+	public static final String s="";
 	
 }

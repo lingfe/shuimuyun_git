@@ -130,7 +130,7 @@ public class R_kuaiketabController {
 	 * @return 返回成功页面
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("kuaikeName") String uname, @RequestParam("password") String password) {
+	public String login(@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password) {
 		/* 调用登陆方法 & 并封装为实体对象 */
 		R_kuaiketab login = kuaiketabService.login(uname, password);
 
@@ -139,7 +139,7 @@ public class R_kuaiketabController {
 			// 简单测试
 			System.out.println(login + "欢迎来到这里看到用户名和密码 ");
 			// 返回成功页面
-			return "MyJsp";
+			return "index";
 		}
 		// 返回失败页面
 		return "flge";

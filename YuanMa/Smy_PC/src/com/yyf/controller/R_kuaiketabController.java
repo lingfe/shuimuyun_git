@@ -1,6 +1,8 @@
 package com.yyf.controller;
 
 import java.io.File;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -26,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.service.R_kuaiketabService;
+import com.yyf.util.Md5Util;
 
 /**
  * 文件名：R_kuaiketabController.java 描述： 用户登陆注册 修改人： 杨杰 修改时间：2017年5月18日 下午3:46:47
@@ -128,11 +131,18 @@ public class R_kuaiketabController {
 	 * @param upass
 	 *            密码
 	 * @return 返回成功页面
+	 * @throws NoSuchAlgorithmException 
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password) {
+	public String login(@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password) throws NoSuchAlgorithmException {
 		/* 调用登陆方法 & 并封装为实体对象 */
-		R_kuaiketab login = kuaiketabService.login(uname, password);
+		
+		System.out.println(password);
+		
+		String newPass = Md5Util.md5(password);
+		
+		System.out.println(newPass);
+		R_kuaiketab login = kuaiketabService.login(uname, newPass);
 
 		// 简单判断对象是否为空
 		if (login != null) {

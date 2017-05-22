@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
 		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
-	   
 	</head>
 	<body>
 		<!--导航开始-->
@@ -132,8 +132,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</ul>
 						<div class="clear"></div>
 					</div>
+					
                      <!--表单开始-->
-                     <form>
+                     <form action="" method="post">
                      <div class="zhuce_xing">
                      	   <label>* 姓名：</label>
                      	   <input type="text" value="" id="namett"/>
@@ -264,14 +265,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div style="clear: both;"></div>
 					<div class="common_con">
 					   <span>手机号码:</span>
-						<input type="text " class="phone" placeholder="  请输入手机号" name="kuaikePhone"/>
+						<input type="text " class="phone" value="${sessionScope.uname!=null?sessionScope.uname:''}" placeholder="  请输入手机号" name="kuaikePhone"/>
 						<br />
 						<span>登录密码:</span>
-						<input type="password" class="pwd" placeholder="  请输入登录密码" name="password"/>
+						<input type="password" class="pwd" value="${ sessionScope.newPass!=null?sessionScope.newPass:''}" placeholder="  请输入登录密码" name="password"/>
 						<div style="clear: both;"></div>
 						<a href="zhaohuimima.jsp"style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 					<div>
-						<span><input type="checkbox" class="zii"/></span>
+						<span><input type="checkbox" class="zii" name="repassword"/></span>
 						<span class="zi">记住密码</span>
 						<br />
 						<button>登   录</button>
@@ -290,8 +291,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img class="t33" src="images/g00_03.png"/>
 					<img class="t22" src="images/g00_03.png"/>
 					<img class="t11" src="images/g00_03.png"/>
+					</form>
 				</div>
-				</form>
+			
 				<!--登录结束-->
 			
 			  </div>

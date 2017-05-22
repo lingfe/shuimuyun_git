@@ -31,7 +31,7 @@ public interface R_qiangordertabMapper {
 	public  int Insert(R_qiangordertab qiangordertab);
 	
 	/**
-	 * 得到List 集合对象
+	 * 得到List 集合对象 得到一个抢单记录
 	 * @author 杨杰     
 	 * @created 2017年5月19日 上午9:46:32  
 	 * @return 返回List

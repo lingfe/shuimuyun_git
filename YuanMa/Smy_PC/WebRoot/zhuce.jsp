@@ -210,7 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      </div>
 			        <div class="zhuce_xiangqing">
 			        	  <label></label>
-			        	  <input type="text" name="" value="" id="jiedao"/>
+			        	  <input type="text" name="kuaikeAddressInfo" value="" id="jiedao"/>
 			        	  <span>详情地址</span>
 			        	  <span class="hidden7" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	   <span class="hidden7_7" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>

@@ -13,5 +13,9 @@ public final class ErrorShow {
 	/** 系统异常 **/
 	public static final  String  ERROR="系统异常";
 	
+	/** 下单状态不为0，不能删除 **/
+	public static final String XIADAN_NO_0="下单状态不为0，不能删除";
+	
+	/**  **/
 	
 }

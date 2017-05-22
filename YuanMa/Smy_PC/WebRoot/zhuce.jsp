@@ -60,7 +60,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <div class="zhuce_right col-lg-10 col-md-10 col-sm-10 col-xs-10">
 				<!--注册--> 
 				<div class="zhuce_1" >
-					<form action="upload.do" method="post" enctype="multipart/form-data">
 					 <!--进度条-->	
 					<div class="setbacks">
 						<!--进度条底层-->
@@ -259,16 +258,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   </div>
 				 <!--登录开始-->
 				<div class="box zhuce_0" style="display: none;" >
-                  <form>
+                  <form action="login" method="post">
 					<div class="common">普通登录</div>
 					<div class="free">免密登录</div>
 					<div style="clear: both;"></div>
 					<div class="common_con">
 					<span>手机号码:</span>
-					<input type="text " class="phone" placeholder="  请输入手机号"/>
+					<input type="text " class="phone" placeholder="  请输入手机号" name="kuaikePhone"/>
 					<br />
 					<span>登录密码:</span>
-					<input type="password" class="pwd" placeholder="  请输入登录密码"/>
+					<input type="password" class="pwd" placeholder="  请输入登录密码" name="password"/>
 					<p>忘记密码</p>
 					<div>
 						<span><input type="checkbox" class="zii"/></span>

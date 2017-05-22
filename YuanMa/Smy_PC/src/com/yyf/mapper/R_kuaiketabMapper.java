@@ -21,8 +21,8 @@ public interface R_kuaiketabMapper {
 	 * @param upass 密码
 	 * @return 跳转页面
 	 */
-	@Select("select * from kuaiketab where kuaikeName=#{kuaikeName} or kuaikePhone=#{kuaikeName}  and password=#{password}")
-	public R_kuaiketab login(@Param("kuaikeName") String uname, @Param("password") String upass);
+	@Select("select * from kuaiketab where kuaikePhone=#{kuaikePhone}  and password=#{password}")
+	public R_kuaiketab login(@Param("kuaikePhone") String phone, @Param("password") String upass);
 
 	// Add information based on the phone number entered by the user
 	// @Insert("insert INTO kuaiketab(kuaikeName,password,kuaikePhone) "

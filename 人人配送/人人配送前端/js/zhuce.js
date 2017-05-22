@@ -82,7 +82,7 @@ $(function(){
 	   
 		$("#logopwd").blur(function() {
 			 var valuepwd=$(this).val();
-			var Reg = /^\d{6,}$/;
+			var Reg = /^?![^a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{10,20}$/;
 			if(valuepwd == null || valuepwd.length == 0) {
 				$(".hidden3").show();
 				$(".hidden3_3").hide();
@@ -124,7 +124,8 @@ $(function(){
 		 }
 			
 		});
-	 //省份开始
+	
+	//省份开始
 	        var sheng=$("#sheng").val();
 			var shi=$("#shi").val();
 			var jie=$("#jie").val();
@@ -147,7 +148,7 @@ $(function(){
 	$("#jiedao").blur(function() {
 	   
 			var value = $(this).val();
-			var Reg = /^([\u4e00-\u9fa5]{2,4})$/;
+			var Reg = /^[\u4e00-\u9fa5]+$/;
 			if(value == null || value.length == 0) {
 				$(".hidden7").show();
 				$(".hidden7_7").hide();
@@ -193,13 +194,15 @@ $(function(){
      //获取图片
      
 $("#btn").click(function(){ 
-	alert(1);
     var form=document.forms[0];
      if(statu7 == true&& statu6 == true&&statu5 == true&&statu4 == true&&statu3 == true&&statu2 == true&&statu1 == true)
        {
-		form.submit();  
+		form.submit(); 
+		form.action="shenhe.html";
 		}else{
+			alert("请填写完整");
        		return false;
+       		form.action="shenhe.html";
         }     
 })
 

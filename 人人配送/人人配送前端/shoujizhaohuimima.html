@@ -4,17 +4,17 @@
 		<meta charset="UTF-8">
 		<meta http-equiv = "X-UA-Compatible" cotent = "IE=edge,chrome=1"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-		<title>审核</title>
+		<title>找回密码</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/common.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/zhaohuimima.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<div class="header">
 			<div class="container flex">
-				 <p class="flex2 conttent_p"><a href="logo.html">登录</a><a href="zhuce.html">注册</a></p>
+				 <p class="flex2 conttent_p"><a href="login.html">登录</a><a href="zhuce.html">注册</a></p>
 				 <ul class="flex8 content_u">
 				 	<li><img src="images/e.png"/><a href="#">wenping@smuyun.com</a></li>
 				 	<li><img src="images/p.png"/><a href="#">0851 8510 3179</a></li>
@@ -23,7 +23,7 @@
 			</div>
 		    <div style="clear: both;"></div>
 		</div>
-
+	  
 		<!--导航开始-->
 		<header>
 			<div class="container">
@@ -36,7 +36,7 @@
 					</div>
 					<div class="collapse navbar-collapse navColl" id="myCollapse">
 						<ul class="nav navbar-nav pull-left ren_nav">
-							<li class="active"><a href="index.html">商城</a></li>
+							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
 							<li class="active"><a href="index.html" style="color: #ff6d46;">人人配送</a></li>
 							<li><a href="aboutUs.html">公众号</a></li>
 							<li><a href="service.html">关于人人配送</a></li>
@@ -50,8 +50,8 @@
 		<div class="zhao_top">
 			<div class="zhao_a">找回密码</div>
 			 <ul class="zhao_b">
-			 	<li>手机找回</li>
-			 	<li class="zhao_r">人工找回</li>
+			 	<li >手机找回</li>
+			 	<li class="zhao_r" style="color: white!important;background: #96d626;border: 1px solid #96d626; border-bottom: none;">人工找回</li>
 			 </ul>
 			 <div style="clear: both;"></div>
 		</div>
@@ -64,9 +64,9 @@
 						<!--进度条底层-->
 						<div class="setbacks_11"></div>
 						<!--进度条中层-->
-						<div class="setbacks_22" style="width:28%;top: 233px; " ></div>
+						<div class="setbacks_22" style="width:39%; top: 233px;"></div>
 						<!--进度条顶层-->
-						<ul class="setbacks_33" style="top: 216px;">
+						<ul class="setbacks_33" style="top: 220px;">
 							<li>
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
@@ -96,8 +96,8 @@
 									<tr>
 									  <td align="center">
 										<a href="zhuanyepeixun.html">
-											<p class="setbacks_3_11">3</p>
-											<p class="setbacks_3_22">密找回成功码</p>
+											<p class="setbacks_3_1_cc">3</p>
+											<p class="setbacks_3_22_cc">审核成功</p>
 										</a>
 									  </td>
 									</tr>
@@ -107,18 +107,31 @@
 						</ul>
 						<div class="clear"></div>
 					</div>
-    	           <!--内容开始-->
-    	           <p class="shen_d">正在审核中，请耐心等待...</p>
-    	           <div class="shenhe">
-    	           	   <p>预计等待倒计时：</p>
-    	           	   <p><span id="show">10</span>分钟</p>
-    	           </div>
-    	           <div class="shen_a"> 若等待时间过长，可拨打11111进行密码找回</div>
-    	           
+             
+			       <div class="zhuce_pwd zhao_pwd">
+                     	   <label>* 登录密码：</label>
+                     	   <input type="password" value="" id="logopwd"/>
+                     	    <span class="hidden3" style="width: 100px;height: 30px; color: red;">不能为空</span>
+                     	    <span class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+                     	    <img src="images/g00_03.png"class="img3"/>
+                     </div>
+                    <div class="zhuce_xing">
+                     	   <label>* 确认密码：</label>
+                     	   <input type="password" value="" id="pwd"/>
+                     	    <span class="hidden4" style="width: 100px;height: 30px; color: red;">不能为空</span>
+                     	    <span class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+                     	    <img src="images/g00_03.png"class="img4"/>
+                   </div>
+                  <div class="zhuce_xiayibu" style="margin: 40px auto;margin-bottom:60px;">
+			       	   <button id="btn">确认</button>
+			      </div> 
+			     	
 		 </div>
 		    
-  </div>
-		<!--底部开始-->
+		</div>
+	
+	<!--底部开始-->
+		
 		<footer>
 			<div class="col-lg-1"></div>
 			 <div class="fooeter1 col-lg-2 col-sm-6 col-xs-6 col-md-2">
@@ -146,27 +159,112 @@
 			 	  <ul>
 			 	  	<li>联系我们</li>
 			 	  	<li><span>商城名称:</span><a href="#">水木云</a></li>
-			 	  	<li><span>商城客服电话:</span><a href="#"> 0851 8510 3179</a></li>
+			 	  	<li><span>商城客服电话:</span><a href="#"> 400 800 600</a></li>
 			 	  	<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
 			 	  	<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
 			 	  	<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
-			 	  </ul>
-			 	  
-			 </div>
-			 
+			 	  </ul>	  
+			 </div> 
 		</footer>
-
+	
+	<div class="zhaohui_tanchu">
+		  <div class="zhaohui_tanchu1">
+		  	  <p>密码找回成功</p>
+		  	  <p>还有<span id="show">3</span>s跳转到<em>人人配送登录页面</em></p>
+		  </div>
+	</div>
 	</body>
 </html>
+<script>
+		//找回密码的切换
+$(function(){
+	
+	$(".hidden2").hide();
+	$(".hidden2_2").hide();
+	$(".img2").hide();
+	$(".hidden3").hide();
+	$(".hidden3_3").hide();
+	$(".img3").hide();
+	$(".hidden4").hide();
+	$(".hidden4_4").hide();
+	$(".img4").hide();
+	$(".zhaohui_tanchu").hide();
+	var statu3 = false;
+	var statu4 = false;
+   $("#logopwd").blur(function() {
+			 var valuepwd=$(this).val();
+			var Reg = /^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)(?![\W_]+$)\S{6,16}$/;
+			if(valuepwd == null || valuepwd.length == 0) {
+				$(".hidden3").show();
+				$(".hidden3_3").hide();
+				$(".img3").hide();
+			} else {
+				if(!Reg.test(valuepwd)) {
+					$(".hidden3").hide();
+      	            $(".hidden3_3").show();
+      	              $(".img3").hide();
+				} else {
+					statu3 = true;
+					$(".hidden3").hide();
+			      	$(".hidden3_3").hide();
+			      	$(".img3").show();
+				}
+			}
+		});
+		//确认密;码
+		$("#pwd").blur(function() {
+			var vla=$(this).val();
+			var valuepwd=$("#logopwd").val();
+		 if(vla=="")
+		 {
+		 	$(".hidden4").show();
+		 	$(".hidden4_4").hide();
+			$(".img4").hide();
+		 }else{
+		 	if(vla!= valuepwd) {
+				$(".hidden4_4").show();
+				$(".img1").hide();
+				$(".hidden4").hide();
+			} else {
+				statu4 = true;
+				$(".hidden4").hide();
+			     $(".hidden4_4").hide();
+			     $(".img4").show();
+			}
+		 	
+		 }
+			
+		});
+	
+ 
+$("#btn").click(function(){
+     if(statu3 == true&&statu4 == true)
+       {
+		 $(".zhaohui_tanchu").show();
+		 setInterval("refer()",1000); //启动1秒定时
+		return true;
+		}else{
+			alert("请输入新的密码");
+       		return false;	
+        }     
 
-<script type="text/javascript"> 
-var t=10;//设定跳转的时间 
-setInterval("refer()",1000); //启动1秒定时 
+
+
+})
+
+
+
+
+})
+
+
+var t=3;//设定跳转的时间  
 function refer(){  
-    if(t==1){ 
-        location="shoujizhaohuimima.html"; //#设定跳转的链接地址 
+    if(t==0){ 
+        location="login.html"; //#设定跳转的链接地址 
     } 
     document.getElementById('show').innerHTML=""+t+""; // 显示倒计时 
     t--; // 计数器递减 
 } 
-</script> 
+
+</script>

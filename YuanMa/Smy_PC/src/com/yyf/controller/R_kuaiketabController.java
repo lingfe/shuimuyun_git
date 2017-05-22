@@ -84,6 +84,8 @@ public class R_kuaiketabController {
 
 		// 保存成功后开始赋值
 		tab.setKuaikeId(UUID.randomUUID().toString());
+		//密码加密
+		tab.setPassword(Md5Util.md5(tab.getPassword()));
 		// 身份证复印件文件
 		tab.setKuaikeShenfenZF(request.getContextPath() + "/upload/" + fileName1);
 		// 手拿身份证图片

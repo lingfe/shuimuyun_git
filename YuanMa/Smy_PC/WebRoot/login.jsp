@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul class="nav navbar-nav pull-left ren_nav">
 							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
 							<li class="active"><a href="index.jsp" style="color: #ff6d46;">人人配送</a></li>
-							<li><a href="aboutUs.html">公众号</a></li>
-							<li><a href="service.html">关于人人配送</a></li>
+							<li><a href="aboutUs.jsp">公众号</a></li>
+							<li><a href="service.jsp">关于人人配送</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <!--右变开始-->
 			  <div class="zhuce_right col-lg-10 col-md-10 col-sm-10 col-xs-10">
 				<!--注册--> 
-				<div class="zhuce_1" >				<form action="upload.do" method="post"  enctype="multipart/form-data" >
+				<div class="zhuce_1" style="display: none;" >
 					 <!--进度条-->	
 					<div class="setbacks">
 						<!--进度条底层-->
@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="yianxiekuaike.html">
+										<a href="yianxiekuaike.jsp">
 											<p class="setbacks_3_1_c">1</p>
 											<p class="setbacks_3_2_c">填写快客信息</p>
 										</a>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="shenhe.html">
+										<a href="shenhe.jsp">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 										</a>
@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="zhuanyepeixun.html">
+										<a href="zhuanyepeixun.jsp">
 											<p class="setbacks_3_1">3</p>
 											<p class="setbacks_3_2">专业培训</p>
 										</a>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="kaoshi.html">
+										<a href="kaoshi.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">考试</p>
 										</a>
@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="chengweikuaike.html">
+										<a href="chengweikuaike.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">成为快客</p>
 										</a>
@@ -133,23 +133,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="clear"></div>
 					</div>
                      <!--表单开始-->
+                     <form>
                      <div class="zhuce_xing">
                      	   <label>* 姓名：</label>
-                     	   <input type="text" name="kuaikeName" value="" id="namett"/>
+                     	   <input type="text" value="" id="namett"/>
                      	    <span class="hidden1" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden1_1" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	   <img src="images/g00_03.png"class="img1"/>
                      </div>
                      <div class="zhuce_phone">
                      	   <label>* 手机号码：</label>
-                     	   <input type="text" name="kuaikePhone" value="" id="phone"/>
+                     	   <input type="text" value="" id="phone"/>
                      	   <span class="hidden2" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	 <img src="images/g00_03.png"class="img2"/>
                      </div>
                      <div class="zhuce_pwd">
                      	   <label>* 登录密码：</label>
-                     	   <input type="password" name="password" value="" id="logopwd"/>
+                     	   <input type="password" value="" id="logopwd"/>
                      	    <span class="hidden3" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	    <img src="images/g00_03.png"class="img3"/>
@@ -160,14 +161,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      </div>
                      <div class="zhuce_xing">
                      	   <label>* 确认密码：</label>
-                     	   <input type="password"  value="" id="pwd"/>
+                     	   <input type="password" value="" id="pwd"/>
                      	    <span class="hidden4" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	    <img src="images/g00_03.png"class="img4"/>
                      </div>
                      <div class="zhuce_dizhi">
                      	<label>* 现居住地址：</label>
-                     	<select id="sheng" name="kuaikeAddress">
+                     	<select id="sheng">
                      		<option value="贵州省">贵州省</option>
                      		<option value="云南省">云南省</option>
                      		<option value="河北省">河北省</option>
@@ -175,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      		<option value="东北省">东北省</option>
                      	</select>
                      	<span>省</span>
-                     	<select id="shi" name="kuaikeAddress">
+                     	<select id="shi">
                      		<option value="贵阳市">贵阳市</option>
                      		<option value="贵阳市">贵阳市</option>
                      		<option value="贵阳市">贵阳市</option>
@@ -184,7 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      		
                      	</select>
                      	<span>市</span>
-                     	<select id="xian" name="kuaikeAddress" >
+                     	<select id="xian">
                      		<option value="盘县">盘县</option>
                      		<option value="盘县">盘县</option>
                      		<option value="盘县">盘县</option>
@@ -229,16 +230,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			      <div class="Passpicture">
 			      
 				       	<div class="zhuce_zf" >
-				       	 <input type="file" name="file1" style="width: 100%;min-height: 200px;opacity: 0;"/>
-				       	  <a href="#" id="zhuce_zf" class="btn  disabled" role="button" style="cursor: pointer; text-decoration: underline;">
-				       	  	点击上传正反面身份证复印件
-				       	  	
-				       	  </a>
+					       	 <input type="file" style="width: 100%;min-height: 200px;opacity: 0;"id="file0" multiple="multiple"/>
+					       	  <a href="#" id="zhuce_zf" class="btn  disabled" role="button" style="cursor: pointer; text-decoration: underline;">
+					       	  	点击上传正反面身份证复印件
+					       	  </a>
+					       	  <img src="" id="img0" > 
 				       	</div>
 				      
 				       	<div class="zhuce_c" >
-				       	  <input type="file" name="file2" style="width: 100%;min-height: 200px;opacity: 0;" />
-				       	  <a href="#" id="zhuce_c"class="btn  disabled" role="button" style="cursor: pointer; text-decoration: underline;">点击上传正反面身份证复印件</a>
+					       	  <input type="file" style="width: 100%;min-height: 200px;opacity: 0;"id="file1" multiple="multiple" />
+					       	  <a href="#" id="zhuce_c"class="btn  disabled" role="button" style="cursor: pointer; text-decoration: underline;">点击上传正反面身份证复印件</a>
+					       	  <img src="" id="img1" > 
 				       	</div>
 				       	<span class="hidden9" style="width: 100px;height: 30px; color: red;">不能为空</span>
 				       <img src="images/g00_03.png" class="img9"/>
@@ -251,23 +253,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			       <div class="zhuce_xiayibu">
 			       	   <a href="#" id="btn">下一步</a>
 			       </div>
-			       <input type="submit" />
-			        </form>
+			     </form>
 			   </div>
-			  
 				 <!--登录开始-->
+				
 				<div class="box zhuce_0" >
-
+                    <form action="login" method="post">
 					<div class="common">普通登录</div>
 					<div class="free">免密登录</div>
 					<div style="clear: both;"></div>
 					<div class="common_con">
-					<span>手机号码:</span>
-					<input type="text " class="phone" placeholder="  请输入手机号"/>
-					<br />
-					<span>登录密码:</span>
-					<input type="password" class="pwd" placeholder="  请输入登录密码"/>
-					<p>忘记密码</p>
+					   <span>手机号码:</span>
+						<input type="text " class="phone" placeholder="  请输入手机号" name="kuaikePhone"/>
+						<br />
+						<span>登录密码:</span>
+						<input type="password" class="pwd" placeholder="  请输入登录密码" name="password"/>
+						<div style="clear: both;"></div>
+						<a href="zhaohuimima.jsp"style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 					<div>
 						<span><input type="checkbox" class="zii"/></span>
 						<span class="zi">记住密码</span>
@@ -289,7 +291,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img class="t22" src="images/g00_03.png"/>
 					<img class="t11" src="images/g00_03.png"/>
 				</div>
+				</form>
 				<!--登录结束-->
+			
 			  </div>
 		   
 		</div>
@@ -331,3 +335,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</body>
 </html>
 <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>  
+<script src="js/tu.js" type="text/javascript" charset="utf-8"></script>
+<script>    
+
+$("#file0").change(function(){  
+  // getObjectURL是自定义的函数，见下面  
+  // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+  // ，但是这里只读取第一个   
+  var objUrl = getObjectURL(this.files[0]) ;  
+  if (objUrl) {  
+    // 在这里修改图片的地址属性  
+    $("#img0").attr("src", objUrl) ;  
+  }  
+}) ;  
+//建立一個可存取到該file的url  
+function getObjectURL(file) {  
+  var url = null ;   
+  // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+  if (window.createObjectURL!=undefined) { // basic  
+    url = window.createObjectURL(file) ;  
+  } else if (window.URL!=undefined) { // mozilla(firefox)  
+    url = window.URL.createObjectURL(file) ;  
+  } else if (window.webkitURL!=undefined) { // webkit or chrome  
+    url = window.webkitURL.createObjectURL(file) ;  
+  }  
+  return url ;  
+}  
+
+</script>  

@@ -59,9 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <!--右变开始-->
 			  <div class="zhuce_right col-lg-10 col-md-10 col-sm-10 col-xs-10">
 				<!--注册-->
-				<form action="upload.do" method="post" enctype="multipart/form-data"> 
 				<div class="zhuce_1" >
-				<form action="upload.do" method="post">
 					 <!--进度条-->	
 					<div class="setbacks">
 						<!--进度条底层-->
@@ -135,6 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="clear"></div>
 					</div>
                      <!--表单开始-->
+                     <form action="upload.do" method="post" enctype="multipart/form-data"> 
                      <div class="zhuce_xing">
                      	   <label>* 姓名：</label>
                      	   <input type="text" name="kuaikeName" value="" id="namett"/>
@@ -156,7 +155,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      	    <span class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	    <img src="images/g00_03.png"class="img3"/>
                      </div>
-                     
                      <div class="zhuce_tuleft">
                      	<img src="images/t003_03.png"/>
                      </div>
@@ -256,12 +254,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			       	<a href="javascript:void(0);" id="btn">下一步</a>
 			      
 			       </div>
-			      </form>
-			   </div>
-			   </div>
+			       </form>
+			       </div>
+			      
 				 <!--登录开始-->
-				 <form action="login" method="post">
+				
 				<div class="box zhuce_0" style="display: none;" >
+					<form action="login" method="post">
 					<div class="common">普通登录</div>
 					<div class="free">免密登录</div>
 					<div style="clear: both;"></div>
@@ -295,9 +294,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</form>
 				</div>
 				<!--登录结束-->
-			</form>			  </div>
+				</div>
 		   
-		</div>
+		</div>		  
 		<!--底部开始-->
 		<footer>
 			<div class="col-lg-1"></div>
@@ -349,7 +348,7 @@ $("#file0").change(function(){
     // 在这里修改图片的地址属性  
     $("#img0").attr("src", objUrl) ;  
   }  
-}) ;  
+});  
 //建立一個可存取到該file的url  
 function getObjectURL(file) {  
   var url = null ;   

@@ -1,6 +1,7 @@
 package com.yyf.controller;
 
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -8,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.NameValuePair;
@@ -131,16 +133,42 @@ public class R_kuaiketabController {
 	 * @param upass
 	 *            密码
 	 * @return 返回成功页面
+	 * @throws NoSuchAlgorithmException 
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password) {
+	public String login(@RequestParam(value="repassword" ,required=false) String repassword,@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password,HttpServletRequest request) throws NoSuchAlgorithmException {
 		/* 调用登陆方法 & 并封装为实体对象 */
+		
+		
+		System.out.println(repassword+"1111111111111111");
+		//测试是否得到密码
+		System.out.println(password);
+		
+		//进行Md5加密
+	//	String newPass = Md5Util.md5(password);
+		//测试是否得到加密密码
+		//System.out.println(newPass);
+		
+		//调用登陆方法，并封装为对象
 		R_kuaiketab login = kuaiketabService.login(uname, password);
 
 		// 简单判断对象是否为空
 		if (login != null) {
+			if("on".equals(repassword)){
+				
+				System.out.println(repassword);
+				request.getSession().setAttribute("uname", uname);
+				
+				request.getSession().setAttribute("newPass", password);
+				
+			}else{
+				
+				request.getSession().removeAttribute("uname");
+				request.getSession().removeAttribute("newPass");
+			}
 			// 简单测试
 			System.out.println(login + "欢迎来到这里看到用户名和密码 ");
+			
 			// 返回成功页面
 			return "index";
 		}

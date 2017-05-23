@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="container">
 				<nav class="nav navlist" role="navigation">
 					<div class="navbar-header" style="margin-right: 60px;">
-						<a href="index.html" class="logo"><img src="images/logo.png" /></a>
+						<a href="index.jsp" class="logo"><img src="images/logo.png" /></a>
 						<a href="#" class="navbar-btn navbar-toggle navbtn" data-toggle="collapse" data-target="#myCollapse">
 							<img src="images/nav-btn.png"/>
 						</a>
@@ -38,9 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="collapse navbar-collapse navColl" id="myCollapse">
 						<ul class="nav navbar-nav pull-left ren_nav">
 							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-							<li class="active"><a href="index.html" style="color: #ff6d46;">人人配送</a></li>
-							<li><a href="aboutUs.html">公众号</a></li>
-							<li><a href="service.html">关于人人配送</a></li>
+							<li class="active"><a href="index.jsp" style="color: #ff6d46;">人人配送</a></li>
+							<li><a href="aboutUs.jsp">公众号</a></li>
+							<li><a href="service.jsp">关于人人配送</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -61,6 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!--注册-->
 				<form action="upload.do" method="post" enctype="multipart/form-data"> 
 				<div class="zhuce_1" >
+				<form action="upload.do" method="post">
 					 <!--进度条-->	
 					<div class="setbacks">
 						<!--进度条底层-->
@@ -73,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="yianxiekuaike.html">
+										<a href="yianxiekuaike.jsp">
 											<p class="setbacks_3_1_c">1</p>
 											<p class="setbacks_3_2_c">填写快客信息</p>
 										</a>
@@ -85,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="shenhe.html">
+										<a href="shenhe.jsp">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 										</a>
@@ -97,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="zhuanyepeixun.html">
+										<a href="zhuanyepeixun.jsp">
 											<p class="setbacks_3_1">3</p>
 											<p class="setbacks_3_2">专业培训</p>
 										</a>
@@ -109,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="kaoshi.html">
+										<a href="kaoshi.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">考试</p>
 										</a>
@@ -121,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="chengweikuaike.html">
+										<a href="chengweikuaike.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">成为快客</p>
 										</a>
@@ -291,10 +292,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img class="t33" src="images/g00_03.png"/>
 					<img class="t22" src="images/g00_03.png"/>
 					<img class="t11" src="images/g00_03.png"/>
+					</form>
 				</div>
 				<!--登录结束-->
-				</form>
-			  </div>
+			</form>			  </div>
 		   
 		</div>
 		<!--底部开始-->

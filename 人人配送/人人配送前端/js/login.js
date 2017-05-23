@@ -101,6 +101,8 @@ function time(o){
 		},1000)
 	}
 }
+
+
 var zi =document.querySelector(".zi");
 var zii =document.querySelector(".zii");
 zi.onclick=function(){

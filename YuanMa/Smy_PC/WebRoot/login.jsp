@@ -24,27 +24,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-$(function(){
-	$("#ajaxBtn").click(function(){
-	var phoneCode=$("#phoneCode").val();
-	$.ajax({
-　　　　　　url: 'getCode',
-
-　　　　　　type: 'POST',
-　　　　　　data: { phoneCode: phoneCode},
-　　　　　
-　　　　　　//请求成功后触发
-　　　　　　success: function (data) {
-				
-		  $("#phoneCode").val(data);
+	$(function(){
+		$("#ajaxBtn").click(function(){
+			var phoneCode=$("#phoneCode").val();
+				$.ajax({
+			　　　　　　url: 'getCode',
 			
-		 }
-
-})
+			　　　　　　type: 'POST',
+			　　　　　　data: { phoneCode: phoneCode},
+			　　　　　
+			　　　　　　//请求成功后触发
+			　　　　　　success: function (data) {
+							
+					  $("#phoneCode").val(data);
+						
+					 }
 	
+				})
+			})
 	})
-	
-})
 
 
 </script>
@@ -327,7 +325,8 @@ $(function(){
 			  </div>
 		   
 		</div>
-		<!--底部开始-->
+		
+		<!--底部开始 -->
 		<footer>
 			<div class="col-lg-1"></div>
 			 <div class="fooeter1 col-lg-2 col-sm-6 col-xs-6 col-md-2">

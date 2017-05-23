@@ -101,8 +101,8 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 
 
 .zhuce_xiayibu{width: 30%;margin: 20px auto;background: #ff6d46;border-radius: 5px;}
-.zhuce_xiayibu a{text-align: center;color: white;display:inline-block;height:35px;width: 100%;line-height:35px;}
-.zhuce_xiayibu a:hover{color: white;text-decoration: none;}
+.zhuce_xiayibu button{text-align: center;color: white;display:inline-block;height:35px;width: 100%;line-height:35px;background: #ff6d46;outline: none;border: none;border-radius: 5px;}
+.zhuce_xiayibu button:hover{color: white;text-decoration: none;}
 /*左边开始*/
 .zhuce_left{width: 100%;margin-top: 260px;}
 .zhuce_left button{width: 90%;margin: 10px auto;height:40px;line-height: 40px;border: 1px solid #8a8a8a;border-radius: 5px;outline: none;background: white;color: #9d9d9d;font-size: 1.2em;}
@@ -128,7 +128,7 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 .setbacks_3_11 {width:40px; height: 40px; border:5px solid #EAE8EA; border-radius: 100%; line-height: 30px; text-align: center; font-size: 16px; background-color: #C1C1C1; color: #FFF;}
 .setbacks_3_22 {font-size: 16px; padding-top: 10px; color:#cccccc;}
 .setbacks_3_1_cc {width:40px; height: 40px; border:5px solid #96d626; border-radius: 100%; line-height: 30px; text-align: center; font-size: 16px; background-color: #8BC200; color: #FFF;}
-.setbacks_3_2_cc {font-size: 16px; padding-top: 10px; color:#96d626;}
+.setbacks_3_2_cc {font-size: 16px; padding-top: 10px; color:#a6dc55;}
 
 .zhao_shou2{margin: 60px auto;}
 .zhao_pwd{margin-top: 40px;}
@@ -328,3 +328,9 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 
 #img0{position: absolute; max-width: 100%;max-height:100% ;top: 0px; left: 0px;}
 #img1{position: absolute; max-width: 100%;max-height:100% ;top: 0px; left: 0px;}
+/********找回密码成功开始************/
+.zhaohui_tanchu{position: fixed;top: 0px;left: 0px;background: rgba(1,1,1,0.3);width: 100%;height: 100%;}
+.zhaohui_tanchu1{position: fixed;left: 30%;top: 48%;width:40%;height: 200px;background: white;}
+.zhaohui_tanchu1 p:nth-of-type(1){line-height: 120px;text-align: center;color: #fe714e;font-size: 2em;}
+.zhaohui_tanchu1 p:nth-of-type(2){text-align: center;font-size: 1.8em;color: #808080;}
+.zhaohui_tanchu1 p:nth-of-type(2) em{color:#fe714e;font-style: normal;}

@@ -1,7 +1,6 @@
 package com.yyf.controller;
 
 import java.io.File;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +39,8 @@ public class R_kuaiketabController {
 	/* 添加依赖注入 */
 	@Autowired
 	private R_kuaiketabService kuaiketabService;
+
+	String emg = "你错了";
 
 	/**
 	 * 
@@ -84,7 +85,7 @@ public class R_kuaiketabController {
 
 		// 保存成功后开始赋值
 		tab.setKuaikeId(UUID.randomUUID().toString());
-		//密码加密
+		// 密码加密
 		tab.setPassword(Md5Util.md5(tab.getPassword()));
 		// 身份证复印件文件
 		tab.setKuaikeShenfenZF(request.getContextPath() + "/upload/" + fileName1);
@@ -94,16 +95,8 @@ public class R_kuaiketabController {
 		tab.setLoginDate(new Date());
 		// 状态,默认
 		tab.setKuaikeStatus(0);
-
-		System.out.println(tab.toString());
-
 		kuaiketabService.addUser(tab);
-
-		//model.addAttribute("fileUrl1", request.getContextPath() + "/upload/" + fileName1);
-		//model.addAttribute("fileUrl2", request.getContextPath() + "/upload/" + fileName2);
-
-		return "index";
-	}
+		return "index";	}
 
 	/**
 	 * 时间处理方法
@@ -124,7 +117,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 用户根据用户名&密码登陆 一句话 方法的功能描述
+	 * 用户根据用户名&密码登陆 一句话
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月5日 下午4:25:52
@@ -133,28 +126,49 @@ public class R_kuaiketabController {
 	 * @param upass
 	 *            密码
 	 * @return 返回成功页面
-	 * @throws NoSuchAlgorithmException 
+	 * @throws NoSuchAlgorithmException
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password) throws NoSuchAlgorithmException {
+	public String login(@RequestParam(value = "repassword", required = false) String repassword,
+			@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password,
+			HttpServletRequest request) throws NoSuchAlgorithmException {
 		/* 调用登陆方法 & 并封装为实体对象 */
-		
+
+		System.out.println(repassword + "1111111111111111");
+		// 测试是否得到密码
 		System.out.println(password);
-		
-		String newPass = Md5Util.md5(password);
-		
-		System.out.println(newPass);
-		R_kuaiketab login = kuaiketabService.login(uname, newPass);
+
+		// 进行Md5加密
+		// String newPass = Md5Util.md5(password);
+		// 测试是否得到加密密码
+		// System.out.println(newPass);
+
+		// 调用登陆方法，并封装为对象
+		R_kuaiketab login = kuaiketabService.login(uname, password);
 
 		// 简单判断对象是否为空
 		if (login != null) {
+			if ("on".equals(repassword)) {
+
+				System.out.println(repassword);
+				request.getSession().setAttribute("uname", uname);
+
+				request.getSession().setAttribute("newPass", password);
+
+			} else {
+
+				request.getSession().removeAttribute("uname");
+				request.getSession().removeAttribute("newPass");
+			}
 			// 简单测试
 			System.out.println(login + "欢迎来到这里看到用户名和密码 ");
+
 			// 返回成功页面
 			return "index";
 		}
+		request.getSession().setAttribute("emg", emg);
 		// 返回失败页面
-		return "flge";
+		return "emg";
 	}
 
 	/**
@@ -285,6 +299,35 @@ public class R_kuaiketabController {
 	}
 
 	/**
+	 * 快捷登陆 【根据手机号码直接接收验证码进行登陆】
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月23日 上午9:37:00
+	 * @param model
+	 *            模型对象
+	 * @param kuaikePhone
+	 *            手机号码
+	 * @param phoeCode
+	 *            验证码
+	 * @return
+	 */
+	@RequestMapping(value = "phoneLogin", method = RequestMethod.POST)
+	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
+			@RequestParam("phoneCode") int phoneCode) {
+
+		System.out.println(kuaikePhone + "\t" + phoneCode);
+
+		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
+
+		if (phoneLogin != null) {
+
+			return "index";
+
+		}
+		return "error";
+	}
+
+	/**
 	 * 手机接收验证码
 	 * 
 	 * @author 杨杰
@@ -325,5 +368,23 @@ public class R_kuaiketabController {
 		// 返回//打印返回消息状态
 		System.out.println("发送的状态------>" + result);
 	}
+	
+	@RequestMapping(value = "getCode", method = RequestMethod.POST)
+	@ResponseBody
+	public int getCode(HttpServletRequest request) {
+		// 产生6位随机数 充当验证码
+		java.util.Random rcode = new java.util.Random();
+
+		int phoneCode = rcode.nextInt(1000000);// 6位
+
+		System.out.println(phoneCode);
+
+		request.getSession().setAttribute("phoneCode", phoneCode);
+
+		return phoneCode;
+
+	}
+	
+	
 
 }

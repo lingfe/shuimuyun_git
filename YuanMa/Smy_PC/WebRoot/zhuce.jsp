@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="container">
 				<nav class="nav navlist" role="navigation">
 					<div class="navbar-header" style="margin-right: 60px;">
-						<a href="index.html" class="logo"><img src="images/logo.png" /></a>
+						<a href="index.jsp" class="logo"><img src="images/logo.png" /></a>
 						<a href="#" class="navbar-btn navbar-toggle navbtn" data-toggle="collapse" data-target="#myCollapse">
 							<img src="images/nav-btn.png"/>
 						</a>
@@ -38,9 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="collapse navbar-collapse navColl" id="myCollapse">
 						<ul class="nav navbar-nav pull-left ren_nav">
 							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-							<li class="active"><a href="index.html" style="color: #ff6d46;">人人配送</a></li>
-							<li><a href="aboutUs.html">公众号</a></li>
-							<li><a href="service.html">关于人人配送</a></li>
+							<li class="active"><a href="index.jsp" style="color: #ff6d46;">人人配送</a></li>
+							<li><a href="aboutUs.jsp">公众号</a></li>
+							<li><a href="service.jsp">关于人人配送</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   </div>
 			  <!--右变开始-->
 			  <div class="zhuce_right col-lg-10 col-md-10 col-sm-10 col-xs-10">
-				<!--注册--> 
+				<!--注册-->
 				<div class="zhuce_1" >
 					 <!--进度条-->	
 					<div class="setbacks">
@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="yianxiekuaike.html">
+										<a href="yianxiekuaike.jsp">
 											<p class="setbacks_3_1_c">1</p>
 											<p class="setbacks_3_2_c">填写快客信息</p>
 										</a>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="shenhe.html">
+										<a href="shenhe.jsp">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 										</a>
@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="zhuanyepeixun.html">
+										<a href="zhuanyepeixun.jsp">
 											<p class="setbacks_3_1">3</p>
 											<p class="setbacks_3_2">专业培训</p>
 										</a>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="kaoshi.html">
+										<a href="kaoshi.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">考试</p>
 										</a>
@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="chengweikuaike.html">
+										<a href="chengweikuaike.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">成为快客</p>
 										</a>
@@ -133,6 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="clear"></div>
 					</div>
                      <!--表单开始-->
+                     <form action="upload.do" method="post" enctype="multipart/form-data"> 
                      <div class="zhuce_xing">
                      	   <label>* 姓名：</label>
                      	   <input type="text" name="kuaikeName" value="" id="namett"/>
@@ -154,7 +155,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      	    <span class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	    <img src="images/g00_03.png"class="img3"/>
                      </div>
-                     
                      <div class="zhuce_tuleft">
                      	<img src="images/t003_03.png"/>
                      </div>
@@ -254,11 +254,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			       	<a href="javascript:void(0);" id="btn">下一步</a>
 			      
 			       </div>
-			      </form>
-			   </div>
+			       </form>
+			       </div>
+			      
 				 <!--登录开始-->
+				
 				<div class="box zhuce_0" style="display: none;" >
-                  <form action="login" method="post">
+					<form action="login" method="post">
 					<div class="common">普通登录</div>
 					<div class="free">免密登录</div>
 					<div style="clear: both;"></div>
@@ -289,12 +291,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img class="t33" src="images/g00_03.png"/>
 					<img class="t22" src="images/g00_03.png"/>
 					<img class="t11" src="images/g00_03.png"/>
+					</form>
 				</div>
 				<!--登录结束-->
-			</form>
-			  </div>
+				</div>
 		   
-		</div>
+		</div>		  
 		<!--底部开始-->
 		<footer>
 			<div class="col-lg-1"></div>
@@ -346,7 +348,7 @@ $("#file0").change(function(){
     // 在这里修改图片的地址属性  
     $("#img0").attr("src", objUrl) ;  
   }  
-}) ;  
+});  
 //建立一個可存取到該file的url  
 function getObjectURL(file) {  
   var url = null ;   

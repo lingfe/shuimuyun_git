@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,7 +23,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
 		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
-	   
+<script type="text/javascript">
+$(function(){
+	$("#ajaxBtn").click(function(){
+	var phoneCode=$("#phoneCode").val();
+	$.ajax({
+　　　　　　url: 'getCode',
+
+　　　　　　type: 'POST',
+　　　　　　data: { phoneCode: phoneCode},
+　　　　　
+　　　　　　//请求成功后触发
+　　　　　　success: function (data) {
+				
+		  $("#phoneCode").val(data);
+			
+		 }
+
+})
+	
+	})
+	
+})
+
+
+</script>
+	 
 	</head>
 	<body>
 		<!--导航开始-->
@@ -132,25 +158,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</ul>
 						<div class="clear"></div>
 					</div>
+					
                      <!--表单开始-->
-                     <form>
+                     <form action="upload.do" method="post" enctype="multipart/form-data"> 
                      <div class="zhuce_xing">
                      	   <label>* 姓名：</label>
-                     	   <input type="text" value="" id="namett"/>
+                     	   <input type="text" name="kuaikeName" value="" id="namett"/>
                      	    <span class="hidden1" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden1_1" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	   <img src="images/g00_03.png"class="img1"/>
                      </div>
                      <div class="zhuce_phone">
                      	   <label>* 手机号码：</label>
-                     	   <input type="text" value="" id="phone"/>
+                     	   <input type="text"  name="kuaikePhone" value="" id="phone"/>
                      	   <span class="hidden2" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	 <img src="images/g00_03.png"class="img2"/>
                      </div>
                      <div class="zhuce_pwd">
                      	   <label>* 登录密码：</label>
-                     	   <input type="password" value="" id="logopwd"/>
+                     	   <input type="password" name="password" value="" id="logopwd"/>
                      	    <span class="hidden3" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	    <img src="images/g00_03.png"class="img3"/>
@@ -168,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      </div>
                      <div class="zhuce_dizhi">
                      	<label>* 现居住地址：</label>
-                     	<select id="sheng">
+                     	<select id="sheng" name="kuaikeAddress">
                      		<option value="贵州省">贵州省</option>
                      		<option value="云南省">云南省</option>
                      		<option value="河北省">河北省</option>
@@ -176,7 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      		<option value="东北省">东北省</option>
                      	</select>
                      	<span>省</span>
-                     	<select id="shi">
+                     	<select id="shi" name="kuaikeAddress">
                      		<option value="贵阳市">贵阳市</option>
                      		<option value="贵阳市">贵阳市</option>
                      		<option value="贵阳市">贵阳市</option>
@@ -185,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      		
                      	</select>
                      	<span>市</span>
-                     	<select id="xian">
+                     	<select id="xian" name="kuaikeAddress">
                      		<option value="盘县">盘县</option>
                      		<option value="盘县">盘县</option>
                      		<option value="盘县">盘县</option>
@@ -196,7 +223,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      </div>
                      <div class="zhuce_jie">
                      	<label></label>
-                     	<select id="jie">
+                     	<select id="jie" name="kuaikeAddress">
                      		<option value="头桥二桥路">头桥二桥路</option>
                      		<option value="头桥二桥路">头桥二桥路</option>
                      		<option value="头桥二桥路">头桥二桥路</option>
@@ -210,7 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      </div>
 			        <div class="zhuce_xiangqing">
 			        	  <label></label>
-			        	  <input type="text" value="" id="jiedao"/>
+			        	  <input type="text"  name="kuaikeAddressInfo" value="" id="jiedao"/>
 			        	  <span>详情地址</span>
 			        	  <span class="hidden7" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	   <span class="hidden7_7" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
@@ -230,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			      <div class="Passpicture">
 			      
 				       	<div class="zhuce_zf" >
-					       	 <input type="file" style="width: 100%;min-height: 200px;opacity: 0;"id="file0" multiple="multiple"/>
+					       	 <input type="file"  name="file1" style="width: 100%;min-height: 200px;opacity: 0;"id="file0" multiple="multiple"/>
 					       	  <a href="#" id="zhuce_zf" class="btn  disabled" role="button" style="cursor: pointer; text-decoration: underline;">
 					       	  	点击上传正反面身份证复印件
 					       	  </a>
@@ -238,7 +265,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       	</div>
 				      
 				       	<div class="zhuce_c" >
-					       	  <input type="file" style="width: 100%;min-height: 200px;opacity: 0;"id="file1" multiple="multiple" />
+					       	  <input type="file"  name="file2" style="width: 100%;min-height: 200px;opacity: 0;"id="file1" multiple="multiple" />
 					       	  <a href="#" id="zhuce_c"class="btn  disabled" role="button" style="cursor: pointer; text-decoration: underline;">点击上传正反面身份证复印件</a>
 					       	  <img src="" id="img1" > 
 				       	</div>
@@ -264,34 +291,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div style="clear: both;"></div>
 					<div class="common_con">
 					   <span>手机号码:</span>
-						<input type="text " class="phone" placeholder="  请输入手机号" name="kuaikePhone"/>
+						<input type="text " class="phone" value="${sessionScope.uname!=null?sessionScope.uname:''}" placeholder="  请输入手机号" name="kuaikePhone"/>
 						<br />
 						<span>登录密码:</span>
-						<input type="password" class="pwd" placeholder="  请输入登录密码" name="password"/>
+						<input type="password" class="pwd" value="${ sessionScope.newPass!=null?sessionScope.newPass:''}" placeholder="  请输入登录密码" name="password"/>
 						<div style="clear: both;"></div>
 						<a href="zhaohuimima.jsp"style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 					<div>
-						<span><input type="checkbox" class="zii"/></span>
+						<span><input type="checkbox" class="zii" name="repassword"/></span>
 						<span class="zi">记住密码</span>
 						<br />
 						<button>登   录</button>
 					</div>
 					</div>
-					 
+					</form>
+					<form action="phoneLogin" method="post">
 					<div class="free_con">
-						<span>手机号码:  </span><input type="text" class="phone1" placeholder="  请输入手机号"/><br />
-						<input type="text" /><button class="btn223">获取验证码</button><br />
+						<span>手机号码: </span><input type="text" class="phone1" placeholder="  请输入手机号" name="kuaikePhone"/><br />
+						<input type="text"  name="phoneCode" id="phoneCode" value="${phoneCode }"/><button  id="ajaxBtn" class="btn223">获取验证码</button><br />
 						<button>登   录</button>
 						
 					</div>
+					</form>
 					<span class="t1"></span>
 					<span class="t2"></span>
 					<span class="t3"></span>
 					<img class="t33" src="images/g00_03.png"/>
 					<img class="t22" src="images/g00_03.png"/>
 					<img class="t11" src="images/g00_03.png"/>
+				
 				</div>
-				</form>
+			
 				<!--登录结束-->
 			
 			  </div>

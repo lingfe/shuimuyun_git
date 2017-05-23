@@ -101,8 +101,8 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 
 
 .zhuce_xiayibu{width: 30%;margin: 20px auto;background: #ff6d46;border-radius: 5px;}
-.zhuce_xiayibu button{text-align: center;color: white;display:inline-block;height:35px;width: 100%;line-height:35px;background: #ff6d46;outline: none;border: none;border-radius: 5px;}
-.zhuce_xiayibu button:hover{color: white;text-decoration: none;}
+.zhuce_xiayibu a{text-align: center;color: white;display:inline-block;height:35px;width: 100%;line-height:35px;background: #ff6d46;outline: none;border: none;border-radius: 5px;}
+.zhuce_xiayibu a:hover{color: white;text-decoration: none;}
 /*左边开始*/
 .zhuce_left{width: 100%;margin-top: 260px;}
 .zhuce_left button{width: 90%;margin: 10px auto;height:40px;line-height: 40px;border: 1px solid #8a8a8a;border-radius: 5px;outline: none;background: white;color: #9d9d9d;font-size: 1.2em;}
@@ -334,3 +334,16 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 .zhaohui_tanchu1 p:nth-of-type(1){line-height: 120px;text-align: center;color: #fe714e;font-size: 2em;}
 .zhaohui_tanchu1 p:nth-of-type(2){text-align: center;font-size: 1.8em;color: #808080;}
 .zhaohui_tanchu1 p:nth-of-type(2) em{color:#fe714e;font-style: normal;}
+
+/***********等待取货开始***********/
+.ddqh_content{width: 80%;margin: 0 auto;margin-top:100px;}
+.ddqh_left{background: #e6e5e4;width: 40%;height:400px;}
+.ddqh_left table tr{height: 30px;line-height:30px;}
+.ddqh_left h3{width: 100%;text-align: center;line-height:50px;color: #333333;font-size: 1.8em;font-family: "宋体";}
+.ddqh_left table{width: 100%;}
+.ddqh_left table tr td:nth-of-type(odd){text-align: right; width: 30%;}
+.ddqh_left table tr td i{font-style: normal;}
+.ddqh_left table tr td:nth-of-type(even){text-indent:40px;}
+.ddqh_left table tr td{font-size: 1.2em; font-family: "宋体";color: #585757;}
+.ddqh_left table tr td span{background: #bebebe;padding: 3px 8px;}
+.ddqh_left_center{width: 70%;margin: 10px auto;border-top: 1px solid #c1bfbf;border-bottom: 1px solid #ffffff;}

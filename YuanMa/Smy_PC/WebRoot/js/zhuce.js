@@ -81,8 +81,8 @@ $(function(){
 		   //登录密码
 	   
 		$("#logopwd").blur(function() {
-			 var valuepwd=$(this).val();
-			var Reg = "/^?![^a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{10,20}$/";
+			var valuepwd=$(this).val();
+			var Reg = /^?![^a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{10,20}$/;
 			if(valuepwd == null || valuepwd.length == 0) {
 				$(".hidden3").show();
 				$(".hidden3_3").hide();

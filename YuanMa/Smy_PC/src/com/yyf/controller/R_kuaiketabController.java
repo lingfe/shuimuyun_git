@@ -96,7 +96,9 @@ public class R_kuaiketabController {
 		// 状态,默认
 		tab.setKuaikeStatus(0);
 		kuaiketabService.addUser(tab);
-		return "index";	}
+		
+		return "shenhe";	
+	}
 
 	/**
 	 * 时间处理方法
@@ -139,12 +141,11 @@ public class R_kuaiketabController {
 		System.out.println(password);
 
 		// 进行Md5加密
-		// String newPass = Md5Util.md5(password);
-		// 测试是否得到加密密码
-		// System.out.println(newPass);
+		String newPass = Md5Util.md5(password);		// 测试是否得到加密密码
+		 System.out.println(newPass);
 
 		// 调用登陆方法，并封装为对象
-		R_kuaiketab login = kuaiketabService.login(uname, password);
+		R_kuaiketab login = kuaiketabService.login(uname, newPass);
 
 		// 简单判断对象是否为空
 		if (login != null) {
@@ -187,39 +188,15 @@ public class R_kuaiketabController {
 	 * @return 返回对象
 	 */
 	@RequestMapping(value = "reupdatepass", method = RequestMethod.POST)
-	public R_kuaiketab updatepassword(Map<String, Object> map, @RequestParam("kuaikePhone") String kuaikePhone,
-			@RequestParam("senCode") int senCode, @RequestParam("password") String password) {
+	public String updatepassword(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
+			@RequestParam("phoneCode") int phoneCode, @RequestParam("password") String password) {
 
-		R_kuaiketab kuaiketab = new R_kuaiketab();
-		// 验证手机号码---仅限大陆地区手机号码
-		String regExp = "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$";
-		Pattern p = Pattern.compile(regExp);
-		Matcher matcher = p.matcher(kuaikePhone);
-		// 手机号码通过验证 验证密码
-		if (matcher.find() == true) {
-			// 验证两次输入密码是否一致
-			if (senCode == 85976) {
-				int update = kuaiketabService.updateUserpass(password, kuaikePhone);
-				if (update >= 1) {
-					// 如果 重置密码成功 修改状态为3 处于登陆状态
-					// R_kuaiketab k1=new R_kuaiketab();
-					kuaiketab.setKuaikeStatus(3);
-				} else {
-					// 如果未成功 则修改状态为 4 表示为离线状态
-					// R_kuaiketab k2= new R_kuaiketab();
-					kuaiketab.setKuaikeStatus(4);
-				}
-			} else {
-				// 如果手机验证码未通过 修改状态为4 也是处于一个离线状态
-				// R_kuaiketab k3= new R_kuaiketab();
-				kuaiketab.setKuaikeStatus(4);
-			}
-
-		} else {
-			// R_kuaiketab k4= new R_kuaiketab();
-			kuaiketab.setKuaikeStatus(4);
+		int updateUserpass = kuaiketabService.updateUserpass(password, kuaikePhone);
+		if(updateUserpass>0){
+			System.out.println(updateUserpass);
 		}
-		return kuaiketab;
+		
+		return "zhaohuimima";
 	}
 
 	/**
@@ -369,6 +346,15 @@ public class R_kuaiketabController {
 		System.out.println("发送的状态------>" + result);
 	}
 	
+	
+	
+	/**
+	 * 模拟手机接收验证码
+	 * @author 杨杰     
+	 * @created 2017年5月23日 下午2:30:33  
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "getCode", method = RequestMethod.POST)
 	@ResponseBody
 	public int getCode(HttpServletRequest request) {

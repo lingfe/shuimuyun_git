@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.yyf.mapper.IR_xiaordertabMapper;
+import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 
 /**
@@ -16,6 +17,15 @@ import com.yyf.model.R_xiaordertab;
   * 修改内容：
  */
 public interface  R_xiaordertabService {
+	
+	/**
+	 * 
+	 * 添加下单评论记录
+	 * @author lijie     
+	 * @created 2017年5月23日 下午2:36:04  
+	 * @param tab 实体数据
+	 */
+	void insertCommentInfo(Commenttab tab);
 	
 	/**
 	 * 

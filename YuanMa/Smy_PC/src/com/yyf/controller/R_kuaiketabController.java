@@ -95,18 +95,8 @@ public class R_kuaiketabController {
 		tab.setLoginDate(new Date());
 		// 状态,默认
 		tab.setKuaikeStatus(0);
-
-		System.out.println(tab.toString());
-
 		kuaiketabService.addUser(tab);
-
-		// model.addAttribute("fileUrl1", request.getContextPath() + "/upload/"
-		// + fileName1);
-		// model.addAttribute("fileUrl2", request.getContextPath() + "/upload/"
-		// + fileName2);
-
-		return "index";
-	}
+		return "index";	}
 
 	/**
 	 * 时间处理方法

@@ -194,15 +194,15 @@ $(function(){
      //获取图片
      
 $("#btn").click(function(){ 
-    var form=document.forms[0];
+    
      if(statu7 == true&& statu6 == true&&statu5 == true&&statu4 == true&&statu3 == true&&statu2 == true&&statu1 == true)
        {
-		form.submit(); 
-		form.action="shenhe.html";
+		$("form").submit(); 
+		
 		}else{
 			alert("请填写完整");
        		return false;
-       		form.action="shenhe.html";
+       		
         }     
 })
 

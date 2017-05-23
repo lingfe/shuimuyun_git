@@ -337,7 +337,7 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 
 /***********等待取货开始***********/
 .ddqh_content{width: 80%;margin: 0 auto;margin-top:100px;}
-.ddqh_left{background: #e6e5e4;width: 40%;height:400px;}
+.ddqh_left{background: #e6e5e4;width: 48%;height:460px;float: left;margin-right: 20px;}
 .ddqh_left table tr{height: 30px;line-height:30px;}
 .ddqh_left h3{width: 100%;text-align: center;line-height:50px;color: #333333;font-size: 1.8em;font-family: "宋体";}
 .ddqh_left table{width: 100%;}
@@ -346,4 +346,39 @@ footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;backgr
 .ddqh_left table tr td:nth-of-type(even){text-indent:40px;}
 .ddqh_left table tr td{font-size: 1.2em; font-family: "宋体";color: #585757;}
 .ddqh_left table tr td span{background: #bebebe;padding: 3px 8px;}
-.ddqh_left_center{width: 70%;margin: 10px auto;border-top: 1px solid #c1bfbf;border-bottom: 1px solid #ffffff;}
+.ddqh_left_center{width: 70%;margin: 0px auto;border-top: 1px solid #c1bfbf;border-bottom: 1px solid #ffffff;margin-top: 30px;}
+
+.ddqh_right{background: #e6e5e4;width: 48%;height:460px;float: left;position: relative;}
+.ddqh_right table tr{height: 30px;line-height:30px;}
+.ddqh_right h3{max-width: 100%;position:absolute;top: -79px;left: 175px;}
+.ddqh_right table:nth-of-type(1){width: 100%;margin-top: 110px;}
+.ddqh_right table:nth-of-type(1) tr td:nth-of-type(odd){text-align: right; width: 30%;}
+.ddqh_right table:nth-of-type(1) tr td i{font-style: normal;}
+.ddqh_right table:nth-of-type(1) tr td:nth-of-type(even){text-indent:40px;}
+.ddqh_right table:nth-of-type(1) tr td{font-size: 1.2em; font-family: "宋体";color: #585757;}
+
+.ddqh_right table:nth-of-type(2){width: 100%;margin-top: 10px;}
+.ddqh_right table:nth-of-type(2) tr td:nth-of-type(odd){text-align: right; width: 30%;line-height: 30px;}
+.ddqh_right table:nth-of-type(2) tr td i{font-style: normal;}
+.ddqh_right table:nth-of-type(2) tr td:nth-of-type(even){text-indent:40px;}
+.ddqh_right table:nth-of-type(2) tr td{font-size: 1.2em; font-family: "宋体";color: #585757;}
+
+.ddqh_right table:nth-of-type(3){width: 100%;margin-top: 10px;}
+.ddqh_right table:nth-of-type(3) tr td:nth-of-type(odd){text-align: right; width: 30%;line-height: 30px;}
+.ddqh_right table:nth-of-type(3) tr td i{font-style: normal;}
+.ddqh_right table:nth-of-type(3) tr td:nth-of-type(even){text-indent:40px;}
+.ddqh_right table:nth-of-type(3) tr td{font-size: 1.2em; font-family: "宋体";color: #585757;}
+
+/*********评价提示框开始******/
+.wan_pingjia{position: fixed;top: 0px; left: 0px;background: rgba(1,1,1,0.3);height: 100%;width: 100%;}
+.wan_pinhjia_content{width: 40%;height:409px;top: 200px;background: #e9e9e9;left: 30%;position: relative;}
+.wan_pinhjia_content p{text-align: center;padding-top: 10px;}
+.wan_pinhjia_content p span:nth-of-type(1){margin-right: 30px;}
+.wan_pinhjia_content p span:nth-of-type(1) img{max-width:16%;max-height: 16%;}
+.wan_pinhjia_content p span:nth-of-type(2){cursor: pointer;}
+.wan_pinhjia_content ul{width: 90%;margin: 0 auto;}
+.wan_pinhjia_content ul li{float: left;margin-right: 10px;cursor: pointer;}
+.wan_pinhjia_content textarea{width: 90%;height: 200px;margin-left: 5%;border: none;border-radius: 5px; outline: none;padding-top: 20px;text-align: left;}
+.wan_pinhjia_content form{margin-top:20px;}
+.wan_pinhjia_content form input{margin-left: 50%; width:100px;height: 30px;line-height: 30px;outline: none;border: none;border-radius: 5px; background: #ff6d46;color: white;}
+.guanbi{position: absolute;right:-14px;top: -14px; cursor: pointer;}

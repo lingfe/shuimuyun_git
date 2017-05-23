@@ -10,12 +10,12 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/zhaohuimima.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+	
 	</head>
 	<body>
 		<div class="header">
 			<div class="container flex">
-				 <p class="flex2 conttent_p"><a href="login.html">登录</a><a href="zhuce.html">注册</a></p>
+				 <p class="flex2 conttent_p" style="font-size: 1.2em;color: #6a6565;">欢迎:<span>xxxx</span></p>
 				 <ul class="flex8 content_u">
 				 	<li><img src="images/e.png"/><a href="#">wenping@smuyun.com</a></li>
 				 	<li><img src="images/p.png"/><a href="#">0851 8510 3179</a></li>
@@ -60,39 +60,40 @@
 		<div class="zhao_c">
 			<!--手机找回密码-->
 		    <div class="zhao_shou2 que0" style="display: none;">
+		    	<form>
 		   	       <div class="zhuce_phone">
                      	   <label>* 手机号码：</label>
-                     	   <input type="text" value="" id="phone"/>
-                     	   <span class="hidden2" style="width: 100px;height: 30px; color: red;">不能为空</span>
-                     	    <span class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-                     	 <img src="images/g00_03.png"class="img2"/>
+                     	   <input type="text" value=""class="phone1 phone2"/>
+                     	   <span class="hidden2s" style="width: 100px;height: 30px; color: red;text-align: left;">不能为空</span>
+                     	   <span class="hidden2_2s" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+                     	   <img src="images/g00_03.png"class="img2s"/>
                     </div>
                    <div class="zhuce_yanzheng">
 			        	  <label>* </label>
 			        	  <input type="text" value="" id="yanpwd"/>
-			        	  <button class="yzbtn zhubtn" >获取手机验证码</button>
+			        	  <button class="yzbtn zhubtn">获取手机验证码</button>
 			        	  <span class="hidden8" style="width: 100px;height: 30px; color: red;">不能为空</span>
-                     	    <span class="hidden8_8" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+                     	    <span class="hidden8_8" style="width: 100px;height: 30px; color: red;text-align: left;margin-right: 30px;">输入正确的格式</span>
 			        	<img src="images/g00_03.png" class="img8"/>
 			        </div>
 			       <div class="zhuce_pwd zhao_pwd">
-                     	   <label>* 登录密码：</label>
-                     	   <input type="password" value="" id="logopwd"/>
+                     	   <label>* 重置密码：</label>
+                     	   <input type="password" value=""  class="czpwd"/>
                      	    <span class="hidden3" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	    <img src="images/g00_03.png"class="img3"/>
                      </div>
                     <div class="zhuce_xing">
                      	   <label>* 确认密码：</label>
-                     	   <input type="password" value="" id="pwd"/>
+                     	   <input type="password" value="" id="pwd" class="qrpwd"/>
                      	    <span class="hidden4" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	    <img src="images/g00_03.png"class="img4"/>
                    </div>
                   <div class="zhuce_xiayibu">
-			       	   <button  id="btn">确认</button>
+			       	   <button  id="btn" class="tijiao">确认</button>
 			      </div> 
-		   	
+		   	  </form>
 		   </div>
 		
 			<!--人工找回密码-->
@@ -104,7 +105,7 @@
 						<!--进度条中层-->
 						<div class="setbacks_22" style="width:0%; top: 197px;"></div>
 						<!--进度条顶层-->
-						<ul class="setbacks_33" style="top: 220px;">
+						<ul class="setbacks_33" style="top: 226px;">
 							<li>
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
@@ -135,7 +136,7 @@
 									  <td align="center">
 										<a href="zhuanyepeixun.html">
 											<p class="setbacks_3_11">3</p>
-											<p class="setbacks_3_22">专业培训</p>
+											<p class="setbacks_3_22">审核成功</p>
 										</a>
 									  </td>
 									</tr>
@@ -260,6 +261,7 @@
 	
 	</body>
 </html>
+<script src="js/shoujizhaohuimima.js" type="text/javascript" charset="utf-8"></script>
 <script>
 		//找回密码的切换
 $(function(){
@@ -272,9 +274,4 @@ $(function(){
 	})
 	
 })
-
-
-
-
-
 </script>

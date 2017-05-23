@@ -37,7 +37,7 @@ $(function(){
 		$("#namett").blur(function() {
 	   
 			var value = $(this).val();
-			var Reg = /^([\u4e00-\u9fa5]{2,4})$/;
+			var Reg = /^[\u4e00-\u9fa5]+$/;
 			if(value == null || value.length == 0) {
 				$(".hidden1").show();
 				$(".hidden1_1").hide();
@@ -78,52 +78,7 @@ $(function(){
 				}
 			}
 		})	
-		   //登录密码
-	   
-		$("#logopwd").blur(function() {
-			 var valuepwd=$(this).val();
-			var Reg = /^\d{6,}$/;
-			if(valuepwd == null || valuepwd.length == 0) {
-				$(".hidden3").show();
-				$(".hidden3_3").hide();
-				$(".img3").hide();
-			} else {
-				if(!Reg.test(valuepwd)) {
-					$(".hidden3").hide();
-      	            $(".hidden3_3").show();
-      	              $(".img3").hide();
-				} else {
-					statu3 = true;
-					$(".hidden3").hide();
-			      	$(".hidden3_3").hide();
-			      	$(".img3").show();
-				}
-			}
-		});
-		//确认密;码
-		$("#pwd").blur(function() {
-			var vla=$(this).val();
-			var valuepwd=$("#logopwd").val();
-		 if(vla=="")
-		 {
-		 	$(".hidden4").show();
-		 	$(".hidden4_4").hide();
-			$(".img4").hide();
-		 }else{
-		 	if(vla!= valuepwd) {
-				$(".hidden4_4").show();
-				$(".img1").hide();
-				$(".hidden4").hide();
-			} else {
-				statu4 = true;
-				$(".hidden4").hide();
-			     $(".hidden4_4").hide();
-			     $(".img4").show();
-			}
-		 	
-		 }
-			
-		});
+		 
 	 //省份开始
 	        var sheng=$("#sheng").val();
 			var shi=$("#shi").val();
@@ -141,8 +96,7 @@ $(function(){
 				$(".hidden5").hide();
 				$(".hidden5_5").hide();
 				$(".img5").show();	
-			}
-
+		}
 		  //详情地址
 	$("#jiedao").blur(function() {
 	   
@@ -166,62 +120,19 @@ $(function(){
 				}
 			}
 		})
-  //验证码
-  $("#yanpwd").blur(function() {
-			var valuepwd=$(this).val();
-			
-			var Reg = /^\d{6,}$/;
-			if(valuepwd == null || valuepwd.length == 0) {
-				$(".hidden8").show();
-				$(".hidden8_8").hide();
-				$(".img8").hide();
-
-			} else {
-				if(!Reg.test(valuepwd)) {
-					$(".hidden8").hide();
-      	            $(".hidden8_8").show();
-      	            $(".img8").hide();
-				} else {
-					statu7 = true;
-					$(".hidden8").hide();
-			      	$(".hidden8_8").hide();
-			      	$(".img8").show();
-				}
-			}
-		})
-
-     //获取图片
-     
-$("#btn").click(function(){      
+$("#btn").click(function(){
     var form=document.forms[0];
-     
-     if(statu7 == true&& statu6 == true&&statu5 == true&&statu4 == true&&statu3 == true&&statu2 == true&&statu1 == true)
+     if(statu6 == true&&statu5 == true&&statu2 == true&&statu1 == true)
        {
-		form.submit();  
+		form.action="shenhe.html";
+		form.submit(); 
+		return true;
 		}else{
        		return false;
+       		form.action="shenhe.html";
         }     
 })
 
-
 });
 
 
-
-//登录切换
-$(function(){
-   
-	$(".zhuce_left>button").click(function(){
-		var num=$(this).index();
-		if(num==1){
-			$(".zhuce_left>div").hide();
-		}else{
-			$(".zhuce_left>div").show();
-		}
-	$(this).css({"background":"#ff6d46","color":"white","border":"none"}).siblings("button").css({"background":"white","color":"#9d9d9d","border":"1px solid #8a8a8a"});
-	console.log(num);
-	$(".zhuce_"+num+"").css("display","block").siblings().css("display","none");
-	 
-	});
-	
-});

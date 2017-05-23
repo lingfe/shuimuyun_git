@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yyf.mapper.IR_xiaordertabMapper;
+import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_xiaordertabService;
 /**
@@ -22,6 +23,11 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	//自动装配
 	@Autowired
 	private IR_xiaordertabMapper ir_xiaordertabMapper;
+	
+	@Override
+	public void insertCommentInfo(Commenttab tab) {
+		ir_xiaordertabMapper.insertCommentInfo(tab);		
+	}
 	
 	@Override
 	public R_xiaordertab xiaorderInfo(String xiaId) {

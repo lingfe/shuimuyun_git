@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.yyf.inter.InterJDBC;
+import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 
 
@@ -23,6 +24,16 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface IR_xiaordertabMapper  extends InterJDBC<R_xiaordertab>{	
 	
+	/**
+	 * 
+	 * 添加下单评论记录
+	 * @author lijie    
+	 * @created 2017年5月23日 下午2:20:44
+	 */
+	@Insert("INSERT  INTO "
+			+ "`commenttab`(`commentId`,`kuaikeId`,`xiaId`,`star`,`remark`,`commentDate`) "
+			+ "VALUES (#{commentId},#{kuaikeId},#{xiaId},#{star},#{remark},#{commentDate})")
+	void insertCommentInfo(Commenttab tab);
 
 	/**
 	 * 

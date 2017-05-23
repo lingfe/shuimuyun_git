@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_xiaordertabService;
 import com.yyf.util.R_kuaiketabStatusEnum;
@@ -31,6 +32,20 @@ public class R_xiaordertabController {
 	// 自动装配
 	@Autowired
 	private R_xiaordertabService r_xiaordertabService;
+	
+	/**
+	 * 
+	 * 添加下单评论记录
+	 * @author lijie    
+	 * @created 2017年5月23日 下午2:40:36  
+	 * @param tab
+	 * @return URL
+	 */
+	@RequestMapping(value="/insertCommentInfo",method=RequestMethod.POST)
+	public String insertCommentInfo(Commenttab tab){
+		r_xiaordertabService.insertCommentInfo(tab);
+		return "";
+	}
 	
 	/**
 	 * 

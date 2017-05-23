@@ -103,6 +103,16 @@ public interface R_kuaiketabMapper {
 	public int updateUserpass(@Param("password") String password, @Param("kuaikePhone") String kuaikePhone);
 	
 	
+	/**
+	 * 根据手机接收短信登陆【快捷登陆】
+	 * @author 杨杰     
+	 * @created 2017年5月23日 上午9:23:50  
+	 * @param phone 手机号码
+	 * @return
+	 */
+	@Select("select * from kuaiketab where kuaikePhone=#{kuaikePhone}")
+	public R_kuaiketab phoneLogin(@Param("kuaikePhone") String phone);
+	
 	
 	/**
 	 * 用户注册【申请】

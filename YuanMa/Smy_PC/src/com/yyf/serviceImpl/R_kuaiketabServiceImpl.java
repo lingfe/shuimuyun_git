@@ -130,6 +130,17 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 		return updateUserpass;
 	}
 	
+	/**快捷登陆【通过手机号码接收验证码登陆】
+	 * @author 杨杰     
+	 * @created 2017年5月23日 上午9:29:23  
+	 * @param kuaikePhone 手机号码
+	 * @return
+	 */
+	@Override
+	public R_kuaiketab phoneLogin(String kuaikePhone) {
+		R_kuaiketab phoneLogin = kuaiketabMapper.phoneLogin(kuaikePhone);
+		return phoneLogin;
+	}
 
 	/**
 	 * 用户注册
@@ -143,5 +154,7 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 		int addUser = kuaiketabMapper.addUser(kuaiketab);
 		return addUser;
 	}
+
+	
 
 }

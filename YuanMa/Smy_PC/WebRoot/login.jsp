@@ -23,6 +23,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
 		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+	$("#ajaxBtn").click(function(){
+	var phoneCode=$("#phoneCode").val();
+	$.ajax({
+　　　　　　url: 'getCode',
+
+　　　　　　type: 'POST',
+　　　　　　data: { phoneCode: phoneCode},
+　　　　　
+　　　　　　//请求成功后触发
+　　　　　　success: function (data) {
+				
+		  $("#phoneCode").val(data);
+			
+		 }
+
+})
+	
+	})
+	
+})
+
+
+</script>
+	 
 	</head>
 	<body>
 		<!--导航开始-->
@@ -278,20 +304,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<button>登   录</button>
 					</div>
 					</div>
-					 
+					</form>
+					<form action="phoneLogin" method="post">
 					<div class="free_con">
-						<span>手机号码:  </span><input type="text" class="phone1" placeholder="  请输入手机号"/><br />
-						<input type="text" /><button class="btn223">获取验证码</button><br />
+						<span>手机号码: </span><input type="text" class="phone1" placeholder="  请输入手机号" name="kuaikePhone"/><br />
+						<input type="text"  name="phoneCode" id="phoneCode" value="${phoneCode }"/><button  id="ajaxBtn" class="btn223">获取验证码</button><br />
 						<button>登   录</button>
 						
 					</div>
+					</form>
 					<span class="t1"></span>
 					<span class="t2"></span>
 					<span class="t3"></span>
 					<img class="t33" src="images/g00_03.png"/>
 					<img class="t22" src="images/g00_03.png"/>
 					<img class="t11" src="images/g00_03.png"/>
-					</form>
+				
 				</div>
 			
 				<!--登录结束-->

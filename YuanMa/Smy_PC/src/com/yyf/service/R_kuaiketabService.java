@@ -86,6 +86,16 @@ public interface R_kuaiketabService {
 		 * @return
 		 */
 		public int updateUserpass(String password,String kuaikePhone);
+		
+		
+		/**
+		 * 根据手机号码接收验证码进行登陆【快捷登陆】
+		 * @author 杨杰     
+		 * @created 2017年5月23日 上午9:28:08  
+		 * @param kuaikePhone  手机号码
+		 * @return
+		 */
+		public R_kuaiketab phoneLogin(String kuaikePhone);
 		/**
 		 * 用户注册
 		 * @author 杨杰     

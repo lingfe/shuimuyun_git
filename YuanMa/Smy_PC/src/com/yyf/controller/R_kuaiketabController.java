@@ -139,13 +139,8 @@ public class R_kuaiketabController {
 		System.out.println(password);
 
 		// 进行Md5加密
-<<<<<<< .mine
-		String newPass = Md5Util.md5(password);
-
-=======
 		String newPass = Md5Util.md5(password); // 测试是否得到加密密码
 		System.out.println(newPass);
->>>>>>> .theirs
 
 		// 调用登陆方法，并封装为对象
 		R_kuaiketab login = kuaiketabService.login(uname, newPass);

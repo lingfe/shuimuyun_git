@@ -28,13 +28,13 @@
 <script src="js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/register.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="login.jsp">登录</a><a href="zhuce.jsp">注册</a>
+				<a href="login.jsp">登录</a><a href="register.jsp">注册</a>
 			</p>
 			<ul class="flex8 content_u">
 				<li><img src="images/e.png" /><a href="#">wenping@smuyun.com</a></li>

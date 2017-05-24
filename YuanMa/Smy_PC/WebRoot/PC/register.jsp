@@ -46,7 +46,7 @@
 		<div class="container">
 			<nav class="nav navlist" role="navigation">
 				<div class="navbar-header" style="margin-right: 60px;">
-					<a href="index.html" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
+					<a href="index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
 					<a href="#" class="navbar-btn navbar-toggle navbtn"
 						data-toggle="collapse" data-target="#myCollapse"> <img
 						src="<%=basePath%>PC/images/nav-btn.png" />
@@ -55,10 +55,10 @@
 				<div class="collapse navbar-collapse navColl" id="myCollapse">
 					<ul class="nav navbar-nav pull-left ren_nav">
 						<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-						<li class="active"><a href="<%=basePath%>PC/index.html"
+						<li class="active"><a href="<%=basePath%>PC/index.jsp"
 							style="color: #ff6d46;">人人配送</a></li>
-						<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
-						<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
+						<li><a href="<%=basePath%>PC/aboutUs.jsp">公众号</a></li>
+						<li><a href="<%=basePath%>PC/service.jsp">关于人人配送</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -93,7 +93,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="yianxiekuaike.html">
+									<td align="center"><a href="yianxiekuaike.jsp">
 											<p class="setbacks_3_1_c">1</p>
 											<p class="setbacks_3_2_c">填写快客信息</p>
 									</a></td>
@@ -103,7 +103,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="shenhe.html">
+									<td align="center"><a href="shenhe.jsp">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 									</a></td>
@@ -113,7 +113,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="zhuanyepeixun.html">
+									<td align="center"><a href="zhuanyepeixun.jsp">
 											<p class="setbacks_3_1">3</p>
 											<p class="setbacks_3_2">专业培训</p>
 									</a></td>
@@ -123,7 +123,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="kaoshi.html">
+									<td align="center"><a href="kaoshi.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">考试</p>
 									</a></td>
@@ -133,7 +133,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="chengweikuaike.html">
+									<td align="center"><a href="chengweikuaike.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">成为快客</p>
 									</a></td>

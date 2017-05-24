@@ -18,11 +18,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta http-equiv = "X-UA-Compatible" cotent = "IE=edge,chrome=1"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 		<title>登录</title>
-		<link rel="stylesheet" type="text/css" href="css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
-		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
-	    <script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css"/>	
+		<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#ajaxBtn").click(function(){
@@ -54,17 +54,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="container">
 				<nav class="nav navlist" role="navigation">
 					<div class="navbar-header" style="margin-right: 60px;">
-						<a href="index.jsp" class="logo"><img src="images/logo.png" /></a>
+						<a href="<%=basePath%>PC/index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
 						<a href="#" class="navbar-btn navbar-toggle navbtn" data-toggle="collapse" data-target="#myCollapse">
-							<img src="images/nav-btn.png"/>
+							<img src="<%=basePath%>PC/images/nav-btn.png"/>
 						</a>
 					</div>
 					<div class="collapse navbar-collapse navColl" id="myCollapse">
 						<ul class="nav navbar-nav pull-left ren_nav">
 							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-							<li class="active"><a href="index.jsp" style="color: #ff6d46;">人人配送</a></li>
-							<li><a href="aboutUs.jsp">公众号</a></li>
-							<li><a href="service.jsp">关于人人配送</a></li>
+							<li class="active"><a href="<%=basePath%>PC/index.jsp" style="color: #ff6d46;">人人配送</a></li>
+							<li><a href="<%=basePath%>PC/aboutUs.jsp">公众号</a></li>
+							<li><a href="<%=basePath%>PC/service.jsp">关于人人配送</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   	
 			   	     <button style="clear: both; background: #ff6d46; color: white;"class="logo_b">登&nbsp&nbsp录</button>
 			   	     <button >注 &nbsp&nbsp册</button>
-			   	     <div style="position: relative;left: 93.1%; top:-109px; z-index: 999; border: white 1px dashed !important;"><img src="images/t003_03.png"/></div>
+			   	     <div style="position: relative;left: 93.1%; top:-109px; z-index: 999; border: white 1px dashed !important;"><img src="<%=basePath%>PC/images/t003_03.png"/></div>
 			   </div>
 			  <!--右变开始-->
 			  <div class="zhuce_right col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="yianxiekuaike.jsp">
+										<a href="<%=basePath%>PC/yianxiekuaike.jsp">
 											<p class="setbacks_3_1_c">1</p>
 											<p class="setbacks_3_2_c">填写快客信息</p>
 										</a>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="shenhe.jsp">
+										<a href="<%=basePath%>PC/shenhe.jsp">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 										</a>
@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="zhuanyepeixun.jsp">
+										<a href="<%=basePath%>PC/zhuanyepeixun.jsp">
 											<p class="setbacks_3_1">3</p>
 											<p class="setbacks_3_2">专业培训</p>
 										</a>
@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="kaoshi.jsp">
+										<a href="<%=basePath%>PC/kaoshi.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">考试</p>
 										</a>
@@ -144,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="chengweikuaike.jsp">
+										<a href="<%=basePath%>PC/chengweikuaike.jsp">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">成为快客</p>
 										</a>
@@ -164,32 +164,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      	   <input type="text" name="kuaikeName" value="" id="namett"/>
                      	    <span class="hidden1" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden1_1" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-                     	   <img src="images/g00_03.png"class="img1"/>
+                     	   <img src="<%=basePath%>PC/images/g00_03.png"class="img1"/>
                      </div>
                      <div class="zhuce_phone">
                      	   <label>* 手机号码：</label>
                      	   <input type="text"  name="kuaikePhone" value="" id="phone"/>
                      	   <span class="hidden2" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-                     	 <img src="images/g00_03.png"class="img2"/>
+                     	 <img src="<%=basePath%>PC/images/g00_03.png"class="img2"/>
                      </div>
                      <div class="zhuce_pwd">
                      	   <label>* 登录密码：</label>
                      	   <input type="password" name="password" value="" id="logopwd"/>
                      	    <span class="hidden3" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-                     	    <img src="images/g00_03.png"class="img3"/>
+                     	    <img src="<%=basePath%>PC/images/g00_03.png"class="img3"/>
                      </div>
                      
                      <div class="zhuce_tuleft">
-                     	<img src="images/t003_03.png"/>
+                     	<img src="<%=basePath%>PC/images/t003_03.png"/>
                      </div>
                      <div class="zhuce_xing">
                      	   <label>* 确认密码：</label>
                      	   <input type="password" value="" id="pwd"/>
                      	    <span class="hidden4" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-                     	    <img src="images/g00_03.png"class="img4"/>
+                     	    <img src="<%=basePath%>PC/images/g00_03.png"class="img4"/>
                      </div>
                      <div class="zhuce_dizhi">
                      	<label>* 现居住地址：</label>
@@ -231,7 +231,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  
                      	<span class="hidden5" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	<span class="hidden5_5" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-                     	<img src="images/g00_03.png"class="img5"/>
+                     	<img src="<%=basePath%>PC/images/g00_03.png"class="img5"/>
                      </div>
 			        <div class="zhuce_xiangqing">
 			        	  <label></label>
@@ -239,7 +239,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        	  <span>详情地址</span>
 			        	  <span class="hidden7" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	   <span class="hidden7_7" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-			        	<img src="images/g00_03.png"class="img7"/>
+			        	<img src="<%=basePath%>PC/images/g00_03.png"class="img7"/>
 			        </div>
 			        
 			        <div class="zhuce_yanzheng">
@@ -249,7 +249,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        	  
 			        	  <span class="hidden8" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden8_8" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-			        	<img src="images/g00_03.png" class="img8"/>
+			        	<img src="<%=basePath%>PC/images/g00_03.png" class="img8"/>
 			        </div>
 			      
 			      <div class="Passpicture">
@@ -268,7 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					       	  <img src="" id="img1" > 
 				       	</div>
 				       	<span class="hidden9" style="width: 100px;height: 30px; color: red;">不能为空</span>
-				       <img src="images/g00_03.png" class="img9"/>
+				       <img src="<%=basePath%>PC/images/g00_03.png" class="img9"/>
 			       </div>
 			       <div class="zhuce_sheng">
 			       	  <p>*&nbsp;上传身份证复印件</p>
@@ -294,7 +294,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>登录密码:</span>
 						<input type="password" class="pwd" value="${ sessionScope.newPass!=null?sessionScope.newPass:''}" placeholder="  请输入登录密码" name="password"/>
 						<div style="clear: both;"></div>
-						<a href="zhaohuimima.jsp"style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
+						<a href="<%=basePath%>PC/zhaohuimima.jsp"style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 					<div>
 						<span><input type="checkbox" class="zii" name="repassword"/></span>
 						<span class="zi">记住密码</span>
@@ -314,9 +314,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span class="t1"></span>
 					<span class="t2"></span>
 					<span class="t3"></span>
-					<img class="t33" src="images/g00_03.png"/>
-					<img class="t22" src="images/g00_03.png"/>
-					<img class="t11" src="images/g00_03.png"/>
+					<img class="t33" src="<%=basePath%>PC/images/g00_03.png"/>
+					<img class="t22" src="<%=basePath%>PC/images/g00_03.png"/>
+					<img class="t11" src="<%=basePath%>PC/images/g00_03.png"/>
 				
 				</div>
 			
@@ -337,11 +337,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 </div>
 			 <div class="fooeter2 col-lg-2 col-sm-6 col-xs-6 col-md-2">
 			   <ul>
-			 	  	<li><img src="images/004_03.png"/><a href="#">帮助信息</a></li>
-			 	  	<li><img src="images/004_03.png"/><a href="#">注册帮助</a></li>
-			 	  	<li><img src="images/004_03.png"/><a href="#">登录帮助</a></li>
-			 	  	<li><img src="images/004_03.png"/><a href="#">认证帮助</a></li>
-			 	  	<li><img src="images/004_03.png"/><a href="#">更多</a></li>
+			 	  	<li><img src="<%=basePath%>PC/images/004_03.png"/><a href="#">帮助信息</a></li>
+			 	  	<li><img src="<%=basePath%>PC/images/004_03.png"/><a href="#">注册帮助</a></li>
+			 	  	<li><img src="<%=basePath%>PC/images/004_03.png"/><a href="#">登录帮助</a></li>
+			 	  	<li><img src="<%=basePath%>PC/images/004_03.png"/><a href="#">认证帮助</a></li>
+			 	  	<li><img src="<%=basePath%>PC/images/004_03.png"/><a href="#">更多</a></li>
 			 	  </ul>
 			 
 			 </div>
@@ -363,9 +363,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</footer>
 	</body>
 </html>
-<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>  
-<script src="js/tu.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/tu.js" type="text/javascript" charset="utf-8"></script>
 <script>    
 
 $("#file0").change(function(){  

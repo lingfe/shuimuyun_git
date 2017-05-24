@@ -97,7 +97,7 @@ public class R_kuaiketabController {
 		tab.setKuaikeStatus(0);
 		kuaiketabService.addUser(tab);
 
-		return "shenhe";
+		return "PC/shenhe";
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class R_kuaiketabController {
 			System.out.println(login + "欢迎来到这里看到用户名和密码 ");
 
 			// 返回成功页面
-			return "index";
+			return "PC/index";
 		}
 		request.getSession().setAttribute("emg", emg);
 		// 返回失败页面
@@ -191,7 +191,7 @@ public class R_kuaiketabController {
 			System.out.println(updateUserpass);
 		}
 
-		return "zhaohuimima";
+		return "PC/zhaohuimima";
 	}
 
 	/**
@@ -251,7 +251,7 @@ public class R_kuaiketabController {
 
 		kuaiketabService.updatePassword(password, kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
 
-		return "shenhe";
+		return "PC/shenhe";
 	}
 
 	/**
@@ -297,7 +297,7 @@ public class R_kuaiketabController {
 			model.addAttribute("selectUser", selectUser);
 		}
 
-		return "index";
+		return "PC/index";
 	}
 
 	/**
@@ -323,7 +323,7 @@ public class R_kuaiketabController {
 
 		if (phoneLogin != null) {
 
-			return "index";
+			return "PC/index";
 
 		}
 		return "error";

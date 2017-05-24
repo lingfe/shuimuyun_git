@@ -22,23 +22,23 @@
 <meta http-equiv="X-UA-Compatible" cotent="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>首页</title>
-<link rel="stylesheet" type="text/css" href="css/common.css" />
-<link rel="stylesheet" type="text/css" href="css/index.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<script src="js/jquery-3.1.0.min.js" type="text/javascript"
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
-<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/register.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="login.jsp">登录</a><a href="register.jsp">注册</a>
+				<a href="<%=basePath%>PC/login.jsp">登录</a><a href="<%=basePath%>PC/register.jsp">注册</a>
 			</p>
 			<ul class="flex8 content_u">
-				<li><img src="images/e.png" /><a href="#">wenping@smuyun.com</a></li>
-				<li><img src="images/p.png" /><a href="#">0851 8510 3179</a></li>
+				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
 
 			</ul>
 		</div>
@@ -50,18 +50,18 @@
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="index.jsp" class="logo"><img src="images/logo.png" /></a> <a
+			<a href="index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
 				href="#" class="navbar-btn navbar-toggle navbtn"
 				data-toggle="collapse" data-target="#myCollapse"> <img
-				src="images/nav-btn.png" />
+				src="<%=basePath%>PC/images/nav-btn.png" />
 			</a>
 		</div>
 		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
 				<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-				<li class="active"><a href="index.jsp" style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="aboutUs.html">公众号</a></li>
-				<li><a href="service.html">关于人人配送</a></li>
+				<li class="active"><a href="<%=basePath%>PC/index.jsp" style="color: #ff6d46;">人人配送</a></li>
+				<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
+				<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -74,19 +74,19 @@
 		<!--<轮播项目-->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="images/001.jpg" />
+				<img src="<%=basePath%>PC/images/001.jpg" />
 			</div>
 			<div class="item">
-				<img src="images/001.jpg" />
+				<img src="<%=basePath%>PC/images/001.jpg" />
 			</div>
 			<div class="item">
-				<img src="images/001.jpg" />
+				<img src="<%=basePath%>PC/images/001.jpg" />
 			</div>
 			<div class="item">
-				<img src="images/001.jpg" />
+				<img src="<%=basePath%>PC/images/001.jpg" />
 			</div>
 			<div class="item">
-				<img src="images/001.jpg" />
+				<img src="<%=basePath%>PC/images/001.jpg" />
 			</div>
 		</div>
 		<!--轮播指标-->
@@ -100,18 +100,18 @@
 		</ul>
 		<!--轮播导航-->
 		<a href="#myCarousel" class="carousel-control left left-ico"
-			data-slide="prev"> <img src="images/left.png" />
+			data-slide="prev"> <img src="<%=basePath%>PC/images/left.png" />
 		</a> <a href="#myCarousel" class="carousel-control right  right-ico"
-			data-slide="next"> <img src="images/right.png" />
+			data-slide="next"> <img src="<%=basePath%>PC/images/right.png" />
 		</a>
 	</div>
 	<!--轮播结束-->
 	<!--按钮开始-->
 	<div class="ren_aj1 flex1">
-		<img src="images/a001_03.png" /> <span>我要抢单</span>
+		<img src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span>
 	</div>
 	<div class="ren_aj2 flex1">
-		<img src="images/a002_03.png" /> <span>我要下单</span>
+		<img src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span>
 	</div>
 	<div style="clear: both;"></div>
 	<!--底部开始-->
@@ -125,11 +125,11 @@
 	</div>
 	<div class="fooeter2 col-lg-2 col-sm-6 col-xs-6 col-md-2">
 		<ul>
-			<li><img src="images/004_03.png" /><a href="#">帮助信息</a></li>
-			<li><img src="images/004_03.png" /><a href="#">注册帮助</a></li>
-			<li><img src="images/004_03.png" /><a href="#">登录帮助</a></li>
-			<li><img src="images/004_03.png" /><a href="#">认证帮助</a></li>
-			<li><img src="images/004_03.png" /><a href="#">更多</a></li>
+			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">帮助信息</a></li>
+			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">注册帮助</a></li>
+			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">登录帮助</a></li>
+			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">认证帮助</a></li>
+			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">更多</a></li>
 		</ul>
 
 	</div>

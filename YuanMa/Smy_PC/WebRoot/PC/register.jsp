@@ -18,12 +18,12 @@
 <meta http-equiv="X-UA-Compatible" cotent="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>注册</title>
-<link rel="stylesheet" type="text/css" href="css/common.css" />
-<link rel="stylesheet" type="text/css" href="css/index.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<script src="js/jquery-3.1.0.min.js" type="text/javascript"
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
-<script src="js/register.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body>
@@ -34,8 +34,8 @@
 				${sessionScope.uname!=null?'欢迎:':'登录｜注册'}<span>${sessionScope.uname!=null?sessionScope.uname:''}</span>
 			</p>
 			<ul class="flex8 content_u">
-				<li><img src="images/e.png" /><a href="#">wenping@smuyun.com</a></li>
-				<li><img src="images/p.png" /><a href="#">0851 8510 3179</a></li>
+				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -46,19 +46,19 @@
 		<div class="container">
 			<nav class="nav navlist" role="navigation">
 				<div class="navbar-header" style="margin-right: 60px;">
-					<a href="index.html" class="logo"><img src="images/logo.png" /></a>
+					<a href="index.html" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
 					<a href="#" class="navbar-btn navbar-toggle navbtn"
 						data-toggle="collapse" data-target="#myCollapse"> <img
-						src="images/nav-btn.png" />
+						src="<%=basePath%>PC/images/nav-btn.png" />
 					</a>
 				</div>
 				<div class="collapse navbar-collapse navColl" id="myCollapse">
 					<ul class="nav navbar-nav pull-left ren_nav">
 						<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-						<li class="active"><a href="index.html"
+						<li class="active"><a href="<%=basePath%>PC/index.html"
 							style="color: #ff6d46;">人人配送</a></li>
-						<li><a href="aboutUs.html">公众号</a></li>
-						<li><a href="service.html">关于人人配送</a></li>
+						<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
+						<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -75,7 +75,7 @@
 				&nbsp&nbsp册</button>
 			<div
 				style="position: relative;left: 93.1%; top:-109px; z-index: 999; border: white 1px dashed !important; display: none;">
-				<img src="images/t003_03.png" />
+				<img src="<%=basePath%>PC/images/t003_03.png" />
 			</div>
 		</div>
 		<!--右变开始-->
@@ -151,31 +151,31 @@
 							id="namett" /> <span class="hidden1"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden1_1" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="images/g00_03.png" class="img1" />
+						<img src="<%=basePath%>PC/images/g00_03.png" class="img1" />
 					</div>
 					<div class="zhuce_phone">
 						<label>* 手机号码：</label> <input type="text" name="kuaikePhone"
 							value="" id="phone" /> <span class="hidden2"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="images/g00_03.png" class="img2" />
+						<img src="<%=basePath%>PC/images/g00_03.png" class="img2" />
 					</div>
 					<div class="zhuce_pwd">
 						<label>* 登录密码：</label> <input type="password" name="password"
 							value="" id="logopwd" /> <span class="hidden3"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="images/g00_03.png" class="img3" />
+						<img src="<%=basePath%>PC/images/g00_03.png" class="img3" />
 					</div>
 					<div class="zhuce_tuleft">
-						<img src="images/t003_03.png" />
+						<img src="<%=basePath%>PC/images/t003_03.png" />
 					</div>
 					<div class="zhuce_xing">
 						<label>* 确认密码：</label> <input type="password" name="" value=""
 							id="pwd" /> <span class="hidden4"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="images/g00_03.png" class="img4" />
+						<img src="<%=basePath%>PC/images/g00_03.png" class="img4" />
 					</div>
 					<div class="zhuce_dizhi">
 						<label>* 现居住地址：</label> <select id="sheng" name="kuaikeAddress">
@@ -207,14 +207,14 @@
 						</select> <span>街道</span> <span class="hidden5"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden5_5" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="images/g00_03.png" class="img5" />
+						<img src="<%=basePath%>PC/images/g00_03.png" class="img5" />
 					</div>
 					<div class="zhuce_xiangqing">
 						<label></label> <input type="text" name="kuaikeAddressInfo"
 							value="" id="jiedao" /> <span>详情地址</span> <span class="hidden7"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden7_7" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="images/g00_03.png" class="img7" />
+						<img src="<%=basePath%>PC/images/g00_03.png" class="img7" />
 					</div>
 
 					<div class="zhuce_yanzheng">
@@ -224,7 +224,7 @@
 						<span class="hidden8"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden8_8" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="images/g00_03.png" class="img8" />
+						<img src="<%=basePath%>PC/images/g00_03.png" class="img8" />
 					</div>
 					<div class="Passpicture">
 
@@ -247,7 +247,7 @@
 						</div>
 						<span class="hidden9"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <img
-							src="images/g00_03.png" class="img9" />
+							src="<%=basePath%>PC/images/g00_03.png" class="img9" />
 					</div>
 					<div class="zhuce_sheng">
 						<p>*&nbsp;上传身份证复印件</p>
@@ -291,9 +291,9 @@
 
 					</div>
 					<span class="t1"></span> <span class="t2"></span> <span class="t3"></span>
-					<img class="t33" src="images/g00_03.png" /> <img class="t22"
-						src="images/g00_03.png" /> <img class="t11"
-						src="images/g00_03.png" />
+					<img class="t33" src="<%=basePath%>PC/images/g00_03.png" /> <img class="t22"
+						src="<%=basePath%>PC/images/g00_03.png" /> <img class="t11"
+						src="<%=basePath%>PC/images/g00_03.png" />
 				</form>
 			</div>
 			<!--登录结束-->
@@ -311,11 +311,11 @@
 		</div>
 		<div class="fooeter2 col-lg-2 col-sm-6 col-xs-6 col-md-2">
 			<ul>
-				<li><img src="images/004_03.png" /><a href="#">帮助信息</a></li>
-				<li><img src="images/004_03.png" /><a href="#">注册帮助</a></li>
-				<li><img src="images/004_03.png" /><a href="#">登录帮助</a></li>
-				<li><img src="images/004_03.png" /><a href="#">认证帮助</a></li>
-				<li><img src="images/004_03.png" /><a href="#">更多</a></li>
+				<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">帮助信息</a></li>
+				<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">注册帮助</a></li>
+				<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">登录帮助</a></li>
+				<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">认证帮助</a></li>
+				<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">更多</a></li>
 			</ul>
 
 		</div>
@@ -338,9 +338,9 @@
 
 </body>
 </html>
-<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
-<script src="js/tu.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/tu.js" type="text/javascript" charset="utf-8"></script>
 <script>
 
 	$("#file0").change(function() {

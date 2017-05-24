@@ -44,8 +44,9 @@
 
 /*轮播*/
 .left-ico, .right-ico {
-	top: 49%;
+	top: 30%;
 	background: none !important;
+	margin-top:10%; /* add lijie 2017-05-24*/
 }
 /*导航*/
 header {

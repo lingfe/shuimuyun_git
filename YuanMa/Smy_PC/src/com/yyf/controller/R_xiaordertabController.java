@@ -1,8 +1,11 @@
 package com.yyf.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
@@ -41,7 +46,7 @@ public class R_xiaordertabController {
 	@RequestMapping(value = "/insertCommentInfo", method = RequestMethod.POST)
 	public String insertCommentInfo(Commenttab tab) {
 		r_xiaordertabService.insertCommentInfo(tab);
-		return "";
+		return "PC/index";
 	}
 
 	/**
@@ -63,7 +68,7 @@ public class R_xiaordertabController {
 			return "index";
 		}
 
-		return "index";
+		return "PC/index";
 	}
 
 	/**
@@ -82,7 +87,7 @@ public class R_xiaordertabController {
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
 		map.addAttribute("info", xiaorderInfo);
 		System.out.println(xiaorderInfo.toString());
-		return "index";
+		return "PC/index";
 	}
 
 	/**
@@ -98,7 +103,7 @@ public class R_xiaordertabController {
 		// 调用方法
 		r_xiaordertabService.updateStatus(status, xiaId);
 
-		return "index";
+		return "PC/index";
 	}
 
 	/**
@@ -114,7 +119,7 @@ public class R_xiaordertabController {
 		List<R_xiaordertab> query = r_xiaordertabService.query();
 		map.put("query", query);
 
-		return "index";
+		return "PC/index";
 	}
 
 	/**
@@ -127,14 +132,33 @@ public class R_xiaordertabController {
 	 * @return URL
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(R_xiaordertab tab) {
+	public String add(@RequestParam(value = "fileImages", required = false) MultipartFile fileImages,HttpServletRequest request,R_xiaordertab tab) {
+		
+		// 获取到当前服务器项目的跟路径
+		String path = request.getSession().getServletContext().getRealPath("upload");
+		// 文件1
+		String fileName1 = fileImages.getOriginalFilename();
+		File targetFile1 = new File(path, fileName1);
+		if (!targetFile1.exists()) {
+			targetFile1.mkdirs();
+		}
+		
+		// 保存
+		try {
+			fileImages.transferTo(targetFile1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		// 下单id
 		tab.setXiaId(UUID.randomUUID().toString());
 		// 下单状态,默认
 		tab.setStatus(R_xiaordertabEnum.WJD.ordinal());
+		// 商品图片
+		tab.setShopImages(request.getContextPath() + "/upload/" + fileName1);
 
 		r_xiaordertabService.add(tab);
-		return "index";
+		return "PC/index";
 	}
 
 }

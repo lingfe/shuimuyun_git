@@ -96,8 +96,8 @@ public class R_kuaiketabController {
 		// 状态,默认
 		tab.setKuaikeStatus(0);
 		kuaiketabService.addUser(tab);
-		
-		return "shenhe";	
+
+		return "shenhe";
 	}
 
 	/**
@@ -141,8 +141,8 @@ public class R_kuaiketabController {
 		System.out.println(password);
 
 		// 进行Md5加密
-		String newPass = Md5Util.md5(password);		// 测试是否得到加密密码
-		 System.out.println(newPass);
+		String newPass = Md5Util.md5(password); // 测试是否得到加密密码
+		System.out.println(newPass);
 
 		// 调用登陆方法，并封装为对象
 		R_kuaiketab login = kuaiketabService.login(uname, newPass);
@@ -169,7 +169,7 @@ public class R_kuaiketabController {
 		}
 		request.getSession().setAttribute("emg", emg);
 		// 返回失败页面
-		return "emg";
+		return null;
 	}
 
 	/**
@@ -192,10 +192,10 @@ public class R_kuaiketabController {
 			@RequestParam("phoneCode") int phoneCode, @RequestParam("password") String password) {
 
 		int updateUserpass = kuaiketabService.updateUserpass(password, kuaikePhone);
-		if(updateUserpass>0){
+		if (updateUserpass > 0) {
 			System.out.println(updateUserpass);
 		}
-		
+
 		return "zhaohuimima";
 	}
 
@@ -227,6 +227,36 @@ public class R_kuaiketabController {
 			kuaiketab.setKuaikeStatus(4);
 		}
 		return kuaiketab;
+	}
+
+	/**
+	 * 人工找回密码
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月24日 上午11:07:39
+	 * @param map
+	 *            map集合
+	 * @param password
+	 *            密码【重置密码】
+	 * @param kuaikeName
+	 *            快客姓名
+	 * @param kuaikePhone
+	 *            快客电话
+	 * @param kuaikeAddress
+	 *            快客地址
+	 * @param kuaikeAddressInfo
+	 *            快客详情地址【可选】
+	 * @return 返回审核页面
+	 */
+	@RequestMapping(value = "updatePassword", method = RequestMethod.POST)
+	public String updatePassword(ModelMap map, @RequestParam("password") String password,
+			@RequestParam("kuaikeName") String kuaikeName, @RequestParam("kuaikePhone") String kuaikePhone,
+			@RequestParam("kuaikeAddress") String kuaikeAddress,
+			@RequestParam("kuaikeAddressInfo") String kuaikeAddressInfo) {
+
+		kuaiketabService.updatePassword(password, kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
+
+		return "shenhe";
 	}
 
 	/**
@@ -345,13 +375,12 @@ public class R_kuaiketabController {
 		// 返回//打印返回消息状态
 		System.out.println("发送的状态------>" + result);
 	}
-	
-	
-	
+
 	/**
 	 * 模拟手机接收验证码
-	 * @author 杨杰     
-	 * @created 2017年5月23日 下午2:30:33  
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月23日 下午2:30:33
 	 * @param request
 	 * @return
 	 */
@@ -370,7 +399,5 @@ public class R_kuaiketabController {
 		return phoneCode;
 
 	}
-	
-	
 
 }

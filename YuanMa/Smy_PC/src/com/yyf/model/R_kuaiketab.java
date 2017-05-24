@@ -5,11 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
-  * 文件名：R_kuaiketab.java
-  * 描述： 快客申请(注册)/登陆
-  * 修改人： 杨杰
-  * 修改时间：2017年5月17日 下午5:39:54
-  * 修改内容：
+ * 文件名：R_kuaiketab.java 描述： 快客申请(注册)/登陆 修改人： 杨杰 修改时间：2017年5月17日 下午5:39:54 修改内容：
  */
 public class R_kuaiketab {
 
@@ -114,15 +110,14 @@ public class R_kuaiketab {
 	@Override
 	public String toString() {
 		return "R_userEntity [kuaikeId=" + kuaikeId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
-				+ ", kuaikeAddress=" + kuaikeAddress + ", kuaikeShenfenF=" +  ", kuaikeShenfenZF="
-				+ kuaikeShenfenZF + ", kuaikeShouchiSFZ=" + kuaikeShouchiSFZ + ", kuaikeStatus=" + kuaikeStatus
-				+ ", kuaikeShengqingDate=" + kuaikeShengqingDate + ", password=" + password + ", loginDate=" + loginDate
-				+ "]";
+				+ ", kuaikeAddress=" + kuaikeAddress + ", kuaikeShenfenF=" + ", kuaikeShenfenZF=" + kuaikeShenfenZF
+				+ ", kuaikeShouchiSFZ=" + kuaikeShouchiSFZ + ", kuaikeStatus=" + kuaikeStatus + ", kuaikeShengqingDate="
+				+ kuaikeShengqingDate + ", password=" + password + ", loginDate=" + loginDate + "]";
 	}
 
 	public R_kuaiketab(String kuaikeId, String kuaikeName, String kuaikePhone, String kuaikeAddress,
-			String kuaikeShenfenZF, String kuaikeShouchiSFZ, Integer kuaikeStatus,
-			Date kuaikeShengqingDate, String password, Date loginDate) {
+			String kuaikeShenfenZF, String kuaikeShouchiSFZ, Integer kuaikeStatus, Date kuaikeShengqingDate,
+			String password, Date loginDate) {
 		super();
 		this.kuaikeId = kuaikeId;
 		this.kuaikeName = kuaikeName;
@@ -135,8 +130,8 @@ public class R_kuaiketab {
 		this.password = password;
 		this.loginDate = loginDate;
 	}
-	
-	//详细地址   lijie  add  2017-05-22
+
+	// 详细地址 lijie add 2017-05-22
 	private String kuaikeAddressInfo;
 
 	public String getKuaikeAddressInfo() {

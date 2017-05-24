@@ -45,6 +45,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	})
 
 
+
+
+$(function(){
+		$("#ajaxphoneCode").click(function(){
+			var phoneCode=$("input[name='phoneCode']").val();
+				$.ajax({
+			　　　　　　url: 'getCode',
+			
+			　　　　　　type: 'POST',
+			　　　　　　data: { phoneCode: phoneCode},
+			　　　　　
+			　　　　　　//请求成功后触发
+			　　　　　　success: function (data) {
+							
+					 $("input[name='phoneCode']").val(data);
+						
+					 }
+	
+				})
+			})
+	})
+
+
 </script>
 	 
 	</head>
@@ -244,8 +267,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        
 			        <div class="zhuce_yanzheng">
 			        	  <label>* </label>
-			        	  <input type="text" value="" id="yanpwd"/>
-			        	  <button class="zhubtn">获取手机验证码</button>
+			        	  <input type="text" value="${phoneCode }" id="yanpwd" name="phoneCode"/>
+			        	  <button class="zhubtn" id="ajaxphoneCode">获取手机验证码</button>
 			        	  
 			        	  <span class="hidden8" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden8_8" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>

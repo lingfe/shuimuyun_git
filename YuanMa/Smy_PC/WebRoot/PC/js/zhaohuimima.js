@@ -122,15 +122,7 @@ $(function(){
 		})
 $("#btn").click(function(){
     var form=document.forms[0];
-     if(statu6 == true&&statu5 == true&&statu2 == true&&statu1 == true)
-       {
-		form.action="shenhe.html";
 		form.submit(); 
-		return true;
-		}else{
-       		return false;
-       		form.action="shenhe.html";
-        }     
 })
 
 });

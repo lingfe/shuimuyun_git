@@ -15,4 +15,7 @@ public final class ErrorShow {
 	/**  **/
 	public static final String s = "";
 
+	/** 连接错误的时候 **/
+	public static final String str = "正在连接服务器......";
+
 }

@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
+import com.yyf.controller.util.ErrorShow;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.service.R_kuaiketabService;
 import com.yyf.util.Md5Util;
@@ -135,36 +136,30 @@ public class R_kuaiketabController {
 			@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password,
 			HttpServletRequest request) throws NoSuchAlgorithmException {
 		/* 调用登陆方法 & 并封装为实体对象 */
-		// 测试是否得到密码
-		System.out.println(password);
-
 		// 进行Md5加密
-		String newPass = Md5Util.md5(password);		// 调用登陆方法，并封装为对象
+		String newPass = Md5Util.md5(password); // 调用登陆方法，并封装为对象
 		R_kuaiketab login = kuaiketabService.login(uname, newPass);
 
 		// 简单判断对象是否为空
 		if (login != null) {
 			if ("on".equals(repassword)) {
-
-				System.out.println(repassword);
+				// 记住登陆用户名，手机号码和密码
 				request.getSession().setAttribute("uname", uname);
-
 				request.getSession().setAttribute("newPass", password);
+				request.getSession().setAttribute("namea", login.getKuaikeName());
 
 			} else {
-
+				// 清空Session中的用户电话号码 和密码信息
 				request.getSession().removeAttribute("uname");
 				request.getSession().removeAttribute("newPass");
+				// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
+				request.getSession().setAttribute("namea", login.getKuaikeName());
 			}
-			// 简单测试
-			System.out.println(login + "欢迎来到这里看到用户名和密码 ");
-
 			// 返回成功页面
 			return "PC/index";
 		}
-		request.getSession().setAttribute("emg", emg);
-		// 返回失败页面
-		return null;
+		// 留在登陆页面
+		return "PC/login";
 	}
 
 	/**
@@ -186,12 +181,17 @@ public class R_kuaiketabController {
 	public String updatepassword(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("phoneCode") int phoneCode, @RequestParam("password") String password) {
 
-		int updateUserpass = kuaiketabService.updateUserpass(password, kuaikePhone);
+		// 通过手机找回密码 然后通过Md5加密
+		String pwd = Md5Util.md5(password);
+		// 调用重置密码的方法 对加密后的密码进行修改
+		int updateUserpass = kuaiketabService.updateUserpass(pwd, kuaikePhone);
+
 		if (updateUserpass > 0) {
 			System.out.println(updateUserpass);
+			System.out.println(pwd + "===================================");
 		}
 
-		return "PC/zhaohuimima";
+		return "PC/login";
 	}
 
 	/**
@@ -383,14 +383,10 @@ public class R_kuaiketabController {
 	@ResponseBody
 	public int getCode(HttpServletRequest request) {
 		// 产生6位随机数 充当验证码
-		java.util.Random rcode = new java.util.Random();
-
-		int phoneCode = rcode.nextInt(1000000);// 6位
-
-		System.out.println(phoneCode);
-
+		int phoneCode = (int) ((Math.random() * 9 + 1) * 100000);// 6位
+		// 存入Session域中
 		request.getSession().setAttribute("phoneCode", phoneCode);
-
+		// 返回验证码
 		return phoneCode;
 
 	}

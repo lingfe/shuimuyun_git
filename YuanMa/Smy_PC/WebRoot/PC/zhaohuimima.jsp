@@ -21,33 +21,38 @@
 <meta http-equiv="X-UA-Compatible" cotent="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>找回密码</title>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
-<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/index.css" />
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/zhaohuimima.js" type="text/javascript"
 	charset="utf-8"></script>
-<script src="<%=basePath%>PC/js/zhaohuimima.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#ajaxPhone").click(function() {
 			var phoneCode = $("#yanpwd").val();
-
+			//发送Ajax请求得到验证码
 			$.ajax({
 				url : 'getCode',
-				type : 'POST',
+				type : 'post',
+				async: false,
 				data : {
 					phoneCode : phoneCode
 				},
-
 				//请求成功后触发
 				success : function(data) {
-
 					$("#yanpwd").val(data);
-
+					return false;
 				}
-			})
-		})
-	})
+			});
+			//阻止表单提交(Ajax)
+			return false;
+		});
+	});
 </script>
 
 
@@ -56,11 +61,13 @@
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="<%=basePath%>PC/login.jsp">登录</a><a href="<%=basePath%>PC/zhuce.jsp">注册</a>
+				<a href="<%=basePath%>PC/login.jsp">登录</a><a
+					href="<%=basePath%>PC/zhuce.jsp">注册</a>
 			</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
-				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
+						8510 3179</a></li>
 
 			</ul>
 		</div>
@@ -72,9 +79,10 @@
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="<%=basePath%>PC/index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
-				href="#" class="navbar-btn navbar-toggle navbtn"
-				data-toggle="collapse" data-target="#myCollapse"> <img
+			<a href="<%=basePath%>PC/index.jsp" class="logo"><img
+				src="<%=basePath%>PC/images/logo.png" /></a> <a href="#"
+				class="navbar-btn navbar-toggle navbtn" data-toggle="collapse"
+				data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />
 			</a>
 		</div>
@@ -103,41 +111,45 @@
 	<div class="zhao_c">
 		<!--手机找回密码-->
 		<div class="zhao_shou2 que0" style="display: none;">
-
-			<div class="zhuce_phone">
-				<label>* 手机号码：</label> <input type="text" value=" " id="phone"
-					name="kuaikePhone" /> <span class="hidden2"
-					style="width: 100px;height: 30px; color: red;">不能为空</span> <span
-					class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-				<img src="<%=basePath%>PC/images/g00_03.png" class="img2" />
-			</div>
-			<div class="zhuce_yanzheng">
-				<label>* </label> <input type="text" value="${phoneCode}"
-					id="yanpwd" name="phoneCode" />
-				<button class="yzbtn zhubtn" id="ajaxPhone">获取手机验证码</button>
-				<span class="hidden8" style="width: 100px;height: 30px; color: red;">不能为空</span>
-				<span class="hidden8_8"
-					style="width: 100px;height: 30px; color: red;">输入正确的格式</span> <img
-					src="<%=basePath%>PC/images/g00_03.png" class="img8" />
-			</div>
-			<div class="zhuce_pwd zhao_pwd">
-				<label>* 登录密码：</label> <input type="password" value="" id="logopwd"
-					name="password" /> <span class="hidden3"
-					style="width: 100px;height: 30px; color: red;">不能为空</span> <span
-					class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-				<img src="<%=basePath%>PC/images/g00_03.png" class="img3" />
-			</div>
-			<div class="zhuce_xing">
-				<label>* 确认密码：</label> <input type="password" value="" id="pwd"
-					name="okpassword" /> <span class="hidden4"
-					style="width: 100px;height: 30px; color: red;">不能为空</span> <span
-					class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-				<img src="<%=basePath%>PC/images/g00_03.png" class="img4" />
-			</div>
-			<div class="zhuce_xiayibu">
-				<a href="javascript:void(0);" id="btn">确认</a>
-			</div>
-
+		
+		<!-- 手机找回form 开始 -->
+			<form action="reupdatepass" method="post">
+				<div class="zhuce_phone">
+					<label>* 手机号码：</label> <input type="text" value=" " id="phone"
+						name="kuaikePhone" /> <span class="hidden2"
+						style="width: 100px;height: 30px; color: red;">不能为空</span> <span
+						class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+					<img src="<%=basePath%>PC/images/g00_03.png" class="img2" />
+				</div>
+				<div class="zhuce_yanzheng">
+					<label>* </label> <input type="text" value="${phoneCode}"
+						id="yanpwd" name="phoneCode" />
+					<button class="yzbtn zhubtn" id="ajaxPhone">获取手机验证码</button>
+					<span class="hidden8"
+						style="width: 100px;height: 30px; color: red;">不能为空</span> <span
+						class="hidden8_8" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+					<img src="<%=basePath%>PC/images/g00_03.png" class="img8" />
+				</div>
+				<div class="zhuce_pwd zhao_pwd">
+					<label>* 登录密码：</label> <input type="password" value="" id="logopwd"
+						name="password" /> <span class="hidden3"
+						style="width: 100px;height: 30px; color: red;">不能为空</span> <span
+						class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+					<img src="<%=basePath%>PC/images/g00_03.png" class="img3" />
+				</div>
+				<div class="zhuce_xing">
+					<label>* 确认密码：</label> <input type="password" value="" id="pwd"
+						name="okpassword" /> <span class="hidden4"
+						style="width: 100px;height: 30px; color: red;">不能为空</span> <span
+						class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
+					<img src="<%=basePath%>PC/images/g00_03.png" class="img4" />
+				</div>
+				<div class="zhuce_xiayibu">
+					<a href="javascript:void(0);" id="btn">确认</a>
+				</div>
+			</form>
+			<!-- 手机找回密码结束 -->
+			
 		</div>
 
 		<!--人工找回密码-->
@@ -153,7 +165,8 @@
 					<li>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td align="center"><a href="<%=basePath%>PC/yianxiekuaike.jsp">
+								<td align="center"><a
+									href="<%=basePath%>PC/yianxiekuaike.jsp">
 										<p class="setbacks_3_1_cc">1</p>
 										<p class="setbacks_3_2_cc">填写快客信息</p>
 								</a></td>
@@ -173,7 +186,8 @@
 					<li>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td align="center"><a href="<%=basePath%>PC/zhuanyepeixun.jsp">
+								<td align="center"><a
+									href="<%=basePath%>PC/zhuanyepeixun.jsp">
 										<p class="setbacks_3_11">3</p>
 										<p class="setbacks_3_22">专业培训</p>
 								</a></td>
@@ -244,7 +258,7 @@
 						src="<%=basePath%>PC/images/g00_03.png" class="img7" />
 				</div>
 				<div class="zhuce_xiayibu">
-					<a href="javascript:void(0);" id="btn">提交</a>
+					<a href="javascript:void(0);" id="btn1">提交</a>
 				</div>
 			</form>
 		</div>

@@ -34,7 +34,7 @@
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="<%=basePath%>PC/login.jsp">登录</a><a href="<%=basePath%>PC/register.jsp">注册</a>
+				<a href="<%=basePath%>PC/login.jsp">${sessionScope.uname!=null?'欢迎:':'登录'}</a><a href="<%=basePath%>PC/register.jsp"><span>${sessionScope.namea!=null?sessionScope.namea:'注册'}</span></a>
 			</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>

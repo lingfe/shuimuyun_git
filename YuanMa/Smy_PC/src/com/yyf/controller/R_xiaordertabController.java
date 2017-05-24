@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_xiaordertabService;
-import com.yyf.util.R_kuaiketabStatusEnum;
 import com.yyf.util.R_xiaordertabEnum;
 
 /**

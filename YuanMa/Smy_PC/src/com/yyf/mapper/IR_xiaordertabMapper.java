@@ -14,9 +14,13 @@ import com.yyf.model.R_xiaordertab;
 
 /**
  * 
+<<<<<<< .mine
  * 文件名： R_xiaordertabMapper.java 描述： 下单数据访问接口 修改人： lijie 修改时间： 2017年5月16日
- * 下午4:15:26 修改内容：
+=======
+ * 文件名： R_xiaordertabMapper.java 描述： 下单数据访问接口 修改人： lijie 修改时间： 2017年5月16日
+>>>>>>> .theirs
  */
+	
 public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
 	/**

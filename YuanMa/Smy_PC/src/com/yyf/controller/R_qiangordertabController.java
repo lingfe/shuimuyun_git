@@ -18,150 +18,159 @@ import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_qiangordertabService;
 
 /**
-  * 文件名：R_qiangordertabController.java
-  * 描述： 我要抢单
-  * 修改人： 杨杰
-  * 修改时间：2017年5月18日 下午6:52:44
-  * 修改内容：
+ * 文件名：R_qiangordertabController.java 描述： 我要抢单 修改人： 杨杰 修改时间：2017年5月18日 下午6:52:44
+ * 修改内容：
  */
 @Controller
 public class R_qiangordertabController {
-	
-	/*一下涉及到页面的跳转的  都没有真实的页面*/
 
-	/*添加依赖注入*/
+	/* 一下涉及到页面的跳转的 都没有真实的页面 */
+
+	/* 添加依赖注入 */
 	@Autowired
 	private R_qiangordertabService qiangordertabService;
-	
+
 	/**
 	 * 当抢单成功的时候 会往抢单表中添加一条记录
-	 * @author 杨杰     
-	 * @created 2017年5月18日 下午7:06:36  
-	 * @param xiaId 下单ID 
-	 * @param kuaikeId 快客ID
-	 * @return 返回  失败、 成功页面
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月18日 下午7:06:36
+	 * @param xiaId
+	 *            下单ID
+	 * @param kuaikeId
+	 *            快客ID
+	 * @return 返回 失败、 成功页面
 	 */
-	@RequestMapping(value="/Insert",method=RequestMethod.POST)
-	public String Insert(
-			@RequestParam("xiaId") String xiaId,
-			@RequestParam("kuaikeId") String kuaikeId){
-		
-		//得到唯一的ID 作为抢单ID的唯一标示列
-		UUID uuid1 = UUID.randomUUID();
-		//强制转换
-		String uuid = uuid1.toString();
-		
-		//实例化 抢单对象 并初始化数据
-		R_qiangordertab qiangordertab=new R_qiangordertab(uuid, xiaId, kuaikeId, 0, new Date());
-		
-		if(qiangordertab.getStatus()==1){
-			System.out.println("抢单失败");
-		}
-		else{
+	@RequestMapping(value = "/Insert", method = RequestMethod.POST)
+	public String Insert(@RequestParam("xiaId") String xiaId, @RequestParam("kuaikeId") String kuaikeId) {
 
-			//调用方法  并添加返回值
+		// 得到唯一的ID 作为抢单ID的唯一标示列
+		UUID uuid1 = UUID.randomUUID();
+		// 强制转换
+		String uuid = uuid1.toString();
+
+		// 实例化 抢单对象 并初始化数据
+		R_qiangordertab qiangordertab = new R_qiangordertab(uuid, xiaId, kuaikeId, 0, new Date());
+
+		if (qiangordertab.getStatus() == 1) {
+			System.out.println("抢单失败");
+		} else {
+
+			// 调用方法 并添加返回值
 			int insert = qiangordertabService.Insert(qiangordertab);
-			
-			//判断返回值是否 大于零  大于零 成功   小于零失败
-			if(insert>0){
-				
+
+			// 判断返回值是否 大于零 大于零 成功 小于零失败
+			if (insert > 0) {
+
 				return "success";
 			}
-			
+
 		}
 		return "failer";
 	}
-	
+
 	/**
 	 * 得到抢单集合对象
-	 * @author 杨杰     
-	 * @created 2017年5月19日 上午10:02:04  
-	 * @param map 集合参数对象
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月19日 上午10:02:04
+	 * @param map
+	 *            集合参数对象
 	 * @return 返回 显示数据页面
 	 */
-	@RequestMapping(value="queryList",method=RequestMethod.GET)
-	public String query(Map<String, Object> map){
-		//调用查询方法  并封装给List集合对象 
+	@RequestMapping(value = "queryList", method = RequestMethod.GET)
+	public String query(Map<String, Object> map) {
+		// 调用查询方法 并封装给List集合对象
 		List<R_qiangordertab> query = qiangordertabService.query();
-		//打印集合 测试是否获取 
-		System.out.println(query+"---------------------------------------------");
-		
-		//得到抢单数据总条数
+		// 打印集合 测试是否获取
+		System.out.println(query + "---------------------------------------------");
+
+		// 得到抢单数据总条数
 		int queryCount = qiangordertabService.queryCount();
-		
-		if(queryCount<0){
+
+		if (queryCount < 0) {
 			System.out.println("This is a error");
 		}
-		//打印测试是否得到总条数
+		// 打印测试是否得到总条数
 		System.out.println(queryCount);
-		
-		//返回 List
+
+		// 返回 List
 		return "list";
 	}
-	
+
 	/**
 	 * 根据抢单ID 进行对 抢单记录删除
-	 * @author 杨杰     
-	 * @created 2017年5月19日 上午10:31:03  
-	 * @param qiangorderId 抢单Id
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月19日 上午10:31:03
+	 * @param qiangorderId
+	 *            抢单Id
 	 */
-	@RequestMapping(value="delete/{qiangorderId}",method=RequestMethod.DELETE)
+	@RequestMapping(value = "delete/{qiangorderId}", method = RequestMethod.DELETE)
 	@ResponseBody
-	public int delete(@PathVariable("qiangorderId") String qiangorderId){
-		//调用删除方法  
+	public int delete(@PathVariable("qiangorderId") String qiangorderId) {
+		// 调用删除方法
 		int delete = qiangordertabService.delete(qiangorderId);
-		
-		if(delete>0){
-			
+
+		if (delete > 0) {
+
 			return 1;
 		}
 		return 0;
-		
+
 	}
-	
+
 	/**
-	 * 根据百度  地图  模糊搜索周边的 单子数  及 收货人地址 
-	 * @author 杨杰     
-	 * @created 2017年5月19日 下午3:47:50  
-	 * @param map              集合对象
-	 * @param kuaikeAddress    快客地址
-	 * @param shouhuoAddress   收货人地址
-	 * @return                 成功 或者失败页面
+	 * 根据百度 地图 模糊搜索周边的 单子数 及 收货人地址
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月19日 下午3:47:50
+	 * @param map
+	 *            集合对象
+	 * @param kuaikeAddress
+	 *            快客地址
+	 * @param shouhuoAddress
+	 *            收货人地址
+	 * @return 成功 或者失败页面
 	 */
-	@RequestMapping(value="queryAddres",method=RequestMethod.POST)
-	public String queryAddress(Map<String,Object> map,@RequestParam("kuaikeAddress")String kuaikeAddress,@RequestParam("shouhuoAddress") String shouhuoAddress){
-	
-		/*调用查询方法  并封装为 List 集合对象*/
+	@RequestMapping(value = "queryAddres", method = RequestMethod.POST)
+	public String queryAddress(Map<String, Object> map, @RequestParam("kuaikeAddress") String kuaikeAddress,
+			@RequestParam("shouhuoAddress") String shouhuoAddress) {
+
+		/* 调用查询方法 并封装为 List 集合对象 */
 		List<R_xiaordertab> queryAddress = qiangordertabService.queryAddress(kuaikeAddress, shouhuoAddress);
-		/*对集合进行简单的判断处理*/
-		if(queryAddress!=null && queryAddress.size()>0){
-			//测试  集合是否有值
+		/* 对集合进行简单的判断处理 */
+		if (queryAddress != null && queryAddress.size() > 0) {
+			// 测试 集合是否有值
 			System.out.println(queryAddress);
-			/*添加到集合中*/
+			/* 添加到集合中 */
 			map.put("queryAddress", queryAddress);
-			//返回成功页面
+			// 返回成功页面
 			return "success";
 		}
-		//返回失败页面
+		// 返回失败页面
 		return "failer";
 	}
-	
-	
-	
+
 	/**
 	 * 修改抢单状态
-	 * @author 杨杰     
-	 * @created 2017年5月20日 上午10:10:46  
-	 * @param status          状态
-	 * @param qiangorderId   抢单Id
-	 * @param map             集合对象      
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月20日 上午10:10:46
+	 * @param status
+	 *            状态
+	 * @param qiangorderId
+	 *            抢单Id
+	 * @param map
+	 *            集合对象
 	 */
-	@RequestMapping(value="updateStatus/{Status}/{qiangorderId}",method=RequestMethod.GET)
+	@RequestMapping(value = "updateStatus/{Status}/{qiangorderId}", method = RequestMethod.GET)
 	@ResponseBody
-	public void updateStatus(@RequestParam("Status") Integer status,@RequestParam("qiangorderId") String qiangorderId,Map<String, Object> map){
-		/*调用修改状态的方法*/
+	public void updateStatus(@RequestParam("Status") Integer status, @RequestParam("qiangorderId") String qiangorderId,
+			Map<String, Object> map) {
+		/* 调用修改状态的方法 */
 		qiangordertabService.updateStatus(status, qiangorderId);
-		
+
 	}
 
 }

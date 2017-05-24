@@ -187,10 +187,10 @@ $(function(){
 						<div class="clear"></div>
 					</div>
                    
-			       <form action="" method="post">
+			       <form action="updatePassword" method="post">
 				      <div class="zhuce_xing">
 	                     	   <label>* 姓名：</label>
-	                     	   <input type="text" value="" id="namett"/>
+	                     	   <input type="text" value="" id="namett" name="kuaikeName"/>
 	                     	    <span class="hidden1" style="width: 100px;height: 30px; color: red;">不能为空</span>
 	                     	    <span class="hidden1_1" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
 	                     	   <img src="images/g00_03.png"class="img1"/>
@@ -198,7 +198,7 @@ $(function(){
                      
                      <div class="zhuce_phone">
                      	   <label>* 手机号码：</label>
-                     	   <input type="text" value="" id="phone"/>
+                     	   <input type="text" value="" id="phone" name="kuaikePhone"/>
                      	   <span class="hidden2" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	    <span class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
                      	 <img src="images/g00_03.png"class="img2"/>
@@ -206,7 +206,7 @@ $(function(){
                     
                     <div class="zhuce_dizhi">
                      	<label>* 现居住地址：</label>
-                     	<select id="sheng">
+                     	<select id="sheng" name="kuaikeAddress">
                      		<option value="贵州省">贵州省</option>
                      		<option value="云南省">云南省</option>
                      		<option value="河北省">河北省</option>
@@ -214,7 +214,7 @@ $(function(){
                      		<option value="东北省">东北省</option>
                      	</select>
                      	<span>省</span>
-                     	<select id="shi">
+                     	<select id="shi" name="kuaikeAddress">
                      		<option value="贵阳市">贵阳市</option>
                      		<option value="贵阳市">贵阳市</option>
                      		<option value="贵阳市">贵阳市</option>
@@ -223,7 +223,7 @@ $(function(){
                      		
                      	</select>
                      	<span>市</span>
-                     	<select id="xian">
+                     	<select id="xian" name="kuaikeAddress">
                      		<option value="盘县">盘县</option>
                      		<option value="盘县">盘县</option>
                      		<option value="盘县">盘县</option>
@@ -234,7 +234,7 @@ $(function(){
                      </div>
                      <div class="zhuce_jie">
                      	<label></label>
-                     	<select id="jie">
+                     	<select id="jie" name="kuaikeAddress">
                      		<option value="头桥二桥路">头桥二桥路</option>
                      		<option value="头桥二桥路">头桥二桥路</option>
                      		<option value="头桥二桥路">头桥二桥路</option>
@@ -248,7 +248,7 @@ $(function(){
                      </div>
 			        <div class="zhuce_xiangqing">
 			        	  <label></label>
-			        	  <input type="text" value="" id="jiedao"/>
+			        	  <input type="text" value="" id="jiedao"  name="kuaikeAddressInfo"/>
 			        	  <span>详情地址</span>
 			        	  <span class="hidden7" style="width: 100px;height: 30px; color: red;">不能为空</span>
                      	   <span class="hidden7_7" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>

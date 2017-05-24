@@ -139,7 +139,13 @@ public class R_kuaiketabController {
 		System.out.println(password);
 
 		// 进行Md5加密
+<<<<<<< .mine
 		String newPass = Md5Util.md5(password);
+
+=======
+		String newPass = Md5Util.md5(password); // 测试是否得到加密密码
+		System.out.println(newPass);
+>>>>>>> .theirs
 
 		// 调用登陆方法，并封装为对象
 		R_kuaiketab login = kuaiketabService.login(uname, newPass);
@@ -166,7 +172,7 @@ public class R_kuaiketabController {
 		}
 		request.getSession().setAttribute("emg", emg);
 		// 返回失败页面
-		return "emg";
+		return null;
 	}
 
 	/**
@@ -224,6 +230,36 @@ public class R_kuaiketabController {
 			kuaiketab.setKuaikeStatus(4);
 		}
 		return kuaiketab;
+	}
+
+	/**
+	 * 人工找回密码
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月24日 上午11:07:39
+	 * @param map
+	 *            map集合
+	 * @param password
+	 *            密码【重置密码】
+	 * @param kuaikeName
+	 *            快客姓名
+	 * @param kuaikePhone
+	 *            快客电话
+	 * @param kuaikeAddress
+	 *            快客地址
+	 * @param kuaikeAddressInfo
+	 *            快客详情地址【可选】
+	 * @return 返回审核页面
+	 */
+	@RequestMapping(value = "updatePassword", method = RequestMethod.POST)
+	public String updatePassword(ModelMap map, @RequestParam("password") String password,
+			@RequestParam("kuaikeName") String kuaikeName, @RequestParam("kuaikePhone") String kuaikePhone,
+			@RequestParam("kuaikeAddress") String kuaikeAddress,
+			@RequestParam("kuaikeAddressInfo") String kuaikeAddressInfo) {
+
+		kuaiketabService.updatePassword(password, kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
+
+		return "shenhe";
 	}
 
 	/**

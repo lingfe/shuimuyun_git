@@ -18,10 +18,6 @@
 <meta http-equiv="X-UA-Compatible" cotent="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>注册</title>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
-<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
 
@@ -46,8 +42,7 @@
 		<div class="container">
 			<nav class="nav navlist" role="navigation">
 				<div class="navbar-header" style="margin-right: 60px;">
-					<a href="index.html" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
-					<a href="#" class="navbar-btn navbar-toggle navbtn"
+					<a href="index.html" class="logo"><img src="images/logo.png" /></a>					<a href="#" class="navbar-btn navbar-toggle navbtn"
 						data-toggle="collapse" data-target="#myCollapse"> <img
 						src="<%=basePath%>PC/images/nav-btn.png" />
 					</a>
@@ -93,7 +88,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="yianxiekuaike.html">
+									<td align="center"><a href="<%=basePath%>PC/yianxiekuaike.html">
 											<p class="setbacks_3_1_c">1</p>
 											<p class="setbacks_3_2_c">填写快客信息</p>
 									</a></td>
@@ -103,7 +98,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="shenhe.html">
+									<td align="center"><a href="<%=basePath%>PC/shenhe.html">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 									</a></td>
@@ -113,7 +108,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="zhuanyepeixun.html">
+									<td align="center"><a href="<%=basePath%>PC/zhuanyepeixun.html">
 											<p class="setbacks_3_1">3</p>
 											<p class="setbacks_3_2">专业培训</p>
 									</a></td>
@@ -123,7 +118,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="kaoshi.html">
+									<td align="center"><a href="<%=basePath%>PC/kaoshi.html">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">考试</p>
 									</a></td>
@@ -133,7 +128,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="chengweikuaike.html">
+									<td align="center"><a href="<%=basePath%>PC/chengweikuaike.html">
 											<p class="setbacks_3_1">4</p>
 											<p class="setbacks_3_2">成为快客</p>
 									</a></td>
@@ -338,10 +333,8 @@
 
 </body>
 </html>
-<script src="<%=basePath%>PC/js/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
-<script src="<%=basePath%>PC/js/tu.js" type="text/javascript" charset="utf-8"></script>
-<script>
+<script src="js/login.js" type="text/javascript" charset="utf-8"></script><script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
+<script src="js/tu.js" type="text/javascript" charset="utf-8"></script><script>
 
 	$("#file0").change(function() {
 		// getObjectURL是自定义的函数，见下面  

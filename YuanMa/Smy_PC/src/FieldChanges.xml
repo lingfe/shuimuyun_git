@@ -1,46 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <body>
-<!-- 用于记录添加或者修改数据库字段的文件 -->
+	<!-- 用于记录添加或者修改数据库字段的文件 -->
 
-<insertChanges>
-<!-- 
-	添加表字段
-	alter table table1 add transactor varchar(10) not Null;
-	alter table table1 add id int unsigned not Null auto_increment primary key
- -->
- <!-- 快客表 ,添加字段详细地址   lijie 2017-05-22  -->
- alter table kuaiketab add kuaikeAddressInfo varchar(10) not Null COMMENT "快客详细地址";
- 		
- 
- </insertChanges>
+	<insertChanges>
+		<!-- 添加表字段 alter table table1 add transactor varchar(10) not Null; alter 
+			table table1 add id int unsigned not Null auto_increment primary key -->
+		<!-- 快客表 ,添加字段详细地址 lijie 2017-05-22 -->
+		alter table kuaiketab add kuaikeAddressInfo varchar(10) not Null
+		COMMENT "快客详细地址";
 
 
- <updateChangesTypeNULL>
- <!-- 
- 	修改某个表的字段类型及指定为空或非空
-	>alter table 表名称 change 字段名称 字段名称 字段类型 [是否允许非空];
-	>alter table 表名称 modify 字段名称 字段类型 [是否允许非空];
-	>alter table 表名称 modify 字段名称 字段类型 [是否允许非空];
+	</insertChanges>
 
-  -->
+
+	<updateChangesTypeNULL>
+		<!-- 修改某个表的字段类型及指定为空或非空 >alter table 表名称 change 字段名称 字段名称 字段类型 [是否允许非空]; 
+			>alter table 表名称 modify 字段名称 字段类型 [是否允许非空]; >alter table 表名称 modify 字段名称 
+			字段类型 [是否允许非空]; -->
 
 
 
-</updateChangesTypeNULL>
-	
-	
-	
-	
-	
-<updateChangesNameNULL>	
-<!--
-	修改某个表的字段名称及指定为空或非空
-	>alter table 表名称 change 字段原名称 字段新名称 字段类型 [是否允许非空
-  -->
+	</updateChangesTypeNULL>
 
 
 
-</updateChangesNameNULL>
+
+
+	<updateChangesNameNULL>
+		<!-- 修改某个表的字段名称及指定为空或非空 >alter table 表名称 change 字段原名称 字段新名称 字段类型 [是否允许非空 -->
+
+
+
+	</updateChangesNameNULL>
 
 
 

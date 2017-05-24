@@ -9,31 +9,29 @@ import com.yyf.mapper.IR_xiaordertabMapper;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_xiaordertabService;
+
 /**
  * 
-  * 文件名：	R_xiaordertabServiceImpl.java
-  * 描述： 	下单交互实现类
-  * 修改人：	lijie
-  * 修改时间：	2017年5月18日 上午9:22:53
-  * 修改内容：
+ * 文件名： R_xiaordertabServiceImpl.java 描述： 下单交互实现类 修改人： lijie 修改时间： 2017年5月18日
+ * 上午9:22:53 修改内容：
  */
 @Service
 public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 
-	//自动装配
+	// 自动装配
 	@Autowired
 	private IR_xiaordertabMapper ir_xiaordertabMapper;
-	
+
 	@Override
 	public void insertCommentInfo(Commenttab tab) {
-		ir_xiaordertabMapper.insertCommentInfo(tab);		
+		ir_xiaordertabMapper.insertCommentInfo(tab);
 	}
-	
+
 	@Override
 	public R_xiaordertab xiaorderInfo(String xiaId) {
 		return ir_xiaordertabMapper.xiaorderInfo(xiaId);
 	}
-	
+
 	@Override
 	public void add(R_xiaordertab tab) {
 		ir_xiaordertabMapper.add(tab);

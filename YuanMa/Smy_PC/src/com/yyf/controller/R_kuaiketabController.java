@@ -96,8 +96,8 @@ public class R_kuaiketabController {
 		// 状态,默认
 		tab.setKuaikeStatus(0);
 		kuaiketabService.addUser(tab);
-		
-		return "shenhe";	
+
+		return "shenhe";
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class R_kuaiketabController {
 		/* 调用登陆方法 & 并封装为实体对象 */
 		// 测试是否得到密码
 		System.out.println(password);
-		
+
 		// 进行Md5加密
 		String newPass = Md5Util.md5(password);
 
@@ -189,10 +189,10 @@ public class R_kuaiketabController {
 			@RequestParam("phoneCode") int phoneCode, @RequestParam("password") String password) {
 
 		int updateUserpass = kuaiketabService.updateUserpass(password, kuaikePhone);
-		if(updateUserpass>0){
+		if (updateUserpass > 0) {
 			System.out.println(updateUserpass);
 		}
-		
+
 		return "zhaohuimima";
 	}
 
@@ -342,13 +342,12 @@ public class R_kuaiketabController {
 		// 返回//打印返回消息状态
 		System.out.println("发送的状态------>" + result);
 	}
-	
-	
-	
+
 	/**
 	 * 模拟手机接收验证码
-	 * @author 杨杰     
-	 * @created 2017年5月23日 下午2:30:33  
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月23日 下午2:30:33
 	 * @param request
 	 * @return
 	 */
@@ -367,7 +366,5 @@ public class R_kuaiketabController {
 		return phoneCode;
 
 	}
-	
-	
 
 }

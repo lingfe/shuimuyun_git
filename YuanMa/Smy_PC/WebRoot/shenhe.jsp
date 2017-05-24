@@ -52,8 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul class="nav navbar-nav pull-left ren_nav">
 							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
 							<li class="active"><a href="index.jsp" style="color: #ff6d46;">人人配送</a></li>
-							<li><a href="aboutUs.html">公众号</a></li>
-							<li><a href="service.html">关于人人配送</a></li>
+							<li><a href="aboutUs.jsp">公众号</a></li>
+							<li><a href="service.jsp">关于人人配送</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="yianxiekuaike.html">
+										<a href="yianxiekuaike.jsp">
 											<p class="setbacks_3_1_cc">1</p>
 											<p class="setbacks_3_2_cc">填写快客信息</p>
 										</a>
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="shenhe.html">
+										<a href="shenhe.jsp">
 											<p class="setbacks_3_1_cc">2</p>
 											<p class="setbacks_3_2_cc">审核</p>
 										</a>
@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="zhuanyepeixun.html">
+										<a href="zhuanyepeixun.jsp">
 											<p class="setbacks_3_11">3</p>
 											<p class="setbacks_3_22">专业培训</p>
 										</a>

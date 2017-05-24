@@ -18,10 +18,6 @@
 <meta http-equiv="X-UA-Compatible" cotent="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>注册</title>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath %>PC/Vcss/index.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
-<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
 
@@ -46,8 +42,7 @@
 		<div class="container">
 			<nav class="nav navlist" role="navigation">
 				<div class="navbar-header" style="margin-right: 60px;">
-					<a href="<%=basePath%>PC/index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
-					<a href="#" class="navbar-btn navbar-toggle navbtn"
+					<a href="index.html" class="logo"><img src="images/logo.png" /></a>					<a href="#" class="navbar-btn navbar-toggle navbtn"
 						data-toggle="collapse" data-target="#myCollapse"> <img
 						src="<%=basePath%>PC/images/nav-btn.png" />
 					</a>
@@ -338,10 +333,8 @@
 
 </body>
 </html>
-<script src="<%=basePath %>PC/js/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
-<script src="<%=basePath %>PC/js/tu.js" type="text/javascript" charset="utf-8"></script>
-<script>
+<script src="js/login.js" type="text/javascript" charset="utf-8"></script><script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
+<script src="js/tu.js" type="text/javascript" charset="utf-8"></script><script>
 
 	$("#file0").change(function() {
 		// getObjectURL是自定义的函数，见下面  

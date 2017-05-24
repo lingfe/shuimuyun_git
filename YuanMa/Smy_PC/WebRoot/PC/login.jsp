@@ -276,7 +276,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			       </div>
 			       <div style="clear: both;"></div>
 			       <div class="zhuce_xiayibu">
-			       	   <a href="#" id="btn">下一步</a>
+			       	   <a href="javascript:void(0);" id="btn">下一步</a>
 			       </div>
 			     </form>
 			   </div>

@@ -6,10 +6,16 @@
 		<!-- 添加表字段 alter table table1 add transactor varchar(10) not Null; alter 
 			table table1 add id int unsigned not Null auto_increment primary key -->
 		<!-- 快客表 ,添加字段详细地址 lijie 2017-05-22 -->
-		alter table kuaiketab add kuaikeAddressInfo varchar(10) not Null
-		COMMENT "快客详细地址";
-
-
+		alter table kuaiketab add kuaikeAddressInfo varchar(200) COMMENT "快客详细地址";
+		
+		<!-- 下单表，新增快客 -->
+		ALTER TABLE xiaordertab ADD kuaikeAddressInfo VARCHAR(200) COMMENT '快客详细地址';
+		ALTER TABLE xiaordertab ADD shopType INT DEFAULT 0 NOT NULL COMMENT  '货物类型';
+		ALTER TABLE xiaordertab ADD timeString VARCHAR(10) DEFAULT '0' NOT NULL COMMENT '最快取货时间';
+		ALTER TABLE xiaordertab ADD shopImages VARCHAR(255) NOT NULL COMMENT '商品图片';
+		ALTER TABLE xiaordertab ADD payment	INT DEFAULT 0 NOT NULL COMMENT '是否付款';
+		
+		
 	</insertChanges>
 
 

@@ -97,7 +97,7 @@ public class R_kuaiketabController {
 		tab.setKuaikeStatus(0);
 		kuaiketabService.addUser(tab);
 
-		return "shenhe";
+		return "PC/shenhe";
 	}
 
 	/**

@@ -34,7 +34,7 @@
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="<%=basePath%>PC/login.jsp">登录</a><a href="<%=basePath%>PC/register.jsp">注册</a>
+				${sessionScope.uname!=null?'欢迎:':'<a href="<%=basePath% >PC/login.jsp">登录</a><a href="<%=basePath%>PC/register.jsp">注册</a>'}<span>${sessionScope.uname!=null?sessionScope.uname:''}</span>
 			</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
@@ -108,10 +108,10 @@
 	<!--轮播结束-->
 	<!--按钮开始-->
 	<div class="ren_aj1 flex1">
-		<img src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span>
+		<a href="javascript:void(0);"><img src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
 	</div>
 	<div class="ren_aj2 flex1">
-		<img src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span>
+		<a href="<%=basePath%>PC/placeAnOrder.jsp"><img src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span></a>
 	</div>
 	<div style="clear: both;"></div>
 	<!--底部开始-->

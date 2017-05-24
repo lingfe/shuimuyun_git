@@ -1,4 +1,5 @@
-/*µ¼º½*/
+/*å¯¼èˆª*/
+
 header {
 	width: 80%;
 	transform: translateX(17%);
@@ -24,7 +25,7 @@ body {
 
 header a:hover {
 	color: #ff6d46;
-	background: none !important;
+	background: none!important;
 }
 
 header .navlist {
@@ -33,7 +34,7 @@ header .navlist {
 }
 
 header .navbtn {
-	margin-top: 0px !important;
+	margin-top: 0px!important;
 }
 
 header ul li {
@@ -42,11 +43,13 @@ header ul li {
 }
 
 .ren_nav {
-	margin-left: 30px !important;
-	min-width: 60% !important;
+	margin-left: 30px!important;
+	min-width: 60%!important;
 }
 
-/*ÄÚÈİ*/
+
+/*å†…å®¹*/
+
 .con {
 	margin-top: 60px;
 	background: #e5e5e5;
@@ -56,7 +59,7 @@ header ul li {
 	border-image: url(../images/bgborder.png) 30 30 round;
 	margin-bottom: -500px !important;
 }
-/*ÊÕ»õÈË*/
+/*æ”¶è´§äºº*/
 .con_left {
 	margin-top: 80px;
 	box-sizing: border-box;
@@ -136,11 +139,13 @@ select {
 	background: #e5e5e5;
 }
 
+
 /*.con_left div span{
 	display: none !important;
 	transform: translateX(-75px)  !important;
 	display: inline-block;
 }*/
+
 
 /*.con_left div p{
 	width: 48%;
@@ -150,7 +155,7 @@ select {
 	margin-left: 10px;
 	display: none;
 }*/
-/*µØÖ·ĞÅÏ¢*/
+/*åœ°å€ä¿¡æ¯*/
 .con_right {
 	margin-top: 90px;
 	transform: translateX(1%);
@@ -183,18 +188,22 @@ select {
 	color: red;
 }
 
-/*ÌáÊ¾*/
+
+/*æç¤º*/
+
 .tt1 {
 	transform: translate(-75px, 5px) !important;
 	display: inline-block;
 	color: red;
 }
 
+
 /*.tt2{
 	display: inline-block !important;
 	display: none !important;
 	color: red;
 }*/
+
 .tt3 {
 	display: inline-block !important;
 	color: red;
@@ -209,7 +218,8 @@ select {
 	display: inline-block !important;
 	color: red;
 }
-/*µ¯³ö¿ò*/
+/*å¼¹å‡ºæ¡†*/
+
 .d {
 	position: fixed;
 	width: 400px;
@@ -222,7 +232,9 @@ select {
 	display: none;
 }
 
-/*ÕÚÕÖ²ã*/
+
+/*é®ç½©å±‚*/
+
 .d_z {
 	width: 100%;
 	height: 100%;

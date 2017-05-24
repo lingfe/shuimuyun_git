@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <script src="js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
-<script src="js/zhuce.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/register.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body>
@@ -31,12 +31,11 @@
 		<div class="container flex">
 			<p class="flex2 conttent_p"
 				style="font-size: 1.2em;color: #6a6565; font-family: "宋体;">
-				欢迎:<span>xxxx</span>
+				${sessionScope.uname!=null?'欢迎:':'登录｜注册'}<span>${sessionScope.uname!=null?sessionScope.uname:''}</span>
 			</p>
 			<ul class="flex8 content_u">
 				<li><img src="images/e.png" /><a href="#">wenping@smuyun.com</a></li>
 				<li><img src="images/p.png" /><a href="#">0851 8510 3179</a></li>
-
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -267,16 +266,18 @@
 					<div class="free">免密登录</div>
 					<div style="clear: both;"></div>
 					<div class="common_con">
-						<span>手机号码:</span> <input type="text" name="kuaikePhone"
-							class="phone" placeholder="  请输入手机号" /> <br /> <span>登录密码:</span>
-						<input type="password" name="password" class="pwd"
-							placeholder="  请输入登录密码" />
+						<span>手机号码:</span> <input type="text"
+							value="${sessionScope.uname!=null?sessionScope.uname:''}"
+							name="kuaikePhone" class="phone" placeholder="  请输入手机号" /> <br />
+						<span>登录密码:</span> <input type="password"
+							value="${ sessionScope.newPass!=null?sessionScope.newPass:''}"
+							name="password" class="pwd" placeholder="  请输入登录密码" />
 						<div style="clear: both;"></div>
 						<a href="#"
 							style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 						<div>
-							<span><input type="checkbox" class="zii" /></span> <span
-								class="zi">记住密码</span> <br />
+							<span><input type="checkbox" class="zii" name="repassword" /></span>
+							<span class="zi">记住密码</span> <br />
 							<button>登 录</button>
 
 						</div>

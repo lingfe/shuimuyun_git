@@ -9,16 +9,20 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>等待取货</title>
+<title>${info.status==0?'未接单':''}${info.status==1?'已接单,未发货':'' }
+	${info.status==2?'已到达,未确认':'' } ${info.status==3?'交易结束(已确认)':'' }</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/index.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/bootstrap.min.css" />
 <style>
 body {
 	max-width: 100%;
@@ -34,9 +38,10 @@ body {
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="index.html" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
-			<a href="#" class="navbar-btn navbar-toggle navbtn"
-				data-toggle="collapse" data-target="#myCollapse"> <img
+			<a href="index.html" class="logo"><img
+				src="<%=basePath%>PC/images/logo.png" /></a> <a href="#"
+				class="navbar-btn navbar-toggle navbtn" data-toggle="collapse"
+				data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />
 			</a>
 		</div>
@@ -56,7 +61,7 @@ body {
 		<!--左边开始-->
 		<div class="ddqh_left">
 			<div class="ddqh_left_top">
-				<h3>货物信心</h3>
+				<h3>货物信息</h3>
 				<table>
 					<tr>
 
@@ -126,14 +131,15 @@ body {
 					<tr>
 
 						<td>当前状态:</td>
-						<td>${info.status==0?'未接单':''}</td>
+						<td>${info.status==0?'未接单':''}${info.status==1?'已接单,未发货':'' }
+							${info.status==2?'已到达,未确认':'' } ${info.status==3?'交易结束(已确认)<span id="pingjia" style="color: white;padding:5px 8px;background: #ff6d46;font-size: 1em;">评价</span>':'' }
+
+						</td>
 					</tr>
 					<tr>
-						<td style="text-align: right;">预计货时间:</td>
+						<td style="text-align: right;">最晚到达时间:</td>
 						<td style="text-indent:40px; text-align: left;"><span
-							id="quhuo">距取货还有</span><span
-							style="padding: 5px 8px;color: #ff6d46;font-size: 1.4em;"
-							id="show">${info.timeString }</span><i>秒</i></td>
+							id="quhuo">${info.okDate}</span></td>
 					</tr>
 
 				</table>
@@ -141,36 +147,28 @@ body {
 				<table>
 					<tr>
 						<td style="text-align: right;">当前到达的地点:</td>
-						<td style="text-indent:40px; text-align: left;"></td>
-
-					</tr>
-					<tr>
-						<td style="text-align: right;"></td>
 						<td style="text-indent:40px; text-align: left;">${info.kuaikeAddress }</td>
-					</tr>
 
+					</tr>
 					<tr>
 						<td style="text-align: right;"></td>
-						<td style="text-indent:40px; text-align: left;color: #7eaa40;">
-							${info.kuaikeAddressInfo }
-						</td>
+						<td style="text-indent:40px; text-align: left;color: #7eaa40;">${info.kuaikeAddressInfo }</td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"></td>
+						<td style="text-indent:40px; text-align: left;color: #7eaa40;"></td>
 					</tr>
 				</table>
 				<!--目的地-->
 				<table>
 					<tr>
 						<td style="text-align: right;">当前到达的地点:</td>
-						<td style="text-indent:40px; text-align: left;"></td>
-
-					</tr>
-					<tr>
-						<td style="text-align: right;"></td>
 						<td style="text-indent:40px; text-align: left;">${info.shouhuoAddress }</td>
-					</tr>
 
+					</tr>
 					<tr>
 						<td style="text-align: right;"></td>
-						<td style="text-indent:40px; text-align: left;color: #7eaa40;">${info.shouhuoAddressInfo }</td>
+						<td style="text-indent:40px; text-align: left;">${info.shouhuoAddressInfo }</td>
 					</tr>
 				</table>
 
@@ -179,18 +177,54 @@ body {
 		</div>
 
 	</div>
+	<!--评价开始-->
+	<div class="wan_pingjia" >
+		<div class="wan_pinhjia_content">
+			<div class="guanbi">
+				<img src="<%=basePath%>PC/images/tu003_03.png" />
+			</div>
+			<p>
+				<span><img src="<%=basePath%>PC/images/tu.png" /></span> <span><img
+					src="<%=basePath%>PC/images/tu001.png" id="img_tu" /></span>
+			</p>
+			<ul>
+				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+			</ul>
+			<div style="clear: both;"></div>
+			<form action="www.baidu.com" method="post">
+				<textarea id="texval">
+			    	 	  请输入评价内容
+			    	 </textarea>
+				<div style="clear: both;"></div>
+				<input type="submit" value="提交" id="wan_tijiao" />
+			</form>
+		</div>
+	</div>
 </body>
 </html>
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	var t = document.getElementById("show").innerHTML; //设定跳转的时间 
-	setInterval("refer()", 1000); //启动1秒定时 
-	function refer() {
-		if (t == 0) {
-			location = "jumudidi.html"; //#设定跳转的链接地址 
+	$(".wan_pingjia").hide();
+	$("#pingjia").click(function() {
+		$(".wan_pingjia").show();
+	})
+	$(".guanbi").click(function() {
+		$(".wan_pingjia").hide();
+
+	});
+
+	//点击提交
+	$("#wan_tijiao").click(function() {
+		var texval = $("#texval").val();
+		if (texval == "") {
+			alert("请输入评价内容");
+			return false;
+		} else {
+			$("form").submit();
 		}
-
-		document.getElementById('show').innerHTML = "" + t + ""; // 显示倒计时 
-		t--; // 计数器递减 
-
-	}
+	})
 </script>

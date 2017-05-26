@@ -131,7 +131,7 @@ $(function(){
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="<%=basePath%>PC/shenhe.jsp">
+										<a href="<%=basePath%>PC/toExamine.jsp">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 										</a>
@@ -317,7 +317,7 @@ $(function(){
 						<span>登录密码:</span>
 						<input type="password" class="pwd" value="${ sessionScope.newPass!=null?sessionScope.newPass:''}" placeholder="  请输入登录密码" name="password"/>
 						<div style="clear: both;"></div>
-						<a href="<%=basePath%>PC/zhaohuimima.jsp"style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
+						<a href="<%=basePath%>PC/pwdRetrieval.jsp"style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 					<div>
 						<span><input type="checkbox" class="zii" name="repassword"/></span>
 						<span class="zi">记住密码</span>

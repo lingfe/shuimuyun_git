@@ -174,7 +174,7 @@
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="<%=basePath %>PC/shenhe.jsp">
+										<a href="<%=basePath %>PC/toExamine.jsp">
 											<p class="setbacks_3_11">2</p>
 											<p class="setbacks_3_22">审核</p>
 										</a>

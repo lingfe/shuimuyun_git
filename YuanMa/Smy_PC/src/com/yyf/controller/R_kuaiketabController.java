@@ -95,7 +95,7 @@ public class R_kuaiketabController {
 		tab.setKuaikeStatus(0);
 		kuaiketabService.addUser(tab);
 
-		return "PC/shenhe";
+		return "PC/toExamine";
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class R_kuaiketabController {
 
 		kuaiketabService.updatePassword(password, kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
 
-		return "PC/shenhe";
+		return "PC/toExamine";
 	}
 
 	/**
@@ -261,10 +261,10 @@ public class R_kuaiketabController {
 			request.getSession().setAttribute("sBykuaikeInfo", sBykuaikeInfo);
 			request.getSession().setAttribute("kuaikePhone",sBykuaikeInfo.getKuaikePhone());
 			
-			return "PC/shenhe";
+			return "PC/toExamine";
 			
 		}
-		return "PC/zhaohuimima";
+		return "PC/pwdRetrieval";
 	}
 
 	/**

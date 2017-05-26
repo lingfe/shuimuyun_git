@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
 									  <td align="center">
-										<a href="<%=basePath%>PC/shenhe.jsp">
+										<a href="<%=basePath%>PC/toExamine.jsp">
 											<p class="setbacks_3_1_cc">2</p>
 											<p class="setbacks_3_2_cc">审核</p>
 										</a>
@@ -178,7 +178,7 @@ var t=10;//设定跳转的时间
 setInterval("refer()",1000); //启动1秒定时 
 function refer(){  
     if(t==1){ 
-        location="<%=basePath%>PC/shoujizhaohuimima.jsp"; //#设定跳转的链接地址 
+        location="<%=basePath%>PC/phonePwdBack.jsp"; //#设定跳转的链接地址 
     } 
     document.getElementById('show').innerHTML=""+t+""; // 显示倒计时 
     t--; // 计数器递减 

@@ -25,5 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <img alt="" src="${fileUrl1 }"/>  
      <img alt="" src="${fileUrl2 }"/>  
+     
+     <a href="queryKuaike">dianzhi</a>
   </body>
 </html>

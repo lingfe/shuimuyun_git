@@ -178,35 +178,46 @@ body {
 
 	</div>
 	<!--评价开始-->
-	<div class="wan_pingjia" >
+	<div class="wan_pingjia">
 		<div class="wan_pinhjia_content">
-			<div class="guanbi">
-				<img src="<%=basePath%>PC/images/tu003_03.png" />
-			</div>
-			<p>
-				<span><img src="<%=basePath%>PC/images/tu.png" /></span> <span><img
-					src="<%=basePath%>PC/images/tu001.png" id="img_tu" /></span>
-			</p>
-			<ul>
-				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
-				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
-				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
-				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
-				<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
-			</ul>
-			<div style="clear: both;"></div>
-			<form action="www.baidu.com" method="post">
-				<textarea id="texval">
+			<!-- 评论表单	start -->
+			<form action="xiaordertab/insertCommentInfo" method="post">
+				<div class="guanbi">
+					<img src="<%=basePath%>PC/images/tu003_03.png" />
+				</div>
+				<p>
+					<span><img src="<%=basePath%>PC/images/tu.png" /></span> <span><img
+						src="<%=basePath%>PC/images/tu001.png" id="img_tu" /></span>
+				</p>
+				<ul>
+					<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+					<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+					<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+					<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+					<li><img src="<%=basePath%>PC/images/tu003.png" /></li>
+				</ul>
+				<div style="clear: both;"></div>
+				<!-- 快客id -->
+				<input type="hidden" value="277d060f-708e-4f2c-ad5d-fc40fef6dad5"
+					name="kuaikeId" />
+				<!-- 下单id -->
+				<input type="hidden" value="${info.xiaId }" name="xiaId" />
+				<!-- 星评数值 -->
+				<input type="hidden" value="0" name="star" />
+				<!-- 评论内容 -->
+				<textarea id="texval" name="remark">
 			    	 	  请输入评价内容
-			    	 </textarea>
+			    </textarea>
 				<div style="clear: both;"></div>
 				<input type="submit" value="提交" id="wan_tijiao" />
 			</form>
+			<!-- 评论表单	end -->
 		</div>
 	</div>
 </body>
 </html>
-<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"
+	type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(".wan_pingjia").hide();
 	$("#pingjia").click(function() {

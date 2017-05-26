@@ -87,7 +87,8 @@ public class R_xiaordertabController {
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
 		map.addAttribute("info", xiaorderInfo);
 		System.out.println(xiaorderInfo.toString());
-		return "PC/index";
+		
+		return "PC/placeAnOrderInfo";
 	}
 
 	/**

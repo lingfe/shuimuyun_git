@@ -99,8 +99,8 @@ public interface R_kuaiketabMapper {
 	 *            手机号
 	 * @return
 	 */
-	@Select("select password from kuaiketab where kuaikePhone=#{kuaikePhone}")
-	public R_kuaiketab selectAll(@Param("kuaikePhone") String kuaikePhone);
+	@Select("update kuaiketab set password=#{password} where kuaikePhone=#{kuaikePhone}")
+	public void findBackPassWord(@Param("password") String password,@Param("kuaikePhone") String kuaikePhone);
 
 	/**
 	 * 用户根据手机号 重置密码
@@ -161,7 +161,7 @@ public interface R_kuaiketabMapper {
 	 * @param kuaikeAddressInfo  快客 详情地址【可选】
 	 */
 	@Select("select * from kuaiketab where kuaikeName=#{kuaikeName} AND kuaikePhone=#{kuaikePhone} AND kuaikeAddress=#{kuaikeAddress} OR kuaikeAddressInfo=#{kuaikeAddressInfo}")
-	public int selectUpdatePasswordBykuaikeInfo(@Param("kuaikeName") String kuaikeName,
+	public R_kuaiketab selectUpdatePasswordBykuaikeInfo(@Param("kuaikeName") String kuaikeName,
 			@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeAddress") String kuaikeAddress,
 			@Param("kuaikeAddressInfo") String kuaikeAddressInfo);
 

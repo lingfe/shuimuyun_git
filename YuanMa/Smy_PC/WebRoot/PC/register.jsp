@@ -255,7 +255,7 @@
 					</div>
 					<div style="clear: both;"></div>
 					<div class="zhuce_xiayibu">
-						<a href="javascript:void(0);" id="btn">下一步</a>
+						<button  id="btn">下一步</button>
 					</div>
 				</form>
 			</div>

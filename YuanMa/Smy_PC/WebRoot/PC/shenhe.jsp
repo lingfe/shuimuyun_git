@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<div class="header">
 			<div class="container flex">
-				 <p class="flex2 conttent_p"><a href="<%=basePath%>PC/login.jsp">登录</a><a href="<%=basePath%>PC/zhuce.jsp">注册</a></p>
+				 <p class="flex2 conttent_p" style="font-size: 1.2em;color: #6a6565;">欢迎:<span>xxxx</span></p>
 				 <ul class="flex8 content_u">
 				 	<li><img src="<%=basePath%>PC/images/e.png"/><a href="#">wenping@smuyun.com</a></li>
 				 	<li><img src="<%=basePath%>PC/images/p.png"/><a href="#">0851 8510 3179</a></li>
@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="collapse navbar-collapse navColl" id="myCollapse">
 						<ul class="nav navbar-nav pull-left ren_nav">
-							<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
+							<li class="active"><a href="<%=basePath%>PC/index.jsp">商城</a></li>
 							<li class="active"><a href="<%=basePath%>PC/index.jsp" style="color: #ff6d46;">人人配送</a></li>
 							<li><a href="<%=basePath%>PC/aboutUs.jsp">公众号</a></li>
 							<li><a href="<%=basePath%>PC/service.jsp">关于人人配送</a></li>
@@ -78,9 +78,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!--进度条底层-->
 						<div class="setbacks_11"></div>
 						<!--进度条中层-->
-						<div class="setbacks_22" style="width:28%;top: 233px; " ></div>
+						<div class="setbacks_22" style="width:28%;top: 242px; " ></div>
 						<!--进度条顶层-->
-						<ul class="setbacks_33" style="top: 216px;">
+						<ul class="setbacks_33" style="top: 225px;">
 							<li>
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
@@ -111,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									  <td align="center">
 										<a href="<%=basePath%>PC/zhuanyepeixun.jsp">
 											<p class="setbacks_3_11">3</p>
-											<p class="setbacks_3_22">专业培训</p>
+											<p class="setbacks_3_22">密找回成功码</p>
 										</a>
 									  </td>
 									</tr>
@@ -125,15 +125,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	           <p class="shen_d">正在审核中，请耐心等待...</p>
     	           <div class="shenhe">
     	           	   <p>预计等待倒计时：</p>
-    	           	   <p><span>10</span>分钟</p>
+    	           	   <p><span id="show">10</span>分钟</p>
     	           </div>
     	           <div class="shen_a"> 若等待时间过长，可拨打11111进行密码找回</div>
     	           
-    	           
 		 </div>
 		    
-   </div>
-		
+  </div>
 		<!--底部开始-->
 		<footer>
 			<div class="col-lg-1"></div>
@@ -174,3 +172,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	</body>
 </html>
+
+<script type="text/javascript"> 
+var t=10;//设定跳转的时间 
+setInterval("refer()",1000); //启动1秒定时 
+function refer(){  
+    if(t==1){ 
+        location="<%=basePath%>PC/shoujizhaohuimima.jsp"; //#设定跳转的链接地址 
+    } 
+    document.getElementById('show').innerHTML=""+t+""; // 显示倒计时 
+    t--; // 计数器递减 
+} 
+</script> 

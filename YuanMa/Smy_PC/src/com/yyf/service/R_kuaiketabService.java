@@ -86,7 +86,7 @@ public interface R_kuaiketabService {
 	 *            手机号
 	 * @return
 	 */
-	public R_kuaiketab selectAll(String kuaikePhone);
+	public void findBackPassWord(String password,String kuaikePhone);
 
 	/**
 	 * 人工找回密码
@@ -119,7 +119,7 @@ public interface R_kuaiketabService {
 	 * @param kuaikeAddressInfo   详情地址【可选】
 	 * @return
 	 */
-	public int selectUpdatePasswordBykuaikeInfo(String kuaikeName, String kuaikePhone, String kuaikeAddress,
+	public R_kuaiketab selectUpdatePasswordBykuaikeInfo(String kuaikeName, String kuaikePhone, String kuaikeAddress,
 			String kuaikeAddressInfo);
 
 	/**

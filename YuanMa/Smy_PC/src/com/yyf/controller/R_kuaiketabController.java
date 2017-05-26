@@ -5,8 +5,6 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -202,25 +200,14 @@ public class R_kuaiketabController {
 	 *            手机号码
 	 * @return
 	 */
-	@SuppressWarnings("null")
 	@RequestMapping(value = "findBackPassWord", method = RequestMethod.POST)
-	public R_kuaiketab findBackPassWord(@RequestParam("kuaikePhone") String kuaikePhone) {
-
-		R_kuaiketab kuaiketab = new R_kuaiketab();
-		String regExp = "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$";
-		Pattern p = Pattern.compile(regExp);
-		Matcher matcher = p.matcher(kuaikePhone);
-		if (matcher.find() == true) {
-			kuaiketab = kuaiketabService.selectAll(kuaikePhone);
-			if (kuaiketab != null) {
-				kuaiketab.setKuaikeStatus(3);
-			} else {
-				kuaiketab.setKuaikeStatus(4);
-			}
-		} else {
-			kuaiketab.setKuaikeStatus(4);
-		}
-		return kuaiketab;
+	public String findBackPassWord(@RequestParam("kuaikePhone") String kuaikePhone,@RequestParam("password") String password) {
+		
+		String md5 = Md5Util.md5(password);
+		System.out.println(kuaikePhone+"1111111111111111111111111111111111111111");
+		kuaiketabService.findBackPassWord(md5, kuaikePhone);
+			
+		return "PC/login";
 	}
 
 	/**
@@ -266,13 +253,14 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "selectUpdatePasswordBykuaikeInfo", method = RequestMethod.POST)
 	public String supw(@RequestParam("kuaikeName") String kuaikeName, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("kuaikeAddress") String kuaikeAddress,
-			@RequestParam(value = "kuaikeAddressInfo", required = false) String kuaikeAddressInfo) {
+			@RequestParam(value = "kuaikeAddressInfo", required = false) String kuaikeAddressInfo,HttpServletRequest request) {
 
-		int sBykuaikeInfo = kuaiketabService.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress,
+		R_kuaiketab sBykuaikeInfo = kuaiketabService.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress,
 				kuaikeAddressInfo);
-		if (sBykuaikeInfo > 0) {
+		if (sBykuaikeInfo!=null) {
+			request.getSession().setAttribute("sBykuaikeInfo", sBykuaikeInfo);
+			request.getSession().setAttribute("kuaikePhone",sBykuaikeInfo.getKuaikePhone());
 			
-			System.out.println(sBykuaikeInfo+"test0000000000000000000000000000000000000000000000000000000001");
 			return "PC/shenhe";
 			
 		}

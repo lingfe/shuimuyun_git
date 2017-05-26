@@ -120,9 +120,9 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	 * @return
 	 */
 	@Override
-	public R_kuaiketab selectAll(String kuaikePhone) {
-		R_kuaiketab selectAll = kuaiketabMapper.selectAll(kuaikePhone);
-		return selectAll;
+	public void findBackPassWord(String password,String kuaikePhone) {
+		kuaiketabMapper.findBackPassWord(password,kuaikePhone);
+		
 	}
 
 	/**
@@ -207,9 +207,9 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	 * @return  返回   0没有匹配的数据   1 有匹配的数据  匹配成功  
 	 */
 	@Override
-	public int selectUpdatePasswordBykuaikeInfo(String kuaikeName, String kuaikePhone, String kuaikeAddress,
+	public R_kuaiketab selectUpdatePasswordBykuaikeInfo(String kuaikeName, String kuaikePhone, String kuaikeAddress,
 			String kuaikeAddressInfo) {
-		int supw = kuaiketabMapper.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
+		R_kuaiketab supw = kuaiketabMapper.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
 		return supw;
 	}
 

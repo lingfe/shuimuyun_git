@@ -38,8 +38,6 @@ public class R_kuaiketabController {
 	@Autowired
 	private R_kuaiketabService kuaiketabService;
 
-	String emg = "你错了";
-
 	/**
 	 * 
 	 * 快客申请，包含身份证复印件文件，手持身份证照片

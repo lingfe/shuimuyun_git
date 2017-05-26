@@ -150,6 +150,21 @@ public interface R_kuaiketabMapper {
 			@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeAddress") String kuaikeAddress,
 			@Param("kuaikeAddressInfo") String kuaikeAddressInfo);
 
+	
+	/**
+	 * 人工找回密码  通过知道快客的姓名、电话、地址看数据库中是否存在该用户信息
+	 * @author 杨杰     
+	 * @created 2017年5月26日 上午9:49:15  
+	 * @param kuaikeName 快客姓名
+	 * @param kuaikePhone  快客电话
+	 * @param kuaikeAddress  快客地址
+	 * @param kuaikeAddressInfo  快客 详情地址【可选】
+	 */
+	@Select("select * from kuaiketab where kuaikeName=#{kuaikeName} AND kuaikePhone=#{kuaikePhone} AND kuaikeAddress=#{kuaikeAddress} OR kuaikeAddressInfo=#{kuaikeAddressInfo}")
+	public int selectUpdatePasswordBykuaikeInfo(@Param("kuaikeName") String kuaikeName,
+			@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeAddress") String kuaikeAddress,
+			@Param("kuaikeAddressInfo") String kuaikeAddressInfo);
+
 	/**
 	 * 用户注册【申请】
 	 * 

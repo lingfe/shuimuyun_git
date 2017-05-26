@@ -33,13 +33,15 @@
 	charset="utf-8"></script>
 <script type="text/javascript">
 	$(function() {
+
+		//手机验证找回密码
 		$("#ajaxPhone").click(function() {
 			var phoneCode = $("#yanpwd").val();
 			//发送Ajax请求得到验证码
 			$.ajax({
 				url : 'getCode',
 				type : 'post',
-				async: false,
+				async : false,
 				data : {
 					phoneCode : phoneCode
 				},
@@ -52,6 +54,15 @@
 			//阻止表单提交(Ajax)
 			return false;
 		});
+
+// 		//人工找回密码
+// 		$("btn1").click(function() {
+// 			var form = document.forms[0];
+// 			form.submit();
+// 		});
+
+
+
 	});
 </script>
 
@@ -111,8 +122,8 @@
 	<div class="zhao_c">
 		<!--手机找回密码-->
 		<div class="zhao_shou2 que0" style="display: none;">
-		
-		<!-- 手机找回form 开始 -->
+
+			<!-- 手机找回form 开始 -->
 			<form action="reupdatepass" method="post">
 				<div class="zhuce_phone">
 					<label>* 手机号码：</label> <input type="text" value=" " id="phone"
@@ -149,7 +160,7 @@
 				</div>
 			</form>
 			<!-- 手机找回密码结束 -->
-			
+
 		</div>
 
 		<!--人工找回密码-->
@@ -199,7 +210,7 @@
 				<div class="clear"></div>
 			</div>
 
-			<form action="updatePassword" method="post">
+			<form action="selectUpdatePasswordBykuaikeInfo" method="post" id="subform">
 				<div class="zhuce_xing">
 					<label>* 姓名：</label> <input type="text" value="" id="namett"
 						name="kuaikeName" /> <span class="hidden1"
@@ -258,7 +269,7 @@
 						src="<%=basePath%>PC/images/g00_03.png" class="img7" />
 				</div>
 				<div class="zhuce_xiayibu">
-					<a href="javascript:void(0);" id="btn1">提交</a>
+					<a href="javascript:void(0);" id="btn1" onclick="document.getElementById('subform').submit();return false">提交</a>
 				</div>
 			</form>
 		</div>

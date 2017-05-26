@@ -108,6 +108,20 @@ public interface R_kuaiketabService {
 	public void updatePassword(String password, String kuaikeName, String kuaikePhone, String kuaikeAddress,
 			String kuaikeAddressInfo);
 
+	
+	/**
+	 * 通过人工找回密码   查询数据中是否存在该用户  则进行匹配  并且得到 对应的返回结果 
+	 * @author 杨杰     
+	 * @created 2017年5月26日 上午9:53:00  
+	 * @param kuaikeName  快客姓名
+	 * @param kuaikePhone   快客电话
+	 * @param kuaikeAddress   快客地址
+	 * @param kuaikeAddressInfo   详情地址【可选】
+	 * @return
+	 */
+	public int selectUpdatePasswordBykuaikeInfo(String kuaikeName, String kuaikePhone, String kuaikeAddress,
+			String kuaikeAddressInfo);
+
 	/**
 	 * 用户根据手机号 重置密码
 	 * 

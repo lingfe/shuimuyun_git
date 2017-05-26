@@ -34,7 +34,7 @@
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="<%=basePath%>PC/login.jsp">登录</a><a href="<%=basePath%>PC/register.jsp">注册</a>			</p>
+				<a href="<%=basePath%>PC/login.jsp">${sessionScope.namea!=null?'欢迎:':'登录'}</a><a href="<%=basePath%>PC/register.jsp"><span>${sessionScope.namea!=null?sessionScope.namea:'注册'}</span></a>			</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
@@ -49,7 +49,7 @@
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
+			<a href="PC/index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
 				href="#" class="navbar-btn navbar-toggle navbtn"
 				data-toggle="collapse" data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />

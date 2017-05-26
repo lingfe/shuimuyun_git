@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
-import com.yyf.controller.util.ErrorShow;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.service.R_kuaiketabService;
 import com.yyf.util.Md5Util;
@@ -252,6 +251,32 @@ public class R_kuaiketabController {
 		kuaiketabService.updatePassword(password, kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
 
 		return "PC/shenhe";
+	}
+
+	/**
+	 * 通过人工找回密码  【查询数据库中用户信息是否匹配】
+	 * @author 杨杰     
+	 * @created 2017年5月26日 上午10:08:10  
+	 * @param kuaikeName  快客姓名
+	 * @param kuaikePhone  快客电话
+	 * @param kuaikeAddress  快客地址
+	 * @param kuaikeAddressInfo  快客详情【可选】
+	 * @return  返回 0表示没有匹配数据  1表示有匹配数据
+	 */
+	@RequestMapping(value = "selectUpdatePasswordBykuaikeInfo", method = RequestMethod.POST)
+	public String supw(@RequestParam("kuaikeName") String kuaikeName, @RequestParam("kuaikePhone") String kuaikePhone,
+			@RequestParam("kuaikeAddress") String kuaikeAddress,
+			@RequestParam(value = "kuaikeAddressInfo", required = false) String kuaikeAddressInfo) {
+
+		int sBykuaikeInfo = kuaiketabService.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress,
+				kuaikeAddressInfo);
+		if (sBykuaikeInfo > 0) {
+			
+			System.out.println(sBykuaikeInfo+"test0000000000000000000000000000000000000000000000000000000001");
+			return "PC/shenhe";
+			
+		}
+		return "PC/zhaohuimima";
 	}
 
 	/**

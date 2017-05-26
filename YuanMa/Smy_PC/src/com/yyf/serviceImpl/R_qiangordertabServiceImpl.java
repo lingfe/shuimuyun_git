@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yyf.mapper.R_qiangordertabMapper;
+import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_qiangordertabService;
@@ -109,6 +110,19 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 	public List<R_xiaordertab> queryAddress(String kuaikeAddress, String shouhuoAddress) {
 		List<R_xiaordertab> queryAddress = qiangordertabMapper.queryAddress(kuaikeAddress, shouhuoAddress);
 		return queryAddress;
+	}
+
+	/**
+	 * 根据下单Id得到 快客的ID及姓名 电话
+	 * @author 杨杰     
+	 * @created 2017年5月26日 下午2:29:24  
+	 * @param xiaId  下单Id
+	 * @return
+	 */
+	@Override
+	public R_kuaiketab querytKuaike(String xiaId) {
+		R_kuaiketab querytKuaike = qiangordertabMapper.querytKuaike(xiaId);
+		return querytKuaike;
 	}
 
 }

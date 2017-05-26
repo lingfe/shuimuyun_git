@@ -108,7 +108,7 @@
 					<li>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td align="center"><a href="<%=basePath%>PC/shenhe.jsp">
+								<td align="center"><a href="<%=basePath%>PC/toExamine.jsp">
 										<p class="setbacks_3_1_cc">2</p>
 										<p class="setbacks_3_2_cc">审核</p>
 								</a></td>

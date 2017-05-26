@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
 
@@ -38,6 +39,17 @@ public interface R_qiangordertabMapper {
 	 */
 	@Select("select * from qiangordertab")
 	public List<R_qiangordertab> query();
+	
+	/**
+	 * 根据下单Id查询 快客的id，姓名，电话
+	 * @author 杨杰     
+	 * @created 2017年5月26日 下午2:25:36  
+	 * @param xiaId  下单ID
+	 * @return  返回一个实体对象
+	 */
+	@Select("SELECT q.`kuaikeId`,k.`kuaikeName`,k.`kuaikePhone` FROM qiangordertab AS q INNER JOIN kuaiketab AS k ON q.`kuaikeId`=k.`kuaikeId` WHERE q.`xiaId`=#{xiaId}")
+	public R_kuaiketab querytKuaike(@Param("xiaId") String xiaId);
+	
 
 	/**
 	 * 得到数据总条数

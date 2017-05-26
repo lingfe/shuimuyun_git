@@ -103,7 +103,7 @@
 						<li>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center"><a href="shenhe.jsp">
+									<td align="center"><a href="toExamine.jsp">
 											<p class="setbacks_3_1">2</p>
 											<p class="setbacks_3_2">审核</p>
 									</a></td>

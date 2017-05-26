@@ -2,6 +2,7 @@ package com.yyf.service;
 
 import java.util.List;
 
+import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
 
@@ -31,6 +32,16 @@ public interface R_qiangordertabService {
 	 */
 	public List<R_qiangordertab> query();
 
+	/**
+	 * 根据下单Id 获取到快客ID，快客姓名 ， 快客电话
+	 * @author 杨杰     
+	 * @created 2017年5月26日 下午2:27:42  
+	 * @param xiaId  下单ID
+	 * @return  快客信息【实体对象】
+	 */
+	public R_kuaiketab querytKuaike(String xiaId);
+	
+	
 	/**
 	 * 得到数据总条数
 	 * 

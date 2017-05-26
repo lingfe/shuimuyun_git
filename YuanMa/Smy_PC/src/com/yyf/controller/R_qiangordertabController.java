@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_qiangordertabService;
@@ -96,6 +97,27 @@ public class R_qiangordertabController {
 
 		// 返回 List
 		return "list";
+	}
+
+	/**
+	 * 根据下单Id 获取到快客的id 姓名 及电话
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月26日 下午2:34:02
+	 * @param map
+	 *            map集合对象
+	 * @param xiaId
+	 *            下单id
+	 * @return
+	 */
+	@RequestMapping(value = "queryKuaike/{xiaId}", method = RequestMethod.GET)
+	public String queryKuaike(Map<String, Object> map, @PathVariable("xiaId") String xiaId) {
+		R_kuaiketab querytKuaike = qiangordertabService.querytKuaike(xiaId);
+
+		if (!"".equals(querytKuaike) && querytKuaike != null) {
+			return "PC/index";
+		}
+		return null;
 	}
 
 	/**

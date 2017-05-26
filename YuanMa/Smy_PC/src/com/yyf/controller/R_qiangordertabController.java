@@ -115,6 +115,7 @@ public class R_qiangordertabController {
 		R_kuaiketab querytKuaike = qiangordertabService.querytKuaike(xiaId);
 
 		if (!"".equals(querytKuaike) && querytKuaike != null) {
+
 			return "PC/index";
 		}
 		return null;
@@ -164,7 +165,6 @@ public class R_qiangordertabController {
 		/* 对集合进行简单的判断处理 */
 		if (queryAddress != null && queryAddress.size() > 0) {
 			// 测试 集合是否有值
-			System.out.println(queryAddress);
 			/* 添加到集合中 */
 			map.put("queryAddress", queryAddress);
 			// 返回成功页面

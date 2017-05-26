@@ -114,14 +114,20 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 
 	/**
 	 * 根据下单Id得到 快客的ID及姓名 电话
-	 * @author 杨杰     
-	 * @created 2017年5月26日 下午2:29:24  
-	 * @param xiaId  下单Id
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月26日 下午2:29:24
+	 * @param xiaId
+	 *            下单Id
 	 * @return
 	 */
 	@Override
 	public R_kuaiketab querytKuaike(String xiaId) {
 		R_kuaiketab querytKuaike = qiangordertabMapper.querytKuaike(xiaId);
+		if (querytKuaike == null) {
+
+			querytKuaike = new R_kuaiketab();
+		}
 		return querytKuaike;
 	}
 

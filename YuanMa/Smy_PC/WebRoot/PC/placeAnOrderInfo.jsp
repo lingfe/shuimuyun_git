@@ -121,12 +121,12 @@ body {
 					<tr>
 
 						<td></td>
-						<td><span>${info.kuaikeName }</span>快递员</td>
+						<td><span>${kuaike.kuaikeName }</span>快递员</td>
 					</tr>
 					<tr>
 
 						<td></td>
-						<td>${info.kuaikePhone }</td>
+						<td>${kuaike.kuaikePhone }</td>
 					</tr>
 					<tr>
 
@@ -198,8 +198,7 @@ body {
 				</ul>
 				<div style="clear: both;"></div>
 				<!-- 快客id -->
-				<input type="hidden" value="277d060f-708e-4f2c-ad5d-fc40fef6dad5"
-					name="kuaikeId" />
+				<input type="hidden" value="${kuaike.kuaikeId }" name="kuaikeId" />
 				<!-- 下单id -->
 				<input type="hidden" value="${info.xiaId }" name="xiaId" />
 				<!-- 星评数值 -->

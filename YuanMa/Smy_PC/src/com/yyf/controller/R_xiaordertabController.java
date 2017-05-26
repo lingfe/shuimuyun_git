@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yyf.model.Commenttab;
+import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_xiaordertab;
+import com.yyf.service.R_qiangordertabService;
 import com.yyf.service.R_xiaordertabService;
 import com.yyf.util.R_xiaordertabEnum;
 
@@ -34,7 +36,8 @@ public class R_xiaordertabController {
 	// 自动装配
 	@Autowired
 	private R_xiaordertabService r_xiaordertabService;
-
+	@Autowired
+	private R_qiangordertabService r_qiangordertabService;
 	/**
 	 * 
 	 * 添加下单评论记录
@@ -92,7 +95,9 @@ public class R_xiaordertabController {
 		// 得到数据
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
 		map.addAttribute("info", xiaorderInfo);
-		System.out.println(xiaorderInfo.toString());
+		
+		R_kuaiketab querytKuaike = r_qiangordertabService.querytKuaike(xiaId);
+		map.addAttribute("kuaike", querytKuaike);
 
 		return "PC/placeAnOrderInfo";
 	}

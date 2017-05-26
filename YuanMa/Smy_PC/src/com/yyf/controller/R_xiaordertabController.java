@@ -1,6 +1,7 @@
 package com.yyf.controller;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -45,6 +46,11 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value = "/insertCommentInfo", method = RequestMethod.POST)
 	public String insertCommentInfo(Commenttab tab) {
+		// 评论id
+		tab.setCommentId(UUID.randomUUID().toString());
+		// 评论时间
+		tab.setCommentDate(new Date());
+
 		r_xiaordertabService.insertCommentInfo(tab);
 		return "PC/index";
 	}
@@ -87,7 +93,7 @@ public class R_xiaordertabController {
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
 		map.addAttribute("info", xiaorderInfo);
 		System.out.println(xiaorderInfo.toString());
-		
+
 		return "PC/placeAnOrderInfo";
 	}
 
@@ -133,8 +139,9 @@ public class R_xiaordertabController {
 	 * @return URL
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@RequestParam(value = "fileImages", required = false) MultipartFile fileImages,HttpServletRequest request,R_xiaordertab tab) {
-		
+	public String add(@RequestParam(value = "fileImages", required = false) MultipartFile fileImages,
+			HttpServletRequest request, R_xiaordertab tab) {
+
 		// 获取到当前服务器项目的跟路径
 		String path = request.getSession().getServletContext().getRealPath("upload");
 		// 文件1
@@ -143,14 +150,14 @@ public class R_xiaordertabController {
 		if (!targetFile1.exists()) {
 			targetFile1.mkdirs();
 		}
-		
+
 		// 保存
 		try {
 			fileImages.transferTo(targetFile1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// 下单id
 		tab.setXiaId(UUID.randomUUID().toString());
 		// 下单状态,默认

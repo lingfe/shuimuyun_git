@@ -10,15 +10,12 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class R_xiaordertab {
 
-
-	
-
 	@Override
 	public String toString() {
 		return "R_xiaordertab [xiaId=" + xiaId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
 				+ ", kuaikeAddress=" + kuaikeAddress + ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone
 				+ ", shouhuoAddress=" + shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhuoDate="
-				+ quhuoDate + ", kaikeProies=" + kaikeProies + ", status=" + status + ", okDate=" + okDate
+				+ quhouDate + ", kaikeProies=" + kaikeProies + ", status=" + status + ", okDate=" + okDate
 				+ ", shopName=" + shopName + ", shopzholiang=" + shopzholiang + ", shopNumer=" + shopNumer
 				+ ", shopprices=" + shopprices + ", shopGuige=" + shopGuige + ", shopDate=" + shopDate
 				+ ", kuaikeAddressInfo=" + kuaikeAddressInfo + ", shopType=" + shopType + ", timeString=" + timeString
@@ -107,15 +104,15 @@ public class R_xiaordertab {
 	}
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date quhuoDate;// 去获取时间 `quhouDate` TIMESTAMP NOT NULL DEFAULT
+	private Date quhouDate;// 去获取时间 `quhouDate` TIMESTAMP NOT NULL DEFAULT
 							// CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
 	public Date getQuhuoDate() {
-		return quhuoDate;
+		return quhouDate;
 	}
 
-	public void setQuhuoDate(Date quhuoDate) {
-		this.quhuoDate = quhuoDate;
+	public void setQuhuoDate(Date quhouDate) {
+		this.quhouDate = quhouDate;
 	}
 
 	private Float kaikeProies;// 运费 `kaikePrioes` DECIMAL(10,0) NOT NULL,
@@ -213,12 +210,14 @@ public class R_xiaordertab {
 	public void setShopDate(Date shopDate) {
 		this.shopDate = shopDate;
 	}
-	
+
 	/****************************/
-	/**add lijie 2017-05-24******/
+	/** add lijie 2017-05-24 ******/
 	/****************************/
-	
-	private String kuaikeAddressInfo;//	  `kuaikeAddressInfo` VARCHAR(200) DEFAULT NULL COMMENT '快客详细地址',
+
+	private String kuaikeAddressInfo;// `kuaikeAddressInfo` VARCHAR(200) DEFAULT
+										// NULL COMMENT '快客详细地址',
+
 	public String getKuaikeAddressInfo() {
 		return kuaikeAddressInfo;
 	}
@@ -227,7 +226,9 @@ public class R_xiaordertab {
 		this.kuaikeAddressInfo = kuaikeAddressInfo;
 	}
 
-	private int shopType;//	  `shopType` INT(11) NOT NULL DEFAULT '0' COMMENT '货物类型',
+	private int shopType;// `shopType` INT(11) NOT NULL DEFAULT '0' COMMENT
+							// '货物类型',
+
 	public int getShopType() {
 		return shopType;
 	}
@@ -235,8 +236,10 @@ public class R_xiaordertab {
 	public void setShopType(int shopType) {
 		this.shopType = shopType;
 	}
-	
-	private String timeString;//	  `timeString` VARCHAR(10) NOT NULL DEFAULT '0' COMMENT '最快取货时间',
+
+	private String timeString;// `timeString` VARCHAR(10) NOT NULL DEFAULT '0'
+								// COMMENT '最快取货时间',
+
 	public String getTimeString() {
 		return timeString;
 	}
@@ -244,8 +247,10 @@ public class R_xiaordertab {
 	public void setTimeString(String timeString) {
 		this.timeString = timeString;
 	}
-	
-	private String shopImages;//	  `shopImages` VARCHAR(255) NOT NULL COMMENT '商品图片',
+
+	private String shopImages;// `shopImages` VARCHAR(255) NOT NULL COMMENT
+								// '商品图片',
+
 	public String getShopImages() {
 		return shopImages;
 	}
@@ -253,8 +258,9 @@ public class R_xiaordertab {
 	public void setShopImages(String shopImages) {
 		this.shopImages = shopImages;
 	}
-	
-	private int payment;//	  `payment` INT(11) NOT NULL DEFAULT '0' COMMENT '是否付款'
+
+	private int payment;// `payment` INT(11) NOT NULL DEFAULT '0' COMMENT '是否付款'
+
 	public int getPayment() {
 		return payment;
 	}

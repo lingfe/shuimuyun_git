@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -64,7 +65,6 @@ body {
 				<h3>货物信息</h3>
 				<table>
 					<tr>
-
 						<td>数量:</td>
 						<td><span>${info.shopNumer }</span>(个/件)</td>
 					</tr>
@@ -78,7 +78,7 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;">最迟取货时间:</td>
-						<td style="text-indent:40px; text-align: left;"><span>${info.quhuoDate}</span><i>(小时)</i></td>
+						<td style="text-indent:40px; text-align: left;"><span><fmt:formatDate value="${info.quhuoDate}" pattern="yyyy-MM-dd HH:mm"/></span></td>
 					</tr>
 				</table>
 

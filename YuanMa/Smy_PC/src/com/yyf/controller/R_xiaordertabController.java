@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yyf.model.Commenttab;
@@ -33,11 +34,27 @@ import com.yyf.util.R_xiaordertabEnum;
 @RequestMapping("/xiaordertab")
 public class R_xiaordertabController {
 
-	// 自动装配
+	// 自动装配	下单
 	@Autowired
 	private R_xiaordertabService r_xiaordertabService;
+	// 自动装配	抢单
 	@Autowired
 	private R_qiangordertabService r_qiangordertabService;
+	
+	/**
+	 * 
+	 * 通过ajax请求，根据状态返回集合
+	 * @author lijie     
+	 * @created 2017年5月28日 上午9:05:17  
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping(value="/xiadanAjax/{status}",method=RequestMethod.GET)
+	public @ResponseBody List<R_xiaordertab> ajxaJson(@PathVariable("status")int status){
+		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQuery(status);
+		return statusQuery;
+	}
+	
 	/**
 	 * 
 	 * 添加下单评论记录

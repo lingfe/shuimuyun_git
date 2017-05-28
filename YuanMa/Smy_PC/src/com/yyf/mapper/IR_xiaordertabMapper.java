@@ -21,6 +21,16 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
 	/**
 	 * 
+	 * 根据状态查询下单数据
+	 * @author lijie    
+	 * @created 2017年5月28日 上午9:09:36  
+	 * @param status 下单状态
+	 */
+	@Select("SELECT * FROM xiaordertab where status=#{status}")
+	List<R_xiaordertab> statusQuery(@Param("status")int status);
+	
+	/**
+	 * 
 	 * 添加下单评论记录
 	 * 
 	 * @author lijie

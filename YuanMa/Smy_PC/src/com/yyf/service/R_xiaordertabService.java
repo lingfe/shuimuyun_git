@@ -2,6 +2,8 @@ package com.yyf.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 
@@ -12,6 +14,15 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface R_xiaordertabService {
 
+	/**
+	 * 
+	 * 根据状态查询下单数据
+	 * @author lijie    
+	 * @created 2017年5月28日 上午9:09:36  
+	 * @param status 下单状态
+	 */
+	List<R_xiaordertab> statusQuery(int status);
+	
 	/**
 	 * 
 	 * 添加下单评论记录

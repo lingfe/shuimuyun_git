@@ -25,7 +25,7 @@ import com.yyf.service.R_qiangordertabService;
 @Controller
 public class R_qiangordertabController {
 
-	/* 一下涉及到页面的跳转的 都没有真实的页面 */
+	/* 涉及到页面的跳转的 都没有真实的页面 */
 
 	/* 添加依赖注入 */
 	@Autowired

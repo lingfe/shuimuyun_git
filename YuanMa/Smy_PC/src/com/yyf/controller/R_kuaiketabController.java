@@ -202,7 +202,7 @@ public class R_kuaiketabController {
 	public String findBackPassWord(@RequestParam("kuaikePhone") String kuaikePhone,@RequestParam("password") String password) {
 		
 		String md5 = Md5Util.md5(password);
-		System.out.println(kuaikePhone+"1111111111111111111111111111111111111111");
+		
 		kuaiketabService.findBackPassWord(md5, kuaikePhone);
 			
 		return "PC/login";

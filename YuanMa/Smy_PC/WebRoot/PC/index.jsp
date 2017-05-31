@@ -34,11 +34,10 @@
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="<%=basePath%>PC/login.jsp">${sessionScope.namea!=null?'欢迎:':'登录'}</a><a href="<%=basePath%>PC/register.jsp"><span>${sessionScope.namea!=null?sessionScope.namea:'注册'}</span></a>			</p>
+				<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/login">${sessionScope.namea!=null?'欢迎:':'登录'}</a><a href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?sessionScope.namea:'注册'}</span></a>			</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
-
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -49,7 +48,7 @@
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="PC/index.jsp" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
+			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
 				href="#" class="navbar-btn navbar-toggle navbtn"
 				data-toggle="collapse" data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />
@@ -57,7 +56,7 @@
 		</div>
 		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
-				<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
+				<li class="active"><a href="http://www.smuyun.com/" target="_left">商城</a></li>
 				<li class="active"><a href="<%=basePath%>PC/index.jsp" style="color: #ff6d46;">人人配送</a></li>
 				<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
 				<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
@@ -146,7 +145,6 @@
 			<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
 			<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
 		</ul>
-
 	</div>
 
 	</footer>

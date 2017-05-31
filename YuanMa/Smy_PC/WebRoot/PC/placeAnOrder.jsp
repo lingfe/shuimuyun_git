@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -310,51 +311,45 @@
 				</div>
 				<div>
 					<label>※ 我的地址:</label> <select name="kuaikeAddress">
-						<option value="贵州">贵州</option>
-						<option value="四川">四川</option>
+					<c:forEach items="${province }" var="p">
+						<option value="${p.name }">${p.name }</option>
+					</c:forEach>
 					</select> <label>省</label> <select name="kuaikeAddress">
-						<option value="贵阳">贵阳</option>
-						<option value="南充">南充</option>
+					<c:forEach items="${city }" var="c">
+						<option value="${c.name }">${c.name }</option>
+					</c:forEach>
 					</select> <label>市</label> <select name="kuaikeAddress">
-						<option value="红岩区">红岩区</option>
-						<option value="仪陇">仪陇</option>
+					<c:forEach items="${area }" var="a">
+						<option value="${a.name }">${a.name }</option>
+					</c:forEach>
 					</select> <label>县/区</label>
-				</div>
-				<div class="rr">
-					<select name="kuaikeAddress">
-						<option value="红岩路">红岩路</option>
-						<option value="马鞍">马鞍</option>
-					</select> <label>街道</label>
 				</div>
 				<div class="rr">
 					<input name="kuaikeAddressInfo" type="text" /> <label>详细地址</label>
 				</div>
 				<!--收货人信息-->
 				<div>
-					<label>※ 收货人姓名:</label> <input name="shouhuoNmae" class="min2"
+					<label>※ 收货姓名:</label> <input name="shouhuoNmae" class="min2"
 						type="text" /> <abbr class="tt4"></abbr>
 				</div>
 				<div>
-					<label>※ 收货人电话:</label> <input name="shouhuoShone" class="pon2"
+					<label>※ 收货电话:</label> <input name="shouhuoShone" class="pon2"
 						type="text" /> <abbr class="tt5"></abbr>
 				</div>
 				<div>
-					<label>※ 收货人地址:</label> <select name="shouhuoAddress">
-						<option value="四川">四川</option>
-						<option value="贵州">贵州</option>
+					<label>※ 收货地址:</label> <select name="shouhuoAddress">
+					<c:forEach items="${province }" var="p">
+						<option value="${p.name }">${p.name }</option>
+					</c:forEach>
 					</select> <label>省</label> <select name="shouhuoAddress">
-						<option value="南充">南充</option>
-						<option value="贵阳">贵阳</option>
+					<c:forEach items="${city }" var="c">
+						<option value="${c.name }">${c.name }</option>
+					</c:forEach>
 					</select> <label>市</label> <select name="shouhuoAddress">
-						<option value="仪陇">仪陇</option>
-						<option value="红岩区">红岩区</option>
+					<c:forEach items="${area }" var="a">
+						<option value="${a.name }">${a.name }</option>
+					</c:forEach>
 					</select> <label>县/区</label>
-				</div>
-				<div class="rr">
-					<select name="shouhuoAddress">
-						<option value="马鞍">马鞍</option>
-						<option value="红岩路">红岩路</option>
-					</select> <label>街道</label>
 				</div>
 				<div class="rr">
 					<input name="shouhuoAddressInfo" type="text" /> <label>详细地址</label>

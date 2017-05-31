@@ -110,7 +110,7 @@
 		<a href="javascript:void(0);"><img src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
 	</div>
 	<div class="ren_aj2 flex1">
-		<a href="<%=basePath%>PC/placeAnOrder.jsp"><img src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span></a>
+		<a href="<%=basePath%>RequestMappingUtil/requestData/PC/placeAnOrder"><img src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span></a>
 	</div>
 	<div style="clear: both;"></div>
 	<!--底部开始-->

@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yyf.model.City;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_xiaordertab;
+import com.yyf.service.CityService;
 import com.yyf.service.R_qiangordertabService;
 import com.yyf.service.R_xiaordertabService;
 import com.yyf.util.R_xiaordertabEnum;
@@ -40,6 +42,10 @@ public class R_xiaordertabController {
 	// 自动装配	抢单
 	@Autowired
 	private R_qiangordertabService r_qiangordertabService;
+	// 自动装配	地址
+	@Autowired
+	private CityService cityService;
+	
 	
 	/**
 	 * 
@@ -115,8 +121,23 @@ public class R_xiaordertabController {
 		
 		R_kuaiketab querytKuaike = r_qiangordertabService.querytKuaike(xiaId);
 		map.addAttribute("kuaike", querytKuaike);
-
+		
+		//获取省
+		List<City> province = cityService.getProvince();
+		map.addAttribute("province", province);
+		
+		//获取市
+		List<City> city = cityService.getCity();
+		map.addAttribute("city", city);
+		
+		//获取区
+		List<City> area = cityService.getArea();
+		map.addAttribute("area",area);
+		
+		
 		return "PC/placeAnOrderInfo";
+	
+		
 	}
 
 	/**

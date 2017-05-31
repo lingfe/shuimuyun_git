@@ -17,7 +17,7 @@ import com.yyf.service.CityService;
  * 
   * 文件名：RequestMappingUtil.java
   * 描述：    请求跳转工具类
-  * 修改人： 杨杰
+  * 修改人： lijie
   * 修改时间：2017年5月31日 上午8:41:43
   * 修改内容：
  */
@@ -35,19 +35,14 @@ public class RequestMappingUtil {
 	 * 根据i来区分pc还是移动端
 	 * @author lijie     
 	 * @created 2017年5月31日 上午8:44:16  
-	 * @param 页面名称
-	 * @param pc/app
+	 * @param param 页面名称
+	 * @param i pc/app
 	 * @return
 	 */
 	@RequestMapping(value="requestNUll/{i}/{param}",method=RequestMethod.GET)
 	public String requestNUll(@PathVariable("param")String param,@PathVariable("i")String i){
-		//判断i
-		if(i=="PC"){
-			return i+"/"+param;
-		}
 		
 		return i+"/"+param;
-		
 	}
 	
 	/**
@@ -56,8 +51,8 @@ public class RequestMappingUtil {
 	 * 根据i来区分pc还是移动端
 	 * @author lijie     
 	 * @created 2017年5月31日 上午8:44:16  
-	 * @param 页面名称
-	 * @param pc/app
+	 * @param param 页面名称
+	 * @param i pc/app
 	 * @return
 	 */
 	@RequestMapping(value="requestData/{i}/{param}",method=RequestMethod.GET)

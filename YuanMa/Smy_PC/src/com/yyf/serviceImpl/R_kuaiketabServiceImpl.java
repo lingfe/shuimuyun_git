@@ -120,9 +120,9 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	 * @return
 	 */
 	@Override
-	public void findBackPassWord(String password,String kuaikePhone) {
-		kuaiketabMapper.findBackPassWord(password,kuaikePhone);
-		
+	public void findBackPassWord(String password, String kuaikePhone) {
+		kuaiketabMapper.findBackPassWord(password, kuaikePhone);
+
 	}
 
 	/**
@@ -137,9 +137,8 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	 * @return
 	 */
 	@Override
-	public int updateUserpass(String password, String kuaikePhone) {
-		int updateUserpass = kuaiketabMapper.updateUserpass(password, kuaikePhone);
-		return updateUserpass;
+	public void updateUserpass(String password, String kuaikePhone) {
+		kuaiketabMapper.updateUserpass(password, kuaikePhone);
 	}
 
 	/**
@@ -197,19 +196,25 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	}
 
 	/**
-	 * 通过人工找回密码   并且通过查询数据库中是否存在该用户信息  进行匹配 
-	 * @author 杨杰     
-	 * @created 2017年5月26日 上午9:56:00  
-	 * @param kuaikeName   快客姓名
-	 * @param kuaikePhone  快客电话
-	 * @param kuaikeAddress   快客地 址
-	 * @param kuaikeAddressInfo   详情地址【可选】
-	 * @return  返回   0没有匹配的数据   1 有匹配的数据  匹配成功  
+	 * 通过人工找回密码 并且通过查询数据库中是否存在该用户信息 进行匹配
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月26日 上午9:56:00
+	 * @param kuaikeName
+	 *            快客姓名
+	 * @param kuaikePhone
+	 *            快客电话
+	 * @param kuaikeAddress
+	 *            快客地 址
+	 * @param kuaikeAddressInfo
+	 *            详情地址【可选】
+	 * @return 返回 0没有匹配的数据 1 有匹配的数据 匹配成功
 	 */
 	@Override
 	public R_kuaiketab selectUpdatePasswordBykuaikeInfo(String kuaikeName, String kuaikePhone, String kuaikeAddress,
 			String kuaikeAddressInfo) {
-		R_kuaiketab supw = kuaiketabMapper.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
+		R_kuaiketab supw = kuaiketabMapper.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress,
+				kuaikeAddressInfo);
 		return supw;
 	}
 

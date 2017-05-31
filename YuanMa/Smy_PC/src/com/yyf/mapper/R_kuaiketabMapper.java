@@ -114,7 +114,7 @@ public interface R_kuaiketabMapper {
 	 * @return
 	 */
 	@Update("UPDATE kuaiketab SET password=#{password}  WHERE kuaikePhone=#{kuaikePhone}")
-	public int updateUserpass(@Param("password") String password, @Param("kuaikePhone") String kuaikePhone);
+	public void updateUserpass(@Param("password") String password, @Param("kuaikePhone") String kuaikePhone);
 
 	/**
 	 * 根据手机接收短信登陆【快捷登陆】

@@ -133,7 +133,7 @@ public interface R_kuaiketabService {
 	 *            手机号
 	 * @return
 	 */
-	public int updateUserpass(String password, String kuaikePhone);
+	public void updateUserpass(String password, String kuaikePhone);
 
 	/**
 	 * 根据手机号码接收验证码进行登陆【快捷登陆】

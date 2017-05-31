@@ -179,13 +179,8 @@ public class R_kuaiketabController {
 		// 通过手机找回密码 然后通过Md5加密
 		String pwd = Md5Util.md5(password);
 		// 调用重置密码的方法 对加密后的密码进行修改
-		int updateUserpass = kuaiketabService.updateUserpass(pwd, kuaikePhone);
-
-		if (updateUserpass > 0) {
-			System.out.println(updateUserpass);
-			System.out.println(pwd + "===================================");
-		}
-
+		kuaiketabService.updateUserpass(pwd, kuaikePhone);
+		//返回页面
 		return "PC/login";
 	}
 
@@ -279,10 +274,10 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "deletetU/{kuaikeId}", method = RequestMethod.POST)
 	@ResponseBody
 	public int deletetU(Map<String, Object> map, @PathVariable("kuaikeId") String kuaikeId) {
-
+		//调用方法  并且返回一个INT 类型  0失败  1成功
 		int deletetU = kuaiketabService.deletetU(kuaikeId);
+		//判断
 		if (deletetU > 0) {
-			System.out.println("删除成功");
 			return 1;
 		}
 		return 0;
@@ -327,8 +322,6 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "phoneLogin", method = RequestMethod.POST)
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("phoneCode") int phoneCode) {
-
-		System.out.println(kuaikePhone + "\t" + phoneCode);
 
 		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
 

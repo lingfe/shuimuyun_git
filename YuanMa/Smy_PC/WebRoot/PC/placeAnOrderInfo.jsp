@@ -39,7 +39,7 @@ body {
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="index.html" class="logo"><img
+			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img
 				src="<%=basePath%>PC/images/logo.png" /></a> <a href="#"
 				class="navbar-btn navbar-toggle navbtn" data-toggle="collapse"
 				data-target="#myCollapse"> <img

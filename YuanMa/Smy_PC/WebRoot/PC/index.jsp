@@ -38,7 +38,6 @@
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
-
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -146,7 +145,6 @@
 			<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
 			<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
 		</ul>
-
 	</div>
 
 	</footer>

@@ -30,7 +30,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="clear"></div>
 	</div>
-
 	<!--导航位置-->
 
 	<!--导航开始-->
@@ -38,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="index.html" class="logo"><img
+			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img
 				src="<%=basePath%>PC/images/logo.png" /></a> <a href="#"
 				class="navbar-btn navbar-toggle navbtn" data-toggle="collapse"
 				data-target="#myCollapse"> <img
@@ -86,9 +85,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="perinfo_r right">
 			<div class="perinfo_rCont" id="perinfo_rContOne">
 				<div class="perinfo_menu_item">
-					<a href="javascript:;">全部订单</a> <a class="active"
-						href="javascript:;">待付款</a> <a href="javascript:;">待取货</a> <a
-						href="javascript:;">正在派送</a> <a href="javascript:;">待评价</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref(0);">全部订单</a> <a class="active"
+						href="javascript:void(0);"  onclick="javascript:statusHref(1);">待付款</a> <a href="javascript:void(0);"  onclick="javascript:statusHref(2);">待取货</a> <a
+						href="javascript:void(0);"  onclick="javascript:statusHref(3);">正在派送</a> <a href="javascript:void(0);"  onclick="javascript:statusHref(4);">待评价</a>
 				</div>
 				<table border="0" cellspacing="0" cellpadding="0">
 					<thead class="perinfo_thead">
@@ -100,110 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td class="perinfo_operation">操作</td>
 						</tr>
 					</thead>
-					<tbody class="perinfo_tbody prolist">
-						<!--<tr>
-								<td class="perinfo_name">
-									<img class="perinfo_img left" title="" alt="" src="<%=basePath%>PC/images/perinfo.png" />
-									<div class="perinfo_orderinfo right">
-										<p>大小：中货物</p>
-										<p>重量：20kg</p>
-										<p>类型：不易碎</p>
-									</div>
-								</td>
-								<td class="perinfo_time">
-									<p class="perinfo_time_text">2017-5-02</p>
-								</td>
-								<td class="perinfo_pay">
-									<p class="perinfo_time_text">￥ 1200</p>
-								</td>
-								<td class="perinfo_state">
-									<p class="perinfo_time_text">待取货</p>
-									<a class="perinfo_actbtn" href="#">快递员信息</a>
-								</td>
-								<td class="perinfo_operation">
-									<p class="perinfo_btn">
-										<img title="查看详情" alt="" src="<%=basePath%>PC/images/See.png" width="32" />
-									</p>
-								</td>
-							</tr>
-							<tr>
-								<td class="perinfo_name">
-									<img class="perinfo_img left" title="" alt="" src="<%=basePath%>PC/images/perinfo.png" />
-									<div class="perinfo_orderinfo right">
-										<p>大小：中货物</p>
-										<p>重量：20kg</p>
-										<p>类型：不易碎</p>
-									</div>
-								</td>
-								<td class="perinfo_time">
-									<p class="perinfo_time_text">2017-5-02</p>
-								</td>
-								<td class="perinfo_pay">
-									<p class="perinfo_time_text">￥ 1200</p>
-								</td>
-								<td class="perinfo_state">
-									<p class="perinfo_time_text">待付款</p>
-									<a class="perinfo_actbtn" href="#">立即付款</a>
-								</td>
-								<td class="perinfo_operation">
-									<p class="perinfo_btn">
-										<img title="删除" alt="" src="<%=basePath%>PC/images/delete.png" width="38" />
-										<img title="查看详情" alt="" src="<%=basePath%>PC/images/See.png" width="32" />
-									</p>
-								</td>
-							</tr>
-							<tr>
-								<td class="perinfo_name">
-									<img class="perinfo_img left" title="" alt="" src="<%=basePath%>PC/images/perinfo.png" />
-									<div class="perinfo_orderinfo right">
-										<p>大小：中货物</p>
-										<p>重量：20kg</p>
-										<p>类型：不易碎</p>
-									</div>
-								</td>
-								<td class="perinfo_time">
-									<p class="perinfo_time_text">2017-5-02</p>
-								</td>
-								<td class="perinfo_pay">
-									<p class="perinfo_time_text">￥ 1200</p>
-								</td>
-								<td class="perinfo_state">
-									<p class="perinfo_time_text">正在派送</p>
-									<a class="perinfo_actbtn" href="#">查看物流</a>
-								</td>
-								<td class="perinfo_operation">
-									<p class="perinfo_btn">
-										<img title="查看详情" alt="" src="<%=basePath%>PC/images/See.png" width="32" />
-									</p>
-								</td>
-							</tr>
-							<tr>
-								<td class="perinfo_name">
-									<img class="perinfo_img left" title="" alt="" src="<%=basePath%>PC/images/perinfo.png" />
-									<div class="perinfo_orderinfo right">
-										<p>大小：中货物</p>
-										<p>重量：20kg</p>
-										<p>类型：不易碎</p>
-									</div>
-								</td>
-								<td class="perinfo_time">
-									<p class="perinfo_time_text">2017-5-02</p>
-								</td>
-								<td class="perinfo_pay">
-									<p class="perinfo_time_text">￥ 1200</p>
-								</td>
-								<td class="perinfo_state">
-									<p class="perinfo_time_text">待评价</p>
-								</td>
-								<td class="perinfo_operation">
-									<p class="perinfo_btn">
-										<img title="删除" alt="" src="<%=basePath%>PC/images/delete.png" width="38" />
-										<img title="评价" alt="" src="<%=basePath%>PC/images/evaluate.png" width="29" />
-										<img title="查看详情" alt="" src="<%=basePath%>PC/images/See.png" width="32" />
-									</p>
-								</td>
-							</tr>-->
-					</tbody>
+					<tbody class="perinfo_tbody prolist"></tbody>
 				</table>
 			</div>
 			<div class="perinfo_rCont">我的钱包</div>
@@ -308,176 +204,81 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</ul>
 	</div>
 	</footer>
-
 	<!--jqery库 jquery-2.1.0.js -->
 	<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"
 		type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		var page = 1;
-		var finished = 0;
-		var sover = 0;
+		//默认
+		$(function(){
+			loadmore(0);
+		});
 	
-		//数据样式
-		var list = "<tr> \
-									<td class='perinfo_name'> \
-										<img class='perinfo_img left' title='' alt='' src='<%=basePath%>PC/images/perinfo.png' /> \
-										<div class='perinfo_orderinfo right'> \
-											<p>大小：</p> \
-											<p>重量：20kg</p> \
-											<p>类型：不易碎</p> \
-										</div> \
-									</td> \
-									<td class='perinfo_time'> \
-										<p class='perinfo_time_text'>2017-5-02</p> \
-									</td> \
-									<td class='perinfo_pay'> \
-										<p class='perinfo_time_text'>￥ 1200</p> \
-									</td> \
-									<td class='perinfo_state'> \
-										<p class='perinfo_time_text'>待取货</p> \
-										<a class='perinfo_actbtn' href='#'>快递员信息</a> \
-									</td> \
-									<td class='perinfo_operation'> \
-										<p class='perinfo_btn'> \
-											<img title='查看详情' alt='' src='<%=basePath%>PC/images/See.png' width='32' /> \
-										</p> \
-									</td> \
-								</tr>";
-	
-	
-		//如果屏幕未到整屏自动加载下一页补满  
-		var setdefult = setInterval(function() {
-			if (sover == 1)
-				clearInterval(setdefult);
-			else if ($(".prolist").height() < $(window).height())
-				loadmore($(window));
-			else
-				clearInterval(setdefult);
-		}, 500);
-	
-		//加载完  
-		function loadover() {
-			if (sover == 1) {
-				var overtext = "Duang～到底了";
-				$(".loadmore").remove();
-				if ($(".loadover").length > 0) {
-					$(".loadover span").eq(0).html(overtext);
-				} else {
-					var txt = list;
-					$(".prolist").append(txt);
-				}
-			}
-		}
-	
-		//加载更多  
-		var vid = 0;
-		function loadmore(obj) {
-			if (finished == 0 && sover == 0) {
-				var scrollTop = $(obj).scrollTop();
-				var scrollHeight = $(document).height();
-				var windowHeight = $(obj).height();
-	
-				if ($(".loadmore").length == 0) {
-					var txt = '<div class="loadmore"><span class="loading"></span>加载中..</div>'
-					$("#perinfo_rContOne").append(txt);
-				}
-	
-				if (scrollTop + windowHeight - scrollHeight <= 50) {
-					//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作  
-	
-	
-					//防止未加载完再次执行  
-					finished = 1;
-	
-					var result = "";
-					for (var i = 0; i < 5; i++) {
-						vid++;
-						result += list;
-					}
-					/* setTimeout(function() {
-						//$(".loadmore").remove();  
-						$('.prolist').append(result);
-						page += 1;
-						finished = 0;
-						//最后一页  
-						if (page == 10) {
-							sover = 1;
-							loadover();
-						}
-					}, 1000); */
+		//ajax
+		function loadmore(status) {
 					//请求
 					$.ajax({
 						type : 'get',
-						url : 'xiaordertab/xiadanAjax/0?t=25&page=' + page,
+						url : 'xiaordertab/xiadanAjax/'+status,
 						dataType : 'html',
 						success : function(objs) {
 							var data = jQuery.parseJSON(objs);
-							alert(data);
 							if (data == "") {
-								sover = 1;
-								loadover();
-								if (page == 1) {
-									$("#no_msg").removeClass("hidden");
-									$(".loadover").remove();
-								}
+								alert("没有数据");
 							} else {
 								var result = ''
 								for (var i = 0; i < data.length; i++) {
-									var shopType=data[i].shopType>0?'不易碎':'易碎';
-									
-									
-									result += "<tr> \
-									<td class='perinfo_name'> \
-										<img class='perinfo_img left' title='' alt='' src='<%=basePath%>PC/images/perinfo.png' /> \
-										<div class='perinfo_orderinfo right'> \
-											<p>大小："+data[i].shopGuige+"</p> \
-											<p>重量："+data[i].shopzholiang+"kg</p> \
-											<p>类型："+shopType+"</p> \
-										</div> \
-									</td> \
-									<td class='perinfo_time'> \
-										<p class='perinfo_time_text'>"+data[i].okDate+"</p> \
-									</td> \
-									<td class='perinfo_pay'> \
-										<p class='perinfo_time_text'>￥"+data[i].kaikeProies+"</p> \
-									</td> \
-									<td class='perinfo_state'> \
-										<p class='perinfo_time_text'>未接单</p> \
-										<a class='perinfo_actbtn' href='#'>快递员信息</a> \
-									</td> \
-									<td class='perinfo_operation'> \
-										<p class='perinfo_btn'> \
-											<a href='xiaordertab/xiaorderInfo/"+data[i].xiaId+"'><img title='查看详情' alt='' src='<%=basePath%>PC/images/See.png' width='32' /></a> \
-										</p> \
-									</td> \
-								</tr>";
-								}
+									//类型
+									var shopType = data[i].shopType > 0 ? '不易碎' : '易碎';
+									//状态
+									status = data[i].status == 0 ? '未接单' : data[i].status;
+									status = data[i].status == 1 ? '已接单,未发货' : status;
+									status = data[i].status == 2 ? '已到达,未确认' : status;
+									status = data[i].status == 3 ? '交易结束(已确认)' : status;
+									status = data[i].status == 4 ? '已评价' : status;
 	
-								// 为了测试，延迟1秒加载  
-								setTimeout(function() {
-									$(".loadmore").remove();
-									$('.prolist').append(result);
-									page += 1;
-									finished = 0;
-									//最后一页  
-									if (page == 10) {
-										sover = 1;
-										loadover();
-									}
-								}, 1000);
+									result += "<tr> \
+										<td class='perinfo_name'> \
+											<img class='perinfo_img left' title='"+data[i].shopImages+"' alt='' src='"+data[i].shopImages+"' /> \
+											<div class='perinfo_orderinfo right'> \
+												<p>大小：" + data[i].shopGuige + "</p> \
+												<p>重量：" + data[i].shopzholiang + "kg</p> \
+												<p>类型：" + shopType + "</p> \
+											</div> \
+										</td> \
+										<td class='perinfo_time'> \
+											<p class='perinfo_time_text'>" + data[i].okDate + "</p> \
+										</td> \
+										<td class='perinfo_pay'> \
+											<p class='perinfo_time_text'>￥" + data[i].kaikeProies + "</p> \
+										</td> \
+										<td class='perinfo_state'> \
+											<p class='perinfo_time_text'>" + status + "</p> \
+											<a class='perinfo_actbtn' href='javascript:void(0);'>快递员信息</a> \
+										</td> \
+										<td class='perinfo_operation'> \
+											<p class='perinfo_btn'> \
+												<a href='xiaordertab/xiaorderInfo/" + data[i].xiaId + "'><img title='查看详情' alt='' src='<%=basePath%>PC/images/See.png' width='32' /></a> \
+											</p> \
+										</td> \
+									</tr>";
+									
+									
+								}
+								$('.prolist').append(result);
+
 							}
 						},
 						error : function(xhr, type) {
 							alert('Ajax error!');
 						}
 					});
-				}
-			}
 		}
-		//页面滚动执行事件  
-		$(window).scroll(function() {
-			loadmore($(this));
-		});
+		
+		//状态
+		function statusHref(status) {
+			$('.prolist').html("");
+			loadmore(status);
+		}
 	</script>
 	<script>
 		$(function() {

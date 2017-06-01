@@ -180,4 +180,16 @@ public interface R_kuaiketabMapper {
 			+ "#{kuaikeShenfenZF},#{kuaikeShouchiSFZ},#{kuaikeStatus},#{kuaikeShengqingDate},"
 			+ "#{password},#{loginDate},#{kuaikeAddressInfo})")
 	public int addUser(R_kuaiketab kuaiketab);
+	
+	
+	/**
+	 * 根据快客Id修改手机号码
+	 * @author 杨杰     
+	 * @created 2017年6月1日 下午4:10:58  
+	 * @param kuaikePhone  手机号码
+	 * @param kuaikeId  快客ID
+	 */
+	@Update("update kuaiketab set kuaikePhone=#{kuaikePhone} where kuaikeId=#{kuaikeId}")
+	public void updatePhoneById(@Param("kuaikePhone") String kuaikePhone,@Param("kuaikeId") String kuaikeId);
+	
 }

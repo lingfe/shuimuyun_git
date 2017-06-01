@@ -218,4 +218,17 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 		return supw;
 	}
 
+	/**
+	 * 根据快客iD修改手机号码
+	 * @author 杨杰     
+	 * @created 2017年6月1日 下午4:13:24  
+	 * @param kuaikePhone  手机号码
+	 * @param kuaikeId  快客Id
+	 */
+	@Override
+	public void updatePhoneById(String kuaikePhone, String kuaikeId) {
+
+		kuaiketabMapper.updatePhoneById(kuaikePhone, kuaikeId);
+	}
+
 }

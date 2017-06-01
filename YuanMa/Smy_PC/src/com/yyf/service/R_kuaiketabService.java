@@ -156,4 +156,13 @@ public interface R_kuaiketabService {
 	 * @return
 	 */
 	public int addUser(R_kuaiketab kuaiketab);
+	
+	/**
+	 * 根据快客Id修改手机号码
+	 * @author 杨杰     
+	 * @created 2017年6月1日 下午4:12:29  
+	 * @param kuaikePhone  手机号码
+	 * @param kuaikeId  快客Id
+	 */
+	public void updatePhoneById(String kuaikePhone,String kuaikeId);
 }

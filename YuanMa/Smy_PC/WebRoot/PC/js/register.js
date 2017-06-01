@@ -188,7 +188,6 @@ $(function() {
 
 	//获取图片
 	$("#btn").click(function() {
-		alert(123);
 		document.forms[0].submit();
 	});
 

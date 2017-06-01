@@ -153,7 +153,6 @@ public class R_kuaiketabController {
 				request.getSession().removeAttribute("uname");
 				request.getSession().removeAttribute("newPass");
 				// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
-				request.getSession().setAttribute("namea", login.getKuaikeName());
 				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
 			}
 			// 返回成功页面
@@ -179,19 +178,22 @@ public class R_kuaiketabController {
 	 * @return 返回对象
 	 */
 	@RequestMapping(value = "reupdatepass", method = RequestMethod.POST)
-	public String updatepassword(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
+	public String updatepassword(HttpServletRequest htt, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("phoneCode") int phoneCode, @RequestParam("password") String password) {
 
 		// 通过手机找回密码 然后通过Md5加密
 		String pwd = Md5Util.md5(password);
 		// 调用重置密码的方法 对加密后的密码进行修改
 		kuaiketabService.updateUserpass(pwd, kuaikePhone);
+		//清空验证码
+		htt.getSession().removeAttribute("phoneCode");
+
 		// 返回页面
 		return "PC/login";
 	}
 
 	/**
-	 * 根据手机号码找回密码
+	 * 人工找回密码
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月20日 上午11:35:15
@@ -211,7 +213,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 人工找回密码
+	 * 人工找回密码 填写个人资料信息
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月24日 上午11:07:39
@@ -334,14 +336,15 @@ public class R_kuaiketabController {
 	 */
 	@RequestMapping(value = "phoneLogin", method = RequestMethod.POST)
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
-			@RequestParam("phoneCode") int phoneCode) {
+			@RequestParam("phoneCode") int phoneCode,HttpServletRequest request) {
 
 		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
 
 		if (phoneLogin != null) {
 
+			request.getSession().removeAttribute("phoneCode");
 			return "PC/index";
-
+			
 		}
 		return "PC/login";
 	}
@@ -410,6 +413,7 @@ public class R_kuaiketabController {
 
 	/**
 	 * 退出登录
+	 * 
 	 * @author 杨杰
 	 * @created 2017年6月1日 下午12:05:07
 	 * @param kuaiketab
@@ -418,14 +422,34 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
 	public String loginOut(@ModelAttribute("login") R_kuaiketab kuaiketab) {
 
-		System.out.println(kuaiketab.getKuaikePhone() + "\t" + kuaiketab.getPassword()+"\t"+kuaiketab.getKuaikeName());
-
 		if (!"".equals(kuaiketab) && kuaiketab != null) {
 
 			return "PC/index";
 		}
-
 		return "PC/login";
+	}
+
+	/**
+	 * 根据快客Id修改手机号码
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月1日 下午4:31:20
+	 * @param kuaikeId
+	 *            快客ID
+	 * @param kuaikePhone
+	 *            快客手机号码
+	 * @return 返回成功页面
+	 */
+	@RequestMapping(value = "updatePhoneById", method = RequestMethod.POST)
+	public String updatePhoneById(@ModelAttribute("login") R_kuaiketab kuaiketab,@RequestParam("kuaikeId") String kuaikeId,
+			@RequestParam("kuaikePhone") String kuaikePhone,HttpServletRequest http) {
+
+		kuaiketabService.updatePhoneById(kuaikePhone, kuaikeId);
+		
+		http.getSession().removeAttribute("login");
+		http.getSession().removeAttribute("phoneCode");
+
+		return "PC/personalCenter";
 	}
 
 }

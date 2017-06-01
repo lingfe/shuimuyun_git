@@ -8,9 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-
-<title>My JSP 'personalCenter.jsp' starting page</title>
-
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -21,6 +18,93 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="<%=basePath%>PC/css/index.css" />
 <link rel="stylesheet" href="<%=basePath%>PC/css/style.css" />
 <title>个人中心</title>
+
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"
+	type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//修改密码
+	$(function() {
+		$("#yzmBtn").click(function() {
+			var phoneCode = $("input[name='phoneCode']").val();
+			$.ajax({
+				url : 'getCode',
+
+				type : 'POST',
+				data : {
+					phoneCode : phoneCode
+				},
+				cache:false, 
+     			ifModified :true ,
+				//请求成功后触发 
+				beforeSend :function(xmlHttp){ 
+			        xmlHttp.setRequestHeader("If-Modified-Since","0"); 
+			        xmlHttp.setRequestHeader("Cache-Control","no-cache");
+			     },
+				success : function(data) {
+
+					$("input[name='phoneCode']").val(data);
+					
+				},
+				async:false
+			});
+			//阻止表单重复提交
+			return false;
+		});
+	});
+
+
+	//修改手机号码
+	$(function() {
+		$("#infoYznBtn").click(function() {
+			var phoneCode = $("input[name='phoneCode']").val();
+			$.ajax({
+				url : 'getCode',
+
+				type : 'POST',
+				data : {
+					phoneCode : phoneCode
+				},
+
+				cache:false, 
+     			ifModified :true , 
+     			beforeSend :function(xmlHttp){ 
+			        xmlHttp.setRequestHeader("If-Modified-Since","0"); 
+			        xmlHttp.setRequestHeader("Cache-Control","no-cache");
+			     },
+				//请求成功后触发
+				success : function(data) {
+
+					$("input[name='phoneCode']").val(data);
+					
+				},
+				async:false
+			});
+			//阻止表单重复提交
+			return false;
+		});
+	});
+
+
+
+
+
+$(function(){
+	$("#modifyBtn").click(function(){
+		document.forms[0].submit();
+	});
+
+});
+
+
+$(function(){
+	$("#infoBtn").click(function(){
+		document.forms[0].submit();
+	});
+
+});
+
+
+</script>
 </head>
 <body>
 	<div class="perinfo_top">
@@ -37,19 +121,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img
-				src="<%=basePath%>PC/images/logo.png" /></a> <a href="#"
-				class="navbar-btn navbar-toggle navbtn" data-toggle="collapse"
-				data-target="#myCollapse"> <img
+			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index"
+				class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
+				href="#" class="navbar-btn navbar-toggle navbtn"
+				data-toggle="collapse" data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />
 			</a>
 		</div>
 		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
 				<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-				<li class="active"><a href="index.html" style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="aboutUs.html">公众号</a></li>
-				<li><a href="service.html">关于人人配送</a></li>
+				<li class="active"><a href="<%=basePath %>PC/index.jsp"
+					style="color: #ff6d46;">人人配送</a></li>
+				<li><a href="aboutUs.jsp">公众号</a></li>
+				<li><a href="service.jsp">关于人人配送</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -63,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="perinfo_l left">
 			<img class="perinfo_user" title="" alt=""
 				src="<%=basePath%>PC/images/userImg.png" />
-			<p class="perinfo_user_name">15700104801</p>
+			<p class="perinfo_user_name">${login.kuaikePhone}</p>
 			<ul class="perinfo_menu">
 				<li>
 					<p id="allItem" class="perinfo_menu_title">订单记录</p>
@@ -85,9 +170,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="perinfo_r right">
 			<div class="perinfo_rCont" id="perinfo_rContOne">
 				<div class="perinfo_menu_item">
-					<a href="javascript:void(0);" onclick="javascript:statusHref(0);">全部订单</a> <a class="active"
-						href="javascript:void(0);"  onclick="javascript:statusHref(1);">待付款</a> <a href="javascript:void(0);"  onclick="javascript:statusHref(2);">待取货</a> <a
-						href="javascript:void(0);"  onclick="javascript:statusHref(3);">正在派送</a> <a href="javascript:void(0);"  onclick="javascript:statusHref(4);">待评价</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref(0);">全部订单</a>
+					<a class="active" href="javascript:void(0);"
+						onclick="javascript:statusHref(1);">待付款</a> <a
+						href="javascript:void(0);" onclick="javascript:statusHref(2);">待取货</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref(3);">正在派送</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref(4);">待评价</a>
 				</div>
 				<table border="0" cellspacing="0" cellpadding="0">
 					<thead class="perinfo_thead">
@@ -105,6 +193,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="perinfo_rCont">我的钱包</div>
 			<div class="perinfo_rCont">
 				<div class="perinfo_iffo">修改基本资料</div>
+
+				<!-- 修改个人资料开始 -->
 				<div class="modify_pwd modify_info">
 					<div class="modify_info_user" id="preview">
 						<img id="imghead" src="<%=basePath%>PC/images/userImg.png"
@@ -113,12 +203,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input id="previewImg" type="file" onchange="previewImage(this)"
 						style="display: none;" id="previewImg">
 					<div id="infoNameCont" class="modify_item">
-						<div class="modify_item_name left">昵称:</div>
-						<input id="infoName" class="modify_item_input left" type="text" />
+						<div class="modify_item_name left">用户名:</div>
+						<input id="infoName" class="modify_item_input left"
+							readonly="readonly" type="text" value="${login.kuaikeName }" />
+
+
+						<input id="d" class="modify_item_input left" readonly="readonly"
+							type="hidden" value="${login.kuaikeId }" />
 					</div>
 					<div id="infoPhoneCont" class="modify_item">
 						<div class="modify_item_name left">手机号码:</div>
-						<input id="infoPhone" class="modify_item_input left" type="text" />
+						<input id="infoPhone" class="modify_item_input left" type="text"
+							readonly="readonly" value="${login.kuaikePhone }" />
 					</div>
 					<div id="infoNewPhoneCont" class="modify_item">
 						<div class="modify_item_name left">备用手机:</div>
@@ -126,43 +222,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							type="text" />
 					</div>
 				</div>
+				<!--修改个人信息结束  -->
 				<div class="perinfo_iffo">修改手机号码</div>
-				<div class="modify_pwd modify_info">
-					<div id="infoModifyPhoneCont" class="modify_item">
-						<div class="modify_item_name left">手机号:</div>
-						<input id="infoModifyPhone" class="modify_item_input left"
-							type="text" />
+				<!-- 修改手机号码开始 -->
+				<form action="updatePhoneById" method="post">
+					<div class="modify_pwd modify_info">
+						<div id="infoModifyPhoneCont" class="modify_item">
+							<div class="modify_item_name left">手机号:</div>
+
+							<input id="id" class="modify_item_input left" type="hidden"
+								name="kuaikeId" value="${login.kuaikeId }" /> <input
+								id="infoModifyPhone" class="modify_item_input left" type="text"
+								name="kuaikePhone" />
+						</div>
+						<div id="infoYznCont" class="modify_item">
+							<input id="infoYznBtn" class="modify_item_yzbtn right"
+								type="button" value="获取验证码" /> <input id="infoYzn"
+								class="modify_item_yzinput right" type="text"
+								value="${phoneCode}" name="phoneCode" />
+						</div>
+						<button id="infoBtn" class="modify_item_btn right">确认修改</button>
 					</div>
-					<div id="infoYznCont" class="modify_item">
-						<input id="infoYznBtn" class="modify_item_yzbtn right"
-							type="button" value="获取验证码" /> <input id="infoYzn"
-							class="modify_item_yzinput right" type="text" />
-					</div>
-					<div id="infoBtn" class="modify_item_btn right">确认修改</div>
-				</div>
+				</form>
+				<!-- 修改手机号码结束 -->
 			</div>
+
+			<!-- 个人中心修改密码 Start -->
 			<div class="perinfo_rCont">
-				<div class="modify_pwd">
-					<div id="phoneCont" class="modify_item">
-						<div class="modify_item_name left">手机号:</div>
-						<input id="phone" class="modify_item_input left" type="text" />
+				<form action="reupdatepass" method="post">
+					<div class="modify_pwd">
+						<div id="phoneCont" class="modify_item">
+							<div class="modify_item_name left">手机号码:</div>
+							<input id="phone" class="modify_item_input left" type="text"
+								name="kuaikePhone" readonly="readonly"
+								value="${login.kuaikePhone }" />
+						</div>
+						<div id="pwdCont" class="modify_item">
+							<div class="modify_item_name left">新置密码:</div>
+							<input id="pwd" class="modify_item_input left" type="password"
+								name="password" />
+						</div>
+						<div id="newPwdCont" class="modify_item">
+							<div class="modify_item_name left">确认密码:</div>
+							<input id="newPwd" class="modify_item_input left" type="password"
+								name="repassword" />
+						</div>
+						<div id="yzmCont" class="modify_item">
+							<input class="modify_item_yzbtn right" type="button" id="yzmBtn"
+								value="获取验证码" /> <input id="yzm"
+								class="modify_item_yzinput right" name="phoneCode" type="text"
+								value="${phoneCode }" />
+						</div>
+						<button id="modifyBtn" class="modify_item_btn right">确认修改</button>
 					</div>
-					<div id="pwdCont" class="modify_item">
-						<div class="modify_item_name left">密码:</div>
-						<input id="pwd" class="modify_item_input left" type="password" />
-					</div>
-					<div id="newPwdCont" class="modify_item">
-						<div class="modify_item_name left">确认密码:</div>
-						<input id="newPwd" class="modify_item_input left" type="password" />
-					</div>
-					<div id="yzmCont" class="modify_item">
-						<input class="modify_item_yzbtn right" type="button" id="yzmBtn"
-							value="获取验证码" /> <input id="yzm"
-							class="modify_item_yzinput right" type="text" />
-					</div>
-					<div id="modifyBtn" class="modify_item_btn right">确认修改</div>
-				</div>
+				</form>
 			</div>
+			<!-- 个人中心修改密码End -->
 			<div class="perinfo_rCont">抢单记录</div>
 		</div>
 	</div>
@@ -209,71 +324,71 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		//默认
-		$(function(){
+		$(function() {
 			loadmore(0);
 		});
 	
 		//ajax
 		function loadmore(status) {
-					//请求
-					$.ajax({
-						type : 'get',
-						url : 'xiaordertab/xiadanAjax/'+status,
-						dataType : 'html',
-						success : function(objs) {
-							var data = jQuery.parseJSON(objs);
-							if (data == "") {
-								alert("没有数据");
-							} else {
-								var result = ''
-								for (var i = 0; i < data.length; i++) {
-									//类型
-									var shopType = data[i].shopType > 0 ? '不易碎' : '易碎';
-									//状态
-									status = data[i].status == 0 ? '未接单' : data[i].status;
-									status = data[i].status == 1 ? '已接单,未发货' : status;
-									status = data[i].status == 2 ? '已到达,未确认' : status;
-									status = data[i].status == 3 ? '交易结束(已确认)' : status;
-									status = data[i].status == 4 ? '已评价' : status;
+			//请求
+			$.ajax({
+				type : 'get',
+				url : 'xiaordertab/xiadanAjax/' + status,
+				dataType : 'html',
+				success : function(objs) {
+					var data = jQuery.parseJSON(objs);
+					if (data == "") {
+						alert("没有数据");
+					} else {
+						var result = ''
+						for (var i = 0; i < data.length; i++) {
+							//类型
+							var shopType = data[i].shopType > 0 ? '不易碎' : '易碎';
+							//状态
+							status = data[i].status == 0 ? '未接单' : data[i].status;
+							status = data[i].status == 1 ? '已接单,未发货' : status;
+							status = data[i].status == 2 ? '已到达,未确认' : status;
+							status = data[i].status == 3 ? '交易结束(已确认)' : status;
+							status = data[i].status == 4 ? '已评价' : status;
 	
-									result += "<tr> \
-										<td class='perinfo_name'> \
-											<img class='perinfo_img left' title='"+data[i].shopImages+"' alt='' src='"+data[i].shopImages+"' /> \
-											<div class='perinfo_orderinfo right'> \
-												<p>大小：" + data[i].shopGuige + "</p> \
-												<p>重量：" + data[i].shopzholiang + "kg</p> \
-												<p>类型：" + shopType + "</p> \
-											</div> \
-										</td> \
-										<td class='perinfo_time'> \
-											<p class='perinfo_time_text'>" + data[i].okDate + "</p> \
-										</td> \
-										<td class='perinfo_pay'> \
-											<p class='perinfo_time_text'>￥" + data[i].kaikeProies + "</p> \
-										</td> \
-										<td class='perinfo_state'> \
-											<p class='perinfo_time_text'>" + status + "</p> \
-											<a class='perinfo_actbtn' href='javascript:void(0);'>快递员信息</a> \
-										</td> \
-										<td class='perinfo_operation'> \
-											<p class='perinfo_btn'> \
-												<a href='xiaordertab/xiaorderInfo/" + data[i].xiaId + "'><img title='查看详情' alt='' src='<%=basePath%>PC/images/See.png' width='32' /></a> \
-											</p> \
-										</td> \
-									</tr>";
-									
-									
-								}
-								$('.prolist').append(result);
-
-							}
-						},
-						error : function(xhr, type) {
-							alert('Ajax error!');
+							result += "<tr> \
+																	<td class='perinfo_name'> \
+																		<img class='perinfo_img left' title='" + data[i].shopImages + "' alt='' src='" + data[i].shopImages + "' /> \
+																		<div class='perinfo_orderinfo right'> \
+																			<p>大小：" + data[i].shopGuige + "</p> \
+																			<p>重量：" + data[i].shopzholiang + "kg</p> \
+																			<p>类型：" + shopType + "</p> \
+																		</div> \
+																	</td> \
+																	<td class='perinfo_time'> \
+																		<p class='perinfo_time_text'>" + data[i].okDate + "</p> \
+																	</td> \
+																	<td class='perinfo_pay'> \
+																		<p class='perinfo_time_text'>￥" + data[i].kaikeProies + "</p> \
+																	</td> \
+																	<td class='perinfo_state'> \
+																		<p class='perinfo_time_text'>" + status + "</p> \
+																		<a class='perinfo_actbtn' href='javascript:void(0);'>快递员信息</a> \
+																	</td> \
+																	<td class='perinfo_operation'> \
+																		<p class='perinfo_btn'> \
+																			<a href='xiaordertab/xiaorderInfo/" + data[i].xiaId + "'><img title='查看详情' alt='' src='<%=basePath%>PC/images/See.png' width='32' /></a> \
+																		</p> \
+																	</td> \
+																</tr>";
+	
+	
 						}
-					});
+						$('.prolist').append(result);
+	
+					}
+				},
+				error : function(xhr, type) {
+					alert('Ajax error!');
+				}
+			});
 		}
-		
+	
 		//状态
 		function statusHref(status) {
 			$('.prolist').html("");

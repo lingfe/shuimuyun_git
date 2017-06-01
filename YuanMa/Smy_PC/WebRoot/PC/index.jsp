@@ -60,6 +60,7 @@
 				<li class="active"><a href="<%=basePath%>PC/index.jsp" style="color: #ff6d46;">人人配送</a></li>
 				<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
 				<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
+				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 			</ul>
 		</div>
 		</nav>

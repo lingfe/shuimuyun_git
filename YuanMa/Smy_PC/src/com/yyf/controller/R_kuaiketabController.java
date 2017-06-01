@@ -15,11 +15,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
@@ -32,6 +34,7 @@ import com.yyf.util.Md5Util;
  * 修改内容：
  */
 @Controller
+@SessionAttributes("login")
 public class R_kuaiketabController {
 
 	/* 添加依赖注入 */
@@ -129,11 +132,12 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam(value = "repassword", required = false) String repassword,
 			@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password,
-			HttpServletRequest request) throws NoSuchAlgorithmException {
+			HttpServletRequest request, ModelMap model) throws NoSuchAlgorithmException {
 		/* 调用登陆方法 & 并封装为实体对象 */
 		// 进行Md5加密
 		String newPass = Md5Util.md5(password); // 调用登陆方法，并封装为对象
 		R_kuaiketab login = kuaiketabService.login(uname, newPass);
+		model.addAttribute("login", login);
 
 		// 简单判断对象是否为空
 		if (login != null) {
@@ -142,6 +146,7 @@ public class R_kuaiketabController {
 				request.getSession().setAttribute("uname", uname);
 				request.getSession().setAttribute("newPass", password);
 				request.getSession().setAttribute("namea", login.getKuaikeName());
+				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
 
 			} else {
 				// 清空Session中的用户电话号码 和密码信息
@@ -149,6 +154,7 @@ public class R_kuaiketabController {
 				request.getSession().removeAttribute("newPass");
 				// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
 				request.getSession().setAttribute("namea", login.getKuaikeName());
+				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
 			}
 			// 返回成功页面
 			return "PC/index";
@@ -180,7 +186,7 @@ public class R_kuaiketabController {
 		String pwd = Md5Util.md5(password);
 		// 调用重置密码的方法 对加密后的密码进行修改
 		kuaiketabService.updateUserpass(pwd, kuaikePhone);
-		//返回页面
+		// 返回页面
 		return "PC/login";
 	}
 
@@ -194,12 +200,13 @@ public class R_kuaiketabController {
 	 * @return
 	 */
 	@RequestMapping(value = "findBackPassWord", method = RequestMethod.POST)
-	public String findBackPassWord(@RequestParam("kuaikePhone") String kuaikePhone,@RequestParam("password") String password) {
-		
+	public String findBackPassWord(@RequestParam("kuaikePhone") String kuaikePhone,
+			@RequestParam("password") String password) {
+
 		String md5 = Md5Util.md5(password);
-		
+
 		kuaiketabService.findBackPassWord(md5, kuaikePhone);
-			
+
 		return "PC/login";
 	}
 
@@ -234,28 +241,34 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 通过人工找回密码  【查询数据库中用户信息是否匹配】
-	 * @author 杨杰     
-	 * @created 2017年5月26日 上午10:08:10  
-	 * @param kuaikeName  快客姓名
-	 * @param kuaikePhone  快客电话
-	 * @param kuaikeAddress  快客地址
-	 * @param kuaikeAddressInfo  快客详情【可选】
-	 * @return  返回 0表示没有匹配数据  1表示有匹配数据
+	 * 通过人工找回密码 【查询数据库中用户信息是否匹配】
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月26日 上午10:08:10
+	 * @param kuaikeName
+	 *            快客姓名
+	 * @param kuaikePhone
+	 *            快客电话
+	 * @param kuaikeAddress
+	 *            快客地址
+	 * @param kuaikeAddressInfo
+	 *            快客详情【可选】
+	 * @return 返回 0表示没有匹配数据 1表示有匹配数据
 	 */
 	@RequestMapping(value = "selectUpdatePasswordBykuaikeInfo", method = RequestMethod.POST)
 	public String supw(@RequestParam("kuaikeName") String kuaikeName, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("kuaikeAddress") String kuaikeAddress,
-			@RequestParam(value = "kuaikeAddressInfo", required = false) String kuaikeAddressInfo,HttpServletRequest request) {
+			@RequestParam(value = "kuaikeAddressInfo", required = false) String kuaikeAddressInfo,
+			HttpServletRequest request) {
 
-		R_kuaiketab sBykuaikeInfo = kuaiketabService.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress,
-				kuaikeAddressInfo);
-		if (sBykuaikeInfo!=null) {
+		R_kuaiketab sBykuaikeInfo = kuaiketabService.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone,
+				kuaikeAddress, kuaikeAddressInfo);
+		if (sBykuaikeInfo != null) {
 			request.getSession().setAttribute("sBykuaikeInfo", sBykuaikeInfo);
-			request.getSession().setAttribute("kuaikePhone",sBykuaikeInfo.getKuaikePhone());
-			
+			request.getSession().setAttribute("kuaikePhone", sBykuaikeInfo.getKuaikePhone());
+
 			return "PC/toExamine";
-			
+
 		}
 		return "PC/pwdRetrieval";
 	}
@@ -274,9 +287,9 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "deletetU/{kuaikeId}", method = RequestMethod.POST)
 	@ResponseBody
 	public int deletetU(Map<String, Object> map, @PathVariable("kuaikeId") String kuaikeId) {
-		//调用方法  并且返回一个INT 类型  0失败  1成功
+		// 调用方法 并且返回一个INT 类型 0失败 1成功
 		int deletetU = kuaiketabService.deletetU(kuaikeId);
-		//判断
+		// 判断
 		if (deletetU > 0) {
 			return 1;
 		}
@@ -330,7 +343,7 @@ public class R_kuaiketabController {
 			return "PC/index";
 
 		}
-		return "error";
+		return "PC/login";
 	}
 
 	/**
@@ -393,6 +406,26 @@ public class R_kuaiketabController {
 		// 返回验证码
 		return phoneCode;
 
+	}
+
+	/**
+	 * 退出登录
+	 * @author 杨杰
+	 * @created 2017年6月1日 下午12:05:07
+	 * @param kuaiketab
+	 * @return
+	 */
+	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
+	public String loginOut(@ModelAttribute("login") R_kuaiketab kuaiketab) {
+
+		System.out.println(kuaiketab.getKuaikePhone() + "\t" + kuaiketab.getPassword()+"\t"+kuaiketab.getKuaikeName());
+
+		if (!"".equals(kuaiketab) && kuaiketab != null) {
+
+			return "PC/index";
+		}
+
+		return "PC/login";
 	}
 
 }

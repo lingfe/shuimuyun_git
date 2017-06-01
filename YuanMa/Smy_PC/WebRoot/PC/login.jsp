@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
 	String path = request.getContextPath();
@@ -79,6 +80,20 @@
 
 </head>
 <body>
+	<div class="header">
+		<div class="container flex">
+			<p class="flex2 conttent_p"
+				style="font-size: 1.2em;color: #6a6565; font-family: "宋体;">
+				${sessionScope.uname!=null?'欢迎:':'登录｜注册'}<span>${sessionScope.uname!=null?sessionScope.uname:''}</span>
+			</p>
+			<ul class="flex8 content_u">
+				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
+						8510 3179</a></li>
+			</ul>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
 	<!--导航开始-->
 	<header>
 	<div class="container">
@@ -223,37 +238,21 @@
 					</div>
 					<div class="zhuce_dizhi">
 						<label>* 现居住地址：</label> <select id="sheng" name="kuaikeAddress">
-							<option value="贵州省">贵州省</option>
-							<option value="云南省">云南省</option>
-							<option value="河北省">河北省</option>
-							<option value="江苏省">江苏省</option>
-							<option value="东北省">东北省</option>
+							<c:forEach items="${province }" var="p">
+								<option value="${p.name }">${p.name }</option>
+							</c:forEach>
 						</select> <span>省</span> <select id="shi" name="kuaikeAddress">
-							<option value="贵阳市">贵阳市</option>
-							<option value="贵阳市">贵阳市</option>
-							<option value="贵阳市">贵阳市</option>
-							<option value="贵阳市">贵阳市</option>
-							<option value="贵阳市">贵阳市</option>
-
+							<c:forEach items="${city }" var="c">
+								<option value="${c.name }">${c.name }</option>
+							</c:forEach>
 						</select> <span>市</span> <select id="xian" name="kuaikeAddress">
-							<option value="盘县">盘县</option>
-							<option value="盘县">盘县</option>
-							<option value="盘县">盘县</option>
-							<option value="盘县">盘县</option>
+							<c:forEach items="${area }" var="a">
+								<option value="${a.name }">${a.name }</option>
+							</c:forEach>
 						</select> <span>县/区</span>
 
 					</div>
-					<div class="zhuce_jie">
-						<label></label> <select id="jie" name="kuaikeAddress">
-							<option value="头桥二桥路">头桥二桥路</option>
-							<option value="头桥二桥路">头桥二桥路</option>
-							<option value="头桥二桥路">头桥二桥路</option>
-							<option value="头桥二桥路">头桥二桥路</option>
-						</select> <span>街道</span> <span class="hidden5"
-							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
-							class="hidden5_5" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="<%=basePath%>PC/images/g00_03.png" class="img5" />
-					</div>
+
 					<div class="zhuce_xiangqing">
 						<label></label> <input type="text" name="kuaikeAddressInfo"
 							value="" id="jiedao" /> <span>详情地址</span> <span class="hidden7"
@@ -321,7 +320,8 @@
 							value="${ sessionScope.newPass!=null?sessionScope.newPass:''}"
 							placeholder="  请输入登录密码" name="password" />
 						<div style="clear: both;"></div>
-						<a href="<%=basePath%>PC/pwdRetrieval.jsp"
+						<a
+							href="<%=basePath%>RequestMappingUtil/requestData/PC/pwdRetrieval"
 							style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 						<div>
 							<span><input type="checkbox" class="zii" name="repassword" /></span>

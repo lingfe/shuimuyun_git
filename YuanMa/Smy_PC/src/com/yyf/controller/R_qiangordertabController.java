@@ -42,16 +42,26 @@ public class R_qiangordertabController {
 	 *            快客ID
 	 * @return 返回 失败、 成功页面
 	 */
-	@RequestMapping(value = "/Insert", method = RequestMethod.POST)
-	public String Insert(@RequestParam("xiaId") String xiaId, @RequestParam("kuaikeId") String kuaikeId) {
+	@RequestMapping(value = "/Insert",method=RequestMethod.GET)
+	public String Insert(Map<String, Object> map) {
 
 		// 得到唯一的ID 作为抢单ID的唯一标示列
+		//默认抢单id
 		UUID uuid1 = UUID.randomUUID();
 		// 强制转换
 		String uuid = uuid1.toString();
+		
+		//默认下单ID
+		UUID uuid2=UUID.randomUUID();
+		String uidxiaId=uuid2.toString();
+		
+		//默认快客Id
+		UUID uuid3=UUID.randomUUID();
+		String uidKuaikeId=uuid3.toString();
+		
 
 		// 实例化 抢单对象 并初始化数据
-		R_qiangordertab qiangordertab = new R_qiangordertab(uuid, xiaId, kuaikeId, 0, new Date());
+		R_qiangordertab qiangordertab = new R_qiangordertab(uuid, uidxiaId, uidKuaikeId, 0, new Date());
 
 		if (qiangordertab.getStatus() == 1) {
 			System.out.println("抢单失败");
@@ -63,11 +73,11 @@ public class R_qiangordertabController {
 			// 判断返回值是否 大于零 大于零 成功 小于零失败
 			if (insert > 0) {
 
-				return "success";
+				return "PC/index";
 			}
 
 		}
-		return "failer";
+		return "PC/index";
 	}
 
 	/**
@@ -83,20 +93,14 @@ public class R_qiangordertabController {
 	public String query(Map<String, Object> map) {
 		// 调用查询方法 并封装给List集合对象
 		List<R_qiangordertab> query = qiangordertabService.query();
-		// 打印集合 测试是否获取
-		System.out.println(query + "---------------------------------------------");
+		map.put("query",query);
 
 		// 得到抢单数据总条数
 		int queryCount = qiangordertabService.queryCount();
-
-		if (queryCount < 0) {
-			System.out.println("This is a error");
-		}
-		// 打印测试是否得到总条数
-		System.out.println(queryCount);
-
+		
+		map.put("queryCount", queryCount);
 		// 返回 List
-		return "list";
+		return "PC/qiangOrderPage";
 	}
 
 	/**

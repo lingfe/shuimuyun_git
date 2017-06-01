@@ -25,7 +25,32 @@
 <script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+/*快客注册   通过手机接收验证码对手机进行绑定*/
+	$(function() {
+		$("#ajaxphoneCode").click(function() {
+			var phoneCode = $("input[name='phoneCode']").val();
+			$.ajax({
+				url : 'getCode',
 
+				type : 'POST',
+				data : {
+					phoneCode : phoneCode
+				},
+
+				//请求成功后触发
+				success : function(data) {
+
+					$("input[name='phoneCode']").val(data);
+				}
+			});
+			//阻止表单重复提交
+			return false;
+		});
+	});
+
+
+</script>
 </head>
 <body>
 	<div class="header">
@@ -202,8 +227,9 @@
 					</div>
 
 					<div class="zhuce_yanzheng">
-						<label>* </label> <input type="text" name="" value="" id="yanpwd" />
-						<button class="zhubtn">获取手机验证码</button>
+						<label>* </label> <input type="text" value="${phoneCode }"
+							id="yanpwd" name="phoneCode"/>
+						<button class="zhubtn" id="ajaxphoneCode">获取手机验证码</button>
 
 						<span class="hidden8"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span

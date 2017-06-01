@@ -34,7 +34,7 @@
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/login">${sessionScope.namea!=null?'欢迎:':'登录'}</a><a href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?sessionScope.namea:'注册'}</span></a>			</p>
+				<a href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'欢迎:':'登录'}</a><a href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?sessionScope.namea:'注册'}</span></a>			</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
@@ -86,6 +86,9 @@
 			<div class="item">
 				<img src="<%=basePath%>PC/images/001.jpg" />
 			</div>
+			<div class="item">
+				<img src="<%=basePath%>PC/images/001.jpg" />
+			</div>
 		</div>
 		<!--轮播指标-->
 		<ul class="carousel-indicators">
@@ -106,7 +109,7 @@
 	<!--轮播结束-->
 	<!--按钮开始-->
 	<div class="ren_aj1 flex1">
-		<a href="javascript:void(0);"><img src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
+		<a href="<%=basePath%>Insert"><img src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
 	</div>
 	<div class="ren_aj2 flex1">
 		<a href="<%=basePath%>RequestMappingUtil/requestData/PC/placeAnOrder"><img src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span></a>

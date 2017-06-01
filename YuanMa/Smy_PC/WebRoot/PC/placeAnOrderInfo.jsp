@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -34,15 +34,29 @@ body {
 </style>
 </head>
 <body>
+	<div class="header">
+		<div class="container flex">
+			<p class="flex2 conttent_p"
+				style="font-size: 1.2em;color: #6a6565; font-family: "宋体;">
+				${sessionScope.uname!=null?'欢迎:':'登录｜注册'}<span>${sessionScope.uname!=null?sessionScope.uname:''}</span>
+			</p>
+			<ul class="flex8 content_u">
+				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
+						8510 3179</a></li>
+			</ul>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
 	<!--导航开始-->
 	<header style="background: none;">
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img
-				src="<%=basePath%>PC/images/logo.png" /></a> <a href="#"
-				class="navbar-btn navbar-toggle navbtn" data-toggle="collapse"
-				data-target="#myCollapse"> <img
+			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index"
+				class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
+				href="#" class="navbar-btn navbar-toggle navbtn"
+				data-toggle="collapse" data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />
 			</a>
 		</div>
@@ -78,7 +92,8 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;">最迟取货时间:</td>
-						<td style="text-indent:40px; text-align: left;"><span><fmt:formatDate value="${info.quhuoDate}" pattern="yyyy-MM-dd HH:mm"/></span></td>
+						<td style="text-indent:40px; text-align: left;"><span><fmt:formatDate
+									value="${info.quhuoDate}" pattern="yyyy-MM-dd HH:mm" /></span></td>
 					</tr>
 				</table>
 

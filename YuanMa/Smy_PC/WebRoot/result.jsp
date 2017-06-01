@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <img alt="" src="${fileUrl1 }"/>  
      <img alt="" src="${fileUrl2 }"/>  
      
-     <a href="queryKuaike">dianzhi</a>
+     <a href="loginOut">dianzhi</a>
+     <input type="text" value="${login.kuaikePhone }">
   </body>
 </html>

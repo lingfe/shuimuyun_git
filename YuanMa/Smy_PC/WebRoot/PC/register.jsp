@@ -22,22 +22,22 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
 <script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-/*快客注册   通过手机接收验证码对手机进行绑定*/
+	/*快客注册   通过手机接收验证码对手机进行绑定*/
 	$(function() {
 		$("#ajaxphoneCode").click(function() {
 			var phoneCode = $("input[name='phoneCode']").val();
 			$.ajax({
 				url : 'getCode',
-
 				type : 'POST',
 				data : {
 					phoneCode : phoneCode
 				},
-
 				//请求成功后触发
 				success : function(data) {
 
@@ -48,8 +48,6 @@
 			return false;
 		});
 	});
-
-
 </script>
 </head>
 <body>
@@ -345,7 +343,7 @@
 			</ul>
 		</div>
 	</footer>
-
+<script type="text/javascript">	${errorShow }</script>
 </body>
 </html>
 <script src="<%=basePath%>PC/js/login.js" type="text/javascript" charset="utf-8"></script>

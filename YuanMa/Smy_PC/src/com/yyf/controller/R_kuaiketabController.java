@@ -24,10 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sun.research.ws.wadl.Application;
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
+import com.yyf.controller.util.ErrorShow;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.service.R_kuaiketabService;
 import com.yyf.util.Md5Util;
+import com.yyf.util.R_kuaiketabStatusEnum;
 
 /**
  * 文件名：R_kuaiketabController.java 描述： 用户登陆注册 修改人： 杨杰 修改时间：2017年5月18日 下午3:46:47
@@ -58,45 +61,70 @@ public class R_kuaiketabController {
 	public String upload(@RequestParam(value = "file1", required = false) MultipartFile file1,
 			@RequestParam(value = "file2", required = false) MultipartFile file2, HttpServletRequest request,
 			ModelMap model, R_kuaiketab tab) {
-		// 获取到当前服务器项目的跟路径
-		String path = request.getSession().getServletContext().getRealPath("upload");
-		// 文件1
-		String fileName1 = file1.getOriginalFilename();
-		File targetFile1 = new File(path, fileName1);
-		if (!targetFile1.exists()) {
-			targetFile1.mkdirs();
-		}
-
-		// 文件2
-		String fileName2 = file2.getOriginalFilename();
-		File targetFile2 = new File(path, fileName2);
-		if (!targetFile2.exists()) {
-			targetFile2.mkdirs();
-		}
-
-		// 保存
 		try {
-			file1.transferTo(targetFile1);
-			file2.transferTo(targetFile2);
+			//查询电话号码是否存在
+			R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
+			if(selectKuaiKephone!=null){
+				//提示
+				model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+				return "PC/register";
+			}
+			
+			// 获取到当前服务器项目的跟路径
+			String path = request.getSession().getServletContext().getRealPath("upload");
+
+			// 文件1
+			String fileName1 = file1.getOriginalFilename();
+			File targetFile1 = new File(path, fileName1);
+			if (!targetFile1.exists()) {
+				targetFile1.mkdirs();
+			}
+
+			// 文件2
+			String fileName2 = file2.getOriginalFilename();
+			File targetFile2 = new File(path, fileName2);
+			if (!targetFile2.exists()) {
+				targetFile2.mkdirs();
+			}
+
+			// 保存
+			try {
+				file1.transferTo(targetFile1);
+				file2.transferTo(targetFile2);
+			} catch (Exception e) {
+				e.printStackTrace();
+				//提示
+				model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SAVA_ERROR));
+				return "PC/register";
+			}
+			
+			// 保存成功后开始赋值
+			tab.setKuaikeId(UUID.randomUUID().toString());
+			// 密码加密
+			tab.setPassword(Md5Util.md5(tab.getPassword()));
+			// 身份证复印件文件
+			tab.setKuaikeShenfenZF(request.getContextPath() + "/upload/" + fileName1);
+			// 手拿身份证图片
+			tab.setKuaikeShouchiSFZ(request.getContextPath() + "/upload/" + fileName2);
+			// 登录时间
+			tab.setLoginDate(new Date());
+			// 状态,默认
+			tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
+			kuaiketabService.addUser(tab);
+
+			//提示
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SAVA_SHOW));
+			
+			
+			return "PC/register";
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			//提示
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.ERROR));
 		}
-
-		// 保存成功后开始赋值
-		tab.setKuaikeId(UUID.randomUUID().toString());
-		// 密码加密
-		tab.setPassword(Md5Util.md5(tab.getPassword()));
-		// 身份证复印件文件
-		tab.setKuaikeShenfenZF(request.getContextPath() + "/upload/" + fileName1);
-		// 手拿身份证图片
-		tab.setKuaikeShouchiSFZ(request.getContextPath() + "/upload/" + fileName2);
-		// 登录时间
-		tab.setLoginDate(new Date());
-		// 状态,默认
-		tab.setKuaikeStatus(0);
-		kuaiketabService.addUser(tab);
-
-		return "PC/toExamine";
+		
+		return "PC/register";
 	}
 
 	/**

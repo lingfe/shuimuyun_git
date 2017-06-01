@@ -7,15 +7,64 @@ package com.yyf.controller.util;
 public final class ErrorShow {
 
 	/** 系统异常 **/
-	public static final String ERROR = "系统异常";
+	public static final String ERROR = "系统异常！";
+	
+	/** 保存成功 **/
+	public static final String SAVA_SHOW="保存成功！";
 
 	/** 下单状态不为0，不能删除 **/
-	public static final String XIADAN_NO_0 = "下单状态不为0，不能删除";
+	public static final String XIADAN_NO_0 = "下单状态不为0，不能删除！";
 
-	/**  **/
-	public static final String s = "";
+	/** 保存文件出错 **/
+	public static final String SAVA_ERROR= "保存文件出错！";
 
 	/** 连接错误的时候 **/
 	public static final String str = "正在连接服务器......";
-
+	
+	/** 该手机号码已经被注册  **/
+	public static final String PHONE_OK="该手机号码已经被注册";
+	
+	
+	
+	
+	
+	/**
+	 * 
+	 * alert提示的封装,没有提示级别
+	 * @author lijie     
+	 * @created 2017年6月1日 下午3:09:03  
+	 * @param show 要输出的内容
+	 * @return
+	 */
+	public static final String getAlert(String show){
+		show="alert('"+show+"');";
+		return show;
+	}
+	
+	/**
+	 * 
+	 * layer提示的封装,没有提示级别
+	 * @author lijie     
+	 * @created 2017年6月1日 下午3:09:03  
+	 * @param show 要输出的内容
+	 * @return
+	 */
+	public static final String getLayerMsg(String show){
+		show="layer.msg('"+show+"');";
+		return show;
+	}
+	
+	/**
+	 * 
+	 * layer提示的封装,有提示级别,默认停留时间1000ms
+	 * @author lijie     
+	 * @created 2017年6月1日 下午3:11:27  
+	 * @param show 	要输出的内容
+	 * @param num	错误级别
+	 * @return
+	 */
+	public static final String getLayerMsg(String show,int num){
+		show="layer.msg('"+show+"',{icon:"+num+",time:1000});";
+		return show;
+	}
 }

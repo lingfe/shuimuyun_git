@@ -128,22 +128,22 @@
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img
-				src="<%=basePath%>PC/images/logo.png" /></a> <a href="#"
-				class="navbar-btn navbar-toggle navbtn" data-toggle="collapse"
-				data-target="#myCollapse"> <img
+			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index"
+				class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
+				href="#" class="navbar-btn navbar-toggle navbtn"
+				data-toggle="collapse" data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />
 			</a>
 		</div>
-		<div class="collapse navbar-collapse navColl text-center"
-			id="myCollapse">
+		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
-				<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-				<li class="active"><a href="<%=basePath%>PC/index.html">人人配送</a>
-				</li>
-				<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
-				<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
-				<li><a href="<%=basePath%>PC/service.html">个人中心</a></li>
+				<li class="active"><a href="<%=basePath%>PC/index.jsp"
+					style="color: #ff6d46;">人人配送</a></li>
+				<li><a href="javascript:void(0);">公众号</a></li>
+				<li><a href="javascript:void(0);">关于人人配送</a></li>
+				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
+				<li class="active"><a href="http://www.smuyun.com/"
+					target="_left">商城</a></li>
 			</ul>
 		</div>
 		</nav>

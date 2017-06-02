@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -107,14 +108,23 @@ $(function(){
 </script>
 </head>
 <body>
-	<div class="perinfo_top">
-		<div class="perinfo_top_cont">
-			<div class="perinfo_top_l left">人人配送个人中心</div>
-			<div class="perinfo_top_r right">安全退出</div>
+	<!--头部  start-->
+	<div class="header">
+		<div class="container flex">
+			<p class="flex2 conttent_p">
+				${sessionScope.namea!=null?'欢迎:':''}<a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'':'登录'}</a><a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?'':'注册'}</span></a>${sessionScope.namea!=null?sessionScope.namea:''}</p>
+			<ul class="flex8 content_u">
+				<li><a href="javascript:void(0);">安全退出</a></li>
+				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
+						8510 3179</a></li>
+			</ul>
 		</div>
-		<div class="clear"></div>
+		<div style="clear: both;"></div>
 	</div>
-	<!--导航位置-->
+	<!--头部  end-->
 
 	<!--导航开始-->
 	<header>
@@ -130,11 +140,13 @@ $(function(){
 		</div>
 		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
-				<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
-				<li class="active"><a href="<%=basePath %>PC/index.jsp"
+				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="aboutUs.jsp">公众号</a></li>
-				<li><a href="service.jsp">关于人人配送</a></li>
+				<li><a href="javascript:void(0);">公众号</a></li>
+				<li><a href="javascript:void(0);">关于人人配送</a></li>
+				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
+				<li class="active"><a href="http://www.smuyun.com/"
+					target="_left">商城</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -172,10 +184,10 @@ $(function(){
 				<div class="perinfo_menu_item">
 					<a href="javascript:void(0);" onclick="javascript:statusHref(0);">全部订单</a>
 					<a class="active" href="javascript:void(0);"
-						onclick="javascript:statusHref(1);">待付款</a> <a
-						href="javascript:void(0);" onclick="javascript:statusHref(2);">待取货</a>
-					<a href="javascript:void(0);" onclick="javascript:statusHref(3);">正在派送</a>
-					<a href="javascript:void(0);" onclick="javascript:statusHref(4);">待评价</a>
+						onclick="javascript:statusHref(0);">待付款</a> <a
+						href="javascript:void(0);" onclick="javascript:statusHref(1);">待取货</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref(2);">正在派送</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref(3);">待评价</a>
 				</div>
 				<table border="0" cellspacing="0" cellpadding="0">
 					<thead class="perinfo_thead">
@@ -346,36 +358,40 @@ $(function(){
 							var shopType = data[i].shopType > 0 ? '不易碎' : '易碎';
 							//状态
 							status = data[i].status == 0 ? '未接单' : data[i].status;
-							status = data[i].status == 1 ? '已接单,未发货' : status;
+							status = data[i].status == 1 ? '已接单,未取货' : status;
 							status = data[i].status == 2 ? '已到达,未确认' : status;
-							status = data[i].status == 3 ? '交易结束(已确认)' : status;
+							status = data[i].status == 3 ? '交易结束(待评价)' : status;
 							status = data[i].status == 4 ? '已评价' : status;
+							
+							//date
+							var date=new Date(data[i].okDate);
+							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
 	
 							result += "<tr> \
-																	<td class='perinfo_name'> \
-																		<img class='perinfo_img left' title='" + data[i].shopImages + "' alt='' src='" + data[i].shopImages + "' /> \
-																		<div class='perinfo_orderinfo right'> \
-																			<p>大小：" + data[i].shopGuige + "</p> \
-																			<p>重量：" + data[i].shopzholiang + "kg</p> \
-																			<p>类型：" + shopType + "</p> \
-																		</div> \
-																	</td> \
-																	<td class='perinfo_time'> \
-																		<p class='perinfo_time_text'>" + data[i].okDate + "</p> \
-																	</td> \
-																	<td class='perinfo_pay'> \
-																		<p class='perinfo_time_text'>￥" + data[i].kaikeProies + "</p> \
-																	</td> \
-																	<td class='perinfo_state'> \
-																		<p class='perinfo_time_text'>" + status + "</p> \
-																		<a class='perinfo_actbtn' href='javascript:void(0);'>快递员信息</a> \
-																	</td> \
-																	<td class='perinfo_operation'> \
-																		<p class='perinfo_btn'> \
-																			<a href='xiaordertab/xiaorderInfo/" + data[i].xiaId + "'><img title='查看详情' alt='' src='<%=basePath%>PC/images/See.png' width='32' /></a> \
-																		</p> \
-																	</td> \
-																</tr>";
+																		<td class='perinfo_name'> \
+																			<img class='perinfo_img left' title='" + data[i].shopImages + "' alt='' src='" + data[i].shopImages + "' /> \
+																			<div class='perinfo_orderinfo right'> \
+																				<p>大小：" + data[i].shopGuige + "</p> \
+																				<p>重量：" + data[i].shopzholiang + "kg</p> \
+																				<p>类型：" + shopType + "</p> \
+																			</div> \
+																		</td> \
+																		<td class='perinfo_time'> \
+																			<p class='perinfo_time_text'>" + dataStr + "</p> \
+																		</td> \
+																		<td class='perinfo_pay'> \
+																			<p class='perinfo_time_text'>￥" + data[i].kaikePrioes + "</p> \
+																		</td> \
+																		<td class='perinfo_state'> \
+																			<p class='perinfo_time_text'>" + status + "</p> \
+																			<a class='perinfo_actbtn' href='javascript:void(0);'>快递员信息</a> \
+																		</td> \
+																		<td class='perinfo_operation'> \
+																			<p class='perinfo_btn'> \
+																				<a href='xiaordertab/xiaorderInfo/" + data[i].xiaId + "'><img title='查看详情' alt='' src='<%=basePath%>PC/images/See.png' width='32' /></a> \
+																			</p> \
+																		</td> \
+																	</tr>";
 	
 	
 						}

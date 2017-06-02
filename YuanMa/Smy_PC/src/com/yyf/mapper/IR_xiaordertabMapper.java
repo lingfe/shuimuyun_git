@@ -62,7 +62,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param 实体数据
 	 */
 	@Insert("insert into `xiaordertab`(`xiaId`,`kuaikeName`,`kuaikePhone`,`kuaikeAddress`,`shouhuoName`,`shouhuoPhone`,`shouhuoAddress`,`shouhuoAddressInfo`,`quhouDate`,`kaikePrioes`,`status`,`okDate`,`shopName`,`Shopzholiang`,`ShopNumer`,`Shopprices`,`shopguige`,`Shopdate`,kuaikeAddressInfo,shopType,timeString,shopImages,payment) "
-			+ "values (#{xiaId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{shouhuoName},#{shouhuoPhone},#{shouhuoAddress},#{shouhuoAddressInfo},#{quhouDate},#{kaikeProies},#{status},#{okDate},#{shopName},#{shopzholiang},#{shopNumer},#{shopprices},#{shopGuige},#{shopDate},#{kuaikeAddressInfo},#{shopType},#{timeString},#{shopImages},#{payment})")
+			+ "values (#{xiaId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{shouhuoName},#{shouhuoPhone},#{shouhuoAddress},#{shouhuoAddressInfo},#{quhouDate},#{kaikePrioes},#{status},#{okDate},#{shopName},#{shopzholiang},#{shopNumer},#{shopprices},#{shopGuige},#{shopDate},#{kuaikeAddressInfo},#{shopType},#{timeString},#{shopImages},#{payment})")
 	void add(R_xiaordertab t);
 
 	/**

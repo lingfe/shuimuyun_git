@@ -22,22 +22,30 @@
 <meta http-equiv="X-UA-Compatible" cotent="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>首页</title>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
-<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/index.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/bootstrap.min.css" />
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/bootstrap.min.js" type="text/javascript"
 	charset="utf-8"></script>
-<script src="<%=basePath%>PC/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/register.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 <body>
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				<a href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'欢迎:':'登录'}</a><a href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?sessionScope.namea:'注册'}</span></a>			</p>
+				${sessionScope.namea!=null?'欢迎:':''}<a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'':'登录'}</a><a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?'':'注册'}</span></a>${sessionScope.namea!=null?sessionScope.namea:''}</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
-				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851 8510 3179</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
+						8510 3179</a></li>
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -48,7 +56,8 @@
 	<div class="container">
 		<nav class="nav navlist" role="navigation">
 		<div class="navbar-header" style="margin-right: 60px;">
-			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
+			<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index"
+				class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
 				href="#" class="navbar-btn navbar-toggle navbtn"
 				data-toggle="collapse" data-target="#myCollapse"> <img
 				src="<%=basePath%>PC/images/nav-btn.png" />
@@ -56,11 +65,13 @@
 		</div>
 		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
-				<li class="active"><a href="http://www.smuyun.com/" target="_left">商城</a></li>
-				<li class="active"><a href="<%=basePath%>PC/index.jsp" style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
-				<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
+				<li class="active"><a href="<%=basePath%>PC/index.jsp"
+					style="color: #ff6d46;">人人配送</a></li>
+				<li><a href="javascript:void(0);">公众号</a></li>
+				<li><a href="javascript:void(0);">关于人人配送</a></li>
 				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
+				<li class="active"><a href="http://www.smuyun.com/"
+					target="_left">商城</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -110,10 +121,12 @@
 	<!--轮播结束-->
 	<!--按钮开始-->
 	<div class="ren_aj1 flex1">
-		<a href="<%=basePath%>Insert"><img src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
+		<a href="<%=basePath%>Insert"><img
+			src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
 	</div>
 	<div class="ren_aj2 flex1">
-		<a href="<%=basePath%>RequestMappingUtil/requestData/PC/placeAnOrder"><img src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span></a>
+		<a href="<%=basePath%>RequestMappingUtil/requestData/PC/placeAnOrder"><img
+			src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span></a>
 	</div>
 	<div style="clear: both;"></div>
 	<!--底部开始-->

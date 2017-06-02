@@ -15,7 +15,7 @@ public class R_xiaordertab {
 		return "R_xiaordertab [xiaId=" + xiaId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
 				+ ", kuaikeAddress=" + kuaikeAddress + ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone
 				+ ", shouhuoAddress=" + shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhuoDate="
-				+ quhouDate + ", kaikeProies=" + kaikeProies + ", status=" + status + ", okDate=" + okDate
+				+ quhouDate + ", kaikeProies=" + kaikePrioes + ", status=" + status + ", okDate=" + okDate
 				+ ", shopName=" + shopName + ", shopzholiang=" + shopzholiang + ", shopNumer=" + shopNumer
 				+ ", shopprices=" + shopprices + ", shopGuige=" + shopGuige + ", shopDate=" + shopDate
 				+ ", kuaikeAddressInfo=" + kuaikeAddressInfo + ", shopType=" + shopType + ", timeString=" + timeString
@@ -115,14 +115,13 @@ public class R_xiaordertab {
 		this.quhouDate = quhouDate;
 	}
 
-	private Float kaikeProies;// 运费 `kaikePrioes` DECIMAL(10,0) NOT NULL,
-
-	public Float getKaikeProies() {
-		return kaikeProies;
+	private Float kaikePrioes;// 运费 `kaikePrioes` DECIMAL(10,0) NOT NULL,
+	public Float getKaikePrioes() {
+		return kaikePrioes;
 	}
 
-	public void setKaikeProies(Float kaikeProies) {
-		this.kaikeProies = kaikeProies;
+	public void setKaikePrioes(Float kaikePrioes) {
+		this.kaikePrioes = kaikePrioes;
 	}
 
 	private int status;// 订单状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）) `status`

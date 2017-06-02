@@ -24,7 +24,11 @@ public final class ErrorShow {
 	/** 该手机号码已经被注册  **/
 	public static final String PHONE_OK="该手机号码已经被注册";
 	
+	/** 请您先登录 **/
+	public static final String QNXDL="请您先登录!";
 	
+	/** 请您完善信息再提交 **/
+	public static final String WSINFO="请您完善信息再提交 ";
 	
 	
 	

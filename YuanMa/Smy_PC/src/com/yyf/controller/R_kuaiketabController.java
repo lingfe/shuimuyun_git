@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.NameValuePair;
@@ -24,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sun.research.ws.wadl.Application;
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
 import com.yyf.controller.util.ErrorShow;
 import com.yyf.model.R_kuaiketab;
@@ -190,6 +190,36 @@ public class R_kuaiketabController {
 		return "PC/login";
 	}
 
+	
+	/**
+	 * 注销登录
+	 * 
+	 * @author YangJie
+	 * @created 2017年6月2日 上午11:03:45
+	 * @param request
+	 *            请求
+	 * @return
+	 */
+	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
+	public String loginOut(HttpServletRequest request) {
+
+		HttpSession session = request.getSession(false);
+
+		if (session == null) {
+
+			return "PC/login";
+
+		}
+		session.removeAttribute("login");
+		// 清空Session中的用户电话号码 和密码信息
+		session.removeAttribute("uname");
+		session.removeAttribute("newPass");
+
+		return "PC/login";
+	}
+	
+	
+	
 	/**
 	 * 快客重置密码
 	 * 
@@ -439,23 +469,6 @@ public class R_kuaiketabController {
 
 	}
 
-	/**
-	 * 退出登录
-	 * 
-	 * @author 杨杰
-	 * @created 2017年6月1日 下午12:05:07
-	 * @param kuaiketab
-	 * @return
-	 */
-	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
-	public String loginOut(@ModelAttribute("login") R_kuaiketab kuaiketab) {
-
-		if (!"".equals(kuaiketab) && kuaiketab != null) {
-
-			return "PC/index";
-		}
-		return "PC/login";
-	}
 
 	/**
 	 * 根据快客Id修改手机号码

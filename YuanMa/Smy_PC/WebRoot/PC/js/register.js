@@ -186,10 +186,7 @@ $(function() {
 		}
 	})
 
-	//获取图片
-	$("#btn").click(function() {
-		document.forms[0].submit();
-	});
+
 
 
 });

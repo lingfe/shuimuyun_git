@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="<%=basePath%>PC/css/bootstrap.min.css" />
 <script type="text/javascript" src="<%=basePath%>PC/js/jquery-2.1.0.js"></script>
 
-</head>
+
 <!--上传图片css-->
 <style type="text/css">
 .container {
@@ -121,8 +121,26 @@
 	border-right: 1px solid #ddd;
 }
 </style>
-
+<!-- layer -->
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+</head>
 <body>
+<script type="text/javascript">
+	if("${login}"==""||"${login}"==null){
+		//询问框
+		//询问框
+		layer.confirm('您还木有登陆？', {
+			skin: 'layui-layer-molv' ,//样式类名
+		  	btn: ['登陆','注册'], //按钮
+		  	closeBtn: 0
+		}, function(){
+		  	window.location.href="RequestMappingUtil/requestData/PC/login";
+		}, function(){
+			window.location.href="RequestMappingUtil/requestData/PC/register";
+		});
+	}
+</script>
 	<!--导航开始-->
 	<header>
 	<div class="container">
@@ -369,6 +387,7 @@
 	</p>
 	</section> </section>
 	<script type="text/javascript" src="<%=basePath%>PC/js/xiadan.js"></script>
+<!-- 提示 -->
+<script type="text/javascript">	${errorShow }</script>
 </body>
-
 </html>

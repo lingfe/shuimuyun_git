@@ -106,8 +106,26 @@ $(function(){
 
 
 </script>
+<!-- layer -->
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+<script type="text/javascript">
+	if("${login}"==""||"${login}"==null){
+		//询问框
+		//询问框
+		layer.confirm('您还木有登陆？', {
+			skin: 'layui-layer-molv' ,//样式类名
+		  	btn: ['登陆','注册'], //按钮
+		  	closeBtn: 0
+		}, function(){
+		  	window.location.href="RequestMappingUtil/requestData/PC/login";
+		}, function(){
+			window.location.href="RequestMappingUtil/requestData/PC/register";
+		});
+	}
+</script>
 	<!--头部  start-->
 	<div class="header">
 		<div class="container flex">
@@ -116,9 +134,9 @@ $(function(){
 					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'':'登录'}</a><a
 					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?'':'注册'}</span></a>${sessionScope.namea!=null?sessionScope.namea:''}</p>
 			<ul class="flex8 content_u">
-				<li><a href="javascript:void(0);">安全退出</a></li>
-				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
-				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
+				<li><a href="loginOut">安全退出</a></li>
+				<li><img src="<%=basePath%>PC/images/e.png" /><a href="javascript:void(0);">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="javascript:void(0);">0851
 						8510 3179</a></li>
 			</ul>
 		</div>
@@ -242,14 +260,14 @@ $(function(){
 						<div id="infoModifyPhoneCont" class="modify_item">
 							<div class="modify_item_name left">手机号:</div>
 
-							<input id="id" class="modify_item_input left" type="hidden"
+							<input required="required" id="id" class="modify_item_input left" type="hidden"
 								name="kuaikeId" value="${login.kuaikeId }" /> <input
 								id="infoModifyPhone" class="modify_item_input left" type="text"
 								name="kuaikePhone" />
 						</div>
 						<div id="infoYznCont" class="modify_item">
 							<input id="infoYznBtn" class="modify_item_yzbtn right"
-								type="button" value="获取验证码" /> <input id="infoYzn"
+								type="button" value="获取验证码" /> <input required="required" id="infoYzn"
 								class="modify_item_yzinput right" type="text"
 								value="${phoneCode}" name="phoneCode" />
 						</div>
@@ -265,23 +283,23 @@ $(function(){
 					<div class="modify_pwd">
 						<div id="phoneCont" class="modify_item">
 							<div class="modify_item_name left">手机号码:</div>
-							<input id="phone" class="modify_item_input left" type="text"
+							<input required="required" id="phone" class="modify_item_input left" type="text"
 								name="kuaikePhone" readonly="readonly"
 								value="${login.kuaikePhone }" />
 						</div>
 						<div id="pwdCont" class="modify_item">
 							<div class="modify_item_name left">新置密码:</div>
-							<input id="pwd" class="modify_item_input left" type="password"
+							<input required="required" id="pwd" class="modify_item_input left" type="password"
 								name="password" />
 						</div>
 						<div id="newPwdCont" class="modify_item">
 							<div class="modify_item_name left">确认密码:</div>
-							<input id="newPwd" class="modify_item_input left" type="password"
+							<input required="required" id="newPwd" class="modify_item_input left" type="password"
 								name="repassword" />
 						</div>
 						<div id="yzmCont" class="modify_item">
 							<input class="modify_item_yzbtn right" type="button" id="yzmBtn"
-								value="获取验证码" /> <input id="yzm"
+								value="获取验证码" /> <input required="required" id="yzm"
 								class="modify_item_yzinput right" name="phoneCode" type="text"
 								value="${phoneCode }" />
 						</div>
@@ -350,7 +368,7 @@ $(function(){
 				success : function(objs) {
 					var data = jQuery.parseJSON(objs);
 					if (data == "") {
-						alert("没有数据");
+						layer.msg("没有数据!");
 					} else {
 						var result = ''
 						for (var i = 0; i < data.length; i++) {
@@ -384,7 +402,6 @@ $(function(){
 																		</td> \
 																		<td class='perinfo_state'> \
 																			<p class='perinfo_time_text'>" + status + "</p> \
-																			<a class='perinfo_actbtn' href='javascript:void(0);'>快递员信息</a> \
 																		</td> \
 																		<td class='perinfo_operation'> \
 																			<p class='perinfo_btn'> \
@@ -656,5 +673,7 @@ $(function(){
 			return param;
 		}
 	</script>
+<!-- 提示 -->
+<script type="text/javascript">	${errorShow }</script>
 </body>
 </html>

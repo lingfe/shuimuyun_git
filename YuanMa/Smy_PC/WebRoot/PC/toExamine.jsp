@@ -33,13 +33,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<div class="header">
 		<div class="container flex">
-			<p class="flex2 conttent_p"
-				style="font-size: 1.2em;color: #6a6565; font-family: "宋体;">
-				${sessionScope.uname!=null?'欢迎:':'登录｜注册'}<span>${sessionScope.uname!=null?sessionScope.uname:''}</span>
-			</p>
+			<p class="flex2 conttent_p">
+				${sessionScope.namea!=null?'欢迎:':''}<a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'':'登录'}</a><a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?'':'注册'}</span></a>${sessionScope.namea!=null?sessionScope.namea:''}</p>
 			<ul class="flex8 content_u">
-				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
-				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
+				<li><img src="<%=basePath%>PC/images/e.png" /><a href="javascript:void(0);">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a href="javascript:void(0);">0851
 						8510 3179</a></li>
 			</ul>
 		</div>
@@ -60,11 +60,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
-				<li class="active"><a href="http://www.smuyun.com/">商城</a></li>
 				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="<%=basePath%>PC/aboutUs.jsp">公众号</a></li>
-				<li><a href="<%=basePath%>PC/service.jsp">关于人人配送</a></li>
+				<li><a href="javascript:void(0);">公众号</a></li>
+				<li><a href="javascript:void(0);">关于人人配送</a></li>
+				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
+				<li class="active"><a href="http://www.smuyun.com/"
+					target="_left">商城</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -178,7 +180,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 
 	</footer>
-
+<!-- 提示 -->
+<script type="text/javascript">	${errorShow }</script>
 </body>
 </html>
 

@@ -32,22 +32,26 @@ body {
 	background-size: cover;
 }
 </style>
+<!-- layer -->
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-	<div class="header">
-		<div class="container flex">
-			<p class="flex2 conttent_p"
-				style="font-size: 1.2em;color: #6a6565; font-family: "宋体;">
-				${sessionScope.uname!=null?'欢迎:':'登录｜注册'}<span>${sessionScope.uname!=null?sessionScope.uname:''}</span>
-			</p>
-			<ul class="flex8 content_u">
-				<li><img src="<%=basePath%>PC/images/e.png" /><a href="#">wenping@smuyun.com</a></li>
-				<li><img src="<%=basePath%>PC/images/p.png" /><a href="#">0851
-						8510 3179</a></li>
-			</ul>
-		</div>
-		<div style="clear: both;"></div>
-	</div>
+<script type="text/javascript">
+	if("${login}"==""||"${login}"==null){
+		//询问框
+		//询问框
+		layer.confirm('您还木有登陆？', {
+			skin: 'layui-layer-molv' ,//样式类名
+		  	btn: ['登陆','注册'], //按钮
+		  	closeBtn: 0
+		}, function(){
+		  	window.location.href="RequestMappingUtil/requestData/PC/login";
+		}, function(){
+			window.location.href="RequestMappingUtil/requestData/PC/register";
+		});
+	}
+</script>
 	<!--导航开始-->
 	<header style="background: none;">
 	<div class="container">
@@ -62,10 +66,13 @@ body {
 		</div>
 		<div class="collapse navbar-collapse navColl" id="myCollapse">
 			<ul class="nav navbar-nav pull-left ren_nav">
-				<li class="active"><a href="<%=basePath%>PC/index.html">商城</a></li>
-				<li class="active"><a href="<%=basePath%>PC/index.html">人人配送</a></li>
-				<li><a href="<%=basePath%>PC/aboutUs.html">公众号</a></li>
-				<li><a href="<%=basePath%>PC/service.html">关于人人配送</a></li>
+				<li class="active"><a href="<%=basePath%>PC/index.jsp"
+					style="color: #ff6d46;">人人配送</a></li>
+				<li><a href="javascript:void(0);">公众号</a></li>
+				<li><a href="javascript:void(0);">关于人人配送</a></li>
+				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
+				<li class="active"><a href="http://www.smuyun.com/"
+					target="_left">商城</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -228,6 +235,8 @@ body {
 			<!-- 评论表单	end -->
 		</div>
 	</div>
+<!-- 提示 -->
+<script type="text/javascript">	${errorShow }</script>
 </body>
 </html>
 <script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"

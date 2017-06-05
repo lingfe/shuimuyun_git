@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
 import com.yyf.controller.util.ErrorShow;
+import com.yyf.controller.util.VerificationUtil;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.service.R_kuaiketabService;
 import com.yyf.util.Md5Util;
@@ -67,6 +68,11 @@ public class R_kuaiketabController {
 			if (selectKuaiKephone != null) {
 				// 提示
 				model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+				return "PC/register";
+			}
+			
+			boolean r_kuaiketabNonEptyr_kuaiketabNonEpty = VerificationUtil.getR_kuaiketabNonEpty(tab, model);
+			if(r_kuaiketabNonEptyr_kuaiketabNonEpty){
 				return "PC/register";
 			}
 

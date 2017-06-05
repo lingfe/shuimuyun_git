@@ -37,7 +37,6 @@ import com.yyf.util.R_xiaordertabEnum;
 @RequestMapping("/xiaordertab")
 public class R_xiaordertabController {
 
-	Log4j2Impl log=new Log4j2Impl("");
 	
 	// 自动装配	下单
 	@Autowired

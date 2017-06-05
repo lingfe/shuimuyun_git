@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
@@ -202,30 +203,24 @@ public class R_kuaiketabController {
 	 * @return
 	 */
 	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
-	public String loginOut(HttpServletRequest request) {
+	public String loginOut(HttpSession session,SessionStatus sessionStatus) {
 
 		// 得到Session对象 并初始为False
-		HttpSession session = request.getSession(false);
+	
 		// 判断Session是否为空
 		if (session == null) {
-			// 清空用户名
-			session.removeAttribute("namea");
-			// 个人中心的电话号码
-			session.removeAttribute("uname");
-			// 清空快客Id
-			session.removeAttribute("kuaikeId");
-			// 返回登录页面
+
+			session.removeAttribute("login");
+			session.invalidate();
+			sessionStatus.setComplete();
+
 			return "PC/login";
 
 		}
-		// 清空Login登录对象
 		session.removeAttribute("login");
-		// 清空Session中的用户电话号码 和密码信息
-		session.removeAttribute("uname");
-		session.removeAttribute("newPass");
-		// 清空用户名
-		session.removeAttribute("namea");
-		session.removeAttribute("kuaikeId");
+	
+		session.invalidate();
+		sessionStatus.setComplete();
 
 		return "PC/login";
 	}

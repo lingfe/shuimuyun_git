@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.ui.ModelMap;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
@@ -42,23 +42,22 @@ public class R_qiangordertabController {
 	 *            快客ID
 	 * @return 返回 失败、 成功页面
 	 */
-	@RequestMapping(value = "/Insert",method=RequestMethod.GET)
+	@RequestMapping(value = "/Insert", method = RequestMethod.GET)
 	public String Insert(Map<String, Object> map) {
 
 		// 得到唯一的ID 作为抢单ID的唯一标示列
-		//默认抢单id
+		// 默认抢单id
 		UUID uuid1 = UUID.randomUUID();
 		// 强制转换
 		String uuid = uuid1.toString();
-		
-		//默认下单ID
-		UUID uuid2=UUID.randomUUID();
-		String uidxiaId=uuid2.toString();
-		
-		//默认快客Id
-		UUID uuid3=UUID.randomUUID();
-		String uidKuaikeId=uuid3.toString();
-		
+
+		// 默认下单ID
+		UUID uuid2 = UUID.randomUUID();
+		String uidxiaId = uuid2.toString();
+
+		// 默认快客Id
+		UUID uuid3 = UUID.randomUUID();
+		String uidKuaikeId = uuid3.toString();
 
 		// 实例化 抢单对象 并初始化数据
 		R_qiangordertab qiangordertab = new R_qiangordertab(uuid, uidxiaId, uidKuaikeId, 0, new Date());
@@ -81,6 +80,29 @@ public class R_qiangordertabController {
 	}
 
 	/**
+	 * 根据快客Id得到抢单记录
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月5日 下午3:30:05
+	 * @param kuaikeId
+	 *            快客Id
+	 * @param model
+	 */
+	@RequestMapping(value = "queryQiangOrderBykuaikeId/{kuaikeId}", method = RequestMethod.POST)
+	@ResponseBody
+	public List<R_qiangordertab> queryQiangOrderBykuaikeId(@PathVariable("kuaikeId") String kuaikeId, ModelMap model) {
+
+		List<R_qiangordertab> QiangOrde = qiangordertabService.queryQiangOrderBykuaikeId(kuaikeId);
+
+		model.addAllAttributes(QiangOrde);
+
+		model.addAttribute("qiangOrde", QiangOrde);
+
+		return QiangOrde;
+
+	}
+
+	/**
 	 * 得到抢单集合对象
 	 * 
 	 * @author 杨杰
@@ -93,11 +115,11 @@ public class R_qiangordertabController {
 	public String query(Map<String, Object> map) {
 		// 调用查询方法 并封装给List集合对象
 		List<R_qiangordertab> query = qiangordertabService.query();
-		map.put("query",query);
+		map.put("query", query);
 
 		// 得到抢单数据总条数
 		int queryCount = qiangordertabService.queryCount();
-		
+
 		map.put("queryCount", queryCount);
 		// 返回 List
 		return "PC/qiangOrderPage";

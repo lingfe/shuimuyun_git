@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -19,14 +19,20 @@
 <meta http-equiv="X-UA-Compatible" cotent="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>注册</title>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/common.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/index.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
-<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript"
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/index.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/register.js" type="text/javascript"
 	charset="utf-8"></script>
-<script src="<%=basePath%>PC/js/register.js" type="text/javascript" charset="utf-8"></script>
-<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript"
+	charset="utf-8"></script>
 <script type="text/javascript">
 	/*快客注册   通过手机接收验证码对手机进行绑定*/
 	$(function() {
@@ -58,9 +64,10 @@
 					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'':'登录'}</a><a
 					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?'':'注册'}</span></a>${sessionScope.namea!=null?sessionScope.namea:''}</p>
 			<ul class="flex8 content_u">
-				<li><img src="<%=basePath%>PC/images/e.png" /><a href="javascript:void(0);">wenping@smuyun.com</a></li>
-				<li><img src="<%=basePath%>PC/images/p.png" /><a href="javascript:void(0);">0851
-						8510 3179</a></li>
+				<li><img src="<%=basePath%>PC/images/e.png" /><a
+					href="javascript:void(0);">wenping@smuyun.com</a></li>
+				<li><img src="<%=basePath%>PC/images/p.png" /><a
+					href="javascript:void(0);">0851 8510 3179</a></li>
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -71,8 +78,9 @@
 		<div class="container">
 			<nav class="nav navlist" role="navigation">
 				<div class="navbar-header" style="margin-right: 60px;">
-					<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index" class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a>
-					<a href="#" class="navbar-btn navbar-toggle navbtn"
+					<a href="<%=basePath%>RequestMappingUtil/requestNUll/PC/index"
+						class="logo"><img src="<%=basePath%>PC/images/logo.png" /></a> <a
+						href="#" class="navbar-btn navbar-toggle navbtn"
 						data-toggle="collapse" data-target="#myCollapse"> <img
 						src="<%=basePath%>PC/images/nav-btn.png" />
 					</a>
@@ -174,22 +182,23 @@
 				<!--表单开始-->
 				<form action="upload.do" method="post" enctype="multipart/form-data">
 					<div class="zhuce_xing">
-						<label>* 姓名：</label> <input type="text" draggable="true"  required="required" name="kuaikeName" value=""
-							id="namett" /> <span class="hidden1"
-							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
-							class="hidden1_1" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
-						<img src="<%=basePath%>PC/images/g00_03.png" class="img1" />
+						<label>* 姓名：</label> <input type="text" draggable="true"
+							required="required" name="kuaikeName" value="" id="namett" /> <span
+							class="hidden1" style="width: 100px;height: 30px; color: red;">不能为空</span>
+						<span class="hidden1_1"
+							style="width: 100px;height: 30px; color: red;">输入正确的格式</span> <img
+							src="<%=basePath%>PC/images/g00_03.png" class="img1" />
 					</div>
 					<div class="zhuce_phone">
-						<label>* 手机号码：</label> <input type="text" required="required" name="kuaikePhone"
-							value="" id="phone" /> <span class="hidden2"
+						<label>* 手机号码：</label> <input type="text" required="required"
+							name="kuaikePhone" value="" id="phone" /> <span class="hidden2"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
 						<img src="<%=basePath%>PC/images/g00_03.png" class="img2" />
 					</div>
 					<div class="zhuce_pwd">
-						<label>* 登录密码：</label> <input type="password" required="required" name="password"
-							value="" id="logopwd" /> <span class="hidden3"
+						<label>* 登录密码：</label> <input type="password" required="required"
+							name="password" value="" id="logopwd" /> <span class="hidden3"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden3_3" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
 						<img src="<%=basePath%>PC/images/g00_03.png" class="img3" />
@@ -198,38 +207,42 @@
 						<img src="<%=basePath%>PC/images/t003_03.png" />
 					</div>
 					<div class="zhuce_xing">
-						<label>* 确认密码：</label> <input type="password" required="required" name="" value=""
-							id="pwd" /> <span class="hidden4"
+						<label>* 确认密码：</label> <input type="password" required="required"
+							name="" value="" id="pwd" /> <span class="hidden4"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden4_4" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
 						<img src="<%=basePath%>PC/images/g00_03.png" class="img4" />
 					</div>
 					<div class="zhuce_dizhi">
-						<label>* 现居住地址：</label> <select id="sheng" required="required" name="kuaikeAddress">
-						<c:forEach items="${province }" var="p">
-							<option value="${p.name }" >${p.name }</option>
-						</c:forEach>
-						</select> <span>省</span> <select id="shi" required="required" name="kuaikeAddress">
-						<c:forEach items="${city }" var="c">
-							<option value="${c.name }" >${c.name }</option>
-						</c:forEach>
-						</select> <span>市</span> <select id="xian" required="required" name="kuaikeAddress">
-						<c:forEach items="${area }" var="a">
-							<option value="${a.name }" >${a.name }</option>
-						</c:forEach>
+						<label>* 现居住地址：</label> <select id="sheng" required="required"
+							name="kuaikeAddress">
+							<c:forEach items="${province }" var="p">
+								<option value="${p.name }">${p.name }</option>
+							</c:forEach>
+						</select> <span>省</span> <select id="shi" required="required"
+							name="kuaikeAddress">
+							<c:forEach items="${city }" var="c">
+								<option value="${c.name }">${c.name }</option>
+							</c:forEach>
+						</select> <span>市</span> <select id="xian" required="required"
+							name="kuaikeAddress">
+							<c:forEach items="${area }" var="a">
+								<option value="${a.name }">${a.name }</option>
+							</c:forEach>
 						</select> <span>县/区</span>
 					</div>
 					<div class="zhuce_xiangqing">
-						<label></label> <input type="text" required="required" name="kuaikeAddressInfo"
-							value="" id="jiedao" /> <span>详情地址</span> <span class="hidden7"
+						<label></label> <input type="text" required="required"
+							name="kuaikeAddressInfo" value="" id="jiedao" /> <span>详情地址</span>
+						<span class="hidden7"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 							class="hidden7_7" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
 						<img src="<%=basePath%>PC/images/g00_03.png" class="img7" />
 					</div>
 
 					<div class="zhuce_yanzheng">
-						<label>* </label> <input type="text" required="required" value="${phoneCode }"
-							id="yanpwd" name="phoneCode"/>
+						<label>* </label> <input type="text" required="required"
+							value="${phoneCode }" id="yanpwd" name="phoneCode" />
 						<button class="zhubtn" id="ajaxphoneCode">获取手机验证码</button>
 
 						<span class="hidden8"
@@ -277,35 +290,41 @@
 					<div class="free">免密登录</div>
 					<div style="clear: both;"></div>
 					<div class="common_con">
-						<span>手机号码:</span> <input required="required" type="text"
+						<span>手机号码:</span> <input required="required" type="text "
+							class="phone"
 							value="${sessionScope.uname!=null?sessionScope.uname:''}"
-							name="kuaikePhone" class="phone" placeholder="  请输入手机号" /> <br />
-						<span>登录密码:</span> <input required="required" type="password"
+							placeholder="  请输入手机号" name="kuaikePhone" /> <br /> <span>登录密码:</span>
+						<input required="required" type="password" class="pwd"
 							value="${ sessionScope.newPass!=null?sessionScope.newPass:''}"
-							name="password" class="pwd" placeholder="  请输入登录密码" />
+							placeholder="  请输入登录密码" name="password" />
 						<div style="clear: both;"></div>
-						<a href="#"
+						<a
+							href="<%=basePath%>RequestMappingUtil/requestData/PC/pwdRetrieval"
 							style="left: -168px;top: 20px; color: #999999;position: relative;">忘记密码</a>
 						<div>
 							<span><input type="checkbox" class="zii" name="repassword" /></span>
 							<span class="zi">记住密码</span> <br />
 							<button type="submit">登 录</button>
-
 						</div>
 					</div>
+				</form>
+				<form action="phoneLogin" method="post">
 					<div class="free_con">
-						<span>手机号码: </span><input required="required" type="text" class="phone1"
-							placeholder="  请输入手机号" /><br /> <input required="required" type="text" />
-						<button class="btn223">获取验证码</button>
+						<span>手机号码: </span><input required="required" type="text"
+							class="phone1" placeholder="  请输入手机号" name="kuaikePhone" /><br />
+						<input required="required" type="text" name="phoneCode"
+							id="phoneCode" value="${phoneCode }" />
+						<button id="ajaxBtn" class="btn223">获取验证码</button>
 						<br />
 						<button>登 录</button>
 
 					</div>
-					<span class="t1"></span> <span class="t2"></span> <span class="t3"></span>
-					<img class="t33" src="<%=basePath%>PC/images/g00_03.png" /> <img class="t22"
-						src="<%=basePath%>PC/images/g00_03.png" /> <img class="t11"
-						src="<%=basePath%>PC/images/g00_03.png" />
 				</form>
+				<span class="t1"></span> <span class="t2"></span> <span class="t3"></span>
+				<img class="t33" src="<%=basePath%>PC/images/g00_03.png" /> <img
+					class="t22" src="<%=basePath%>PC/images/g00_03.png" /> <img
+					class="t11" src="<%=basePath%>PC/images/g00_03.png" />
+
 			</div>
 			<!--登录结束-->
 		</div>
@@ -346,13 +365,15 @@
 			</ul>
 		</div>
 	</footer>
-<!-- 提示 -->
-<script type="text/javascript">	${errorShow }</script>
+	<!-- 提示 -->
+	<script type="text/javascript">	${errorShow }</script>
 </body>
 </html>
-<script src="<%=basePath%>PC/js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/login.js" type="text/javascript"
+	charset="utf-8"></script>
 <script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
-<script src="<%=basePath%>PC/js/tu.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/tu.js" type="text/javascript"
+	charset="utf-8"></script>
 <script>
 
 	$("#file0").change(function() {

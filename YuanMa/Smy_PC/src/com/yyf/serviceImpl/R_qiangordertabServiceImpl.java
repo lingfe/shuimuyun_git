@@ -131,4 +131,21 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 		return querytKuaike;
 	}
 
+	/**
+	 * 根据快客Id获取到抢单记录
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月5日 下午3:17:59
+	 * @param kuaikeId
+	 *            快客Id
+	 * @return
+	 */
+	@Override
+	public List<R_qiangordertab> queryQiangOrderBykuaikeId(String kuaikeId) {
+
+		List<R_qiangordertab> QiangOrder = qiangordertabMapper.queryQiangOrderBykuaikeId(kuaikeId);
+	
+		return QiangOrder;
+	}
+
 }

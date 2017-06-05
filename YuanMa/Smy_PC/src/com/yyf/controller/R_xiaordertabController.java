@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.logging.log4j2.Log4j2Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,6 +37,8 @@ import com.yyf.util.R_xiaordertabEnum;
 @RequestMapping("/xiaordertab")
 public class R_xiaordertabController {
 
+	Log4j2Impl log=new Log4j2Impl("");
+	
 	// 自动装配	下单
 	@Autowired
 	private R_xiaordertabService r_xiaordertabService;
@@ -58,6 +61,7 @@ public class R_xiaordertabController {
 	@RequestMapping(value="/xiadanAjax/{status}",method=RequestMethod.GET)
 	public @ResponseBody List<R_xiaordertab> ajxaJson(@PathVariable("status")int status){
 		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQuery(status);
+	
 		return statusQuery;
 	}
 	

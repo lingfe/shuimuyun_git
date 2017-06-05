@@ -29,7 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var phoneCode = $("input[name='phoneCode']").val();
 			$.ajax({
 				url : 'getCode',
-
 				type : 'POST',
 				data : {
 					phoneCode : phoneCode
@@ -42,9 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        xmlHttp.setRequestHeader("Cache-Control","no-cache");
 			     },
 				success : function(data) {
-
 					$("input[name='phoneCode']").val(data);
-					
 				},
 				async:false
 			});
@@ -60,12 +57,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var phoneCode = $("input[name='phoneCode']").val();
 			$.ajax({
 				url : 'getCode',
-
 				type : 'POST',
 				data : {
 					phoneCode : phoneCode
 				},
-
 				cache:false, 
      			ifModified :true , 
      			beforeSend :function(xmlHttp){ 
@@ -74,9 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			     },
 				//请求成功后触发
 				success : function(data) {
-
 					$("input[name='phoneCode']").val(data);
-					
 				},
 				async:false
 			});
@@ -85,15 +78,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 	});
 
-
-
-
-
 $(function(){
 	$("#modifyBtn").click(function(){
 		document.forms[0].submit();
 	});
-
 });
 
 
@@ -161,7 +149,7 @@ $(function(){
 				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
 				<li><a href="javascript:void(0);">公众号</a></li>
-				<li><a href="javascript:void(0);">关于人人配送</a></li>
+				<li><a href="javascript:void(0);">关于我们</a></li>
 				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 				<li class="active"><a href="http://www.smuyun.com/"
 					target="_left">商城</a></li>

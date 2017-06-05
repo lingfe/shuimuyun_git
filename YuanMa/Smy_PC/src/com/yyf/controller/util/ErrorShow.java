@@ -33,6 +33,10 @@ public final class ErrorShow {
 	/**用户名或密码不正确**/
 	public static final String SYS_ERROR="用户名或密码不正确";
 	
+	/** XX不能为空  **/
+	public static final String NON_EMPYT="不能为空";
+	
+	/**  **/
 	
 	
 	/**

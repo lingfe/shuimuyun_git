@@ -36,7 +36,7 @@ import com.yyf.util.R_xiaordertabEnum;
 @RequestMapping("/xiaordertab")
 public class R_xiaordertabController {
 
-	// 自动装配	下单
+		// 自动装配	下单
 	@Autowired
 	private R_xiaordertabService r_xiaordertabService;
 	// 自动装配	抢单

@@ -30,6 +30,9 @@ public final class ErrorShow {
 	/** 请您完善信息再提交 **/
 	public static final String WSINFO="请您完善信息再提交 ";
 	
+	/**用户名或密码不正确**/
+	public static final String SYS_ERROR="用户名或密码不正确";
+	
 	
 	
 	/**

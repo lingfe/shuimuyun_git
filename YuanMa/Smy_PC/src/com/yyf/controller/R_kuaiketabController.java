@@ -62,14 +62,14 @@ public class R_kuaiketabController {
 			@RequestParam(value = "file2", required = false) MultipartFile file2, HttpServletRequest request,
 			ModelMap model, R_kuaiketab tab) {
 		try {
-			//查询电话号码是否存在
+			// 查询电话号码是否存在
 			R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
-			if(selectKuaiKephone!=null){
-				//提示
+			if (selectKuaiKephone != null) {
+				// 提示
 				model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
 				return "PC/register";
 			}
-			
+
 			// 获取到当前服务器项目的跟路径
 			String path = request.getSession().getServletContext().getRealPath("upload");
 
@@ -93,11 +93,11 @@ public class R_kuaiketabController {
 				file2.transferTo(targetFile2);
 			} catch (Exception e) {
 				e.printStackTrace();
-				//提示
+				// 提示
 				model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SAVA_ERROR));
 				return "PC/register";
 			}
-			
+
 			// 保存成功后开始赋值
 			tab.setKuaikeId(UUID.randomUUID().toString());
 			// 密码加密
@@ -112,18 +112,17 @@ public class R_kuaiketabController {
 			tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
 			kuaiketabService.addUser(tab);
 
-			//提示
+			// 提示
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SAVA_SHOW));
-			
-			
+
 			return "PC/register";
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			//提示
+			// 提示
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.ERROR));
 		}
-		
+
 		return "PC/register";
 	}
 
@@ -165,10 +164,11 @@ public class R_kuaiketabController {
 		// 进行Md5加密
 		String newPass = Md5Util.md5(password); // 调用登陆方法，并封装为对象
 		R_kuaiketab login = kuaiketabService.login(uname, newPass);
-		model.addAttribute("login", login);
 
 		// 简单判断对象是否为空
 		if (login != null) {
+			model.addAttribute("login", login);
+
 			if ("on".equals(repassword)) {
 				// 记住登陆用户名，手机号码和密码
 				request.getSession().setAttribute("uname", uname);
@@ -178,19 +178,20 @@ public class R_kuaiketabController {
 
 			} else {
 				// 清空Session中的用户电话号码 和密码信息
-				request.getSession().removeAttribute("uname");
+				request.getSession().setAttribute("uname", uname);
 				request.getSession().removeAttribute("newPass");
 				// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
+				request.getSession().setAttribute("namea", login.getKuaikeName());
 				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
 			}
 			// 返回成功页面
 			return "PC/index";
 		}
+		model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SYS_ERROR));
 		// 留在登陆页面
 		return "PC/login";
 	}
 
-	
 	/**
 	 * 注销登录
 	 * 
@@ -203,23 +204,32 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
 	public String loginOut(HttpServletRequest request) {
 
+		// 得到Session对象 并初始为False
 		HttpSession session = request.getSession(false);
-
+		// 判断Session是否为空
 		if (session == null) {
-
+			// 清空用户名
+			session.removeAttribute("namea");
+			// 个人中心的电话号码
+			session.removeAttribute("uname");
+			// 清空快客Id
+			session.removeAttribute("kuaikeId");
+			// 返回登录页面
 			return "PC/login";
 
 		}
+		// 清空Login登录对象
 		session.removeAttribute("login");
 		// 清空Session中的用户电话号码 和密码信息
 		session.removeAttribute("uname");
 		session.removeAttribute("newPass");
+		// 清空用户名
+		session.removeAttribute("namea");
+		session.removeAttribute("kuaikeId");
 
 		return "PC/login";
 	}
-	
-	
-	
+
 	/**
 	 * 快客重置密码
 	 * 
@@ -243,7 +253,7 @@ public class R_kuaiketabController {
 		String pwd = Md5Util.md5(password);
 		// 调用重置密码的方法 对加密后的密码进行修改
 		kuaiketabService.updateUserpass(pwd, kuaikePhone);
-		//清空验证码
+		// 清空验证码
 		htt.getSession().removeAttribute("phoneCode");
 
 		// 返回页面
@@ -323,6 +333,7 @@ public class R_kuaiketabController {
 
 		R_kuaiketab sBykuaikeInfo = kuaiketabService.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone,
 				kuaikeAddress, kuaikeAddressInfo);
+
 		if (sBykuaikeInfo != null) {
 			request.getSession().setAttribute("sBykuaikeInfo", sBykuaikeInfo);
 			request.getSession().setAttribute("kuaikePhone", sBykuaikeInfo.getKuaikePhone());
@@ -394,7 +405,7 @@ public class R_kuaiketabController {
 	 */
 	@RequestMapping(value = "phoneLogin", method = RequestMethod.POST)
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
-			@RequestParam("phoneCode") int phoneCode,HttpServletRequest request) {
+			@RequestParam("phoneCode") int phoneCode, HttpServletRequest request) {
 
 		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
 
@@ -402,7 +413,7 @@ public class R_kuaiketabController {
 
 			request.getSession().removeAttribute("phoneCode");
 			return "PC/index";
-			
+
 		}
 		return "PC/login";
 	}
@@ -469,7 +480,6 @@ public class R_kuaiketabController {
 
 	}
 
-
 	/**
 	 * 根据快客Id修改手机号码
 	 * 
@@ -482,11 +492,12 @@ public class R_kuaiketabController {
 	 * @return 返回成功页面
 	 */
 	@RequestMapping(value = "updatePhoneById", method = RequestMethod.POST)
-	public String updatePhoneById(@ModelAttribute("login") R_kuaiketab kuaiketab,@RequestParam("kuaikeId") String kuaikeId,
-			@RequestParam("kuaikePhone") String kuaikePhone,HttpServletRequest http) {
+	public String updatePhoneById(@ModelAttribute("login") R_kuaiketab kuaiketab,
+			@RequestParam("kuaikeId") String kuaikeId, @RequestParam("kuaikePhone") String kuaikePhone,
+			HttpServletRequest http) {
 
 		kuaiketabService.updatePhoneById(kuaikePhone, kuaikeId);
-		
+
 		http.getSession().removeAttribute("login");
 		http.getSession().removeAttribute("phoneCode");
 

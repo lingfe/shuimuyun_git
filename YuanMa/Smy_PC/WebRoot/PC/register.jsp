@@ -54,9 +54,9 @@
 	<div class="header">
 		<div class="container flex">
 			<p class="flex2 conttent_p">
-				${sessionScope.login!=null?'欢迎:':''}<a
-					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.login!=null?'':'登录'}</a><a
-					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.login!=null?'':'注册'}</span></a>${sessionScope.login!=null?sessionScope.login.kuaikeName:''}</p>
+				${sessionScope.namea!=null?'欢迎:':''}<a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'':'登录'}</a><a
+					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?'':'注册'}</span></a>${sessionScope.namea!=null?sessionScope.namea:''}</p>
 			<ul class="flex8 content_u">
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="javascript:void(0);">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a href="javascript:void(0);">0851

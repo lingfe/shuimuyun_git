@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 
-import com.sun.tools.xjc.model.Model;
 import com.yyf.model.R_kuaiketab;
 
 /**

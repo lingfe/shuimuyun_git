@@ -178,7 +178,7 @@ $(function(){
 		<div class="perinfo_l left">
 			<img class="perinfo_user" title="" alt=""
 				src="<%=basePath%>PC/images/userImg.png" />
-			<p class="perinfo_user_name">${login.kuaikePhone}</p>
+			<p class="perinfo_user_name">${uname}</p>
 			<ul class="perinfo_menu">
 				<li>
 					<p id="allItem" class="perinfo_menu_title">订单记录</p>
@@ -235,7 +235,7 @@ $(function(){
 					<div id="infoNameCont" class="modify_item">
 						<div class="modify_item_name left">用户名:</div>
 						<input id="infoName" class="modify_item_input left"
-							readonly="readonly" type="text" value="${login.kuaikeName }" />
+							readonly="readonly" type="text" value="${namea }" />
 
 
 						<input id="d" class="modify_item_input left" readonly="readonly"
@@ -244,7 +244,7 @@ $(function(){
 					<div id="infoPhoneCont" class="modify_item">
 						<div class="modify_item_name left">手机号码:</div>
 						<input id="infoPhone" class="modify_item_input left" type="text"
-							readonly="readonly" value="${login.kuaikePhone }" />
+							readonly="readonly" value="${uname }" />
 					</div>
 					<div id="infoNewPhoneCont" class="modify_item">
 						<div class="modify_item_name left">备用手机:</div>
@@ -285,7 +285,7 @@ $(function(){
 							<div class="modify_item_name left">手机号码:</div>
 							<input required="required" id="phone" class="modify_item_input left" type="text"
 								name="kuaikePhone" readonly="readonly"
-								value="${login.kuaikePhone }" />
+								value="${uname }" />
 						</div>
 						<div id="pwdCont" class="modify_item">
 							<div class="modify_item_name left">新置密码:</div>

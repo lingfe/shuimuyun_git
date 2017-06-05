@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yyf.mapper.IR_xiaordertabMapper;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_xiaordertabService;
+import com.yyf.util.R_xiaordertabEnum;
 
 /**
  * 
@@ -27,9 +29,12 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 		return ir_xiaordertabMapper.statusQuery(status);
 	}
 	
+	@Transactional
 	@Override
 	public void insertCommentInfo(Commenttab tab) {
 		ir_xiaordertabMapper.insertCommentInfo(tab);
+		//修改状态为已评论
+		ir_xiaordertabMapper.updateStatus(R_xiaordertabEnum.YPJ.ordinal(), tab.getXiaId());
 	}
 
 	@Override

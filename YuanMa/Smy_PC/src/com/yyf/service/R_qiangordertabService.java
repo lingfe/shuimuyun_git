@@ -86,5 +86,14 @@ public interface R_qiangordertabService {
 	 * @return 返回List 集合对象
 	 */
 	public List<R_xiaordertab> queryAddress(String kuaikeAddress, String shouhuoAddress);
+	
+	/**
+	 * 根据快客Id获取抢单记录信息
+	 * @author 杨杰     
+	 * @created 2017年6月5日 下午3:17:02  
+	 * @param kuaikeId  快客ID
+	 * @return
+	 */
+	public List<R_qiangordertab> queryQiangOrderBykuaikeId(String kuaikeId);
 
 }

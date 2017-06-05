@@ -100,5 +100,16 @@ public interface R_qiangordertabMapper {
 	@Select("select * from xiaordertab  where  kuaikeAddress like '%${kuaikeAddress}%' or shouhuoAddress like '%${shouhuoAddress}%'")
 	public List<R_xiaordertab> queryAddress(@Param("kuaikeAddress") String kuaikeAddress,
 			@Param("shouhuoAddress") String shouhuoAddress);
+	
+	
+	/**
+	 * 根据快客Id得到抢单记录信息
+	 * @author 杨杰     
+	 * @created 2017年6月5日 下午3:15:23  
+	 * @param kuaikeId  快客Id
+	 * @return
+	 */
+	@Select("SELECT * FROM qiangordertab AS q INNER JOIN kuaiketab k ON q.`kuaikeId`=k.`kuaikeId` where k.kuaikeId=#{kuaikeId}")
+	public List<R_qiangordertab> queryQiangOrderBykuaikeId(@Param("kuaikeId") String kuaikeId);
 
 }

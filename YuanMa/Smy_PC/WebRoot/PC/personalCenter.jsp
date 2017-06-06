@@ -26,12 +26,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 //修改密码
 	$(function() {
 		$("#yzmBtn").click(function() {
-			var phoneCode = $("input[name='phoneCode']").val();
+			var mobile_code = $("input[name='mobile_code']").val();
 			$.ajax({
 				url : 'getCode',
 				type : 'POST',
 				data : {
-					phoneCode : phoneCode
+					mobile_code : mobile_code
 				},
 				cache:false, 
      			ifModified :true ,
@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        xmlHttp.setRequestHeader("Cache-Control","no-cache");
 			     },
 				success : function(data) {
-					$("input[name='phoneCode']").val(data);
+					$("input[name='mobile_code']").val(data);
 				},
 				async:false
 			});
@@ -54,12 +54,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	//修改手机号码
 	$(function() {
 		$("#infoYznBtn").click(function() {
-			var phoneCode = $("input[name='phoneCode']").val();
+			var mobile_code = $("input[name='mobile_code']").val();
 			$.ajax({
 				url : 'getCode',
 				type : 'POST',
 				data : {
-					phoneCode : phoneCode
+					mobile_code : mobile_code
 				},
 				cache:false, 
      			ifModified :true , 
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			     },
 				//请求成功后触发
 				success : function(data) {
-					$("input[name='phoneCode']").val(data);
+					$("input[name='mobile_code']").val(data);
 				},
 				async:false
 			});
@@ -257,7 +257,7 @@ $(function(){
 							<input id="infoYznBtn" class="modify_item_yzbtn right"
 								type="button" value="获取验证码" /> <input required="required" id="infoYzn"
 								class="modify_item_yzinput right" type="text"
-								value="${phoneCode}" name="phoneCode" />
+								value="${mobile_code}" name="mobile_code" />
 						</div>
 						<button id="infoBtn" class="modify_item_btn right">确认修改</button>
 					</div>
@@ -288,8 +288,8 @@ $(function(){
 						<div id="yzmCont" class="modify_item">
 							<input class="modify_item_yzbtn right" type="button" id="yzmBtn"
 								value="获取验证码" /> <input required="required" id="yzm"
-								class="modify_item_yzinput right" name="phoneCode" type="text"
-								value="${phoneCode }" />
+								class="modify_item_yzinput right" name="mobile_code" type="text"
+								value="${mobile_code }" />
 						</div>
 						<button id="modifyBtn" class="modify_item_btn right">确认修改</button>
 					</div>

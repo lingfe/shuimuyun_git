@@ -34,14 +34,14 @@
 	$(function() {
 		$("#ajaxPhone").click(function() {
 			//得到验证码的文本值
-			var phoneCode = $("#yanpwd").val();
+			var mobile_code = $("#yanpwd").val();
 			//发送Ajax请求得到验证码
 			$.ajax({
 				url : 'getCode',
 				type : 'post',
 				async : false,
 				data : {
-					phoneCode : phoneCode
+					mobile_code : mobile_code
 				},
 				//请求成功后触发
 				success : function(data) {
@@ -125,8 +125,8 @@
 					<img src="<%=basePath%>PC/images/g00_03.png" class="img2" />
 				</div>
 				<div class="zhuce_yanzheng">
-					<label>* </label> <input type="text" value="${phoneCode}"
-						id="yanpwd" name="phoneCode" />
+					<label>* </label> <input type="text" value="${mobile_code}"
+						id="yanpwd" name="mobile_code" />
 					<button class="yzbtn zhubtn" id="ajaxPhone">获取手机验证码</button>
 					<span class="hidden8"
 						style="width: 100px;height: 30px; color: red;">不能为空</span> <span

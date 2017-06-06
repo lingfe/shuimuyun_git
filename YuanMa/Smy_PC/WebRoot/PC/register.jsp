@@ -36,18 +36,41 @@
 <script type="text/javascript">
 	/*快客注册   通过手机接收验证码对手机进行绑定*/
 	$(function() {
-		$("#ajaxphoneCode").click(function() {
-			var phoneCode = $("input[name='phoneCode']").val();
+		$("#ajaxmobile_code").click(function() {
+			var mobile_code = $("input[name='mobile_code']").val();
 			$.ajax({
 				url : 'getCode',
 				type : 'POST',
 				data : {
-					phoneCode : phoneCode
+					mobile_code : mobile_code
 				},
 				//请求成功后触发
 				success : function(data) {
 
-					$("input[name='phoneCode']").val(data);
+					$("input[name='mobile_code']").val(data);
+				}
+			});
+			//阻止表单重复提交
+			return false;
+		});
+	});
+	
+	
+	
+	//免密登陆
+	$(function() {
+		$("#ajaxBtn").click(function() {
+			var mobile_code = $("input[name='mobile_code']").val();
+			$.ajax({
+				url : 'getCode',
+				type : 'POST',
+				data : {
+					mobile_code : mobile_code
+				},
+				//请求成功后触发
+				success : function(data) {
+
+					$("input[name='mobile_code']").val(data);
 				}
 			});
 			//阻止表单重复提交
@@ -242,8 +265,8 @@
 
 					<div class="zhuce_yanzheng">
 						<label>* </label> <input type="text" required="required"
-							value="${phoneCode }" id="yanpwd" name="phoneCode" />
-						<button class="zhubtn" id="ajaxphoneCode">获取手机验证码</button>
+							value="${mobile_code }" id="yanpwd" name="mobile_code" />
+						<button class="zhubtn" id="ajaxmobile_code">获取手机验证码</button>
 
 						<span class="hidden8"
 							style="width: 100px;height: 30px; color: red;">不能为空</span> <span
@@ -312,8 +335,8 @@
 					<div class="free_con">
 						<span>手机号码: </span><input required="required" type="text"
 							class="phone1" placeholder="  请输入手机号" name="kuaikePhone" /><br />
-						<input required="required" type="text" name="phoneCode"
-							id="phoneCode" value="${phoneCode }" />
+						<input required="required" type="text" name="mobile_code"
+							id="mobile_code" value="${mobile_code }" />
 						<button id="ajaxBtn" class="btn223">获取验证码</button>
 						<br />
 						<button>登 录</button>

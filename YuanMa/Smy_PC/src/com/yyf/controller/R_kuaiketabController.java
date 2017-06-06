@@ -1,6 +1,7 @@
 package com.yyf.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,9 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.lang3.RandomStringUtils;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -248,14 +253,14 @@ public class R_kuaiketabController {
 	 */
 	@RequestMapping(value = "reupdatepass", method = RequestMethod.POST)
 	public String updatepassword(HttpServletRequest htt, @RequestParam("kuaikePhone") String kuaikePhone,
-			@RequestParam("phoneCode") int phoneCode, @RequestParam("password") String password) {
+			@RequestParam("mobile_code") int mobile_code, @RequestParam("password") String password) {
 
 		// 通过手机找回密码 然后通过Md5加密
 		String pwd = Md5Util.md5(password);
 		// 调用重置密码的方法 对加密后的密码进行修改
 		kuaiketabService.updateUserpass(pwd, kuaikePhone);
 		// 清空验证码
-		htt.getSession().removeAttribute("phoneCode");
+		htt.getSession().removeAttribute("mobile_code");
 
 		// 返回页面
 		return "PC/login";
@@ -406,59 +411,17 @@ public class R_kuaiketabController {
 	 */
 	@RequestMapping(value = "phoneLogin", method = RequestMethod.POST)
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
-			@RequestParam("phoneCode") int phoneCode, HttpServletRequest request) {
+			@RequestParam("mobile_code") int mobile_code, HttpServletRequest request) {
 
 		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
 
 		if (phoneLogin != null) {
 
-			request.getSession().removeAttribute("phoneCode");
+			request.getSession().removeAttribute("mobile_code");
 			return "PC/index";
 
 		}
 		return "PC/login";
-	}
-
-	/**
-	 * 手机接收验证码
-	 * 
-	 * @author 杨杰
-	 * @created 2017年5月17日 下午7:06:21
-	 * @param phone_r
-	 *            手机号
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "/sendCode")
-	@ResponseBody
-	public void getCode(@RequestParam("kuaikePhone") String phone_r) throws Exception {
-
-		// 测试是否到了手机号码
-		System.out.println("---------------------" + phone_r);
-		// 产生6位随机数 组合为验证码
-		String code = RandomStringUtils.randomNumeric(6);
-		// 给出提示 ，发送到 手机上
-		String messsageText = "亲----- 你的验证码是" + code + "60秒后请重新获取";
-
-		// 发送短信的核心
-		HttpClient client = new HttpClient();
-		// 提供服务提交 到网络
-		PostMethod post = new PostMethod("http://utf8.sms.webchinese.cn/");
-		// 简单的添加 请求 头
-		post.addRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf8");// 在头文件中设置转码
-
-		// 发送的参数
-		NameValuePair[] data = { new NameValuePair("Uid", "zuxia_liu"),
-				new NameValuePair("Key", "61501c6edf6c63cbde8a"), new NameValuePair("smsMob", phone_r),
-				new NameValuePair("smsText", messsageText) };
-		// 请求体
-		post.setRequestBody(data);
-
-		client.executeMethod(post);
-
-		// 设置编码
-		String result = new String(post.getResponseBodyAsString().getBytes("utf8"));
-		// 返回//打印返回消息状态
-		System.out.println("发送的状态------>" + result);
 	}
 
 	/**
@@ -469,18 +432,72 @@ public class R_kuaiketabController {
 	 * @param request
 	 * @return
 	 */
+	private static String Url = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
 	@RequestMapping(value = "getCode", method = RequestMethod.POST)
 	@ResponseBody
 	public int getCode(HttpServletRequest request) {
-		// 产生6位随机数 充当验证码
-		int phoneCode = (int) ((Math.random() * 9 + 1) * 100000);// 6位
-		// 存入Session域中
-		request.getSession().setAttribute("phoneCode", phoneCode);
-		// 返回验证码
-		return phoneCode;
+		//请求体
+		//协议
+		HttpClient client = new HttpClient();
+		//方法路径
+		PostMethod method = new PostMethod(Url);
+		//请求编码
+		client.getParams().setContentCharset("GBK");
+		//请求头
+		method.setRequestHeader("ContentType", "application/x-www-form-urlencoded;charset=GBK");
+		//随机码
+		int mobile_code = (int) ((Math.random() * 9 + 1) * 100000);
+		//手机接收短信
+		String content = new String("您的验证码是：" + mobile_code + "。请不要把验证码泄露给其他人。");
+
+		NameValuePair[] data = { // 提交短信
+				new NameValuePair("account", "C15966497"), // 查看用户名请登录用户中心->验证码、通知短信->帐户及签名设置->APIID
+				new NameValuePair("password", "7704db8af7077a575156df62475249ab"), // 查看密码请登录用户中心->验证码、通知短信->帐户及签名设置->APIKEY
+				// new NameValuePair("password",
+				// util.StringUtil.MD5Encode("密码")),
+				new NameValuePair("mobile", "15823914401"), new NameValuePair("content", content), };
+		method.setRequestBody(data);
+		//打印验证码
+		System.out.println(mobile_code);
+
+		try {
+			client.executeMethod(method);
+
+			String SubmitResult = method.getResponseBodyAsString();
+			
+			Document doc = DocumentHelper.parseText(SubmitResult);
+			Element root = doc.getRootElement();
+
+			String code = root.elementText("code");
+			String msg = root.elementText("msg");
+			String smsid = root.elementText("smsid");
+
+			System.out.println(code);
+			System.out.println(msg);
+			System.out.println(smsid);
+
+			if ("2".equals(code)) {
+				System.out.println("短信提交成功");
+			}
+
+		} catch (HttpException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		request.getSession().setAttribute("mobile_code", mobile_code);
+		return mobile_code;
 
 	}
+	
 
+	
 	/**
 	 * 根据快客Id修改手机号码
 	 * 
@@ -500,7 +517,7 @@ public class R_kuaiketabController {
 		kuaiketabService.updatePhoneById(kuaikePhone, kuaikeId);
 
 		http.getSession().removeAttribute("login");
-		http.getSession().removeAttribute("phoneCode");
+		http.getSession().removeAttribute("mobile_code");
 
 		return "PC/personalCenter";
 	}

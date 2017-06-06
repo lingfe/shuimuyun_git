@@ -72,14 +72,13 @@ public class R_xiaordertabController {
 	 * @return URL
 	 */
 	@RequestMapping(value = "/insertCommentInfo", method = RequestMethod.POST)
-	public String insertCommentInfo(Commenttab tab) {
+	public  String insertCommentInfo(Commenttab tab) {
 		// 评论id
 		tab.setCommentId(UUID.randomUUID().toString());
 		// 评论时间
 		tab.setCommentDate(new Date());
-
 		r_xiaordertabService.insertCommentInfo(tab);
-		return "PC/index";
+		return "评论成功";
 	}
 
 	/**

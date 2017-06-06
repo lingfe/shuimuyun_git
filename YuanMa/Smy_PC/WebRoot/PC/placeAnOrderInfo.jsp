@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 <title>${info.status==0?'未接单':''}${info.status==1?'已接单,未发货':'' }
-	${info.status==2?'已到达,未确认':'' } ${info.status==3?'交易结束(已确认)':'' }</title>
+	${info.status==2?'已到达,未确认':'' } ${info.status==3?'交易结束(已确认)':'' }${info.status==4?'已评论':'' }</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -115,12 +115,10 @@ body {
 						<td>${info.kuaikeName }</td>
 					</tr>
 					<tr>
-
 						<td>电话:</td>
 						<td>${info.kuaikePhone }</td>
 					</tr>
 					<tr>
-
 						<td>地址:</td>
 						<td>${info.kuaikeAddress }</td>
 					</tr>
@@ -155,7 +153,7 @@ body {
 						<td>当前状态:</td>
 						<td>${info.status==0?'未接单':''}${info.status==1?'已接单,未发货':'' }
 							${info.status==2?'已到达,未确认':'' } ${info.status==3?'交易结束(已确认)<span id="pingjia" style="color: white;padding:5px 8px;background: #ff6d46;font-size: 1em;">评价</span>':'' }
-
+							${info.status==4?'已评论':'' }
 						</td>
 					</tr>
 					<tr>

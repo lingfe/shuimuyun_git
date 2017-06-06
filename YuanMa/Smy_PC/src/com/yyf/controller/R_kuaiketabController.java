@@ -414,6 +414,8 @@ public class R_kuaiketabController {
 			@RequestParam("mobile_code") int mobile_code, HttpServletRequest request) {
 
 		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
+		
+		request.getSession().setAttribute("kuaikePhone", phoneLogin.getKuaikePhone());
 
 		if (phoneLogin != null) {
 
@@ -433,9 +435,9 @@ public class R_kuaiketabController {
 	 * @return
 	 */
 	private static String Url = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
-	@RequestMapping(value = "getCode", method = RequestMethod.POST)
+	@RequestMapping(value = "getCode/{kuaikePhone}", method = RequestMethod.POST)
 	@ResponseBody
-	public int getCode(HttpServletRequest request) {
+	public int getCode(@PathVariable("kuaikePhone") String kuaikePhone,HttpServletRequest request) {
 		//请求体
 		//协议
 		HttpClient client = new HttpClient();
@@ -450,12 +452,13 @@ public class R_kuaiketabController {
 		//手机接收短信
 		String content = new String("您的验证码是：" + mobile_code + "。请不要把验证码泄露给其他人。");
 
+		
 		NameValuePair[] data = { // 提交短信
 				new NameValuePair("account", "C15966497"), // 查看用户名请登录用户中心->验证码、通知短信->帐户及签名设置->APIID
 				new NameValuePair("password", "7704db8af7077a575156df62475249ab"), // 查看密码请登录用户中心->验证码、通知短信->帐户及签名设置->APIKEY
 				// new NameValuePair("password",
 				// util.StringUtil.MD5Encode("密码")),
-				new NameValuePair("mobile", "15823914401"), new NameValuePair("content", content), };
+				new NameValuePair("mobile", kuaikePhone), new NameValuePair("content", content), };
 		method.setRequestBody(data);
 		//打印验证码
 		System.out.println(mobile_code);

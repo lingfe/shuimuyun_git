@@ -34,11 +34,11 @@
 	/*快客快捷登陆   通过手机接收验证码进行登陆*/
 	$(function() {
 		$("#ajaxBtn").click(function() {
+			var kuaikePhone=$("#kuaikePhone2").val();
 			var mobile_code = $("#mobile_code").val();
 			$.ajax({
-				url : 'getCode',
-
-				type : 'POST',
+				url : 'getCode/'+kuaikePhone,
+				type : 'POST', 
 				data : {
 					mobile_code : mobile_code
 				},
@@ -335,7 +335,7 @@
 				<form action="phoneLogin" method="post">
 					<div class="free_con">
 						<span>手机号码: </span><input required="required" type="text" class="phone1"
-							placeholder="  请输入手机号" name="kuaikePhone" /><br /> <input required="required"
+							placeholder="  请输入手机号" name="kuaikePhone" id="kuaikePhone2"/><br /> <input required="required"
 							type="text" name="mobile_code" id="mobile_code" value="${mobile_code }" />
 						<button id="ajaxBtn" class="btn223">获取验证码</button>
 						<br />

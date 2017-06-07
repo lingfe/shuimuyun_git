@@ -11,15 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yyf.model.City;
 import com.yyf.model.Commenttab;
+import com.yyf.model.PageModel;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.CityService;
@@ -33,34 +36,80 @@ import com.yyf.util.R_xiaordertabEnum;
  * 下午4:49:39 修改内容：
  */
 @Controller
+@SessionAttributes("page")
 @RequestMapping("/xiaordertab")
 public class R_xiaordertabController {
 
-		// 自动装配	下单
+	// 自动装配 下单
 	@Autowired
 	private R_xiaordertabService r_xiaordertabService;
-	// 自动装配	抢单
+	// 自动装配 抢单
 	@Autowired
 	private R_qiangordertabService r_qiangordertabService;
-	// 自动装配	地址
+	// 自动装配 地址
 	@Autowired
 	private CityService cityService;
-	
-	
+
+	/**
+	 * 
+	 * 通过ajax请求，根据状态返回分页集合
+	 * 
+	 * @author lijie
+	 * @created 2017年6月7日 上午11:12:16
+	 * @param status
+	 *            下单状态
+	 * @param pageIndex
+	 *            当前页
+	 * @param pageNum
+	 *            页容量
+	 * @param model
+	 *            模型，保存page
+	 * @return 集合
+	 */
+	@RequestMapping(value = "/xiadanAjax/{status}/{pageIndex}/{pageNum}", method = RequestMethod.GET)
+	public @ResponseBody List<R_xiaordertab> statusQueryPaging(@PathVariable("status") int status,
+			@PathVariable("status") int pageIndex, @PathVariable("status") int pageNum, ModelMap model) {
+		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
+		// 设置分页数值
+		page.setPageIndex(pageIndex);
+		page.setPageNum(pageNum);
+		page.setNumCount(r_xiaordertabService.queryCount(status));
+
+		page.setStatus(status);
+		// 得到分页数据
+		List<R_xiaordertab> statusQueryPaging = r_xiaordertabService.statusQueryPaging(status,
+				((pageIndex - 1) * pageNum), pageNum);
+		// 设置到session
+		model.addAttribute("page", page);
+		return statusQueryPaging;
+	}
+
 	/**
 	 * 
 	 * 通过ajax请求，根据状态返回集合
-	 * @author lijie     
-	 * @created 2017年5月28日 上午9:05:17  
+	 * 
+	 * @author lijie
+	 * @created 2017年5月28日 上午9:05:17
 	 * @param status
 	 * @return
 	 */
-	@RequestMapping(value="/xiadanAjax/{status}",method=RequestMethod.GET)
-	public @ResponseBody List<R_xiaordertab> ajxaJson(@PathVariable("status")int status){
-		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQuery(status);
+	@RequestMapping(value = "/xiadanAjax/{status}", method = RequestMethod.POST)
+	public @ResponseBody List<R_xiaordertab> ajxaJson(@PathVariable("status") int status) {
+
+		ModelMap model=new ModelMap();
+		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
+		// 设置分页数值
+		page.setNumCount(r_xiaordertabService.queryCount(status));
+		page.setStatus(status);
+		// 得到分页数据,默认
+		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQueryPaging(status,
+				((page.getPageIndex() - 1) * page.getPageNum()), page.getPageNum());
+
+		// 设置到session
+		model.addAttribute("page", page);
 		return statusQuery;
 	}
-	
+
 	/**
 	 * 
 	 * 添加下单评论记录
@@ -71,7 +120,7 @@ public class R_xiaordertabController {
 	 * @return URL
 	 */
 	@RequestMapping(value = "/insertCommentInfo", method = RequestMethod.POST)
-	public  String insertCommentInfo(Commenttab tab) {
+	public String insertCommentInfo(Commenttab tab) {
 		// 评论id
 		tab.setCommentId(UUID.randomUUID().toString());
 		// 评论时间
@@ -117,26 +166,24 @@ public class R_xiaordertabController {
 		// 得到数据
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
 		map.addAttribute("info", xiaorderInfo);
-		
+
 		R_kuaiketab querytKuaike = r_qiangordertabService.querytKuaike(xiaId);
 		map.addAttribute("kuaike", querytKuaike);
-		
-		//获取省
+
+		// 获取省
 		List<City> province = cityService.getProvince();
 		map.addAttribute("province", province);
-		
-		//获取市
+
+		// 获取市
 		List<City> city = cityService.getCity();
 		map.addAttribute("city", city);
-		
-		//获取区
+
+		// 获取区
 		List<City> area = cityService.getArea();
-		map.addAttribute("area",area);
-		
-		
+		map.addAttribute("area", area);
+
 		return "PC/placeAnOrderInfo";
-	
-		
+
 	}
 
 	/**

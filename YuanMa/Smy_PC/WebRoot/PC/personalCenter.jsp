@@ -190,12 +190,12 @@ $(function(){
 		<div class="perinfo_r right">
 			<div class="perinfo_rCont" id="perinfo_rContOne">
 				<div class="perinfo_menu_item">
-					<a href="javascript:void(0);" onclick="javascript:statusHref(0);">全部订单</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref('0/1/${page.pageNum}');">全部订单</a>
 					<a class="active" href="javascript:void(0);"
 						onclick="javascript:statusHref(0);">待付款</a> <a
-						href="javascript:void(0);" onclick="javascript:statusHref(1);">待取货</a>
-					<a href="javascript:void(0);" onclick="javascript:statusHref(2);">正在派送</a>
-					<a href="javascript:void(0);" onclick="javascript:statusHref(3);">待评价</a>
+						href="javascript:void(0);" onclick="javascript:statusHref('1/1/${page.pageNum}');">待取货</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref('2/1/${page.pageNum}');">正在派送</a>
+					<a href="javascript:void(0);" onclick="javascript:statusHref('3/1/${page.pageNum}');">待评价</a>
 				</div>
 				<table border="0" cellspacing="0" cellpadding="0">
 					<thead class="perinfo_thead">
@@ -207,7 +207,17 @@ $(function(){
 							<td class="perinfo_operation">操作</td>
 						</tr>
 					</thead>
-					<tbody class="perinfo_tbody prolist"></tbody>
+					<tbody class="perinfo_tbody prolist">
+					
+					</tbody>
+					  	<tr>
+				   			<th>
+				   				<a href="xiaordertab/xiadanAjax/${page.status}/${page.frist}/${page.pageNum}">首页</a>
+				   				<a href="xiaordertab/xiadanAjax/${page.status}/${page.xia}/${page.pageNum}">下一页</a>
+				   				<a href="xiaordertab/xiadanAjax/${page.status}/${page.shang}/${page.pageNum}">上一页</a>
+				   				<a href="xiaordertab/xiadanAjax/${page.status}/${page.last}/${page.pageNum}">未页</a>
+				   			</th>
+			   			</tr>
 				</table>
 			</div>
 			<div class="perinfo_rCont">我的钱包</div>

@@ -21,6 +21,30 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
 	/**
 	 * 
+	 * 根据下单状态查询下单记录行
+	 * 
+	 * @author lijie
+	 * @created 2017年5月19日 上午11:35:51
+	 * @param status 状态
+	 * @return 行
+	 */
+	@Select("SELECT COUNT(*) FROM xiaordertab where status=#{status}")
+	int queryCount(@Param("status")int status);
+	
+	/**
+	 * 
+	 * 根据状态查询下单数据，分页查询
+	 * @author lijie    
+	 * @created 2017年5月28日 上午9:09:36  
+	 * @param status 下单状态
+	 * @param pageIndex 当前页
+	 * @param pageNum 页容量
+	 */
+	@Select("SELECT * FROM xiaordertab where status=#{status} LIMIT #{pageIndex},#{pageNum}")
+	List<R_xiaordertab> statusQueryPaging(@Param("status")int status,@Param("pageIndex") int pageIndex,@Param("pageNum")int pageNum);
+	
+	/**
+	 * 
 	 * 根据状态查询下单数据
 	 * @author lijie    
 	 * @created 2017年5月28日 上午9:09:36  

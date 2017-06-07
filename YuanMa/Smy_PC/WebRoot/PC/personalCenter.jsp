@@ -409,13 +409,20 @@ $(function(){
 	
 	
 						}
+						//分页参数
+						var x="/";
+						var frist=page.status + x + page.frist + x + page.pageNum;
+						var xia=page.status + x + page.xia   + x + page.pageNum;
+						var shang=page.status + x + page.shang + x + page.pageNum;
+						var last=page.status + x + page.last  + x + page.pageNum;
 						
+						//分页标签
 						result+="<tr> \
 				   					<th> \
-				   					<a href='javascript:statusHref(0/1/2);' title='/" + page.status + "/" + page.frist + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>首页</a> \
-				   					<a href='javascript:void(0);' title='" + page.status + "/" + page.xia + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>下一页</a> \
-				   					<a href='javascript:void(0);' title='" + page.status + "/" + page.shang + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>上一页</a> \
-				   					<a href='javascript:void(0);' title='" + page.status + "/" + page.last + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>未页</a> \
+				   					<a title='" + frist + "' 	onclick='statusHref("+ frist +");'>首页</a> \
+				   					<a title='" + xia + "' 		onclick='statusHref("+ xia +");'>下一页</a> \
+				   					<a title='" + shang + "' 	onclick='statusHref("+ shang +");'>上一页</a> \
+				   					<a title='" + last + "' 	onclick='statusHref("+ last +");'>未页</a> \
 				   					</th> \
 			   					</tr>";
 						
@@ -432,7 +439,8 @@ $(function(){
 		//状态
 		function statusHref(status) {
 			$('.prolist').html("");
-			alert(status.toString());
+			var tt=status.toString().split(".");
+			status=tt.length>1?tt[1]:status;
 			loadmore(status);
 		}
 	</script>

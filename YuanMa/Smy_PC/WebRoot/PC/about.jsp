@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>关于我们</title>
-    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="footer_map">
 						<a href="<%=basePath %>PC/index.jsp">首页</a>
 						<a href="<%=basePath %>PC/index.jsp">人人配送</a>
-						<a href="<%=basePath %>PC/index.jsp">公众号</a>
+						<a href="<%=basePath %>PC/intro.jsp">公众号</a>
 						<a href="<%=basePath %>PC/index.jsp">网站地图</a>
 						<a class="footer_map_last" href="<%=basePath %>PC/index.jsp">SITEAPM</a>
 					</div>

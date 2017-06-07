@@ -58,7 +58,6 @@ public class R_xiaordertabController {
 	@RequestMapping(value="/xiadanAjax/{status}",method=RequestMethod.GET)
 	public @ResponseBody List<R_xiaordertab> ajxaJson(@PathVariable("status")int status){
 		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQuery(status);
-	
 		return statusQuery;
 	}
 	

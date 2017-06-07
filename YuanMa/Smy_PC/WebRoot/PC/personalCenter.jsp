@@ -368,6 +368,8 @@ $(function(){
 							status = data[i].status == 2 ? '已到达,未确认' : status;
 							status = data[i].status == 3 ? '交易结束(待评价)' : status;
 							status = data[i].status == 4 ? '已评价' : status;
+							//价格
+							var prioes=data[i].kaikePrioes==null?'未付款':data[i].kaikePrioes;
 							
 							//date
 							var date=new Date(data[i].okDate);
@@ -386,7 +388,7 @@ $(function(){
 																			<p class='perinfo_time_text'>" + dataStr + "</p> \
 																		</td> \
 																		<td class='perinfo_pay'> \
-																			<p class='perinfo_time_text'>￥" + data[i].kaikePrioes + "</p> \
+																			<p class='perinfo_time_text'>￥" + prioes + "</p> \
 																		</td> \
 																		<td class='perinfo_state'> \
 																			<p class='perinfo_time_text'>" + status + "</p> \

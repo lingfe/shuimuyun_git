@@ -24,7 +24,7 @@ public interface R_xiaordertabService {
 	 * @param status 状态
 	 * @return 行
 	 */
-	int queryCount(int status);
+	int statusQueryCount(int status);
 	
 	/**
 	 * 

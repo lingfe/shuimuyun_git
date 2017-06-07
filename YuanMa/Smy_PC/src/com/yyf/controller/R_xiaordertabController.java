@@ -36,7 +36,6 @@ import com.yyf.util.R_xiaordertabEnum;
  * 下午4:49:39 修改内容：
  */
 @Controller
-@SessionAttributes("page")
 @RequestMapping("/xiaordertab")
 public class R_xiaordertabController {
 
@@ -67,21 +66,22 @@ public class R_xiaordertabController {
 	 * @return 集合
 	 */
 	@RequestMapping(value = "/xiadanAjax/{status}/{pageIndex}/{pageNum}", method = RequestMethod.GET)
-	public @ResponseBody List<R_xiaordertab> statusQueryPaging(@PathVariable("status") int status,
-			@PathVariable("status") int pageIndex, @PathVariable("status") int pageNum, ModelMap model) {
+	public @ResponseBody PageModel<R_xiaordertab> statusQueryPaging(@PathVariable("status") int status,
+			@PathVariable("pageIndex") int pageIndex, @PathVariable("pageNum") int pageNum) {
+		//分页模型
 		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
 		// 设置分页数值
 		page.setPageIndex(pageIndex);
 		page.setPageNum(pageNum);
-		page.setNumCount(r_xiaordertabService.queryCount(status));
-
+		page.setNumCount(r_xiaordertabService.statusQueryCount(status));
 		page.setStatus(status);
 		// 得到分页数据
 		List<R_xiaordertab> statusQueryPaging = r_xiaordertabService.statusQueryPaging(status,
 				((pageIndex - 1) * pageNum), pageNum);
-		// 设置到session
-		model.addAttribute("page", page);
-		return statusQueryPaging;
+		System.out.println(page.toString());
+		// 设置到page
+		page.setList(statusQueryPaging);
+		return page;
 	}
 
 	/**
@@ -93,21 +93,21 @@ public class R_xiaordertabController {
 	 * @param status
 	 * @return
 	 */
-	@RequestMapping(value = "/xiadanAjax/{status}", method = RequestMethod.POST)
-	public @ResponseBody List<R_xiaordertab> ajxaJson(@PathVariable("status") int status) {
-
-		ModelMap model=new ModelMap();
+	@RequestMapping(value = "/xiadanAjax/{status}", method = RequestMethod.GET)
+	public @ResponseBody PageModel<R_xiaordertab> ajxaJson(@PathVariable("status") int status) {
+		//分页模型
 		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
 		// 设置分页数值
-		page.setNumCount(r_xiaordertabService.queryCount(status));
+		page.setNumCount(r_xiaordertabService.statusQueryCount(status));
 		page.setStatus(status);
 		// 得到分页数据,默认
 		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQueryPaging(status,
 				((page.getPageIndex() - 1) * page.getPageNum()), page.getPageNum());
+		//设置到page
+		page.setList(statusQuery);
+		System.out.println(page.toString());
 
-		// 设置到session
-		model.addAttribute("page", page);
-		return statusQuery;
+		return page;
 	}
 
 	/**

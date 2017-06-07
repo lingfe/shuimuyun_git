@@ -16,7 +16,6 @@ import com.yyf.model.R_xiaordertab;
  * 
  * 文件名： R_xiaordertabMapper.java 描述： 下单数据访问接口 修改人： lijie 修改时间： 2017年5月16日
  */
-
 public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
 	/**
@@ -29,7 +28,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @return 行
 	 */
 	@Select("SELECT COUNT(*) FROM xiaordertab where status=#{status}")
-	int queryCount(@Param("status")int status);
+	int statusQueryCount(@Param("status")int status);
 	
 	/**
 	 * 

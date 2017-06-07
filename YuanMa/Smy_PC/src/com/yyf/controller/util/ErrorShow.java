@@ -33,10 +33,14 @@ public final class ErrorShow {
 	/**用户名或密码不正确**/
 	public static final String SYS_ERROR="用户名或密码不正确";
 	
+	/**人工找回密码提示语**/
+	public static final String SYS_MSG="所填信息不匹配";
+	
 	/** XX不能为空  **/
 	public static final String NON_EMPYT="不能为空";
 	
-	/**  **/
+	/** "参数错误！ **/
+	public static final String PARAM_ERROR="参数错误!";
 	
 	
 	/**

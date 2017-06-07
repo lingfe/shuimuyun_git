@@ -34,11 +34,11 @@
 	/*快客快捷登陆   通过手机接收验证码进行登陆*/
 	$(function() {
 		$("#ajaxBtn").click(function() {
+			var kuaikePhone=$("#kuaikePhone2").val();
 			var mobile_code = $("#mobile_code").val();
 			$.ajax({
-				url : 'getCode',
-
-				type : 'POST',
+				url : 'getCode/'+kuaikePhone,
+				type : 'POST', 
 				data : {
 					mobile_code : mobile_code
 				},
@@ -59,8 +59,9 @@
 	$(function() {
 		$("#ajaxmobile_code").click(function() {
 			var mobile_code = $("input[name='mobile_code']").val();
+			var kuaikePhone=$("#phone").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 
 				type : 'POST',
 				data : {
@@ -77,7 +78,9 @@
 		});
 	});
 </script>
-
+<!-- layer -->
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<div class="header">
@@ -110,8 +113,8 @@
 			<ul class="nav navbar-nav pull-left ren_nav">
 				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="javascript:void(0);">公众号</a></li>
-				<li><a href="javascript:void(0);">关于我们</a></li>
+				<li><a href="<%=basePath %>PC/intro.jsp">公众号</a></li>
+				<li><a href="<%=basePath %>PC/about.jsp">关于我们</a></li>
 				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 				<li class="active"><a href="http://www.smuyun.com/"
 					target="_left">商城</a></li>
@@ -335,7 +338,7 @@
 				<form action="phoneLogin" method="post">
 					<div class="free_con">
 						<span>手机号码: </span><input required="required" type="text" class="phone1"
-							placeholder="  请输入手机号" name="kuaikePhone" /><br /> <input required="required"
+							placeholder="  请输入手机号" name="kuaikePhone" id="kuaikePhone2"/><br /> <input required="required"
 							type="text" name="mobile_code" id="mobile_code" value="${mobile_code }" />
 						<button id="ajaxBtn" class="btn223">获取验证码</button>
 						<br />

@@ -36,7 +36,8 @@ public final class ErrorShow {
 	/** XX不能为空  **/
 	public static final String NON_EMPYT="不能为空";
 	
-	/**  **/
+	/** "参数错误！ **/
+	public static final String PARAM_ERROR="参数错误!";
 	
 	
 	/**

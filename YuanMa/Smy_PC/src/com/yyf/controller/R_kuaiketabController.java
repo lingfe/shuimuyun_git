@@ -413,16 +413,23 @@ public class R_kuaiketabController {
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("mobile_code") int mobile_code, HttpServletRequest request) {
 
+		//得到请求方法，并且添加到实体对象中
 		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
-		
-		request.getSession().setAttribute("kuaikePhone", phoneLogin.getKuaikePhone());
-
+		//判断 登录对象是否为空
 		if (phoneLogin != null) {
-
+			//将用户信息添加到model对象中
+			model.addAttribute("login", phoneLogin);
+			//用户登录电话
+			model.addAttribute("uname",phoneLogin.getKuaikePhone());
+			//用户名
+			request.getSession().setAttribute("namea", phoneLogin.getKuaikeName());
+			//移除验证码
 			request.getSession().removeAttribute("mobile_code");
+			//返回首页
 			return "PC/index";
 
 		}
+		//登录失败返回登录页面
 		return "PC/login";
 	}
 

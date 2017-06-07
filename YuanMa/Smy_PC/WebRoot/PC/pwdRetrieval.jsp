@@ -35,9 +35,10 @@
 		$("#ajaxPhone").click(function() {
 			//得到验证码的文本值
 			var mobile_code = $("#yanpwd").val();
+			var kuaikePhone=$("#phone").val();
 			//发送Ajax请求得到验证码
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'post',
 				async : false,
 				data : {
@@ -91,8 +92,8 @@
 			<ul class="nav navbar-nav pull-left ren_nav">
 				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="javascript:void(0);">公众号</a></li>
-				<li><a href="javascript:void(0);">关于我们</a></li>
+				<li><a href="<%=basePath %>PC/intro.jsp">公众号</a></li>
+				<li><a href="<%=basePath %>PC/about.jsp">关于我们</a></li>
 				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 				<li class="active"><a href="http://www.smuyun.com/"
 					target="_left">商城</a></li>

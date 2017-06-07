@@ -35,9 +35,10 @@
 		$("#ajaxPhone").click(function() {
 			//得到验证码的文本值
 			var mobile_code = $("#yanpwd").val();
+			var kuaikePhone=$("#phone").val();
 			//发送Ajax请求得到验证码
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'post',
 				async : false,
 				data : {

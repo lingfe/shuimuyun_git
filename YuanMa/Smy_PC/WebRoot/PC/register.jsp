@@ -37,9 +37,10 @@
 	/*快客注册   通过手机接收验证码对手机进行绑定*/
 	$(function() {
 		$("#ajaxmobile_code").click(function() {
+			var kuaikePhone=$("#phone").val();
 			var mobile_code = $("input[name='mobile_code']").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -61,8 +62,9 @@
 	$(function() {
 		$("#ajaxBtn").click(function() {
 			var mobile_code = $("input[name='mobile_code']").val();
+			var kuaikePhone=$("#kuaikePhone3").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -334,7 +336,7 @@
 				<form action="phoneLogin" method="post">
 					<div class="free_con">
 						<span>手机号码: </span><input required="required" type="text"
-							class="phone1" placeholder="  请输入手机号" name="kuaikePhone" /><br />
+							class="phone1" placeholder="  请输入手机号" name="kuaikePhone" id="kuaikePhone3"/><br />
 						<input required="required" type="text" name="mobile_code"
 							id="mobile_code" value="${mobile_code }" />
 						<button id="ajaxBtn" class="btn223">获取验证码</button>

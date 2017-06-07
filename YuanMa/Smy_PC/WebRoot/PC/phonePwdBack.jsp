@@ -31,6 +31,9 @@
 	type="text/javascript" charset="utf-8"></script>
 <script src="<%=basePath%>PC/js/zhaohuimima.js" type="text/javascript"
 	charset="utf-8"></script>
+	<!-- layer -->
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<div class="header">

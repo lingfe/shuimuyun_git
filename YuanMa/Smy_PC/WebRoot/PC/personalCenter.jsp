@@ -27,8 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function() {
 		$("#yzmBtn").click(function() {
 			var mobile_code = $("input[name='mobile_code']").val();
+			var kuaikePhone=$("#kuaikePhone2017").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -55,8 +56,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function() {
 		$("#infoYznBtn").click(function() {
 			var mobile_code = $("input[name='mobile_code']").val();
+			var kuaikePhone=$("#infoModifyPhone").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -252,8 +254,8 @@ $(function(){
 							<div class="modify_item_name left">手机号:</div>
 
 							<input required="required" id="id" class="modify_item_input left" type="hidden"
-								name="kuaikeId" value="${login.kuaikeId }" /> <input
-								id="infoModifyPhone" class="modify_item_input left" type="text"
+								name="kuaikeId" value="${login.kuaikeId }" /> 
+							<input	id="infoModifyPhone" class="modify_item_input left" type="text"
 								name="kuaikePhone" />
 						</div>
 						<div id="infoYznCont" class="modify_item">
@@ -276,7 +278,7 @@ $(function(){
 							<div class="modify_item_name left">手机号码:</div>
 							<input required="required" id="phone" class="modify_item_input left" type="text"
 								name="kuaikePhone" readonly="readonly"
-								value="${uname }" />
+								value="${uname }" id="kuaikePhone2017"/>
 						</div>
 						<div id="pwdCont" class="modify_item">
 							<div class="modify_item_name left">新置密码:</div>

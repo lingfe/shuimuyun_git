@@ -2,9 +2,6 @@ package com.yyf.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 

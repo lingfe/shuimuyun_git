@@ -33,8 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<nav class="nav left">
 						<a href="http://www.smuyun.com/">商城</a>
 						<a href="<%=basePath%>PC/index.jsp">人人配送</a>
-						<a href="<%=basePath%>PC/index.jsp">公众号</a>
-						<a href="<%=basePath%>PC/intro.jsp">关于我们</a>
+						<a href="<%=basePath%>PC/intro.jsp">公众号</a>
+						<a href="<%=basePath%>PC/about.jsp">关于我们</a>
 						<a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a>
 					</nav>
 					<div class="lianxi left">
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="footer_map">
 						<a href="<%=basePath %>PC/index.jsp">首页</a>
 						<a href="<%=basePath %>PC/index.jsp">人人配送</a>
-						<a href="<%=basePath %>PC/index.jsp">公众号</a>
+						<a href="<%=basePath %>PC/intro.jsp">公众号</a>
 						<a href="<%=basePath %>PC/index.jsp">网站地图</a>
 						<a class="footer_map_last" href="<%=basePath %>PC/index.jsp">SITEAPM</a>
 					</div>

@@ -34,8 +34,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<nav class="nav left">
 						<a href="http://www.smuyun.com/">商城</a>
 						<a href="<%=basePath%>PC/index.jsp">人人配送</a>
-						<a href="<%=basePath%>PC/index.jsp">公众号</a>
-						<a href="<%=basePath%>PC/intro.jsp">关于我们</a>
+						<a href="<%=basePath%>PC/intro.jsp">公众号</a>
+						<a href="<%=basePath%>PC/about.jsp">关于我们</a>
 						<a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a>
 					</nav>
 					<div class="lianxi left">

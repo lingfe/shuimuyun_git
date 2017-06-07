@@ -400,13 +400,14 @@ public class R_kuaiketabController {
 	 */
 	@RequestMapping(value = "selectUser", method = RequestMethod.POST)
 	public String selectUser(@PathVariable("kuaikeId") String kuaikeId, ModelMap model) {
+		//调用查询方法 并把结果封装为一个对象
 		R_kuaiketab selectUser = kuaiketabService.selectUser(kuaikeId);
-
+		//判断对象是否为空
 		if (selectUser != null) {
-
+			//不为空 则添加到model对象中方便页面上取值
 			model.addAttribute("selectUser", selectUser);
 		}
-
+		//为空 返回首页 说明用户没有注册成功
 		return "PC/index";
 	}
 
@@ -460,9 +461,16 @@ public class R_kuaiketabController {
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月23日 下午2:30:33
-	 * @param request
-	 * @return
+	 * @param request 发送的请求 【Ajax请求】
+	 * @return 返回的参数【mobile_code】
 	 */
+	//接口类型：互亿无线触发短信接口，支持发送验证码短信、订单通知短信等。
+	// 账户注册：请通过该地址开通账户http://sms.ihuyi.com/register.html
+	// 注意事项：
+	//（1）调试期间，请用默认的模板进行测试，默认模板详见接口文档；
+	//（2）请使用APIID（查看APIID请登录用户中心->验证码、通知短信->帐户及签名设置->APIID）及 APIkey来调用接口，APIkey在会员中心可以获取；
+	//（3）该代码仅供接入互亿无线短信接口参考使用，客户可根据实际需要自行编写；
+	//参数提供：APIID=C15966497  APIKey=7704db8af7077a575156df62475249ab
 	//初始化 短息请求接口
 	private static String Url = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
 	@RequestMapping(value = "getCode/{kuaikePhone}", method = RequestMethod.POST)
@@ -509,7 +517,7 @@ public class R_kuaiketabController {
 			System.out.println(code);
 			System.out.println(msg);
 			System.out.println(smsid);
-
+			//判断状态码是否为2 表示成功状态
 			if ("2".equals(code)) {
 				System.out.println("短信提交成功");
 			}

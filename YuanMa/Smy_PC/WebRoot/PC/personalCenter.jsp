@@ -412,10 +412,10 @@ $(function(){
 						
 						result+="<tr> \
 				   					<th> \
-				   					<a href='javascript:void(0);' title='/" + page.status + "/" + page.frist + "/" + page.pageNum+ "' 	onclick='javascript:statusHref('/" + page.status + "/" + page.frist+ "/" + page.pageNum+ "');'>首页</a> \
-				   					<a href='javascript:void(0);' title='/" + page.status + "/" + page.xia + "/" + page.pageNum+ "' 	onclick='javascript:statusHref('/" + page.status + "/" + page.xia+ "/" + page.pageNum+ "');'>下一页</a> \
-				   					<a href='javascript:void(0);' title='/" + page.status + "/" + page.shang + "/" + page.pageNum+ "' 	onclick='javascript:statusHref('/" + page.status + "/" + page.shang+ "/" + page.pageNum+ "');'>上一页</a> \
-				   					<a href='javascript:void(0);' title='/" + page.status + "/" + page.last + "/" + page.pageNum+ "' 	onclick='javascript:statusHref('/" + page.status + "/" + page.last+ "/" + page.pageNum+ "');'>未页</a> \
+				   					<a href='javascript:statusHref(0/1/2);' title='/" + page.status + "/" + page.frist + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>首页</a> \
+				   					<a href='javascript:void(0);' title='" + page.status + "/" + page.xia + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>下一页</a> \
+				   					<a href='javascript:void(0);' title='" + page.status + "/" + page.shang + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>上一页</a> \
+				   					<a href='javascript:void(0);' title='" + page.status + "/" + page.last + "/" + page.pageNum+ "' 	onclick='javascript:statusHref();'>未页</a> \
 				   					</th> \
 			   					</tr>";
 						
@@ -432,6 +432,7 @@ $(function(){
 		//状态
 		function statusHref(status) {
 			$('.prolist').html("");
+			alert(status.toString());
 			loadmore(status);
 		}
 	</script>

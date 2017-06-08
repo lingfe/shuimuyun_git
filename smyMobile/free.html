@@ -6,7 +6,15 @@
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 		<title></title>
 		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/layer.css" />
 		<link rel="stylesheet" type="text/css" href="css/smyMobile.css" />
+		<style>
+			.layui-m-layer-msg .layui-m-layercont {
+				background: rgba(87,87,84,.5) !important;
+				border-radius: 5px;
+				color: #f10000;
+			}
+		</style>
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
@@ -21,22 +29,24 @@
 				<form class="loginCont_form">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="images/icon/phone.png" />
-						<input class="loginCont_form_itemAll mui-input-clear right" type="text" placeholder="请输入手机号码" />
+						<input class="loginCont_form_itemAll mui-input-clear right" id="forgePhone" type="text" placeholder="请输入手机号码" />
 					</div>
 					<div class="free_gray">
-	        			<input type="text" class="mui-input-clear free_input_code left" placeholder="请输入验证码">
-						<button type="button" class="mui-btn loginBtn mui-btn-block free_code left">请输入验证码</button> 		
+	        			<input type="text" class="mui-input-clear free_input_code left" id="forgeYzm" placeholder="请输入验证码">
+						<input type="button" class="mui-btn loginBtn mui-btn-block free_code left" id="forgeYzmBtn" value="请输入验证码">	
    				 	</div>
 
-					<button type="button" class="mui-btn loginBtn mui-btn-block">登录</button>
+					<button type="button" class="mui-btn loginBtn mui-btn-block" id="freeBtn">登录</button>
 					<a class="free_login" href="login.html">密码登录</a>
 				</form>
 			</div>
 		</div>
 
-		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
-		<script type="text/javascript" src="js/mui.min.js"></script>
-		<script type="text/javascript" src="js/smyMobile.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/mui.min.js" ></script>
+		<script type="text/javascript" src="js/smyMobile.js" ></script>
+		<script type="text/javascript" src="js/layer.js" ></script>
+		<script type="text/javascript" src="js/smyMobile_yz.js" ></script>
 	</body>
 
 </html>

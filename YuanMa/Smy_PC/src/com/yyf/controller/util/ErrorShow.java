@@ -31,7 +31,7 @@ public final class ErrorShow {
 	public static final String WSINFO="请您完善信息再提交 ";
 	
 	/**用户名或密码不正确**/
-	public static final String SYS_ERROR="用户名或密码不正确";
+	public static final String SYS_ERROR="手机或密码不正确";
 	
 	/**人工找回密码提示语**/
 	public static final String SYS_MSG="所填信息不匹配";

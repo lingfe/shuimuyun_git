@@ -211,7 +211,7 @@ public class R_kuaiketabController {
 			// 返回成功页面
 			return "PC/index";
 		}
-		model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SYS_ERROR));
+		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
 		// 留在登陆页面
 		return "PC/login";
 	}

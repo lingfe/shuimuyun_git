@@ -31,6 +31,9 @@
 	type="text/javascript" charset="utf-8"></script>
 <script src="<%=basePath%>PC/js/zhaohuimima.js" type="text/javascript"
 	charset="utf-8"></script>
+	<!-- layer -->
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<div class="header">
@@ -186,7 +189,7 @@
 	<div class="fooeter4 col-lg-5 col-sm-6 col-xs-6 col-md-5">
 		<ul>
 			<li>联系我们</li>
-			<li><span>商城名称:</span><a href="#">水木云</a></li>
+			<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
 			<li><span>商城客服电话:</span><a href="#"> 400 800 600</a></li>
 			<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
 			<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>

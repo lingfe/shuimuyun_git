@@ -25,6 +25,16 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	private IR_xiaordertabMapper ir_xiaordertabMapper;
 
 	@Override
+	public int statusQueryCount(int status) {
+		return ir_xiaordertabMapper.statusQueryCount(status);
+	}
+	
+	@Override
+	public List<R_xiaordertab> statusQueryPaging(int status, int pageIndex, int pageNum) {
+		return ir_xiaordertabMapper.statusQueryPaging(status, pageIndex, pageNum);
+	}
+	
+	@Override
 	public List<R_xiaordertab> statusQuery(int status) {
 		return ir_xiaordertabMapper.statusQuery(status);
 	}

@@ -382,10 +382,10 @@
 		<div class="fooeter4 col-lg-5 col-sm-6 col-xs-6 col-md-5">
 			<ul>
 				<li>联系我们</li>
-				<li><span>商城名称:</span><a href="#">水木云</a></li>
+				<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
 				<li><span>商城客服电话:</span><a href="#"> 400 800 600</a></li>
 				<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
-				<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
+				<li><span>商城关键词组:</span><a href="http://www.smuyun.com/">水木云， 水木云商城</a></li>
 				<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
 			</ul>
 		</div>

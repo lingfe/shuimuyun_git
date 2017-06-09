@@ -274,6 +274,7 @@ input {
 	color: white;
 	border: none !important;
 	width: 50% !important;
+	height: .3rem !important;
 }
 
 .free_code {

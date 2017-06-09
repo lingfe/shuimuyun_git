@@ -53,6 +53,40 @@ public class R_kuaiketabController {
 
 	/**
 	 * 
+	 * 移动端注册，没有图片上传
+	 * @author lijie     
+	 * @created 2017年6月8日 下午6:54:35  
+	 * @param tab
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/register",method=RequestMethod.POST)
+	public String register(R_kuaiketab tab,ModelMap model){
+		
+		// 查询电话号码是否存在
+		R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
+		if (selectKuaiKephone != null) {
+			// 提示
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+			return "APP/register";
+		}
+		
+		// id
+		tab.setKuaikeId(UUID.randomUUID().toString());
+		// 密码加密
+		tab.setPassword(Md5Util.md5(tab.getPassword()));
+		// 登录时间
+		tab.setLoginDate(new Date());
+		// 状态,默认
+		tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
+		//保存
+		kuaiketabService.addUser(tab);
+		
+		return "APP/login";
+	}
+	
+	/**
+	 * 
 	 * 快客申请，包含身份证复印件文件，手持身份证照片
 	 * 
 	 * @author lijie

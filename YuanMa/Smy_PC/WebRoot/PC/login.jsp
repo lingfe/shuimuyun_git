@@ -313,7 +313,7 @@
 			<!--登录开始-->
 
 			<div class="box zhuce_0">
-				<form action="login" method="post">
+				<form action="login/PC" method="post">
 					<div class="common">普通登录</div>
 					<div class="free">免密登录</div>
 					<div style="clear: both;"></div>
@@ -335,7 +335,7 @@
 						</div>
 					</div>
 				</form>
-				<form action="phoneLogin" method="post">
+				<form action="phoneLogin/PC" method="post">
 					<div class="free_con">
 						<span>手机号码: </span><input required="required" type="text" class="phone1"
 							placeholder="  请输入手机号" name="kuaikePhone" id="kuaikePhone2"/><br /> <input required="required"

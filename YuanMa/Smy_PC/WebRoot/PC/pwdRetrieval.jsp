@@ -119,7 +119,7 @@
 		<!--手机找回密码-->
 		<div class="zhao_shou2 que0" style="display: none;">
 			<!-- 手机找回form 开始 -->
-			<form action="reupdatepass" method="post">
+			<form action="reupdatepass/PC" method="post">
 				<div class="zhuce_phone">
 					<label>* 手机号码：</label> <input type="text" value=" " id="phone"
 						name="kuaikePhone" /> <span class="hidden2"

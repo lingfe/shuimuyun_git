@@ -299,3 +299,29 @@ input {
 .reg_btn{
 	margin-top: .4rem !important;
 }
+/*【下单】*/
+.order_info{
+	width: 100%;
+	background: white;
+}
+.order_info>div{
+	padding: 0 20px;
+	margin: .1rem 0;
+	box-sizing: border-box;
+	position: relative;
+}
+.order_info>div:last-of-type{
+	border-top:solid 1px #eee ;
+}
+.shipper img{
+	margin-top: .1rem;
+}
+.shipper label{
+	display: inline-block;
+	position: absolute;
+	top: .15rem;
+	left: .5rem;
+	font-size: .13rem;
+	
+}
+/*【下单】end*/

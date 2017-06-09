@@ -62,8 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul class="nav navbar-nav pull-left ren_nav">
 				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="javascript:void(0);">公众号</a></li>
-				<li><a href="javascript:void(0);">关于我们</a></li>
+				<li><a href="<%=basePath %>PC/intro.jsp">公众号</a></li>
+				<li><a href="<%=basePath %>PC/about.jsp">关于我们</a></li>
 				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 				<li class="active"><a href="http://www.smuyun.com/"
 					target="_left">商城</a></li>
@@ -170,10 +170,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="fooeter4 col-lg-5 col-sm-6 col-xs-6 col-md-5">
 		<ul>
 			<li>联系我们</li>
-			<li><span>商城名称:</span><a href="#">水木云</a></li>
+			<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
 			<li><span>商城客服电话:</span><a href="#"> 0851 8510 3179</a></li>
 			<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
-			<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
+			<li><span>商城关键词组:</span><a href="http://www.smuyun.com/">水木云， 水木云商城</a></li>
 			<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
 		</ul>
 

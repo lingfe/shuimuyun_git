@@ -37,9 +37,10 @@
 	/*快客注册   通过手机接收验证码对手机进行绑定*/
 	$(function() {
 		$("#ajaxmobile_code").click(function() {
+			var kuaikePhone=$("#phone").val();
 			var mobile_code = $("input[name='mobile_code']").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -61,8 +62,9 @@
 	$(function() {
 		$("#ajaxBtn").click(function() {
 			var mobile_code = $("input[name='mobile_code']").val();
+			var kuaikePhone=$("#kuaikePhone3").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -112,8 +114,8 @@
 					<ul class="nav navbar-nav pull-left ren_nav">
 						<li class="active"><a href="<%=basePath%>PC/index.jsp"
 							style="color: #ff6d46;">人人配送</a></li>
-						<li><a href="javascript:void(0);">公众号</a></li>
-						<li><a href="javascript:void(0);">关于我们</a></li>
+						<li><a href="<%=basePath %>PC/intro.jsp">公众号</a></li>
+						<li><a href="<%=basePath %>PC/about.jsp">关于我们</a></li>
 						<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 						<li class="active"><a href="http://www.smuyun.com/"
 							target="_left">商城</a></li>
@@ -334,7 +336,7 @@
 				<form action="phoneLogin" method="post">
 					<div class="free_con">
 						<span>手机号码: </span><input required="required" type="text"
-							class="phone1" placeholder="  请输入手机号" name="kuaikePhone" /><br />
+							class="phone1" placeholder="  请输入手机号" name="kuaikePhone" id="kuaikePhone3"/><br />
 						<input required="required" type="text" name="mobile_code"
 							id="mobile_code" value="${mobile_code }" />
 						<button id="ajaxBtn" class="btn223">获取验证码</button>
@@ -380,10 +382,10 @@
 		<div class="fooeter4 col-lg-5 col-sm-6 col-xs-6 col-md-5">
 			<ul>
 				<li>联系我们</li>
-				<li><span>商城名称:</span><a href="#">水木云</a></li>
+				<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
 				<li><span>商城客服电话:</span><a href="#"> 400 800 600</a></li>
 				<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
-				<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
+				<li><span>商城关键词组:</span><a href="http://www.smuyun.com/">水木云， 水木云商城</a></li>
 				<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
 			</ul>
 		</div>

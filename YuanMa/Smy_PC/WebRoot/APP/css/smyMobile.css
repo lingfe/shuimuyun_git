@@ -1,0 +1,302 @@
+@charset "utf-8";
+
+/*【重定义浏览器默认样式】*/
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form,
+button,
+input,
+textarea,
+header,
+footer,
+nav {
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol,
+dl {
+	list-style-type: none;
+}
+
+html,
+body {
+	*position: static
+}
+
+html {
+	font-family: "microsoft yahei";
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+input {
+	-webkit-appearance: none;
+}
+
+::-webkit-input-placeholder {
+	color: #929292;
+	font-size: 0.12rem;
+}
+
+::-moz-placeholder {
+	color: #929292;
+	font-size: 0.12rem;
+}
+
+::-moz-placeholder {
+	color: #929292;
+	font-size: 0.12rem;
+}
+
+:-ms-input-placeholder {
+	color: #929292;
+	font-size: 0.12rem;
+}
+
+
+/*【重定义浏览器默认样式】end*/
+
+
+/*【公共样式聚合】*/
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.text_1_hide {
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	white-space: normal !important;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.text_2_hide {
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	white-space: normal !important;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.loginBody_bg:before {
+	background: url(../images/login_bg.png) no-repeat;
+}
+
+.body_bg:before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	z-index: 1;
+}
+
+.contMian {
+	position: relative;
+	width: 100%;
+	height: auto;
+	z-index: 2;
+}
+
+
+/*【公共样式聚合】 end*/
+
+
+/*【头部组件】*/
+
+.header {
+	position: relative;
+	width: 100%;
+	height: 0.38rem;
+	background: none;
+}
+
+.header_title {
+	font-size: 0.14rem;
+	line-height: 0.38rem;
+	text-align: center;
+	color: #fff;
+}
+
+.header a {
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 0.12rem;
+	height: 0.12rem;
+	margin-top: -0.06rem;
+}
+
+.header a>img {
+	display: block;
+	width: 0.12rem;
+	height: 0.16rem;
+}
+
+.header_l {
+	left: 20px;
+}
+
+
+/*【头部组件】 end*/
+
+
+/*【登录】*/
+
+.headerLogin {
+	background: none;
+}
+
+.loginCont {
+	width: 75%;
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 0.8rem;
+}
+
+.loginCont_form {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+.loginCont_form_item {
+	position: relative;
+	width: 100%;
+	height: 0.32rem;
+	background: rgba(87, 87, 84, .7) !important;
+	border-radius: 5px;
+	margin-bottom: 0.12rem;
+}
+
+.loginCont_form_item>img {
+	position: absolute;
+	left: 0.1rem;
+	top: 50%;
+	display: block;
+	width: auto;
+	height: 0.16rem;
+	margin-top: -0.08rem;
+}
+
+.loginCont_form_item input {
+	display: block;
+	height: 0.32rem;
+	color: #fff;
+	font-size: 0.12rem;
+	line-height: 0.45rem;
+	outline: none;
+	border: none;
+	background: none;
+	box-sizing: border-box;
+	padding-right: 0.1rem;
+}
+
+.loginCont_form_item .loginCont_form_itemAll {
+	width: calc(100% - 0.25rem);
+}
+
+.loginCont_form_info {
+	width: 100%;
+	height: 0.25rem;
+}
+
+.loginCont_form_info a {
+	color: #fff;
+	font-size: 0.1rem;
+}
+
+.loginCont_form_info a:nth-of-type(1) {
+	padding-left: 0.12rem;
+}
+
+.loginCont_form_info a:nth-of-type(2) {
+	padding-right: 0.12rem;
+}
+
+.loginCont_form .loginBtn {
+	border: none;
+	outline: none;
+	color: #fff;
+	height: 0.32rem;
+	font-size: 0.12rem;
+	line-height: 0.32rem;
+	background: rgb(65, 139, 200);
+	padding: 0;
+	margin-top: 0.15rem;
+}
+
+.free_login {
+	display: block;
+	width: 1rem;
+	height: 0.28rem;
+	color: #fff;
+	font-size: 0.11rem;
+	padding: 0.1rem 0.15rem;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+/*【登录】 end*/
+
+
+/*【免密登录】*/
+
+.free_input_code {
+	background: rgba(87, 87, 84, .7) !important;
+	color: white;
+	border: none !important;
+	width: 50% !important;
+	height: .3rem !important;
+}
+
+.free_code {
+	width: 40%;
+	margin-left: 0.2rem;
+	padding: 0;
+	margin-top: 0 !important;
+}
+
+.free_gray {
+	margin-bottom: .8rem !important;
+}
+/*【免密登录】end*/
+/*【找回密码】*/
+.forget_appeal{
+	width: 76%;	
+}
+.forget_bott{
+	margin-bottom: .4rem;
+}
+/*【找回密码】end*/
+/*【注册】*/
+.reg_btn{
+	margin-top: .4rem !important;
+}

@@ -27,8 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function() {
 		$("#yzmBtn").click(function() {
 			var mobile_code = $("input[name='mobile_code']").val();
+			var kuaikePhone=$("#kuaikePhone2017").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -55,8 +56,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function() {
 		$("#infoYznBtn").click(function() {
 			var mobile_code = $("input[name='mobile_code']").val();
+			var kuaikePhone=$("#infoModifyPhone").val();
 			$.ajax({
-				url : 'getCode',
+				url : 'getCode/'+kuaikePhone,
 				type : 'POST',
 				data : {
 					mobile_code : mobile_code
@@ -148,8 +150,8 @@ $(function(){
 			<ul class="nav navbar-nav pull-left ren_nav">
 				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="javascript:void(0);">公众号</a></li>
-				<li><a href="javascript:void(0);">关于我们</a></li>
+				<li><a href="<%=basePath %>PC/intro.jsp">公众号</a></li>
+				<li><a href="<%=basePath %>PC/about.jsp">关于我们</a></li>
 				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 				<li class="active"><a href="http://www.smuyun.com/"
 					target="_left">商城</a></li>
@@ -188,12 +190,12 @@ $(function(){
 		<div class="perinfo_r right">
 			<div class="perinfo_rCont" id="perinfo_rContOne">
 				<div class="perinfo_menu_item">
-					<a href="javascript:void(0);" onclick="javascript:statusHref(0);">全部订单</a>
+					<a href="javascript:void(0);" title="0" onclick="javascript:statusHref('0');">全部订单</a>
 					<a class="active" href="javascript:void(0);"
 						onclick="javascript:statusHref(0);">待付款</a> <a
-						href="javascript:void(0);" onclick="javascript:statusHref(1);">待取货</a>
-					<a href="javascript:void(0);" onclick="javascript:statusHref(2);">正在派送</a>
-					<a href="javascript:void(0);" onclick="javascript:statusHref(3);">待评价</a>
+						href="javascript:void(0);" title="1" onclick="javascript:statusHref('1');">待取货</a>
+					<a href="javascript:void(0);" title="2" onclick="javascript:statusHref('2');">正在派送</a>
+					<a href="javascript:void(0);" title="3" onclick="javascript:statusHref('3');">待评价</a>
 				</div>
 				<table border="0" cellspacing="0" cellpadding="0">
 					<thead class="perinfo_thead">
@@ -205,7 +207,10 @@ $(function(){
 							<td class="perinfo_operation">操作</td>
 						</tr>
 					</thead>
-					<tbody class="perinfo_tbody prolist"></tbody>
+					<tbody class="perinfo_tbody prolist">
+					
+					</tbody>
+
 				</table>
 			</div>
 			<div class="perinfo_rCont">我的钱包</div>
@@ -249,8 +254,8 @@ $(function(){
 							<div class="modify_item_name left">手机号:</div>
 
 							<input required="required" id="id" class="modify_item_input left" type="hidden"
-								name="kuaikeId" value="${login.kuaikeId }" /> <input
-								id="infoModifyPhone" class="modify_item_input left" type="text"
+								name="kuaikeId" value="${login.kuaikeId }" /> 
+							<input	id="infoModifyPhone" class="modify_item_input left" type="text"
 								name="kuaikePhone" />
 						</div>
 						<div id="infoYznCont" class="modify_item">
@@ -273,7 +278,7 @@ $(function(){
 							<div class="modify_item_name left">手机号码:</div>
 							<input required="required" id="phone" class="modify_item_input left" type="text"
 								name="kuaikePhone" readonly="readonly"
-								value="${uname }" />
+								value="${uname }" id="kuaikePhone2017"/>
 						</div>
 						<div id="pwdCont" class="modify_item">
 							<div class="modify_item_name left">新置密码:</div>
@@ -329,10 +334,10 @@ $(function(){
 	<div class="fooeter4 col-lg-5 col-sm-6 col-xs-6 col-md-5">
 		<ul>
 			<li>联系我们</li>
-			<li><span>商城名称:</span><a href="#">水木云</a></li>
+			<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
 			<li><span>商城客服电话:</span><a href="#"> 400 800 600</a></li>
 			<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
-			<li><span>商城关键词组:</span><a href="#">水木云， 水木云商城</a></li>
+			<li><span>商城关键词组:</span><a href="http://www.smuyun.com/">水木云， 水木云商城</a></li>
 			<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
 		</ul>
 	</div>
@@ -354,7 +359,9 @@ $(function(){
 				url : 'xiaordertab/xiadanAjax/' + status,
 				dataType : 'html',
 				success : function(objs) {
-					var data = jQuery.parseJSON(objs);
+					var page = jQuery.parseJSON(objs);
+					var data = page.list;
+					
 					if (data == "") {
 						layer.msg("没有数据!");
 					} else {
@@ -402,6 +409,23 @@ $(function(){
 	
 	
 						}
+						//分页参数
+						var x="/";
+						var frist=page.status + x + page.frist + x + page.pageNum;
+						var xia=page.status + x + page.xia   + x + page.pageNum;
+						var shang=page.status + x + page.shang + x + page.pageNum;
+						var last=page.status + x + page.last  + x + page.pageNum;
+						
+						//分页标签
+						result+="<tr> \
+				   					<th> \
+				   					<a title='" + frist + "' 	onclick='statusHref("+ frist +");'>首页</a> \
+				   					<a title='" + xia + "' 		onclick='statusHref("+ xia +");'>下一页</a> \
+				   					<a title='" + shang + "' 	onclick='statusHref("+ shang +");'>上一页</a> \
+				   					<a title='" + last + "' 	onclick='statusHref("+ last +");'>未页</a> \
+				   					</th> \
+			   					</tr>";
+						
 						$('.prolist').append(result);
 	
 					}
@@ -415,6 +439,8 @@ $(function(){
 		//状态
 		function statusHref(status) {
 			$('.prolist').html("");
+			var tt=status.toString().split(".");
+			status=tt.length>1?tt[1]:status;
 			loadmore(status);
 		}
 	</script>

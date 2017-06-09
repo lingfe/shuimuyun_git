@@ -1,0 +1,42 @@
+   <style type="text/Css">
+        body{background-color:#000000;}
+        .window{position:absolute;z-index:1;overflow:hidden;width:300px;height:100px;background-color:red;left: 0px;}
+        .dragme{position:relative;width:300px;height:800px;} 
+    </style> 
+ 
+//引入jqmobi
+<script type="text/javascript"> 
+var isdrag=false; 
+var ty,y;
+$(function(){
+    document.getElementById("moveid").addEventListener('touchend',function(){
+        sdrag = false;
+    });
+    document.getElementById("moveid").addEventListener('touchstart',selectmouse);
+    document.getElementById("moveid").addEventListener('touchmove',movemouse);
+});
+function movemouse(e){ 
+  if (isdrag){ 
+   var n = ty+ e.touches[0].pageY - y;
+   $("#moveid").css("top",n);
+   return false; 
+   } 
+} 
+ 
+function selectmouse(e){ 
+   isdrag = true; 
+   ty = parseInt(document.getElementById("moveid").style.top+0); 
+   y = e.touches[0].pageY;  
+   return false; 
+} 
+</script> 
+</head> 
+<body> 
+<div align="left" class="window">
+<div id="moveid"  class="dragme">
+<h1>这是一个可以通过触摸屏拖动的demo</h1>
+<p>
+向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动向上拖动
+</p>
+</div>
+</div>

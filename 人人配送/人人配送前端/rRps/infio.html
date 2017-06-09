@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 		<meta name="renderer" content="webkit">
+ 		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name="baidu-site-verification" content="Bh4VTBVoxK"/> 
+		<link rel="stylesheet" href="css/pagination.css" />
+ 		<link rel="stylesheet" href="css/rRps.css" />
+		<title>个人中心</title>
+	</head>
+	<body>
+		<!--【头部】-->
+		<header class="header">
+			<div class="top">
+				<div class="top_cont">
+					<div class="top_l left">
+						<a class="login" href="login.html">登录</a>
+						<a href="reg.html">注册</a>
+					</div>
+					<div class="top_r right">
+						<a href="#">
+							<img title="" alt="" src="images/phone.png" width="16" />
+							400 800 600
+						</a>
+						<a href="#">
+							<img title="" alt="" src="images/email.png" width="16" />
+							wenping@smuyun.com
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="header_footer">
+				<div class="header_cont">
+					<a class="logo left" href="index.html">
+						<img title="" alt="" src="images/logo.png" width="100" />
+					</a>
+					<nav class="nav left">
+						<a class="active" href="#">人人配送</a>
+						<a href="#">公众号</a>
+						<a href="#">关于我们</a>
+						<a href="#">个人中心</a>
+						<a class="active" href="http://www.smuyun.com/Frontend/">商城</a>
+					</nav>
+				</div>
+			</div>
+			<div class="header_border"></div>
+		</header>
+		<!--【头部 end】-->
+		<div class="clear"></div>
+		
+		<!--【页面主要内容】-->
+		<div class="infoCont">
+			<div class="infoCont_l left">
+				<img class="infoCont_img" title="" alt="" src="images/userImg.png" width="60" />
+				<p class="infoCont_username">15700104801</p>
+				<ul class="infoCont_l_item infoCont_l_itemP" id="ss">
+					<li>订单记录</li>
+					<li>我的钱包</li>
+					<li>个人资料</li>
+					<li>修改密码</li>
+					<li>抢单记录</li>
+				</ul>
+			</div>
+			<div class="infoCont_r right">
+				<div class="infoCont_rCont" id="infoCont_rCont_1">
+					<nav class="orderNav">
+						<div class="active">全部订单</div>
+						<div>待付款</div>
+						<div>待取货</div>
+						<div>正在派送</div>
+						<div>待评价</div>
+					</nav>
+					<table  border="0" cellspacing="0" cellpadding="0">
+						<thead class="infoTanle_thead">
+							<tr class="infoTanle_orderNav">
+								<td class="infoTanle_name">货物</td>
+								<td class="infoTanle_time">取货时间</td>
+								<td class="infoTanle_pay">实际付款</td>
+								<td class="infoTanle_state">交易状态</td>
+								<td class="infoTanle_operation">操作</td>
+							</tr>
+						</thead>
+						<tbody class="infoTbody">
+							<!--<tr>
+								<td class="infoTanle_name">
+									<img class="infoTody_img left" title="" alt="" src="images/perinfo.png" />
+									<div class="infoTody_orderinfo right">
+										<p>大小：tbodyDeta.sites[0].infoTody_img</p>
+										<p>重量：20kg</p>
+										<p>类型：不易碎</p>
+									</div>
+								</td>
+								<td class="infoTanle_time">
+									<p class="infoTanle_time_text">2017-5-02</p>
+								</td>
+								<td class="infoTanle_pay">
+									<p class="infoTanle_time_text">￥ 1200</p>
+								</td>
+								<td class="infoTanle_state">
+									<p class="infoTanle_time_text">待取货</p>
+									<a class="infoTanle_actbtn" href="#">快递员信息</a>
+								</td>
+								<td class="infoTanle_operation">
+								
+									<a href="#" class="infoTanle_btn">
+										<img title="查看详情" alt="" src="images/See.png" width="32" />
+									</a>
+									
+									<<a href="#" class="infoTanle_btn">
+										<img title="删除" alt="" src="images/delete.png" width="36" />
+									</a>
+									<a href="#" class="infoTanle_btn">
+										<img title="评论" alt="" src="images/evaluate.png" width="30" />
+									</a>
+								</td>
+							</tr>-->
+						</tbody>
+					</table>
+				</div>
+				<div class="infoCont_rCont">
+					我的钱包
+				</div>
+				<div class="infoCont_rCont">
+					<div class="infoZl_top">修改基本资料</div>
+					<form class="infoForm">
+						<div class="infoForm_user">
+							<div class="infoForm_userTop" id="preview">
+			                    <img id="imghead" src="images/userImg.png" onclick="$('#previewImg').click();" width="80" />
+			                </div>
+			                <input id="previewImg" type="file" onchange="previewImage(this)" style="display: none;" id="previewImg">
+						</div>
+						<div class="infoForm_cont">
+							<div class="infoForm_contItem">
+								<div class="infoForm_contItem_l left">
+									<span>*</span>
+									昵称昵称：
+								</div>
+								<div class="infoForm_contItem_r right">
+									<input class="infoForm_contItem_rInp" type="text" name="" id="" value="" placeholder="请填写昵称" />
+								</div>
+							</div>
+							<div class="infoForm_contItem">
+								<div class="infoForm_contItem_l left">
+									<span>*</span>
+									手机号码：
+								</div>
+								<div class="infoForm_contItem_r right">
+									<input class="infoForm_contItem_rInp" type="text" name="" id="" value="" placeholder="请填写手机号码" />
+								</div>
+							</div>
+							<div class="infoForm_contItem">
+								<div class="infoForm_contItem_l left">
+									<span>*</span>
+									备用手机：
+								</div>
+								<div class="infoForm_contItem_r right">
+									<input class="infoForm_contItem_rInp" type="text" name="" id="" value="" placeholder="请填写备用手机号码称" />
+								</div>
+							</div>
+						</div>
+						<div class="infoZl_top">修改手机号码</div>
+						<div class="infoForm_cont">
+							<div class="infoForm_contItem">
+								<div class="infoForm_contItem_l left">
+									<span>*</span>
+									手机号：
+								</div>
+								<div class="infoForm_contItem_r right">
+									<input class="infoForm_contItem_rInp" type="text" name="" id="" value="" placeholder="请填写昵称" />
+								</div>
+							</div>
+							<div class="infoForm_contItem">
+								<div class="infoForm_contItem_l left">
+									<span>*</span>
+									验证码：
+								</div>
+								<div class="infoForm_contItem_r right">
+									<input class="infoForm_contItem_rYzinp left" type="text" name="" id="" value="" placeholder="请填写手机号码" />
+									<input class="infoForm_contItem_rYzbtn right" type="button" name="" id="yzm" value="获取验证码">
+								</div>
+								<input class="infoForm_btn" type="button" name="" id="" value="确认修改" />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="infoCont_rCont">
+					<div class="infoForm_cont">
+						<div class="infoForm_contItem">
+							<div class="infoForm_contItem_l left">
+								<span>*</span>
+								手机号：
+							</div>
+							<div class="infoForm_contItem_r right">
+								<input class="infoForm_contItem_rInp" type="text" name="" id="" value="" placeholder="请填写手机号" />
+							</div>
+						</div>
+						<div class="infoForm_contItem">
+							<div class="infoForm_contItem_l left">
+								<span>*</span>
+								验证码：
+							</div>
+							<div class="infoForm_contItem_r right">
+								<input class="infoForm_contItem_rYzinp left" type="text" name="" id="" value="" placeholder="请填写手机号码" />
+								<input class="infoForm_contItem_rYzbtn right" type="button" name="" id="yzm" value="获取验证码">
+							</div>
+						</div>
+						<div class="infoForm_contItem">
+							<div class="infoForm_contItem_l left">
+								<span>*</span>
+								密码：
+							</div>
+							<div class="infoForm_contItem_r right">
+								<input class="infoForm_contItem_rInp" type="text" name="" id="" value="" placeholder="请填写密码" />
+							</div>
+						</div>
+						<div class="infoForm_contItem">
+							<div class="infoForm_contItem_l left">
+								<span>*</span>
+								确认密码：
+							</div>
+							<div class="infoForm_contItem_r right">
+								<input class="infoForm_contItem_rInp" type="text" name="" id="" value="" placeholder="请确认密码" />
+							</div>
+						</div>
+						<input class="infoForm_btn" type="button" name="" id="" value="确认修改" />
+					</div>
+				</div>
+				<div class="infoCont_rCont">
+					5
+				</div>
+			</div>
+		</div>
+		<!--【页面主要内容】end-->
+		
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript" src="js/jquery.pagination.js" ></script>
+		<script type="text/javascript" src="js/rRps.js" ></script>
+		<script>
+			var i;
+			var j;
+			var x;
+			var	tbodyDeta = {
+			    "sites": [
+			        { "infoTody_img":"images/perinfo.png", 
+			        	"infoTody_orderinfo":[ "中货物", "20kg", "不易碎" ],
+			        	"infoTanle_time":"2018-02-19",
+			        	"infoTanle_pay":"1200",
+			        	"infoTanle_state":["待取货","查看快递员"],
+			        	"infoTanle_operation":["images/See.png","images/See.png"]
+			        },
+			         { "infoTody_img":"images/perinfo.png", 
+			        	"infoTody_orderinfo":[ "中货物", "20kg", "易碎" ],
+			        	"infoTanle_time":"2018-02-19",
+			        	"infoTanle_pay":"1200",
+			        	"infoTanle_state":["待取货","查看快递员"],
+			        	"infoTanle_operation":["images/See.png","images/See.png"]
+			        },
+			         { "infoTody_img":"images/perinfo.png", 
+			        	"infoTody_orderinfo":[ "中货物", "20kg", "不易碎" ],
+			        	"infoTanle_time":"2018-02-19",
+			        	"infoTanle_pay":"1200",
+			        	"infoTanle_state":["待取货","查看快递员"],
+			        	"infoTanle_operation":["images/See.png","images/See.png"]
+			        },
+			         { "infoTody_img":"images/perinfo.png", 
+			        	"infoTody_orderinfo":[ "中货物", "20kg", "不易碎" ],
+			        	"infoTanle_time":"2018-02-19",
+			        	"infoTanle_pay":"1200",
+			        	"infoTanle_state":["待取货","查看快递员"],
+			        	"infoTanle_operation":["images/See.png","images/See.png"]
+			        }
+			    ]
+			}
+			alert(tbodyDeta.sites[0].infoTody_img);
+			
+			var listDeta = "<tr> \
+				<td class='infoTanle_name'> \
+					<img class='infoTody_img left' title='' alt='' src='{tbodyDeta.sites[i].infoTody_img}' /> \
+					<div class='infoTody_orderinfo right'> \
+						<p>大小：'+tbodyDeta.s+sites[i].infoTody_orderinfo[0]+'</p> \
+						<p>重量：'+tbodyDeta.s+sites[i].infoTody_orderinfo[1]+'</p> \
+						<p>类型：'+tbodyDeta.s+sites[i].infoTody_orderinfo[2]+'</p> \
+					</div> \
+				</td> \
+				<td class='infoTanle_time'> \
+					<p class='infoTanle_time_text'>'+tbodyDeta.s+sites[i].infoTanle_time+'</p> \
+				</td> \
+				<td class='infoTanle_pay'> \
+					<p class='infoTanle_time_text'>'+tbodyDeta.s+sites[i].infoTanle_pay+'</p> \
+				</td> \
+				<td class='infoTanle_state'> \
+					<p class='infoTanle_time_text'>'+tbodyDeta.s+sites[i].infoTanle_state[0]+'</p> \
+					<a class='infoTanle_actbtn' href='#'>'+tbodyDeta.s+sites[i].infoTanle_state[1]+'</a> \
+				</td> \
+				<td class='infoTanle_operation'> \
+					//<a href='#' class='infoTanle_btn'> \
+						<img title='查看详情' alt='' src='images/See.png' width='32' /> \
+					//</a> \
+					
+					//<a href='#' class='infoTanle_btn'> \
+						<img title='删除' alt='' src='images/delete.png' width='36' /> \
+					//</a> \
+					//<a href='#' class='infoTanle_btn'> \
+						<img title='评论' alt='' src='images/evaluate.png' width='30' /> \
+					//</a> \
+				</td> \
+			</tr>";
+			
+			$(".infoTbody").append(listDeta);
+			
+		</script>
+	</body>
+</html>

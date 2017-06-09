@@ -53,6 +53,40 @@ public class R_kuaiketabController {
 
 	/**
 	 * 
+	 * 移动端注册，没有图片上传
+	 * @author lijie     
+	 * @created 2017年6月8日 下午6:54:35  
+	 * @param tab
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/register",method=RequestMethod.POST)
+	public String register(R_kuaiketab tab,ModelMap model){
+		
+		// 查询电话号码是否存在
+		R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
+		if (selectKuaiKephone != null) {
+			// 提示
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+			return "APP/register";
+		}
+		
+		// id
+		tab.setKuaikeId(UUID.randomUUID().toString());
+		// 密码加密
+		tab.setPassword(Md5Util.md5(tab.getPassword()));
+		// 登录时间
+		tab.setLoginDate(new Date());
+		// 状态,默认
+		tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
+		//保存
+		kuaiketabService.addUser(tab);
+		
+		return "APP/login";
+	}
+	
+	/**
+	 * 
 	 * 快客申请，包含身份证复印件文件，手持身份证照片
 	 * 
 	 * @author lijie
@@ -168,10 +202,10 @@ public class R_kuaiketabController {
 	 * @return 返回成功页面
 	 * @throws NoSuchAlgorithmException
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login/{i}", method = RequestMethod.POST)
 	public String login(@RequestParam(value = "repassword", required = false) String repassword,
 			@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password,
-			HttpServletRequest request, ModelMap model) throws NoSuchAlgorithmException {
+			HttpServletRequest request, ModelMap model,@PathVariable("i")String i) throws NoSuchAlgorithmException {
 		/* 调用登陆方法 & 并封装为实体对象 */
 		// 进行Md5加密
 		String newPass = Md5Util.md5(password); // 调用登陆方法，并封装为对象
@@ -183,10 +217,18 @@ public class R_kuaiketabController {
 
 			if ("on".equals(repassword)) {
 				// 记住登陆用户名，手机号码和密码
+				//手机号码
 				request.getSession().setAttribute("uname", uname);
+				//密码
 				request.getSession().setAttribute("newPass", password);
+				//用户名
 				request.getSession().setAttribute("namea", login.getKuaikeName());
+				//用户Id
 				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
+				
+				//清空文本框中的验证码
+				request.getSession().removeAttribute("mobile_code");
+				model.remove("mobile_code");
 
 			} else {
 				// 清空Session中的用户电话号码 和密码信息
@@ -195,11 +237,22 @@ public class R_kuaiketabController {
 				// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
 				request.getSession().setAttribute("namea", login.getKuaikeName());
 				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
+				//清空文本框中的验证码
+				request.getSession().removeAttribute("mobile_code");
+				model.remove("mobile_code");
+			
+			}
+			if("APP".equals(i)){
+				return "APP/index";
 			}
 			// 返回成功页面
 			return "PC/index";
 		}
-		model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SYS_ERROR));
+		if("APP".equals(i)){
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			return "APP/login";
+		}
+		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
 		// 留在登陆页面
 		return "PC/login";
 	}
@@ -215,24 +268,22 @@ public class R_kuaiketabController {
 	 */
 	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
 	public String loginOut(HttpSession session,SessionStatus sessionStatus) {
-
-		// 得到Session对象 并初始为False
-	
 		// 判断Session是否为空
 		if (session == null) {
-
+			//清空Session域中的对象及初始化Seesion
 			session.removeAttribute("login");
 			session.invalidate();
 			sessionStatus.setComplete();
-
+			//返回初始页  【登录页】
 			return "PC/login";
 
 		}
+		//清空Session域中的所有对象以及初始化 Session
 		session.removeAttribute("login");
 	
 		session.invalidate();
 		sessionStatus.setComplete();
-
+		//返回初始页【登录页】
 		return "PC/login";
 	}
 
@@ -251,17 +302,25 @@ public class R_kuaiketabController {
 	 *            密码
 	 * @return 返回对象
 	 */
-	@RequestMapping(value = "reupdatepass", method = RequestMethod.POST)
+	@RequestMapping(value = "reupdatepass/{i}", method = RequestMethod.POST)
 	public String updatepassword(HttpServletRequest htt, @RequestParam("kuaikePhone") String kuaikePhone,
-			@RequestParam("mobile_code") int mobile_code, @RequestParam("password") String password) {
-
+			@RequestParam("mobile_code") int mobile_code, @RequestParam("password") String password,ModelMap model,@PathVariable("i") String i) {
+System.out.println("***************\n***********************************");
 		// 通过手机找回密码 然后通过Md5加密
 		String pwd = Md5Util.md5(password);
 		// 调用重置密码的方法 对加密后的密码进行修改
 		kuaiketabService.updateUserpass(pwd, kuaikePhone);
 		// 清空验证码
 		htt.getSession().removeAttribute("mobile_code");
+		model.remove("mobile_code");
 
+		//判断是否为移动端【APP】
+		if("APP".equals(i)){
+			
+			// 返回页面
+			return "APP/login";
+			
+		}
 		// 返回页面
 		return "PC/login";
 	}
@@ -278,11 +337,11 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "findBackPassWord", method = RequestMethod.POST)
 	public String findBackPassWord(@RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("password") String password) {
-
+		//对找回的密码进行加密处理
 		String md5 = Md5Util.md5(password);
-
+		//调用接口中的找回密码的方法 没有返回值
 		kuaiketabService.findBackPassWord(md5, kuaikePhone);
-
+		//找回成功返回初始页【登录页】
 		return "PC/login";
 	}
 
@@ -310,9 +369,9 @@ public class R_kuaiketabController {
 			@RequestParam("kuaikeName") String kuaikeName, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("kuaikeAddress") String kuaikeAddress,
 			@RequestParam("kuaikeAddressInfo") String kuaikeAddressInfo) {
-
+		//调用接口中 人工找回密码的方法
 		kuaiketabService.updatePassword(password, kuaikeName, kuaikePhone, kuaikeAddress, kuaikeAddressInfo);
-
+		//跳转到审核页面
 		return "PC/toExamine";
 	}
 
@@ -335,18 +394,21 @@ public class R_kuaiketabController {
 	public String supw(@RequestParam("kuaikeName") String kuaikeName, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("kuaikeAddress") String kuaikeAddress,
 			@RequestParam(value = "kuaikeAddressInfo", required = false) String kuaikeAddressInfo,
-			HttpServletRequest request) {
-
+			HttpServletRequest request,ModelMap model) {
+		//调用人工找回密码的初始方法  填写个人基本信息和数据库中的数据进行匹配  并封装为一个实体对象
 		R_kuaiketab sBykuaikeInfo = kuaiketabService.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone,
 				kuaikeAddress, kuaikeAddressInfo);
-
+		//进行判断
 		if (sBykuaikeInfo != null) {
+			//不为空  添加Session对象
 			request.getSession().setAttribute("sBykuaikeInfo", sBykuaikeInfo);
 			request.getSession().setAttribute("kuaikePhone", sBykuaikeInfo.getKuaikePhone());
-
+			//跳转到审核页面
 			return "PC/toExamine";
 
 		}
+		//为空  则 给出友好的提示 并回到找回密码的初始页面
+		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_MSG));
 		return "PC/pwdRetrieval";
 	}
 
@@ -386,13 +448,14 @@ public class R_kuaiketabController {
 	 */
 	@RequestMapping(value = "selectUser", method = RequestMethod.POST)
 	public String selectUser(@PathVariable("kuaikeId") String kuaikeId, ModelMap model) {
+		//调用查询方法 并把结果封装为一个对象
 		R_kuaiketab selectUser = kuaiketabService.selectUser(kuaikeId);
-
+		//判断对象是否为空
 		if (selectUser != null) {
-
+			//不为空 则添加到model对象中方便页面上取值
 			model.addAttribute("selectUser", selectUser);
 		}
-
+		//为空 返回首页 说明用户没有注册成功
 		return "PC/index";
 	}
 
@@ -409,20 +472,53 @@ public class R_kuaiketabController {
 	 *            验证码
 	 * @return
 	 */
-	@RequestMapping(value = "phoneLogin", method = RequestMethod.POST)
+	@RequestMapping(value = "phoneLogin/{i}", method = RequestMethod.POST)
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
-			@RequestParam("mobile_code") int mobile_code, HttpServletRequest request) {
+			@RequestParam("mobile_code") int mobile_code, HttpServletRequest request,@PathVariable("i") String i) {
 
-		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
 		
-		request.getSession().setAttribute("kuaikePhone", phoneLogin.getKuaikePhone());
-
+		//得到请求方法，并且添加到实体对象中
+		R_kuaiketab phoneLogin = kuaiketabService.phoneLogin(kuaikePhone);
+		//判断 登录对象是否为空
 		if (phoneLogin != null) {
-
+			//将用户信息添加到model对象中
+			model.addAttribute("login", phoneLogin);
+			//用户登录电话
+			model.addAttribute("uname",phoneLogin.getKuaikePhone());
+			request.getSession().setAttribute("uname", phoneLogin.getKuaikePhone());
+			//用户名
+			request.getSession().setAttribute("namea", phoneLogin.getKuaikeName());
+			
+			//清空文本框中的验证码
 			request.getSession().removeAttribute("mobile_code");
+			model.remove("mobile_code");
+			//判断是否为手机端
+			if("APP".equals(i)){
+				
+				return "APP/index";
+				
+			}
+			//返回首页
 			return "PC/index";
 
 		}
+		//判断是否为手机端
+		if("APP".equals(i)){
+			
+			//清空文本框中的验证码
+			request.getSession().removeAttribute("mobile_code");
+			model.remove("mobile_code");
+			//给出友好的提示语
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			//登录失败返回登录页面
+			return "APP/login";
+		}
+		//清空文本框中的验证码
+		request.getSession().removeAttribute("mobile_code");
+		model.remove("mobile_code");
+		//给出友好的提示语
+		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+		//登录失败返回登录页面
 		return "PC/login";
 	}
 
@@ -431,9 +527,17 @@ public class R_kuaiketabController {
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月23日 下午2:30:33
-	 * @param request
-	 * @return
+	 * @param request 发送的请求 【Ajax请求】
+	 * @return 返回的参数【mobile_code】
 	 */
+	//接口类型：互亿无线触发短信接口，支持发送验证码短信、订单通知短信等。
+	// 账户注册：请通过该地址开通账户http://sms.ihuyi.com/register.html
+	// 注意事项：
+	//（1）调试期间，请用默认的模板进行测试，默认模板详见接口文档；
+	//（2）请使用APIID（查看APIID请登录用户中心->验证码、通知短信->帐户及签名设置->APIID）及 APIkey来调用接口，APIkey在会员中心可以获取；
+	//（3）该代码仅供接入互亿无线短信接口参考使用，客户可根据实际需要自行编写；
+	//参数提供：APIID=C15966497  APIKey=7704db8af7077a575156df62475249ab
+	//初始化 短息请求接口
 	private static String Url = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
 	@RequestMapping(value = "getCode/{kuaikePhone}", method = RequestMethod.POST)
 	@ResponseBody
@@ -470,15 +574,16 @@ public class R_kuaiketabController {
 			
 			Document doc = DocumentHelper.parseText(SubmitResult);
 			Element root = doc.getRootElement();
-
+			
+			//初始化提交参数
 			String code = root.elementText("code");
 			String msg = root.elementText("msg");
 			String smsid = root.elementText("smsid");
-
+			//打印返回的参数  code状态  msg提示语 smsid错误信息
 			System.out.println(code);
 			System.out.println(msg);
 			System.out.println(smsid);
-
+			//判断状态码是否为2 表示成功状态
 			if ("2".equals(code)) {
 				System.out.println("短信提交成功");
 			}
@@ -493,8 +598,8 @@ public class R_kuaiketabController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		request.getSession().setAttribute("mobile_code", mobile_code);
+		//添加验证码到Session域中 并返回 验证码
+ 		request.getSession().setAttribute("mobile_code", mobile_code);
 		return mobile_code;
 
 	}
@@ -515,13 +620,15 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "updatePhoneById", method = RequestMethod.POST)
 	public String updatePhoneById(@ModelAttribute("login") R_kuaiketab kuaiketab,
 			@RequestParam("kuaikeId") String kuaikeId, @RequestParam("kuaikePhone") String kuaikePhone,
-			HttpServletRequest http) {
-
+			HttpServletRequest http,ModelMap model) {
+		//调用修改手机号码的方法
 		kuaiketabService.updatePhoneById(kuaikePhone, kuaikeId);
-
+		//清空登录对象中的实体对象
 		http.getSession().removeAttribute("login");
+		//清空文本框中的验证码
 		http.getSession().removeAttribute("mobile_code");
-
+		model.remove("mobile_code");
+		//返回到个人中心
 		return "PC/personalCenter";
 	}
 

@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="loginCont_form_info">
 						<a class="left" href="<%=basePath %>APP/forgetPassword.jsp">忘记密码</a>
-						<a class="right" href="<%=basePath %>APP/reg.jsp">注册</a>
+						<a class="right" href="<%=basePath %>APP/register.jsp">注册</a>
 					</div>
 					 <button type="button" class="mui-btn loginBtn mui-btn-block" id="loginBtn">登录</button>
 					 <a class="free_login" href="<%=basePath %>APP/free.jsp">免密登录</a>

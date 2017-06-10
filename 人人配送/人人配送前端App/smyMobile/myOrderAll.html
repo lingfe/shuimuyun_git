@@ -133,6 +133,19 @@
 				color: #666;
 				font-size: 0.12rem;
 			}
+			.oallDtev {
+				width: 100%;
+				height: auto;
+				overflow: hidden;
+				display: none;
+			}
+			.oallDtev img {
+				display: block;
+				width: 1.6rem;
+				height: auto;
+				margin: 0 auto;
+				margin-top: 0.5rem;
+			}
 		</style>
 	</head>
 	<body>
@@ -155,7 +168,7 @@
 			<a href="#">待接单</a>
 			<a href="#">取货</a>
 			<a href="#">派件</a>
-			<a href="#">已完成</a>
+			<a href="#">已完成1</a>
 		</nav>
 		<!--【nav】end-->
 		
@@ -165,6 +178,12 @@
 				<div>我的快递</div>
 				<div>我的发货</div>
 			</div>
+			<!--【没有数据的样式】--> <!--display: none-->
+			<div class="oallDtev">
+				<img title="" alt="" src="images/noDeta.jpg" width="100%" />
+			</div>
+			<!--【没有数据的样式】end-->
+			
 			<div class="oallCont_cont">
 				<div class="oallCont_cont_item">
 					<ul class="oallCont_cont_list">
@@ -262,7 +281,18 @@
 				</div>
 			</div>
 		</div>
-		
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="js/smyMobile.js" ></script>
+		<script>
+			$(function() {
+				$(".oallNav a").click(function() {
+					$(this).addClass("active").siblings().removeClass("active");
+				})
+				
+				$(".oallCont_muen div").click(function() {
+					$(this).addClass("active").siblings().removeClass("active");
+				})
+			})
+		</script>
 	</body>
 </html>

@@ -7,30 +7,133 @@
 		<link rel="stylesheet" href="css/mui.min.css" />
 		<link rel="stylesheet" href="css/layer.css" />
 		<link rel="stylesheet" type="text/css" href="css/smyMobile.css"/>
-		<style>
-			.layui-m-layer-msg .layui-m-layercont {
-				background: rgba(87,87,84,.5) !important;
-				border-radius: 5px;
-				color: #f10000;
-			}
-		</style>
 	</head>
-	<body style="background: #eeeeee;">
+	<body style="background: #eee;">
+		<!--发货人信息-->
 		<div class="order_info">
 			<div class="shipper">
-				<img src="images/icon/shipper.png" width="30"/>
+				<img src="images/icon/shipper.png" width="27"/>
 				<label>发货人信息</label>
 			</div>
-			<div>
-				<img src="images/icon/shipper.png" width="30"/>
-				<label>发货人信息</label>
+			<div class="shipper">
+				<img src="images/icon/cargo.png" width="27"/>
+				<label>收货人信息</label>
 			</div>
 		</div>
-		
+		<!--货物信息-->
+		<div class="order_info">
+			<div class="shipper">
+				<img src="images/icon/type.png" width="27"/>
+				<label>货物类型</label>
+				<div class="order_right" id="order_right">
+					<span>易碎</span>
+					<img src="images/icon/orderright.png"width="10" />
+				</div>
+			</div>
+			<div class="shipper">
+				<img src="images/icon/number.png" width="27"/>
+				<label>货物数量</label>
+				<div class="order_num">
+					<span>个/件</span>
+					<span id="jian">-</span>
+					<span id="zhi"> 1 </span>
+					<span id="jia">+</span>
+				</div>
+			</div>
+			<div class="shipper">
+				<img src="images/icon/heft.png" width="27"/>
+				<label>货物重量</label>
+				<div class="order_num">
+					<span class="order_num_mag">kg</span>
+					<span id="jian">-</span>
+					<span id="zhi1"> 1 </span>
+					<span id="jia">+</span>
+				</div>
+			</div>
+		</div>	
+		<!--到达时间-->
+		<div class="order_info">
+			<div class="shipper">
+				<img src="images/icon/time.png" width="27"/>
+				<label>最迟到达时间</label>
+				<div class="order_right"id="order_right2">
+					<span>13:00</span>
+					<img src="images/icon/orderright.png"width="10" />
+				</div>
+			</div>
+			<div class="shipper">
+				<img src="images/icon/clar.png" width="27"/>
+				<label>建议交通工具</label>
+				<div class="order_right" id="order_right1">
+					<span>无</span>
+					<img src="images/icon/orderright.png"width="10" />
+				</div>
+			</div>
+		</div>
+		<!--确定按钮-->
+		<div class="order_buttom">
+			<div class="order_buttom_text">
+			<img src="images/icon/dui.png"width="20"/><label> 我同意 《水木云快递条约》</label>
+			</div>
+			<button class="mui-btn mui-btn-block order_btn">确认下单</button>
+		</div>
+		<!--遮罩层-->
+		<div class="order_zhe"id="order_zhe"></div>
+		<!--弹出菜单-->
+		<div class="order_tan"id="order_tan">
+			<div class="order_tan_clos">
+				<span>货物类型</span>
+				<span class="mui-icon mui-icon-close order_close" id="order_close"></span>
+			</div>
+			<div class="order_tan_context"  id="order_tex">
+				<span>易碎</span>
+				<span>非易碎</span>
+				<span>贵重</span>
+			</div>
+		</div>
+		<!--弹出菜单二-->
+		<div class="order_tan1"id="order_tan1">
+			<div class="order_tan_clos1">
+				<span>交通工具</span>
+				<span class="mui-icon mui-icon-close order_close" id="order_close1"></span>
+			</div>
+			<div class="order_tan_context1"  id="order_tex1">
+				<span >无</span>
+				<span>自行车</span>
+				<span>摩托车</span>
+			</div>
+			<div class="order_tan_context1"  id="order_tex1">
+				<span >小轿车</span>
+				<span>小型货车小型</span>
+				<span>中型货车</span>
+			</div>
+		</div>
+		<!--弹窗三-->
+		<div class="order_tan2"id="order_tan2">
+			<div class="order_tan_clos2">
+				<span>最晚到达时间</span>
+				<span class="mui-icon mui-icon-close order_close" id="order_close2"></span>
+			</div>
+			<div class="order_tan_context2"  id="order_tex2">
+				<div class="order_tan_context2_1">今天</div>
+				<div class="order_tan_context2_2">
+					<span><label id="jiajia1">+</label><label></label></span>
+					<span><label id="xiaoshi">1</label><label class="yi">时</label></span>
+					<span><label id="jianjian1">-</label><label></label></span>
+				</div>
+				<div class="order_tan_context2_3">
+					<span><label id="jiajia2">+</label><label></label></span>
+					<span><label id="fenzhong">30</label><label class="yi">分</label></span>
+					<span><label id="jianjian2">-</label><label></label></span>
+				</div>
+			</div>
+			
+		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="js/mui.min.js" ></script>
 		<script type="text/javascript" src="js/smyMobile.js" ></script>
 		<script type="text/javascript" src="js/layer.js" ></script>
 		<script type="text/javascript" src="js/smyMobile_yz.js" ></script>
+		<script type="text/javascript" src="js/smyMobile_click.js" ></script>
 	</body>
 </html>

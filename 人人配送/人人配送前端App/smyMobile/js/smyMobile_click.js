@@ -1,5 +1,6 @@
 //数量加减
 window.onload = function(){
+	//下单页面
 	var jia = document.querySelectorAll("#jia")
 	var jian = document.querySelectorAll("#jian")
 	var zhi =document.querySelector("#zhi");
@@ -99,15 +100,17 @@ window.onload = function(){
 			
 		}
 	}	
-		
+	//下单页面end	
 		
 		
 		
 		
 	
 }
-//弹出框一
+
 $(function(){
+	//下单页面
+	//弹出框一
 	$("#order_right").click(function(){
 		$("#order_zhe").css("display","block");
 		$("#order_tan").css("transform","translateY(-1.1rem)");
@@ -181,4 +184,19 @@ $(function(){
 		var shij=xs+"时"+fz+"分";
 		$("#shijian").html(shij);
 	})
+	//下单页面end
+	//搜索框页面
+	//搜索框效果
+	$("#search_sousuoinput").focus(function(){
+		$("#header_input").css("width","70%");
+		$("#header_input").css("transform","translate(-4%,.03rem)");
+		$("#header_input").css("transition","0.5s");
+		$("#search_sousuotext").css("transform","translateX(-10%)")
+		$("#search_sousuotext").css("transition","0.5s");
+		
+	})
+	
+	
+	
+	
 })

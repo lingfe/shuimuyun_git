@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-		<link rel="stylesheet" href="css/smyMobile.css" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/smyMobile.css"/>
 	</head>
 	<body>
 		<!--【头部】-->
@@ -12,43 +12,24 @@
 			<a class="commHeader_l" href="#">
 				<img title="" alt="" src="images/icon/arow_left.png" />
 			</a>
-			<h6>我的订单</h6>
-			<a class="commHeader_r" href="#">
-				<img class="commHeader_search" src="images/icon/search.png" width="100%"/>
-			</a>
+			<h6>订单搜索</h6>
 		</header>
 		<!--【头部】end-->
-		
-		<!--【nav】-->
-		<nav class="oallNav">
-			<a class="active" href="#">全部</a>
-			<a href="#">代付款</a>
-			<a href="#">待接单</a>
-			<a href="#">取货</a>
-			<a href="#">派件</a>
-			<a href="#">已完成1</a>
-		</nav>
-		<!--【nav】end-->
-		
+		<!--订单样式-->
 		<div class="oallCont">
-			<div class="oallCont_muen">
-				<div class="active">全部</div>
-				<div>我的快递</div>
-				<div>我的发货</div>
-			</div>
 			<!--【没有数据的样式】--> <!--display: none-->
 			<div class="oallDtev">
 				<img title="" alt="" src="images/noDeta.png" width="80%" />
 				<div class="oallCont_div_span">
 					<span class="oallCont_span">
-						当前没有<label></label>订单
+						目前没有<label>南明区</label>的订单
 					</span>
 				</div>
 			</div>
 			<!--【没有数据的样式】end-->
 			
 			<div class="oallCont_cont">
-				<div class="oallCont_cont_item">
+				<div class="oallCont_cont_item searchOrder_top">
 					<ul class="oallCont_cont_list">
 						<li>
 							<a href="#">
@@ -146,16 +127,5 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="js/smyMobile.js" ></script>
-		<script>
-			$(function() {
-				$(".oallNav a").click(function() {
-					$(this).addClass("active").siblings().removeClass("active");
-				})
-				
-				$(".oallCont_muen div").click(function() {
-					$(this).addClass("active").siblings().removeClass("active");
-				})
-			})
-		</script>
 	</body>
 </html>

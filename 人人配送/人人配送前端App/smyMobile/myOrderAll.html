@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" href="css/smyMobile.css" />
+		<title></title>
+		<style>
+			.commHeader_r .commHeader_search {
+				display: block;
+				width: 24px;
+				height: 24px;
+				margin-top: 0.07rem;
+			}
+			.oallNav {
+				width: 100%;
+				height: 0.3rem;
+				background: rgb(65,139,200);
+			}
+			.oallNav>a {
+				display: block;
+				width: 16.66%;
+				height: 0.3rem;
+				font-size: 0.13rem;
+				text-align: center;
+				color: #fff;
+				text-decoration: none;
+				line-height: 0.3rem;
+				float: left;
+			}
+			.oallNav>.active {
+				border-radius: 5px 5px 0 0;
+				color: #444;
+				background: rgb(255,255,255);
+			}
+			.oallCont {
+				width: 100%;
+				height: auto;
+				overflow: hidden;
+			}
+			.oallCont_muen {
+				width: calc(100% - 40px);
+				height: 0.3rem;
+				background: #e1e1e1;
+				border-radius: 5px;
+				overflow: hidden;
+				margin: 0.2rem auto;
+			}
+			.oallCont_muen div {
+				width: 33.3333%;
+				height: 0.3rem;
+				font-size: 0.13rem;
+				color: #666;
+				line-height: 0.3rem;
+				text-align: center;
+				float: left;
+			}
+			.oallCont_muen .active {
+				background: rgb(65,139,200);
+				color: #fff;
+			}
+			.oallCont_cont {
+				width: 100%;
+				height: auto;
+			}
+			.oallCont_cont_list {
+				width: 100%;
+				height: auto;
+				box-sizing: border-box;
+				padding: 0 20px;
+				margin-top: 0;
+			}
+			.oallCont_cont_list li a {
+				position: relative;
+				display: block;
+				width: 100%;
+				height: 0.78rem;
+				background: rgb(255,255,255);
+				border-radius: 5px;
+				box-sizing: border-box;
+				padding: 10px;
+				margin-bottom: 0.1rem;
+			}
+			.oallCont_cont_img {
+				display: block;
+				width: 0.6em;
+				height: auto;
+				float: left;
+			}
+			.oallCont_contBox {
+				width: calc(100% - 0.7rem);
+				height: auto;
+				overflow: hidden;
+				float: right;
+			}
+			.oallCont_contBox p,
+			.oallCont_contBox div {
+				color: #333;
+				font-size: 0.13rem;
+				padding-top: 0.025rem;
+			}
+			.oallCont_contBox div span {
+				display: block;
+				width: 0.7rem;
+				height: 0.13rem;
+				float: left;
+				line-height: 0.17rem;
+			}
+			.oallCont_contBox div>div {
+				width: calc(100% - 0.7rem);
+				height: 0.13rem;
+				line-height: 0.13rem;
+				float: right;
+			}
+			.oall_zt {
+				position: absolute;
+				top: -10px;
+				right: -5px;
+				width: 23px;
+				height: 23px;
+				color: #2e97ee;
+				font-size: 10px;
+				text-align: center;
+				line-height: 23px;
+				border-radius: 50%;
+				border: 2px solid #f0d349;
+				background: rgb(255,255,255);
+			}
+			.oall_ztl {
+				position: absolute;
+				right: 5px;
+				bottom: 0.32rem;
+				color: #666;
+				font-size: 0.12rem;
+			}
+		</style>
+	</head>
+	<body>
+		<!--【头部】-->
+		<header class="commHeader">
+			<a class="commHeader_l" href="#">
+				<img title="" alt="" src="images/icon/arow_left.png" />
+			</a>
+			<h6>我的订单</h6>
+			<a class="commHeader_r" href="#">
+				<img class="commHeader_search" src="images/icon/search.png" width="100%"/>
+			</a>
+		</header>
+		<!--【头部】end-->
+		
+		<!--【nav】-->
+		<nav class="oallNav">
+			<a class="active" href="#">全部</a>
+			<a href="#">代付款</a>
+			<a href="#">待接单</a>
+			<a href="#">取货</a>
+			<a href="#">派件</a>
+			<a href="#">已完成</a>
+		</nav>
+		<!--【nav】end-->
+		
+		<div class="oallCont">
+			<div class="oallCont_muen">
+				<div class="active">全部</div>
+				<div>我的快递</div>
+				<div>我的发货</div>
+			</div>
+			<div class="oallCont_cont">
+				<div class="oallCont_cont_item">
+					<ul class="oallCont_cont_list">
+						<li>
+							<a href="#">
+								<img class="oallCont_cont_img" title="" alt="" src="images/oall001.jpg" width="100%" />
+								<div class="oallCont_contBox">
+									<p>收货人：小单</p>
+									<p>电话：15700104801</p>
+									<div>
+										<span>收货地址：</span>
+										<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
+									</div>
+								</div>
+								<div class="oall_zt">发</div>
+								<span class="oall_ztl">正在派送</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img class="oallCont_cont_img" title="" alt="" src="images/oall001.jpg" width="100%" />
+								<div class="oallCont_contBox">
+									<p>收货人：小单</p>
+									<p>电话：15700104801</p>
+									<div>
+										<span>收货地址：</span>
+										<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
+									</div>
+								</div>
+								<div class="oall_zt">快</div>
+								<span class="oall_ztl">代付款</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img class="oallCont_cont_img" title="" alt="" src="images/oall001.jpg" width="100%" />
+								<div class="oallCont_contBox">
+									<p>收货人：小单</p>
+									<p>电话：15700104801</p>
+									<div>
+										<span>收货地址：</span>
+										<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
+									</div>
+								</div>
+								<div class="oall_zt">发</div>
+								<span class="oall_ztl">待接单</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img class="oallCont_cont_img" title="" alt="" src="images/oall001.jpg" width="100%" />
+								<div class="oallCont_contBox">
+									<p>收货人：小单</p>
+									<p>电话：15700104801</p>
+									<div>
+										<span>收货地址：</span>
+										<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
+									</div>
+								</div>
+								<div class="oall_zt">快</div>
+								<span class="oall_ztl">取货</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img class="oallCont_cont_img" title="" alt="" src="images/oall001.jpg" width="100%" />
+								<div class="oallCont_contBox">
+									<p>收货人：小单</p>
+									<p>电话：15700104801</p>
+									<div>
+										<span>收货地址：</span>
+										<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
+									</div>
+								</div>
+								<div class="oall_zt">发</div>
+								<span class="oall_ztl">已完成</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img class="oallCont_cont_img" title="" alt="" src="images/oall001.jpg" width="100%" />
+								<div class="oallCont_contBox">
+									<p>收货人：小单</p>
+									<p>电话：15700104801</p>
+									<div>
+										<span>收货地址：</span>
+										<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
+									</div>
+								</div>
+								<div class="oall_zt">快</div>
+								<span class="oall_ztl">派件</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/smyMobile.js" ></script>
+	</body>
+</html>

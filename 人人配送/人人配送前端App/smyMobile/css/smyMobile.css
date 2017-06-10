@@ -103,7 +103,7 @@ input {
 }
 
 .loginBody_bg:before {
-	background: url(../images/login_bg.png) no-repeat;
+	background: url(../images/login_bg.jpg) no-repeat;
 }
 
 .body_bg:before {
@@ -901,6 +901,60 @@ input {
 /*【搜索】end*/
 
 
+/*【发货人信息】*/
+
+.hipper_xia {
+	text-decoration: none;
+}
+
+.hipper_contex {
+	font-size: .12rem;
+	width: 90%;
+	margin: auto;
+	background: white;
+	margin-top: .1rem;
+}
+
+.hipper_contex div {
+	width: 100%;
+	height: .3rem;
+	line-height: .3rem;
+	margin-left: .1rem;
+}
+
+.hipper_contex>div:nth-of-type(3) {
+	position: relative;
+}
+
+.hipper_contex_lastimg {
+	position: absolute;
+	right: .2rem;
+}
+
+.hipper_contex_lasttext {
+	position: absolute;
+	left: .2rem;
+	display: inline-block;
+	transform: translateY(-.05rem);
+	margin-left: .05rem;
+	width: 75%;
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	white-space: normal !important;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+.hipper_contex_firstimg{
+	position: absolute;
+	left: .05rem;
+}
+
+
+/*【发货人信息】end*/
+
+
 /*【首页】*/
 
 .nav {
@@ -1067,7 +1121,8 @@ input {
 	font-family: "eyesFont";
 	line-height: 0.3rem;
 	border-radius: 50%;
-	background: rgb(240, 211, 73);
+	border: solid 1px rgb(240, 211, 73);
+	background: white;
 	margin-top: -0.14rem;
 }
 

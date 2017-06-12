@@ -213,6 +213,8 @@ public class R_kuaiketabController {
 
 		// 简单判断对象是否为空
 		if (login != null) {
+			//修改快客登陆状态
+			kuaiketabService.updateKuaikeStatus(2, login.getKuaikeId());
 			model.addAttribute("login", login);
 
 			if ("on".equals(repassword)) {
@@ -266,10 +268,12 @@ public class R_kuaiketabController {
 	 *            请求
 	 * @return
 	 */
-	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
-	public String loginOut(HttpSession session,SessionStatus sessionStatus) {
+	@RequestMapping(value = "loginOut/{kuaikeId}", method = RequestMethod.GET)
+	public String loginOut(HttpSession session,SessionStatus sessionStatus,@PathVariable("kuaikeId") String kuaikeId) {
 		// 判断Session是否为空
 		if (session == null) {
+			//退出登陆修改状态为 3 表示离线状态
+			kuaiketabService.updateKuaikeStatus(3,kuaikeId);
 			//清空Session域中的对象及初始化Seesion
 			session.removeAttribute("login");
 			session.invalidate();
@@ -278,9 +282,11 @@ public class R_kuaiketabController {
 			return "PC/login";
 
 		}
+		//退出登陆修改状态为 3 表示离线状态
+		kuaiketabService.updateKuaikeStatus(3,kuaikeId);
 		//清空Session域中的所有对象以及初始化 Session
 		session.removeAttribute("login");
-	
+		//初始化Session
 		session.invalidate();
 		sessionStatus.setComplete();
 		//返回初始页【登录页】
@@ -305,7 +311,6 @@ public class R_kuaiketabController {
 	@RequestMapping(value = "reupdatepass/{i}", method = RequestMethod.POST)
 	public String updatepassword(HttpServletRequest htt, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("mobile_code") int mobile_code, @RequestParam("password") String password,ModelMap model,@PathVariable("i") String i) {
-System.out.println("***************\n***********************************");
 		// 通过手机找回密码 然后通过Md5加密
 		String pwd = Md5Util.md5(password);
 		// 调用重置密码的方法 对加密后的密码进行修改

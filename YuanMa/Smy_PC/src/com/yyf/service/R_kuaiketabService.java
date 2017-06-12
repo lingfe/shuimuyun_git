@@ -23,6 +23,15 @@ public interface R_kuaiketabService {
 	 */
 	// This Is A LOGIN METHOD ACCODING TO UNAME AND UPASS
 	public R_kuaiketab login(String uname, String upass);
+	
+	/**
+	 * 根据快客Id修改快客登陆状态  0未通过审核  1通过审核  2在线 3离线
+	 * @author 杨杰     
+	 * @created 2017年6月12日 上午9:28:58  
+	 * @param kuaikeStatus 0未通过审核  1通过审核  2在线 3离线
+	 * @param kuaikeId 快客ID
+	 */
+	public void updateKuaikeStatus(int kuaikeStatus,String kuaikeId);
 
 	/**
 	 * 根据 用户名 查看 用户名是否存在相同

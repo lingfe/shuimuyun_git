@@ -30,6 +30,15 @@ public interface R_kuaiketabMapper {
 	// Add information based on the phone number entered by the user
 	// @Insert("insert INTO kuaiketab(kuaikeName,password,kuaikePhone) "
 	// + "VALUES(#{kuaikeName},#{password},#{kuaikePhone});")
+	
+	/**
+	 * 根据快客Id修改快客登陆成功状态  0审核未通过 1通过   2登陆成功在线  3离线
+	 * @author 杨杰     
+	 * @created 2017年6月12日 上午9:25:17
+	 */
+	@Update("update kuaiketab set kuaikeStatus=#{kuaikeStatus} where kuaikeId=#{kuaikeId}")
+	public void updateKuaikeStatus(@Param("kuaikeStatus") int kuaikeStatus,@Param("kuaikeId") String kuaikeId);
+	
 
 	/**
 	 * 根据 用户名 查看 用户名是否存在相同

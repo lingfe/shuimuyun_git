@@ -907,6 +907,11 @@ input {
 	text-decoration: none;
 }
 
+.hipper_contex input {
+	border: none;
+	outline: none;
+}
+
 .hipper_contex {
 	font-size: .12rem;
 	width: 90%;
@@ -935,7 +940,6 @@ input {
 	position: absolute;
 	left: .2rem;
 	display: inline-block;
-	transform: translateY(-.05rem);
 	margin-left: .05rem;
 	width: 75%;
 	overflow: hidden;
@@ -946,7 +950,8 @@ input {
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
 }
-.hipper_contex_firstimg{
+
+.hipper_contex_firstimg {
 	position: absolute;
 	left: .05rem;
 }

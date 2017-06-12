@@ -196,7 +196,33 @@ $(function(){
 		
 	})
 	
-	
-	
+	//收货人  发货人
+	$(".hipper_xia").click(function(){
+				if($("#con_name").val()==""){
+					layer.open({
+			    	content: '请输入姓名',
+			    	skin: 'msg',
+			    	time: 1
+			  		});
+					return false;
+				}
+				if($("#con_phone").val()==""){
+					layer.open({
+			    	content: '请输入电话号码',
+			    	skin: 'msg',
+			    	time: 1
+			  		});
+					return false;
+				}else if(!($("#con_phone") && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test($("#con_phone").val()))) {
+			//提示
+		    layer.open({
+		    	content: '手机号码错误',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+			return false;
+		}
+				
+			})
 	
 })

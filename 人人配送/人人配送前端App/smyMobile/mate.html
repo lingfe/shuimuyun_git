@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title></title>
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/smyMobile.css"/>
+		<style>
+			.mate_yuan{
+				width: 1.5rem;
+				height:1.5rem;
+				margin: auto;
+				border: solid 1px #418bc8;
+				border-radius:50%;
+				position: relative;
+				top: .8rem;
+				-webkit-animation:circle 1.5s infinite linear;
+			}
+			@-webkit-keyframes circle{
+			0%{ transform:rotate(0deg); }
+			100%{ transform:rotate(360deg); }
+			}
+			.mate_text{
+				text-align: center;
+				width: 1.5rem;
+				height: .2rem;
+				position: absolute;
+				display: inline-block;
+				left: 50%;
+				margin-left: -.75rem;
+				margin-top: -.08rem;
+			}
+			.mate_img{
+				position: absolute;
+				left: .45rem;
+				width: .08rem;
+				height: .08rem;
+				background: #0360ad;
+				border-radius:50% ;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="commHeader">
+			<a class="commHeader_l" href="#">
+				<img title="" alt="" src="images/icon/arow_left.png" />
+			</a>
+			<h6>等待快递员</h6>
+		</header>
+		<div class="mate_yuan">
+		<div class="mate_img"></div>
+		</div>
+		<span class="mate_text">匹配中</span>
+		<!--无人接单(隐藏)-->
+		<span style="display: none;" class="mate_text">无人接单</span>
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/mui.min.js" ></script>
+		<script type="text/javascript" src="js/smyMobile.js" ></script>
+		<script type="text/javascript" src="js/smyMobile_yz.js" ></script>
+	</body>
+</html>

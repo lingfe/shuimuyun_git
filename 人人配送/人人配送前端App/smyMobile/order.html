@@ -9,6 +9,15 @@
 		<link rel="stylesheet" type="text/css" href="css/smyMobile.css"/>
 	</head>
 	<body style="background: #eee;">
+		<!--头部-->
+		<header class="commHeader">
+			
+			<h6>我要下单</h6>
+			<a class="commHeader_r" href="#">
+				<span>贵阳</span>
+				<img title="" alt="" src="images/icon/right.png" width="100%" />
+			</a>
+		</header>
 		<!--发货人信息-->
 		<div class="order_info">
 			<div class="shipper">
@@ -26,7 +35,7 @@
 				<img src="images/icon/type.png" width="27"/>
 				<label>货物类型</label>
 				<div class="order_right" id="order_right">
-					<span>易碎</span>
+					<span id="order_leixin">易碎</span>
 					<img src="images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -57,7 +66,7 @@
 				<img src="images/icon/time.png" width="27"/>
 				<label>最迟到达时间</label>
 				<div class="order_right"id="order_right2">
-					<span>13:00</span>
+					<span id="shijian">1时15分</span>
 					<img src="images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -65,7 +74,7 @@
 				<img src="images/icon/clar.png" width="27"/>
 				<label>建议交通工具</label>
 				<div class="order_right" id="order_right1">
-					<span>无</span>
+					<span id="order_clar">无</span>
 					<img src="images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -129,6 +138,30 @@
 			</div>
 			
 		</div>
+		
+		<!--底部-->
+		<footer class="footerMenu">
+			<a  href="#">
+				<img title="" alt="" src="images/icon/home_2.png" width="100%"/>
+				<p class="ss">首页</p>
+			</a>
+			<a href="#">
+				<img title="" alt="" src="images/icon/single.png" width="100%"/>
+				<p class="ss">抢单</p>
+			</a>
+			<a class="active" href="#">
+				<img title="" alt="" src="images/icon/order_2.png" width="100%"/>
+				<p class="ss">下单</p>
+			</a>
+			<a href="#">
+				<img title="" alt="" src="images/icon/mall.png" width="100%"/>
+				<p class="ss">商城</p>
+			</a>
+			<a href="#">
+				<img title="" alt="" src="images/icon/personal.png" width="100%"/>
+				<p class="ss">我的</p>
+			</a>
+		</footer>
 		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="js/mui.min.js" ></script>
 		<script type="text/javascript" src="js/smyMobile.js" ></script>

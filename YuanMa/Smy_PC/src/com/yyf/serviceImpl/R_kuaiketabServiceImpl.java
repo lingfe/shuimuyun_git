@@ -38,6 +38,19 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	}
 
 	/**
+	 * 根据快客Id修改快客登陆状态  0未通过审核  1通过审核  2在线 3离线
+	 * @author 杨杰     
+	 * @created 2017年6月12日 上午9:30:49  
+	 * @param kuaikeStatus 0未通过审核  1通过审核  2在线 3离线
+	 * @param kuaikeId 快客Id
+	 */
+	@Override
+	public void updateKuaikeStatus(int kuaikeStatus, String kuaikeId) {
+		kuaiketabMapper.updateKuaikeStatus(kuaikeStatus, kuaikeId);
+	}
+	
+	
+	/**
 	 * 根据 用户名 查看 用户名是否存在相同
 	 * 
 	 * @author 杨杰
@@ -230,5 +243,7 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 
 		kuaiketabMapper.updatePhoneById(kuaikePhone, kuaikeId);
 	}
+
+	
 
 }

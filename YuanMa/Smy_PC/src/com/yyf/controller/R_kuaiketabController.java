@@ -244,19 +244,23 @@ public class R_kuaiketabController {
 				model.remove("mobile_code");
 			
 			}
+			
 			if("APP".equals(i)){
 				return "APP/index";
 			}
 			// 返回成功页面
 			return "PC/index";
-		}
-		if("APP".equals(i)){
+			
+		}else if("APP".equals(i)){
 			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
 			return "APP/login";
 		}
-		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
-		// 留在登陆页面
-		return "PC/login";
+		else {
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			// 留在登陆页面
+			return "PC/login";
+		}
+		
 	}
 
 	/**

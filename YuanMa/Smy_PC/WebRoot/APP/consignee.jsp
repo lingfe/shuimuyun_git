@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <title>收货人信息</title>
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />

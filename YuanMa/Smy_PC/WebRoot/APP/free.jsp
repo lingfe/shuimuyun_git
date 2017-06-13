@@ -20,20 +20,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
-		<style>
-			.layui-m-layer-msg .layui-m-layercont {
-				background: rgba(87,87,84,.5) !important;
-				border-radius: 5px;
-				color: #f10000;
-			}
-		</style>
-	});
-		
-		
-		
-		
-		
-		</script>
+	<style>
+		.layui-m-layer-msg .layui-m-layercont {
+			background: rgba(87,87,84,.5) !important;
+			border-radius: 5px;
+			color: #f10000;
+		}
+	</style>
+	<script>
+		setTimeout(function() {
+			$("body").show();
+		},300);
+	</script>
+	
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">

@@ -248,15 +248,15 @@
 
 		<!--底部-->
 		<footer class="footerMenu">
-			<a  href="RequestMappingUtil/requestNUll/APP/index">
+			<a href="RequestMappingUtil/requestNUll/APP/index">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/home_2.png" width="100%"/>
 				<p class="ss">首页</p>
 			</a>
-			<a href="RequestMappingUtil/requestNUll/APP/grabASingle">
+			<a class="active" href="RequestMappingUtil/requestNUll/APP/grabASingle">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/single.png" width="100%"/>
 				<p class="ss">抢单</p>
 			</a>
-			<a class="active" href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
+			<a href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
 				<p class="ss">下单</p>
 			</a>

@@ -285,7 +285,7 @@ function regJz() {
  * 
 */
 function forgeJz() {
-	//var forgeNpwd = $("#forgeNpwd").val();	layer.open({
+	layer.open({
     	content: '密码修改成功...',
     	skin: 'msg',
     	time: 2

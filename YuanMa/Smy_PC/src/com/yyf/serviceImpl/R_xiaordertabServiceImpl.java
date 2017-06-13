@@ -25,6 +25,21 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	private IR_xiaordertabMapper ir_xiaordertabMapper;
 
 	@Override
+	public void fa(String kuaikeName, String kuaikePhone, String xiaId, String kuaikeAddressInfo) {
+		ir_xiaordertabMapper.fa(kuaikeName, kuaikePhone, xiaId, kuaikeAddressInfo);
+	}
+	
+	@Override
+	public void shou(String shouhuoName, String shouhuoPhone, String xiaId, String shouhuoAddressInfo) {
+		ir_xiaordertabMapper.shou(shouhuoName, shouhuoPhone, xiaId, shouhuoAddressInfo);
+	}
+	
+	@Override
+	public void orderSbmit(String xiaId, String shopType, float shopNumer, int shopzholiang, String timeString) {
+		ir_xiaordertabMapper.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString);
+	}
+	
+	@Override
 	public int statusQueryCount(int status) {
 		return ir_xiaordertabMapper.statusQueryCount(status);
 	}

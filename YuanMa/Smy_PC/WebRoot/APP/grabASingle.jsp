@@ -260,7 +260,7 @@
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
 				<p class="ss">下单</p>
 			</a>
-			<a href="www.smuyun.com">
+			<a href="http://www.smuyun.com">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="ss">商城</p>
 			</a>
@@ -269,7 +269,8 @@
 				<p class="ss">我的</p>
 			</a>
 		</footer>
-
+		<!-- 快客id -->
+		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }"> 
 	<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
 	<script type="text/javascript"
 		src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
@@ -299,5 +300,56 @@
 			})
 		})
 	</script>
+			<!-- ajax -->
+		<script type="text/javascript">
+			$(function(){
+				//清空
+				$('.grabList_lisst').html("");
+				//调用方法
+				getList(0);
+			});
+			
+			//根据状态得到集合
+			function getList(status){
+				//获取快客id
+				var kuaikeId=$("#kuaikeId").val();
+				var url="";
+				//获取到下单数据
+				$.ajax({
+					url : 'xiaordertab/xiadanAjax/'+status,
+					type : 'get',
+					dataType : 'html',
+					success : function(objs) {
+						//转换成json
+						var page = jQuery.parseJSON(objs);
+						var data = page.list;
+						var result = '';
+						
+						//循环便利
+						for (var i = 0; i < data.length; i++) {
+							//date 格式化时间
+							var date=new Date(data[i].okDate);
+							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
+							
+							url=data[i].xiaId + "/" + kuaikeId;
+							//拼接标签
+							result +="<li><a href='r_qiangordertabController/insertAjax/" + url +"'> <img class='grabList_user' title='' alt='' \
+											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
+											<div class='grabList_cont'> \
+												<p>最迟到达时间：" + dataStr + "</p> \
+												<p>商品总重量：" + data[i].shopzholiang + "kg</p> \
+												<span>立即抢单</span> \
+											</div> \
+									  </a></li>";
+						}
+						$('.grabList_lisst').append(result);
+					},
+					error : function(xhr, type) {
+						alert('Ajax error!');
+					},
+					async:false
+				});
+			}
+		</script>
 </body>
 </html>

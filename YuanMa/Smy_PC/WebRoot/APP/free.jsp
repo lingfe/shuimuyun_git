@@ -27,11 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				color: #f10000;
 			}
 		</style>
-		<script>
-			setTimeout(function() {
-				$("body").show();
-			},500);
-		</script>				
+	});
+		
+		
+		
+		
+		
+		</script>
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
@@ -43,13 +45,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</header>
 
 			<div class="loginCont">
-				<form class="loginCont_form" action="phoneLogin/APP" method="post">
+				<form class="loginCont_form" action="phoneLogin/APP" method="get">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
 						<input class="loginCont_form_itemAll mui-input-clear right" id="forgePhone" name="kuaikePhone" type="text" placeholder="请输入手机号码" />
 					</div>
 					<div class="free_gray">
-	        			<input type="text" class="mui-input-clear free_input_code left" id="forgeYzm" name="mobile_code" placeholder="请输入验证码">
+	        			<input type="text" class="mui-input-clear free_input_code left" id="forgeYzm" name="mobile_code" value="${mobile_code }" placeholder="请输入验证码">
 						<input type="button" class="mui-btn loginBtn mui-btn-block free_code left" id="forgeYzmBtn" value="获取验证码">	
    				 	</div>
 

@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
 				<p class="ss">下单</p>
 			</a>
-			<a href="www.smuyun.com">
+			<a href="http://www.smuyun.com">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="ss">商城</p>
 			</a>

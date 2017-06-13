@@ -221,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
 				<p class="ss">下单</p>
 			</a>
-			<a href="www.smuyun.com">
+			<a href="http://www.smuyun.com">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="ss">商城</p>
 			</a>
@@ -246,7 +246,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			gallery.slider({
 				interval: 1000
 			});
-
+		</script>
+		<!-- ajax -->
+		<script type="text/javascript">
+			$(function(){
+				//清空
+				$('.eyesList').html("");
+				//调用方法
+				getList(0);
+			});
+			
+			//根据状态得到集合
+			function getList(status){
+				//获取到下单数据
+				$.ajax({
+					url : 'xiaordertab/xiadanAjax/'+status,
+					type : 'get',
+					dataType : 'html',
+					success : function(objs) {
+						//转换成json
+						var page = jQuery.parseJSON(objs);
+						var data = page.list;
+						
+						var result = '';
+						//循环便利
+						for (var i = 0; i < data.length; i++) {
+							//拼接标签
+							result +="<li> \
+										<a href='RequestMappingUtil/requestNUll/APP/myOrder'> \
+											<span>" + data[i].shouhuoNmae + "</span> \
+											<span class='text_1_hide'>" + data[i].shouhuoAddressInfo + "</span> \
+											<div>收</div> \
+										</a> \
+									</li>";
+						}
+						$('.eyesList').append(result);
+					},
+					error : function(xhr, type) {
+						alert('Ajax error!');
+					},
+					async:false
+				});
+			}
 		</script>
 	</body>
 </html>

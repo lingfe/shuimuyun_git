@@ -41,14 +41,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
 			<header class="header headerLogin">
-				<a class="header_l" href="#">
+				<a class="header_l" href="javascript:self.location=document.referrer;">
 					<img title="" alt="" src="<%=basePath %>APP/images/icon/arow_left.png" />
 				</a>
 				<h1 class="header_title">登录</h1>
 			</header>
 			
 			<div class="loginCont">
-				<form class="loginCont_form" action="<%=basePath%>login/APP" method="post">
+				<form class="loginCont_form" action="<%=basePath%>login/APP" method="get">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath %>APP/images/icon/phone.png" />
 						<input class="loginCont_form_itemAll mui-input-clear right" id="userPhone" type="text" name="kuaikePhone" placeholder="请输入手机号码" />

@@ -33,6 +33,9 @@ body {
 	*position: static;
 	background: #eee;
 }
+body{
+	display: none;
+}
 
 html {
 	font-family: "microsoft yahei";

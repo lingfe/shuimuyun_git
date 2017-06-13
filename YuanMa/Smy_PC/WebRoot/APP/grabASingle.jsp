@@ -136,6 +136,12 @@
 				margin-left: -0.1rem;
 			}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+		
 	</head>
 <body>
 	<!--【头部】-->

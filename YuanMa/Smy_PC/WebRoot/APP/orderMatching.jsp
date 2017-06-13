@@ -53,6 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				border-radius:50% ;
 			}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+		
 	</head>
 	<body>
 		<header class="commHeader">

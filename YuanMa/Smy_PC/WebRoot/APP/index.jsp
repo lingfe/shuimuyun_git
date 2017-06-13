@@ -25,6 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 	</style>
+	<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+	
 	</head>
 	<body>
 		<header class="commHeader">

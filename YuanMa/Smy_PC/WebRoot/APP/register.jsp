@@ -28,6 +28,12 @@
 			color: #f10000;
 		}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+		
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">

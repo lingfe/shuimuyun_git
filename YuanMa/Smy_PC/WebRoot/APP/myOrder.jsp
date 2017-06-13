@@ -20,6 +20,12 @@
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
+	<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+	
 </head>
 <body>
 	<!--【头部】-->

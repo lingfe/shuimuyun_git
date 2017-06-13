@@ -5,7 +5,7 @@
 			+ path + "/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 <base href="<%=basePath%>">
@@ -18,6 +18,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 		<style>
 			.commHeader p {
@@ -300,13 +301,15 @@
 			})
 		})
 	</script>
-			<!-- ajax -->
+		<!-- ajax list -->
 		<script type="text/javascript">
 			$(function(){
 				//清空
 				$('.grabList_lisst').html("");
 				//调用方法
 				getList(0);
+				
+				
 			});
 			
 			//根据状态得到集合
@@ -331,14 +334,14 @@
 							var date=new Date(data[i].okDate);
 							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
 							
-							url=data[i].xiaId + "/" + kuaikeId;
+							url= data[i].xiaId + "/4ab22820-4f13-44db-b516-e504eefa27d1" + kuaikeId;
 							//拼接标签
-							result +="<li><a href='r_qiangordertabController/insertAjax/" + url +"'> <img class='grabList_user' title='' alt='' \
+							result +="<li id='" + i + "' title='" + url + "'><a href='javascript:void(0);'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
 												<p>最迟到达时间：" + dataStr + "</p> \
 												<p>商品总重量：" + data[i].shopzholiang + "kg</p> \
-												<span>立即抢单</span> \
+												<span onclick='qiangdanAjax("+i+");'>立即抢单</span> \
 											</div> \
 									  </a></li>";
 						}
@@ -348,6 +351,30 @@
 						alert('Ajax error!');
 					},
 					async:false
+				});
+			}
+			
+			//抢单
+			function qiangdanAjax(i){
+				//url
+				var url= $("#"+i).attr("title");
+				//alert(url);
+				//通过ajax添加记录
+				$.ajax({
+					url : 'r_qiangordertabController/insertAjax/'+url,
+					type : 'get',
+					dataType : 'html',
+					success : function(objs) {
+						if(objs){
+							alert("抢单成功!");
+							$("#"+i).hide(3000);
+						}else{
+							alert("抢单失败!");
+						}
+					},
+					error : function(xhr, type) {
+						alert('Ajax error!');
+					}
 				});
 			}
 		</script>

@@ -140,8 +140,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年5月19日 上午11:34:20
 	 * @param 实体数据
 	 */
-	@Insert("insert into `xiaordertab`(`xiaId`,`kuaikeName`,`kuaikePhone`,`kuaikeAddress`,`shouhuoName`,`shouhuoPhone`,`shouhuoAddress`,`shouhuoAddressInfo`,`quhouDate`,`kaikePrioes`,`status`,`okDate`,`shopName`,`Shopzholiang`,`ShopNumer`,`Shopprices`,`shopguige`,`Shopdate`,kuaikeAddressInfo,shopType,timeString,shopImages,payment) "
-			+ "values (#{xiaId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{shouhuoName},#{shouhuoPhone},#{shouhuoAddress},#{shouhuoAddressInfo},#{quhouDate},#{kaikePrioes},#{status},#{okDate},#{shopName},#{shopzholiang},#{shopNumer},#{shopprices},#{shopGuige},#{shopDate},#{kuaikeAddressInfo},#{shopType},#{timeString},#{shopImages},#{payment})")
+	@Insert("insert into `xiaordertab`(`xiaId`,`kuaikeName`,`kuaikePhone`,`kuaikeAddress`,`shouhuoName`,`shouhuoPhone`,`shouhuoAddress`,`shouhuoAddressInfo`,`quhouDate`,`kaikePrioes`,`status`,`okDate`,`shopName`,`Shopzholiang`,`ShopNumer`,`Shopprices`,`shopguige`,`Shopdate`,kuaikeAddressInfo,shopType,timeString,shopImages,payment,kuaikeId) "
+			+ "values (#{xiaId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{shouhuoName},#{shouhuoPhone},#{shouhuoAddress},#{shouhuoAddressInfo},#{quhouDate},#{kaikePrioes},#{status},#{okDate},#{shopName},#{shopzholiang},#{shopNumer},#{shopprices},#{shopGuige},#{shopDate},#{kuaikeAddressInfo},#{shopType},#{timeString},#{shopImages},#{payment},#{kuaikeId})")
 	void add(R_xiaordertab t);
 
 	/**

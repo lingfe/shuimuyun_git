@@ -31,7 +31,7 @@
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
 			<header class="header headerLogin"> <a class="header_l"
-				href="#"> <img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
+				href="javascript:self.location=document.referrer;"> <img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
 			<h1 class="header_title">注册</h1>
 			</header>

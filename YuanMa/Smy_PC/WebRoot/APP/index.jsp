@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>首页</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -93,19 +93,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		
 		<nav class="nav">
-			<a href="#">
+			<a href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
 				<img src="<%=basePath%>APP/images/pay.jpg" />
 				<p>我要下单</p>
 			</a>
-			<a href="#">
+			<a href="RequestMappingUtil/requestNUll/APP/grabASingle">
 				<img src="<%=basePath%>APP/images/pay.jpg" />
 				<p>我要抢单</p>
 			</a>
-			<a href="#">
+			<a href="javascript:;">
 				<img src="<%=basePath%>APP/images/pay.jpg" />
 				<p>正在派送</p>
 			</a>
-			<a href="#">
+			<a href="javascript:;">
 				<img src="<%=basePath%>APP/images/pay.jpg" />
 				<p>我的钱包</p>
 			</a>
@@ -191,24 +191,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 		</div>
 		
+		<!--底部-->
 		<footer class="footerMenu">
-			<a class="active" href="#">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/home.png" width="100%"/>
+			<a  href="RequestMappingUtil/requestNUll/APP/index">
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/home_2.png" width="100%"/>
 				<p class="ss">首页</p>
 			</a>
-			<a href="#">
+			<a href="RequestMappingUtil/requestNUll/APP/grabASingle">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/single.png" width="100%"/>
 				<p class="ss">抢单</p>
 			</a>
-			<a href="#">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/order.png" width="100%"/>
+			<a class="active" href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
 				<p class="ss">下单</p>
 			</a>
-			<a href="#">
+			<a href="www.smuyun.com">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="ss">商城</p>
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
 				<p class="ss">我的</p>
 			</a>

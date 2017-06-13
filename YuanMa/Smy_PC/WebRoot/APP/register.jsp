@@ -64,7 +64,6 @@
 							class="right loginCont_form_itemAll mui-input-password"
 							id="regNpwd" type="password" placeholder="请确认密码" />
 					</div>
-	
 					<button type="submit" class="mui-btn loginBtn mui-btn-block reg_btn"
 						id="regBtn">注册</button>
 					<a class="free_login forget_appeal">已有账号?马上登录</a>

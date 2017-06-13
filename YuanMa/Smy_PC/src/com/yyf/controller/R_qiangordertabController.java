@@ -17,6 +17,7 @@ import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_qiangordertabService;
+import com.yyf.util.R_qiangordertabEnum;
 
 /**
  * 文件名：R_qiangordertabController.java 描述： 我要抢单 修改人： 杨杰 修改时间：2017年5月18日 下午6:52:44
@@ -32,7 +33,7 @@ public class R_qiangordertabController {
 	private R_qiangordertabService qiangordertabService;
 
 	/**
-	 * 当抢单成功的时候 会往抢单表中添加一条记录
+	 * PC抢单成功的时候 会往抢单表中添加一条记录
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月18日 下午7:06:36
@@ -42,43 +43,24 @@ public class R_qiangordertabController {
 	 *            快客ID
 	 * @return 返回 失败、 成功页面
 	 */
-	@RequestMapping(value = "/Insert", method = RequestMethod.GET)
-	public String Insert(Map<String, Object> map) {
+	@RequestMapping(value = "pcInsertQiang", method = RequestMethod.POST)
+	public String pcInsert(Map<String, Object> map,@RequestParam("xidId") String xiaId,@RequestParam("kuaikeId") String kuaikeId) {
 
 		// 得到唯一的ID 作为抢单ID的唯一标示列
 		// 默认抢单id
 		UUID uuid1 = UUID.randomUUID();
 		// 强制转换
 		String uuid = uuid1.toString();
-
-		// 默认下单ID
-		UUID uuid2 = UUID.randomUUID();
-		String uidxiaId = uuid2.toString();
-
-		// 默认快客Id
-		UUID uuid3 = UUID.randomUUID();
-		String uidKuaikeId = uuid3.toString();
-
-		// 实例化 抢单对象 并初始化数据
-		R_qiangordertab qiangordertab = new R_qiangordertab(uuid, uidxiaId, uidKuaikeId, 0, new Date());
-
-		if (qiangordertab.getStatus() == 1) {
-			System.out.println("抢单失败");
-		} else {
-
-			// 调用方法 并添加返回值
-			int insert = qiangordertabService.Insert(qiangordertab);
-
-			// 判断返回值是否 大于零 大于零 成功 小于零失败
-			if (insert > 0) {
-
-				return "PC/index";
-			}
-
+		
+		int insert = qiangordertabService.Insert(uuid, xiaId, kuaikeId, R_qiangordertabEnum.QD_OK.ordinal(), new Date());
+		
+		if(insert>0){
+			return "PC/index";
 		}
 		return "PC/index";
 	}
-
+	
+	
 	/**
 	 * 根据快客Id得到抢单记录
 	 * 

@@ -122,7 +122,7 @@
 	<!--轮播结束-->
 	<!--按钮开始-->
 	<div class="ren_aj1 flex1">
-		<a href="<%=basePath%>Insert"><img
+		<a href="<%=basePath%>pcInsertQiang"><img
 			src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
 	</div>
 	<div class="ren_aj2 flex1">

@@ -219,12 +219,15 @@ input {
 	width: 0.12rem;
 	height: auto;
 }
+
 .commHeader_r_font {
 	color: #fff;
 	font-size: 0.13rem;
 	line-height: 0.38rem;
 	text-align: right;
 }
+
+
 /*【头部组件】 end*/
 
 
@@ -611,9 +614,61 @@ input {
 	width: 100%;
 	background: #fff;
 	position: fixed;
-	bottom: -1.1rem;
+	bottom: -1.6rem;
 	font-size: .13rem;
 	z-index: 999;
+	height: 1.6rem;
+
+}
+
+.order_shi {
+	position: absolute;
+	top: .1rem;
+	left: .4rem;
+}
+
+.order_shi span {
+	display: block;
+	margin-top: .1rem;
+	margin-bottom: .1rem;
+}
+
+.order_shi input {
+	width: .4rem;
+	height: .2rem !important;
+}
+
+.order_fen {
+	top: .1rem;
+	position: absolute;
+	left: 1.7rem;
+}
+
+.order_fen input {
+	width: .4rem;
+	height: .2rem !important;
+}
+
+.order_fen span {
+	margin-top: .1rem;
+	display: block;
+	margin-bottom: .1rem;
+}
+
+.order_butt {
+	position: absolute;
+	left: .5rem;
+	top: .8rem;
+	width: .8rem;
+	background: #f6a7b3 !important;
+}
+
+.order_buttn {
+	position: absolute;
+	left: 1rem;
+	top: .8rem;
+	width: .8rem;
+	background: #82cddd !important;
 }
 
 .order_tan_clos2 {
@@ -687,7 +742,320 @@ input {
 
 
 /*【下单】end*/
-
+/*【快递员接单页面】*/
+.taking_firsttit_con{
+				margin-top: .1rem;
+				padding-bottom: .1rem;
+				box-sizing: border-box;
+			}
+			.taking_div_5{
+				border-bottom: solid 1px #999;
+			}
+			.taking_div_5 span:last-of-type{
+				color: #999;
+			}
+			.taking_last_con{
+				margin-top: .1rem;
+				padding-bottom: .1rem;
+			}
+			.taking_last_div_1{
+				margin: 10px 10px;
+				border-bottom: solid 1px #999;
+			}
+			.taking_last_div_1 span:last-of-type{
+				display: inline-block;
+				transform: translateY(-.05rem);
+				color: #999;
+			}
+			.taking_div_last{
+				position: relative;
+			}
+			.taking_div_last span{
+				display: inline-block;
+				position: absolute;
+			}
+			.taking_div_last span:nth-of-type(1){
+				margin-left: 10px;
+			}
+			.taking_div_last span:nth-of-type(2){
+				right: .5rem;
+				font-size: .12rem;
+				color: #999;
+			}
+			.taking_div_last{
+				width: 100%;
+				height: .3rem;
+			}
+			.taking_div_last img{
+				position: absolute;
+				right: .2rem;
+			}
+			.taking_btn{
+				padding: .2rem 0;
+				background: white;
+			}
+/*【快递员接单页面】end*/
+/*【快递员待接单页面】*/
+.courier_firsttit{
+				margin: .1rem 20px;
+				color: #999;
+				font-size: .12rem;
+			}
+			.courier_last{
+				margin: .1rem 20px;
+				color: #999;
+				font-size: .12rem;
+			}
+			.courier_firsttit_con{
+				width: 100%;
+				background: white;
+				padding-top: .2rem;
+				box-sizing: border-box;
+			}
+			.courier_firsttit_con div{
+				margin: .1rem 10px ;
+			}
+			.cour_div_1{
+				width: .6rem;
+				height: .6rem;
+				border-radius:50% ;
+				overflow: hidden;
+				margin: auto !important;
+				
+			}
+			.cour_div_1 img{
+				width: 100%;
+			}
+			.cour_div_2{
+				text-align: center;
+			}
+			.cour_div_3{
+				text-align: center;
+				height: .3rem;
+			}
+			.cour_div_3 span{
+				display: inline-block;
+				height: .3rem;
+				line-height: .3rem;
+				font-size: .12rem;
+			}
+			.cour_div_3 span:nth-of-type(2){
+				transform: translateY(-.03rem);
+			}
+			.cour_div_4{
+				height: .3rem;
+				border-bottom:1px solid gainsboro ;
+				color: #999;
+				font-size: .12rem;
+				box-sizing: border-box;
+			}
+			.cour_div_5{
+				height: .3rem;
+				font-size: .12rem;
+			}
+			.cour_div_5 span:nth-of-type(2){
+				transform: translateY(-.05rem);
+				margin-left: .05rem;
+				display: inline-block;
+			}
+			.courier_last_con{
+			width: 100%;
+			background: white;
+			padding-top: .1rem;
+			}
+			.courier_last_con_list{
+			width: 100%;
+			background: #418bc8;
+			color: white;
+			font-size: .12rem;
+			}
+			.courier_last_con_list div:nth-of-type(1){
+				padding-top: .1rem;
+				box-sizing: border-box;
+			}
+			.courier_last_con_list span{
+				width: 18%;
+				text-align: center;
+				display: inline-block;
+			}
+			.courier_last_con_list span:last-of-type{
+				width: 23% ;
+			}
+			.courier_last_con_last{
+				width: 100%;
+				background: white;
+				height: 1.6rem;
+			}
+			.courier_last_con_last_img{
+				width: 94%;
+				height: 1.4rem;
+				margin: .1rem 3%;
+				box-sizing: border-box;
+				position: relative;
+			}
+			.courier_last_con_last_img img,.courier_last_con_last_img div{
+				position: absolute;
+			}
+			.courier_last_con_last_img div{
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.6);
+				text-align: center;
+				color: #fff;
+				line-height: 1.5rem;
+			}
+/*【快递员待接单页面】end*/
+/*【发货人】*/
+.commHeader p {
+				color: #fff;
+				text-align: center;
+				font-size: 0.12rem;
+				line-height: 0.38rem;
+			}
+			.commHeader p i {
+				margin: 0 0.03rem;
+				/*color: #f10000;*/
+				font-size: 0.13rem;
+				/*font-weight: 700;*/
+			}
+			#container {
+				width:100%;
+				height: 4.5rem;
+			}
+			.gra_b {
+				width: 100%;
+				height: 0.38rem;
+				background: #fff;
+				border-top: 1px solid #e3e3e3;
+			}
+			.gra_bCont {
+				position: relative;
+				width: 50px;
+				height: auto;
+				overflow: hidden;
+				font-size: 0.12rem;
+				text-align: center;
+				color: #e0e0e0;
+				margin: 0 auto;
+				padding-top: 10px;
+				margin-top: 0.09rem;
+			}
+			.gra_bCont>div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 6px;
+				border-radius: 5px;
+				background: rgb(224,224,224);
+			}
+			.grabList {
+				position: fixed;
+				top: 1.8rem;
+				width: 100%;
+				height: 4rem;
+				background: rgba(255,255,255,.8);
+				z-index: 990;
+				transform: translate(0,4rem);
+			}
+			.grabList_lisst {
+				position: relative;
+				width: 100%;
+				height: 4rem;
+				overflow: hidden;
+				overflow-y: scroll;
+				box-sizing: border-box;
+				padding: 0 20px;
+				margin-top: 0;
+				padding-bottom: 1rem;
+			}
+			.grabList_lisst li a {
+				display: block;
+				width: 100%;
+				height: 0.5rem;
+				border-bottom: 1px solid #d7d7d7;
+			}
+			.grabList_user {
+				display: block;
+				height: 0.35rem;
+				width: 0.35rem;
+				border-radius: 50%;
+				margin-top: 0.08rem;
+				float: left;
+			}
+			.grabList_cont {
+				position: relative;
+				width: calc(100% - 0.42rem);
+				height: 0.5rem;
+				float: right;
+			}
+			.grabList_cont p {
+				color: #333;
+				font-size: 0.13rem;
+			}
+			.grabList_cont p:nth-of-type(1) {
+				padding-top: 0.08rem;
+			}
+			.grabList_cont span {
+				position: absolute;
+				bottom: 0.05rem;
+				right: 0;
+				color: #ed6014;
+				font-size: 0.12rem;
+			}
+			.grabList_title {
+				width: 100%;
+				height: 0.4rem;
+				background: rgb(255,255,255);
+				text-align: center;
+			}
+			.footerMenu {
+				z-index: 999;
+			}
+			.grabList_title img {
+				position: absolute;
+				left: 50%;
+				top: 0.16rem;
+				display: block;
+				width: 0.2rem;
+				height: auto;
+				margin-left: -0.1rem;
+			}
+/*【发货人】end*/
+/*【等待快递员】*/
+.mate_yuan{
+				width: 1.5rem;
+				height:1.5rem;
+				margin: auto;
+				border: solid 1px #418bc8;
+				border-radius:50%;
+				position: relative;
+				top: .8rem;
+				-webkit-animation:circle 1.5s infinite linear;
+			}
+			@-webkit-keyframes circle{
+			0%{ transform:rotate(0deg); }
+			100%{ transform:rotate(360deg); }
+			}
+			.mate_text{
+				text-align: center;
+				width: 1.5rem;
+				height: .2rem;
+				position: absolute;
+				display: inline-block;
+				left: 50%;
+				margin-left: -.75rem;
+				margin-top: -.08rem;
+			}
+			.mate_img{
+				position: absolute;
+				left: .45rem;
+				width: .08rem;
+				height: .08rem;
+				background: #0360ad;
+				border-radius:50% ;
+			}
+/*【等待快递员】end*/
 
 /*【订单】*/
 
@@ -1160,6 +1528,7 @@ input {
 .banner_on>.mui-active {
 	background: rgb(15, 237, 229) !important;
 }
+
 .cityList {
 	width: 100%;
 	height: auto;
@@ -1168,12 +1537,14 @@ input {
 	background: #eee;
 	padding-bottom: 0.3rem;
 }
+
 .cityList_title {
 	width: 100%;
 	height: 0.13rem;
 	box-sizing: border-box;
 	padding: 0.1rem 0;
 }
+
 .cityList_title div {
 	height: 0.13rem;
 	color: #2e97ee;
@@ -1183,6 +1554,7 @@ input {
 	box-sizing: border-box;
 	padding: 0 10px;
 }
+
 .cityList_list {
 	width: 100%;
 	height: auto;
@@ -1190,6 +1562,7 @@ input {
 	box-sizing: border-box;
 	padding: 0 10px;
 }
+
 .cityList_list li {
 	width: 31.3333%;
 	height: 0.28rem;
@@ -1197,13 +1570,14 @@ input {
 	font-size: 0.124rem;
 	text-align: center;
 	line-height: 0.28rem;
-	background: rgb(255,255,255);
+	background: rgb(255, 255, 255);
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 	float: left;
 	margin-top: 0.1rem;
 	margin-right: 2%;
 }
+
 .cityList_list li a {
 	display: block;
 	width: 100%;
@@ -1212,17 +1586,23 @@ input {
 	text-align: center;
 	color: #555;
 }
+
 .cityList_list li:nth-child(3n+0) {
 	margin-right: 0;
 }
+
 .hidden {
 	display: none;
 	height: 1px;
 	width: 100%;
 }
+
+
 /*【首页】 end*/
 
+
 /*【我的】*/
+
 .myInfo_top {
 	width: 100%;
 	height: auto;
@@ -1231,6 +1611,7 @@ input {
 	box-sizing: border-box;
 	padding: 0.1rem 20px;
 }
+
 .myInfo_user {
 	display: block;
 	width: 0.5rem;
@@ -1238,6 +1619,7 @@ input {
 	border-radius: 50%;
 	margin: 0.1rem auto;
 }
+
 .myInfo_lreg {
 	width: 100%;
 	height: 0.13rem;
@@ -1246,12 +1628,14 @@ input {
 	color: #fff;
 	font-size: 0.13rem;
 }
+
 .myInfo_lreg a {
 	height: 0.13rem;
 	line-height: 0.13rem;
 	color: #fff;
 	text-decoration: none;
 }
+
 .myInfo_info {
 	text-align: center;
 	color: #fff;
@@ -1259,14 +1643,16 @@ input {
 	margin-top: 0.03rem;
 	padding-bottom: 0.2rem;
 }
+
 .myInfo_nav {
 	width: 100%;
 	height: auto;
 	overflow: hidden;
-	background: rgb(255,255,255);
+	background: rgb(255, 255, 255);
 	padding: 0.1rem 0;
 	margin-top: 0.1rem;
 }
+
 .myInfo_nav a {
 	display: block;
 	width: 25%;
@@ -1276,13 +1662,15 @@ input {
 	text-align: center;
 	float: left;
 }
+
 .myInfo_list {
 	width: 100%;
 	height: auto;
 	overflow: hidden;
-	background: rgb(255,255,255);
+	background: rgb(255, 255, 255);
 	margin-top: 0.1rem;
 }
+
 .myInfo_list a {
 	position: relative;
 	display: block;
@@ -1297,6 +1685,7 @@ input {
 	box-sizing: border-box;
 	padding: 0 20px;
 }
+
 .myInfo_list a:before {
 	position: absolute;
 	top: 50%;
@@ -1308,6 +1697,7 @@ input {
 	background-size: cover;
 	margin-top: -0.08rem;
 }
+
 .myInfo_list a img {
 	position: absolute;
 	top: 50%;
@@ -1317,8 +1707,11 @@ input {
 	width: auto;
 	margin-top: -0.1rem;
 }
+
 .myInfo_zw {
 	width: 100%;
 	height: 0.5rem;
 }
+
+
 /*【我的】 end*/

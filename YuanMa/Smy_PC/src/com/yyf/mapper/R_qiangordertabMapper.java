@@ -1,5 +1,6 @@
 package com.yyf.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -28,7 +29,7 @@ public interface R_qiangordertabMapper {
 	 * @return 返回 0 表示添加失败 1表示抢单成功
 	 */
 	@Insert("insert into qiangordertab(qiangId,xiaId,kuaikeId,status,qiangDate) values(#{qiangId},#{xiaId},#{kuaikeId},#{status},#{qiangDate})")
-	public int Insert(R_qiangordertab qiangordertab);
+	public int Insert(@Param("qiangId") String qiangId,@Param("xiaId") String xiaId,@Param("kuaikeId") String kuaikeId,@Param("status") int status,@Param("qiangDate") Date qiangDate);
 
 	/**
 	 * 得到List 集合对象 得到一个抢单记录

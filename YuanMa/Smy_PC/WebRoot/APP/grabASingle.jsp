@@ -11,7 +11,8 @@
 <base href="<%=basePath%>">
 
 <title>抢单</title>
-
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -136,6 +137,12 @@
 				margin-left: -0.1rem;
 			}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+		
 	</head>
 <body>
 	<!--【头部】-->

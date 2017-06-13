@@ -202,7 +202,7 @@ public class R_kuaiketabController {
 	 * @return 返回成功页面
 	 * @throws NoSuchAlgorithmException
 	 */
-	@RequestMapping(value = "/login/{i}", method = RequestMethod.POST)
+	@RequestMapping(value = "/login/{i}", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "repassword", required = false) String repassword,
 			@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password,
 			HttpServletRequest request, ModelMap model,@PathVariable("i")String i) throws NoSuchAlgorithmException {
@@ -249,14 +249,17 @@ public class R_kuaiketabController {
 			}
 			// 返回成功页面
 			return "PC/index";
-		}
-		if("APP".equals(i)){
+		}else if("APP".equals(i)){
 			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
 			return "APP/login";
 		}
-		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
-		// 留在登陆页面
-		return "PC/login";
+		else{
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			// 留在登陆页面
+			return "PC/login";
+			
+		}
+	
 	}
 
 	/**
@@ -477,7 +480,7 @@ public class R_kuaiketabController {
 	 *            验证码
 	 * @return
 	 */
-	@RequestMapping(value = "phoneLogin/{i}", method = RequestMethod.POST)
+	@RequestMapping(value = "phoneLogin/{i}", method = RequestMethod.GET)
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("mobile_code") int mobile_code, HttpServletRequest request,@PathVariable("i") String i) {
 
@@ -506,9 +509,7 @@ public class R_kuaiketabController {
 			//返回首页
 			return "PC/index";
 
-		}
-		//判断是否为手机端
-		if("APP".equals(i)){
+		}else if("APP".equals(i)){
 			
 			//清空文本框中的验证码
 			request.getSession().removeAttribute("mobile_code");
@@ -517,14 +518,17 @@ public class R_kuaiketabController {
 			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
 			//登录失败返回登录页面
 			return "APP/login";
+		}else{
+			//清空文本框中的验证码
+			request.getSession().removeAttribute("mobile_code");
+			model.remove("mobile_code");
+			//给出友好的提示语
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			//登录失败返回登录页面
+			return "PC/login";
+			
 		}
-		//清空文本框中的验证码
-		request.getSession().removeAttribute("mobile_code");
-		model.remove("mobile_code");
-		//给出友好的提示语
-		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
-		//登录失败返回登录页面
-		return "PC/login";
+		
 	}
 
 	/**

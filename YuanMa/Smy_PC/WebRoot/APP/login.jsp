@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 		
 		<link rel="stylesheet" href="<%=basePath %>APP/css/mui.min.css" />
 		<link rel="stylesheet" href="<%=basePath %>APP/css/layer.css" />
@@ -30,6 +31,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				color: #f10000;
 			}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+		
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
@@ -41,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</header>
 			
 			<div class="loginCont">
-				<form class="loginCont_form" action="<%=basePath%>login/APP" method="post">
+				<form class="loginCont_form" action="<%=basePath%>login/APP" method="get">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath %>APP/images/icon/phone.png" />
 						<input class="loginCont_form_itemAll mui-input-clear right" id="userPhone" type="text" name="kuaikePhone" placeholder="请输入手机号码" />

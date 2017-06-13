@@ -15,12 +15,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-		<meta charset="UTF-8">
-		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-	
-		<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
-		<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
 		<style>
 			.layui-m-layer-msg .layui-m-layercont {
 				background: rgba(87,87,84,.5) !important;
@@ -28,8 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				color: #f10000;
 			}
 		</style>
+	});
 		
 		
+		
+		
+		
+		</script>
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
@@ -41,13 +45,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</header>
 
 			<div class="loginCont">
-				<form class="loginCont_form" action="phoneLogin/APP" method="post">
+				<form class="loginCont_form" action="phoneLogin/APP" method="get">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
 						<input class="loginCont_form_itemAll mui-input-clear right" id="forgePhone" name="kuaikePhone" type="text" placeholder="请输入手机号码" />
 					</div>
 					<div class="free_gray">
-	        			<input type="text" class="mui-input-clear free_input_code left" id="forgeYzm" name="mobile_code" placeholder="请输入验证码">
+	        			<input type="text" class="mui-input-clear free_input_code left" id="forgeYzm" name="mobile_code" value="${mobile_code }" placeholder="请输入验证码">
 						<input type="button" class="mui-btn loginBtn mui-btn-block free_code left" id="forgeYzmBtn" value="获取验证码">	
    				 	</div>
 

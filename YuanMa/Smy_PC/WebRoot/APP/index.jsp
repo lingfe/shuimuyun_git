@@ -10,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>首页</title>
-    
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -22,7 +23,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		body {
 			background: #eee;
 		}
+		
 	</style>
+	<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+	
 	</head>
 	<body>
 		<header class="commHeader">
@@ -36,12 +44,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</header>
 		<!--banner图开始-->
+		<div style="height:1rem;">
 		<div id="slider" class="mui-slider">
 			<div class="mui-slider-group mui-slider-loop">
 				<div class="mui-slider-item mui-slider-item-duplicate">
 					<a href="#">
 						<img src="<%=basePath%>APP/images/banner1.jpg">
 					</a>
+					<div class="banner_text">
+						优待自己，从这里开始——最贴心的私家服务
+					</div>
 				</div>
 				<div class="mui-slider-item banner_item">
 					<a href="#">
@@ -79,6 +91,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="#">
 						<img src="<%=basePath%>APP/images/banner1.jpg">
 					</a>
+					<div class="banner_text">
+						优待自己，从这里开始——最贴心的私家服务
+					</div>
 				</div>
 			</div>
 			
@@ -88,6 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="mui-indicator"></div>
 				<div class="mui-indicator"></div>
 			</div>
+		</div>
 		</div>
 		<!--baner图结束-->
 
@@ -113,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="findTitle">
 			<img title="" alt="" src="<%=basePath%>APP/images/icon/eyes.png" width="20" />
-			发现
+			     发现
 		</div>
 		
 		<div class="list">

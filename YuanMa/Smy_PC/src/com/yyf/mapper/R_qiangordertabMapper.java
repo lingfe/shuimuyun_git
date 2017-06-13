@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
@@ -18,6 +20,18 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface R_qiangordertabMapper {
 
+	/**
+	 * app根据快客Id得到抢单记录
+	 * @author lijie
+	 * @created 2017年6月5日 下午3:30:05
+	 * @param kuaikeId    	快客Id
+	 * @param status		抢单状态
+	 * @param model
+	 */
+	@Select("SELECT * FROM qiangordertab AS q INNER JOIN kuaiketab k ON q.`kuaikeId`=k.`kuaikeId` where k.kuaikeId=#{kuaikeId}")
+	public List<R_qiangordertab> queryIdStatus(@Param("kuaikeId") String kuaikeId,@Param("status")int status);
+	
+	
 	/**
 	 * 当快客点击抢单的时候 进行信息的填写
 	 * 

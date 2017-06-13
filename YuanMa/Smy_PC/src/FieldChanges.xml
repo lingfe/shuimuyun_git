@@ -15,6 +15,8 @@
 		ALTER TABLE xiaordertab ADD shopImages VARCHAR(255) NOT NULL COMMENT '商品图片';
 		ALTER TABLE xiaordertab ADD payment	INT DEFAULT 0 NOT NULL COMMENT '是否付款';
 		
+		<!-- 下单表，新增快客id -->
+		ALTER TABLE xiaordertab ADD kuaikeId VARCHAR(200) NOT NULL COMMENT '快客id';
 		
 	</insertChanges>
 

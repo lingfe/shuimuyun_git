@@ -53,7 +53,7 @@ public class R_kuaiketabController {
 
 	/**
 	 * 
-	 * 移动端注册，没有图片上传
+	 * app移动端注册，没有图片上传
 	 * @author lijie     
 	 * @created 2017年6月8日 下午6:54:35  
 	 * @param tab

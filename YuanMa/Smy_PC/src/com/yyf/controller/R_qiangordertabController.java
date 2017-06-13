@@ -7,12 +7,13 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.ui.ModelMap;
+
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
@@ -31,6 +32,55 @@ public class R_qiangordertabController {
 	@Autowired
 	private R_qiangordertabService qiangordertabService;
 
+	/**
+	 * app根据快客Id得到抢单记录
+	 * @author lijie
+	 * @created 2017年6月5日 下午3:30:05
+	 * @param kuaikeId    	快客Id
+	 * @param status		抢单状态
+	 * @param model
+	 */
+	@RequestMapping(value = "queryIdStatus/{kuaikeId}/{status}", method = RequestMethod.POST)
+	@ResponseBody
+	public List<R_qiangordertab> queryIdStatus(@PathVariable("kuaikeId") String kuaikeId,@PathVariable("status")int status, ModelMap model) {
+
+		List<R_qiangordertab> QiangOrde = qiangordertabService.queryQiangOrderBykuaikeId(kuaikeId);
+
+		model.addAllAttributes(QiangOrde);
+
+		model.addAttribute("qiangOrde", QiangOrde);
+
+		return QiangOrde;
+
+	}
+	
+	/**
+	 * 
+	 * app抢单操作，添加抢单记录
+	 * @author lijie     
+	 * @created 2017年6月13日 上午10:51:12  
+	 * @param xiaId		下单id
+	 * @param kuaikeId	快客id
+	 * @return
+	 */
+	@RequestMapping(value="r_qiangordertabController/insertAjax/{xiaId}/{kuaikeId}")
+	public @ResponseBody String  insertAjax(@PathVariable("xiaId")String xiaId,@PathVariable("kuaikeId")String kuaikeId){
+		try {
+			// 得到唯一的ID 作为抢单ID的唯一标示列
+			// 默认抢单id
+			UUID uuid1 = UUID.randomUUID();
+			// 强制转换
+			String uuid = uuid1.toString();
+			// 实例化 抢单对象 并初始化数据
+			R_qiangordertab qiangordertab = new R_qiangordertab(uuid, xiaId, kuaikeId, 0, new Date());
+			qiangordertabService.Insert(qiangordertab);
+			return "抢单成功";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "抢单失败";
+		}
+	}
+	
 	/**
 	 * 当抢单成功的时候 会往抢单表中添加一条记录
 	 * 

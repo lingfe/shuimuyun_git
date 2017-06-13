@@ -205,6 +205,7 @@ input {
 	top: 0;
 	height: 0.38rem;
 	z-index: 9;
+	text-decoration: none;
 }
 
 .commHeader_r span {
@@ -218,8 +219,12 @@ input {
 	width: 0.12rem;
 	height: auto;
 }
-
-
+.commHeader_r_font {
+	color: #fff;
+	font-size: 0.13rem;
+	line-height: 0.38rem;
+	text-align: right;
+}
 /*【头部组件】 end*/
 
 
@@ -1216,3 +1221,104 @@ input {
 	width: 100%;
 }
 /*【首页】 end*/
+
+/*【我的】*/
+.myInfo_top {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #418bc8;
+	box-sizing: border-box;
+	padding: 0.1rem 20px;
+}
+.myInfo_user {
+	display: block;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	margin: 0.1rem auto;
+}
+.myInfo_lreg {
+	width: 100%;
+	height: 0.13rem;
+	line-height: 0.13rem;
+	text-align: center;
+	color: #fff;
+	font-size: 0.13rem;
+}
+.myInfo_lreg a {
+	height: 0.13rem;
+	line-height: 0.13rem;
+	color: #fff;
+	text-decoration: none;
+}
+.myInfo_info {
+	text-align: center;
+	color: #fff;
+	font-size: 0.12rem;
+	margin-top: 0.03rem;
+	padding-bottom: 0.2rem;
+}
+.myInfo_nav {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: rgb(255,255,255);
+	padding: 0.1rem 0;
+	margin-top: 0.1rem;
+}
+.myInfo_nav a {
+	display: block;
+	width: 25%;
+	height: auto;
+	color: #333;
+	font-size: 0.13rem;
+	text-align: center;
+	float: left;
+}
+.myInfo_list {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: rgb(255,255,255);
+	margin-top: 0.1rem;
+}
+.myInfo_list a {
+	position: relative;
+	display: block;
+	height: 0.4rem;
+	width: 100%;
+	color: #333;
+	font-size: 0.13rem;
+	line-height: 0.4rem;
+	text-decoration: none;
+	text-indent: 0.3rem;
+	border-bottom: 1px solid #eee;
+	box-sizing: border-box;
+	padding: 0 20px;
+}
+.myInfo_list a:before {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	content: "";
+	width: 0.08rem;
+	height: 0.16rem;
+	background: url(../images/myInfo_arrow.png) no-repeat;
+	background-size: cover;
+	margin-top: -0.08rem;
+}
+.myInfo_list a img {
+	position: absolute;
+	top: 50%;
+	left: 20px;
+	display: block;
+	height: 0.2rem;
+	width: auto;
+	margin-top: -0.1rem;
+}
+.myInfo_zw {
+	width: 100%;
+	height: 0.5rem;
+}
+/*【我的】 end*/

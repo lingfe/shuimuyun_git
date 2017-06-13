@@ -47,65 +47,7 @@ window.onload = function(){
 			
 		}
 	}
-	//时间加减	
-	var xiaoshi =document.querySelector("#xiaoshi");
-	var jiajia1 =document.querySelector("#jiajia1");
-	var jianjian1 =document.querySelector("#jianjian1");
-	var jiajia2 =document.querySelector("#jiajia2");
-	var jianjian2 =document.querySelector("#jianjian2");
-	var fenzhong =document.querySelector("#fenzhong");
-	for(var i=0;i<jia.length;i++){
-		var s = 2;
-		jiajia1.onclick=function(){
-			xiaoshi.innerText=s;
-			if(s==24){
-				layer.open({
-		    	content: '时间最迟不能超过24小时',
-		    	skin: 'msg',
-		    	time: 1
-		  	});
-				return false;
-			}else{
-				s++;
-			}
-				
-	}
-		jianjian1.onclick=function(){
-			xiaoshi.innerText=s-2;
-			if(s==2){
-				return false;
-			}else{
-				s--;
-			}
-			
-		}
-	}	
-		for(var i=0;i<jia.length;i++){
-		var f = 30;
-		jiajia2.onclick=function(){
-				fenzhong.innerText=f;
-				if(f==60){
-				return false;
-			}else{
-				f+=15;
-			}
-	}
-		jianjian2.onclick=function(){
-			fenzhong.innerText=f-15;
-			if(f==30){
-				return false;
-			}else{
-				f-=15;
-			}
-			
-		}
-	}	
-	//下单页面end	
-		
-		
-		
-		
-	
+	//下单页面end		
 }
 
 $(function(){
@@ -160,29 +102,72 @@ $(function(){
 	})
 	//弹出框三
 	//最迟到达时间取值
-	
+	$("#num_shi").blur(function(){
+		if($(this).val()>=24 || $(this).val()<0){
+			layer.open({
+		    	content: '请输入正确的时间',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+		  	$(this).val("");
+		}
+	})
+	$("#num_fen").blur(function(){
+		if($(this).val()>60 ||$(this).val()<0){
+			layer.open({
+		    	content: '请输入正确的时间',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+		  	$(this).val("");
+		}
+	})
+	$("#butt").click(function(){
+		$("#order_zhe").css("display","none");
+		$("#order_tan2").css("transform","translateY(1.6rem)");
+		$("#order_tan2").css("transition","0.5s");
+	})
+	$("#buttn").click(function(){
+		$("#order_zhe").css("display","none");
+		$("#order_tan2").css("transform","translateY(1.6rem)");
+		$("#order_tan2").css("transition","0.5s");
+		var xs=$("#num_shi").val();
+		var fz=$("#num_fen").val();
+		var shij;
+		if(xs=="" && fz==""){
+			layer.open({
+		    	content: '请输入时间',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+		  	shij="";
+		}
+		else if(xs==""){
+			shij=fz+"分";
+		}else if(fz==""){
+			shij=xs+"小时";
+		}else if(xs=="" && fz==""){
+			alert("s")
+		}else{
+		shij=xs+"小时"+fz+"分";
+		}
+		$("#shijian").html(shij);
+	})
 	$("#order_right2").click(function(){
 		$("#order_zhe").css("display","block");
-		$("#order_tan2").css("transform","translateY(-1.1rem)");
+		$("#order_tan2").css("transform","translateY(-1.6rem)");
 		$("#order_tan2").css("transition","0.5s");
 	});
 	$("#order_zhe").click(function(){
 		$("#order_zhe").css("display","none");
-		$("#order_tan2").css("transform","translateY(1.1rem)");
+		$("#order_tan2").css("transform","translateY(1.6rem)");
 		$("#order_tan2").css("transition","0.5s");
-		var xs=$("#xiaoshi").html();
-		var fz=$("#fenzhong").html();
-		var shij=xs+"时"+fz+"分";
-		$("#shijian").html(shij);
+		
 	});	
 	$("#order_close2").click(function(){
 		$("#order_zhe").css("display","none");
-		$("#order_tan2").css("transform","translateY(1.1rem)");
+		$("#order_tan2").css("transform","translateY(1.6rem)");
 		$("#order_tan2").css("transition","0.5s");
-		var xs=$("#xiaoshi").html();
-		var fz=$("#fenzhong").html();
-		var shij=xs+"时"+fz+"分";
-		$("#shijian").html(shij);
 	})
 	//下单页面end
 	//搜索框页面

@@ -1,15 +1,19 @@
 package com.yyf.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.yyf.mapper.IR_xiaordertabMapper;
 import com.yyf.mapper.R_qiangordertabMapper;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_qiangordertabService;
+import com.yyf.util.R_xiaordertabEnum;
 
 /**
  * 文件名：R_qiangordertabServiceImpl.java 描述： 我要抢单 修改人： 杨杰 修改时间：2017年5月18日
@@ -21,22 +25,31 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 	/* 添加依赖注入 */
 	@Autowired
 	private R_qiangordertabMapper qiangordertabMapper;
+	//注入下单
+	@Autowired
+	private IR_xiaordertabMapper xiaordertabMapper;
+	
 
 	/**
-	 * 我要抢单 当我点击抢单的时候 添加记录在抢单表中
-	 * 
-	 * @author 杨杰
-	 * @created 2017年5月18日 下午6:47:31
-	 * @param qiangordertab
-	 *            抢单实体集合对象
-	 * @return 如果返回0 表示抢单失败 1 表示抢单成功
+	 * 添加一条枪弹记录信息
+	 * @author 杨杰     
+	 * @created 2017年6月13日 上午10:47:12  
+	 * @param qiangId 枪弹Id
+	 * @param xiaId 下单ID
+	 * @param kuaikeId 快客ID
+	 * @param status  抢单状态
+	 * @param qiangDate  抢单日期 
+	 * @return
 	 */
 	@Override
-	public int Insert(R_qiangordertab qiangordertab) {
-		/* 调用方法 并添加返回值 */
-		int insert = qiangordertabMapper.Insert(qiangordertab);
-
-		return insert;
+	@Transactional
+	public int Insert(String qiangId, String xiaId, String kuaikeId, int status, Date qiangDate) {
+		
+		xiaordertabMapper.updateStatus(R_xiaordertabEnum.YJD.ordinal(), xiaId);
+		
+		int count = qiangordertabMapper.Insert(qiangId, xiaId, kuaikeId, status, qiangDate);
+		
+		return count;
 	}
 
 	/**
@@ -147,5 +160,7 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 	
 		return QiangOrder;
 	}
+
+	
 
 }

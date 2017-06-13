@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</header>
 			
 			<div class="loginCont">
-				<form class="loginCont_form" action="<%=basePath%>login/APP" method="post">
+				<form class="loginCont_form" action="<%=basePath%>login/APP" method="get">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath %>APP/images/icon/phone.png" />
 						<input class="loginCont_form_itemAll mui-input-clear right" id="userPhone" type="text" name="kuaikePhone" placeholder="请输入手机号码" />

@@ -35,44 +35,46 @@ $(function() {
 		var forgeYzm = $("#forgeYzm").val();
 		var forgePwd = $("#forgePwd").val();
 		var forgeNpwd = $("#forgeNpwd").val();
-
-		if (!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
+		
+		if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
 			//提示
 			//alert("sfdsf")
-			layer.open({
-				content : '手机号码错误',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '手机号码错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else if (forgeYzm == "") {
+		}
+		else if(forgeYzm == "") {
 			//提示
-			layer.open({
-				content : '请填写密码',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '请填写密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else if (forgePwd == "") {
+		}
+		else if(forgePwd == "") {
 			//提示
-			layer.open({
-				content : '请填写密码',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '请填写密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else if (forgePwd != forgeNpwd) {
+		}
+		else if(forgePwd != forgeNpwd) {
 			//提示
-			layer.open({
-				content : '密码不一致',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '密码不一致',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
 		}
 		forgeJz();
 	})
-
 
 
 
@@ -151,7 +153,7 @@ $(function() {
 	 * 注册页面验证
 	 * 
 	*/
-
+	
 	$("#regBtn").click(function() {
 		//alert("sfddf")
 		var userName = $("#userName").val();
@@ -159,44 +161,54 @@ $(function() {
 		var regYzm = $("#regYzm").val();
 		var regPwd = $("#regPwd").val();
 		var regNpwd = $("#regNpwd").val();
+		if(userName == "") {
 			//提示
-		  	});			return false;
-		} else if (!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
-			//提示
-			layer.open({
-				content : '手机号码错误',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '请填写姓名',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else if (regYzm == "") {
+		}
+		else if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
 			//提示
-			layer.open({
-				content : '请填写验证码',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '手机号码错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else if (regPwd == "") {
+		}
+		else if(regYzm == "") {
 			//提示
-			layer.open({
-				content : '请填写密码',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '请填写验证码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else if (regPwd != regNpwd) {
+		}
+		else if(regPwd == "") {
 			//提示
-			layer.open({
-				content : '密码不一致',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '请填写密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(regPwd != regNpwd) {
+			//提示
+		    layer.open({
+		    	content: '密码不一致',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
 		}
 		regJz();
 	})
-
+	
 	/*
 	 * 
 	 * 注册验证码*
@@ -238,6 +250,7 @@ function loginJz() {
 	}, 2000)
 
 }
+/*免密登陆*/
 function freeJz() {
 	var forgePhone = $("#forgePhone").val();
 	var forgeYzm = $("#forgeYzm").val();
@@ -253,15 +266,16 @@ function freeJz() {
 
 }
 
+/*注册验证*/
 function regJz() {
 	layer.open({
-		content : '正在注册...',
-		skin : 'msg',
-		time : 2
-	});
-	setInterval(function() {
-		window.location.href = "login.html";
-	}, 2000)
+    	content: '正在注册...',
+    	skin: 'msg',
+    	time: 2
+  	});
+  	setInterval(function() {
+		window.location.href="login.html";
+	},2000)
 }
 
 /*
@@ -270,36 +284,33 @@ function regJz() {
  * 
 */
 function forgeJz() {
-	//var forgePhone = $("#forgePhone").val();
-	//var forgeYzm = $("#forgeYzm").val();
-	//var forgePwd = $("#forgePwd").val();
-	//var forgeNpwd = $("#forgeNpwd").val();
+	
 	layer.open({
-		content : '密码修改成功...',
-		skin : 'msg',
-		time : 2
-	});
-	setInterval(function() {
-		window.location.href = "login.html";
-	}, 2000)
+    	content: '密码修改成功...',
+    	skin: 'msg',
+    	time: 2
+  	});
+  	setInterval(function() {
+		window.location.href="login.html";
+	},2000)
 }
 
 
 /*
  * 60秒倒计时
 */
-var wait = 60;
+var wait=60;
 function time(o) {
 	if (wait == 0) {
-		o.removeAttribute("disabled");
-		o.value = "获取验证码";
+		o.removeAttribute("disabled");			
+		o.value="获取验证码";
 		wait = 60;
 	} else {
 		o.setAttribute("disabled", true);
-		o.value = "重新发送(" + wait + ")";
+		o.value="重新发送(" + wait + ")";
 		wait--;
 		setTimeout(function() {
 			time(o)
-		}, 1000)
+		},1000)
 	}
 }

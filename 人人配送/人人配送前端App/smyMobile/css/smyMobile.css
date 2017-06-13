@@ -1196,7 +1196,7 @@ input {
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 	float: left;
-	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
 	margin-right: 2%;
 }
 .cityList_list li a {

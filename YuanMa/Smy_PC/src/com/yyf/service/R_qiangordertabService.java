@@ -1,5 +1,6 @@
 package com.yyf.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.yyf.model.R_kuaiketab;
@@ -21,7 +22,7 @@ public interface R_qiangordertabService {
 	 *            抢单实体对象
 	 * @return 返回 0代表抢单失败 1表示抢单成功
 	 */
-	public int Insert(R_qiangordertab qiangordertab);
+	public int Insert(String qiangId,String xiaId,String kuaikeId,int status,Date qiangDate);
 
 	/**
 	 * 得到抢单记录 返回List 集合对象

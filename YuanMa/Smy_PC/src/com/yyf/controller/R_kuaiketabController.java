@@ -214,7 +214,7 @@ public class R_kuaiketabController {
 		// 简单判断对象是否为空
 		if (login != null) {
 			//修改快客登陆状态
-			kuaiketabService.updateKuaikeStatus(2, login.getKuaikeId());
+			kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(), login.getKuaikeId());
 			model.addAttribute("login", login);
 
 			if ("on".equals(repassword)) {
@@ -496,6 +496,10 @@ public class R_kuaiketabController {
 			request.getSession().setAttribute("uname", phoneLogin.getKuaikePhone());
 			//用户名
 			request.getSession().setAttribute("namea", phoneLogin.getKuaikeName());
+			
+			//登陆成功 修改状态为2 【在线】
+			
+			kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(),phoneLogin.getKuaikeId());
 			
 			//清空文本框中的验证码
 			request.getSession().removeAttribute("mobile_code");

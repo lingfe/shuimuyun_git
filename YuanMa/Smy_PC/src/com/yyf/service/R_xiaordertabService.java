@@ -2,6 +2,10 @@ package com.yyf.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 
@@ -12,6 +16,45 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface R_xiaordertabService {
 
+	/**
+	 * 
+	 * app下单发货人信息ajax
+	 * @author lijie     
+	 * @created 2017年6月12日 上午10:56:33  
+	 * @param xiaId					下单id  
+	 * @param kuaikeName			快客名称
+	 * @param kuaikePhone			快客电话
+	 * @param kuaikeAddressInfo		快客详细地址
+	 */
+	void fa(String kuaikeName,String kuaikePhone,String xiaId,String kuaikeAddressInfo);
+	
+	/**
+	 * 
+	 * app下单收货人信息ajax
+	 * @author lijie     
+	 * @created 2017年6月12日 上午10:44:44
+	 * @param xiaId					下单id  
+	 * @param shouhuoName			收货人名称
+	 * @param shouhuoPhone			收货人电话
+	 * @param shouhuoAddressInfo	收货人地址详情
+	 */
+	void shou(String shouhuoName,String shouhuoPhone, String xiaId,String shouhuoAddressInfo);
+	
+	/**
+	 * 
+	 * app下单的提交ajax
+	 * 
+	 * @author lijie
+	 * @created 2017年6月12日 上午10:14:53
+	 * @param xiaId 		下单id
+	 * @param shopType		货物类型
+	 * @param shopNumer		货物数量
+	 * @param shopzholiang	货物重量
+	 * @param timeString	取货时间
+	 * @return	提示
+	 */
+	void orderSbmit( String xiaId,String shopType,float shopNumer, int shopzholiang,String timeString);
+	
 	/**
 	 * 
 	 * 根据下单状态查询下单记录行

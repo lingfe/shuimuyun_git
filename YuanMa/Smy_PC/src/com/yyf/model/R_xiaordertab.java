@@ -225,14 +225,14 @@ public class R_xiaordertab {
 		this.kuaikeAddressInfo = kuaikeAddressInfo;
 	}
 
-	private int shopType;// `shopType` INT(11) NOT NULL DEFAULT '0' COMMENT
+	private String shopType;// `shopType` INT(11) NOT NULL DEFAULT '0' COMMENT
 							// '货物类型',
 
-	public int getShopType() {
+	public String getShopType() {
 		return shopType;
 	}
 
-	public void setShopType(int shopType) {
+	public void setShopType(String shopType) {
 		this.shopType = shopType;
 	}
 

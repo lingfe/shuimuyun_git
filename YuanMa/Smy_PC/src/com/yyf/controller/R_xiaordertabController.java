@@ -9,8 +9,12 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.UUIDEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.deser.std.JdkDeserializers.UUIDDeserializer;
 import com.yyf.model.City;
 import com.yyf.model.Commenttab;
 import com.yyf.model.PageModel;
@@ -49,6 +54,119 @@ public class R_xiaordertabController {
 
 	/**
 	 * 
+	 * 一句话 方法的功能描述
+	 * @author 杨杰     
+	 * @created 2017年6月12日 下午2:20:33  
+	 * @param xiaId
+	 * @param request
+	 */
+	@RequestMapping(value="/xiaorderInfoAjax/{xiaId}",method=RequestMethod.POST)
+	public @ResponseBody R_xiaordertab xiaorderInfoAjax(@PathVariable("xiaId") String xiaId,HttpServletRequest request){
+		//得到下单详细
+		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
+		//赋值到session
+		//request.getSession().setAttribute("kuaikeName",xiaorderInfo.getKuaikeName());
+		//request.getSession().setAttribute("shouhuoName", xiaorderInfo.getShouhuoNmae());
+		
+		return xiaorderInfo;
+	}
+	
+	/**
+	 * 
+	 * app跳转下单页面初始化
+	 * @author lijie     
+	 * @created 2017年6月12日 上午11:16:28  
+	 * @return
+	 */
+	@RequestMapping(value="/appOrderRequest/{param}",method=RequestMethod.GET)
+	public String appOrderRequest(R_xiaordertab tab,@PathVariable("param")String param,HttpServletRequest request){
+		System.out.println("*******************");
+		//下单id
+		Object attribute = request.getSession().getAttribute("xiaId");
+		if(StringUtils.isEmpty(attribute)){
+			//初始化值
+			tab.setXiaId(UUID.randomUUID().toString());
+			tab.setStatus(R_xiaordertabEnum.WJD.ordinal());
+			tab.setPayment(0);//未付款
+			//设置id到session
+			request.getSession().setAttribute("xiaId", tab.getXiaId());
+			r_xiaordertabService.add(tab);
+			return "APP/"+param;
+		}else{
+			request.getSession().setAttribute("xiaId", attribute);
+			return "APP/"+param;
+		}
+
+	}
+	
+	/**
+	 * 
+	 * app下单发货人信息ajax
+	 * @author lijie     
+	 * @created 2017年6月12日 上午10:56:33  
+	 * @param kuaikeName
+	 * @param kuaikePhone
+	 * @param kuaikeAddressInfo
+	 */
+	@RequestMapping(value="/fa/{xiaId}/{kuaikeName}/{kuaikePhone}/{kuaikeAddressInfo}",method=RequestMethod.POST)
+	public @ResponseBody void fa(@PathVariable("kuaikeName")String kuaikeName,
+			@PathVariable("kuaikePhone")String kuaikePhone,
+			@PathVariable("xiaId") String xiaId,
+			@PathVariable("kuaikeAddressInfo")String kuaikeAddressInfo){
+		//发货人信息
+		r_xiaordertabService.fa(kuaikeName, kuaikePhone, xiaId, kuaikeAddressInfo);
+	}
+	
+	/**
+	 * 
+	 * app下单收货人信息ajax
+	 * @author lijie     
+	 * @created 2017年6月12日 上午10:44:44
+	 * @param shouhuoName			收货人名称
+	 * @param shouhuoPhone			收货人电话
+	 * @param shouhuoAddressInfo	收货人地址详情
+	 */
+	@RequestMapping(value="/shou/{xiaId}/{shouhuoName}/{shouhuoPhone}/{shouhuoAddressInfo}",method=RequestMethod.POST)
+	public @ResponseBody void shou(@PathVariable("shouhuoName")String shouhuoName,
+								@PathVariable("shouhuoPhone")String shouhuoPhone,
+								@PathVariable("xiaId") String xiaId,
+								@PathVariable("shouhuoAddressInfo")String shouhuoAddressInfo,HttpServletRequest request){
+		//收货人信息
+		r_xiaordertabService.shou(shouhuoName, shouhuoPhone, xiaId, shouhuoAddressInfo);
+	}
+	
+	/**
+	 * 
+	 * app下单的提交ajax
+	 * 
+	 * @author lijie
+	 * @created 2017年6月12日 上午10:14:53
+	 * @param xiaId 		下单id
+	 * @param shopType		货物类型
+	 * @param shopNumer		货物数量
+	 * @param shopzholiang	货物重量
+	 * @param timeString	取货时间
+	 * @return	提示
+	 */
+	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}", method = RequestMethod.POST)
+	public @ResponseBody String orderSbmit(@PathVariable("xiaId") String xiaId,
+			@PathVariable("shopType") String shopType, @PathVariable("shopNumer") float shopNumer,
+			@PathVariable("shopzholiang") int shopzholiang,
+			@PathVariable("timeString") String timeString,HttpServletRequest request) {
+		try {
+			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString);
+			//清空session中的下单id
+			request.getSession().removeAttribute("xiaId");
+			request.getSession().removeValue("xiaId");
+			return "下单成功";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "下单失败";
+		}
+	}
+
+	/**
+	 * 
 	 * 通过ajax请求，根据状态返回分页集合
 	 * 
 	 * @author lijie
@@ -66,7 +184,7 @@ public class R_xiaordertabController {
 	@RequestMapping(value = "/xiadanAjax/{status}/{pageIndex}/{pageNum}", method = RequestMethod.GET)
 	public @ResponseBody PageModel<R_xiaordertab> statusQueryPaging(@PathVariable("status") int status,
 			@PathVariable("pageIndex") int pageIndex, @PathVariable("pageNum") int pageNum) {
-		//分页模型
+		// 分页模型
 		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
 		// 设置分页数值
 		page.setPageIndex(pageIndex);
@@ -93,7 +211,7 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value = "/xiadanAjax/{status}", method = RequestMethod.GET)
 	public @ResponseBody PageModel<R_xiaordertab> ajxaJson(@PathVariable("status") int status) {
-		//分页模型
+		// 分页模型
 		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
 		// 设置分页数值
 		page.setNumCount(r_xiaordertabService.statusQueryCount(status));
@@ -101,7 +219,7 @@ public class R_xiaordertabController {
 		// 得到分页数据,默认
 		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQueryPaging(status,
 				((page.getPageIndex() - 1) * page.getPageNum()), page.getPageNum());
-		//设置到page
+		// 设置到page
 		page.setList(statusQuery);
 		System.out.println(page.toString());
 

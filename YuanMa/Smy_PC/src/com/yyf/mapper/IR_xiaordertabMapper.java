@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yyf.inter.InterJDBC;
 import com.yyf.model.Commenttab;
@@ -18,6 +22,58 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
+	
+	/**
+	 * 
+	 * app下单发货人信息ajax
+	 * @author lijie     
+	 * @created 2017年6月12日 上午10:56:33  
+	 * @param xiaId					下单id  
+	 * @param kuaikeName			快客名称
+	 * @param kuaikePhone			快客电话
+	 * @param kuaikeAddressInfo		快客详细地址
+	 */
+	@Update("UPDATE  xiaordertab SET kuaikeName=#{kuaikeName},kuaikePhone=#{kuaikePhone},kuaikeAddressInfo=#{kuaikeAddressInfo} WHERE xiaid=#{xiaId}")
+	public @ResponseBody void fa(@Param("kuaikeName")String kuaikeName,
+			@Param("kuaikePhone")String kuaikePhone,
+			@Param("xiaId") String xiaId,
+			@Param("kuaikeAddressInfo")String kuaikeAddressInfo);
+	
+	/**
+	 * 
+	 * app下单收货人信息ajax
+	 * @author lijie     
+	 * @created 2017年6月12日 上午10:44:44
+	 * @param xiaId					下单id  
+	 * @param shouhuoName			收货人名称
+	 * @param shouhuoPhone			收货人电话
+	 * @param shouhuoAddressInfo	收货人地址详情
+	 */
+	@Update("UPDATE  xiaordertab SET shouhuoName=#{shouhuoName},shouhuoPhone=#{shouhuoPhone},shouhuoAddressInfo=#{shouhuoAddressInfo} WHERE xiaid=#{xiaId}")
+	void shou(@Param("shouhuoName")String shouhuoName,
+								@Param("shouhuoPhone")String shouhuoPhone,
+								@Param("xiaId") String xiaId,
+								@Param("shouhuoAddressInfo")String shouhuoAddressInfo);
+	
+	/**
+	 * 
+	 * app下单的提交ajax
+	 * 
+	 * @author lijie
+	 * @created 2017年6月12日 上午10:14:53
+	 * @param xiaId 		下单id
+	 * @param shopType		货物类型
+	 * @param shopNumer		货物数量
+	 * @param shopzholiang	货物重量
+	 * @param timeString	取货时间
+	 * @return	提示
+	 */
+	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString} WHERE xiaid=#{xiaId}")
+	void orderSbmit(@Param("xiaId") String xiaId,
+			@Param("shopType") String shopType, @Param("shopNumer") float shopNumer,
+			@Param("shopzholiang") int shopzholiang,
+			@Param("timeString") String timeString);
+	
 	/**
 	 * 
 	 * 根据下单状态查询下单记录行

@@ -9,26 +9,27 @@ $(function() {
 		var userPhone = $("#userPhone").val();
 		//获取登录密码
 		var userPwd = $("#userPwd").val();
-
-		if (!(userPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(userPhone))) {
+		
+		if(!(userPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(userPhone))) {
 			//提示
-			layer.open({
-				content : '手机号码错误',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '手机号码错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else if (userPwd == "") {
+		}
+		else if(userPwd == "") {
 			layer.open({
-				content : '密码错误',
-				skin : 'msg',
-				time : 2
-			});
+		    	content: '密码错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
 		}
 		loginJz();
 	})
-
+	
 	/*忘记密码*/
 	$("#forgetBtn").click(function() {
 		var forgePhone = $("#forgePhone").val();
@@ -75,10 +76,6 @@ $(function() {
 		}
 		forgeJz();
 	})
-
-
-
-
 	/*获取验证码*/
 	$("#forgeYzmBtn").click(function() {
 
@@ -115,8 +112,8 @@ $(function() {
 		}
 
 	});
-
-
+	
+	
 	/*
 	 * 
 	 * 修改密码获取验证码
@@ -147,7 +144,12 @@ $(function() {
 		}
 		freeJz();
 	})
-
+	
+	
+	
+	
+	
+	
 	/*
 	 * 
 	 * 注册页面验证
@@ -216,15 +218,16 @@ $(function() {
 	*/
 	$("#regYzmBtn").click(function() {
 		var regPhone = $("#regPhone").val();
-		if (!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
+		if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
 			//提示
-			layer.open({
-				content : '手机号码错误',
-				skin : 'msg',
-				time : 2
-			});
+		    layer.open({
+		    	content: '手机号码错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
 			return false;
-		} else {
+		}
+		else {
 			time(this);
 		}
 	})
@@ -250,7 +253,6 @@ function loginJz() {
 	}, 2000)
 
 }
-/*免密登陆*/
 function freeJz() {
 	var forgePhone = $("#forgePhone").val();
 	var forgeYzm = $("#forgeYzm").val();
@@ -266,7 +268,6 @@ function freeJz() {
 
 }
 
-/*注册验证*/
 function regJz() {
 	layer.open({
     	content: '正在注册...',
@@ -284,8 +285,7 @@ function regJz() {
  * 
 */
 function forgeJz() {
-	
-	layer.open({
+	//var forgeNpwd = $("#forgeNpwd").val();	layer.open({
     	content: '密码修改成功...',
     	skin: 'msg',
     	time: 2
@@ -294,6 +294,9 @@ function forgeJz() {
 		window.location.href="login.html";
 	},2000)
 }
+
+
+
 
 
 /*

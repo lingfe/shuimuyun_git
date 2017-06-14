@@ -384,7 +384,6 @@ input {
 
 
 /*【下单】*/
-
 .order_info {
 	width: 100%;
 	background: white;
@@ -1660,6 +1659,7 @@ input {
 	color: #333;
 	font-size: 0.13rem;
 	text-align: center;
+	text-decoration: none;
 	float: left;
 }
 

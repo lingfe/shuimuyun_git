@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--底部-->
 		<footer class="footerMenu">
 			<a href="RequestMappingUtil/requestNUll/APP/index">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/home.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/home_2.png" width="100%"/>
 				<p class="">首页</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/grabASingle">
@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p class="">商城</p>
 			</a>
 			<a class="active" href="RequestMappingUtil/requestNUll/APP/myInfo">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal_2.jpg" width="100%"/>
 				<p class="">我的</p>
 			</a>
 		</footer>

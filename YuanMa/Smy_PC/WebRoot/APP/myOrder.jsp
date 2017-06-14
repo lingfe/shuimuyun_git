@@ -21,10 +21,10 @@
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<script>
-			setTimeout(function() {
-				$("body").show();
-			},500);
-		</script>
+		setTimeout(function() {
+			$("body").show();
+		},500);
+	</script>
 	
 </head>
 <body>

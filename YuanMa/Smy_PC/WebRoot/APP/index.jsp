@@ -18,7 +18,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
+	<link rel="stylesheet" href="<%=basePath %>APP/css/layer.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+	
 	<style>
 		body {
 			background: #eee;
@@ -35,12 +37,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<header class="commHeader">
 			<a class="commHeader_l" href="#">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/service.png" />
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/service.png" />
 			</a>
 			<h6>首页</h6>
-			<a class="commHeader_r" href="#">
-				<span>贵阳</span>
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/right.png" width="100%" />
+			<a class="commHeader_r" id="cityList" href="javascript:;">
+				<span id="adderss">贵阳</span>
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/right.png" width="100%" />
 			</a>
 		</header>
 		<!--banner图开始-->
@@ -110,19 +112,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<nav class="nav">
 			<a href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
-				<img src="<%=basePath%>APP/images/pay.jpg" />
+				<img src="<%=basePath%>APP/images/index_order.png" />
 				<p>我要下单</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/grabASingle">
-				<img src="<%=basePath%>APP/images/pay.jpg" />
+				<img src="<%=basePath%>APP/images/index_grab.png" />
 				<p>我要抢单</p>
 			</a>
 			<a href="javascript:;">
-				<img src="<%=basePath%>APP/images/pay.jpg" />
+				<img src="<%=basePath%>APP/images/index_send.png" />
 				<p>正在派送</p>
 			</a>
 			<a href="javascript:;">
-				<img src="<%=basePath%>APP/images/pay.jpg" />
+				<img src="<%=basePath%>APP/images/index_purse.png" />
 				<p>我的钱包</p>
 			</a>
 		</nav>
@@ -207,32 +209,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 		</div>
 		
+		<div class="hidden"></div>
+		
 		<!--底部-->
 		<footer class="footerMenu">
-			<a  href="RequestMappingUtil/requestNUll/APP/index">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/home_2.png" width="100%"/>
-				<p class="ss">首页</p>
+			<a class="active"  href="RequestMappingUtil/requestNUll/APP/index">
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/home.png" width="100%"/>
+				<p class="">首页</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/grabASingle">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/single.png" width="100%"/>
-				<p class="ss">抢单</p>
+				<p class="">抢单</p>
 			</a>
-			<a class="active" href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
-				<p class="ss">下单</p>
+			<a href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/order.png" width="100%"/>
+				<p class="">下单</p>
 			</a>
 			<a href="http://www.smuyun.com">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
-				<p class="ss">商城</p>
+				<p class="">商城</p>
 			</a>
 			<a href="javascript:void(0);">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
-				<p class="ss">我的</p>
+				<p class="">我的</p>
 			</a>
 		</footer>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
+		
 		<script>
 			function autoScroll(obj, ul_bz) {
 				$(obj).find(ul_bz).animate({
@@ -246,6 +252,457 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			gallery.slider({
 				interval: 1000
 			});
+			
+			//城市list
+			$("#cityList").click(function() {
+				if($(".hidden").is(":hidden")) {
+					$(".hidden").show();
+					var cityList = layer.open({
+					  type: 1,
+					  content: "<div class='cityList cityListHide' id='openCityList'> \
+					  				<div class='cityList_title'> \
+					  					<div>当前定位城市</div> \
+					  				</div> \
+					  				<ul class='cityList_list'> \
+										<li onclick='address(this);'>贵阳</li> \
+									</ul> \
+					  				<div class='cityList_title'> \
+					  					<div>热门城市</div> \
+					  				</div> \
+					  				<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>上海</li> \
+										<li onclick='address(this);'>广州</li> \
+										<li onclick='address(this);'>深圳</li> \
+										<li onclick='address(this);'>武汉</li> \
+										<li onclick='address(this);'>重庆</li> \
+										<li onclick='address(this);'>杭州</li> \
+										<li onclick='address(this);'>天津</li> \
+										<li onclick='address(this);'>贵阳</li> \
+									</ul> \
+									<div class='cityList_title'> \
+					  					<div>按城市首字母排序</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li> \
+											<a href='#a'>A</a> \
+										</li> \
+										<li> \
+											<a href='#b'>B</a> \
+										</li> \
+										<li> \
+											<a href='#c'>C</a> \
+										</li> \
+										<li> \
+											<a href='#d'>D</a> \
+										</li> \
+										<li> \
+											<a href='#e'>E</a> \
+										</li> \
+										<li> \
+											<a href='#f'>F</a> \
+										</li> \
+										<li> \
+											<a href='#g'>G</a> \
+										</li> \
+										<li> \
+											<a href='#h'>H</a> \
+										</li> \
+										<li> \
+											<a href='#j'>J</a> \
+										</li> \
+										<li> \
+											<a href='#k'>K</a> \
+										</li> \
+										<li> \
+											<a href='#l'>L</a> \
+										</li> \
+										<li> \
+											<a href='#m'>M</a> \
+										</li> \
+										<li> \
+											<a href='#n'>N</a> \
+										</li> \
+										<li> \
+											<a href='#p'>P</a> \
+										</li> \
+										<li> \
+											<a href='#q'>Q</a> \
+										</li> \
+										<li> \
+											<a href='#r'>R</a> \
+										</li> \
+										<li> \
+											<a href='#s'>S</a> \
+										</li> \
+										<li> \
+											<a href='#t'>T</a> \
+										</li> \
+										<li> \
+											<a href='#w'>W</a> \
+										</li> \
+										<li> \
+											<a href='#x'>X</a> \
+										</li> \
+										<li> \
+											<a href='#y'>Y</a> \
+										</li> \
+										<li> \
+											<a href='#z'>Z</a> \
+										</li> \
+									</ul> \
+									<div class='cityList_title' id='a'> \
+					  					<div>A开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>鞍山</li> \
+										<li onclick='address(this);'>安阳</li> \
+										<li onclick='address(this);'>安庆</li> \
+										<li onclick='address(this);'>安康</li> \
+										<li onclick='address(this);'>澳门</li> \
+										<li onclick='address(this);'>阿克苏</li> \
+										<li onclick='address(this);'>啊拉尔</li> \
+										<li onclick='address(this);'>阿里</li> \
+										<li onclick='address(this);'>阿坝</li> \
+										<li onclick='address(this);'>安顺</li> \
+									</ul> \
+									<div class='cityList_title' id='b'> \
+					  					<div>B开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='c'> \
+					  					<div>C开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='d'> \
+					  					<div>D开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='e'> \
+					  					<div>E开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='f'> \
+					  					<div>F开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='g'> \
+					  					<div>G开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='h'> \
+					  					<div>H开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='j'> \
+					  					<div>J开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='k'> \
+					  					<div>K开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='l'> \
+					  					<div>L开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='m'> \
+					  					<div>M开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='n'> \
+					  					<div>N开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='p'> \
+					  					<div>P开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='q'> \
+					  					<div>Q开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='r'> \
+					  					<div>R开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='s'> \
+					  					<div>S开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='t'> \
+					  					<div>T开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='w'> \
+					  					<div>W开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='x'> \
+					  					<div>X开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='y'> \
+					  					<div>Y开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+									<div class='cityList_title' id='z'> \
+					  					<div>Z开头城市</div> \
+					  				</div> \
+									<ul class='cityList_list'> \
+										<li onclick='address(this);'>北京</li> \
+										<li onclick='address(this);'>保定</li> \
+										<li onclick='address(this);'>包头</li> \
+										<li onclick='address(this);'>宝鸡</li> \
+										<li onclick='address(this);'>白城</li> \
+										<li onclick='address(this);'>白山</li> \
+										<li onclick='address(this);'>北海</li> \
+										<li onclick='address(this);'>白沙</li> \
+										<li onclick='address(this);'>毕节</li> \
+										<li onclick='address(this);'>巴中</li> \
+									</ul> \
+					  			</div>",
+					  anim: 'up',
+					  shade: false,
+					  style: 'position:fixed; backgroun: none; left:0; top:0.38rem; overflow-y: scroll; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+					});
+					$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden"});
+				}
+				else {
+					$(".hidden").hide();
+					layer.closeAll();
+					$(document.body).css({"overflow-x":"auto","overflow-y":"auto"});
+				}
+				
+			})
+			
+			function address(obj) {
+				var _thisHtml = $(obj).html();
+				$("#adderss").html(_thisHtml);
+				$(".hidden").hide();
+				layer.closeAll();
+				$(document.body).css({"overflow-x":"auto","overflow-y":"auto"});
+			}
 		</script>
 		<!-- ajax -->
 		<script type="text/javascript">

@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script>
 			setTimeout(function() {
 				$("body").show();
-			},500);
+			},300);
 		</script>
 		
 	</head>

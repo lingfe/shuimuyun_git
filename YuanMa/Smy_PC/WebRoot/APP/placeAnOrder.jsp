@@ -24,7 +24,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			setTimeout(function() {
 				$("body").show();
 			},500);
-		</script>
+	</script>
+	<style>
+		.order_btn {
+			width: 80%;
+			margin-left: 10%;
+			background: #418bc8;
+			color: white;
+			margin-top: .2rem;
+			border-radius: 10px;
+			height: .35rem;
+			line-height: .35rem;
+		}
+		
+	</style>
 	
 	</head>
 	<body style="background: #eee;">
@@ -99,11 +112,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!--确定按钮-->
 		<div class="order_buttom">
-			<div class="order_buttom_text">
-			<img src="<%=basePath%>APP/images/icon/dui.png" width="20"/><label> 我同意 《水木云快递条约》</label>
+			<div class="order_buttom_text" id="order_buttom_text">
+			<img src="<%=basePath%>APP/images/icon/dui.png" class="op" width="20" />
+			<img style="display: none;" src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
+			<label> 我同意 《水木云快递条约》</label>
 			</div>
-			<button id="ok_order" class="mui-btn mui-btn-block order_btn">确认下单</button>
+			<a href="#"><button class="order_btn" id="taking_btn">确认下单</button></a>
 		</div>
+
 		<!--遮罩层-->
 		<div class="order_zhe"id="order_zhe"></div>
 		<!--弹出菜单-->
@@ -311,6 +327,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}
 		</script>
+		<script type="text/javascript">
+		$("#order_buttom_text").click(function(){
+		if($(this).find(".dis").is(":hidden")) {
+			$(this).find(".dis").show();
+			$(this).find(".op").hide();
+		}
+		else {
+			$(this).find(".dis").hide();
+			$(this).find(".op").show();
+		}
+	})
+	$("#taking_btn").click(function(){
+		if($(".op").is(":hidden")){
+			layer.open({
+		    	content: '同意协议',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+		  	return false;
+		}
+	})
+	</script>
 	</body>
 </html>
 

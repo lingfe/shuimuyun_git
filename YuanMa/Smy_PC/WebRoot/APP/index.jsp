@@ -286,70 +286,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  				</div> \
 									<ul class='cityList_list'> \
 										<li> \
-											<a href='#a'>A</a> \
+											<a href='javascript:;' onclick='a()'>A</a> \
 										</li> \
 										<li> \
-											<a href='#b'>B</a> \
+											<a href='javascript:;' onclick='b()'>B</a> \
 										</li> \
 										<li> \
-											<a href='#c'>C</a> \
+											<a href='javascript:;' onclick='c()'>C</a> \
 										</li> \
 										<li> \
-											<a href='#d'>D</a> \
+											<a href='javascript:;' onclick='d()'>D</a> \
 										</li> \
 										<li> \
-											<a href='#e'>E</a> \
+											<a href='javascript:;' onclick='e()'>E</a> \
 										</li> \
 										<li> \
-											<a href='#f'>F</a> \
+											<a href='javascript:;' onclick='f()'>F</a> \
 										</li> \
 										<li> \
-											<a href='#g'>G</a> \
+											<a href='javascript:;' onclick='g()'>G</a> \
 										</li> \
 										<li> \
-											<a href='#h'>H</a> \
+											<a href='javascript:;' onclick='h()'>H</a> \
 										</li> \
 										<li> \
-											<a href='#j'>J</a> \
+											<a href='javascript:;' onclick='j()'>J</a> \
 										</li> \
 										<li> \
-											<a href='#k'>K</a> \
+											<a href='javascript:;' onclick='k()'>K</a> \
 										</li> \
 										<li> \
-											<a href='#l'>L</a> \
+											<a href='javascript:;' onclick='l()'>L</a> \
 										</li> \
 										<li> \
-											<a href='#m'>M</a> \
+											<a href='javascript:;' onclick='m()'>M</a> \
 										</li> \
 										<li> \
-											<a href='#n'>N</a> \
+											<a href='javascript:;' onclick='n()'>N</a> \
 										</li> \
 										<li> \
-											<a href='#p'>P</a> \
+											<a href='javascript:;' onclick='p()'>P</a> \
 										</li> \
 										<li> \
-											<a href='#q'>Q</a> \
+											<a href='javascript:;' onclick='q()'>Q</a> \
 										</li> \
 										<li> \
-											<a href='#r'>R</a> \
+											<a href='javascript:;' onclick='r()'>R</a> \
 										</li> \
 										<li> \
-											<a href='#s'>S</a> \
+											<a href='javascript:;' onclick='s()'>S</a> \
 										</li> \
 										<li> \
-											<a href='#t'>T</a> \
+											<a href='javascript:;' onclick='t()'>T</a> \
 										</li> \
 										<li> \
-											<a href='#w'>W</a> \
+											<a href='javascript:;' onclick='w()'>W</a> \
 										</li> \
 										<li> \
-											<a href='#x'>X</a> \
+											<a href='javascript:;' onclick='x()'>X</a> \
 										</li> \
 										<li> \
-											<a href='#y'>Y</a> \
+											<a href='javascript:;' onclick='y()'>Y</a> \
 										</li> \
 										<li> \
-											<a href='#z'>Z</a> \
+											<a href='javascript:;' onclick='z()'>Z</a> \
 										</li> \
 									</ul> \
 									<div class='cityList_title' id='a'> \
@@ -703,6 +703,100 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$(".hidden").hide();
 				layer.closeAll();
 				$(document.body).css({"overflow-x":"auto","overflow-y":"auto"});
+			}
+			
+			/* function cityLink(id) {
+				var cityLink = document.getElementById(id);
+				cityLink.scrollIntoView();
+				alert("sfsd");
+			} */
+			function a() {
+				var cityLink = document.getElementById('a');
+				cityLink.scrollIntoView();
+			}
+			function b() {
+				var cityLink = document.getElementById('b');
+				cityLink.scrollIntoView();
+			}
+			function c() {
+				var cityLink = document.getElementById('c');
+				cityLink.scrollIntoView();
+			}
+			function d() {
+				var cityLink = document.getElementById('d');
+				cityLink.scrollIntoView();
+			}
+			function e() {
+				var cityLink = document.getElementById('e');
+				cityLink.scrollIntoView();
+			}
+			function f() {
+				var cityLink = document.getElementById('f');
+				cityLink.scrollIntoView();
+			}
+			function g() {
+				var cityLink = document.getElementById('g');
+				cityLink.scrollIntoView();
+			}
+			function h() {
+				var cityLink = document.getElementById('h');
+				cityLink.scrollIntoView();
+			}
+			function j() {
+				var cityLink = document.getElementById('j');
+				cityLink.scrollIntoView();
+			}
+			function k() {
+				var cityLink = document.getElementById('k');
+				cityLink.scrollIntoView();
+			}
+			function l() {
+				var cityLink = document.getElementById('l');
+				cityLink.scrollIntoView();
+			}
+			function m() {
+				var cityLink = document.getElementById('m');
+				cityLink.scrollIntoView();
+			}
+			function n() {
+				var cityLink = document.getElementById('n');
+				cityLink.scrollIntoView();
+			}
+			function p() {
+				var cityLink = document.getElementById('p');
+				cityLink.scrollIntoView();
+			}
+			function q() {
+				var cityLink = document.getElementById('q');
+				cityLink.scrollIntoView();
+			}
+			function r() {
+				var cityLink = document.getElementById('r');
+				cityLink.scrollIntoView();
+			}
+			function s() {
+				var cityLink = document.getElementById('s');
+				cityLink.scrollIntoView();
+			}
+			function t() {
+				var cityLink = document.getElementById('t');
+				cityLink.scrollIntoView();
+			}
+			function w() {
+				var cityLink = document.getElementById('w');
+				cityLink.scrollIntoView();
+			}
+			function x() {
+				var cityLink = document.getElementById('x');
+				cityLink.scrollIntoView();
+			}
+			function y() {
+				var cityLink = document.getElementById('y');
+				cityLink.scrollIntoView();
+			}
+			function z() {
+				var cityLink = document.getElementById('z');
+				cityLink.scrollIntoView();
 			}
 		</script>
 		<!-- ajax -->

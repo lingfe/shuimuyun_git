@@ -38,19 +38,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		<nav class="myInfo_nav">
-			<a>
+			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<span>0</span>
 				<p>待接单</p>
 			</a>
-			<a>
+			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<span>0</span>
 				<p>待取货</p>
 			</a>
-			<a>
+			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<span>0</span>
 				<p>正在派送</p>
 			</a>
-			<a>
+			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<span>0</span>
 				<p>代付款</p>
 			</a>
@@ -103,12 +103,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				关于我们
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>
+			<a href="loginOut/${login.kuaikeId }">
+				退出登录
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
+			</a>
 		</div>
 		<div class="myInfo_zw"></div>
 		
 		<!--底部-->
 		<footer class="footerMenu">
-			<a class="active"  href="RequestMappingUtil/requestNUll/APP/index">
+			<a href="RequestMappingUtil/requestNUll/APP/index">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/home.png" width="100%"/>
 				<p class="">首页</p>
 			</a>
@@ -124,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="">商城</p>
 			</a>
-			<a href="RequestMappingUtil/requestNUll/APP/myInfo">
+			<a class="active" href="RequestMappingUtil/requestNUll/APP/myInfo">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
 				<p class="">我的</p>
 			</a>

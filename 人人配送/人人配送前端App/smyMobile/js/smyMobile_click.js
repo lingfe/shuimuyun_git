@@ -219,4 +219,14 @@ $(function(){
 			$(this).find(".op").show();
 		}
 	})
+	$("#taking_btn").click(function(){
+		if($(".op").is(":hidden")){
+			layer.open({
+		    	content: '同意协议',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+		  	return false;
+		}
+	})
 })

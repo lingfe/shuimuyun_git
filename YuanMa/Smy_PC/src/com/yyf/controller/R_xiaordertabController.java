@@ -174,11 +174,11 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value="/grabASingleRquest/{i}/{pageName}/{xiaId}",method=RequestMethod.GET)
 	public String grabASingleRquest(@PathVariable("i")String i,@PathVariable("pageName")String pageName,@PathVariable("xiaId") String xiaId,ModelMap model){
-		//得到数据
+		//	得到数据
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
-		//设置到map
+		//	设置到map
 		model.addAttribute("info", xiaorderInfo);
-
+		//	
 		return i+"/"+pageName;
 	}
 	

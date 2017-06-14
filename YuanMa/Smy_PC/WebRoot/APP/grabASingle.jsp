@@ -19,7 +19,8 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
+<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 		<style>
 			.commHeader p {
 				color: #fff;
@@ -135,6 +136,42 @@
 				width: 0.2rem;
 				height: auto;
 				margin-left: -0.1rem;
+			}
+			.jzCont {
+				position: fixed;
+        		top: 50%;
+        		left: 50%;
+        		width: 80px;
+        		height: 80px;
+        		border-radius: 5px;
+        		background: rgba(0,0,0,.7);
+        		z-index: 999;
+        		margin-left: -40px;
+        		margin-top: -40px;
+			}
+			.jzCont span {
+				display: block;
+        		width: 24px;
+        		height: 24px;
+        		background: url(<%=basePath%>APP/ images/icon/loading.gif) no-repeat;
+        		background-size: cover;
+        		margin: 28px auto;
+			}
+			.grabTips {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				width: 1rem;
+				height: 0.3rem;
+				background: rgba(0,0,0,.8);
+				color: #fff;
+				font-size: 0.12rem;
+				text-align: center;
+				line-height: 0.3rem;
+				border-radius: 5px;
+				margin-left: -0.5rem;
+				margin-top: -0.15rem;
+				z-index: 999;
 			}
 		</style>
 		<script>
@@ -254,11 +291,11 @@
 				<p class="ss">首页</p>
 			</a>
 			<a class="active" href="RequestMappingUtil/requestNUll/APP/grabASingle">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/single.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/single_2.png" width="100%"/>
 				<p class="ss">抢单</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/order.png" width="100%"/>
 				<p class="ss">下单</p>
 			</a>
 			<a href="http://www.smuyun.com">
@@ -271,12 +308,13 @@
 			</a>
 		</footer>
 		<!-- 快客id -->
-		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }"> 
-	<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
-	<script type="text/javascript"
-		src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
-	<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
-	<script type="text/javascript">
+		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }">
+		
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
+		<script type="text/javascript"src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
+		<script type="text/javascript">
 		var map = new AMap.Map('container', {
 			resizeEnable : true,
 			zoom : 10,
@@ -366,8 +404,8 @@
 					dataType : 'html',
 					success : function(objs) {
 						if(objs){
-							alert("抢单成功!");
-							$("#"+i).hide(3000);
+							gtabSingle();
+							$("#"+i).hide(500);
 						}else{
 							alert("抢单失败!");
 						}
@@ -377,6 +415,40 @@
 					}
 				});
 			}
+			
+			function gtabSingle() {
+	        	var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
+	        	$("body").append(jz);   //把元素加载body
+	        	setTimeout(function() {     
+	        		$(".jzCont"). remove(); //移除加载
+	        		layer.open({
+					  anim: 'up',
+					  shadeClose: false,
+					  content: '确定抢单吗！',
+					  btn: ['确认', '取消'],
+					  yes: function(index){
+					    layer.close(index)
+					    gtabTips();
+					    $(".grabTips").html("抢单成功");
+					  },
+					  no: function(index){
+					    layer.close(index);
+					    gtabTips();
+					    $(".grabTips").html("您已取消订单");
+					  }
+					}); 
+	        		
+	        	},800)	
+	        }
+	        
+	        function gtabTips() {
+			    var grabTips = "<div class='grabTips'></div>";
+				$("body").append(grabTips);
+				$(".grabTips").animate({opacity:"0"},1000);
+				setTimeout(function() {
+					$(".grabTips").remove();
+				},1000)
+	        }
 		</script>
 </body>
 </html>

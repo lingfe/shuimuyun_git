@@ -153,7 +153,7 @@
 				display: block;
         		width: 24px;
         		height: 24px;
-        		background: url(<%=basePath%>APP/ images/icon/loading.gif) no-repeat;
+        		background: url(<%=basePath%>APP/images/icon/loading.gif) no-repeat;
         		background-size: cover;
         		margin: 28px auto;
 			}
@@ -181,7 +181,7 @@
 		</script>
 		
 	</head>
-<body>
+<body style="display:none;">
 	<!--【头部】-->
 	<header class="commHeader">
 	<p>
@@ -328,7 +328,7 @@
 					"transform" : "translate(0,0)",
 					"transition" : ".8s"
 				});
-				$(".grabList").css("");
+
 			})
 			$(".grabList_title img").click(function() {
 				//$(".gra_bCont").show();
@@ -379,7 +379,7 @@
 											<div class='grabList_cont'> \
 												<p>最迟到达时间：" + dataStr + "</p> \
 												<p>商品总重量：" + data[i].shopzholiang + "kg</p> \
-												<span onclick='qiangdanAjax("+i+");return false;'>立即抢单</span> \
+												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";
 						}
@@ -404,7 +404,6 @@
 					dataType : 'html',
 					success : function(objs) {
 						if(objs){
-							gtabSingle();
 							$("#"+i).hide(500);
 						}else{
 							alert("抢单失败!");
@@ -416,7 +415,7 @@
 				});
 			}
 			
-			function gtabSingle() {
+			function gtabSingle(i) {
 	        	var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
 	        	$("body").append(jz);   //把元素加载body
 	        	setTimeout(function() {     
@@ -428,7 +427,7 @@
 					  btn: ['确认', '取消'],
 					  yes: function(index){
 					    layer.close(index)
-					    gtabTips();
+					    qiangdanAjax(i);
 					    $(".grabTips").html("抢单成功");
 					  },
 					  no: function(index){

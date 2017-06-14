@@ -271,12 +271,14 @@ public class R_kuaiketabController {
 	 *            请求
 	 * @return
 	 */
-	@RequestMapping(value = "loginOut/{kuaikeId}", method = RequestMethod.GET)
-	public String loginOut(HttpSession session,SessionStatus sessionStatus,@PathVariable("kuaikeId") String kuaikeId) {
+	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
+	public String loginOut(HttpSession session,SessionStatus sessionStatus,@ModelAttribute("login") R_kuaiketab tab) {
+		
+		
 		// 判断Session是否为空
 		if (session == null) {
 			//退出登陆修改状态为 3 表示离线状态
-			kuaiketabService.updateKuaikeStatus(3,kuaikeId);
+			kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 			//清空Session域中的对象及初始化Seesion
 			session.removeAttribute("login");
 			session.invalidate();
@@ -286,7 +288,7 @@ public class R_kuaiketabController {
 
 		}
 		//退出登陆修改状态为 3 表示离线状态
-		kuaiketabService.updateKuaikeStatus(3,kuaikeId);
+		kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 		//清空Session域中的所有对象以及初始化 Session
 		session.removeAttribute("login");
 		//初始化Session

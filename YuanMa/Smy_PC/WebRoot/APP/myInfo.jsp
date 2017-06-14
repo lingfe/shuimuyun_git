@@ -57,49 +57,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</nav>
 		
 		<div class="myInfo_list">
-			<a href="myOrderAll.html">
+			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				我的订单
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_1.png" width="100%" />
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				我的钱包
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_2.png" width="100%" />
 			</a>
 		</div>
 		
 		<div class="myInfo_list">
-			<a href="#">
+			<a href="javascript:void(0);">
 				我的地址
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_3.png" width="100%" />
 			</a>
 		</div>
 		
 		<div class="myInfo_list">
-			<a href="#">
+			<a href="RequestMappingUtil/requestNUll/APP/register">
 				快客申请
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_4.png" width="100%" />
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				联系客服
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_5.png" width="100%" />
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				服务热线
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_6.png" width="100%" />
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				意见反馈
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_7.png" width="100%" />
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				使用帮助
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_8.png" width="100%" />
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				服务协议
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_9.png" width="100%" />
 			</a>
-			<a href="#">
+			<a href="javascript:void(0);">
 				关于我们
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>

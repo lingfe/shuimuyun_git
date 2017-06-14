@@ -35,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	</head>
 	<body class="body_bg loginBody_bg">
+		
 		<div class="contMian">
 			<header class="header headerLogin">
 				<a class="header_l" href="javascript:self.location=document.referrer;">
@@ -53,7 +54,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        			<input type="text" class="mui-input-clear free_input_code left" id="forgeYzm" name="mobile_code" value="${mobile_code }" placeholder="请输入验证码">
 						<input type="button" class="mui-btn loginBtn mui-btn-block free_code left" id="forgeYzmBtn" value="获取验证码">	
    				 	</div>
-
 					<button type="button" class="mui-btn loginBtn mui-btn-block" id="freeBtn">登录</button>
 					<a class="free_login" href="<%=basePath%>APP/login.jsp">密码登录</a>
 				</form>

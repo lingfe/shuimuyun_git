@@ -209,5 +209,14 @@ $(function(){
 		}
 				
 			})
-	
+	$("#order_buttom_text").click(function(){
+		if($(this).find(".dis").is(":hidden")) {
+			$(this).find(".dis").show();
+			$(this).find(".op").hide();
+		}
+		else {
+			$(this).find(".dis").hide();
+			$(this).find(".op").show();
+		}
+	})
 })

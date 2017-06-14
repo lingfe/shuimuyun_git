@@ -483,6 +483,10 @@ input {
 	background: #418bc8;
 	color: white;
 	margin-top: .1rem;
+	border-radius:10px ;
+	height: .35rem;
+	line-height: -.5rem;
+	font-size:.12rem ;
 }
 
 
@@ -739,7 +743,9 @@ input {
 	display: block;
 	margin-top: .05rem;
 }
-
+.dis{
+	display: none;
+}
 
 /*【下单】end*/
 /*【快递员接单页面】*/
@@ -749,7 +755,7 @@ input {
 				box-sizing: border-box;
 			}
 			.taking_div_5{
-				border-bottom: solid 1px #999;
+				border-bottom: solid 1px #eee;
 			}
 			.taking_div_5 span:last-of-type{
 				color: #999;
@@ -760,7 +766,7 @@ input {
 			}
 			.taking_last_div_1{
 				margin: 10px 10px;
-				border-bottom: solid 1px #999;
+				border-bottom: solid 1px #eee;
 			}
 			.taking_last_div_1 span:last-of-type{
 				display: inline-block;
@@ -872,6 +878,9 @@ input {
 			.courier_last_con_list div:nth-of-type(1){
 				padding-top: .1rem;
 				box-sizing: border-box;
+			}
+			.courier_last_con_list div:nth-of-type(2){
+				font-size: .1rem;
 			}
 			.courier_last_con_list span{
 				width: 18%;
@@ -1019,7 +1028,8 @@ input {
 				display: block;
 				width: 0.2rem;
 				height: auto;
-				margin-left: -0.1rem;
+				margin-left: -0.1rem ;
+				
 			}
 /*【发货人】end*/
 /*【等待快递员】*/

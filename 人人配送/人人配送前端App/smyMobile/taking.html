@@ -15,7 +15,7 @@
 			<a class="commHeader_l" href="#">
 				<img title="" alt="" src="images/icon/arow_left.png" />
 			</a>
-			<h6>快递员</h6>
+			<h6>接单</h6>
 		</header>
 		<!--【头部】end-->
 		<div class="courier_firsttit_con taking_firsttit_con">
@@ -69,11 +69,13 @@
 		</div>
 		
 		<!--确定按钮-->
-		<div class="order_buttom taking_btn">
-			<div class="order_buttom_text">
-			<img src="images/icon/dui.png"width="20"/><label> 我同意 《水木云快递条约》</label>
+		<div class="order_buttom">
+			<div class="order_buttom_text" id="order_buttom_text">
+			<img src="images/icon/dui.png" class="op" width="20" />
+			<img src="images/icon/yuan.png"class="dis" width="19" />
+			<label> 我同意 《水木云快递条约》</label>
 			</div>
-			<button class="mui-btn mui-btn-block order_btn">确认下单</button>
+			<button class="mui-btn mui-btn-block order_btn">确认抢单</button>
 		</div>
 		<!--遮罩层-->
 		<div class="order_zhe"id="order_zhe"></div>
@@ -95,9 +97,7 @@
 				</div>
 				<input class="order_butt" type="button" id="butt" value="取消" />
 				<input class="order_buttn" type="button" id="buttn" value="确定" />
-				
 			</div>
-			
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="js/mui.min.js" ></script>

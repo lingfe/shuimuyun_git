@@ -73,7 +73,7 @@
 					</div>
 					<button type="submit" class="mui-btn loginBtn mui-btn-block reg_btn"
 						id="regBtn">注册</button>
-					<a class="free_login forget_appeal">已有账号?马上登录</a>
+					<a class="free_login forget_appeal" href="RequestMappingUtil/requestNUll/APP/login" >已有账号?马上登录</a>
 				</form>
 			</div>
 		</div>

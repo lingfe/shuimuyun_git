@@ -146,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
-		<!-- 验证身份 初级 -->
+		<!-- 验证身份 初级验证 -->
 		<script type="text/javascript">
 		if("${login}"==""||"${login}"==null){
 			//询问框

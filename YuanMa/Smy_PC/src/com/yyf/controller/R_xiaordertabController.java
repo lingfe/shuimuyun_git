@@ -51,11 +51,30 @@ public class R_xiaordertabController {
 	// 自动装配 地址
 	@Autowired
 	private CityService cityService;
+	
+	/**
+	 * app根据下单id跳转到抢单页面
+	 * @author lijie     
+	 * @created 2017年6月14日 上午9:53:42  
+	 * @param xiaId	下单id
+	 * @param model	map
+	 * @return url
+	 */
+	@RequestMapping(value="/grabASingleRquest/{i}/{pageName}/{xiaId}",method=RequestMethod.GET)
+	public String grabASingleRquest(@PathVariable("i")String i,@PathVariable("pageName")String pageName,@PathVariable("xiaId") String xiaId,ModelMap model){
+		//得到数据
+		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
+		//设置到map
+		model.addAttribute("info", xiaorderInfo);
+
+		return i+"/"+pageName;
+	}
+	
 
 	/**
 	 * 
-	 * 一句话 方法的功能描述
-	 * @author 杨杰     
+	 * app根据下单id得到下单详细详细，ajax
+	 * @author lijie     
 	 * @created 2017年6月12日 下午2:20:33  
 	 * @param xiaId
 	 * @param request
@@ -219,6 +238,7 @@ public class R_xiaordertabController {
 		// 得到分页数据,默认
 		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQueryPaging(status,
 				((page.getPageIndex() - 1) * page.getPageNum()), page.getPageNum());
+		
 		// 设置到page
 		page.setList(statusQuery);
 		System.out.println(page.toString());

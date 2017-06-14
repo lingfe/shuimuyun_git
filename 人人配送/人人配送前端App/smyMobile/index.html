@@ -213,6 +213,7 @@
 		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="js/mui.min.js" ></script>
 		<script type="text/javascript" src="js/layer.js" ></script>
+		<script src="http://keleyi.com/keleyi/phtml/jqtexiao/37/jquery.hovertreescroll.js"></script>
 		<script type="text/javascript" src="js/smyMobile.js" ></script>
 		<script>
 			//文字上下滚动
@@ -263,70 +264,70 @@
 					  				</div> \
 									<ul class='cityList_list'> \
 										<li> \
-											<a href='#a'>A</a> \
+											<a >A</a> \
 										</li> \
 										<li> \
-											<a href='#b'>B</a> \
+											<a onclick='cityLink('z');'>B</a> \
 										</li> \
 										<li> \
-											<a href='#c'>C</a> \
+											<a href='javascript:;' onclick='cityLink('r');'>C</a> \
 										</li> \
 										<li> \
-											<a href='#d'>D</a> \
+											<a href='javascript:;'>D</a> \
 										</li> \
 										<li> \
-											<a href='#e'>E</a> \
+											<a href='javascript:;'>E</a> \
 										</li> \
 										<li> \
-											<a href='#f'>F</a> \
+											<a href='javascript:;'>F</a> \
 										</li> \
 										<li> \
-											<a href='#g'>G</a> \
+											<a href='javascript:;'>G</a> \
 										</li> \
 										<li> \
-											<a href='#h'>H</a> \
+											<a href='javascript:;'>H</a> \
 										</li> \
 										<li> \
-											<a href='#j'>J</a> \
+											<a href='javascript:;'>J</a> \
 										</li> \
 										<li> \
-											<a href='#k'>K</a> \
+											<a href='javascript:;'>K</a> \
 										</li> \
 										<li> \
-											<a href='#l'>L</a> \
+											<a href='javascript:;'>L</a> \
 										</li> \
 										<li> \
-											<a href='#m'>M</a> \
+											<a href='javascript:;'>M</a> \
 										</li> \
 										<li> \
-											<a href='#n'>N</a> \
+											<a href='javascript:;'>N</a> \
 										</li> \
 										<li> \
-											<a href='#p'>P</a> \
+											<a href='javascript:;'>P</a> \
 										</li> \
 										<li> \
-											<a href='#q'>Q</a> \
+											<a href='javascript:;'>Q</a> \
 										</li> \
 										<li> \
-											<a href='#r'>R</a> \
+											<a href='javascript:;'>R</a> \
 										</li> \
 										<li> \
-											<a href='#s'>S</a> \
+											<a href='javascript:;'>S</a> \
 										</li> \
 										<li> \
-											<a href='#t'>T</a> \
+											<a href='javascript:;'>T</a> \
 										</li> \
 										<li> \
-											<a href='#w'>W</a> \
+											<a href='javascript:;'>W</a> \
 										</li> \
 										<li> \
-											<a href='#x'>X</a> \
+											<a href='javascript:;'>X</a> \
 										</li> \
 										<li> \
-											<a href='#y'>Y</a> \
+											<a href='javascript:;'>Y</a> \
 										</li> \
 										<li> \
-											<a href='#z'>Z</a> \
+											<a href='javascript:;' onclick=''>Z</a> \
 										</li> \
 									</ul> \
 									<div class='cityList_title' id='a'> \
@@ -680,6 +681,12 @@
 				$(".hidden").hide();
 				layer.closeAll();
 				$(document.body).css({"overflow-x":"auto","overflow-y":"auto"});
+			}
+			
+			function cityLink(i) {
+			    var cityLink = document.getElementById(i);
+			    cityLink.scrollIntoView();
+			    alert("sfsd") ;
 			}
 		</script>
 	</body>

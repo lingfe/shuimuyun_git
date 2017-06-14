@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 		<link rel="stylesheet" href="css/smyMobile.css" />
+		<title></title>
 	</head>
 	<body>
 		<!--【头部】-->
@@ -24,7 +25,7 @@
 		</div>
 		
 		<!--【详情的list】-->
-		<div class="grabList">
+		<div class="grabList" style="z-index: 998;">
 			<div class="grabList_title">
 				<img title="" alt="" src="images/icon/grabList_title_img.jpg" width="20"/>
 			</div>
@@ -35,7 +36,7 @@
 						<div class="grabList_cont">
 							<p>最迟到达时间：今天 13:00</p>
 							<p>商品总重量：12kg</p>
-							<span>立即抢单</span>
+							<span onclick="gtabSingle();">立即抢单</span>
 						</div>
 					</a>
 				</li>
@@ -142,11 +143,33 @@
 				<p class="ss">商城</p>
 			</a>
 			<a href="#">
-				<img title="" alt="" src="images/icon/personal.png" width="100%"/>
+				<img title="" alt="" src="images/icon/personal.png" width="100%"/ style="background-size: cover;">
 				<p class="ss">我的</p>
 			</a>
 		</footer>
 		<!--【底部】end-->
+		<style>
+			.jzCont {
+				position: fixed;
+        		top: 50%;
+        		left: 50%;
+        		width: 80px;
+        		height: 80px;
+        		border-radius: 5px;
+        		background: rgba(0,0,0,.7);
+        		z-index: 999;
+        		margin-left: -40px;
+        		margin-top: -40px;
+			}
+			.jzCont span {
+				display: block;
+        		width: 24px;
+        		height: 24px;
+        		background: url(images/icon/loading.gif) no-repeat;
+        		background-size: cover;
+        		margin: 28px auto;
+			}
+		</style>
 		
 		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
@@ -162,13 +185,25 @@
 	        	$(".gra_bCont").click(function() {
 	        		//$(this).hide();
 	        		$(".grabList").css({"transform":"translate(0,0)","transition":".8s"});
-	        		$(".grabList").css("");
+	        		
 	        	})
 	        	$(".grabList_title img").click(function() {
 	        		//$(".gra_bCont").show();
 	        		$(".grabList").css({"transform":"translate(0,4rem)","transition":".8s"});
 	        	})
 	        })
+	        
+	        function gtabSingle() {
+	        	var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
+	        	$("body").append(jz);   //把元素加载body
+	        	setTimeout(function() {     
+	        		$(".jzCont"). remove(); //移除加载
+	        		window.location.href="taking.html";	
+	        	},2000)
+	        	
+	        	
+	        	
+	        }
 		</script>
 	</body>
 </html>

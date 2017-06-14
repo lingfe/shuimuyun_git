@@ -309,9 +309,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					window.location.href="RequestMappingUtil/requestNUll/APP/register";
 				}  
 			});
-			
 		}
-	</script>
+		</script>
 	</body>
 </html>
 

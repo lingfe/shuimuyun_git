@@ -146,10 +146,11 @@ $(function() {
 		var regYzm = $("#regYzm").val();
 		var regPwd = $("#regPwd").val();
 		var regNpwd = $("#regNpwd").val();
-		if(userName == "") {
+		var reg=/^[\u2E80-\u9FFF]+$/;
+		if(userName == "" || userName.length>4 || !(reg.test(userName))) {
 			//提示
 		    layer.open({
-		    	content: '请填写姓名',
+		    	content: '请输入真实姓名 ',
 		    	skin: 'msg',
 		    	time: 2
 		  	});

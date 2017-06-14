@@ -31,16 +31,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			setTimeout(function() {
 				$("body").show();
 			},500);
-		</script>
+	</script>
 	
+	<!--  layer -->
 	</head>
 	<body>
 		<header class="commHeader">
-			<a class="commHeader_l" href="#">
+			<a class="commHeader_l" href="javascript:void(0);">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/service.png" />
 			</a>
 			<h6>首页</h6>
-			<a class="commHeader_r" id="cityList" href="javascript:;">
+			<a class="commHeader_r" id="cityList" href="javascript:void(0);">
 				<span id="adderss">贵阳</span>
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/right.png" width="100%" />
 			</a>
@@ -229,7 +230,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="">商城</p>
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/myInfo">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
 				<p class="">我的</p>
 			</a>

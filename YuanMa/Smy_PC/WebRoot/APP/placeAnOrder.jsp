@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="ss">商城</p>
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/myInfo">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
 				<p class="ss">我的</p>
 			</a>
@@ -291,6 +291,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}
 		</script>
+		<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+			//询问框
+			layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+			
+		}
+	</script>
 	</body>
 </html>
 

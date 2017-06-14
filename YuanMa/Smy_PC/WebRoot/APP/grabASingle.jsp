@@ -19,7 +19,8 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
+<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 		<style>
 			.commHeader p {
 				color: #fff;
@@ -136,6 +137,42 @@
 				height: auto;
 				margin-left: -0.1rem;
 			}
+			.jzCont {
+				position: fixed;
+        		top: 50%;
+        		left: 50%;
+        		width: 80px;
+        		height: 80px;
+        		border-radius: 5px;
+        		background: rgba(0,0,0,.7);
+        		z-index: 999;
+        		margin-left: -40px;
+        		margin-top: -40px;
+			}
+			.jzCont span {
+				display: block;
+        		width: 24px;
+        		height: 24px;
+        		background: url(<%=basePath%>APP/images/icon/loading.gif) no-repeat;
+        		background-size: cover;
+        		margin: 28px auto;
+			}
+			.grabTips {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				width: 1rem;
+				height: 0.3rem;
+				background: rgba(0,0,0,.8);
+				color: #fff;
+				font-size: 0.12rem;
+				text-align: center;
+				line-height: 0.3rem;
+				border-radius: 5px;
+				margin-left: -0.5rem;
+				margin-top: -0.15rem;
+				z-index: 999;
+			}
 		</style>
 		<script>
 			setTimeout(function() {
@@ -144,7 +181,7 @@
 		</script>
 		
 	</head>
-<body>
+<body style="display:none;">
 	<!--【头部】-->
 	<header class="commHeader">
 	<p>
@@ -254,29 +291,30 @@
 				<p class="ss">首页</p>
 			</a>
 			<a class="active" href="RequestMappingUtil/requestNUll/APP/grabASingle">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/single.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/single_2.png" width="100%"/>
 				<p class="ss">抢单</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/placeAnOrder">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/order_2.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/order.png" width="100%"/>
 				<p class="ss">下单</p>
 			</a>
 			<a href="http://www.smuyun.com">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="ss">商城</p>
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/myInfo">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
 				<p class="ss">我的</p>
 			</a>
 		</footer>
 		<!-- 快客id -->
-		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }"> 
-	<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
-	<script type="text/javascript"
-		src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
-	<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
-	<script type="text/javascript">
+		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }">
+		
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
+		<script type="text/javascript"src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
+		<script type="text/javascript">
 		var map = new AMap.Map('container', {
 			resizeEnable : true,
 			zoom : 10,
@@ -290,7 +328,7 @@
 					"transform" : "translate(0,0)",
 					"transition" : ".8s"
 				});
-				$(".grabList").css("");
+
 			})
 			$(".grabList_title img").click(function() {
 				//$(".gra_bCont").show();
@@ -332,16 +370,16 @@
 						for (var i = 0; i < data.length; i++) {
 							//date 格式化时间
 							var date=new Date(data[i].okDate);
-							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
+							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
 							
-							url= data[i].xiaId + "/4ab22820-4f13-44db-b516-e504eefa27d1" + kuaikeId;
+							url= data[i].xiaId + "/" + kuaikeId;
 							//拼接标签
-							result +="<li id='" + i + "' title='" + url + "'><a href='javascript:void(0);'> <img class='grabList_user' title='' alt='' \
+							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
 												<p>最迟到达时间：" + dataStr + "</p> \
 												<p>商品总重量：" + data[i].shopzholiang + "kg</p> \
-												<span onclick='qiangdanAjax("+i+");'>立即抢单</span> \
+												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";
 						}
@@ -358,7 +396,7 @@
 			function qiangdanAjax(i){
 				//url
 				var url= $("#"+i).attr("title");
-				//alert(url);
+				alert(url);
 				//通过ajax添加记录
 				$.ajax({
 					url : 'r_qiangordertabController/insertAjax/'+url,
@@ -366,8 +404,7 @@
 					dataType : 'html',
 					success : function(objs) {
 						if(objs){
-							alert("抢单成功!");
-							$("#"+i).hide(3000);
+							$("#"+i).hide(500);
 						}else{
 							alert("抢单失败!");
 						}
@@ -377,6 +414,40 @@
 					}
 				});
 			}
+			
+			function gtabSingle(i) {
+	        	var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
+	        	$("body").append(jz);   //把元素加载body
+	        	setTimeout(function() {     
+	        		$(".jzCont"). remove(); //移除加载
+	        		layer.open({
+					  anim: 'up',
+					  shadeClose: false,
+					  content: '确定抢单吗！',
+					  btn: ['确认', '取消'],
+					  yes: function(index){
+					    layer.close(index)
+					    qiangdanAjax(i);
+					    $(".grabTips").html("抢单成功");
+					  },
+					  no: function(index){
+					    layer.close(index);
+					    gtabTips();
+					    $(".grabTips").html("您已取消订单");
+					  }
+					}); 
+	        		
+	        	},800)	
+	        }
+	        
+	        function gtabTips() {
+			    var grabTips = "<div class='grabTips'></div>";
+				$("body").append(grabTips);
+				$(".grabTips").animate({opacity:"0"},1000);
+				setTimeout(function() {
+					$(".grabTips").remove();
+				},1000)
+	        }
 		</script>
 </body>
 </html>

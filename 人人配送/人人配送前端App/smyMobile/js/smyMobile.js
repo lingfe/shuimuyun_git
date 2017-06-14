@@ -5,6 +5,7 @@
  */
 
 //前端相对单位rem支持
+
 (function (doc, win) {
 	var docEl = doc.documentElement,
 		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -17,4 +18,5 @@
 	win.addEventListener(resizeEvt, recalc, false);
 	doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
+
 

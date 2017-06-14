@@ -265,7 +265,7 @@
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/mall.png" width="100%"/>
 				<p class="ss">商城</p>
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/myInfo">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
 				<p class="ss">我的</p>
 			</a>
@@ -332,16 +332,16 @@
 						for (var i = 0; i < data.length; i++) {
 							//date 格式化时间
 							var date=new Date(data[i].okDate);
-							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
+							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
 							
-							url= data[i].xiaId + "/4ab22820-4f13-44db-b516-e504eefa27d1" + kuaikeId;
+							url= data[i].xiaId + "/" + kuaikeId;
 							//拼接标签
-							result +="<li id='" + i + "' title='" + url + "'><a href='javascript:void(0);'> <img class='grabList_user' title='' alt='' \
+							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
 												<p>最迟到达时间：" + dataStr + "</p> \
 												<p>商品总重量：" + data[i].shopzholiang + "kg</p> \
-												<span onclick='qiangdanAjax("+i+");'>立即抢单</span> \
+												<span onclick='qiangdanAjax("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";
 						}
@@ -358,7 +358,7 @@
 			function qiangdanAjax(i){
 				//url
 				var url= $("#"+i).attr("title");
-				//alert(url);
+				alert(url);
 				//通过ajax添加记录
 				$.ajax({
 					url : 'r_qiangordertabController/insertAjax/'+url,

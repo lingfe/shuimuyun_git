@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				关于我们
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>
-			<a href="loginOut">
+			<a href="loginOut/APP">
 				退出登录
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>

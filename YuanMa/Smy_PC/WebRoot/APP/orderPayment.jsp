@@ -357,9 +357,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		<!--【余额支付弹窗】end-->
-		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
-		<script type="text/javascript" src="js/layer.js" ></script>
-		<script type="text/javascript" src="js/smyMobile.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APPjs/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APPjs/layer.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script>
 			$(function() {
 				$(".paymentList_position").click(function() {

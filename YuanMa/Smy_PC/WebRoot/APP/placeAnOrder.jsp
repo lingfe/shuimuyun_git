@@ -197,7 +197,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</footer>
 		<!-- 下单id -->
-		<input type="hidden" id="xiaId" value="${xiaId }"> 
+		<input type="hidden" id="xiaId" value="${xiaId }">
+		<!-- 快客id -->
+		<input type="hidden" id="xiaId" value="${login.kuaikeId }"> 
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
@@ -245,7 +247,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success : function(data) {
 						alert("下单成功");
 						//跳转到首页
-						window.location.href="RequestMappingUtil/requestNUll/APP/myOrder";
+						window.location.href="RequestMappingUtil/requestNUll/APP/orderPayment";
 					},
 					error : function(xhr, type) {
 						alert('Ajax error!');

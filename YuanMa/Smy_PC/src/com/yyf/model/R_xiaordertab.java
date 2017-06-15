@@ -74,11 +74,11 @@ public class R_xiaordertab {
 
 	private String shouhuoName;// 收货人名称 `shouhuoName` VARCHAR(11) NOT NULL,
 
-	public String getShouhuoNmae() {
+	public String getShouhuoName() {
 		return shouhuoName;
 	}
 
-	public void setShouhuoNmae(String shouhuoName) {
+	public void setShouhuoName(String shouhuoName) {
 		this.shouhuoName = shouhuoName;
 	}
 

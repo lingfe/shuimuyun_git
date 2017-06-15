@@ -19,6 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<style>
+			body{
+				display: block;
+			}
 			.paymentTop {
 				width: 100%;
 				height: 0.4rem;
@@ -283,7 +286,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<!--【头部】-->
 		<header class="commHeader">
-			<a class="commHeader_l" href="#">
+			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
 			<h6>付款</h6>
@@ -357,8 +360,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		<!--【余额支付弹窗】end-->
-		<script type="text/javascript" src="<%=basePath%>APPjs/jquery-1.11.0.js" ></script>
-		<script type="text/javascript" src="<%=basePath%>APPjs/layer.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script>
 			$(function() {

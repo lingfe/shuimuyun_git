@@ -820,7 +820,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							//拼接标签
 							result +="<li> \
 										<a href='RequestMappingUtil/requestNUll/APP/myOrder'> \
-											<span>" + data[i].shouhuoNmae + "</span> \
+											<span>" + data[i].shouhuoName + "</span> \
 											<span class='text_1_hide'>" + data[i].shouhuoAddressInfo + "</span> \
 											<div>收</div> \
 										</a> \

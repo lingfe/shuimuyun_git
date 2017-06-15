@@ -206,11 +206,12 @@ public class R_xiaordertabController {
 	 * 
 	 * app跳转下单页面初始化
 	 * @author lijie     
-	 * @created 2017年6月12日 上午11:16:28  
+	 * @created 2017年6月12日 上午11:16:28 
+	 * @param pageName 页面名称 
 	 * @return
 	 */
-	@RequestMapping(value="/appOrderRequest/{param}",method=RequestMethod.GET)
-	public String appOrderRequest(R_xiaordertab tab,@PathVariable("param")String param,HttpServletRequest request){
+	@RequestMapping(value="/appOrderRequest/{pageName}",method=RequestMethod.GET)
+	public String appOrderRequest(R_xiaordertab tab,@PathVariable("pageName")String pageName,HttpServletRequest request,ModelMap model){
 		System.out.println("*******************");
 		//下单id
 		Object attribute = request.getSession().getAttribute("xiaId");
@@ -222,10 +223,12 @@ public class R_xiaordertabController {
 			//设置id到session
 			request.getSession().setAttribute("xiaId", tab.getXiaId());
 			r_xiaordertabService.add(tab);
-			return "APP/"+param;
+			return "APP/"+pageName;
 		}else{
+			R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(attribute.toString());
+			model.addAttribute("info", xiaorderInfo);
 			request.getSession().setAttribute("xiaId", attribute);
-			return "APP/"+param;
+			return "APP/"+pageName;
 		}
 
 	}

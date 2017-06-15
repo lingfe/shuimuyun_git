@@ -233,6 +233,63 @@ input {
 
 /*【头部组件】 end*/
 
+/*【申述找回】*/
+.appeal_firstdiv{
+	background: white;
+}
+.appeal_firstdiv div{
+	border-bottom: solid 1px #eee ;
+	height: .4rem;
+}
+.appeal_firstdiv label{
+	display: inline-block;
+	width: 30%;
+	height: .4rem;
+	line-height: .4rem;
+	margin-left: 10px;
+	color: #333;
+}
+.appeal_firstdiv input{
+	display: inline-block;
+	width: 60%;
+	border: none;
+	outline: none;
+}
+.appeal_lastdiv{
+	background: white;
+}
+.appeal_lastdiv div{
+	border-bottom: solid 1px #eee ;
+	height: .4rem;
+}
+.appeal_lastdiv label{
+	display: inline-block;
+	width: 30%;
+	height: .4rem;
+	line-height: .4rem;
+	margin-left: 10px;
+	color: #333;
+}
+.appeal_lastdiv input{
+	display: inline-block;
+	width: 60%;
+	border: none;
+	outline: none;
+}
+.las{
+	width: 30% !important;
+}
+.appeal_firstdiv button{
+	margin-left: 5%;
+	display: inline-block;
+	width: 30%;
+	height: .25rem;
+	margin-top: .075rem;
+	border: none;
+	background: #418bc8;
+	color: white;
+}
+/*【申述找回】end*/
 
 /*【登录】*/
 
@@ -480,11 +537,13 @@ input {
 
 .order_btn {
 	width: 80%;
-	margin: auto;
-	outline: none;
+	margin-left: 10%;
 	background: #418bc8;
 	color: white;
-	margin-top: .1rem;
+	margin-top: .2rem;
+	border-radius: 10px;
+	height: .35rem;
+	line-height: .35rem;
 }
 
 

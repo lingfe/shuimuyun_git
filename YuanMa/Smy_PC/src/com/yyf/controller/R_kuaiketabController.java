@@ -21,6 +21,7 @@ import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -452,6 +453,38 @@ public class R_kuaiketabController {
 		return "PC/pwdRetrieval";
 	}
 
+	/**
+	 * 通过现有的手机号码 对以前的手机号码进行换绑处理  再找回密码进行申诉找回
+	 * @author 杨杰     
+	 * @created 2017年6月15日 下午4:21:55  
+	 * @param model
+	 * @param newkuaikePhone
+	 * @param kuaikeName
+	 * @param kuaikePhone
+	 * @return
+	 */
+	@RequestMapping(value="/updatePasswordByAppeal",method=RequestMethod.POST)
+	public String updatePasswordByAppeal(ModelMap model,
+			@RequestParam("newkuaikePhone") String newkuaikePhone,
+			@RequestParam("kuaikeName") String kuaikeName,
+			@RequestParam("kuaikePhone") String kuaikePhone){
+		int abc=kuaiketabService.updatePasswordByAppeal(newkuaikePhone, kuaikeName, kuaikePhone);
+		
+		if(abc>0){
+			model.remove("mobile_code");
+			System.out.println(abc+"****************************************");
+			return "APP/resetPassword";
+		 }
+		
+		model.remove("mobile_code");
+		return "APP/appeal";
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * //根据 快客Id 删除快客信息
 	 * 

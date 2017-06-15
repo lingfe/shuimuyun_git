@@ -2,6 +2,7 @@ package com.yyf.serviceImpl;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -155,7 +156,7 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	}
 
 	/**
-	 * 人工找回密码
+	 * PC 人工找回密码
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月24日 上午10:53:49
@@ -209,7 +210,7 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	}
 
 	/**
-	 * 通过人工找回密码 并且通过查询数据库中是否存在该用户信息 进行匹配
+	 *  PC 通过人工找回密码 并且通过查询数据库中是否存在该用户信息 进行匹配
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月26日 上午9:56:00
@@ -229,6 +230,26 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 		R_kuaiketab supw = kuaiketabMapper.selectUpdatePasswordBykuaikeInfo(kuaikeName, kuaikePhone, kuaikeAddress,
 				kuaikeAddressInfo);
 		return supw;
+	}
+	
+	
+	
+	/**
+	 * APP  通过对原手机号码进行换绑  再对密码进行找回
+	 * @author 杨杰     
+	 * @created 2017年6月15日 下午4:07:06  
+	 * @param newkuaikePhone 现有手机号码
+	 * @param kuaikeName  快客姓名
+	 * @param kuaikePhone  原有电话
+	 * @return
+	 */
+	@Override
+	public int updatePasswordByAppeal(String newkuaikePhone,String kuaikeName,String kuaikePhone){
+		
+		int appeal = kuaiketabMapper.updatePasswordByAppeal(newkuaikePhone, kuaikeName, kuaikePhone);
+
+		return appeal;
+		
 	}
 
 	/**

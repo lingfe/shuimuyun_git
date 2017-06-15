@@ -2,10 +2,6 @@ package com.yyf.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 

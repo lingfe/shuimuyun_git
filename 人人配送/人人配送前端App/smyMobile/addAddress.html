@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title></title>
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/layer.css" />
+		<link rel="stylesheet" type="text/css" href="css/smyMobile.css" />
+		<link rel="stylesheet" href="css/style.css" />		
+	</head>
+	<body>
+		<!--【头部】-->
+		<header class="commHeader">
+			<a class="commHeader_l" href="#">
+				<img title="" alt="" src="images/icon/arow_left.png" />
+			</a>
+			<h6>编辑地址</h6>
+			<a class="commHeader_r" href="myAddress.html">
+				<p class="commHeader_r_font">保存</p>
+			</a>
+		</header>
+		<div class="edit_firstdiv">
+			<div class="edit_firstdiv_1">
+				<label>收 货 人 :</label>
+				<input type="text" placeholder="请输入收货人姓名" id="userName" />
+			</div>
+			<div class="edit_firstdiv_2">
+				<label>联系电话 :</label>
+				<input type="text" placeholder="请输入联系电话" id="userPhone" />
+			</div>
+			<!--三级联动-->
+			<div>
+				<div class="browser">
+        <!--选择地区-->
+        <section class="express-area">
+            <a id="expressArea" href="javascript:void(0)">
+                <dl>
+                    <dt>选择地区：</dt>
+                    <dd id="adder"></dd>
+                </dl>
+            </a>
+        </section>
+        <!--选择地区弹层-->
+        <section id="areaLayer" class="express-area-box">
+            <header>
+                <h3>选择地区</h3>
+                <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
+                <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+            </header>
+            <article id="areaBox">
+                <ul id="areaList" class="area-list"></ul>
+            </article>
+        </section>
+        <!--遮罩层-->
+        <div id="areaMask" class="mask"></div>
+   </div>
+			</div>			
+			<div class="edit_firstdiv_3">
+				<label>街　道 :</label>
+				<input type="text" placeholder="请输入详细地址" id="xadder" />
+			</div>
+		</div>
+		<!--<div class="edit_lastdiv">
+			删除街道
+		</div>-->
+		<a href="myAddress.html"><button class="order_btn" id="editbtn">保存</button></a>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.area.js" ></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/smyMobile.js"></script>
+		<script type="text/javascript" src="js/layer.js"></script>
+		<script type="text/javascript" src="js/smyMobile_yz.js" ></script>
+	</body>
+
+</html>

@@ -23,6 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style type="text/css">
 		body{display: block;}
 	</style>
+	<script>
+		setTimeout(function() {
+			$("body").show();
+		},500)
+	</script>
 	</head>
 	<body>
 		<!--【头部】-->

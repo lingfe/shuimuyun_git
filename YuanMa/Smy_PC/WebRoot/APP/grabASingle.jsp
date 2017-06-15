@@ -311,16 +311,55 @@
 		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }">
 		
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
-		<script type="text/javascript"src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
+		 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=edc4e3688f1a450db848c70024394024"></script>
+    	<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
 		<script type="text/javascript">
-		var map = new AMap.Map('container', {
-			resizeEnable : true,
-			zoom : 10,
-			center : [ 106.480983, 26.568955 ]
-		});
-	
+
+			//初始化地图调用JS接口
+			var map = new AMap.Map('container',{
+	            resizeEnable: true
+	    	});
+	    	//关键字的搜索
+	    	AMap.service(["AMap.PlaceSearch"], function() {
+		        var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+		            pageSize: 5,
+		            city: "0851", //城市
+		            map: map
+		        });
+		        //关键字查询【可从后台把需要显示的内容通过参数形式传递到 search中】
+		        placeSearch.search('花果园｜火车站 ｜ 花果园酒店');
+		    });
+	    	
+	    	
+	    	   //添加地图控件【得到贵阳的中心地区】
+				AMap.plugin('AMap.Geocoder',function(){
+			    var geocoder = new AMap.Geocoder({
+			        city: "0851"//城市，默认：“全国”
+			     });
+			    var marker = new AMap.Marker({
+			            map:map,
+			            bubble:true
+			     });
+			     //给地图添加点击事件
+			     map.on('click',function(e){
+			            marker.setPosition(e.lnglat);
+			            //得到坐标值
+			            geocoder.getAddress(e.lnglat,function(status,result){
+			              if(status=='complete'){
+			              //地址格式转化
+			                 var test= result.regeocode.formattedAddress
+			                 //打印是否获取到地址
+			                alert(test);
+			                //路径跳转
+			                 window.location.href="<%=basePath%>APP/grabASingleOk.jsp";
+			              }
+			            });
+			        });
+			
+			    });
+
 		$(function() {
 			$(".gra_bCont").click(function() {
 				//$(this).hide();

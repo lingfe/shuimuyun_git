@@ -19,6 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<style>
+			body{
+				display: block;
+			}
 			.paymentTop {
 				width: 100%;
 				height: 0.4rem;

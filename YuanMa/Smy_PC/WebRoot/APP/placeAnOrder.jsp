@@ -199,7 +199,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }">
 		<!-- 快客id -->
-		<input type="hidden" id="xiaId" value="${login.kuaikeId }"> 
+		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }"> 
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
@@ -211,21 +211,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//表单提交
 			$("#ok_order").click(function(){
 				//初始化验证
-				//验证发货人是否填写
-				if(!fa){
-					alert("发货人是否填写\？");
-					return;
-				}
-				//验证收货人是否填写
-				if(!shou){
-					alert("发货人是否填写\？");
-					return;
-				}
-				
 				//获取下单id
 				var xiaId=$("#xiaId").val();
 				if(xiaId==""){
 					alert("请填写收货人或发货人信息");
+					return false;
+				}
+				
+				//验证发货人是否填写
+				if(fa(xiaId)==false){
+					alert("发货人是否填写？");
+					return false;
+				}
+				//验证收货人是否填写
+				if(shou(xiaId)==false){
+					alert("收货人是否填写？");
 					return false;
 				}
 				
@@ -258,55 +258,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 		
 		//发货人信息ajax
-		function fa(){
-			//获取下单id
-			var xiaId=$("#xiaId").val();
-			if(xiaId==""){
-				alert("请填写收货人或发货人信息");
-				return false;
-			}
+		function fa(xiaId){
+			var bl=false;
 			//ajax获取
 			$.ajax({
 				url : 'xiaordertab/xiaorderInfoAjax/'+xiaId,
 				type : 'POST',
+				dataType : 'html',
 				success : function(data) {
 					var obj = jQuery.parseJSON(data);
-					if(obj.kuaikeName!=""){
-						return true;
+					if(obj.kuaikeName!=null){
+						bl= true;
+					}else{
+						bl=false;
 					}
-					return false;
 				},
 				error : function(xhr, type) {
 					alert('Ajax error!');
 				},
 				async:false
 			});
+			
+			return bl;
 		}
 		
 		//收货人信息ajax
-		function shou(){
-			//获取下单id
-			var xiaId=$("#xiaId").val();
-			if(xiaId==""){
-				alert("请填写收货人或发货人信息");
-				return false;
-			}
+		function shou(xiaId){
+			var bl=false;
 			//ajax获取
 			$.ajax({
 				url : 'xiaordertab/xiaorderInfoAjax/'+xiaId,
 				type : 'POST',
+				dataType : 'html',
 				success : function(data) {
 					var obj = jQuery.parseJSON(data);
-					if(obj.shouhuoName!=""){
-						return true;
+					if(obj.shouhuoName!=null){
+						bl= true;
+					}else{
+						bl=false;
 					}
-					return false;
+					
 				},
 				error : function(xhr, type) {
 					alert('Ajax error!');
 				},
 				async:false
 			});
+			return bl;
 		}
 		</script>
 		<!-- 验证身份 初级验证 -->

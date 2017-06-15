@@ -231,6 +231,212 @@ input {
 /*【头部组件】 end*/
 
 
+/*【新增，添加地址】*/
+
+.edit_firstdiv {
+	width: 100%;
+	background: white;
+	margin-top: .1rem;
+}
+
+.edit_firstdiv_1 {
+	width: 100%;
+	height: .4rem;
+	line-height: .4rem;
+	border-bottom: solid 1px #eee;
+}
+
+.edit_firstdiv_1 input {
+	border: none;
+	width: 60%;
+}
+
+.edit_firstdiv_1 label {
+	display: inline-block;
+	width: 30%;
+	margin-left: 10px;
+}
+
+.edit_firstdiv_2 {
+	width: 100%;
+	height: .4rem;
+	line-height: .4rem;
+	border-bottom: solid 1px #eee;
+}
+
+.edit_firstdiv_2 input {
+	border: none;
+	width: 60%;
+}
+
+.edit_firstdiv_2 label {
+	display: inline-block;
+	width: 30%;
+	margin-left: 10px;
+}
+
+.edit_firstdiv_3 {
+	width: 100%;
+	height: .4rem;
+	line-height: .4rem;
+	border-bottom: solid 1px #eee;
+}
+
+.edit_firstdiv_3 input {
+	border: none;
+	width: 60%;
+}
+
+.edit_firstdiv_3 label {
+	display: inline-block;
+	width: 30%;
+	margin-left: 10px;
+}
+
+.edit_lastdiv {
+	margin-top: .1rem;
+	width: 100%;
+	height: .4rem;
+	text-indent: 10px;
+	background: white;
+	line-height: .4rem;
+	color: #5494cc;
+}
+
+
+/*【新增，添加地址】end*/
+
+
+/*【我的地址】*/
+
+.adds {
+	margin-top: .1rem;
+	width: 100%;
+	background: white;
+	font-size: .12rem;
+}
+
+.adds>div {
+	width: 100%;
+}
+
+.adds_list_1 {
+	height: .2rem;
+	position: relative;
+}
+
+.adds_list_1 span:first-of-type {
+	display: inline-block;
+	margin-left: .2rem;
+	line-height: .2rem;
+}
+
+.adds_list_1 span:last-of-type {
+	display: inline-block;
+	position: absolute;
+	line-height: .2rem;
+	right: .2rem;
+}
+
+.adds_list_2 {
+	text-indent: .2rem;
+}
+
+.adds_list_3 {
+	width: 100%;
+	position: relative;
+	height: .3rem;
+}
+
+.adds_list_3 span {
+	font-size: .11rem;
+	color: #999;
+}
+
+.adds_list_3 div {
+	position: absolute;
+	top: .1rem;
+}
+
+.adds_list_3_1 {
+	left: .2rem;
+}
+
+.adds_list_3_1 span {
+	display: inline-block;
+	transform: translateY(-.02rem);
+}
+
+.adds_list_3_2 {
+	right: .7rem;
+}
+
+.adds_list_3_2 span {
+	display: inline-block;
+	transform: translateY(-.02rem);
+}
+
+.adds_list_3_3 {
+	right: .2rem;
+}
+
+.adds_list_3_3 img {
+	transform: translateY(-.02rem);
+}
+
+.adds_list_3_3 span {
+	display: inline-block;
+	transform: translateY(-.04rem);
+}
+
+.colo {
+	color: #418bc8;
+}
+
+.adds a {
+	text-decoration: none;
+}
+
+
+/*【我的地址】end*/
+/*【个人资料】*/
+.personal_div{
+			background: white;
+			font-size: .12rem;
+			margin-top: .1rem;
+		}
+		.personal_div a{
+			display: block;
+			position: relative;
+			border-bottom: solid 1px #eee;
+			height: .35rem;
+			color: black;
+		}
+		.personal_div a img:first-of-type{
+			position: absolute;	
+			left: .1rem;	
+			top: .1rem;	
+		}
+		.personal_div a img:last-of-type{
+			position: absolute;
+			right: .1rem;	
+			top: .1rem;		
+		}
+		.personal_div a span:first-of-type{
+			position: absolute;	
+			display: inline-block;
+			left: .3rem;
+			top: .1rem;		
+		}
+		.personal_div a span:last-of-type{
+			position: absolute;
+			display: inline-block;	
+			right: .4rem;	
+			top: .1rem;	
+		}
+/*【个人资料】end*/
+
+
 /*【登录】*/
 
 .headerLogin {
@@ -336,15 +542,20 @@ input {
 
 
 /*【登录】 end*/
+
+
 /*【申述找回】*/
-.appeal_firstdiv{
+
+.appeal_firstdiv {
 	background: white;
 }
-.appeal_firstdiv div{
-	border-bottom: solid 1px #eee ;
+
+.appeal_firstdiv div {
+	border-bottom: solid 1px #eee;
 	height: .4rem;
 }
-.appeal_firstdiv label{
+
+.appeal_firstdiv label {
 	display: inline-block;
 	width: 30%;
 	height: .4rem;
@@ -352,20 +563,24 @@ input {
 	margin-left: 10px;
 	color: #333;
 }
-.appeal_firstdiv input{
+
+.appeal_firstdiv input {
 	display: inline-block;
 	width: 60%;
 	border: none;
 	outline: none;
 }
-.appeal_lastdiv{
+
+.appeal_lastdiv {
 	background: white;
 }
-.appeal_lastdiv div{
-	border-bottom: solid 1px #eee ;
+
+.appeal_lastdiv div {
+	border-bottom: solid 1px #eee;
 	height: .4rem;
 }
-.appeal_lastdiv label{
+
+.appeal_lastdiv label {
 	display: inline-block;
 	width: 30%;
 	height: .4rem;
@@ -373,16 +588,19 @@ input {
 	margin-left: 10px;
 	color: #333;
 }
-.appeal_lastdiv input{
+
+.appeal_lastdiv input {
 	display: inline-block;
 	width: 60%;
 	border: none;
 	outline: none;
 }
-.las{
+
+.las {
 	width: 30% !important;
 }
-.appeal_firstdiv button{
+
+.appeal_firstdiv button {
 	margin-left: 5%;
 	display: inline-block;
 	width: 30%;
@@ -392,7 +610,10 @@ input {
 	background: #418bc8;
 	color: white;
 }
+
+
 /*【申述找回】end*/
+
 
 /*【免密登录】*/
 
@@ -841,10 +1062,12 @@ input {
 .taking_div_last {
 	position: relative;
 }
-.y{
+
+.y {
 	width: 80%;
-	transform: translate(.6rem,-.17rem);
+	transform: translate(.6rem, -.17rem);
 }
+
 .taking_div_last span {
 	display: inline-block;
 	position: absolute;
@@ -884,48 +1107,60 @@ input {
 .dom_shouhuo {
 	width: 100%;
 }
-.mude_div{
+
+.mude_div {
 	width: 100%;
 	padding-bottom: .1rem;
 }
-.mude_div div:first-of-type{
+
+.mude_div div:first-of-type {
 	width: 100%;
 	background: white;
 	padding-bottom: .1rem;
 }
-.mude_div img{
+
+.mude_div img {
 	width: 90%;
-	margin-left:5%;
+	margin-left: 5%;
 }
+
 .mude_div a {
 	display: block;
 }
+
 .dom_shouhuo_fdiv {
 	margin: .1rem 10px;
 	color: #999;
 }
-.dom_shouhuo_ldiv{
+
+.dom_shouhuo_ldiv {
 	background: white;
 	width: 100%;
 }
-.ldiv_ren{
-	margin:.1rem 10px;
+
+.ldiv_ren {
+	margin: .1rem 10px;
 }
-.ldiv_ren span{
+
+.ldiv_ren span {
 	display: inline-block;
 	margin-top: .1rem;
 }
-.ldiv_phone{
-	margin:.1rem 10px;
+
+.ldiv_phone {
+	margin: .1rem 10px;
 }
-.ldiv_phone span{
+
+.ldiv_phone span {
 	display: inline-block;
 	transform: translateY(-.04rem);
 }
-.ldiv_adds{
-	margin:.1rem 10px;
+
+.ldiv_adds {
+	margin: .1rem 10px;
 }
-.ldiv_adds span{
+
+.ldiv_adds span {
 	width: 80%;
 	display: inline-block;
 	margin-left: .2rem;
@@ -938,6 +1173,7 @@ input {
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
 }
+
 
 /*【上门取货】end*/
 
@@ -1088,45 +1324,59 @@ input {
 
 
 /*【快递员待接单页面】end*/
+
+
 /*【输入取货码】*/
-.code_a{
+
+.code_a {
 	margin-top: .7rem;
 	width: 100%;
 	display: block;
 }
-.codeBtn{
+
+.codeBtn {
 	width: 100%;
 	margin: auto;
 	height: .3rem;
 	color: white;
-	background: rgba(0,0,0,0.2);
-	border-radius:5px ;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 }
+
+
 /*【输入取货码】end*/
+
+
 /*交易结束*/
-.closed_div{
+
+.closed_div {
 	width: 100%;
 	background: white;
 }
-.closed_div p:first-of-type{
+
+.closed_div p:first-of-type {
 	padding-top: .2rem;
 	text-align: center;
 	color: #333;
 	font-size: .14rem;
 }
-.closed_div p:last-of-type{
+
+.closed_div p:last-of-type {
 	padding-top: .1rem;
 	text-align: center;
 	color: #999;
 	font-size: .11rem;
 	padding-bottom: .1rem;
 }
-.closed_a{
+
+.closed_a {
 	display: block;
 	text-align: center;
 	margin-top: .2rem;
 	color: #3f8fc4;
 }
+
+
 /*交易结束*end/
 
 /*【发货人】*/

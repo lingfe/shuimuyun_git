@@ -126,6 +126,48 @@ $(function() {
 			return false;
 		}
 	})
+	//修改绑定邮箱
+	$("#modemailbtn").click(function() {
+	    var mybox = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;		
+		var modYzm = $("#modYzm").val();
+		var modemail = $("#modemail").val();		
+		if(!(modemail &&mybox.test(modemail))) {
+			//提示
+			//alert("sfdsf")
+		    layer.open({
+		    	content: '邮箱格式错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(modYzm == "") {
+			//提示
+		    layer.open({
+		    	content: '请填写验证码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+	})
+	$("#modYzmBtn").click(function() {
+		var mybox = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;	
+		var modemail = $("#modemail").val();
+		if(!(modemail &&mybox.test(modemail))) {
+			//提示
+			//alert("sfdsf")
+		    layer.open({
+		    	content: '邮箱格式错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else {
+			time(this);
+		}
+	})
 	/*
 	 * 
 	 * 修改密码获取验证码
@@ -264,6 +306,147 @@ $(function() {
 			time(this);
 		}
 	})
+	//修改密码验证
+	$("#pwdbtn").click(function() {
+		//alert("sfddf")
+		var lastpwd = $("#lastpwd").val();
+		var chpwd = $("#chpwd").val();
+		var yespwd = $("#yespwd").val();
+		var pwdYzm = $("#pwdYzm").val();
+		if(lastpwd == "") {
+			//提示
+		    layer.open({
+		    	content: '请填写原登录密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(chpwd == "" || yespwd=="") {
+			//提示
+		    layer.open({
+		    	content: '请填写新密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(chpwd != yespwd) {
+			//提示
+		    layer.open({
+		    	content: '密码不一致',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(pwdYzm=="") {
+			//提示
+		    layer.open({
+		    	content: '请输入验证码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		
+	})
+	$("#pwdYzmBtn").click(function() {
+			time(this);
+	})
+	//修改支付密码验证
+	$("#zpwdbtn").click(function() {
+		//alert("sfddf")
+		var lastpwd = $("#zlastpwd").val();
+		var chpwd = $("#zchpwd").val();
+		var yespwd = $("#zyespwd").val();
+		var pwdYzm = $("#zpwdYzm").val();
+		if(lastpwd == "") {
+			//提示
+		    layer.open({
+		    	content: '请填写原支付密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(chpwd == "" || yespwd=="") {
+			//提示
+		    layer.open({
+		    	content: '请填写新支付密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(chpwd != yespwd) {
+			//提示
+		    layer.open({
+		    	content: '密码不一致',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(pwdYzm=="") {
+			//提示
+		    layer.open({
+		    	content: '请输入验证码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		
+	})
+	$("#zpwdYzmBtn").click(function() {
+			time(this);
+	})
+	
+	//编辑地址验证
+		$("#editbtn").click(function() {
+		//alert("sfddf")		
+		var userName = $("#userName").val();
+		var regPhone = $("#userPhone").val();
+		var adder = $("#adder").html();
+		var xadder = $("#xadder").val();
+		var reg=/^[\u2E80-\u9FFF]+$/;
+		if(userName == "" || userName.length>4 || !(reg.test(userName))) {
+			//提示
+		    layer.open({
+		    	content: '请输入收货人姓名 ',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
+			//提示
+		    layer.open({
+		    	content: '手机号码错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(adder == "") {
+			//提示
+		    layer.open({
+		    	content: '请选择地址 ',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}else if(xadder == "") {
+			//提示
+		    layer.open({
+		    	content: '请填写详细地址',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+	})
 	//申述找回密码
 	$("#appeal").click(function(){
 		var userName = $("#userName").val();
@@ -313,6 +496,24 @@ $(function() {
 		
 	})
 })
+//申述提交
+function appeal(){
+	var userName = $("#userName").val();
+	var lastPhone = $("#lastPhone").val();
+	var regPhone = $("#regPhone").val();
+	var userName = $("#userName").val();
+	var regYzm = $("#regYzm").val();
+	if (lastPhone==15223059337 && regYzm==1234){
+		layer.open({
+	    	content: '正在提交...',
+	    	skin: 'msg',
+	    	time: 2
+	  	});
+	  	setInterval(function() {
+			window.location.href="index.html";
+		},2000)
+	}
+}
 
 /*
  * 

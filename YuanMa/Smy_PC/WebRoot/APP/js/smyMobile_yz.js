@@ -159,7 +159,7 @@ $(function() {
 	$("#regBtn").click(function() {
 		//alert("sfddf")
 		var userName = $("#userName").val();
-		var regPhone = $("#regPhone").val();
+		var forgePhone = $("#forgePhone").val();
 		var regYzm = $("#regYzm").val();
 		var regPwd = $("#regPwd").val();
 		var regNpwd = $("#regNpwd").val();
@@ -173,7 +173,7 @@ $(function() {
 		  	});
 			return false;
 		}
-		else if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
+		else if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号码错误',
@@ -218,8 +218,8 @@ $(function() {
 	 *
 	*/
 	$("#regYzmBtn").click(function() {
-		var regPhone = $("#regPhone").val();
-		if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
+		var forgePhone = $("#forgePhone").val();
+		if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号码错误',

@@ -52,14 +52,14 @@
 					</div>
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" /> <input
-							class="loginCont_form_itemAll mui-input-clear right" id="regPhone"
+							class="loginCont_form_itemAll mui-input-clear right" id="forgePhone"
 							type="text" name="kuaikePhone" placeholder="请输入手机号码" />
 					</div>
 					<div>
 						<input type="text" style="height:.3rem; font-size:.12rem;" class="mui-input-clear free_input_code left"
-							id="regYzm" placeholder="请输入验证码"><input type="button"
+							id="forgeYzm" placeholder="请输入验证码"><input type="button"
 							class="mui-btn loginBtn mui-btn-block free_code left "
-							id="regYzmBtn" value="请输入验证码">
+							id="forgeYzmBtn" value="请输入验证码">
 					</div>
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/pwd.png" /> <input

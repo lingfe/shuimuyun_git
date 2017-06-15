@@ -282,13 +282,14 @@ public class R_xiaordertabController {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}", method = RequestMethod.POST)
+	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}/{kuaikeId}", method = RequestMethod.POST)
 	public @ResponseBody String orderSbmit(@PathVariable("xiaId") String xiaId,
 			@PathVariable("shopType") String shopType, @PathVariable("shopNumer") float shopNumer,
 			@PathVariable("shopzholiang") int shopzholiang,
-			@PathVariable("timeString") String timeString,HttpServletRequest request) {
+			@PathVariable("timeString") String timeString,
+			@PathVariable("kuaikeId") String kuaikeId,HttpServletRequest request) {
 		try {
-			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString);
+			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString,kuaikeId);
 			//清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
 			request.getSession().removeValue("xiaId");

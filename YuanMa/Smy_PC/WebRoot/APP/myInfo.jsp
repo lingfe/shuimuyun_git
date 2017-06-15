@@ -16,7 +16,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
+	<script>
+		setTimeout(function() {
+				$("body").show();
+		},500);
+	</script>
 	</head>
 	<body>
 		<header class="commHeader">
@@ -103,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				关于我们
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>
-			<a href="loginOut">
+			<a href="loginOut/APP">
 				退出登录
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>
@@ -113,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--底部-->
 		<footer class="footerMenu">
 			<a href="RequestMappingUtil/requestNUll/APP/index">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/home.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/home_2.png" width="100%"/>
 				<p class="">首页</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/grabASingle">
@@ -129,10 +134,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p class="">商城</p>
 			</a>
 			<a class="active" href="RequestMappingUtil/requestNUll/APP/myInfo">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal.png" width="100%"/>
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/personal_2.jpg" width="100%"/>
 				<p class="">我的</p>
 			</a>
 		</footer>
+		
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 	</body>
 </html>

@@ -271,12 +271,26 @@ public class R_kuaiketabController {
 	 *            请求
 	 * @return
 	 */
-	@RequestMapping(value = "loginOut", method = RequestMethod.GET)
-	public String loginOut(HttpSession session,SessionStatus sessionStatus,@ModelAttribute("login") R_kuaiketab tab) {
+	@RequestMapping(value = "loginOut/{i}", method = RequestMethod.GET)
+	public String loginOut(HttpSession session,SessionStatus sessionStatus,@ModelAttribute("login") R_kuaiketab tab,@PathVariable("i") String i) {
 		
 		
 		// 判断Session是否为空
 		if (session == null) {
+			
+			if("APP".equals(i)){
+				//退出登陆修改状态为 3 表示离线状态
+				kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
+				//清空Session域中的对象及初始化Seesion
+				session.removeAttribute("login");
+				session.invalidate();
+				sessionStatus.setComplete();
+				//返回初始页  【登录页】
+				
+				return "APP/login";
+				
+			}
+			
 			//退出登陆修改状态为 3 表示离线状态
 			kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 			//清空Session域中的对象及初始化Seesion
@@ -286,16 +300,32 @@ public class R_kuaiketabController {
 			//返回初始页  【登录页】
 			return "PC/login";
 
+		}else {
+			if("APP".equals(i)){
+				
+				//退出登陆修改状态为 3 表示离线状态
+				kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
+				//清空Session域中的所有对象以及初始化 Session
+				session.removeAttribute("login");
+				//初始化Session
+				session.invalidate();
+				sessionStatus.setComplete();
+				//返回初始页【登录页】
+				return "APP/login";
+				
+			}
+			//退出登陆修改状态为 3 表示离线状态
+			kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
+			//清空Session域中的所有对象以及初始化 Session
+			session.removeAttribute("login");
+			//初始化Session
+			session.invalidate();
+			sessionStatus.setComplete();
+			//返回初始页【登录页】
+			return "PC/login";
+			
 		}
-		//退出登陆修改状态为 3 表示离线状态
-		kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
-		//清空Session域中的所有对象以及初始化 Session
-		session.removeAttribute("login");
-		//初始化Session
-		session.invalidate();
-		sessionStatus.setComplete();
-		//返回初始页【登录页】
-		return "PC/login";
+		
 	}
 
 	/**

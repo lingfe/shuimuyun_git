@@ -124,7 +124,7 @@ $(function(){
 					href="<%=basePath%>RequestMappingUtil/requestData/PC/login">${sessionScope.namea!=null?'':'登录'}</a><a
 					href="<%=basePath%>RequestMappingUtil/requestData/PC/register"><span>${sessionScope.namea!=null?'':'注册'}</span></a>${sessionScope.namea!=null?sessionScope.namea:''}</p>
 			<ul class="flex8 content_u">
-				<li><a href="loginOut">安全退出</a></li>
+				<li><a href="loginOut/PC">安全退出</a></li>
 				<li><img src="<%=basePath%>PC/images/e.png" /><a href="javascript:void(0);">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a href="javascript:void(0);">0851
 						8510 3179</a></li>

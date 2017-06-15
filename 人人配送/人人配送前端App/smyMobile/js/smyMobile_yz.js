@@ -308,8 +308,46 @@ $(function() {
 		  	});
 			return false;
 		}
-		regJz();
+		regJz();	
+	})
 	
+	
+	//完善信息
+	$("#quickBtn").click(function() {
+		var quickPhone = $("#quickPhone").val();
+		var quickName = $("#quickName").val();
+		var quickAddress = $("#quickAddress").val();
+		var reg=/^[\u2E80-\u9FFF]+$/;
+		
+		if(!(quickPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(quickPhone))) {
+			//提示
+		    layer.open({
+		    	content: '手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(quickName == "" || quickName.length>4 || !(reg.test(quickName))) {
+			//提示
+		    layer.open({
+		    	content: '请输入真实姓名 ',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(quickAddress == "") {
+			//提示
+		    layer.open({
+		    	content: '请填写地址 ',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		
+		window.location.href="quickSf.html";
 		
 	})
 })

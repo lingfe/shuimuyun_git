@@ -50,8 +50,8 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	}
 	
 	@Override
-	public List<R_xiaordertab> statusQuery(int status) {
-		return ir_xiaordertabMapper.statusQuery(status);
+	public List<R_xiaordertab> statusQuery(int status,String kuaikeId) {
+		return ir_xiaordertabMapper.statusQuery(status,kuaikeId);
 	}
 	
 	@Transactional

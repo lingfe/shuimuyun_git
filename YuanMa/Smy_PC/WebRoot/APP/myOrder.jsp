@@ -40,18 +40,18 @@
 
 	<!--【nav】-->
 	<nav class="oallNav" id="div_statusXia"> 
-		<a class="active" href="javascript:void(0);" title="0" onclick="javascript:statusHref('0');">全部</a> 
-		<a href="javascript:void(0);" title="1" onclick="javascript:statusHref('1');">已接单</a> 
-		<a href="javascript:void(0);" title="2" onclick="javascript:statusHref('2');">已到达</a> 
-		<a href="javascript:void(0);" title="3" onclick="javascript:statusHref('3');">已确认</a> 
-		<a href="javascript:void(0);" title="4" onclick="javascript:statusHref('4');">已评价</a>
+		<a class="active" href="javascript:void(0);" id="x0" title="x0" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/0" onclick="javascript:statusHref('x0');">全部</a> 
+		<a href="javascript:void(0);" title="x1" id="x1" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/1" onclick="javascript:statusHref('x1');">已接单</a> 
+		<a href="javascript:void(0);" title="x2" id="x2" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/2" onclick="javascript:statusHref('x2');">已到达</a> 
+		<a href="javascript:void(0);" title="x3" id="x3" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/3" onclick="javascript:statusHref('x3');">已确认</a> 
+		<a href="javascript:void(0);" title="x4" id="x4" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/4" onclick="javascript:statusHref('x4');">已评价</a>
 	</nav>
 	
 	<nav class="oallNav" id="div_statusQiang"  style="display: none;"> 
-		<a class="active" href="javascript:void(0);" title="0" onclick="javascript:statusHref('0');">全部</a>
-		<a href="javascript:void(0);" title="0" onclick="javascript:statusHref('0');">抢单</a> 
-		<a href="javascript:void(0);" title="1" onclick="javascript:statusHref('1');">取货</a> 
-		<a href="javascript:void(0);" title="2" onclick="javascript:statusHref('2');">派单</a> 
+		<a class="active" href="javascript:void(0);" id="q0" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">全部</a>
+		<a href="javascript:void(0);" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">抢单</a> 
+		<a href="javascript:void(0);" title="q1" id="q1" url="xiaordertab/queryIdStatus/${login.kuaikeId}/1" onclick="javascript:statusHref('q1');">取货</a> 
+		<a href="javascript:void(0);" title="q2" id="q2" url="xiaordertab/queryIdStatus/${login.kuaikeId}/2" onclick="javascript:statusHref('q2');">派单</a> 
 	</nav>
 	<!--【nav】end-->
 
@@ -181,20 +181,21 @@
 	<script type="text/javascript">
 		//默认
 		$(function() {
-			loadmore(0);
+			statusHref('x0');
 		});
 	
 		//ajax
 		function loadmore(status) {
+			var url=$("#"+status).attr("url");
+			//alert(url);
 			//请求
 			$.ajax({
 				type : 'get',
-				url : 'xiaordertab/xiadanAjax/' + status,
+				url : url,
 				dataType : 'html',
 				success : function(objs) {
-					var page = jQuery.parseJSON(objs);
-					var data = page.list;
-					
+					var data = jQuery.parseJSON(objs);
+					//var data = page.list;
 					if (data == "") {
 						alert("没有数据!");
 					} else {
@@ -211,6 +212,7 @@
 							//价格
 							var prioes=data[i].kaikePrioes==null?'未付款':data[i].kaikePrioes;
 							
+							var str=data[i].status > 0 ? '派' :'快';
 							//date 格式化时间
 							//var date=new Date(data[i].okDate);
 							//var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
@@ -218,19 +220,19 @@
 							result += "<li><a href='xiaordertab/xiaorderInfo/" + data[i].xiaId + "'><img class='oallCont_cont_img' title='' \
 										alt='' src='<%=basePath%>APP/images/oall001.jpg' width='100%' /> \
 										<div class='oallCont_contBox'> \
-											<p>收货人：" + data[i].shouhuoNmae + "</p> \
+											<p>收货人：" + data[i].shouhuoName + "</p> \
 											<p>电话：" + data[i].shouhuoShone + "</p> \
 											<div> \
 												<span>收货地址：</span> \
 												<div class='text_1_hide'>" + data[i].shouhuoAddressInfo + "</div> \
 											</div> \
 										</div> \
-										<div class='oall_zt'>快</div> <span class='oall_ztl'>" + status + "</span>\
+										<div class='oall_zt'>" + str + "</div> <span class='oall_ztl'>" + status + "</span>\
 										</a></li>";
 	
 	
 						}
-						//分页参数
+/* 						//分页参数
 						var x="/";
 						var frist=page.status + x + page.frist + x + page.pageNum;
 						var xia=page.status + x + page.xia   + x + page.pageNum;
@@ -245,8 +247,7 @@
 				   					<a title='" + shang + "' 	onclick='statusHref("+ shang +");'>上一页</a> \
 				   					<a title='" + last + "' 	onclick='statusHref("+ last +");'>未页</a> \
 				   					</th> \
-			   					</tr>";
-						
+			   					</tr>"; */
 						$('.oallCont_cont_list').append(result);
 	
 					}
@@ -260,8 +261,8 @@
 		//状态
 		function statusHref(status) {
 			$('.oallCont_cont_list').html("");
-			var tt=status.toString().split(".");
-			status=tt.length>1?tt[1]:status;
+			//var tt=status.toString().split(".");
+			//status=tt.length>1?tt[1]:status;
 			loadmore(status);
 		}
 	</script>

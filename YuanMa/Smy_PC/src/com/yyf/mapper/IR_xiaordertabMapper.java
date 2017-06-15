@@ -106,8 +106,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年5月28日 上午9:09:36  
 	 * @param status 下单状态
 	 */
-	@Select("SELECT * FROM xiaordertab where status=#{status}")
-	List<R_xiaordertab> statusQuery(@Param("status")int status);
+	@Select("SELECT * FROM xiaordertab where status=#{status} and kuaikeId=#{kuaikeId}")
+	List<R_xiaordertab> statusQuery(@Param("status")int status,@Param("kuaikeId")String kuaikeId);
 	
 	/**
 	 * 

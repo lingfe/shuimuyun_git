@@ -16,7 +16,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
+	<script>
+		setTimeout(function() {
+				$("body").show();
+		},500);
+	</script>
 	</head>
 	<body>
 		<header class="commHeader">
@@ -133,6 +138,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p class="">我的</p>
 			</a>
 		</footer>
+		
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 	</body>
 </html>

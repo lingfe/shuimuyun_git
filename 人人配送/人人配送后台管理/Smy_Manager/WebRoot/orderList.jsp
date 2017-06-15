@@ -52,6 +52,8 @@ font-size:5;
 td{
 
 font-size:5;
+height: 20px;
+width: 47px;
 }
 
 </style>
@@ -83,17 +85,17 @@ font-size:5;
 		</div>
 
 
-		<table class="tablelist">
+		<table class="tablelist" border="1">
 			<thead>
 				<tr>
 					<th><input name="" type="checkbox" value="" /></th>
 					
-					<th>下单人名称</th>
-					<th>下单人电话</th>
-					<th>下单人地址</th>
-					<th>收货人姓名</th>
-					<th>收货人电话</th>
-					<th>收货人地址</th>
+					<th>(下)姓名</th>
+					<th>(下)电话</th>
+					<th>(下)地址</th>
+					<th>(收)姓名</th>
+					<th>(收)电话</th>
+					<th>(收)地址</th>
 					<th>取货时间</th>
 					<th>支付费用</th>
 					<th>状态</th>
@@ -106,7 +108,6 @@ font-size:5;
 					<th>货物类型</th>
 					<th>最快取货时间</th>
 					<th>是否支付</th>
-					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -139,7 +140,6 @@ font-size:5;
 					<td>${o.shopType }</td>
 					<td>${o.timeString }</td>
 					<td>${o.payment }</td>
-					<td>操作</td>
 				</tr>
 				</c:forEach>
 			</tbody>

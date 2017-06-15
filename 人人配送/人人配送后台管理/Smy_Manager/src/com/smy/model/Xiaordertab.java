@@ -221,14 +221,14 @@ public class Xiaordertab {
 		this.kuaikeAddressInfo = kuaikeAddressInfo;
 	}
 
-	private int shopType;// `shopType` INT(11) NOT NULL DEFAULT '0' COMMENT
+	private String shopType;// `shopType` INT(11) NOT NULL DEFAULT '0' COMMENT
 							// '货物类型',
 
-	public int getShopType() {
+	public String getShopType() {
 		return shopType;
 	}
 
-	public void setShopType(int shopType) {
+	public void setShopType(String shopType) {
 		this.shopType = shopType;
 	}
 
@@ -293,7 +293,7 @@ public class Xiaordertab {
 	public Xiaordertab(String xiaId, String kuaikeName, String kuaikePhone, String kuaikeAddress, String shouhuoName,
 			String shouhuoPhone, String shouhuoAddress, String shouhuoAddressInfo, Date quhouDate, Float kaikePrioes,
 			int status, Date okDate, String shopName, float shopzholiang, int shopNumer, float shopprices,
-			String shopGuige, Date shopDate, String kuaikeAddressInfo, int shopType, String timeString,
+			String shopGuige, Date shopDate, String kuaikeAddressInfo, String shopType, String timeString,
 			String shopImages, int payment) {
 		super();
 		this.xiaId = xiaId;

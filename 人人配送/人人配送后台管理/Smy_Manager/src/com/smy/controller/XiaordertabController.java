@@ -25,7 +25,7 @@ public class XiaordertabController {
 		@RequestMapping(value="queryOrderList/{Pagenum}",method=RequestMethod.GET)
 		public String queryOrderList(ModelMap model, @PathVariable("Pagenum") Integer Pagenum){
 			
-			Integer PageSize = 20; // 每页显示的条数
+			Integer PageSize = 15; // 每页显示的条数
 			// 计算总条数
 			Integer count = xiaordertabService.queryCount();
 			// 总页数

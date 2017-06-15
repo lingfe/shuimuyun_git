@@ -21,19 +21,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath %>APP/css/layer.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	
-	<style>
-		body {
-			background: #eee;
-		}
-		
-	</style>
 	<script>
-			setTimeout(function() {
+		setTimeout(function() {
 				$("body").show();
-			},500);
+		},500);
 	</script>
 	
-	<!--  layer -->
+	<!--  5ayer -->
 	</head>
 	<body>
 		<header class="commHeader">

@@ -10,6 +10,7 @@ h3,
 h4,
 h5,
 h6,
+lable,
 p,
 form,
 button,
@@ -33,7 +34,9 @@ body {
 	*position: static;
 	background: #eee;
 }
-
+body {
+	display: none;
+}
 html {
 	font-family: "microsoft yahei";
 	-webkit-text-size-adjust: 100%;

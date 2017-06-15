@@ -23,7 +23,7 @@ public class PageModel<T> {
 	/**
 	 * 页容量，默认10
 	 */
-	private Integer pageNum=10;
+	private Integer pageNum=1000;
 	
 	/**
 	 * 总数据量

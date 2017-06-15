@@ -65,11 +65,12 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString} WHERE xiaid=#{xiaId}")
+	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString},kuaikeId=#{kuaikeId} WHERE xiaid=#{xiaId}")
 	void orderSbmit(@Param("xiaId") String xiaId,
 			@Param("shopType") String shopType, @Param("shopNumer") float shopNumer,
 			@Param("shopzholiang") int shopzholiang,
-			@Param("timeString") String timeString);
+			@Param("timeString") String timeString,
+			@Param("kuaikeId") String kuaikeId);
 	
 	/**
 	 * 
@@ -102,8 +103,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年5月28日 上午9:09:36  
 	 * @param status 下单状态
 	 */
-	@Select("SELECT * FROM xiaordertab where status=#{status}")
-	List<R_xiaordertab> statusQuery(@Param("status")int status);
+	@Select("SELECT * FROM xiaordertab where status=#{status} and kuaikeId=#{kuaikeId}")
+	List<R_xiaordertab> statusQuery(@Param("status")int status,@Param("kuaikeId")String kuaikeId);
 	
 	/**
 	 * 

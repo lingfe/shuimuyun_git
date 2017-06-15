@@ -217,6 +217,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					alert("请填写收货人或发货人信息");
 					return false;
 				}
+				var kuaikeId=$("#kuaikeId").val();
+				if(kuaikeId==""){
+					alert("请登录！");
+					return false;
+				}
+				
 				
 				//验证发货人是否填写
 				if(fa(xiaId)==false){
@@ -238,7 +244,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//最快取货时间
 				var timeString=$("#shijian").text();
 				//url
-				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString;
+				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId;
 				
 				//ajax提交
 				$.ajax({

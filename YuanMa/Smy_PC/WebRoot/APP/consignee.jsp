@@ -8,11 +8,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>收货人信息</title>
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	</head>
+	<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+	</script>
+	
 	<body>
 		<!--【头部】-->
 		<header class="commHeader">
@@ -28,15 +35,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="hipper_contex">
 			<div>
 				<span>收货人：</span>
-				<input id="con_name" type="text" placeholder="请输入姓名"/>
+				<input id="con_name" type="text" value="${info.shouhuoName }" placeholder="请输入姓名"/>
 			</div>			
 			<div>
 				<span>手机号：</span>
-				<input id="con_phone" type="text" placeholder="请输入手机号"/>
+				<input id="con_phone" type="text" value="${info.shouhuoShone }" placeholder="请输入手机号"/>
 			</div>			
 			<div>
-				<img src="<%=basePath%>APP/images/icon/adds.png"width="15" class="hipper_contex_firstimg"/>
-				<input type="text" class="hipper_contex_lasttext" value="贵州省贵阳市南明区花果园金融街2号"/>
+				<img src="<%=basePath%>APP/images/icon/adds.png" width="15" class="hipper_contex_firstimg"/>
+				<input type="text" class="hipper_contex_lasttext" value="${info.shouhuoAddressInfo==null?'贵州省贵阳市南明区花果园金融街2号':info.shouhuoAddressInfo }"/>
 				<img src="<%=basePath%>APP/images/icon/consignee_right.png" class="hipper_contex_lastimg" width="15"/>
 			</div>			
 		</div>
@@ -78,6 +85,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					async:false
 				});
 			}
+		</script>
+		<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+			//询问框
+			layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+			
+		}
 		</script>
 	</body>
 </html>

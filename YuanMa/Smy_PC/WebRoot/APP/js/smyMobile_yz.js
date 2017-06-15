@@ -76,29 +76,42 @@ $(function() {
 		}
 		forgeJz();
 	})
-	
-	/*
-	 * 
-	 * 修改密码获取验证码
-	 * 
-	*/
-	
+	/*获取验证码*/
 	$("#forgeYzmBtn").click(function() {
-		var forgePhone = $("#forgePhone").val();
-		if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
+
+		var kuaikePhone = $("#forgePhone").val();
+		if (!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
 			//alert("sfdsf")
-		    layer.open({
-		    	content: '手机号码错误',
-		    	skin: 'msg',
-		    	time: 2
-		  	});
+			layer.open({
+				content : '手机号码错误',
+				skin : 'msg',
+				time : 2
+			});
 			return false;
-		}
-		else {
+		} else {
+
+			var mobile_code = $("#forgeYzm").val();
+			
+			$.ajax({
+				url : 'getCode/' + kuaikePhone,
+				type : 'POST',
+				data : {
+					mobile_code : mobile_code
+				},
+
+				//请求成功后触发
+				success : function(data) {
+
+					$("#forgeYzm").val(data);
+
+				}
+			});
+
 			time(this);
 		}
-	})
+
+	});
 	
 	
 	/*
@@ -106,32 +119,36 @@ $(function() {
 	 * 修改密码获取验证码
 	 * 
 	*/
-	
+
 	$("#freeBtn").click(function() {
 		var forgePhone = $("#forgePhone").val();
 		var forgeYzm = $("#forgeYzm").val();
-		
-		if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
+
+		if (!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
 			//提示
 			//alert("sfdsf")
-		    layer.open({
-		    	content: '手机号码错误',
-		    	skin: 'msg',
-		    	time: 2
-		  	});
+			layer.open({
+				content : '手机号码错误',
+				skin : 'msg',
+				time : 2
+			});
 			return false;
-		}
-		else if(forgeYzm == "") {
+		} else if (forgeYzm == "") {
 			//提示
-		    layer.open({
-		    	content: '请填写验证码',
-		    	skin: 'msg',
-		    	time: 2
-		  	});
+			layer.open({
+				content : '请填写验证码',
+				skin : 'msg',
+				time : 2
+			});
 			return false;
 		}
 		freeJz();
 	})
+	
+	
+	
+	
+	
 	
 	/*
 	 * 
@@ -146,10 +163,11 @@ $(function() {
 		var regYzm = $("#regYzm").val();
 		var regPwd = $("#regPwd").val();
 		var regNpwd = $("#regNpwd").val();
-		if(userName == "") {
+		var reg=/^[\u2E80-\u9FFF]+$/;
+		if(userName == "" || userName.length>4 || !(reg.test(userName))) {
 			//提示
 		    layer.open({
-		    	content: '请填写姓名',
+		    	content: '请输入真实姓名 ',
 		    	skin: 'msg',
 		    	time: 2
 		  	});
@@ -226,44 +244,29 @@ function loginJz() {
 	var forgeYzm = $("#forgeYzm").val();
 	var forgePwd = $("#forgePwd").val();
 	var forgeNpwd = $("#forgeNpwd").val();
-	if(userPhone = 15700104801 && userPwd == 123456) {
-		layer.open({
-	    	content: '正在登录...',
-	    	skin: 'msg',
-	    	time: 2
-	  	});
-	  	setInterval(function() {
-			window.location.href="index.html";
-		},2000)
-	}
-	else {
-		layer.open({
-	    	content: '用户名不存在',
-	    	skin: 'msg',
-	    	time: 10
-	  	});
-	}
+	layer.open({
+		content : '正在登录...',
+		skin : 'msg',
+		time : 2
+	});
+	setInterval(function() {
+		$(".loginCont_form").submit();
+	}, 2000)
+
 }
 function freeJz() {
 	var forgePhone = $("#forgePhone").val();
 	var forgeYzm = $("#forgeYzm").val();
-	if(forgePhone = 15700104801 && forgeYzm == 123456) {
-		layer.open({
-	    	content: '正在登录...',
-	    	skin: 'msg',
-	    	time: 2
-	  	});
-	  	setInterval(function() {
-			window.location.href="index.html";
-		},2000)
-	}
-	else {
-		layer.open({
-	    	content: '用户名不存在',
-	    	skin: 'msg',
-	    	time: 10
-	  	});
-	}
+
+	layer.open({
+		content : '正在登录...',
+		skin : 'msg',
+		time : 2
+	});
+	setInterval(function() {
+		$(".loginCont_form").submit();
+	}, 2000)
+
 }
 
 function regJz() {
@@ -283,10 +286,6 @@ function regJz() {
  * 
 */
 function forgeJz() {
-	//var forgePhone = $("#forgePhone").val();
-	//var forgeYzm = $("#forgeYzm").val();
-	//var forgePwd = $("#forgePwd").val();
-	//var forgeNpwd = $("#forgeNpwd").val();
 	layer.open({
     	content: '密码修改成功...',
     	skin: 'msg',
@@ -296,6 +295,9 @@ function forgeJz() {
 		window.location.href="login.html";
 	},2000)
 }
+
+
+
 
 
 /*

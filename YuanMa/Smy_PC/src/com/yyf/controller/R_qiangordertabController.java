@@ -34,7 +34,6 @@ public class R_qiangordertabController {
 	private R_qiangordertabService qiangordertabService;
 
 	/**
-<<<<<<< HEAD
 	 * app根据快客Id得到抢单记录
 	 * @author lijie
 	 * @created 2017年6月5日 下午3:30:05
@@ -65,19 +64,21 @@ public class R_qiangordertabController {
 	 * @param kuaikeId	快客id
 	 * @return
 	 */
-	@RequestMapping(value="r_qiangordertabController/insertAjax/{xiaId}/{kuaikeId}")
-	public @ResponseBody String  insertAjax(@PathVariable("xiaId")String xiaId,@PathVariable("kuaikeId")String kuaikeId){
+	@RequestMapping(value="r_qiangordertabController/insertAjax/{xiaId}/{kuaikeId}",method=RequestMethod.GET)
+	public @ResponseBody boolean  insertAjax(@PathVariable("xiaId")String xiaId,@PathVariable("kuaikeId")String kuaikeId){
 		try {
+			System.out.println("=====================******");
 			// 得到唯一的ID 作为抢单ID的唯一标示列
 			// 默认抢单id
 			UUID uuid1 = UUID.randomUUID();
 			// 强制转换
 			String uuid = uuid1.toString();
 			qiangordertabService.Insert(uuid, xiaId, kuaikeId, 0, new Date());
-			return "抢单成功";
+			
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "抢单失败";
+			return false;
 		}
 	}
 	

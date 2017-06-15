@@ -10,18 +10,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>找回密码</title>
+    
     <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
-		<meta charset="UTF-8">
-		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-		
-		<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
-		<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
 		<style>
 			.layui-m-layer-msg .layui-m-layercont {
 				background: rgba(87,87,84,.5) !important;
@@ -29,11 +29,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				color: #f10000;
 			}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+		
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
 			<header class="header headerLogin">
-				<a class="header_l" href="#">
+				<a class="header_l" href="javascript:self.location=document.referrer;">
 					<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 				</a>
 				<h1 class="header_title">忘记密码</h1>

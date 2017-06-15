@@ -11,7 +11,8 @@
 <base href="<%=basePath%>">
 
 	<title>我的订单</title>
-	
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
@@ -19,6 +20,12 @@
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
+	<script>
+		setTimeout(function() {
+			$("body").show();
+		},500);
+	</script>
+	
 </head>
 <body>
 	<!--【头部】-->
@@ -256,6 +263,27 @@
 			var tt=status.toString().split(".");
 			status=tt.length>1?tt[1]:status;
 			loadmore(status);
+		}
+	</script>
+	<!-- 验证身份 初级验证 -->
+	<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+			//询问框
+			layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+			
 		}
 	</script>
 </body>

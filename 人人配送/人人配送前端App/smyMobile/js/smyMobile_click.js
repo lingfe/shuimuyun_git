@@ -209,5 +209,24 @@ $(function(){
 		}
 				
 			})
-	
+	$("#order_buttom_text").click(function(){
+		if($(this).find(".dis").is(":hidden")) {
+			$(this).find(".dis").show();
+			$(this).find(".op").hide();
+		}
+		else {
+			$(this).find(".dis").hide();
+			$(this).find(".op").show();
+		}
+	})
+	$("#taking_btn").click(function(){
+		if($(".op").is(":hidden")){
+			layer.open({
+		    	content: '同意协议',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+		  	return false;
+		}
+	})
 })

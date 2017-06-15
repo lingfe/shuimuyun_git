@@ -202,7 +202,7 @@ public class R_kuaiketabController {
 	 * @return 返回成功页面
 	 * @throws NoSuchAlgorithmException
 	 */
-	@RequestMapping(value = "/login/{i}", method = RequestMethod.POST)
+	@RequestMapping(value = "/login/{i}", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "repassword", required = false) String repassword,
 			@RequestParam("kuaikePhone") String uname, @RequestParam("password") String password,
 			HttpServletRequest request, ModelMap model,@PathVariable("i")String i) throws NoSuchAlgorithmException {
@@ -214,7 +214,7 @@ public class R_kuaiketabController {
 		// 简单判断对象是否为空
 		if (login != null) {
 			//修改快客登陆状态
-			kuaiketabService.updateKuaikeStatus(2, login.getKuaikeId());
+			kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(), login.getKuaikeId());
 			model.addAttribute("login", login);
 
 			if ("on".equals(repassword)) {
@@ -249,14 +249,17 @@ public class R_kuaiketabController {
 			}
 			// 返回成功页面
 			return "PC/index";
-		}
-		if("APP".equals(i)){
+		}else if("APP".equals(i)){
 			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
 			return "APP/login";
 		}
-		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
-		// 留在登陆页面
-		return "PC/login";
+		else{
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			// 留在登陆页面
+			return "PC/login";
+			
+		}
+	
 	}
 
 	/**
@@ -268,12 +271,28 @@ public class R_kuaiketabController {
 	 *            请求
 	 * @return
 	 */
-	@RequestMapping(value = "loginOut/{kuaikeId}", method = RequestMethod.GET)
-	public String loginOut(HttpSession session,SessionStatus sessionStatus,@PathVariable("kuaikeId") String kuaikeId) {
+	@RequestMapping(value = "loginOut/{i}", method = RequestMethod.GET)
+	public String loginOut(HttpSession session,SessionStatus sessionStatus,@ModelAttribute("login") R_kuaiketab tab,@PathVariable("i") String i) {
+		
+		
 		// 判断Session是否为空
 		if (session == null) {
+			
+			if("APP".equals(i)){
+				//退出登陆修改状态为 3 表示离线状态
+				kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
+				//清空Session域中的对象及初始化Seesion
+				session.removeAttribute("login");
+				session.invalidate();
+				sessionStatus.setComplete();
+				//返回初始页  【登录页】
+				
+				return "APP/login";
+				
+			}
+			
 			//退出登陆修改状态为 3 表示离线状态
-			kuaiketabService.updateKuaikeStatus(3,kuaikeId);
+			kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 			//清空Session域中的对象及初始化Seesion
 			session.removeAttribute("login");
 			session.invalidate();
@@ -281,16 +300,32 @@ public class R_kuaiketabController {
 			//返回初始页  【登录页】
 			return "PC/login";
 
+		}else {
+			if("APP".equals(i)){
+				
+				//退出登陆修改状态为 3 表示离线状态
+				kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
+				//清空Session域中的所有对象以及初始化 Session
+				session.removeAttribute("login");
+				//初始化Session
+				session.invalidate();
+				sessionStatus.setComplete();
+				//返回初始页【登录页】
+				return "APP/login";
+				
+			}
+			//退出登陆修改状态为 3 表示离线状态
+			kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
+			//清空Session域中的所有对象以及初始化 Session
+			session.removeAttribute("login");
+			//初始化Session
+			session.invalidate();
+			sessionStatus.setComplete();
+			//返回初始页【登录页】
+			return "PC/login";
+			
 		}
-		//退出登陆修改状态为 3 表示离线状态
-		kuaiketabService.updateKuaikeStatus(3,kuaikeId);
-		//清空Session域中的所有对象以及初始化 Session
-		session.removeAttribute("login");
-		//初始化Session
-		session.invalidate();
-		sessionStatus.setComplete();
-		//返回初始页【登录页】
-		return "PC/login";
+		
 	}
 
 	/**
@@ -477,7 +512,7 @@ public class R_kuaiketabController {
 	 *            验证码
 	 * @return
 	 */
-	@RequestMapping(value = "phoneLogin/{i}", method = RequestMethod.POST)
+	@RequestMapping(value = "phoneLogin/{i}", method = RequestMethod.GET)
 	public String phoneLogin(ModelMap model, @RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("mobile_code") int mobile_code, HttpServletRequest request,@PathVariable("i") String i) {
 
@@ -494,6 +529,10 @@ public class R_kuaiketabController {
 			//用户名
 			request.getSession().setAttribute("namea", phoneLogin.getKuaikeName());
 			
+			//登陆成功 修改状态为2 【在线】
+			
+			kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(),phoneLogin.getKuaikeId());
+			
 			//清空文本框中的验证码
 			request.getSession().removeAttribute("mobile_code");
 			model.remove("mobile_code");
@@ -506,9 +545,7 @@ public class R_kuaiketabController {
 			//返回首页
 			return "PC/index";
 
-		}
-		//判断是否为手机端
-		if("APP".equals(i)){
+		}else if("APP".equals(i)){
 			
 			//清空文本框中的验证码
 			request.getSession().removeAttribute("mobile_code");
@@ -517,14 +554,17 @@ public class R_kuaiketabController {
 			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
 			//登录失败返回登录页面
 			return "APP/login";
+		}else{
+			//清空文本框中的验证码
+			request.getSession().removeAttribute("mobile_code");
+			model.remove("mobile_code");
+			//给出友好的提示语
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			//登录失败返回登录页面
+			return "PC/login";
+			
 		}
-		//清空文本框中的验证码
-		request.getSession().removeAttribute("mobile_code");
-		model.remove("mobile_code");
-		//给出友好的提示语
-		model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
-		//登录失败返回登录页面
-		return "PC/login";
+		
 	}
 
 	/**

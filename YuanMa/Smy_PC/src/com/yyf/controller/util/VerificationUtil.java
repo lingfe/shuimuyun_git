@@ -70,7 +70,7 @@ public class VerificationUtil {
 			//提示，发货人地址不能为空
 			model.addAttribute("errorShow",ErrorShow.getAlert("发货人地址"+ErrorShow.NON_EMPYT));
 			return false;
-		}else if(StringUtils.isEmpty(tab.getShouhuoNmae())){
+		}else if(StringUtils.isEmpty(tab.getShouhuoName())){
 			//提示，收货人名称不能为空
 			model.addAttribute("errorShow",ErrorShow.getAlert("收货人名称不能为空"+ErrorShow.NON_EMPYT));
 			return false;

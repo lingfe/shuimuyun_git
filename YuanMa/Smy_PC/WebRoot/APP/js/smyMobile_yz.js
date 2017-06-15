@@ -28,7 +28,7 @@ $(function() {
 			return false;
 		}
 		loginJz();
-	})
+	});
 	
 	/*忘记密码*/
 	$("#forgetBtn").click(function() {
@@ -75,7 +75,7 @@ $(function() {
 			return false;
 		}
 		forgeJz();
-	})
+	});
 	/*获取验证码*/
 	$("#forgeYzmBtn").click(function() {
 
@@ -143,11 +143,56 @@ $(function() {
 			return false;
 		}
 		freeJz();
-	})
+	});
 	
+	//申述找回密码
+	$("#appeal").click(function(){
+		var userName = $("#userName").val();
+		var lastPhone = $("#lastPhone").val();
+		var regPhone = $("#regPhone").val();
+		var userName = $("#userName").val();
+		var regYzm = $("#regYzm").val();
+		var reg=/^[\u2E80-\u9FFF]+$/;
+		if(!(lastPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(lastPhone))) {
+			//提示
+		    layer.open({
+		    	content: '曾用手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(userName == "" || userName.length>4 || !(reg.test(userName))) {
+			//提示
+		    layer.open({
+		    	content: '请输入真实姓名 ',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
+			//提示
+		    layer.open({
+		    	content: '现用手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(regYzm == "") {
+			//提示
+		    layer.open({
+		    	content: '请填写验证码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		forPhoneJz();
 	
-	
-	
+		
+	});
 	
 	
 	/*
@@ -210,7 +255,7 @@ $(function() {
 			return false;
 		}
 		regJz();
-	})
+	});
 	
 	/*
 	 * 
@@ -218,8 +263,8 @@ $(function() {
 	 *
 	*/
 	$("#regYzmBtn").click(function() {
-		var regPhone = $("#regPhone").val();
-		if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
+		var kuaikePhone = $("#regPhone").val();
+		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号码错误',
@@ -229,10 +274,28 @@ $(function() {
 			return false;
 		}
 		else {
+			//获取手机验证码
+			var mobile_code = $("#regYzm").val();
+					
+					$.ajax({
+						url : 'getCode/' + kuaikePhone,
+						type : 'POST',
+						data : {
+							mobile_code : mobile_code
+						},
+		
+						//请求成功后触发
+						success : function(data) {
+		
+							$("#regYzm").val(data);
+		
+						}
+					});
+					
 			time(this);
 		}
-	})
-})
+	});
+});
 
 /*
  * 
@@ -296,7 +359,20 @@ function forgeJz() {
 	},2000)
 }
 
-
+/*
+ * 手机换绑成功
+ * 
+ */
+function forPhoneJz() {
+	layer.open({
+    	content: '手机换绑成功...',
+    	skin: 'msg',
+    	time: 2
+  	});
+  	setInterval(function() {
+  		$(".loginCont_form").submit();
+	},2000)
+}
 
 
 

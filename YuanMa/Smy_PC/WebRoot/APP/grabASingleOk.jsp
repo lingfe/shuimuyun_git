@@ -20,6 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
+	<script>
+		setTimeout(function() {
+			$("body").show();
+		},500)
+	</script>
+	
 	</head>
 	<body>
 		<!--【头部】-->

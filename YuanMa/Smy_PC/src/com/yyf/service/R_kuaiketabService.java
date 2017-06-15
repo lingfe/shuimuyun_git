@@ -131,6 +131,20 @@ public interface R_kuaiketabService {
 	public R_kuaiketab selectUpdatePasswordBykuaikeInfo(String kuaikeName, String kuaikePhone, String kuaikeAddress,
 			String kuaikeAddressInfo);
 
+	
+	/**  
+	 *  通过现有的手机号码 对以前的手机号码进行换绑处理  再找回密码进行申诉找回
+	 * @author 杨杰     
+	 * @created 2017年6月15日 下午4:10:00  
+	 * @param newkuaikePhone  现有手机号码
+	 * @param kuaikeName     快客姓名
+	 * @param kuaikePhone   原有手机号码
+	 * @return
+	 */
+	public int updatePasswordByAppeal(String newkuaikePhone,String kuaikeName,String kuaikePhone);
+	
+	
+	
 	/**
 	 * 用户根据手机号 重置密码
 	 * 

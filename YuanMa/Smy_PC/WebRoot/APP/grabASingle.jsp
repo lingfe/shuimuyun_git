@@ -185,7 +185,7 @@
 	<!--【头部】-->
 	<header class="commHeader">
 	<p>
-		当前有<i>6</i>个发货人
+		当前有<i id="i_num">6</i>个发货人
 	</p>
 	</header>
 	<!--【头部】end-->
@@ -316,7 +316,8 @@
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
 		<script type="text/javascript">
-
+		
+											
 			//初始化地图调用JS接口
 			var map = new AMap.Map('container',{
 	            resizeEnable: true
@@ -329,7 +330,7 @@
 		            map: map
 		        });
 		        //关键字查询【可从后台把需要显示的内容通过参数形式传递到 search中】
-		        placeSearch.search('花果园｜火车站 ｜ 花果园酒店');
+		        placeSearch.search("金融街2号 ");
 		    });
 	    	
 	    	
@@ -359,7 +360,7 @@
 			        });
 			
 			    });
-
+		
 		$(function() {
 			$(".gra_bCont").click(function() {
 				//$(this).hide();
@@ -385,8 +386,6 @@
 				$('.grabList_lisst').html("");
 				//调用方法
 				getList(0);
-				
-				
 			});
 			
 			//根据状态得到集合
@@ -404,12 +403,17 @@
 						var page = jQuery.parseJSON(objs);
 						var data = page.list;
 						var result = '';
-						
+						var dtuAdress="";
+						$("#i_num").html(data.length);
 						//循环便利
 						for (var i = 0; i < data.length; i++) {
 							//date 格式化时间
 							var date=new Date(data[i].okDate);
 							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
+							
+							if(data[i].kuaikeAddressInfo!=null){
+								dtuAdress += data[i].kuaikeAddressInfo + " | ";
+							}
 							
 							url= data[i].xiaId + "/" + kuaikeId;
 							//拼接标签
@@ -488,5 +492,26 @@
 				},1000)
 	        }
 		</script>
+	<!-- 验证身份 初级验证 -->
+	<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+			//询问框
+			layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+			
+		}
+	</script>
 </body>
 </html>

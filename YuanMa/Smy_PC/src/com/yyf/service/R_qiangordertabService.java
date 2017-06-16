@@ -17,6 +17,18 @@ import com.yyf.model.R_xiaordertab;
 public interface R_qiangordertabService {
 
 	/**
+	 * 根据快客Id,下单id以及抢单状态，得到抢单记录，返回下单单子数据
+	 * @author lijie
+	 * @created 2017年6月5日 下午3:30:05
+	 * @param kuaikeId    	快客Id
+	 * @param status		抢单状态
+	 * @param xiaId			下单id
+	 * return 下单数据
+	 */
+	public R_xiaordertab queryIdStatusXiaId( String kuaikeId,int status,String xiaId);
+	
+	
+	/**
 	 * 根据快客Id以及抢单状态，得到抢单记录，返回下单单子数据
 	 * @author lijie
 	 * @created 2017年6月5日 下午3:30:05

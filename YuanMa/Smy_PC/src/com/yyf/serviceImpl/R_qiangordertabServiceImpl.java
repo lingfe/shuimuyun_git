@@ -29,6 +29,11 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 	@Autowired
 	private IR_xiaordertabMapper xiaordertabMapper;
 	
+	@Override
+	public R_xiaordertab queryIdStatusXiaId(String kuaikeId, int status, String xiaId) {
+		return qiangordertabMapper.queryIdStatusXiaId(kuaikeId, status, xiaId);
+	}
+	
 
 	@Override
 	public List<R_xiaordertab> queryIdStatus(String kuaikeId, int status) {

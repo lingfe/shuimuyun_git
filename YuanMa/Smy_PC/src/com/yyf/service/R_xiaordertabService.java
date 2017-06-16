@@ -13,6 +13,18 @@ import com.yyf.model.R_xiaordertab;
 public interface R_xiaordertabService {
 
 	/**
+	 *app根据下单状态，快客id，下单id查询下单数据
+	 * @author lijie     
+	 * @created 2017年6月15日 下午3:01:44  
+	 * @param kuaikeId	快客id
+	 * @param status	下单状态
+	 * @param xiaId		下单id
+	 * @return	数据
+	 */
+	R_xiaordertab statusQueryXiaId(int status,String kuaikeId,String xiaId);
+	
+	
+	/**
 	 * 
 	 * app下单发货人信息ajax
 	 * @author lijie     

@@ -19,6 +19,17 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
+	/**
+	 *app根据下单状态，快客id，下单id查询下单数据
+	 * @author lijie     
+	 * @created 2017年6月15日 下午3:01:44  
+	 * @param kuaikeId	快客id
+	 * @param status	下单状态
+	 * @param xiaId		下单id
+	 * @return	数据
+	 */
+	@Select("SELECT * FROM xiaordertab where status=#{status} and kuaikeId=#{kuaikeId} and xiaId=#{xiaId}")
+	R_xiaordertab statusQueryXiaId(@Param("status")int status,@Param("kuaikeId")String kuaikeId,@Param("xiaId")String xiaId);
 	
 	/**
 	 * 
@@ -170,10 +181,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * 
 	 * @author lijie
 	 * @created 2017年5月19日 上午11:31:18
-	 * @param status
-	 *            状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)
-	 * @param xiaId
-	 *            下单id
+	 * @param status     状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)
+	 * @param xiaId      下单id
 	 */
 	@Update("UPDATE xiaordertab SET status=#{status} WHERE xiaId=#{xiaId}")
 	void updateStatus(@Param("status") int status, @Param("xiaId") String xiaId);

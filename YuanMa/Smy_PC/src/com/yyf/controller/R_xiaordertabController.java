@@ -55,6 +55,21 @@ public class R_xiaordertabController {
 	/***********************************************************************************************/
 	
 	/**
+	 * 
+	 * app下单数据模糊搜索
+	 * @author lijie     
+	 * @created 2017年6月16日 下午1:40:06  
+	 * @param searchKey		搜索条件	
+	 * @return	数据集合
+	 */
+	@RequestMapping(value="/singleDataFuzzySearch/{searchKey}",method=RequestMethod.GET)
+	public @ResponseBody List<R_xiaordertab> singleDataFuzzySearch(@PathVariable("searchKey")String searchKey) {
+		//得到数据
+		List<R_xiaordertab> singleDataFuzzySearch = r_xiaordertabService.singleDataFuzzySearch(searchKey);
+		return singleDataFuzzySearch;
+	}
+	
+	/**
 	 * 根据快客Id,下单id以及抢单状态，得到抢单记录，返回下单单子数据
 	 * @author lijie
 	 * @created 2017年6月5日 下午3:30:05

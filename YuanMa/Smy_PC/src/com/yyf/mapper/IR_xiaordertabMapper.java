@@ -19,6 +19,26 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
+	
+	/**
+	 * 
+	 * app下单数据模糊搜索
+	 * @author lijie     
+	 * @created 2017年6月16日 下午1:40:06  
+	 * @param searchKey		搜索条件	
+	 * @return	数据集合
+	 */
+	@Select("SELECT * FROM  xiaordertab xi "
+			+ "WHERE xi.`kuaikeName` 		LIKE '%${searchKey}%'  "
+			+ "OR xi.`kuaikeAddress`		LIKE '%${searchKey}%'  "
+			+ "OR xi.`shopguige` 			LIKE '%${searchKey}%' "
+			+ "OR xi.`kuaikeAddressInfo` 	LIKE '%${searchKey}%' "
+			+ "OR xi.`shouhuoName` 			LIKE '%${searchKey}%' "
+			+ "OR xi.`shouhuoAddressInfo` 	LIKE '%${searchKey}%' "
+			+ "OR xi.`shouhuoAddress` 		LIKE '%${searchKey}%' "
+			+ "OR xi.`shopType` 			LIKE '%${searchKey}%' ")
+	List<R_xiaordertab> singleDataFuzzySearch(@Param("searchKey")String searchKey);
+	
 	/**
 	 *app根据下单状态，快客id，下单id查询下单数据
 	 * @author lijie     

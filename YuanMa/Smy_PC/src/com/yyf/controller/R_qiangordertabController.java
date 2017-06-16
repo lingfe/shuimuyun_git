@@ -1,9 +1,13 @@
 package com.yyf.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +22,8 @@ import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_qiangordertabService;
+import com.yyf.service.R_xiaordertabService;
+import com.yyf.util.JsonUtils;
 import com.yyf.util.R_qiangordertabEnum;
 
 /**
@@ -32,6 +38,10 @@ public class R_qiangordertabController {
 	/* 添加依赖注入 */
 	@Autowired
 	private R_qiangordertabService qiangordertabService;
+	
+	// 自动装配 下单
+	@Autowired
+	private R_xiaordertabService r_xiaordertabService;
 
 	/**
 	 * app根据快客Id得到抢单记录
@@ -133,6 +143,45 @@ public class R_qiangordertabController {
 		return QiangOrde;
 
 	}
+	
+	/**
+	 * 得到所有的下单记录
+	 * @author 杨杰     
+	 * @created 2017年6月16日 下午3:02:22  
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/queryXiaOrderList",method=RequestMethod.POST)
+	@ResponseBody
+	public void getCarParkingBasePark(HttpServletRequest req, HttpServletResponse resp){
+		
+		Map<String, Object> json = new HashMap<String, Object>();
+		
+		
+		List<R_xiaordertab> query = r_xiaordertabService.query();
+		
+		//System.out.println(vcCarParkingBasePark+"----------------------停车场实时监控数据:柱状视图-------------------------------------");
+		//初始化数组变量 长度 ：集合长度
+		String[] kuaikeAddressInfo=new String[query.size()];
+		
+		
+		
+		//循环遍历数组  ：为每个对象赋值
+		for (int i = 0; i < query.size(); i++) {
+			
+			kuaikeAddressInfo[i]=query.get(i).getKuaikeAddressInfo();
+			
+			
+		}
+		
+		//为Map集合对象添加键值对
+		json.put("kuaikeAddressInfo", kuaikeAddressInfo);
+		
+		//返回Json数据
+		JsonUtils.writeJson(json, req, resp);
+		
+	}
+	
 
 	/**
 	 * 得到抢单集合对象

@@ -14,6 +14,28 @@ public interface R_xiaordertabService {
 
 	/**
 	 * 
+	 * app下单数据模糊搜索
+	 * @author lijie     
+	 * @created 2017年6月16日 下午1:40:06  
+	 * @param searchKey		搜索条件	
+	 * @return	数据集合
+	 */
+	List<R_xiaordertab> singleDataFuzzySearch(String searchKey);
+	
+	/**
+	 *app根据下单状态，快客id，下单id查询下单数据
+	 * @author lijie     
+	 * @created 2017年6月15日 下午3:01:44  
+	 * @param kuaikeId	快客id
+	 * @param status	下单状态
+	 * @param xiaId		下单id
+	 * @return	数据
+	 */
+	R_xiaordertab statusQueryXiaId(int status,String kuaikeId,String xiaId);
+	
+	
+	/**
+	 * 
 	 * app下单发货人信息ajax
 	 * @author lijie     
 	 * @created 2017年6月12日 上午10:56:33  

@@ -233,6 +233,25 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	
 	
 	
+	
+	
+	/**
+	 * APP 端 申诉找回密码  通过匹配快客的原有手机号 和 姓名 进行验证数据库中是否存在该用户
+	 * @author 杨杰     
+	 * @created 2017年6月16日 上午9:12:52  
+	 * @param kuaikeName 快客姓名
+	 * @param newkuaikePhone 现有手机号码
+	 * @return
+	 */
+	@Override
+	public R_kuaiketab selectPasswordBykuaikeInfo(String kuaikeName, String newkuaikePhone) {
+		
+		R_kuaiketab tab = kuaiketabMapper.selectPasswordBykuaikeInfo(kuaikeName, newkuaikePhone);
+		
+		return tab;
+	}
+
+	
 	/**
 	 * APP  通过对原手机号码进行换绑  再对密码进行找回
 	 * @author 杨杰     
@@ -250,6 +269,22 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 		return appeal;
 		
 	}
+	
+	/**
+	 * APP端 通过姓名和手机号找回密码
+	 * @author 杨杰     
+	 * @created 2017年6月16日 上午9:24:44  
+	 * @param kuaikeName 快客姓名
+	 * @param kuaikePhone  手机号
+	 */
+	@Override
+	public void updatePasswordByKuaikeNameAndKuaikePhone(String password,String kuaikeName, String kuaikePhone) {
+
+		kuaiketabMapper.updatePasswordByKuaikeNameAndKuaikePhone(password, kuaikeName, kuaikePhone);
+		
+	}
+	
+	
 
 	/**
 	 * 根据快客iD修改手机号码
@@ -263,6 +298,8 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 
 		kuaiketabMapper.updatePhoneById(kuaikePhone, kuaikeId);
 	}
+
+	
 
 	
 

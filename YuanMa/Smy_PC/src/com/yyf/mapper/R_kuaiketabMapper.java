@@ -175,6 +175,17 @@ public interface R_kuaiketabMapper {
 			@Param("kuaikeAddressInfo") String kuaikeAddressInfo);
 
 	
+	/**
+	 * APP 端 申诉找回密码  通过匹配快客的原有手机号 和 姓名 进行验证数据库中是否存在该用户
+	 * @author 杨杰     
+	 * @created 2017年6月16日 上午9:12:52  
+	 * @param kuaikeName 快客姓名
+	 * @param newkuaikePhone 现有手机号码
+	 * @return
+	 */
+	@Select("select * from kuaiketab where kuaikeName=#{kuaikeName} and kuaikePhone=#{newkuaikePhone}")
+	public R_kuaiketab selectPasswordBykuaikeInfo(@Param("kuaikeName") String kuaikeName,@Param("newkuaikePhone") String newkuaikePhone);
+	
 	
 	/**
 	 * APP端 在手机不能接受验证信息时，通过填写现有手机号对原手机号码进行换绑，方便申诉找回密码
@@ -187,6 +198,18 @@ public interface R_kuaiketabMapper {
 	 */
 	@Update("update kuaiketab set kuaikePhone=#{newkuaikePhone} where kuaikeName=#{kuaikeName} and kuaikePhone=#{kuaikePhone}")
 	public int updatePasswordByAppeal(@Param("newkuaikePhone") String newkuaikePhone,@Param("kuaikeName") String kuaikeName,@Param("kuaikePhone") String kuaikePhone);
+	
+	
+	/**
+	 * APP端 通过姓名和手机号找回密码
+	 * @author 杨杰     
+	 * @created 2017年6月16日 上午9:24:44  
+	 * @param kuaikeName
+	 * @param kuaikePhone
+	 */
+	@Update("update kuaiketab set password=#{password} where kuaikeName=#{kuaikeName} and kuaikePhone=#{newkuaikePhone}")
+	public void updatePasswordByKuaikeNameAndKuaikePhone(@Param("password") String password,@Param("kuaikeName") String kuaikeName,@Param("newkuaikePhone") String newkuaikePhone);
+	
 	
 	
 	/**

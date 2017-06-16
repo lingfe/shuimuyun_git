@@ -27,6 +27,20 @@ import com.yyf.model.R_xiaordertab;
 public interface R_qiangordertabMapper {
 
 	/**
+	 * 根据快客Id,下单id以及抢单状态，得到抢单记录，返回下单单子数据
+	 * @author lijie
+	 * @created 2017年6月5日 下午3:30:05
+	 * @param kuaikeId    	快客Id
+	 * @param status		抢单状态
+	 * @param xiaId			下单id
+	 * return 下单数据
+	 */
+	@Select(value="SELECT xi.* "	
+			+ " FROM qiangordertab q INNER JOIN xiaordertab xi ON q.`xiaId`=xi.`xiaId` "
+			+ " WHERE q.kuaikeId=#{kuaikeId} AND q.status=#{status}  AND q.xiaId=#{xiaId}")
+	public R_xiaordertab queryIdStatusXiaId(@Param("kuaikeId") String kuaikeId,@Param("status")int status,@Param("xiaId")String xiaId);
+	
+	/**
 	 * 根据快客Id以及抢单状态，得到抢单记录，返回下单单子数据
 	 * @author lijie
 	 * @created 2017年6月5日 下午3:30:05

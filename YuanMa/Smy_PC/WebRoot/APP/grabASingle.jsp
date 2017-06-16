@@ -315,50 +315,101 @@
     	<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
+		<script src="//webapi.amap.com/ui/1.0/main.js"></script>
+		<script type="text/javascript">
+	        $(function() {
+	        	//定义数组
+	        	
+				var kuaikeAddressInfo = [];
+				//Ajax请求后台数据 并加载地图
+				$.ajax({
+					url : 'queryXiaOrderList',
+					dataType : "json",
+					type : 'POST',
+					//请求成功后触发
+					success : function(json) {
+						kuaikeAddressInfo = json.kuaikeAddressInfo;
+						//初始化地图调用JS接口
+						var map = new AMap.Map('container', {
+							resizeEnable : true
+						});
+						//添加地图放大控件
+						  AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+						       var zoomCtrl2 = new BasicControl.Zoom({
+						            position: 'br',
+						             showZoomNum: true
+						       });
+						
+						       map.addControl(zoomCtrl2);
+						    });
+						
+						//关键字的搜索
+						AMap.service([ "AMap.PlaceSearch" ], function() {
+							var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+								pageSize : kuaikeAddressInfo.length, //这里是显示你的单子数  从后台传一个 单子数量
+								city : "0851", //城市
+								map : map
+							});
+							//关键字查询【可从后台把需要显示的内容通过参数形式传递到 search中】
+							placeSearch.search(kuaikeAddressInfo);
+						});
+						
+		
+						//添加地图控件【得到贵阳的中心地区】
+						AMap.plugin('AMap.Geocoder', function() {
+							var geocoder = new AMap.Geocoder({
+								city : "0851" //城市，默认：“全国”
+							});
+							var marker = new AMap.Marker({
+								map : map,
+								bubble : true
+							});
+							//给地图添加双击点击事件 地图放大效果
+							map.on('dblclick', function(e) {
+								marker.setPosition(e.lnglat);
+								//得到坐标值
+								geocoder.getAddress(e.lnglat, function(status, result) {
+									if (status == 'complete') {
+										//地址格式转化
+										var test = result.regeocode.formattedAddress
+										//打印是否获取到地址
+										//给地图添加单点击事件 进行页面的跳转
+											map.on('click', function(e) {
+												marker.setPosition(e.lnglat);
+												//得到坐标值
+												geocoder.getAddress(e.lnglat, function(status, result) {
+													if (status == 'complete') {
+														//地址格式转化
+														var test = result.regeocode.formattedAddress
+														//打印是否获取到地址
+														alert(test);
+														//单击跳转页面
+														//路径跳转
+														window.location.href = "APP/grabASingleOk.jsp"
+													}
+												});
+											});
+										//双击返回false
+										//不跳转
+										return false;
+									}
+								});
+							});
+		
+						});
+		
+					}
+				});
+		
+		
+		});
+		
+		
+		</script>
+		
+		
 		<script type="text/javascript">
 
-			//初始化地图调用JS接口
-			var map = new AMap.Map('container',{
-	            resizeEnable: true
-	    	});
-	    	//关键字的搜索
-	    	AMap.service(["AMap.PlaceSearch"], function() {
-		        var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
-		            pageSize: 5,
-		            city: "0851", //城市
-		            map: map
-		        });
-		        //关键字查询【可从后台把需要显示的内容通过参数形式传递到 search中】
-		        placeSearch.search('花果园｜火车站 ｜ 花果园酒店');
-		    });
-	    	
-	    	
-	    	   //添加地图控件【得到贵阳的中心地区】
-				AMap.plugin('AMap.Geocoder',function(){
-			    var geocoder = new AMap.Geocoder({
-			        city: "0851"//城市，默认：“全国”
-			     });
-			    var marker = new AMap.Marker({
-			            map:map,
-			            bubble:true
-			     });
-			     //给地图添加点击事件
-			     map.on('click',function(e){
-			            marker.setPosition(e.lnglat);
-			            //得到坐标值
-			            geocoder.getAddress(e.lnglat,function(status,result){
-			              if(status=='complete'){
-			              //地址格式转化
-			                 var test= result.regeocode.formattedAddress
-			                 //打印是否获取到地址
-			                alert(test);
-			                //路径跳转
-			                 window.location.href="<%=basePath%>APP/grabASingleOk.jsp";
-			              }
-			            });
-			        });
-			
-			    });
 
 		$(function() {
 			$(".gra_bCont").click(function() {
@@ -404,13 +455,13 @@
 						var page = jQuery.parseJSON(objs);
 						var data = page.list;
 						var result = '';
-						
+						var addressTo="";
 						//循环便利
 						for (var i = 0; i < data.length; i++) {
 							//date 格式化时间
 							var date=new Date(data[i].okDate);
 							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
-							
+							addressTo+=data[i].kuaikeAddressInfo+" | "
 							url= data[i].xiaId + "/" + kuaikeId;
 							//拼接标签
 							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
@@ -422,6 +473,8 @@
 											</div> \
 									  </a></li>";
 						}
+						
+						
 						$('.grabList_lisst').append(result);
 					},
 					error : function(xhr, type) {

@@ -533,6 +533,73 @@ $(function() {
 		window.location.href="quickSf.html";
 		
 	})
+	
+	//添加银行卡
+	$("#addBackBtn").click(function() {
+		var backName = $("#backName").val();
+		var backKahao = $("#backKahao").val();
+		var backPhone = $("#backPhone").val();
+		var reg=/^[\u2E80-\u9FFF]+$/;
+		var bank = /^d{19}$/g; // 以19位数字开头，以19
+		if(backName == "" || backName.length>4 || !(reg.test(backName))) {
+			//提示
+		    layer.open({
+		    	content: '请输入持卡人真实姓名 ',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		/*else if( !bank.test(backKahao)) {
+			//提示
+		    layer.open({
+		    	content: '请输入正确的银行卡号 ',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}*/
+		else if(!(backPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(backPhone))) {
+			//提示
+		    layer.open({
+		    	content: '手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
+	    $("body").append(jz);//把元素加载body
+	    setTimeout(function() {
+	    	$(".jzCont").remove();
+	    	layer.open({
+			    title: ['绑定成功！','background-color: #418bc8; color:#fff;'],
+			    content: "<div class='addBackMode'> \
+				    			<a href='addBank.html'>继续添加 ?</a> \
+			    			<a href='index.html'>前往首页</a> \
+			    		  </div>",
+			   
+		 
+			});
+	    },1000)
+		
+		//window.location.href="addBackNext.html";
+	})
+	
+	$("#backPhone").bind(' input propertychange ',function() {
+		var backKahao = $("#backKahao").val();
+		var backName = $("#backName").val();
+		var backPhone = $("#backPhone").val();
+		if(backKahao == '' && backName == '' && backPhone == '') {
+			$("#addBackBtn").attr('disabled',"true");
+		}
+		else {
+			$("#addBackBtn").removeAttr('disabled').css({
+				"background": "#418bc8",
+				"color" : "#fff"
+			});
+		}
+	})
 })
 //申述提交
 function appeal(){

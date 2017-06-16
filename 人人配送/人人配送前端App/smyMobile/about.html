@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" href="css/smyMobile.css" />
+		<title>关于我们</title>
+		<style>
+			.abTopImg {
+				display: block;
+				width: 1rem;
+				height: auto;
+				margin: 0.15rem auto;
+				margin-bottom: 0.06rem;
+			}
+			.abVbis {
+				text-align: center;
+				font-size: 0.12rem;
+				color: #418bc8;
+			}
+			.abCont {
+				width: 100%;
+				height: auto;
+				overflow: hidden;
+				background: rgb(255,255,255);
+				margin-top: 0.15rem;
+			}
+			.abCont_item {
+				display: block;
+				position: relative;
+				width: 100%;
+				height: 0.4rem;
+				line-height: 0.4rem;
+				text-decoration: none;
+				color: #666;
+				font-size: 0.12rem;
+				box-sizing: border-box;
+				border-bottom: 1px solid #eee;
+				padding: 0 20px;
+			}
+			.abCont_item:before {
+				position: absolute;
+				top: 50%;
+				right: 20px;
+				content: '';
+				width: 10px;
+				height: 18px;
+				background: url(images/icon/consignee_right.png) no-repeat;
+				background-size: cover;
+				margin-top: -8px;
+			}
+			.abCont_item span {
+				float: right;
+				font-size: 0.1rem;
+				margin-right: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--【头部】-->
+		<header class="commHeader">
+			<a class="commHeader_l" href="#">
+				<img title="" alt="" src="images/icon/arow_left.png" />
+			</a>
+			<p>关于我们</p>
+		</header>
+		<!--【头部】end-->
+		
+		<img class="abTopImg" title="" alt="" src="images/icon/logo.png" width="100%">
+		<p class="abVbis">人人配送v1.0</p>
+		<div class="abCont">
+			<a href="" class="abCont_item">
+				检查更新
+				<span>当前已是最新版本</span>
+			</a>
+			<a href="aboutGn.html" class="abCont_item">功能介绍</a>
+			<a href="anqtix.html" class="abCont_item">安全提醒</a>
+		</div>
+		
+		<script type="text/javascript" src="js/smyMobile.js" ></script>
+	</body>
+</html>

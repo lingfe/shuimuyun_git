@@ -586,7 +586,7 @@ $(function() {
 		//window.location.href="addBackNext.html";
 	})
 	
-	$("#backPhone").bind(' input propertychange ',function() {
+	/*$("#backPhone").bind(' input propertychange ',function() {
 		var backKahao = $("#backKahao").val();
 		var backName = $("#backName").val();
 		var backPhone = $("#backPhone").val();
@@ -599,7 +599,7 @@ $(function() {
 				"color" : "#fff"
 			});
 		}
-	})
+	})*/
 })
 //申述提交
 function appeal(){

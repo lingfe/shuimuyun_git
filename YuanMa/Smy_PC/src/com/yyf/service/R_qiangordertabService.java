@@ -3,6 +3,9 @@ package com.yyf.service;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
 import com.yyf.model.R_xiaordertab;
@@ -13,6 +16,17 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface R_qiangordertabService {
 
+	/**
+	 * 根据快客Id以及抢单状态，得到抢单记录，返回下单单子数据
+	 * @author lijie
+	 * @created 2017年6月5日 下午3:30:05
+	 * @param kuaikeId    	快客Id
+	 * @param status		抢单状态
+	 * return 下单数据集合
+	 */
+	public List<R_xiaordertab> queryIdStatus(String kuaikeId,int status);
+	
+	
 	/**
 	 * 我要抢单
 	 * 

@@ -10,16 +10,6 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class R_xiaordertab {
 
-	private String kuaikeId;//ALTER TABLE xiaordertab ADD kuaikeId VARCHAR(200) NOT NULL COMMENT '快客id';
-	
-	public String getKuaikeId() {
-		return kuaikeId;
-	}
-
-	public void setKuaikeId(String kuaikeId) {
-		this.kuaikeId = kuaikeId;
-	}
-
 	@Override
 	public String toString() {
 		return "R_xiaordertab [xiaId=" + xiaId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
@@ -276,5 +266,15 @@ public class R_xiaordertab {
 
 	public void setPayment(int payment) {
 		this.payment = payment;
+	}
+	
+	private String kuaikeId;//ALTER TABLE xiaordertab ADD kuaikeId VARCHAR(200) NOT NULL COMMENT '快客id';
+	
+	public String getKuaikeId() {
+		return kuaikeId;
+	}
+
+	public void setKuaikeId(String kuaikeId) {
+		this.kuaikeId = kuaikeId;
 	}
 }

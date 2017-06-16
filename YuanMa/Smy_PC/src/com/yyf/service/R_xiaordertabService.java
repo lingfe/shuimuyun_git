@@ -2,10 +2,6 @@ package com.yyf.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 
@@ -53,7 +49,7 @@ public interface R_xiaordertabService {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	void orderSbmit( String xiaId,String shopType,float shopNumer, int shopzholiang,String timeString);
+	void orderSbmit( String xiaId,String shopType,float shopNumer, int shopzholiang,String timeString,String kuaikeId);
 	
 	/**
 	 * 
@@ -85,7 +81,7 @@ public interface R_xiaordertabService {
 	 * @created 2017年5月28日 上午9:09:36  
 	 * @param status 下单状态
 	 */
-	List<R_xiaordertab> statusQuery(int status);
+	List<R_xiaordertab> statusQuery(int status,String kuaikeId);
 	
 	/**
 	 * 

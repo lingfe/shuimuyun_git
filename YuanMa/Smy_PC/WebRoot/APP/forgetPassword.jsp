@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					
 					<button type="button" class="mui-btn loginBtn mui-btn-block" id="forgetBtn">确认</button>
-					<a class="free_login forget_appeal">手机丢了或不在身边?申诉找回</a>
+					<a class="free_login forget_appeal" href="<%=basePath %>APP/appeal.jsp">手机丢了或不在身边?申诉找回</a>
 				</form>
 			</div>
 		</div>

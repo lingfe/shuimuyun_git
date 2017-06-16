@@ -233,15 +233,32 @@ public class R_kuaiketabController {
 				model.remove("mobile_code");
 
 			} else {
-				// 清空Session中的用户电话号码 和密码信息
-				request.getSession().setAttribute("uname", uname);
-				request.getSession().removeAttribute("newPass");
-				// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
-				request.getSession().setAttribute("namea", login.getKuaikeName());
-				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
-				//清空文本框中的验证码
-				request.getSession().removeAttribute("mobile_code");
-				model.remove("mobile_code");
+				
+				if("APP".equals(i)){
+					// 清空Session中的用户电话号码 和密码信息
+					request.getSession().removeAttribute("uname");
+					request.getSession().removeAttribute("newPass");
+					// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
+					request.getSession().setAttribute("namea", login.getKuaikeName());
+					request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
+					//清空文本框中的验证码
+					request.getSession().removeAttribute("mobile_code");
+					model.remove("mobile_code");
+				}else{
+					
+					// 清空Session中的用户电话号码 和密码信息
+					request.getSession().setAttribute("uname", uname);
+					request.getSession().removeAttribute("newPass");
+					// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
+					request.getSession().setAttribute("namea", login.getKuaikeName());
+					request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
+					//清空文本框中的验证码
+					request.getSession().removeAttribute("mobile_code");
+					model.remove("mobile_code");
+					
+				}
+				
+				
 			
 			}
 			if("APP".equals(i)){
@@ -283,6 +300,8 @@ public class R_kuaiketabController {
 				kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 				//清空Session域中的对象及初始化Seesion
 				session.removeAttribute("login");
+				session.removeAttribute("uname");
+				
 				session.invalidate();
 				sessionStatus.setComplete();
 				//返回初始页  【登录页】
@@ -295,6 +314,7 @@ public class R_kuaiketabController {
 			kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 			//清空Session域中的对象及初始化Seesion
 			session.removeAttribute("login");
+			session.removeAttribute("uname");
 			session.invalidate();
 			sessionStatus.setComplete();
 			//返回初始页  【登录页】
@@ -307,6 +327,7 @@ public class R_kuaiketabController {
 				kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 				//清空Session域中的所有对象以及初始化 Session
 				session.removeAttribute("login");
+				session.removeAttribute("uname");
 				//初始化Session
 				session.invalidate();
 				sessionStatus.setComplete();
@@ -318,6 +339,7 @@ public class R_kuaiketabController {
 			kuaiketabService.updateKuaikeStatus(3,tab.getKuaikeId());
 			//清空Session域中的所有对象以及初始化 Session
 			session.removeAttribute("login");
+			session.removeAttribute("uname");
 			//初始化Session
 			session.invalidate();
 			sessionStatus.setComplete();
@@ -452,6 +474,38 @@ public class R_kuaiketabController {
 		return "PC/pwdRetrieval";
 	}
 
+	/**
+	 * 通过现有的手机号码 对以前的手机号码进行换绑处理  再找回密码进行申诉找回
+	 * @author 杨杰     
+	 * @created 2017年6月15日 下午4:21:55  
+	 * @param model
+	 * @param newkuaikePhone
+	 * @param kuaikeName
+	 * @param kuaikePhone
+	 * @return
+	 */
+	@RequestMapping(value="/updatePasswordByAppeal",method=RequestMethod.POST)
+	public String updatePasswordByAppeal(ModelMap model,
+			@RequestParam("newkuaikePhone") String newkuaikePhone,
+			@RequestParam("kuaikeName") String kuaikeName,
+			@RequestParam("kuaikePhone") String kuaikePhone){
+		int abc=kuaiketabService.updatePasswordByAppeal(newkuaikePhone, kuaikeName, kuaikePhone);
+		
+		if(abc>0){
+			model.remove("mobile_code");
+			System.out.println(abc+"****************************************");
+			return "APP/resetPassword";
+		 }
+		
+		model.remove("mobile_code");
+		return "APP/appeal";
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * //根据 快客Id 删除快客信息
 	 * 

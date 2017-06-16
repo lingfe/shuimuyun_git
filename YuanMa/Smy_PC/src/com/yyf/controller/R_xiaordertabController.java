@@ -9,12 +9,9 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.UUIDEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.databind.deser.std.JdkDeserializers.UUIDDeserializer;
 import com.yyf.model.City;
 import com.yyf.model.Commenttab;
 import com.yyf.model.PageModel;
@@ -59,30 +55,18 @@ public class R_xiaordertabController {
 	/***********************************************************************************************/
 	
 	/**
-	 * 
-	 * 通过ajax请求，根据状态返回集合
-	 * 
+	 * 根据快客Id以及抢单状态，得到抢单记录，返回下单单子数据
 	 * @author lijie
-	 * @created 2017年5月28日 上午9:05:17
-	 * @param status
-	 * @return
+	 * @created 2017年6月5日 下午3:30:05
+	 * @param kuaikeId    	快客Id
+	 * @param status		抢单状态
+	 * return 下单数据集合
 	 */
-	@RequestMapping(value = "/xiadanAjax/{status}", method = RequestMethod.GET)
-	public @ResponseBody PageModel<R_xiaordertab> ajxaJson(@PathVariable("status") int status) {
-		// 分页模型
-		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
-		// 设置分页数值
-		page.setNumCount(r_xiaordertabService.statusQueryCount(status));
-		page.setStatus(status);
-		// 得到分页数据,默认
-		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQueryPaging(status,
-				((page.getPageIndex() - 1) * page.getPageNum()), page.getPageNum());
-		
-		// 设置到page
-		page.setList(statusQuery);
-		System.out.println(page.toString());
-
-		return page;
+	@RequestMapping(value="/queryIdStatus/{kuaikeId}/{status}",method=RequestMethod.GET)
+	public @ResponseBody List<R_xiaordertab> queryIdStatus(@PathVariable("kuaikeId")String kuaikeId,@PathVariable("status")int status){
+		//得到数据
+		List<R_xiaordertab> queryIdStatus = r_qiangordertabService.queryIdStatus(kuaikeId, status);
+		return queryIdStatus;
 	}
 	
 	/**
@@ -163,6 +147,21 @@ public class R_xiaordertabController {
 	/***********************************************************************************************/
 	/***********************************       APP端                    **************************************/
 	/***********************************************************************************************/
+	
+	/**
+	 * app根据快客id以及状态得到下单数据
+	 * @author lijie     
+	 * @created 2017年6月15日 下午3:01:44  
+	 * @param kuaikeId	快客id
+	 * @param status	下单状态
+	 * @return	数据集合
+	 */
+	@RequestMapping(value="/getXiaIdStatusList/{kuaikeId}/{status}",method=RequestMethod.GET)
+	public @ResponseBody List<R_xiaordertab> getXiaIdStatusList(@PathVariable("kuaikeId")String kuaikeId,@PathVariable("status")int status){
+		//得到数据
+		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQuery(status,kuaikeId);
+		return statusQuery;
+	}
 	
 	/**
 	 * app根据下单id跳转到抢单页面
@@ -282,13 +281,14 @@ public class R_xiaordertabController {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}", method = RequestMethod.POST)
+	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}/{kuaikeId}", method = RequestMethod.POST)
 	public @ResponseBody String orderSbmit(@PathVariable("xiaId") String xiaId,
 			@PathVariable("shopType") String shopType, @PathVariable("shopNumer") float shopNumer,
 			@PathVariable("shopzholiang") int shopzholiang,
-			@PathVariable("timeString") String timeString,HttpServletRequest request) {
+			@PathVariable("timeString") String timeString,
+			@PathVariable("kuaikeId") String kuaikeId,HttpServletRequest request) {
 		try {
-			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString);
+			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString,kuaikeId);
 			//清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
 			request.getSession().removeValue("xiaId");
@@ -304,6 +304,34 @@ public class R_xiaordertabController {
 	/***********************************************************************************************/
 	/***********************************       PC端             *******************************************/
 	/***********************************************************************************************/
+	
+	/**
+	 * 
+	 * 通过ajax请求，根据状态返回集合
+	 * 
+	 * @author lijie
+	 * @created 2017年5月28日 上午9:05:17
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping(value = "/xiadanAjax/{status}", method = RequestMethod.GET)
+	public @ResponseBody PageModel<R_xiaordertab> ajxaJson(@PathVariable("status") int status) {
+		// 分页模型
+		PageModel<R_xiaordertab> page = new PageModel<R_xiaordertab>();
+		// 设置分页数值
+		page.setNumCount(r_xiaordertabService.statusQueryCount(status));
+		page.setStatus(status);
+		// 得到分页数据,默认
+		List<R_xiaordertab> statusQuery = r_xiaordertabService.statusQueryPaging(status,
+				((page.getPageIndex() - 1) * page.getPageNum()), page.getPageNum());
+		
+		// 设置到page
+		page.setList(statusQuery);
+		System.out.println(page.toString());
+
+		return page;
+	}
+	
 	/**
 	 * 
 	 * 通过ajax请求，根据状态返回分页集合

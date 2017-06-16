@@ -7,9 +7,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yyf.inter.InterJDBC;
@@ -68,11 +65,12 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString} WHERE xiaid=#{xiaId}")
+	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString},kuaikeId=#{kuaikeId} WHERE xiaid=#{xiaId}")
 	void orderSbmit(@Param("xiaId") String xiaId,
 			@Param("shopType") String shopType, @Param("shopNumer") float shopNumer,
 			@Param("shopzholiang") int shopzholiang,
-			@Param("timeString") String timeString);
+			@Param("timeString") String timeString,
+			@Param("kuaikeId") String kuaikeId);
 	
 	/**
 	 * 
@@ -105,8 +103,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年5月28日 上午9:09:36  
 	 * @param status 下单状态
 	 */
-	@Select("SELECT * FROM xiaordertab where status=#{status}")
-	List<R_xiaordertab> statusQuery(@Param("status")int status);
+	@Select("SELECT * FROM xiaordertab where status=#{status} and kuaikeId=#{kuaikeId}")
+	List<R_xiaordertab> statusQuery(@Param("status")int status,@Param("kuaikeId")String kuaikeId);
 	
 	/**
 	 * 
@@ -172,10 +170,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * 
 	 * @author lijie
 	 * @created 2017年5月19日 上午11:31:18
-	 * @param status
-	 *            状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)
-	 * @param xiaId
-	 *            下单id
+	 * @param status     状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)
+	 * @param xiaId      下单id
 	 */
 	@Update("UPDATE xiaordertab SET status=#{status} WHERE xiaId=#{xiaId}")
 	void updateStatus(@Param("status") int status, @Param("xiaId") String xiaId);

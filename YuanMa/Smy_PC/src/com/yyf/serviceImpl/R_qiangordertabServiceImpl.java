@@ -30,6 +30,12 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 	private IR_xiaordertabMapper xiaordertabMapper;
 	
 
+	@Override
+	public List<R_xiaordertab> queryIdStatus(String kuaikeId, int status) {
+		return qiangordertabMapper.queryIdStatus(kuaikeId, status);
+	}
+	
+	
 	/**
 	 * 添加一条枪弹记录信息
 	 * @author 杨杰     

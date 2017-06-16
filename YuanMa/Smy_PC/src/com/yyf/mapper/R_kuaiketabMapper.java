@@ -138,7 +138,7 @@ public interface R_kuaiketabMapper {
 	public R_kuaiketab phoneLogin(@Param("kuaikePhone") String phone);
 
 	/**
-	 * 人工找回秘密
+	 * PC端人工找回秘密
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月24日 上午10:47:39
@@ -161,7 +161,7 @@ public interface R_kuaiketabMapper {
 
 	
 	/**
-	 * 人工找回密码  通过知道快客的姓名、电话、地址看数据库中是否存在该用户信息
+	 * PC端 人工找回密码  通过知道快客的姓名、电话、地址看数据库中是否存在该用户信息
 	 * @author 杨杰     
 	 * @created 2017年5月26日 上午9:49:15  
 	 * @param kuaikeName 快客姓名
@@ -174,6 +174,21 @@ public interface R_kuaiketabMapper {
 			@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeAddress") String kuaikeAddress,
 			@Param("kuaikeAddressInfo") String kuaikeAddressInfo);
 
+	
+	
+	/**
+	 * APP端 在手机不能接受验证信息时，通过填写现有手机号对原手机号码进行换绑，方便申诉找回密码
+	 * @author 杨杰     
+	 * @created 2017年6月15日 下午4:03:07  
+	 * @param newkuaikePhone  现有手机号码
+	 * @param kuaikeName  快客姓名
+	 * @param kuaikePhone  原有手机号
+	 * @return
+	 */
+	@Update("update kuaiketab set kuaikePhone=#{newkuaikePhone} where kuaikeName=#{kuaikeName} and kuaikePhone=#{kuaikePhone}")
+	public int updatePasswordByAppeal(@Param("newkuaikePhone") String newkuaikePhone,@Param("kuaikeName") String kuaikeName,@Param("kuaikePhone") String kuaikePhone);
+	
+	
 	/**
 	 * 用户注册【申请】
 	 * 

@@ -6,7 +6,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,15 +27,18 @@ import com.yyf.model.R_xiaordertab;
 public interface R_qiangordertabMapper {
 
 	/**
-	 * app根据快客Id得到抢单记录
+	 * 根据快客Id以及抢单状态，得到抢单记录，返回下单单子数据
 	 * @author lijie
 	 * @created 2017年6月5日 下午3:30:05
 	 * @param kuaikeId    	快客Id
 	 * @param status		抢单状态
-	 * @param model
+	 * return 下单数据集合
 	 */
-	@Select("SELECT * FROM qiangordertab AS q INNER JOIN kuaiketab k ON q.`kuaikeId`=k.`kuaikeId` where k.kuaikeId=#{kuaikeId}")
-	public List<R_qiangordertab> queryIdStatus(@Param("kuaikeId") String kuaikeId,@Param("status")int status);
+	//@Select(value="SELECT xi.kuaikeId,xi.xiaId,xi.kuaikeName,xi.kuaikePhone,xi.kuaikeAddress,xi.shouhuoName,xi.shouhuoPhone,xi.shouhuoAddress,xi.shouhuoAddressInfo,xi.quhouDate,xi.kaikePrioes,xi.status,xi.okDate,xi.shopName,xi.Shopzholiang,xi.ShopNumer,xi.Shopprices,xi.shopguige,xi.Shopdate,xi.kuaikeAddressInfo,xi.shopType,xi.timeString,xi.shopImages,xi.payment"
+	@Select(value="SELECT xi.* "	
+			+ " FROM qiangordertab q INNER JOIN xiaordertab xi ON q.`xiaId`=xi.`xiaId` "
+			+ " WHERE q.kuaikeId=#{kuaikeId} AND q.status=#{status}")
+	public List<R_xiaordertab> queryIdStatus(@Param("kuaikeId") String kuaikeId,@Param("status")int status);
 	
 	
 	/**

@@ -21,6 +21,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath %>APP/css/mui.min.css" />
 	<link rel="stylesheet" href="<%=basePath %>APP/css/layer.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>APP/css/smyMobile.css" />
+	
+	<script>
+			setTimeout(function() {
+				$("body").show();
+			},500);
+		</script>
+	
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
@@ -32,7 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</header>
 
 			<div class="loginCont">
-				<form class="loginCont_form">
+				<form class="loginCont_form" action="<%=basePath %>updatePwdByKNameAndKPhone" method="post">
+				<input type="hidden" value="${tabo.kuaikeName }" name="kuaikeName">
+				<input type="hidden" value="${tabo.kuaikePhone }" name="newkuaikePhone">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath %>APP/images/icon/pwd.png" />
 						<input class="right loginCont_form_itemAll mui-input-password"id="forgePwd" name="password" type="password" placeholder="请输入密码" />

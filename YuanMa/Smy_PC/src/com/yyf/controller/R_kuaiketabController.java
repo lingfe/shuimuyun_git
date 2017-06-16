@@ -191,7 +191,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 用户根据用户名&密码登陆 一句话
+	 * PC AND APP 用户根据用户名&密码登陆 
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月5日 下午4:25:52
@@ -280,7 +280,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 注销登录
+	 * PC AND APP注销登录
 	 * 
 	 * @author YangJie
 	 * @created 2017年6月2日 上午11:03:45
@@ -351,7 +351,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 快客重置密码
+	 * PC ADN APP 通过手机号重置密码
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月20日 上午11:19:34
@@ -388,7 +388,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 人工找回密码
+	 * PC 人工找回密码
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月20日 上午11:35:15
@@ -408,7 +408,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 人工找回密码 填写个人资料信息
+	 * PC 人工找回密码 填写个人资料信息
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月24日 上午11:07:39
@@ -438,7 +438,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 通过人工找回密码 【查询数据库中用户信息是否匹配】
+	 * PC 通过人工找回密码 【查询数据库中用户信息是否匹配】
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月26日 上午10:08:10
@@ -474,14 +474,15 @@ public class R_kuaiketabController {
 		return "PC/pwdRetrieval";
 	}
 
+	
 	/**
-	 * 通过现有的手机号码 对以前的手机号码进行换绑处理  再找回密码进行申诉找回
+	 * APP 端通过现有的手机号码 对以前的手机号码进行换绑处理  再找回密码进行申诉找回
 	 * @author 杨杰     
 	 * @created 2017年6月15日 下午4:21:55  
-	 * @param model
-	 * @param newkuaikePhone
-	 * @param kuaikeName
-	 * @param kuaikePhone
+	 * @param model 集合对象
+	 * @param newkuaikePhone  现有手机号
+	 * @param kuaikeName  用户名称
+	 * @param kuaikePhone  原有手机号
 	 * @return
 	 */
 	@RequestMapping(value="/updatePasswordByAppeal",method=RequestMethod.POST)
@@ -489,20 +490,44 @@ public class R_kuaiketabController {
 			@RequestParam("newkuaikePhone") String newkuaikePhone,
 			@RequestParam("kuaikeName") String kuaikeName,
 			@RequestParam("kuaikePhone") String kuaikePhone){
+		//手机换绑
 		int abc=kuaiketabService.updatePasswordByAppeal(newkuaikePhone, kuaikeName, kuaikePhone);
-		
+		//判断是否换绑成功
 		if(abc>0){
+			//查询现有手机号码 和用户民去修改密码
+			R_kuaiketab tabo = kuaiketabService.selectPasswordBykuaikeInfo(kuaikeName, newkuaikePhone);
+			System.out.println(tabo);
+			model.addAttribute("tabo", tabo);
 			model.remove("mobile_code");
-			System.out.println(abc+"****************************************");
 			return "APP/resetPassword";
 		 }
 		
 		model.remove("mobile_code");
 		return "APP/appeal";
 	}
-	
-	
-	
+
+	/**
+	 * APP端 通过姓名和手机号找回密码
+	 * @author 杨杰     
+	 * @created 2017年6月16日 上午9:24:44  
+	 * @param kuaikeName
+	 * @param kuaikePhone
+	 */
+	@RequestMapping(value="updatePwdByKNameAndKPhone",method=RequestMethod.POST)
+	public String updatePasswordByKuaikeNameAndKuaikePhone(ModelMap model,@RequestParam("password") String password,@RequestParam("kuaikeName") String kuaikeName,@RequestParam("newkuaikePhone") String newkuaikePhone){
+		
+		String Md5password = Md5Util.md5(password);
+		
+		R_kuaiketab tabo = kuaiketabService.selectPasswordBykuaikeInfo(kuaikeName, newkuaikePhone);
+		
+		if(tabo!=null && !"".equals(tabo)){
+			kuaiketabService.updatePasswordByKuaikeNameAndKuaikePhone(Md5password, kuaikeName, newkuaikePhone);
+
+			return "APP/login";
+
+		}
+		return "APP/appeal";
+	};
 	
 	
 	
@@ -530,7 +555,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 根据自己的Id查看自己的注册信息
+	 *APP 根据自己的Id查看自己的注册信息
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月20 日 下午1:45:26
@@ -554,7 +579,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 快捷登陆 【根据手机号码直接接收验证码进行登陆】
+	 * PC ADN APP 快捷登陆 【根据手机号码直接接收验证码进行登陆】
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月23日 上午9:37:00

@@ -98,7 +98,7 @@ public interface R_kuaiketabService {
 	public void findBackPassWord(String password,String kuaikePhone);
 
 	/**
-	 * 人工找回密码
+	 * PC 人工找回密码
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月24日 上午10:50:57
@@ -119,7 +119,7 @@ public interface R_kuaiketabService {
 
 	
 	/**
-	 * 通过人工找回密码   查询数据中是否存在该用户  则进行匹配  并且得到 对应的返回结果 
+	 * PC 通过人工找回密码   查询数据中是否存在该用户  则进行匹配  并且得到 对应的返回结果 
 	 * @author 杨杰     
 	 * @created 2017年5月26日 上午9:53:00  
 	 * @param kuaikeName  快客姓名
@@ -132,8 +132,19 @@ public interface R_kuaiketabService {
 			String kuaikeAddressInfo);
 
 	
+	
+	/**
+	 * APP 端 申诉找回密码  通过匹配快客的原有手机号 和 姓名 进行验证数据库中是否存在该用户
+	 * @author 杨杰     
+	 * @created 2017年6月16日 上午9:12:52  
+	 * @param kuaikeName 快客姓名
+	 * @param kuaikePhone 原有手机号码
+	 * @return
+	 */
+	public R_kuaiketab selectPasswordBykuaikeInfo(String kuaikeName,String newkuaikePhone);
+	
 	/**  
-	 *  通过现有的手机号码 对以前的手机号码进行换绑处理  再找回密码进行申诉找回
+	 * APP 通过现有的手机号码 对以前的手机号码进行换绑处理  再找回密码进行申诉找回
 	 * @author 杨杰     
 	 * @created 2017年6月15日 下午4:10:00  
 	 * @param newkuaikePhone  现有手机号码
@@ -142,6 +153,16 @@ public interface R_kuaiketabService {
 	 * @return
 	 */
 	public int updatePasswordByAppeal(String newkuaikePhone,String kuaikeName,String kuaikePhone);
+	
+	
+	/**
+	 * APP端 通过姓名和手机号找回密码
+	 * @author 杨杰     
+	 * @created 2017年6月16日 上午9:24:44  
+	 * @param kuaikeName
+	 * @param kuaikePhone
+	 */
+	public void updatePasswordByKuaikeNameAndKuaikePhone(String password,String kuaikeName,String newkuaikePhone);
 	
 	
 	

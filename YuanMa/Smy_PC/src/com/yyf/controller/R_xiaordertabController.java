@@ -54,9 +54,29 @@ public class R_xiaordertabController {
 	/***********************************       public APP和PC端共用                     ************************/
 	/***********************************************************************************************/
 	
+	
 	/**
 	 * 
-	 * app下单数据模糊搜索
+	 * 根据下单id修改指定状态下单单子，抢单单子的status状态
+	 * @author	lijie     
+	 * @created 2017年6月16日 下午5:43:00  
+	 * @param xiaId		下单id
+	 * @param status	状态
+	 * @return url
+	 */
+	@RequestMapping(value="/updateXiaQiangStatus/{xiaId}/{status}/{kuaikeId}",method=RequestMethod.GET)
+	public String updateXiaQiangStatus(@PathVariable("xiaId")String xiaId,@PathVariable("status")int status,@PathVariable("kuaikeId")String kuaikeId,ModelMap model){
+		//调用接口修改下单状态,抢单状态
+		r_xiaordertabService.updateStatus(status, xiaId);
+		//得到数据
+		R_xiaordertab queryIdStatusXiaId = r_qiangordertabService.queryIdStatusXiaId(kuaikeId, status, xiaId);
+		model.addAttribute("info", queryIdStatusXiaId);
+		return "APP/grabASingleProcess";
+	}
+	
+	/**
+	 * 
+	 * 下单数据模糊搜索
 	 * @author lijie     
 	 * @created 2017年6月16日 下午1:40:06  
 	 * @param searchKey		搜索条件	
@@ -194,7 +214,7 @@ public class R_xiaordertabController {
 		//得到数据
 		R_xiaordertab statusQueryXiaId = r_xiaordertabService.statusQueryXiaId(status, kuaikeId, xiaId);
 		model.addAttribute("info", statusQueryXiaId);
-		return "APP/grabASingleProcess";
+		return "APP/placeAnOrderInfo";
 	}
 	
 	/**

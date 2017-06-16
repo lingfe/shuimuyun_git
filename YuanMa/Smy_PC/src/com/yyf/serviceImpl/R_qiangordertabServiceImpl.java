@@ -105,18 +105,17 @@ public class R_qiangordertabServiceImpl implements R_qiangordertabService {
 	}
 
 	/**
-	 * 根据抢单ID 对抢单 状态进行修改
+	 * 根据抢单Id修改状态
 	 * 
 	 * @author 杨杰
-	 * @created 2017年5月19日 上午11:38:16
+	 * @created 2017年5月19日 上午11:34:35
 	 * @param status
-	 *            '状态',状态(0=抢单成功，1=抢单失败，2=等待取货，3=等待配送（点击确认配送），4=已经到达（修改下单状态2，确认到达），5=派单成功)
-	 * @param qiangorderId
-	 *            抢单ID
+	 *            抢单状态'状态',状态(0=抢单成功，1=抢单失败，2=等待取货，3=等待配送（点击确认配送），4=已经到达（修改下单状态2，确认到达），5=派单成功)
+	 * @param xiaId 下单id
 	 */
 	@Override
-	public void updateStatus(Integer status, String qiangorderId) {
-		qiangordertabMapper.updateStatus(status, qiangorderId);
+	public void updateStatus(Integer status, String xiaId) {
+		qiangordertabMapper.updateStatus(status, xiaId);
 	}
 
 	/**

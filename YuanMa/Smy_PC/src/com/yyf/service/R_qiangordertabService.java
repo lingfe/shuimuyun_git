@@ -96,10 +96,9 @@ public interface R_qiangordertabService {
 	 * @created 2017年5月19日 上午11:37:13
 	 * @param status
 	 *            '状态',状态(0=抢单成功，1=抢单失败，2=等待取货，3=等待配送（点击确认配送），4=已经到达（修改下单状态2，确认到达），5=派单成功)
-	 * @param qiangorderId
-	 *            抢单Id
+	 * @param xiaId 下单id
 	 */
-	public void updateStatus(Integer status, String qiangorderId);
+	public void updateStatus(Integer status, String xiaId);
 
 	/**
 	 * 根据百度地图 进行模糊搜索 匹配附近当前时间内的 单子数量及 收货人地址

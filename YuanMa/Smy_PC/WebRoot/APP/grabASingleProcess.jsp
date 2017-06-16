@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -33,6 +34,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h6>上门取货</h6>
 		</header>
 		<!--【头部】end-->
+		
+		<!-- 抢单状态   start -->
+			<div  class="dom_shouhuo_ldiv">
+				${info.status==1?'已抢单,未取货':''}
+				${info.status==2?'已取货,未送达':'' }
+				${info.status==3?'已到达,未确认':'' } 
+			</div>
+		<!-- 抢单状态  end -->
+		
 		<div class="dom_shouhuo">
 			<div class="dom_shouhuo_fdiv">
 				收货人信息
@@ -93,19 +103,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<!--上传图片-->
-		<div class="shang_img">			
-			<!--图片预览容器-->
-			<div id="div_imglook">
-				<div style="clear: both;"></div>
-			</div>
-			<!--图片选择对话框-->
-			<div id="div_imgfile">上传货物照片</div>
-			<!--确定上传按钮
-			<input type="button" value="确定上传"  />-->
-		<!--确定按钮-->
-		<div class="order_buttom">
-			<a href="javascript:void(0);"><button id="btn_ImgUpStart" class="order_btn">确定取货</button></a>
-		</div>
+		<div class="shang_img">		
+			
+			<c:if test="${info.status==1 }" >
+				<!-- 图片预览容器 -->
+				<div id="div_imglook">
+					<div style="clear: both;"></div>
+				</div>
+				<!--图片选择对话框-->
+				<div id="div_imgfile">上传货物照片</div>
+				<!--确定上传按钮<input type="button" value="确定上传"  />-->
+				
+				<!-- 确定取货 -->
+				<div class="order_buttom">
+					<a href="javascript:void(0);"><button id="btn_ImgUpStart" class="order_btn">确定取货</button></a>
+				</div>
+			</c:if>
+			
+			<c:if test="${info.status==2 }">
+				<!--如果有图片存放img的div-->
+				<div></div>
+				<a href="RequestMappingUtil/requestNUll/APP/showCode"><button class="order_btn">到达目的地</button></a>
+			</c:if>
+			
+			<c:if test="${info.status==3 }">
+				<!--如果有图片存放img的div-->
+				<div></div>
+				<a href="code.html"><button class="order_btn">到达目的地</button></a>
+			</c:if>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>

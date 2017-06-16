@@ -39,7 +39,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/bankCard" >银行卡：bankCard.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/placeAnOrderInfo" >下单详细信息：placeAnOrderInfo.jsp</a><br/>
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/showCode" >输入取货码：showCode.jsp</a><br/>
- 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/bankCard" >银行卡：bankCard.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep" >完善资料第一步：perfectData_firstStep.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_secondStep" >完善资料第二步：perfectData_secondStep.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/personalData" >个人资料：personalData.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep" >完善资料第一步：perfectData_firstStep.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_secondStep" >完善资料第二步：perfectData_secondStep.jsp</a><br/>
+ 		
  		
  		<BR><BR>
  		<h1>杨杰</h1>

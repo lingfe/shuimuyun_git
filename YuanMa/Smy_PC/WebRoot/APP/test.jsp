@@ -42,8 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep" >完善资料第一步：perfectData_firstStep.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_secondStep" >完善资料第二步：perfectData_secondStep.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/personalData" >个人资料：personalData.jsp</a><br/>
- 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep" >完善资料第一步：perfectData_firstStep.jsp</a><br/>
- 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_secondStep" >完善资料第二步：perfectData_secondStep.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/editAddress" >编辑地址：editAddress.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/modifyCellPhoneNumber" >修改手机号：modifyCellPhoneNumber.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/modifyPassword" >修改密码：modifyPassword.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/modifyMailbox" >修改绑定邮箱：modifyMailbox.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword" >修改支付密码：modifyPaymentPassword.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/modifyCellPhoneNumber" >修改手机号：modifyCellPhoneNumber.jsp</a><br/>
  		
  		
  		<BR><BR>

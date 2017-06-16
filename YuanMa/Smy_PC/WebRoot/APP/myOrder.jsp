@@ -49,9 +49,9 @@
 	
 	<nav class="oallNav" id="div_statusQiang"  style="display: none;"> 
 		<a class="active" href="javascript:void(0);" id="q0" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">全部</a>
-		<a href="javascript:void(0);" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">抢单</a> 
-		<a href="javascript:void(0);" title="q1" id="q1" url="xiaordertab/queryIdStatus/${login.kuaikeId}/1" onclick="javascript:statusHref('q1');">取货</a> 
-		<a href="javascript:void(0);" title="q2" id="q2" url="xiaordertab/queryIdStatus/${login.kuaikeId}/2" onclick="javascript:statusHref('q2');">派单</a> 
+		<a href="javascript:void(0);" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">已抢单</a> 
+		<a href="javascript:void(0);" title="q1" id="q1" url="xiaordertab/queryIdStatus/${login.kuaikeId}/1" onclick="javascript:statusHref('q1');">已取货</a> 
+		<a href="javascript:void(0);" title="q2" id="q2" url="xiaordertab/queryIdStatus/${login.kuaikeId}/2" onclick="javascript:statusHref('q2');">已派单</a> 
 	</nav>
 	<!--【nav】end-->
 
@@ -217,7 +217,7 @@
 							//var date=new Date(data[i].okDate);
 							//var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
 	
-							result += "<li><a href='xiaordertab/xiaorderInfo/" + data[i].xiaId + "'><img class='oallCont_cont_img' title='' \
+							result += "<li><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'><img class='oallCont_cont_img' title='' \
 										alt='' src='<%=basePath%>APP/images/oall001.jpg' width='100%' /> \
 										<div class='oallCont_contBox'> \
 											<p>收货人：" + data[i].shouhuoName + "</p> \

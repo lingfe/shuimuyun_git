@@ -34,8 +34,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/consignee" >收货人信息：consignee.jsp </a><br/>
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/grabASingleProcess" >抢单流程：grabASingleProcess.jsp </a><br/>
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/myWallet" >我的钱包：myWallet.jsp </a><br/>
-    	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/appeal" >抢单流程：grabASingleProcess.jsp</a><br/>
-    	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/appeal" >抢单流程：grabASingleProcess.jsp</a><br/>
+    	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/withdrawals" >提现：withdrawals.jsp</a><br/>
+    	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/myAddress" >我的地址：myAddress.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/bankCard" >银行卡：bankCard.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/placeAnOrderInfo" >下单详细信息：placeAnOrderInfo.jsp</a><br/>
+    	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/showCode" >输入取货码：showCode.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/bankCard" >银行卡：bankCard.jsp</a><br/>
  		
  		<BR><BR>
  		<h1>杨杰</h1>

@@ -397,12 +397,15 @@ public class R_kuaiketabController {
 	 * @return
 	 */
 	@RequestMapping(value = "findBackPassWord", method = RequestMethod.POST)
-	public String findBackPassWord(@RequestParam("kuaikePhone") String kuaikePhone,
+	public String findBackPassWord(@ModelAttribute("login") R_kuaiketab tab,@RequestParam("kuaikePhone") String kuaikePhone,
 			@RequestParam("password") String password) {
 		//对找回的密码进行加密处理
 		String md5 = Md5Util.md5(password);
 		//调用接口中的找回密码的方法 没有返回值
 		kuaiketabService.findBackPassWord(md5, kuaikePhone);
+		//修改登陆状态
+		kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.LX.ordinal(),tab.getKuaikeId());
+		
 		//找回成功返回初始页【登录页】
 		return "PC/login";
 	}
@@ -516,16 +519,21 @@ public class R_kuaiketabController {
 	@RequestMapping(value="updatePwdByKNameAndKPhone",method=RequestMethod.POST)
 	public String updatePasswordByKuaikeNameAndKuaikePhone(ModelMap model,@RequestParam("password") String password,@RequestParam("kuaikeName") String kuaikeName,@RequestParam("newkuaikePhone") String newkuaikePhone){
 		
+		//对密码进行加密处理
 		String Md5password = Md5Util.md5(password);
-		
+		//得到用户名和手机号码  封装为对象
 		R_kuaiketab tabo = kuaiketabService.selectPasswordBykuaikeInfo(kuaikeName, newkuaikePhone);
-		
+		//判断 实体对象是否为空 并且做出 项对应的操作
 		if(tabo!=null && !"".equals(tabo)){
+			//修改密码
 			kuaiketabService.updatePasswordByKuaikeNameAndKuaikePhone(Md5password, kuaikeName, newkuaikePhone);
-
+			//修改为离线状态
+			kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.LX.ordinal(), tabo.getKuaikeId());
+			//修改成功返回登陆页
 			return "APP/login";
 
 		}
+		//修改失败返回申诉页
 		return "APP/appeal";
 	};
 	

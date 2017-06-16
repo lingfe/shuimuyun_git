@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<!-- 确定取货 -->
 				<div class="order_buttom">
-					<a href="javascript:void(0);"><button id="btn_ImgUpStart" class="order_btn">确定取货</button></a>
+					<a href="xiaordertab/updateXiaQiangStatus/${info.xiaId}/${info.status}/${login.kuaikeId}"><button id="btn_ImgUpStart" class="order_btn">确定取货</button></a>
 				</div>
 			</c:if>
 			
@@ -127,9 +127,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</c:if>
 			
 			<c:if test="${info.status==3 }">
-				<!--如果有图片存放img的div-->
+				<!-- 如果有图片存放img的div -->
 				<div></div>
-				<a href="code.html"><button class="order_btn">到达目的地</button></a>
+				<a href="javascript:void(0);"><button class="order_btn">评价</button></a>
 			</c:if>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>

@@ -11,5 +11,5 @@ SELECT * FROM xiaordertab WHERE
 xiaId IN (SELECT  xi.* FROM xiaordertab xi INNER JOIN qiangordertab q ON q.`xiaId`=xi.`xiaId` WHERE q.kuaikeId='4be534d1-8069-4bf6-a738-736479319247' AND q.status=0)
 
 
-SELECT * FROM xiaordertab WHERE xiaId='d4d6ea12-69d2-4712-a967-8e0a2ce9d560'
-SELECT * FROM xiaordertab WHERE xiaId='d4d6ea12-69d2-4712-a967-8e0a2ce9d560'
+SELECT * FROM xiaordertab WHERE xiaId='d4d6ea12-69d2-4712-a967-8e0a2ce9d560';
+SELECT * FROM qiangordertab WHERE xiaId='d4d6ea12-69d2-4712-a967-8e0a2ce9d560';

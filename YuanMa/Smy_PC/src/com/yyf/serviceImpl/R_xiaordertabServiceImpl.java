@@ -24,6 +24,12 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	@Autowired
 	private IR_xiaordertabMapper ir_xiaordertabMapper;
 
+	
+	@Override
+	public List<R_xiaordertab> singleDataFuzzySearch(String searchKey) {
+		return ir_xiaordertabMapper.singleDataFuzzySearch(searchKey);
+	}
+	
 	@Override
 	public R_xiaordertab statusQueryXiaId(int status, String kuaikeId, String xiaId) {
 		return ir_xiaordertabMapper.statusQueryXiaId(status, kuaikeId, xiaId);

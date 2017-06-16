@@ -170,10 +170,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * 
 	 * @author lijie
 	 * @created 2017年5月19日 上午11:31:18
-	 * @param status
-	 *            状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)
-	 * @param xiaId
-	 *            下单id
+	 * @param status     状态(0=未接单,1={配送中，已接单}，2=已到达（点击确认到达，修改抢单状态）)
+	 * @param xiaId      下单id
 	 */
 	@Update("UPDATE xiaordertab SET status=#{status} WHERE xiaId=#{xiaId}")
 	void updateStatus(@Param("status") int status, @Param("xiaId") String xiaId);

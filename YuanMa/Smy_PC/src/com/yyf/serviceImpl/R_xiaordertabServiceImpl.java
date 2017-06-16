@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yyf.mapper.IR_xiaordertabMapper;
+import com.yyf.mapper.R_qiangordertabMapper;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.R_xiaordertabService;
+import com.yyf.util.R_qiangordertabEnum;
 import com.yyf.util.R_xiaordertabEnum;
 
 /**
@@ -20,9 +22,13 @@ import com.yyf.util.R_xiaordertabEnum;
 @Service
 public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 
-	// 自动装配
+	// 自动装配，下单
 	@Autowired
 	private IR_xiaordertabMapper ir_xiaordertabMapper;
+	
+	// 自动装配，抢单
+	@Autowired
+	private R_qiangordertabMapper qiangordertabMapper;
 
 	
 	@Override
@@ -99,8 +105,28 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	}
 
 	@Override
+	@Transactional
 	public void updateStatus(int status, String xiaId) {
-		ir_xiaordertabMapper.updateStatus(status, xiaId);
+		//x1.已接单,未发货(
+		if(status==1){
+			//修改状态为，/x2.已发货,未到达//q1.取货成功,正在配送/
+			ir_xiaordertabMapper.updateStatus(R_xiaordertabEnum.YDD.ordinal(), xiaId);
+			qiangordertabMapper.updateStatus(R_qiangordertabEnum.YJ_DD.ordinal(), xiaId);
+		}
+		
+		//x2.已发货,未到达
+		if(status==2){
+			//修改状态为,/x3.到达,未评价//q2.派单成功/
+			ir_xiaordertabMapper.updateStatus(R_xiaordertabEnum.Y_OK.ordinal(), xiaId);
+			qiangordertabMapper.updateStatus(R_qiangordertabEnum.PD_OK.ordinal(), xiaId);
+		}
+		
+		//x3.到达,未评价
+		if(status==3){
+			//修改状态为,/x4.已评价/
+			ir_xiaordertabMapper.updateStatus(R_xiaordertabEnum.YPJ.ordinal(), xiaId);
+		}
+
 	}
 
 }

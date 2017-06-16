@@ -216,8 +216,7 @@
 							//date 格式化时间
 							//var date=new Date(data[i].okDate);
 							//var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate()+"  "+date.toLocaleTimeString();
-	
-							result += "<li><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'><img class='oallCont_cont_img' title='' \
+							result += "<li><a href='" + url+"/"+data[i].xiaId  + "'><img class='oallCont_cont_img' title='' \
 										alt='' src='<%=basePath%>APP/images/oall001.jpg' width='100%' /> \
 										<div class='oallCont_contBox'> \
 											<p>收货人：" + data[i].shouhuoName + "</p> \

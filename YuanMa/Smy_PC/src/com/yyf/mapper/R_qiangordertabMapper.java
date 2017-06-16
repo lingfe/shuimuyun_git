@@ -33,7 +33,7 @@ public interface R_qiangordertabMapper {
 	 * @param kuaikeId    	快客Id
 	 * @param status		抢单状态
 	 * @param xiaId			下单id
-	 * return 下单数据集合
+	 * return 下单数据
 	 */
 	@Select(value="SELECT xi.* "	
 			+ " FROM qiangordertab q INNER JOIN xiaordertab xi ON q.`xiaId`=xi.`xiaId` "

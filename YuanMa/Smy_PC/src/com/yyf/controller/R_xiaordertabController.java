@@ -64,10 +64,11 @@ public class R_xiaordertabController {
 	 * return 下单数据
 	 */
 	@RequestMapping(value="/queryIdStatus/{kuaikeId}/{status}/{xiaId}",method=RequestMethod.GET)
-	public  R_xiaordertab queryIdStatusXiaId(@PathVariable("kuaikeId")String kuaikeId,@PathVariable("status")int status,@PathVariable("xiaId")String xiaId){
+	public  String queryIdStatusXiaId(@PathVariable("kuaikeId")String kuaikeId,@PathVariable("status")int status,@PathVariable("xiaId")String xiaId,ModelMap model){
 		//得到数据
 		R_xiaordertab queryIdStatusXiaId = r_qiangordertabService.queryIdStatusXiaId(kuaikeId, status, xiaId);
-		return queryIdStatusXiaId;
+		model.addAttribute("info", queryIdStatusXiaId);
+		return "APP/grabASingleProcess";
 	}
 	
 	/**
@@ -178,7 +179,7 @@ public class R_xiaordertabController {
 		//得到数据
 		R_xiaordertab statusQueryXiaId = r_xiaordertabService.statusQueryXiaId(status, kuaikeId, xiaId);
 		model.addAttribute("info", statusQueryXiaId);
-		return "APP/";
+		return "APP/grabASingleProcess";
 	}
 	
 	/**

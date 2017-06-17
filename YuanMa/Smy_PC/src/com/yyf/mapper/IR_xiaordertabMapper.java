@@ -1,6 +1,7 @@
 package com.yyf.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -19,9 +20,19 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
-	
-	
-	
+	/**
+	 * 
+	 * 我的个人中心里面根据订单状态统计
+	 * @author lijie     
+	 * @created 2017年6月17日 上午10:24:15  
+	 * @return map
+	 */
+	@Select("SELECT a.dfk,b.yjd,c.yqh,d.wpj FROM  "
+			+ "	(SELECT COUNT(xiaId) AS dfk FROM xiaordertab WHERE STATUS=0 AND payment=0) a,"
+			+ "	(SELECT COUNT(xiaId) AS yjd FROM xiaordertab WHERE STATUS=1 AND payment=1) b,"
+			+ "	(SELECT COUNT(xiaId) AS yqh FROM xiaordertab WHERE STATUS=2 AND payment=1) c,"
+			+ "	(SELECT COUNT(xiaId) AS wpj FROM xiaordertab WHERE STATUS=3 AND payment=1) d")
+	Map<String, Object> getMyInfoOrderStatus();
 	
 	/**
 	 * 

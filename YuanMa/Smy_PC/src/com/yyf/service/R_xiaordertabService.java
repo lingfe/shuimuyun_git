@@ -1,6 +1,9 @@
 package com.yyf.service;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Select;
 
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
@@ -12,6 +15,15 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface R_xiaordertabService {
 
+	/**
+	 * 
+	 * 我的个人中心里面根据订单状态统计
+	 * @author lijie     
+	 * @created 2017年6月17日 上午10:24:15  
+	 * @return map
+	 */
+	Map<String, Object> getMyInfoOrderStatus();
+	
 	/**
 	 * 
 	 * app下单数据模糊搜索

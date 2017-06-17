@@ -44,10 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--头部-->
 		<header class="commHeader">
 			<h6>我要下单</h6>
-			<a class="commHeader_r" href="javascript:;">
-				<span>贵阳</span>
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/right.png" width="100%" />
-			</a>
 		</header>
 		<!--发货人，收货人信息跳转-->
 		<div class="order_info">
@@ -74,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/number.png" width="27"/>
 				<label>货物数量</label>
 				<div class="order_num">
-					<span>个/件</span>
+					<span class="order_num_mag">&nbsp;个/件</span>
 					<span id="jian">-</span>
 					<span id="zhi"> 1 </span>
 					<span id="jia">+</span>
@@ -84,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/heft.png" width="27"/>
 				<label>货物重量</label>
 				<div class="order_num">
-					<span class="order_num_mag">kg</span>
+					<span class="order_num_mag">&nbsp;kg</span>
 					<span id="jian">-</span>
 					<span id="zhi1"> 1 </span>
 					<span id="jia">+</span>
@@ -117,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img style="display: none;" src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
 			<label> 我同意 《水木云快递条约》</label>
 			</div>
-			<button class="order_btn" id="ok_order">确认下单</button>
+			<button style="margin-bottom: 0.6rem; " class="order_btn" id="ok_order">确认下单</button>
 		</div>
 
 		<!--遮罩层-->
@@ -152,26 +148,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<!--弹窗三-->
+		
+		
 		<div class="order_tan2"id="order_tan2">
 			<div class="order_tan_clos2">
 				<span>最晚到达时间</span>
 				<span class="mui-icon mui-icon-close order_close" id="order_close2"></span>
 			</div>
 			<div class="order_tan_context2"  id="order_tex2">
-				<div class="order_tan_context2_1">今天</div>
-				<div class="order_tan_context2_2">
-					<span><label id="jiajia1">+</label><label></label></span>
-					<span><label id="xiaoshi">1</label><label class="yi">时</label></span>
-					<span><label id="jianjian1">-</label><label></label></span>
+				<div class="order_shi">
+					<span>时</span>
+					<input type="number" id="num_shi"/>
 				</div>
-				<div class="order_tan_context2_3">
-					<span><label id="jiajia2">+</label><label></label></span>
-					<span><label id="fenzhong">30</label><label class="yi">分</label></span>
-					<span><label id="jianjian2">-</label><label></label></span>
+				<div class="order_fen">
+					<span>分</span>
+					<input type="number" id="num_fen" />
 				</div>
+				<input class="order_butt" type="button" id="butt" value="取消" />
+				<input class="order_buttn" type="button" id="buttn" value="确定" />
+				
 			</div>
 			
 		</div>
+		
 		
 		<!--底部-->
 		<footer class="footerMenu">

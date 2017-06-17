@@ -32,9 +32,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
-			<h6>发货人信息</h6>
+			<p>发货人信息</p>
 			<a class="commHeader_r hipper_xia" href="javascript:fa();">
-				<h6>完成</h6>
+				<p>完成</p>
 			</a>
 		</header>
 		<!--【头部】end-->
@@ -48,9 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input id="con_phone" type="text" value="${info.kuaikePhone }" placeholder="请输入手机号"/>
 			</div>			
 			<div>
-				<img src="<%=basePath%>APP/images/icon/adds.png" width="15" class="hipper_contex_firstimg"/>
+				<img src="<%=basePath%>APP/images/icon/adds.png" width="20" class="hipper_contex_firstimg"/>
 				<input type="text" class="hipper_contex_lasttext" value="${info.kuaikeAddressInfo==null?'贵州省贵阳市南明区花果园金融街2号':info.kuaikeAddressInfo }"/>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" class="hipper_contex_lastimg" width="15"/>
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" class="hipper_contex_lastimg" width="10"/>
 			</div>			
 		</div>
 		<!-- 下单id -->

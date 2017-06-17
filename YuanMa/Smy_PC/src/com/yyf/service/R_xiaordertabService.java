@@ -1,6 +1,9 @@
 package com.yyf.service;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Select;
 
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
@@ -12,6 +15,15 @@ import com.yyf.model.R_xiaordertab;
  */
 public interface R_xiaordertabService {
 
+	/**
+	 * 
+	 * 我的个人中心里面根据订单状态统计
+	 * @author lijie     
+	 * @created 2017年6月17日 上午10:24:15  
+	 * @return map
+	 */
+	Map<String, Object> getMyInfoOrderStatus();
+	
 	/**
 	 * 
 	 * app下单数据模糊搜索
@@ -180,5 +192,23 @@ public interface R_xiaordertabService {
 	 * @return 结果
 	 */
 	public int queryCount();
+	
+	
+	
+	
+	/**
+	 * 根据状态 查询附近所有为被抢的单子
+	 * 
+	 * 0=未接单(刚下单的默认状态，可以删除)，
+	 * 1=已接单,未发货(由抢单用户修改，表示抢单用户已抢单成功。下单点击发货，修改抢单用户状态为2，表示正在配送。)，
+	 * 2=已到达,未确认（由抢单点击确认到达修改，表示抢单已送到。下单点击确认到达，修改抢单状态为3，表示派单成功；同时修改自身状态为3，表示已确认），
+	 * 3=已确认(下单已确认，派单结束) 
+	 * 4=已评价
+	 * @author 杨杰     
+	 * @created 2017年6月17日 上午10:08:48  
+	 * @return
+	 */
+	public List<R_xiaordertab> queryAllXOrderByStatusTo0();
+	
 
 }

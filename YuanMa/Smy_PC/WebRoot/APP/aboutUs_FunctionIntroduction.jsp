@@ -20,13 +20,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<style>
 			.aboutTop {
 				width: 100%;
-				height: 0.4rem;
+				height: 0.5rem;
 				color: #418bc8;
-				font-size: 0.12rem;
-				line-height: 0.4rem;
+				font-size: 0.16rem;
+				line-height: 0.5rem;
 				text-indent: 20px;
 				background: rgb(255,255,255);
-				margin-top: 0.1rem;
+				margin-top: 0.5rem;
 			}
 			.aboutCont {
 				width: 100%;
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			.aboutCont p {
 				color: #333;
-				font-size: 0.12rem;
+				font-size: 0.14rem;
 				line-height: 0.24rem;
 			}
 		</style>

@@ -215,7 +215,7 @@ body {
 				</ul>
 				<div style="clear: both;"></div>
 				<!-- 快客id -->
-				<input type="hidden" value="${info.kuaikeId }" name="kuaikeId" />
+				<input type="hidden" value="${kuaike.kuaikeId }" name="kuaikeId" />
 				<!-- 下单id -->
 				<input type="hidden" value="${info.xiaId }" name="xiaId" />
 				<!-- 星评数值 -->

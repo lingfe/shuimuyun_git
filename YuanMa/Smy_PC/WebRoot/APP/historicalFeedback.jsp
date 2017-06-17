@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>意见反馈</title>
+    <title>意见反馈_内容</title>
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,29 +23,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
 	</head>
 	<style type="text/css">
-		.feed{
-			width: 100%;
-			margin-top: .1rem;
-			background: white;
+		/*无历史记录*/
+		.his_wu{
+			width: 1rem;
+			margin: auto;
+			color: #999;
+			margin-top: 1.5rem;
 		}
-		.feed a{
-			display: block;
-			width: 100%;
-			height: .4rem;
-			border-bottom: solid 1px #eee;
-			color: #333;
+		.his_you{
+			width: 95%;
+			margin-left: 3%;
+			background: white;
+			height: .7rem;
+			margin-top: .1rem;
 			position: relative;
 		}
-		.feed a span{
-			display: inline-block;
-			position: absolute;
-			top: .13rem;
-			left: 10px;
+		.his_you p{
+			color: #333;
+			font-size: .13rem;
+			padding-left: 10px;
+			line-height: .25rem;
 		}
-		.feed a img{
+		.his_you span{
 			position: absolute;
-			right: .1rem;
-			top: .1rem;
+			display: inline-block;
+			top: .5rem;
+			right: .2rem;
 		}
 	</style>
 	<body>
@@ -52,41 +57,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
-			<h6>意见反馈</h6>
+			<h6>历史反馈</h6>
+			
 		</header>
-		<form>
 		<!--【头部】end-->
-		<div class="courier_firsttit">
-			猜你可能有的问题
+		<!--无历史记录(隐藏 dis)-->
+		<div class="his_wu dis">
+			暂无历史记录
 		</div>
-		<div class="feed">
-			<a>
-				<span>目前水木云快送开通了哪些城市？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
-			</a>
-			<a>
-				<span>想先了解订单的运费和时效多少怎么查询？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
-			</a>
-			<a href="RequestMappingUtil/requestNUll/APP/serviceHelp">
-				<span>水木云快送安全吗？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
-			</a>
-			<a>
-				<span>发货遇到问题如何联系客服？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
-			</a>
+		<div class="his_you">
+			<p class="text_2_hide">我的娃亏大发你娃亏大发你娃亏大发你娃亏大发你们接受对方是你UI人股东认购会丢更好的法规 贵人高度规定和 个号规格及国家瑞</p>
+			<span>2017-6-16</span>
 		</div>
-		<div class="courier_last">
-			如你有意见或建议，请告知我们让我们改进
+		<div class="his_you">
+			<p class="text_2_hide">我的娃亏大发你娃亏大发你娃亏大发你娃亏大发你们接受对方是你UI人股东认购会丢更好的法规 贵人高度规定和 个号规格及国家瑞</p>
+			<span>2017-6-16</span>
 		</div>
-		<div class="feed">
-			<a href="RequestMappingUtil/requestNUll/APP/feedback_neiro">
-				<span>意见反馈</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
-			</a>
+		<div class="his_you">
+			<p class="text_2_hide">我的娃亏大发你娃亏大发你娃亏大发你娃亏大发你们接受对方是你UI人股东认购会丢更好的法规 贵人高度规定和 个号规格及国家瑞</p>
+			<span>2017-6-16</span>
 		</div>
-		</form>
+		<!-- list start  -->
+		<c:forEach items="${list }" var="st">
+			<div class="his_you">
+				<p class="text_2_hide">${st.remark }</p>
+				<span><fmt:formatDate value="${st.feedbackDate }" pattern="yyyy-MM-dd HH:mm" /></span>
+			</div>
+		</c:forEach>
+		<!-- list end -->	
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>

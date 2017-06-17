@@ -67,17 +67,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				我的订单
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_1.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/myWallet">
 				我的钱包
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_2.png" width="100%" />
 			</a>
 		</div>
 		
 		<div class="myInfo_list">
-			<a href="RequestMappingUtil/requestNUll/APP/myAddress">
-				我的地址
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_3.png" width="100%" />
-			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/personalData">
 				个人资料
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_3.png" width="100%" />

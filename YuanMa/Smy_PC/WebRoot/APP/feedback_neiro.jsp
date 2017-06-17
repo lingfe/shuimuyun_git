@@ -38,19 +38,23 @@
 		<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 	</a>
 	<h6>意见反馈</h6>
-	<a class="commHeader_r" href="historicalFeedback.html">
+	<a class="commHeader_r" href="feedbacktagController/getKuaiKeIdList/${login.kuaikeId }">
 		<p class="commHeader_r_font">历史反馈</p>
 	</a> </header>
 	<!--【头部】end-->
-	<form>
-		<textarea class="wenben" placeholder="请写下你宝贵的建议"></textarea>
-		<a href=""><button class="order_btn" id="">提交</button></a>
+	<form action="feedbacktagController/feedbackAdd" method="post">
+		<!-- 快客Id -->
+		<input type="hidden" name="kuaikeId" value="${login.kuaikeId }" />
+		<textarea class="wenben" name="remark" placeholder="请写下你宝贵的建议"></textarea>
+		<button class="order_btn" id="" type="submit">提交</button>
 	</form>
 	<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
 	<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
 	<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
 	<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js"></script>
+	<!-- 提示 -->
+	<script type="text/javascript">	${errorShow }</script>
 </body>
 
 </html>

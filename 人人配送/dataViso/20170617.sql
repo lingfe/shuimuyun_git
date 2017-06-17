@@ -11,3 +11,5 @@ UPDATE kuaiketab SET kuaikeName='a',kuaikePhone='110',kuaikeAddressInfo='..' WHE
 
 
 
+
+

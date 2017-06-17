@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item banner_item">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner2.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item banner_item">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner3.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item banner_item">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner4.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item mui-slider-item-duplicate">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner4.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务

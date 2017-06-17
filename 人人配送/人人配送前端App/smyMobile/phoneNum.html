@@ -10,7 +10,30 @@
 		<link rel="stylesheet" type="text/css" href="css/smyMobile.css" />
 	</head>
 	<style type="text/css">
-		.cell_firstdiv{
+		.num_pohone{
+			width: 100%;
+			margin-top: .2rem;
+			background: white;
+			height: .5rem;
+			line-height: .5rem;
+			position: relative;
+		}
+		.num_pohone span{
+			display: inline-block;
+			position: absolute;
+		}
+		.num_pohone span:nth-of-type(1){
+			color: #333;
+			left: .1rem;
+		}
+		.num_pohone span:nth-of-type(2){
+			color: #999;
+			right: .1rem;
+		}
+		.num_pohone_text{
+			color: #999;
+			font-size: .10rem;
+			text-align: center;
 			margin-top: .1rem;
 		}
 	</style>
@@ -20,26 +43,15 @@
 			<a class="commHeader_l" href="#">
 				<img title="" alt="" src="images/icon/arow_left.png" />
 			</a>
-			<h6>修改手机号</h6>
+			<h6>手机号</h6>
 		</header>
-		<form>
-		<div class="appeal_firstdiv cell_firstdiv">
-			<div>
-				<label>原手机号</label><input type="text" id="lastPhone" placeholder="请输入原绑定手机号" />
-			</div>
-			
-			<div>
-				<label>当前手机号</label><input type="text" id="regPhone" placeholder="请输入当前手机号" />
-			</div>
-			<div>
-				<label>验 证 码</label><input class="las" id="regYzm" type="text" placeholder="请输入验证码" /><button id="regYzmBtn">获取验证码</button>
-			</div>
-			<div>
-				<label>密码</label><input type="text" id="pwd" placeholder="请输入登录密码" />
-			</div>
+		<!--【头部】end-->
+		<div class="num_pohone">
+			<span>手机号</span>
+			<span>15223059337</span>
 		</div>
-		<a href="login.html"><button class="order_btn" id="">确定</button></a>
-		</form>
+		<a href="replace.html"><button class="order_btn" id="">更换手机号</button></a>
+		<div class="num_pohone_text">一个手机号只能作为一个账号的登录名</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/smyMobile.js"></script>

@@ -574,18 +574,20 @@ input {
 
 .appeal_firstdiv label {
 	display: inline-block;
-	width: 30%;
+	width:.8rem;
 	height: .4rem;
 	line-height: .4rem;
 	margin-left: 10px;
 	color: #333;
+	text-align: right;
 }
 
 .appeal_firstdiv input {
 	display: inline-block;
-	width: 60%;
+	width: calc(100% - .9rem);
 	border: none;
 	outline: none;
+	height: .35rem;
 }
 
 .appeal_lastdiv {
@@ -599,7 +601,7 @@ input {
 
 .appeal_lastdiv label {
 	display: inline-block;
-	width: 30%;
+	width:.8rem;
 	height: .4rem;
 	line-height: .4rem;
 	margin-left: 10px;
@@ -608,24 +610,21 @@ input {
 
 .appeal_lastdiv input {
 	display: inline-block;
-	width: 60%;
+	width: calc(100% - .9rem);
+	height: .38rem;
 	border: none;
 	outline: none;
+	border:red solid 1px;
 }
-
-.las {
-	width: 30% !important;
-}
-
 .appeal_firstdiv button {
-	margin-left: 5%;
-	display: inline-block;
-	width: 30%;
+	display: inline-block ;
+	width:.8rem;
 	height: .25rem;
 	margin-top: .075rem;
 	border: none;
 	background: #418bc8;
 	color: white;
+	
 }
 
 
@@ -1066,6 +1065,140 @@ input {
 }
 
 .order_tan_context2_3>span {
+	width: 100%;
+	display: block;
+	margin-top: .05rem;
+}
+
+.dis {
+	display: none;
+}
+/*弹出框四*/
+
+.order_tan3 {
+	width: 100%;
+	background: #fff;
+	position: fixed;
+	bottom: -1.6rem;
+	font-size: .13rem;
+	z-index: 999;
+	height: 1.6rem;
+}
+
+.order_shi3 {
+	position: absolute;
+	top: .1rem;
+	left: .4rem;
+}
+
+.order_shi3 span {
+	display: block;
+	margin-top: .1rem;
+	margin-bottom: .1rem;
+}
+
+.order_shi3 input {
+	width: .4rem;
+	height: .2rem !important;
+}
+
+.order_fen3 {
+	top: .1rem;
+	position: absolute;
+	left: 1.7rem;
+}
+
+.order_fen3 input {
+	width: .4rem;
+	height: .2rem !important;
+}
+
+.order_fen3 span {
+	margin-top: .1rem;
+	display: block;
+	margin-bottom: .1rem;
+}
+
+.order_butt3 {
+	position: absolute;
+	left: .5rem;
+	top: .8rem;
+	width: .8rem;
+	background: #f6a7b3 !important;
+}
+
+.order_buttn3 {
+	position: absolute;
+	left: 1rem;
+	top: .8rem;
+	width: .8rem;
+	background: #82cddd !important;
+}
+
+.order_tan_clos3 {
+	width: 100%;
+	height: .4rem;
+	position: relative;
+	border-bottom: solid 1px gray;
+}
+
+.order_tan_clos3 span:last-of-type {
+	position: absolute;
+	display: inline-block;
+	right: .05rem;
+	line-height: .4rem;
+	width: .3rem;
+	height: .4rem;
+}
+
+.order_tan_clos3 span:first-of-type {
+	display: inline-block;
+	height: .4rem;
+	margin-left: .2rem;
+	line-height: .4rem;
+}
+
+.order_tan_context3 {
+	width: 100%;
+	height: .7rem;
+	position: relative;
+}
+
+.order_tan_context3>div {
+	position: absolute;
+	width: 33%;
+	text-align: center;
+}
+
+.order_tan_context3_1 {
+	left: .1rem;
+}
+
+.order_tan_context3_2 {
+	left: 1rem;
+	height: .6rem;
+}
+
+.order_tan_context3_2>span {
+	width: 100%;
+	display: block;
+	margin-top: .05rem;
+}
+
+.order_tan_context3_2>span>label {
+	display: inline-block;
+}
+
+.order_tan_context3_3>span>label {
+	display: inline-block;
+}
+
+.order_tan_context3_3 {
+	left: 2rem;
+	height: .6rem;
+}
+
+.order_tan_context3_3>span {
 	width: 100%;
 	display: block;
 	margin-top: .05rem;
@@ -1626,7 +1759,7 @@ input {
 
 .oallNav>a {
 	display: block;
-	width: 16.66%;
+	width: 20%;
 	height: 0.3rem;
 	font-size: 0.13rem;
 	text-align: center;
@@ -1634,6 +1767,9 @@ input {
 	text-decoration: none;
 	line-height: 0.3rem;
 	float: left;
+}
+.oallNavEr>a {
+	width: 25%;
 }
 
 .oallNav>.active {

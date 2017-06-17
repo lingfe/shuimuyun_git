@@ -79,10 +79,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<!--【头部】end-->
 		<div class="feed">
-			<a href="RequestMappingUtil/requestNUll/APP/phone">
-				<span>手机号</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" />
-			</a>
+<!-- 			<a href="RequestMappingUtil/requestNUll/APP/phone"> -->
+<!-- 				<span>手机号</span> -->
+<%-- 				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" /> --%>
+<!-- 			</a> -->
 			<a href="RequestMappingUtil/requestNUll/APP/setPassword">
 				<span>密码设置</span>
 				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" />

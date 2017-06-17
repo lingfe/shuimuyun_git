@@ -185,7 +185,7 @@
 	<!--【头部】-->
 	<header class="commHeader">
 	<p>
-		当前有<i>6</i>个发货人
+		当前有<i id="i_num">6</i>个发货人
 	</p>
 	</header>
 	<!--【头部】end-->
@@ -329,6 +329,8 @@
 					//请求成功后触发
 					success : function(json) {
 						kuaikeAddressInfo = json.kuaikeAddressInfo;
+						
+						$("#i_num").html(kuaikeAddressInfo.length);
 						//初始化地图调用JS接口
 						var map = new AMap.Map('container', {
 							resizeEnable : true

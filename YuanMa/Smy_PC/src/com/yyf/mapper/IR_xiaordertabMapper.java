@@ -20,6 +20,9 @@ import com.yyf.model.R_xiaordertab;
 public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 
 	
+	
+	
+	
 	/**
 	 * 
 	 * app下单数据模糊搜索

@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<header class="commHeader">
 			<h6>我的</h6>
-			<a class="commHeader_r" href="javascript:void(0);">
+			<a class="commHeader_r" href="RequestMappingUtil/requestNUll/APP/install">
 				<p class="commHeader_r_font">设置</p>
 			</a>
 		</header>

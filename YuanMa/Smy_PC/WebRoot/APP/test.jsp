@@ -56,8 +56,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/serviceXy" >服务协议：serviceXy.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/useHelp" >使用帮助：useHelp.jsp</a><br/>
- 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/endOfTransaction" >抢单_交易结束：endOfTransaction.jsp</a><br/>
- 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge" >我的钱包_充值：myWallet_Recharge.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/install" >设置：install.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/phone" >设置_电话号码：phone.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/setPassword" >设置_密码：setPassword.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/phone" >设置_电话号码：phone.jsp</a><br/>
  		
  		<BR><BR>
  		<h1>杨杰</h1>

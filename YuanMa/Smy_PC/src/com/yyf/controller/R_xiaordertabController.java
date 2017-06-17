@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,11 +64,10 @@ public class R_xiaordertabController {
 	 * @return url
 	 */
 	@RequestMapping(value="/getMyInfoOrderStatus",method=RequestMethod.GET)
-	public String getMyInfoOrderStatus(ModelMap model){
+	public @ResponseBody Map<String, Object> getMyInfoOrderStatus(@RequestParam(value="kuaikeId",required=false)String kuaikeId,ModelMap model){
 		Map<String, Object> myInfoOrderStatus = r_xiaordertabService.getMyInfoOrderStatus();
-		model.addAttribute("status", myInfoOrderStatus);
-		
-		return "APP/myInfo";
+		System.out.println(kuaikeId);
+		return myInfoOrderStatus;
 	}
 	
 	/**

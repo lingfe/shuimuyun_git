@@ -76,8 +76,6 @@ $(function() {
 		}
 		forgeJz();
 	});
-	
-	
 	/*获取验证码*/
 	$("#forgeYzmBtn").click(function() {
 
@@ -197,35 +195,6 @@ $(function() {
 	});
 	
 	
-	
-	
-	$("#resetBtn").click(function() {
-		var forgePwd = $("#forgePwd").val();
-		var forgeNpwd = $("#forgeNpwd").val();
-		if(forgePwd == "") {
-			//提示
-		    layer.open({
-		    	content: '请填写密码',
-		    	skin: 'msg',
-		    	time: 2
-		  	});
-			return false;
-		}
-		else if(forgePwd != forgeNpwd) {
-			//提示
-		    layer.open({
-		    	content: '密码不一致',
-		    	skin: 'msg',
-		    	time: 2
-		  	});
-			return false;
-		}
-		forgeJz();
-	});
-	
-	
-	
-	
 	/*
 	 * 
 	 * 注册页面验证
@@ -235,7 +204,7 @@ $(function() {
 	$("#regBtn").click(function() {
 		//alert("sfddf")
 		var userName = $("#userName").val();
-		var regPhone = $("#regPhone").val();
+		var forgePhone = $("#forgePhone").val();
 		var regYzm = $("#regYzm").val();
 		var regPwd = $("#regPwd").val();
 		var regNpwd = $("#regNpwd").val();
@@ -249,7 +218,7 @@ $(function() {
 		  	});
 			return false;
 		}
-		else if(!(regPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(regPhone))) {
+		else if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号码错误',
@@ -294,8 +263,8 @@ $(function() {
 	 *
 	*/
 	$("#regYzmBtn").click(function() {
-		var kuaikePhone = $("#regPhone").val();
-		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
+		var forgePhone = $("#forgePhone").val();
+		if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号码错误',
@@ -386,7 +355,7 @@ function forgeJz() {
     	time: 2
   	});
   	setInterval(function() {
-  		$(".loginCont_form").submit();
+		window.location.href="login.html";
 	},2000)
 }
 
@@ -415,12 +384,10 @@ function time(o) {
 	if (wait == 0) {
 		o.removeAttribute("disabled");			
 		o.value="获取验证码";
-		o.innerHTML="获取验证码";
 		wait = 60;
 	} else {
 		o.setAttribute("disabled", true);
 		o.value="重新发送(" + wait + ")";
-		o.innerHTML="重新发送(" + wait + ")";
 		wait--;
 		setTimeout(function() {
 			time(o)

@@ -95,7 +95,7 @@ body {
 					</tr>
 					<tr>
 						<td>类型:</td>
-						<td><span>${info.shopType>0?'不易碎':'易碎'}</span></td>
+						<td><span>${info.shopType}</span></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">最迟取货时间:</td>
@@ -218,7 +218,7 @@ body {
 				</ul>
 				<div style="clear: both;"></div>
 				<!-- 快客id -->
-				<input type="hidden" value="${kuaike.kuaikeId }" name="kuaikeId" />
+				<input type="hidden" value="${info.kuaikeId }" name="kuaikeId" />
 				<!-- 下单id -->
 				<input type="hidden" value="${info.xiaId }" name="xiaId" />
 				<!-- 星评数值 -->

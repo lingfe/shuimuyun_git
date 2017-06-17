@@ -91,22 +91,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h1 class="header_title">完善信息</h1>
 			</header>
 			
-			<from class="quickMian quickSfMian">
+			<form class="quickMian quickSfMian" action="updateSFZImages" method="post"  enctype="multipart/form-data">
 				<div class="quickSf_item">
-					<input class="file" type="file"  multiple="multiple" />
-					<span>上传身份证正面</span>
+					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId" />
+					<input class="file" type="file" value="${login.kuaikeShenfenZF }" name="file1"  multiple="multiple" />
+					<span>上传身份证正反面</span>
 				</div>
 				<div class="quickSf_item">
-					<input class="file" type="file"  multiple="multiple" />
-					<span>上传身份证反面</span>
-				</div>
-				<div class="quickSf_item">
-					<input class="file" type="file"  multiple="multiple" />
+					<input class="file" type="file" value="${login.kuaikeShouchiSFZ }"  name="file2" multiple="multiple" />
 					<span>上传手持身份证正</span>
 				</div>
-				
-				<button class="quickBtn" id="" type="button">提交</button>
-			</from>
+				<button class="quickBtn" id="" type="submit">提交</button>
+			</form>
 			
 			<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 			<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>

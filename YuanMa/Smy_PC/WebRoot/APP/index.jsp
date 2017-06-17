@@ -31,76 +31,78 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body>
 		<header class="commHeader">
-			<a class="commHeader_l" href="javascript:void(0);">
-				<img title="" alt="" src="<%=basePath %>APP/images/icon/service.png" />
-			</a>
-			<h6>首页</h6>
-			<a class="commHeader_r" id="cityList" href="javascript:void(0);">
-				<span id="adderss">贵阳</span>
-				<img title="" alt="" src="<%=basePath %>APP/images/icon/right.png" width="100%" />
-			</a>
+			<div class="commHeader_Cont">
+				<a class="commHeader_l" href="javascript:void(0);">
+					<img title="" alt="" src="<%=basePath %>APP/images/icon/service.png" />
+				</a>
+				<h6>首页</h6>
+				<a class="commHeader_r" id="cityList" href="javascript:void(0);">
+					<span id="adderss">贵阳</span>
+					<img title="" alt="" src="<%=basePath %>APP/images/icon/right.png" width="100%" />
+				</a>
+			</div>
 		</header>
 		<!--banner图开始-->
-		<div style="height:1rem;">
-		<div id="slider" class="mui-slider">
-			<div class="mui-slider-group mui-slider-loop">
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<a href="#">
-						<img src="<%=basePath%>APP/images/banner1.jpg">
-					</a>
-					<div class="banner_text">
-						优待自己，从这里开始——最贴心的私家服务
+		<div style="height:1.2rem; margin-top: 0.4rem">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="<%=basePath%>APP/images/banner1.jpg">
+						</a>
+						<div class="banner_text">
+							优待自己，从这里开始——最贴心的私家服务
+						</div>
+					</div>
+					<div class="mui-slider-item banner_item">
+						<a href="#">
+							<img src="<%=basePath%>APP/images/banner1.jpg">
+						</a>
+						<div class="banner_text">
+							优待自己，从这里开始——最贴心的私家服务
+						</div>
+					</div>
+					<div class="mui-slider-item banner_item">
+						<a href="#">
+							<img src="<%=basePath%>APP/images/banner1.jpg">
+						</a>
+						<div class="banner_text">
+							优待自己，从这里开始——最贴心的私家服务
+						</div>
+					</div>
+					<div class="mui-slider-item banner_item">
+						<a href="#">
+							<img src="<%=basePath%>APP/images/banner1.jpg">
+						</a>
+						<div class="banner_text">
+							优待自己，从这里开始——最贴心的私家服务
+						</div>
+					</div>
+					<div class="mui-slider-item banner_item">
+						<a href="#">
+							<img src="<%=basePath%>APP/images/banner1.jpg">
+						</a>
+						<div class="banner_text">
+							优待自己，从这里开始——最贴心的私家服务
+						</div>
+					</div>
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="<%=basePath%>APP/images/banner1.jpg">
+						</a>
+						<div class="banner_text">
+							优待自己，从这里开始——最贴心的私家服务
+						</div>
 					</div>
 				</div>
-				<div class="mui-slider-item banner_item">
-					<a href="#">
-						<img src="<%=basePath%>APP/images/banner1.jpg">
-					</a>
-					<div class="banner_text">
-						优待自己，从这里开始——最贴心的私家服务
-					</div>
-				</div>
-				<div class="mui-slider-item banner_item">
-					<a href="#">
-						<img src="<%=basePath%>APP/images/banner1.jpg">
-					</a>
-					<div class="banner_text">
-						优待自己，从这里开始——最贴心的私家服务
-					</div>
-				</div>
-				<div class="mui-slider-item banner_item">
-					<a href="#">
-						<img src="<%=basePath%>APP/images/banner1.jpg">
-					</a>
-					<div class="banner_text">
-						优待自己，从这里开始——最贴心的私家服务
-					</div>
-				</div>
-				<div class="mui-slider-item banner_item">
-					<a href="#">
-						<img src="<%=basePath%>APP/images/banner1.jpg">
-					</a>
-					<div class="banner_text">
-						优待自己，从这里开始——最贴心的私家服务
-					</div>
-				</div>
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<a href="#">
-						<img src="<%=basePath%>APP/images/banner1.jpg">
-					</a>
-					<div class="banner_text">
-						优待自己，从这里开始——最贴心的私家服务
-					</div>
+				
+				<div class="mui-slider-indicator banner_on">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
 				</div>
 			</div>
-			
-			<div class="mui-slider-indicator banner_on">
-				<div class="mui-indicator mui-active"></div>
-				<div class="mui-indicator"></div>
-				<div class="mui-indicator"></div>
-				<div class="mui-indicator"></div>
-			</div>
-		</div>
 		</div>
 		<!--baner图结束-->
 
@@ -125,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</nav>
 		
 		<div class="findTitle">
-			<img title="" alt="" src="<%=basePath%>APP/images/icon/eyes.png" width="20" />
+			<img title="" alt="" src="<%=basePath%>APP/images/icon/eyes.png" width="22" />
 			     发现
 		</div>
 		
@@ -237,7 +239,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script>
 			function autoScroll(obj, ul_bz) {
 				$(obj).find(ul_bz).animate({
-						marginTop : "-0.4rem"
+						marginTop : "-0.5rem"
 				},1000,function(){
 						$(this).css({marginTop : "0"}).find("li:first").appendTo(this);
 				});

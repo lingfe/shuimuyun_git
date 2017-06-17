@@ -20,6 +20,16 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	@Autowired
 	private R_kuaiketabMapper kuaiketabMapper;
 
+	@Override
+	public void updateSFZImages(String kuaikeShenfenZF, String kuaikeShouchiSFZ, String kuaikeId) {
+		kuaiketabMapper.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);
+	}
+	
+	@Override
+	public void updataFirst(String kuaikeName, String kuaikePhone, String kuaikeAddressInfo, String kuaikeId) {
+		kuaiketabMapper.updataFirst(kuaikeName, kuaikePhone, kuaikeAddressInfo, kuaikeId);
+	}
+	
 	/**
 	 * 根据用户名 手机号和密码登陆
 	 * 

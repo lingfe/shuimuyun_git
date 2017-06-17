@@ -21,6 +21,11 @@
 <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 <link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 <link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+<script>
+	setTimeout(function() {
+			$("body").show();
+	},500);
+</script>
 		<style>
 			.commHeader p {
 				color: #fff;
@@ -35,10 +40,22 @@
 				/*font-weight: 700;*/
 			}
 			#container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
 				width:100%;
-				height: 4.5rem;
+				height: 100%;
+				z-index: 2;
 			}
 			.gra_b {
+				position: fixed;
+				left: 0;
+				right: 0;
+				bottom: 0.4rem;
+				left: 0;
+				right: 0;
+				z-index: 555;
 				width: 100%;
 				height: 0.38rem;
 				background: #fff;
@@ -181,7 +198,7 @@
 		</script>
 		
 	</head>
-<body style="display:none;">
+	<body>
 	<!--【头部】-->
 	<header class="commHeader">
 	<p>
@@ -370,34 +387,14 @@
 								bubble : true
 							});
 							//给地图添加双击点击事件 地图放大效果
-							map.on('dblclick', function(e) {
+							map.on('click', function(e) {
 								marker.setPosition(e.lnglat);
 								//得到坐标值
 								geocoder.getAddress(e.lnglat, function(status, result) {
 									if (status == 'complete') {
 										//地址格式转化
 										var test = result.regeocode.formattedAddress
-										//打印是否获取到地址
-										//给地图添加单点击事件 进行页面的跳转
-											map.on('click', function(e) {
-												marker.setPosition(e.lnglat);
-												//得到坐标值
-												geocoder.getAddress(e.lnglat, function(status, result) {
-													if (status == 'complete') {
-														//地址格式转化
-														var test = result.regeocode.formattedAddress
-														//打印是否获取到地址
-														//alert(test);
-														//单击跳转页面
-											            // window.location.href="grabASingleRquest/APP/grabASingleOk/"+xiaId[0];
-														
-														//路径跳转
-														window.location.href = "APP/grabASingleOk.jsp"
-													}
-												});
-											});
-										//单击跳转页面
-										//路径跳转
+										layer.msg=test;
 										return false;
 									}
 								});

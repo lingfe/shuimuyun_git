@@ -27,13 +27,14 @@ ol,
 dl {
 	list-style-type: none;
 }
-
+input {
+	line-height: normal;
+}
 html,
 body {
 	*position: static;
 	background: #eee;
 }
-
 html {
 	font-family: "microsoft yahei";
 	-webkit-text-size-adjust: 100%;
@@ -41,27 +42,27 @@ html {
 }
 
 input {
-	-webkit-appearance: none;
+	-webkit-appearance: auto;
 }
 
 ::-webkit-input-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.15rem;
 }
 
 ::-moz-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.15rem;
 }
 
 ::-moz-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.15rem;
 }
 
 :-ms-input-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.15rem;
 }
 
 
@@ -171,12 +172,20 @@ input {
 }
 
 .commHeader {
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 0.4rem;
 	width: 100%;
-	height: 0.38rem;
 	background: #418bc8;
+	z-index: 999 ;
 }
-
+.commHeader_Cont {
+	position: relative;
+	height: 0.4rem;
+	width: 100%;
+}
 .commHeader a {
 	position: absolute;
 }
@@ -195,8 +204,8 @@ input {
 .commHeader h6 {
 	color: #fff;
 	text-align: center;
-	font-size: 0.13rem;
-	line-height: 0.38rem;
+	font-size: 0.16rem;
+	line-height: 0.4rem;
 }
 
 .commHeader_r {
@@ -211,7 +220,7 @@ input {
 .commHeader_r span {
 	color: #fff;
 	font-size: 0.12rem;
-	line-height: 0.38rem;
+	line-height: 0.4rem;
 }
 
 .commHeader_r img {
@@ -222,8 +231,8 @@ input {
 
 .commHeader_r_font {
 	color: #fff;
-	font-size: 0.13rem;
-	line-height: 0.38rem;
+	font-size: 0.14rem;
+	line-height: 0.4rem;
 	text-align: right;
 }
 
@@ -236,49 +245,53 @@ input {
 .edit_firstdiv {
 	width: 100%;
 	background: white;
-	margin-top: .1rem;
+	margin-top: .5rem;
 }
 
 .edit_firstdiv_1 {
 	width: 100%;
-	height: .4rem;
-	line-height: .4rem;
+	height: .5rem;
+	line-height: .5rem;
 	border-bottom: solid 1px #eee;
 }
 
 .edit_firstdiv_1 input {
 	border: none;
 	width: 60%;
+	font-size: 0.15rem;
 }
 
 .edit_firstdiv_1 label {
 	display: inline-block;
 	width: 30%;
 	margin-left: 10px;
+	font-size: 0.15rem;
 }
 
 .edit_firstdiv_2 {
 	width: 100%;
-	height: .4rem;
-	line-height: .4rem;
+	height: .5rem;
+	line-height: .5rem;
 	border-bottom: solid 1px #eee;
 }
 
 .edit_firstdiv_2 input {
 	border: none;
 	width: 60%;
+	font-size: 0.15rem;
 }
 
 .edit_firstdiv_2 label {
 	display: inline-block;
 	width: 30%;
 	margin-left: 10px;
+	font-size: 0.15rem;
 }
 
 .edit_firstdiv_3 {
 	width: 100%;
-	height: .4rem;
-	line-height: .4rem;
+	height: .5rem;
+	line-height: .5rem;
 	border-bottom: solid 1px #eee;
 }
 
@@ -302,8 +315,6 @@ input {
 	line-height: .4rem;
 	color: #5494cc;
 }
-
-
 /*【新增，添加地址】end*/
 
 
@@ -401,39 +412,44 @@ input {
 /*【我的地址】end*/
 /*【个人资料】*/
 .personal_div{
-			background: white;
-			font-size: .12rem;
-			margin-top: .1rem;
-		}
-		.personal_div a{
-			display: block;
-			position: relative;
-			border-bottom: solid 1px #eee;
-			height: .35rem;
-			color: black;
-		}
-		.personal_div a img:first-of-type{
-			position: absolute;	
-			left: .1rem;	
-			top: .1rem;	
-		}
-		.personal_div a img:last-of-type{
-			position: absolute;
-			right: .1rem;	
-			top: .1rem;		
-		}
-		.personal_div a span:first-of-type{
-			position: absolute;	
-			display: inline-block;
-			left: .3rem;
-			top: .1rem;		
-		}
-		.personal_div a span:last-of-type{
-			position: absolute;
-			display: inline-block;	
-			right: .4rem;	
-			top: .1rem;	
-		}
+	background: white;
+	font-size: .12rem;
+	margin-top: .5rem;
+}
+.personal_div a{
+	display: block;
+	position: relative;
+	border-bottom: solid 1px #eee;
+	height: .5rem;
+	color: #333;
+	line-height: 0.3rem;
+	font-size: 0.15rem;
+}
+.personal_div a img:first-of-type{
+	position: absolute;	
+	left: .1rem;	
+	top: .12rem;	
+}
+.personal_div a img:last-of-type{
+	position: absolute;
+	right: .1rem;	
+	top: 50%;
+	margin-top: -8px;		
+}
+.personal_div a span:first-of-type{
+	position: absolute;	
+	display: inline-block;
+	left: .3rem;
+	top: .1rem;
+	padding-left: 0.1rem;	
+}
+.personal_div a span:last-of-type{
+	position: absolute;
+	display: inline-block;	
+	right: .4rem;	
+	top: .1rem;	
+	margin-left: 0.2rem
+}
 /*【个人资料】end*/
 
 
@@ -460,7 +476,7 @@ input {
 .loginCont_form_item {
 	position: relative;
 	width: 100%;
-	height: 0.32rem;
+	height: 0.42rem;
 	background: rgba(87, 87, 84, .7) !important;
 	border-radius: 5px;
 	margin-bottom: 0.12rem;
@@ -478,15 +494,16 @@ input {
 
 .loginCont_form_item input {
 	display: block;
-	height: 0.32rem;
+	height: 0.42rem;
 	color: #fff;
-	font-size: 0.12rem;
-	line-height: 0.45rem;
+	font-size: 0.15rem;
+	line-height: 0.42rem;
 	outline: none;
 	border: none;
 	background: none;
 	box-sizing: border-box;
 	padding-right: 0.1rem;
+	line-height: normal !important;
 }
 
 .loginCont_form_item .loginCont_form_itemAll {
@@ -515,9 +532,9 @@ input {
 	border: none;
 	outline: none;
 	color: #fff;
-	height: 0.32rem;
-	font-size: 0.12rem;
-	line-height: 0.32rem;
+	height: 0.4rem;
+	font-size: 0.14rem;
+	line-height: 0.4rem;
 	background: rgb(65, 139, 200);
 	padding: 0;
 	margin-top: 0.15rem;
@@ -622,10 +639,13 @@ input {
 	color: white;
 	border: none !important;
 	width: 50% !important;
+	height: 0.32rem !important;
 }
 
 .free_code {
 	width: 40%;
+	height: 0.32rem !important;
+	line-height: 0.32rem !important;
 	margin-left: 0.2rem;
 	padding: 0;
 	margin-top: 0 !important;
@@ -666,19 +686,20 @@ input {
 	width: 100%;
 	background: white;
 	margin-bottom: .1rem;
+	margin-top: 0.4rem;
 }
 
-.order_info>div {
+.shipper {
 	padding: 0 20px;
-	margin: .1rem 0;
+	height: 0.5rem;
 	box-sizing: border-box;
 	position: relative;
 	border-top: solid 1px #eee;
 }
 
-.order_info>div:first-of-type {
+/* .order_info>div:first-of-type(1) {
 	border: none;
-}
+} */
 
 .shipper img {
 	margin-top: .1rem;
@@ -689,7 +710,7 @@ input {
 	position: absolute;
 	top: .13rem;
 	left: .5rem;
-	font-size: .13rem;
+	font-size: .15rem;
 }
 
 .order_right {
@@ -755,14 +776,18 @@ input {
 }
 
 .order_btn {
-	width: 80%;
-	margin-left: 10%;
+	
+	width: 94%;
 	background: #418bc8;
 	color: white;
-	margin-top: .2rem;
+	border: none;
+	outline: none;
+	font-size: 0.15rem;
+	margin-left: 3%;
+	margin-top: .5rem;
 	border-radius: 10px;
-	height: .35rem;
-	line-height: .35rem;
+	height: .4rem;
+	line-height: .4rem;
 }
 
 
@@ -1593,6 +1618,7 @@ input {
 	width: 100%;
 	height: auto;
 	overflow: hidden;
+	margin-top: 0.4rem;
 }
 
 .oallCont_muen {
@@ -1869,8 +1895,9 @@ input {
 
 .nav a p {
 	color: #333;
-	font-size: 0.12rem;
+	font-size: 0.14rem;
 	text-align: center;
+	padding-top: 0.03rem;
 }
 
 .footerMenu {
@@ -1878,7 +1905,7 @@ input {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	height: auto;
+	height: 0.4rem;
 	font-size: 0.13rem;
 	overflow: hidden;
 	background: rgb(255, 255, 255);
@@ -1914,11 +1941,11 @@ input {
 
 .findTitle {
 	position: relative;
-	height: 0.35rem;
+	height: 0.42rem;
 	width: 100%;
 	color: #666;
-	font-size: 0.12rem;
-	line-height: 0.35rem;
+	font-size: 0.15rem;
+	line-height: 0.45rem;
 	text-indent: 30px;
 	box-sizing: border-box;
 	padding: 0 20px;
@@ -1926,13 +1953,13 @@ input {
 
 .findTitle img {
 	position: absolute;
-	top: 0.09rem;
+	top: 0.12rem;
 	left: 20px;
 }
 
 .list {
 	width: 100%;
-	height: 2.4rem;
+	height: 2.5rem;
 	overflow: hidden;
 	background: rgb(255, 255, 255);
 	padding-bottom: 0.04rem;
@@ -1941,7 +1968,7 @@ input {
 
 .eyesList {
 	width: 100%;
-	height: 2.4rem;
+	height: 2.5rem;
 	box-sizing: border-box;
 	padding: 0 20px;
 	margin-top: 0;
@@ -1951,10 +1978,10 @@ input {
 	display: block;
 	position: relative;
 	width: 100%;
-	height: 0.4rem;
+	height: 0.5rem;
 	color: #333;
-	font-size: 0.12rem;
-	line-height: 0.4rem;
+	font-size: 0.14rem;
+	line-height: 0.5rem;
 	border-bottom: 1px solid #e3e1e1 !important;
 }
 
@@ -1964,11 +1991,11 @@ input {
 }
 
 .eyesList li a span:nth-of-type(1) {
-	width: 0.4rem;
+	width: 0.6rem;
 }
 
 .eyesList li a span:nth-of-type(2) {
-	width: calc(100% - 1rem);
+	width: calc(100% - 1.5rem);
 	margin-left: 0.2rem;
 	overflow: hidden;
 	display: -webkit-box;
@@ -2116,6 +2143,7 @@ input {
 	background: #418bc8;
 	box-sizing: border-box;
 	padding: 0.1rem 20px;
+	margin-top: 0.4rem;
 }
 
 .myInfo_user {
@@ -2132,7 +2160,7 @@ input {
 	line-height: 0.13rem;
 	text-align: center;
 	color: #fff;
-	font-size: 0.13rem;
+	font-size: 0.15rem;
 }
 
 .myInfo_lreg a {
@@ -2158,14 +2186,18 @@ input {
 	padding: 0.1rem 0;
 	margin-top: 0.1rem;
 }
-
+.myInfo_nav span {
+	color: #f10000;
+	font-size: 0.16rem;
+}
 .myInfo_nav a {
 	display: block;
 	width: 25%;
 	height: auto;
 	color: #333;
-	font-size: 0.13rem;
+	font-size: 0.15rem;
 	text-align: center;
+	text-decoration: none;
 	float: left;
 }
 
@@ -2180,11 +2212,11 @@ input {
 .myInfo_list a {
 	position: relative;
 	display: block;
-	height: 0.4rem;
+	height: 0.5rem;
 	width: 100%;
 	color: #333;
-	font-size: 0.13rem;
-	line-height: 0.4rem;
+	font-size: 0.15rem;
+	line-height: 0.5rem;
 	text-decoration: none;
 	text-indent: 0.3rem;
 	border-bottom: 1px solid #eee;

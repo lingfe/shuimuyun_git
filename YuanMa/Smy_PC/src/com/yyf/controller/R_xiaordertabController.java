@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,11 +64,10 @@ public class R_xiaordertabController {
 	 * @return url
 	 */
 	@RequestMapping(value="/getMyInfoOrderStatus",method=RequestMethod.GET)
-	public String getMyInfoOrderStatus(ModelMap model){
+	public @ResponseBody Map<String, Object> getMyInfoOrderStatus(@RequestParam(value="kuaikeId",required=false)String kuaikeId,ModelMap model){
 		Map<String, Object> myInfoOrderStatus = r_xiaordertabService.getMyInfoOrderStatus();
-		model.addAttribute("status", myInfoOrderStatus);
-		
-		return "APP/myInfo";
+		System.out.println(kuaikeId);
+		return myInfoOrderStatus;
 	}
 	
 	/**
@@ -521,7 +521,15 @@ public class R_xiaordertabController {
 		tab.setShopImages(request.getContextPath() + "/upload/" + fileName1);
 
 		r_xiaordertabService.add(tab);
-		return "PC/index";
+		//防止session里的值一直保持不变 
+		//先移除session中的值
+		request.getSession().removeAttribute("pricse");
+		request.getSession().removeAttribute("xiaId");
+		//再把值-->对象存入Session中
+		request.getSession().setAttribute("pricse", tab.getShopprices());
+		request.getSession().setAttribute("xiaId", tab.getXiaId());
+		
+		return "PC/fukuan";
 	}
 
 }

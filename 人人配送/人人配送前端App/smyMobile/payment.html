@@ -266,6 +266,28 @@
 			.balModal_contBal span i {
 				margin-right: 4px;
 			}
+			
+			
+			
+			.jzCont {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				width: 60px;
+				height: 60px;
+				background: rgba(0,0,0,.8);
+				border-radius: 5px;
+				margin-top: -30px;
+				margin-left: -30px;
+			}
+			.jzCont span {
+				display: block;
+				width: 20px;
+				height: 20px;
+				background: url(images/icon/loading.gif) no-repeat;
+				background-size: cover;
+				margin: 20px auto;
+			}
 		</style>
 	</head>
 	<body>
@@ -316,26 +338,26 @@
 						<span>可用余额：<i>35.60</i>元</span>
 					</div>
 					<div class="balModal_contPwd">
-						<input type="text" value="0">
-						<input type="text" value="1">
-						<input type="text" value="2">
-						<input type="text" value="3">
-						<input type="text" value="4">
-						<input type="text" value="5">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
 					</div>
 					<a class="balModal_contLink" href="#">忘记密码？</a>
 					<div class="balModal_contNumer">
-						<a href="javascript:;">1</a>
-						<a href="javascript:;">2</a>
-						<a href="javascript:;">3</a>
-						<a href="javascript:;">4</a>
-						<a href="javascript:;">5</a>
-						<a href="javascript:;">6</a>
-						<a href="javascript:;">7</a>
-						<a href="javascript:;">8</a>
-						<a href="javascript:;">9</a>
+						<a class="num" href="javascript:;">1</a>
+						<a class="num" href="javascript:;">2</a>
+						<a class="num" href="javascript:;">3</a>
+						<a class="num" href="javascript:;">4</a>
+						<a class="num" href="javascript:;">5</a>
+						<a class="num" href="javascript:;">6</a>
+						<a class="num" href="javascript:;">7</a>
+						<a class="num" href="javascript:;">8</a>
+						<a class="num" href="javascript:;">9</a>
 						<a href="javascript:;"></a>
-						<a href="javascript:;">0</a>
+						<a class="num" href="javascript:;">0</a>
 						<a id="payDel" href="javascript:;">
 							<img title="" alt="" src="images/icon/payDel.png" width="22"/>
 						</a>
@@ -386,42 +408,55 @@
 						alert("微信支付")
 					}
 				})
-				//关闭弹窗
-				$(".balModal_cont").css("display","none")
-				$(".balModal_title").click(function() {
-					//$(".balModal_contPwd input").val("");
-					$(".balModal_cont").slideUp(500);
-					setTimeout(function() {
-						$(".balModal").hide();
-					},500)
-				})
 				
+				
+				//模拟输入6位密码
 				var i = 0;
-				$(".balModal_contNumer a").click(function() {
+				$(".balModal_contNumer .num").click(function() {
+					var len = $(".balModal_contPwd input").length;
+					//var _val = $(".balModal_contPwd input").index();
+					//var _this = $(this).index();
 					var _value = Number($(this).html());
-					i++
-					if(i < 6) {
+					i++;
+					if(i <= len) {
 						$(".balModal_contPwd input").eq(i-1).val(_value);
 						$(".balModal_contPwd input").eq(i-1).addClass("bg");
+						//alert(i)
 					}
-					else {
-						$(".balModal_contPwd input").eq(i-1).val("");
-						$(".balModal_contPwd input").eq(i-1).removeClass("bg");
-						setTimeout(function(){
-							//location.href="success.html";
-						},500);
-					 }
-				});
-				
-				//删除
-				$("#payDel").click(function(){
-					if(i > 0) {
-						i--
+					if(i > len - 1) {
 						$(".balModal_contPwd input").eq(i).val("");
+						$(".balModal_contPwd input").eq(i).removeClass("bg");
+						//alert("密码超过6位了")
+						var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
+	   				 	$("body").append(jz);//把元素加载body
+						setTimeout(function(){
+							$(".jzCont").remove();
+							window.location.href="payOk.html";
+						},800);
+					 }
+					
+				})
+				
+				$("#payDel").click(function() {
+					if(i > 0) {
+						i--;
+						$(".balModal_contPwd input").eq(i).val("");
+						$(".balModal_contPwd input").eq(i).removeClass("bg");
 						i == 0;
 					}
 					alert(i)
-				});
+				})
+				
+				//关闭弹窗
+				$(".balModal_cont").css("display","none")
+				$(".balModal_title").click(function() {
+					$(".balModal_cont").slideUp(500);
+					
+					setTimeout(function() {
+						window.location.reload();
+						$(".balModal").hide();
+					},500)
+				})
 			})
 		</script>
 	</body>

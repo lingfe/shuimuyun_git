@@ -2,6 +2,9 @@ package com.yyf.service;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+
 import com.yyf.model.R_kuaiketab;
 
 /**
@@ -10,6 +13,29 @@ import com.yyf.model.R_kuaiketab;
  */
 public interface R_kuaiketabService {
 
+	/**
+	 * 
+	 * 修改身份证正反面，手持身份证
+	 * @author lijie     
+	 * @created 2017年6月17日 下午3:27:37  
+	 * @param kuaikeShenfenZF		身份证正反面
+	 * @param kuaikeShouchiSFZ		手持身份证照片
+	 * @param kuaikeId				快客id
+	 */
+	public void updateSFZImages(String kuaikeShenfenZF,String kuaikeShouchiSFZ, String kuaikeId);
+	
+	/**
+	 * 
+	 * 根据快客id修改用户名，电话号码，快客详细地址
+	 * @author lijie     
+	 * @created 2017年6月17日 下午2:21:23  
+	 * @param kuaikeName			姓名
+	 * @param kuaikePhone			电话号码
+	 * @param kuaikeAddressInfo		快客详细地址
+	 * @param kuaikeId				快客id
+	 */
+	public void updataFirst(String kuaikeName, String kuaikePhone,String kuaikeAddressInfo, String kuaikeId);
+	
 	/**
 	 * 根据用户名或手机号 和密码登陆
 	 * 

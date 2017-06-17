@@ -45,19 +45,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<nav class="myInfo_nav">
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<span>0</span>
-				<p>待接单</p>
+				<p>待付款</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<span>0</span>
-				<p>待取货</p>
+				<p>已接单</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<span>0</span>
-				<p>正在派送</p>
+				<p>已取货</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>0</span>
-				<p>代付款</p>
+				<span>3</span>
+				<p>未评价</p>
 			</a>
 		</nav>
 		

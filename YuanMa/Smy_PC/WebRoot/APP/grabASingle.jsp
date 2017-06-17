@@ -330,6 +330,10 @@
 					//请求成功后触发
 					success : function(json) {
 						kuaikeAddressInfo = json.kuaikeAddressInfo;
+						
+						xiaId=json.xiaId;
+						
+						$("#i_num").html(kuaikeAddressInfo.length);
 						//初始化地图调用JS接口
 						var map = new AMap.Map('container', {
 							resizeEnable : true
@@ -383,9 +387,9 @@
 														//地址格式转化
 														var test = result.regeocode.formattedAddress
 														//打印是否获取到地址
-														alert(test);
+														//alert(test);
 														//单击跳转页面
-											             window.location.href="grabASingleRquest/APP/grabASingleOk/"+json.xiaId[0];
+											            // window.location.href="grabASingleRquest/APP/grabASingleOk/"+xiaId[0];
 														
 														//路径跳转
 														window.location.href = "APP/grabASingleOk.jsp"

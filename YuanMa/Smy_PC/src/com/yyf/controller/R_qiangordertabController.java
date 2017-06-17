@@ -185,6 +185,7 @@ public class R_qiangordertabController {
 		
 		//为Map集合对象添加键值对
 		json.put("kuaikeAddressInfo", kuaikeAddressInfo);
+		json.putIfAbsent("xiaId", xiaId);
 		
 		//返回Json数据
 		JsonUtils.writeJson(json, req, resp);

@@ -12,6 +12,32 @@ import com.yyf.model.R_kuaiketab;
 
 public interface R_kuaiketabMapper {
 
+	/**
+	 * 
+	 * 修改身份证正反面，手持身份证
+	 * @author lijie     
+	 * @created 2017年6月17日 下午3:27:37  
+	 * @param kuaikeShenfenZF		身份证正反面
+	 * @param kuaikeShouchiSFZ		手持身份证照片
+	 * @param kuaikeId				快客id
+	 */
+	@Update("UPDATE kuaiketab SET kuaikeShenfenZF=#{kuaikeShenfenZF},kuaikeShouchiSFZ=#{kuaikeShouchiSFZ} WHERE kuaikeId=#{kuaikeId}")
+	public void updateSFZImages(@Param("kuaikeShenfenZF")String kuaikeShenfenZF,@Param("kuaikeShouchiSFZ")String kuaikeShouchiSFZ, @Param("kuaikeId") String kuaikeId);
+	
+	/**
+	 * 
+	 * 根据快客id修改用户名，电话号码，快客详细地址
+	 * @author lijie     
+	 * @created 2017年6月17日 下午2:21:23  
+	 * @param kuaikeName			姓名
+	 * @param kuaikePhone			电话号码
+	 * @param kuaikeAddressInfo		快客详细地址
+	 * @param kuaikeId				快客id
+	 */
+	@Update("UPDATE kuaiketab SET kuaikeName=#{kuaikeName},kuaikePhone=#{kuaikePhone},kuaikeAddressInfo=#{kuaikeAddressInfo} WHERE kuaikeId=#{kuaikeId}")
+	public void updataFirst(@Param("kuaikeName") String kuaikeName, @Param("kuaikePhone") String kuaikePhone,
+			@Param("kuaikeAddressInfo") String kuaikeAddressInfo, @Param("kuaikeId") String kuaikeId);
+
 	// This Is A LOGIN METHOD ACCODING TO UNAME AND UPASS
 	/**
 	 * 用户名或手机号、密码登陆
@@ -30,15 +56,15 @@ public interface R_kuaiketabMapper {
 	// Add information based on the phone number entered by the user
 	// @Insert("insert INTO kuaiketab(kuaikeName,password,kuaikePhone) "
 	// + "VALUES(#{kuaikeName},#{password},#{kuaikePhone});")
-	
+
 	/**
-	 * 根据快客Id修改快客登陆成功状态  0审核未通过 1通过   2登陆成功在线  3离线
-	 * @author 杨杰     
+	 * 根据快客Id修改快客登陆成功状态 0审核未通过 1通过 2登陆成功在线 3离线
+	 * 
+	 * @author 杨杰
 	 * @created 2017年6月12日 上午9:25:17
 	 */
 	@Update("update kuaiketab set kuaikeStatus=#{kuaikeStatus} where kuaikeId=#{kuaikeId}")
-	public void updateKuaikeStatus(@Param("kuaikeStatus") int kuaikeStatus,@Param("kuaikeId") String kuaikeId);
-	
+	public void updateKuaikeStatus(@Param("kuaikeStatus") int kuaikeStatus, @Param("kuaikeId") String kuaikeId);
 
 	/**
 	 * 根据 用户名 查看 用户名是否存在相同
@@ -109,7 +135,7 @@ public interface R_kuaiketabMapper {
 	 * @return
 	 */
 	@Select("update kuaiketab set password=#{password} where kuaikePhone=#{kuaikePhone}")
-	public void findBackPassWord(@Param("password") String password,@Param("kuaikePhone") String kuaikePhone);
+	public void findBackPassWord(@Param("password") String password, @Param("kuaikePhone") String kuaikePhone);
 
 	/**
 	 * 用户根据手机号 重置密码
@@ -159,59 +185,69 @@ public interface R_kuaiketabMapper {
 			@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeAddress") String kuaikeAddress,
 			@Param("kuaikeAddressInfo") String kuaikeAddressInfo);
 
-	
 	/**
-	 * PC端 人工找回密码  通过知道快客的姓名、电话、地址看数据库中是否存在该用户信息
-	 * @author 杨杰     
-	 * @created 2017年5月26日 上午9:49:15  
-	 * @param kuaikeName 快客姓名
-	 * @param kuaikePhone  快客电话
-	 * @param kuaikeAddress  快客地址
-	 * @param kuaikeAddressInfo  快客 详情地址【可选】
+	 * PC端 人工找回密码 通过知道快客的姓名、电话、地址看数据库中是否存在该用户信息
+	 * 
+	 * @author 杨杰
+	 * @created 2017年5月26日 上午9:49:15
+	 * @param kuaikeName
+	 *            快客姓名
+	 * @param kuaikePhone
+	 *            快客电话
+	 * @param kuaikeAddress
+	 *            快客地址
+	 * @param kuaikeAddressInfo
+	 *            快客 详情地址【可选】
 	 */
 	@Select("select * from kuaiketab where kuaikeName=#{kuaikeName} AND kuaikePhone=#{kuaikePhone} AND kuaikeAddress=#{kuaikeAddress} OR kuaikeAddressInfo=#{kuaikeAddressInfo}")
 	public R_kuaiketab selectUpdatePasswordBykuaikeInfo(@Param("kuaikeName") String kuaikeName,
 			@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeAddress") String kuaikeAddress,
 			@Param("kuaikeAddressInfo") String kuaikeAddressInfo);
 
-	
 	/**
-	 * APP 端 申诉找回密码  通过匹配快客的原有手机号 和 姓名 进行验证数据库中是否存在该用户
-	 * @author 杨杰     
-	 * @created 2017年6月16日 上午9:12:52  
-	 * @param kuaikeName 快客姓名
-	 * @param newkuaikePhone 现有手机号码
+	 * APP 端 申诉找回密码 通过匹配快客的原有手机号 和 姓名 进行验证数据库中是否存在该用户
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月16日 上午9:12:52
+	 * @param kuaikeName
+	 *            快客姓名
+	 * @param newkuaikePhone
+	 *            现有手机号码
 	 * @return
 	 */
 	@Select("select * from kuaiketab where kuaikeName=#{kuaikeName} and kuaikePhone=#{newkuaikePhone}")
-	public R_kuaiketab selectPasswordBykuaikeInfo(@Param("kuaikeName") String kuaikeName,@Param("newkuaikePhone") String newkuaikePhone);
-	
-	
+	public R_kuaiketab selectPasswordBykuaikeInfo(@Param("kuaikeName") String kuaikeName,
+			@Param("newkuaikePhone") String newkuaikePhone);
+
 	/**
 	 * APP端 在手机不能接受验证信息时，通过填写现有手机号对原手机号码进行换绑，方便申诉找回密码
-	 * @author 杨杰     
-	 * @created 2017年6月15日 下午4:03:07  
-	 * @param newkuaikePhone  现有手机号码
-	 * @param kuaikeName  快客姓名
-	 * @param kuaikePhone  原有手机号
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月15日 下午4:03:07
+	 * @param newkuaikePhone
+	 *            现有手机号码
+	 * @param kuaikeName
+	 *            快客姓名
+	 * @param kuaikePhone
+	 *            原有手机号
 	 * @return
 	 */
 	@Update("update kuaiketab set kuaikePhone=#{newkuaikePhone} where kuaikeName=#{kuaikeName} and kuaikePhone=#{kuaikePhone}")
-	public int updatePasswordByAppeal(@Param("newkuaikePhone") String newkuaikePhone,@Param("kuaikeName") String kuaikeName,@Param("kuaikePhone") String kuaikePhone);
-	
-	
+	public int updatePasswordByAppeal(@Param("newkuaikePhone") String newkuaikePhone,
+			@Param("kuaikeName") String kuaikeName, @Param("kuaikePhone") String kuaikePhone);
+
 	/**
 	 * APP端 通过姓名和手机号找回密码
-	 * @author 杨杰     
-	 * @created 2017年6月16日 上午9:24:44  
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月16日 上午9:24:44
 	 * @param kuaikeName
 	 * @param kuaikePhone
 	 */
 	@Update("update kuaiketab set password=#{password} where kuaikeName=#{kuaikeName} and kuaikePhone=#{newkuaikePhone}")
-	public void updatePasswordByKuaikeNameAndKuaikePhone(@Param("password") String password,@Param("kuaikeName") String kuaikeName,@Param("newkuaikePhone") String newkuaikePhone);
-	
-	
-	
+	public void updatePasswordByKuaikeNameAndKuaikePhone(@Param("password") String password,
+			@Param("kuaikeName") String kuaikeName, @Param("newkuaikePhone") String newkuaikePhone);
+
 	/**
 	 * 用户注册【申请】
 	 * 
@@ -227,16 +263,18 @@ public interface R_kuaiketabMapper {
 			+ "#{kuaikeShenfenZF},#{kuaikeShouchiSFZ},#{kuaikeStatus},#{kuaikeShengqingDate},"
 			+ "#{password},#{loginDate},#{kuaikeAddressInfo})")
 	public int addUser(R_kuaiketab kuaiketab);
-	
-	
+
 	/**
 	 * 根据快客Id修改手机号码
-	 * @author 杨杰     
-	 * @created 2017年6月1日 下午4:10:58  
-	 * @param kuaikePhone  手机号码
-	 * @param kuaikeId  快客ID
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月1日 下午4:10:58
+	 * @param kuaikePhone
+	 *            手机号码
+	 * @param kuaikeId
+	 *            快客ID
 	 */
 	@Update("update kuaiketab set kuaikePhone=#{kuaikePhone} where kuaikeId=#{kuaikeId}")
-	public void updatePhoneById(@Param("kuaikePhone") String kuaikePhone,@Param("kuaikeId") String kuaikeId);
-	
+	public void updatePhoneById(@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeId") String kuaikeId);
+
 }

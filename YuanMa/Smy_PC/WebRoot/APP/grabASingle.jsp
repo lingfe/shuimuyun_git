@@ -21,6 +21,11 @@
 <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 <link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 <link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+<script>
+	setTimeout(function() {
+			$("body").show();
+	},500);
+</script>
 		<style>
 			.commHeader p {
 				color: #fff;
@@ -35,10 +40,22 @@
 				/*font-weight: 700;*/
 			}
 			#container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
 				width:100%;
-				height: 4.5rem;
+				height: 100%;
+				z-index: 2;
 			}
 			.gra_b {
+				position: fixed;
+				left: 0;
+				right: 0;
+				bottom: 0.4rem;
+				left: 0;
+				right: 0;
+				z-index: 555;
 				width: 100%;
 				height: 0.38rem;
 				background: #fff;
@@ -181,7 +198,7 @@
 		</script>
 		
 	</head>
-<body style="display:none;">
+	<body>
 	<!--【头部】-->
 	<header class="commHeader">
 	<p>

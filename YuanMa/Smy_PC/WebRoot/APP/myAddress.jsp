@@ -47,8 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--选择地区-->
         <section class="express-area">
             <a id="expressArea" href="javascript:void(0)">
-                <dl>
-                    <dt>选择地区：</dt>
+                <dl style="height: .5rem;">
+                    <dt style="line-height: .5rem; font-size: 0.15rem">选择地区：</dt>
                     <dd id="adder"></dd>
                 </dl>
             </a>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
 			</div>			
 			<div class="edit_firstdiv_3">
-				<label>街　道 :</label>
+				<label style="line-height: .5rem; font-size: 0.15rem">街　道 :</label>
 				<input type="text" placeholder="请输入详细地址" id="xadder" />
 			</div>
 		</div>
@@ -77,6 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			删除街道
 		</div>-->
 		<a href="javascript:void(0);"><button class="order_btn" id="editbtn">保存</button></a>
+		
+		
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery.area.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>

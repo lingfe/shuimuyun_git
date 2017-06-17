@@ -14,6 +14,8 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -51,6 +53,76 @@ public class R_kuaiketabController {
 	@Autowired
 	private R_kuaiketabService kuaiketabService;
 
+	/**
+	 * 
+	 * 修改身份证正反面，手持身份证
+	 * @author lijie     
+	 * @created 2017年6月17日 下午3:27:37  
+	 * @param kuaikeShenfenZF		身份证正反面
+	 * @param kuaikeShouchiSFZ		手持身份证照片
+	 * @param kuaikeId				快客id
+	 */
+	@RequestMapping(value="/updateSFZImages",method=RequestMethod.POST)
+	public String updateSFZImages(@RequestParam(value = "file1", required = false) MultipartFile file1,
+			@RequestParam(value = "file2", required = false) MultipartFile file2,
+			@RequestParam("kuaikeId") String kuaikeId,HttpServletRequest request){
+		// 获取到当前服务器项目的跟路径
+		String path = request.getSession().getServletContext().getRealPath("upload");
+
+		// 文件1
+		String fileName1 = file1.getOriginalFilename();
+		File targetFile1 = new File(path, fileName1);
+		if (!targetFile1.exists()) {
+			targetFile1.mkdirs();
+		}
+
+		// 文件2
+		String fileName2 = file2.getOriginalFilename();
+		File targetFile2 = new File(path, fileName2);
+		if (!targetFile2.exists()) {
+			targetFile2.mkdirs();
+		}
+
+		// 保存
+		try {
+			file1.transferTo(targetFile1);
+			file2.transferTo(targetFile2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// 身份证复印件文件
+		String kuaikeShenfenZF= request.getContextPath() + "/upload/" + fileName1;
+		// 手拿身份证图片
+		String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + fileName2;
+		
+		
+		kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);
+		
+		return "APP/myInfo";
+	}
+	
+	
+	/**
+	 * 
+	 * 根据快客id修改用户名，电话号码，快客详细地址
+	 * @author lijie     
+	 * @created 2017年6月17日 下午2:21:23  
+	 * @param kuaikeName			姓名
+	 * @param kuaikePhone			电话号码
+	 * @param kuaikeAddressInfo		快客详细地址
+	 * @param kuaikeId				快客id
+	 * return url
+	 */
+	@RequestMapping(value="/updataFirstStep",method=RequestMethod.POST)
+	public String updataFirst(R_kuaiketab tab){
+		//执行修改
+		kuaiketabService.updataFirst(tab.getKuaikeName(), tab.getKuaikePhone(), tab.getKuaikeAddressInfo(), tab.getKuaikeId());
+		
+		return "APP/perfectData_secondStep";
+	}
+
+	
 	/**
 	 * 
 	 * app移动端注册，没有图片上传

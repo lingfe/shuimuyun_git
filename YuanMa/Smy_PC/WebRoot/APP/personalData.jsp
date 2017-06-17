@@ -44,24 +44,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span>${login.kuaikeAddress }</span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
 				</a>
-				<a href="RequestMappingUtil/requestNUll/APP/modifyMailbox">
+				<%-- <a href="RequestMappingUtil/requestNUll/APP/modifyMailbox">
 					<img src="<%=basePath%>APP/images/icon/email_red.png" width="20" />
 					<span>我的邮箱</span>
 					<span>1234567891@qq.com</span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
-				</a>
+				</a> --%>
 				<a href="RequestMappingUtil/requestNUll/APP/modifyPassword">
 					<img src="<%=basePath%>APP/images/icon/suo_green.png" height="25" />
 					<span>修改密码</span>
 					<span></span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
 				</a>
-				<a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword">
+				<%-- <a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword">
 					<img src="<%=basePath%>APP/images/icon/suo_green.png" height="25" />
 					<span>修改支付密码</span>
 					<span></span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
-				</a>
+				</a> --%>
 			</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 	</body>

@@ -32,8 +32,8 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	private R_qiangordertabMapper qiangordertabMapper;
 
 	@Override
-	public Map<String, Object> getMyInfoOrderStatus() {
-		return ir_xiaordertabMapper.getMyInfoOrderStatus();
+	public Map<String, Object> getMyInfoOrderStatus(String kuaikeId) {
+		return ir_xiaordertabMapper.getMyInfoOrderStatus(kuaikeId);
 	}
 	
 	@Override

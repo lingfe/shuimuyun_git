@@ -91,7 +91,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--确定按钮-->
 		<div class="order_buttom taking_btn">
 			<div class="order_buttom_text">
-			<img src="<%=basePath%>APP/images/icon/dui.png"width="20"/><label> 我同意 《水木云快递条约》</label>
+			<img src="<%=basePath%>APP/images/icon/dui.png"width="20"/>
+			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
 			<button class="mui-btn mui-btn-block order_btn" onclick="qiangdanAjax(this);">确认抢单</button>
 		</div>

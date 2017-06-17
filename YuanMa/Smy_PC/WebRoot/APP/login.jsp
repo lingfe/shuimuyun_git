@@ -72,5 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile_yz.js" ></script>
+		<!-- 提示 -->
+		<script type="text/javascript">	${errorShow }</script>
 	</body>
 </html>

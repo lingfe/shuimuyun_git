@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${c.remark }</td>
 					<td><fmt:formatDate value="${c.commentDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 					<td>
-					<a href="javascrpit:void(0);" class="tablelink">详情</a>
+					<a href="javascript:void(0);" class="tablelink">详情</a>
 					<a href="removeCommentInfo/${c.commentId}" class="tablelink">删除</a>
 					</td>
 					

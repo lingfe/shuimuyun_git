@@ -449,7 +449,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   				 	$("body").append(jz);//把元素加载body
 						setTimeout(function(){
 							$(".jzCont").remove();
-							window.location.href="payOk.html";
+							window.location.href="<%=basePath %>APP/payOk.jsp";
 						},800);
 					 }
 					
@@ -462,7 +462,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$(".balModal_contPwd input").eq(i).removeClass("bg");
 						i == 0;
 					}
-					//alert(i)
+					//     alert(i)
 				})
 				
 				//关闭弹窗

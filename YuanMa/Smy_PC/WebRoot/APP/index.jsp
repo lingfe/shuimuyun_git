@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</header>
 		<!--banner图开始-->
-		<div style="height:1rem;">
+		<div style="height:1.4rem;">
 		<div id="slider" class="mui-slider">
 			<div class="mui-slider-group mui-slider-loop">
 				<div class="mui-slider-item mui-slider-item-duplicate">

@@ -51,9 +51,8 @@
 							type="text" name="kuaikeName" placeholder="请输入用户名" />
 					</div>
 					<div class="loginCont_form_item mui-input-row">
-						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" /> <input
-							class="loginCont_form_itemAll mui-input-clear right" id="forgePhone"
-							type="text" name="kuaikePhone" placeholder="请输入手机号码" />
+						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
+						<input class="loginCont_form_itemAll mui-input-clear right" id="forgePhone" type="text" name="kuaikePhone" placeholder="请输入手机号码" />
 					</div>
 					<div>
 						<input type="text" style="height:.3rem; font-size:.12rem;" class="mui-input-clear free_input_code left"

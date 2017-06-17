@@ -9,9 +9,31 @@
 		<link rel="stylesheet" href="css/layer.css" />
 		<link rel="stylesheet" type="text/css" href="css/smyMobile.css" />
 	</head>
-	<style type="text/css">
-		.cell_firstdiv{
+	<style>
+		.nanbg{
+			width: 100%;
+			margin-top: 1.5rem;
+		}
+		.nanbg img{
+			margin-left: 38%;
+		}
+		.nanbg p{
+			text-align: center;
+			font-size: 20px;
 			margin-top: .1rem;
+		}
+		.cnanbg{
+			width: 100%;
+			margin-top: 1.5rem;
+		}
+		.cnanbg img{
+			margin-left: 38%;
+		}
+		.cnanbg p{
+			text-align: center;
+			font-size: 20px;
+			margin-top: .1rem;
+			color: #fbae93;
 		}
 	</style>
 	<body>
@@ -20,26 +42,18 @@
 			<a class="commHeader_l" href="#">
 				<img title="" alt="" src="images/icon/arow_left.png" />
 			</a>
-			<h6>修改手机号</h6>
+			<h6>考试成绩</h6>
 		</header>
-		<form>
-		<div class="appeal_firstdiv cell_firstdiv">
-			<div>
-				<label>原手机号</label><input type="text" id="lastPhone" placeholder="请输入原绑定手机号" />
-			</div>
-			
-			<div>
-				<label>当前手机号</label><input type="text" id="regPhone" placeholder="请输入当前手机号" />
-			</div>
-			<div>
-				<label>验 证 码</label><input class="las" id="regYzm" type="text" placeholder="请输入验证码" /><button id="regYzmBtn">获取验证码</button>
-			</div>
-			<div>
-				<label>密码</label><input type="text" id="pwd" placeholder="请输入登录密码" />
-			</div>
+		<!--【头部】end-->
+		<!--失败(隐藏)-->
+		<div class="nanbg dis">
+			<img src="images/nanguo.png" width="100" />
+			<p>也许在努力一下就通过了哦</p>
 		</div>
-		<a href="login.html"><button class="order_btn" id="">确定</button></a>
-		</form>
+		<div class="cnanbg">
+			<img src="images/kaixin.png" width="100" />
+			<p>考试通过了</p>
+		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/smyMobile.js"></script>

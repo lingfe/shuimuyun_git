@@ -101,29 +101,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</a>
 				<h1 class="header_title">完善信息</h1>
 			</header>
-			
-			<from class="quickMian">
+			<form class="quickMian" action="updataFirstStep" method="POST" >
 				<div class="quickTop">
 					<input type="file"  multiple="multiple" />
+					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId" />
 					<img class="quick_user" title="" alt="" src="<%=basePath%>APP/images/myUser.png" width="100%" />
 				</div>
 				<div class="loginCont_form_item mui-input-row">
 					<img class="quickMian_icon" title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
-					<input class="loginCont_form_itemAll mui-input-clear right" id="quickPhone" type="number" placeholder="请输入手机号码" />
+					<input name="kuaikePhone" value="${login.kuaikePhone }" class="loginCont_form_itemAll mui-input-clear right" id="quickPhone" type="number" placeholder="请输入手机号码" />
 				</div>
 				<div class="loginCont_form_item mui-input-row">
 					<img class="quickMian_icon" title="" alt="" src="<%=basePath%>APP/images/icon/user.png" />
-					<input class="loginCont_form_itemAll mui-input-clear right" id="quickName" type="text" placeholder="请输入真实姓名" />
+					<input name="kuaikeName" value="${login.kuaikeName }" class="loginCont_form_itemAll mui-input-clear right" id="quickName" type="text" placeholder="请输入真实姓名" />
 				</div>
 				<div class="loginCont_form_item">
 					<span class="quickMian_arrow"></span>
 					<img class="quickMian_icon" title="" alt="" src="<%=basePath%>APP/images/icon/address.png" />
-					<input class="loginCont_form_itemAll text_1_hide right" id="quickAddress" type="text" placeholder="贵州省南明区花果园" />
+					<input name="kuaikeAddressInfo" value="${login.kuaikeAddressInfo }" class="loginCont_form_itemAll text_1_hide right" id="quickAddress" type="text" placeholder="贵州省南明区花果园" />
 				</div>
-				
-				<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/perfectData_secondStep" ><button class="quickBtn" id="quickBtn" type="button">下一步</button></a> 
+				<button class="quickBtn" id="quickBtn" type="submit">下一步</button>
 				<p class="quickMian_info">上传照片后可享受抢单服务赚取外快</p>
-			</from>
+			</form>
 		</div>
 		
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>

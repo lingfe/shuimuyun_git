@@ -20,6 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body>
 		<header class="commHeader">
+		<a class="commHeader_l" href="<%=basePath%>APP/myInfo.jsp">
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/arow_left.png" />
+			</a>
 			<h6>个人资料</h6>
 		</header>
 			<div class="personal_div">

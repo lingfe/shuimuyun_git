@@ -51,10 +51,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form>
 		<!--【头部】end-->
 		<div class="feed">
-			<a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword">
-				<span>重置支付密码</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" />
-			</a>
+<!-- 			<a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword"> -->
+<!-- 				<span>重置支付密码</span> -->
+<%-- 				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" /> --%>
+<!-- 			</a> -->
 			<a href="RequestMappingUtil/requestNUll/APP/modifyPassword">
 				<span>重置登录密码</span>
 				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" />

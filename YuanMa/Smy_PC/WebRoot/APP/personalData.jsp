@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="RequestMappingUtil/requestNUll/APP/editAddress">
 					<img src="<%=basePath%>APP/images/icon/adds_yellow.png" height="25" />
 					<span>我的地址</span>
-					<span>${login.kuaikeAddress }</span>
+					<span>${login.kuaikeAddressInfo}</span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
 				</a>
 				<%-- <a href="RequestMappingUtil/requestNUll/APP/modifyMailbox">

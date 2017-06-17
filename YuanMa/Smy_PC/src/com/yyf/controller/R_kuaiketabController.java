@@ -854,7 +854,6 @@ public class R_kuaiketabController {
 	@RequestMapping(value="/updatePhoneBykuaikePhoneAndPassword",method=RequestMethod.POST)
 	public String updatePhoneBykuaikePhoneAndPassword(@ModelAttribute("login") R_kuaiketab ktab,
 			HttpSession session,SessionStatus sessionStatus,
-			@RequestParam("newPassword") String newPassword,
 			@RequestParam("regPhone") String regPhone,
 			@RequestParam("lastPhone") String lastPhone,
 			@RequestParam("password") String password){
@@ -888,17 +887,17 @@ public class R_kuaiketabController {
 	 * @param kuaikeID   快客Id
 	 * @param password  原密码
 	 */
-	@RequestMapping(value="updatePassWordByOldPassword",method=RequestMethod.POST)
-	public String updatePassWordByOldPassword(@ModelAttribute("login") R_kuaiketab ktab,
+	@RequestMapping(value="/updatePassWordByOldPassword",method=RequestMethod.POST)
+	public String updatePassWordByOldPassword(
 			HttpSession session,SessionStatus sessionStatus,
 			@RequestParam("newPassword") String newPassword, 
 			@RequestParam("kuaikeId") String kuaikeId, 
 			@RequestParam("password") String password) {
 			
+			String oldPass = Md5Util.md5(password);
 			String passstr = Md5Util.md5(newPassword);
 			
-			int newpass = kuaiketabService.updatePassWordByOldPassword(passstr, kuaikeId, password);
-			
+			int newpass = kuaiketabService.updatePassWordByOldPassword(passstr, kuaikeId, oldPass);
 			if(newpass>0){
 				//清空Session域中的所有对象以及初始化 Session
 				session.removeAttribute("login");

@@ -44,15 +44,83 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<label>确认新密码</label><input type="text" id="yespwd" placeholder="请再次输入新登录密码" />
 			</div>
 			<div>
-				<label>验 证 码</label><input class="las" id="pwdYzm" type="text" placeholder="请输入验证码" /><button id="pwdYzmBtn">获取验证码</button>
+				<label>验 证 码</label><input class="las" style=" width:1.2rem;" id="pwdYzm" type="text" placeholder="请输入验证码" /><button id="pwdYzmBtn">获取验证码</button>
 			</div>
 		</div>
-		<a href="javascript:void(0);"><button class="order_btn" id="pwdbtn">提交</button></a>
+		<button class="order_btn" id="pwdbtn">提交</button>
 		</form>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js" ></script>
+		<script type="text/javascript">
+			//修改密码
+	$("#pwdbtn").click(function(){
+		var lastpwd = $("#lastpwd").val();
+		var chpwd = $("#chpwd").val();
+		var yespwd = $("#yespwd").val();
+		var pwdYzm = $("#pwdYzm").val();
+		if(lastpwd=="") {
+			//提示
+		    layer.open({
+		    	content: '请输入原登录密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(chpwd=="") {
+			//提示
+		    layer.open({
+		    	content: '请输入新登录密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(yespwd == "") {
+			//提示
+		    layer.open({
+		    	content: '请再次输入新登录密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}else if(yespwd == chpwd) {
+			//提示
+		    layer.open({
+		    	content: '两次密码输入不一致',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(pwdYzm == "") {
+			//提示
+		    layer.open({
+		    	content: '请输入验证码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+	})
+	$("#pwdYzmBtn").click(function() {
+	var pwdPhone = $("#pwdPhone").html();
+		if(!(pwdPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(pwdPhone))) {
+			//提示
+		    layer.open({
+		    	content: '手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}else{
+			time(this);
+		}
+	})
+			
+		</script>
 	</body>
 </html>

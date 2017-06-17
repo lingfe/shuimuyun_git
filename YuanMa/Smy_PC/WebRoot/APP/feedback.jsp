@@ -62,19 +62,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="feed">
 			<a>
 				<span>目前水木云快送开通了哪些城市？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="10" />
 			</a>
 			<a>
 				<span>想先了解订单的运费和时效多少怎么查询？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="10" />
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/serviceHelp">
 				<span>水木云快送安全吗？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="10" />
 			</a>
 			<a>
 				<span>发货遇到问题如何联系客服？</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="10" />
 			</a>
 		</div>
 		<div class="courier_last">
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="feed">
 			<a href="RequestMappingUtil/requestNUll/APP/feedback_neiro">
 				<span>意见反馈</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" width="10" />
 			</a>
 		</div>
 		</form>

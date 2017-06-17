@@ -23,11 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style type="text/css">
 		.num_pohone{
 			width: 100%;
-			margin-top: .2rem;
+			margin-top: .6rem;
 			background: white;
 			height: .5rem;
 			line-height: .5rem;
 			position: relative;
+			font-size:.15rem;
 		}
 		.num_pohone span{
 			display: inline-block;

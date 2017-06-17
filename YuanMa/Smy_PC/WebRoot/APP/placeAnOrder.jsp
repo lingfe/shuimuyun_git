@@ -72,9 +72,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/number.png" width="27"/>
 				<label>货物数量</label>
 				<div class="order_num">
-					<span class="order_num_mag">&nbsp;个/件</span>
+					<span style="" class="order_num_mag">&nbsp;个/件</span>
 					<span id="jian">-</span>
-					<span id="zhi"> 1 </span>
+					<span > <input id="zhi" type=number value="1"> </span>
 					<span id="jia">+</span>
 				</div>
 			</div>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="order_num">
 					<span class="order_num_mag">&nbsp;kg</span>
 					<span id="jian">-</span>
-					<span id="zhi1"> 1 </span>
+					<span > <input id="zhi1" type="number" value="1"> </span>
 					<span id="jia">+</span>
 				</div>
 			</div>

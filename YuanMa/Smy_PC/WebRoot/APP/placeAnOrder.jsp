@@ -91,6 +91,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>	
 		<!--到达时间-->
 		<div class="order_info">
+		<div class="shipper">
+				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
+				<label>最晚取货时间</label>
+				<div class="order_right"id="order_right3">
+					<span id="shijian1">1小时15分</span>
+					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
+				</div>
+			</div>
+		
 			<div class="shipper">
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最迟到达时间</label>
@@ -172,6 +181,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			
 		</div>
+		<!--弹窗四-->
+		<div class="order_tan2"id="order_tan3">
+			<div class="order_tan_clos3">
+				<span>最迟取货达时间</span>
+				<span class="mui-icon mui-icon-close order_close" id="order_close3"></span>
+			</div>
+			<div class="order_tan_context3"  id="order_tex3">
+				<div class="order_shi3">
+					<span>时</span>
+					<input type="number" id="num_shi1"/>
+				</div>
+				<div class="order_fen3">
+					<span>分</span>
+					<input type="number" id="num_fen1" />
+				</div>
+				<input class="order_butt3" type="button" id="butt1" value="取消" />
+				<input class="order_buttn3" type="button" id="buttn1" value="确定" />				
+			</div>			
+		</div>		
 		
 		
 		<!--底部-->

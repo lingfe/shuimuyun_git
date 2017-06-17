@@ -31,11 +31,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
-			<h6>修改手机号</h6>
+			<p>修改手机号</p>
 		</header>
 		<form>
 
-		<div class="appeal_firstdiv cell_firstdiv">
+		<div class="appeal_firstdiv" style="margin-top: 0.4rem">
 			<div>
 				<label>当前手机号</label><input type="text" id="lastPhone" placeholder="请输入原绑定手机号" />
 			</div>
@@ -44,13 +44,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<label>现用手机号</label><input type="text" id="regPhone" placeholder="请输入现用手机号" />
 			</div>
 			<div>
-				<label>验 证 码</label><input class="las" id="regYzm" type="text" placeholder="请输入验证码" /><button id="regYzmBtn">获取验证码</button>
+				<label>验 证 码</label>
+				<input class="las" style="width:1.4rem" id="regYzm" type="text" placeholder="请输入验证码" />
+				<button id="sdfds">获取验证码</button>
 			</div>
 			<div>
 				<label>当前手机号</label><input type="text" id="pwd" placeholder="请输入登录密码" />
 			</div>
 		</div>
-		<a href="javascript:void(0);"><button class="order_btn" id="">确定</button></a>
+		<button class="order_btn" id="appeal">确定</button>
 		</form>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>

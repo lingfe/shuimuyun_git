@@ -9,14 +9,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>我的钱包_充值</title>
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>支付页面</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
-	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+	<meta http-equiv="description" content="This is my page">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<link rel="stylesheet" href="<%=basePath %>APP/css/layer.css" />
+	<link rel="stylesheet" href="<%=basePath %>APP/css/smyMobile.css" />
 		<style>
 			.paymentTop {
 				width: 100%;
@@ -203,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width: 18px;
 				height: 18px;
 				content: "";
-				background: url(<%=basePath%>APP/images/icon/payClose.png) no-repeat;
+				background: url(<%=basePath %>APP/images/icon/payClose.png) no-repeat;
 				background-size: cover;
 				margin-top: -9px;
 			}
@@ -231,7 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				float: left;
 			}
 			.balModal_contPwd .bg {
-				background: url(<%=basePath%>APP/images/icon/pasword.png) no-repeat center;
+				background: url(<%=basePath %>APP/images/icon/pasword.png) no-repeat center;
 				background-size:22% ;
 			}
 			.balModal_contPwd>input:last-child {
@@ -265,7 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width: 18px;
 				height: 18px;
 				content: "";
-				background: url(<%=basePath%>APP/images/icon/balance.png) no-repeat;
+				background: url(<%=basePath %>APP/images/icon/balance.png) no-repeat;
 				background-size: cover;
 				margin-top: -10px;
 			}
@@ -277,15 +280,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.balModal_contBal span i {
 				margin-right: 4px;
 			}
+			
+			
+			
+			.jzCont {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				width: 60px;
+				height: 60px;
+				background: rgba(0,0,0,.8);
+				border-radius: 5px;
+				margin-top: -30px;
+				margin-left: -30px;
+			}
+			.jzCont span {
+				display: block;
+				width: 20px;
+				height: 20px;
+				background: url(<%=basePath %>APP/images/icon/loading.gif) no-repeat;
+				background-size: cover;
+				margin: 20px auto;
+			}
 		</style>
 	</head>
 	<body>
 		<!--【头部】-->
 		<header class="commHeader">
-			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
+			<a class="commHeader_l" href="#">
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/arow_left.png" />
 			</a>
-			<h6>充值</h6>
+			<h6>付款</h6>
 		</header>
 		<!--【头部】end-->
 		
@@ -296,19 +321,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="paymentList">
 			<div class="paymentList_item">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/balance.png" width="25" /> 余额
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/balance.png" width="25" /> 余额
 				<div class="paymentList_position" id="balaceSelect">
 					<span></span>
 				</div>
 			</div>
 			<div class="paymentList_item">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/payment.png" width="25" /> 支付宝
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/payment.png" width="25" /> 支付宝
 				<div class="paymentList_position" id="paymentSelect">
 					<span></span>
 				</div>
 			</div>
 			<div class="paymentList_item">
-				<img title="" alt="" src="images/icon/wx.png" width="25" /> 微信
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/wx.png" width="25" /> 微信
 				<div class="paymentList_position" id="wxSelect">
 					<span></span>
 				</div>
@@ -327,28 +352,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>可用余额：<i>35.60</i>元</span>
 					</div>
 					<div class="balModal_contPwd">
-						<input type="text" value="">
-						<input type="text" value="">
-						<input type="text" value="">
-						<input type="text" value="">
-						<input type="text" value="">
-						<input type="text" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
 					</div>
 					<a class="balModal_contLink" href="#">忘记密码？</a>
 					<div class="balModal_contNumer">
-						<a href="javascript:;">1</a>
-						<a href="javascript:;">2</a>
-						<a href="javascript:;">3</a>
-						<a href="javascript:;">4</a>
-						<a href="javascript:;">5</a>
-						<a href="javascript:;">6</a>
-						<a href="javascript:;">7</a>
-						<a href="javascript:;">8</a>
-						<a href="javascript:;">9</a>
+						<a class="num" href="javascript:;">1</a>
+						<a class="num" href="javascript:;">2</a>
+						<a class="num" href="javascript:;">3</a>
+						<a class="num" href="javascript:;">4</a>
+						<a class="num" href="javascript:;">5</a>
+						<a class="num" href="javascript:;">6</a>
+						<a class="num" href="javascript:;">7</a>
+						<a class="num" href="javascript:;">8</a>
+						<a class="num" href="javascript:;">9</a>
 						<a href="javascript:;"></a>
-						<a href="javascript:;">0</a>
+						<a class="num" href="javascript:;">0</a>
 						<a id="payDel" href="javascript:;">
-							<img title="" alt="" src="<%=basePath%>APP/images/icon/payDel.png" width="22"/>
+							<img title="" alt="" src="<%=basePath %>APP/images/icon/payDel.png" width="22"/>
 						</a>
 					</div>
 				</div>
@@ -356,9 +381,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!--【余额支付弹窗】end-->
 		
-		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
-		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
-		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
+		<script type="text/javascript" src="<%=basePath %>APP/js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="<%=basePath %>APP/js/layer.js" ></script>
+		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
 		<script>
 			$(function() {
 				$(".paymentList_position").click(function() {
@@ -397,33 +422,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						alert("微信支付")
 					}
 				})
+				
+				
+				//模拟输入6位密码
+				var i = 0;
+				$(".balModal_contNumer .num").click(function() {
+					var len = $(".balModal_contPwd input").length;
+					//var _val = $(".balModal_contPwd input").index();
+					//var _this = $(this).index();
+					var _value = Number($(this).html());
+					i++;
+					if(i <= len) {
+						$(".balModal_contPwd input").eq(i-1).val(_value);
+						$(".balModal_contPwd input").eq(i-1).addClass("bg");
+						//alert(i)
+					}
+					if(i > len - 1) {
+						$(".balModal_contPwd input").eq(i).val("");
+						$(".balModal_contPwd input").eq(i).removeClass("bg");
+						//alert("密码超过6位了")
+						var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
+	   				 	$("body").append(jz);//把元素加载body
+						setTimeout(function(){
+							$(".jzCont").remove();
+							window.location.href="payOk.html";
+						},800);
+					 }
+					
+				})
+				
+				$("#payDel").click(function() {
+					if(i > 0) {
+						i--;
+						$(".balModal_contPwd input").eq(i).val("");
+						$(".balModal_contPwd input").eq(i).removeClass("bg");
+						i == 0;
+					}
+					alert(i)
+				})
+				
 				//关闭弹窗
 				$(".balModal_cont").css("display","none")
 				$(".balModal_title").click(function() {
-					//$(".balModal_contPwd input").val("");
 					$(".balModal_cont").slideUp(500);
+					
 					setTimeout(function() {
+						window.location.reload();
 						$(".balModal").hide();
 					},500)
 				})
-				
-				var i = 0;
-				$(".balModal_contNumer a").click(function() {
-					var _value = Number($(this).html());
-					i++
-					if(i < 6) {
-						$(".balModal_contPwd input").eq(i-1).val(_value);
-						$(".balModal_contPwd input").eq(i-1).addClass("bg");
-					}
-					else {
-						$(".balModal_contPwd input").eq(i-1).val("");
-						$(".balModal_contPwd input").eq(i-1).removeClass("bg");
-						setTimeout(function(){
-							//location.href="success.html";
-						},500);
-					 }
-				});
-			});
+			})
 		</script>
 	</body>
 </html>

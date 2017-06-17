@@ -23,6 +23,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/IMGUP.css" />
 	<style type="text/css">
 		body{display: block;}
+		.l{
+			margin-top:.4rem;
+			height:.4rem;
+			line-height:.4rem;
+			padding-left:.20rem;
+		}
+		.dom_shouhuo_ldiv div{
+			height:.3rem
+		}
 	</style>
 	</head>
 	<body>
@@ -31,12 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
-			<h6>上门取货</h6>
+			<p>上门取货</p>
 		</header>
 		<!--【头部】end-->
 		
 		<!-- 抢单状态   start -->
-			<div  class="dom_shouhuo_ldiv">
+			<div  class="dom_shouhuo_ldiv l">
 				${info.status==1?'已抢单,未取货':''}
 				${info.status==2?'已取货,未送达':'' }
 				${info.status==3?'已到达,未确认':'' } 
@@ -107,11 +116,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<c:if test="${info.status==1 }" >
 				<!-- 图片预览容器 -->
-				<div id="div_imglook">
+				<!-- <div id="div_imglook">
 					<div style="clear: both;"></div>
 				</div>
-				<!--图片选择对话框-->
-				<div id="div_imgfile">上传货物照片</div>
+				图片选择对话框
+				<div id="div_imgfile">上传货物照片</div> -->
 				<!--确定上传按钮<input type="button" value="确定上传"  />-->
 				
 				<!-- 确定取货 -->
@@ -129,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<c:if test="${info.status==3 }">
 				<!-- 如果有图片存放img的div -->
 				<div></div>
-				<a href="javascript:void(0);"><button class="order_btn">评价</button></a>
+				<button class="order_btn">评价</button>
 			</c:if>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>

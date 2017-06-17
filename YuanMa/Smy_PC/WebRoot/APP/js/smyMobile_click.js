@@ -1,50 +1,47 @@
-//数量加减
-window.onload = function(){
+window.onload = function() {
 	//下单页面
 	var jia = document.querySelectorAll("#jia")
 	var jian = document.querySelectorAll("#jian")
-	var zhi =document.querySelector("#zhi");
-	var zhi1 =document.querySelector("#zhi1");
-	for(var i=0;i<jia.length;i++){
-		var s = 2;
-		jia[0].onclick=function(){
-				zhi.innerText=s;
-				s++;
-	}
-		jian[0].onclick=function(){
-			zhi.innerText=s-2;
-			if(s==2){
-				 layer.open({
-		    	content: '货物数量不能小于0',
-		    	skin: 'msg',
-		    	time: 1
-		  	});
-				return false;
-			}else{
-				s--;
-			}
-			
+	var zhi = document.querySelector("#zhi");
+	var zhi1 = document.querySelector("#zhi1");
+	for(var i = 0; i < jia.length; i++) {
+		
+		jia[0].onclick = function() {
+			zhi.value ++;
 		}
-	}	
-		for(var i=0;i<jia.length;i++){
-		var a = 2;
-		jia[1].onclick=function(){
-				zhi1.innerText=a;
-				a++;
-	}
-		jian[1].onclick=function(){
-			zhi1.innerText=a-2;
-			if(a==2){
-				 layer.open({
-		    	content: '货物重量不能小于0',
-		    	skin: 'msg',
-		    	time: 1
-		  	});
+		jian[0].onclick = function() {
+			if(zhi.value == 1) {
+				layer.open({
+					content: '亲！至少买一件吧',
+					skin: 'msg',
+					time: 1
+				});
 				return false;
-			}else{
-				a--;
+			} else {
+				zhi.value--;
 			}
+
+		}
+	}
+	for(var i = 0; i < jia.length; i++) {
+		
+		jia[1].onclick = function() {
+			zhi1.value++;
+		
+		}
+		jian[1].onclick = function() {
 			
+			if(zhi1.value == 1) {
+				layer.open({
+					content: '货物重量不能小于0',
+					skin: 'msg',
+					time: 1
+				});
+				return false;
+			} else {
+				zhi1.value--;
+			}
+
 		}
 	}
 	//下单页面end		

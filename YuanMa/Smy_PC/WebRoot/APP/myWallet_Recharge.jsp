@@ -27,14 +27,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				background: rgb(255,255,255);
 				box-sizing: border-box;
 				padding: 0 20px;
-				margin-top: 0.1rem;
+				margin-top: 0.5rem;
 			}
 			.paymentTop_l {
 				width: 0.7rem;
 				height: 0.4rem;
 				line-height: 0.4rem;
 				color: #999;
-				font-size: 0.13rem;
+				font-size: 0.15rem;
 				float: left;
 			}
 			.paymentTop input {
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				height: 0.4rem;
 				line-height: 0.4rem;
 				color: #333;
-				font-size: 0.14rem;
+				font-size: 0.15rem;
 				border: 0;
 				outline: none;
 				background: none;
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				overflow: hidden;
 				line-height: 0.4rem;
 				color: #666;
-				font-size: 0.13rem;
+				font-size: 0.15rem;
 				border-bottom: 1px solid #eee;
 				box-sizing: border-box;
 				padding: 0 20px;
@@ -74,6 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.paymentList_item img {
 				vertical-align: middle;
 				margin-right: 12px;
+				vertical-align: middle;
 			}
 			.paymentList_position {
 				position: absolute;
@@ -101,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width: 80%;
 				height: 0.34rem;
 				color: #fff;
-				font-size: 0.13rem;
+				font-size: 0.15rem;
 				text-align: center;
 				line-height: 0.34rem;
 				border: none;
@@ -110,6 +111,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				background: rgb(65,139,230);
 				margin: 0 auto;
 				margin-top: 0.7rem;
+			}
+			.paymentBtn:active {
+				opacity: 0.8;
 			}
 			.payTipts {
 				position: absolute;
@@ -168,12 +172,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.balModal_contNumer a {
 				display: block;
 				width: 33.3333%;
-				height: 32px;
+				height: 40px;
 				color: #333;
 				text-decoration: none;
-				font-size: 14px;
+				font-size: 16px;
 				font-style: italic;
-				line-height: 32px;
+				line-height: 40px;
 				text-align: center;
 				box-sizing: border-box;
 				border: #eee solid 1px;
@@ -188,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.balModal_contNumer a img {
 				display: inline-block;
 				vertical-align: middle;
-				margin-top: -1px;
+				margin-top: 12px;
 			}
 			.balModal_title {
 				position: relative;
@@ -458,7 +462,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$(".balModal_contPwd input").eq(i).removeClass("bg");
 						i == 0;
 					}
-					alert(i)
+					//alert(i)
 				})
 				
 				//关闭弹窗

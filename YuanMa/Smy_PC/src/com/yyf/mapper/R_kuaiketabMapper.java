@@ -247,6 +247,10 @@ public interface R_kuaiketabMapper {
 	@Update("update kuaiketab set password=#{password} where kuaikeName=#{kuaikeName} and kuaikePhone=#{newkuaikePhone}")
 	public void updatePasswordByKuaikeNameAndKuaikePhone(@Param("password") String password,
 			@Param("kuaikeName") String kuaikeName, @Param("newkuaikePhone") String newkuaikePhone);
+	
+	
+	
+	
 
 	/**
 	 * 用户注册【申请】
@@ -276,5 +280,29 @@ public interface R_kuaiketabMapper {
 	 */
 	@Update("update kuaiketab set kuaikePhone=#{kuaikePhone} where kuaikeId=#{kuaikeId}")
 	public void updatePhoneById(@Param("kuaikePhone") String kuaikePhone, @Param("kuaikeId") String kuaikeId);
+
+
+	/**
+	 * APP 根据原有手机号和密码修改手机号码
+	 * @author 杨杰     
+	 * @created 2017年6月18日 上午12:12:28  
+	 * @param regPhone 现有手机号
+	 * @param lastPhone  原有手机号
+	 * @param pass  密码
+	 * @return
+	 */
+	@Update("update kuaiketab set kuaikePhone=#{regPhone} where kuaikePhone=#{lastPhone} and password=#{password}")
+	public boolean updatePhoneByPhoneAndPwd(@Param("regPhone") String regPhone,@Param("lastPhone") String lastPhone, @Param("password") String password);
+	
+	/**
+	 * APP 根据快客Id 和 原密码 对快客密码进行修改
+	 * @author 杨杰     
+	 * @created 2017年6月18日 上午1:01:30  
+	 * @param newPassword 新密码
+	 * @param kuaikeID   快客Id
+	 * @param password  原密码
+	 */
+	@Update("update kuaiketab set password=#{newPassword} where kuaikeId=#{kuaikeId} and password=#{password}")
+	public int updatePassWordByOldPassword(@Param("newPassword") String newPassword,@Param("kuaikeId") String kuaikeId,@Param("password") String password);
 
 }

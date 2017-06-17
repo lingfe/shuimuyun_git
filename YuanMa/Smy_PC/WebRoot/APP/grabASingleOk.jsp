@@ -22,6 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
 	<style type="text/css">
 		body{display: block;}
+		.taking_firsttit_con{
+		margin-top:.4rem;
+		}
 	</style>
 	<script>
 		setTimeout(function() {
@@ -94,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img src="<%=basePath%>APP/images/icon/dui.png"width="20"/>
 			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
-			<button class="mui-btn mui-btn-block order_btn" onclick="qiangdanAjax(this);">确认抢单</button>
+			<button class="order_btn" onclick="qiangdanAjax(this);">确认抢单</button>
 		</div>
 		<!--遮罩层-->
 		<div class="order_zhe"id="order_zhe"></div>

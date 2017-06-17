@@ -21,11 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.wallettop {
 				position: relative;
 				width: 100%;
-				height: 0.2rem;
+				height: 0.4rem;
 				color: #999;
-				font-size: 0.1rem;
+				font-size: 0.13rem;
 				text-indent: 20px;
-				line-height: 0.2rem;
+				line-height: 0.4rem;
+				margin-top: 0.4rem;
 			}
 			.wallettop img {
 				position: absolute;
@@ -56,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width: 100%;
 				height: 0.34rem;
 				color: #333;
-				font-size: 0.12rem;
+				font-size: 0.14rem;
 				line-height: 0.34rem;
 				text-indent: 0.4rem;
 			}
@@ -69,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				height: 20px;
 				background: url(<%=basePath%>APP/images/icon/balance.png) no-repeat;
 				background-size: cover;
-				margin-top: -12px;
+				margin-top: -11px;
 			}
 			.walletCont_item_cont {
 				width: 100%;
@@ -88,9 +89,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				background: rgb(65,139,200);
 				border-radius: 5px;
 				color: #fff;
-				font-size: 0.11rem;
+				font-size: 0.13rem;
 				margin: 0 auto;
 				margin-bottom: 0.08rem;
+			}
+			.walletBtn a {
+				color: #fff;
+				text-decoration: none;
 			}
 			.walletBtn:active {
 				opacity: 0.8;
@@ -121,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="walletCont">
 			<div class="walletCont_item">
-				<div class="walletCont_item_title">账号余额（元</div>
+				<div class="walletCont_item_title">账号余额（元）</div>
 				<div class="walletCont_item_cont"><i>￥200</i></div>
 			</div>
 			<div class="walletCont_item">
@@ -132,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="walletCont walletYj">
 			<div class="walletCont_item">
-				<div class="walletCont_item_title">我的押金（元</div>
+				<div class="walletCont_item_title">我的押金（元）</div>
 				<div class="walletCont_item_cont"><i>￥200</i></div>
 			</div>
 			<div class="walletCont_item">
@@ -147,6 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$(function() {
 				$(".wallettop img").on("click",function() {
 					$(this).parent().hide();
+					$(this).parent().next().css("margin-top","0.52rem");
 				})
 			})
 		</script>

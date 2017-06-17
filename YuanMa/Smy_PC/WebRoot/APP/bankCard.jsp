@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				display: block;
 				width: 100%;
 				height: 0.4rem;
-				font-size: 0.13rem;
+				font-size: 0.15rem;
 				text-decoration: none;
 				line-height: 0.4rem;
 				color: #333;
@@ -41,13 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				color: #999;
 				font-size: 0.25rem;
 				text-indent: 0;
-				line-height: 0.37rem;
+				line-height: 0.4rem;
 			}
 			.bankList {
 				width: 100%;
 				height: auto;
 				overflow: hidden;
-				margin: 0;
+				margin-top: 0.4rem;
 			}
 			.bankList_item {
 				width: calc(100% - 40px);
@@ -83,18 +83,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			.bankList_item_cont p {
 				color: #fff;
-				font-size: 0.11rem;
+				font-size: 0.13rem;
 				padding-bottom: 0.01rem;
 			}
 			.bankList_item_cont p:nth-of-type(1) {
-				font-size: 0.13rem;
+				font-size: 0.15rem;
 			}
 			.bankBtn {
 				display: block;
 				width: calc(100% - 40px);
 				height: 0.36rem;
 				color: #fff;
-				font-size: 0.11rem;
+				font-size: 0.14rem;
 				background: #418bc8;
 				border-radius: 5px;
 				border: none;

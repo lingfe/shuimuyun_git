@@ -33,15 +33,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/head_left.png" />
 			</a>
-			<div class="loginCont_form_item mui-input-row header_input" id="header_input">
+			<div class="loginCont_form_item mui-input-row header_input" id="header_input" style="height: 0.31rem;">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/header_sou.png" />
-						<input class="loginCont_form_itemAll  right" id="search_sousuoinput" type="text" placeholder="请输入关键字" />
+						<input style="line-height: 0.31rem; height: 0.31rem;" class="loginCont_form_itemAll  right" id="search_sousuoinput" type="text" placeholder="请输入关键字" />
 			</div>
 			<a class="commHeader_r" href="javascript:searchKey();">
 				<span class="search_sousuotext" id="search_sousuotext">搜索</span>
 			</a>
 		</header>
-		<div id="tishi">
+		<div class="seaCont" id="tishi">
 			<div class="search_top">按热门地区搜索</div>
 			<div>
 				<input type="button" class="mui-btn  mui-btn-block search" value="花溪区">		

@@ -686,15 +686,23 @@ input {
 	width: 100%;
 	background: white;
 	margin-bottom: .1rem;
-	margin-top: 0.4rem;
+	margin-top: 0.1rem;
+}
+.order_info:nth-of-type(1) {
+	margin-top: 0.5rem;
 }
 
 .shipper {
 	padding: 0 20px;
-	height: 0.5rem;
+	height: 0.45rem;
 	box-sizing: border-box;
 	position: relative;
 	border-top: solid 1px #eee;
+}
+.imgPo {
+	position: absolute;
+	top: 0.1rem;
+	right: 20px;
 }
 .shipper a {
 	color: #333;
@@ -705,7 +713,7 @@ input {
 } */
 
 .shipper img {
-	margin-top: .1rem;
+	margin-top: .11rem;
 }
 
 .shipper label {
@@ -728,7 +736,7 @@ input {
 
 .order_num {
 	position: absolute;
-	top: .13rem;
+	top: 0.03rem;
 	left: 1.1rem;
 	color: #b5b5b5;
 }
@@ -762,7 +770,20 @@ input {
 }
 
 .order_num_mag {
-	margin-right: .2rem !important;
+	display: inline-block;
+	width: 0.4rem;
+	margin-left: 0.1rem !important;
+}
+.order_num input {
+	display: inline-block;
+	outine: none;
+	border: none;
+	background: none !important;
+	width: 0.3rem;
+	color: #333;
+	text-align: center;
+	padding: 0;
+	font-size: 0.13rem;
 }
 
 .order_buttom {
@@ -1742,7 +1763,9 @@ input {
 	overflow: hidden;
 	display: none;
 }
-
+.seaCont {
+	margin-top: 0.5rem;
+}
 .oallDtev img {
 	display: block;
 	width: 1.6rem;
@@ -1780,11 +1803,19 @@ input {
 
 .header_input {
 	width: 80%;
-	margin: auto;
+	margin: 0 auto;
 	background: rgba(10, 95, 166, 0.3) !important;
 	transform: translate(.2rem, .03rem);
+	height: 0.38rem;
 }
-
+.search_Cont input {
+	display: block;
+	width: 100%;
+	height: 0.38rem;
+	margin-top: -0.1rem !important;
+	background: none;
+	border-radius: 5px;
+}
 .search {
 	width: 28%;
 	border-radius: 20px !important;
@@ -1802,8 +1833,12 @@ input {
 .search_top {
 	margin: .1rem 0;
 	color: #999;
+	padding-bottom: 0.02rem;
+	text-indent: 20px;
 }
-
+.seaCont input {
+	margin-bottom: 0.1rem !important;
+}
 .search_sousuotext {
 	display: inline-block;
 	transform: translateX(.5rem);

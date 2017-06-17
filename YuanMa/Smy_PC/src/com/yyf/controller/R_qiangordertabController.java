@@ -144,11 +144,19 @@ public class R_qiangordertabController {
 
 	}
 	
+	
 	/**
-	 * 得到所有的下单记录
+	 * 根据状态 查询附近所有为被抢的单子
+	 * 
+	 * 0=未接单(刚下单的默认状态，可以删除)，
+	 * 1=已接单,未发货(由抢单用户修改，表示抢单用户已抢单成功。下单点击发货，修改抢单用户状态为2，表示正在配送。)，
+	 * 2=已到达,未确认（由抢单点击确认到达修改，表示抢单已送到。下单点击确认到达，修改抢单状态为3，表示派单成功；同时修改自身状态为3，表示已确认），
+	 * 3=已确认(下单已确认，派单结束) 
+	 * 4=已评价
 	 * @author 杨杰     
-	 * @created 2017年6月16日 下午3:02:22  
-	 * @param model
+	 * @created 2017年6月17日 上午10:08:48  
+	 * @param req
+	 * @param resp
 	 * @return
 	 */
 	@RequestMapping(value="/queryXiaOrderList",method=RequestMethod.POST)
@@ -158,9 +166,8 @@ public class R_qiangordertabController {
 		Map<String, Object> json = new HashMap<String, Object>();
 		
 		
-		List<R_xiaordertab> query = r_xiaordertabService.query();
+		List<R_xiaordertab> query = r_xiaordertabService.queryAllXOrderByStatusTo0();
 		
-		//System.out.println(vcCarParkingBasePark+"----------------------停车场实时监控数据:柱状视图-------------------------------------");
 		//初始化数组变量 长度 ：集合长度
 		String[] kuaikeAddressInfo=new String[query.size()];
 		

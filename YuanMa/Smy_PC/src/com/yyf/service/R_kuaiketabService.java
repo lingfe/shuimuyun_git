@@ -235,4 +235,27 @@ public interface R_kuaiketabService {
 	 * @param kuaikeId  快客Id
 	 */
 	public void updatePhoneById(String kuaikePhone,String kuaikeId);
+
+	
+	/**
+	 * APP 根据原有手机号和密码修改手机号码
+	 * @author 杨杰     
+	 * @created 2017年6月18日 上午12:12:28  
+	 * @param regPhone 现有手机号
+	 * @param lastPhone  原有手机号
+	 * @param pass  密码
+	 * @return
+	 */
+	public boolean updatePhoneBykuaikePhoneAndPassword(String regPhone, String lastPhone, String pass);
+	
+	
+	/**
+	 * APP 根据快客Id 和 原密码 对快客密码进行修改
+	 * @author 杨杰     
+	 * @created 2017年6月18日 上午1:01:30  
+	 * @param newPassword 新密码
+	 * @param kuaikeID   快客Id
+	 * @param password  原密码
+	 */
+	public int updatePassWordByOldPassword(String newPassword,String kuaikeId,String password);
 }

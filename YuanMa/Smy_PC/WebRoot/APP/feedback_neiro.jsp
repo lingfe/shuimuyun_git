@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'feedback_neiro.jsp' starting page</title>
+<title>意见反馈</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -24,10 +24,11 @@
 	</head>
 <style type="text/css">
 .wenben {
-	width: 100%;
+	width: calc(100% - 40px);
 	height: 1.5rem;
-	margin-top: .2rem;
-	padding-left: .1rem;
+	margin-left: 20px;
+	margin-top: .6rem;
+	padding: 0.2rem;
 	resize: none;
 	border: none;
 }

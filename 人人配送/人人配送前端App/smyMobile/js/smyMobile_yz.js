@@ -126,6 +126,26 @@ $(function() {
 			return false;
 		}
 	})
+	
+	$("#mailYzmBtn").click(function() {
+		var mybox = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;	
+		var mailbox = $("#mailbox").val();
+		if(!(mailbox &&mybox.test(mailbox))) {
+			//提示
+			//alert("sfdsf")
+		    layer.open({
+		    	content: '邮箱格式错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else {
+			time(this);
+		}
+	})
+	
+	
 	//修改绑定邮箱
 	$("#modemailbtn").click(function() {
 	    var mybox = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;		

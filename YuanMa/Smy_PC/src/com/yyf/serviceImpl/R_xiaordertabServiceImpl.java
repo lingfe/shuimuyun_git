@@ -129,4 +129,26 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 
 	}
 
+	
+	
+	/**
+	 * 根据状态 查询附近所有为被抢的单子
+	 * 
+	 * 0=未接单(刚下单的默认状态，可以删除)，
+	 * 1=已接单,未发货(由抢单用户修改，表示抢单用户已抢单成功。下单点击发货，修改抢单用户状态为2，表示正在配送。)，
+	 * 2=已到达,未确认（由抢单点击确认到达修改，表示抢单已送到。下单点击确认到达，修改抢单状态为3，表示派单成功；同时修改自身状态为3，表示已确认），
+	 * 3=已确认(下单已确认，派单结束) 
+	 * 4=已评价
+	 * @author 杨杰     
+	 * @created 2017年6月17日 上午10:08:48  
+	 * @return
+	 */
+	@Override
+	public List<R_xiaordertab> queryAllXOrderByStatusTo0() {
+		
+		List<R_xiaordertab> statusTo0List = ir_xiaordertabMapper.queryAllXOrderByStatusTo0();
+		
+		return statusTo0List;
+	}
+
 }

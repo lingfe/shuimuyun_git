@@ -384,6 +384,8 @@
 														//打印是否获取到地址
 														alert(test);
 														//单击跳转页面
+														window.location.href="grabASingleRquest/APP/grabASingleOk/{xiaId}"
+														
 														//路径跳转
 														window.location.href = "APP/grabASingleOk.jsp"
 													}

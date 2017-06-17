@@ -171,12 +171,14 @@ public class R_qiangordertabController {
 		//初始化数组变量 长度 ：集合长度
 		String[] kuaikeAddressInfo=new String[query.size()];
 		
-		
+		String[] xiaId=new String[query.size()];
 		
 		//循环遍历数组  ：为每个对象赋值
 		for (int i = 0; i < query.size(); i++) {
-			
+			//地址
 			kuaikeAddressInfo[i]=query.get(i).getKuaikeAddressInfo();
+			//下单唯一标示
+			xiaId[i]=query.get(i).getXiaId();
 			
 			
 		}

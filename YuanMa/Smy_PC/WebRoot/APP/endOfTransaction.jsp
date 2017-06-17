@@ -9,16 +9,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>输入取货码</title>
+    <title>交易结束</title>
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
-	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
+		<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
+		<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
 	</head>
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
@@ -26,17 +26,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a class="header_l" href="javascript:self.location=document.referrer;">
 					<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 				</a>
-				<h1 class="header_title">输入取货码</h1>
+				<h1 class="header_title">交易结束</h1>
 			</header>
 			
 			<div class="loginCont">
-				<form class="loginCont_form">
-					<div class="loginCont_form_item mui-input-row">
-						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
-						<input class="loginCont_form_itemAll mui-input-clear right" id="userPhone" type="text" placeholder="请输入手机号码" />
+					<div class="closed_div">
+						<p>您已成功到达目的地</p>
+						<p>系统确保无误后，佣金将于<span>3</span>天后发到余额中</p>
 					</div>
-					<a class="code_a" href="RequestMappingUtil/requestNUll/APP/endOfTransaction"><button type="button" class="codeBtn" id="codeBtn">确定</button></a>
-				</form>
+					<a class="closed_a" href="RequestMappingUtil/requestNUll/APP/grabASingle">继续抢单</a>
 			</div>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>

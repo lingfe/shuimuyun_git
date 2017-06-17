@@ -17,6 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
+	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<script>
 		setTimeout(function() {
 				$("body").show();
@@ -44,19 +45,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<nav class="myInfo_nav">
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>${status.dfk }</span>
+				<span id="dfk">0</span>
 				<p>待付款</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>${status.yjd }</span>
+				<span id="yjd">0</span>
 				<p>已接单</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>${status.yqh }</span>
+				<span id="yqh">0</span>
 				<p>已取货</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>${status.wpj }</span>
+				<span id="wpj">0</span>
 				<p>未评价</p>
 			</a>
 		</nav>
@@ -100,15 +101,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				意见反馈
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_7.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/useHelp">
 				使用帮助
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_8.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/serviceXy">
 				服务协议
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_9.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/aboutUs">
 				关于我们
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>
@@ -145,5 +146,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$.ajax({
+					url : 'xiaordertab/getMyInfoOrderStatus',
+					type : 'get',
+					success : function(data) {
+						$("#dfk").html(data.dfk);
+						$("#yjd").html(data.yjd);
+						$("#yqh").html(data.yqh);
+						$("#wpj").html(data.wpj);
+					},
+					error : function(xhr, type) {
+						alert('Ajax error!');
+					},
+					async:false
+				});
+			});
+		</script>
+	<!-- 验证身份 初级验证 -->
+	<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+			//询问框
+			layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+		}
+	</script>
 	</body>
 </html>

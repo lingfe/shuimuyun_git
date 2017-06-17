@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="walletCont_item">
 				<button class="walletBtn">提现</button>
-				<button class="walletBtn">充值</button>
+				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge">充值</a></button>
 			</div>
 		</div>
 		
@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="walletCont_item">
 				<button class="walletBtn">提现</button>
-				<button class="walletBtn">充值</button>
+				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge">充值</a></button>
 			</div>
 		</div>
 		

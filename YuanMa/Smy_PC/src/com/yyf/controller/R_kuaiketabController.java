@@ -345,11 +345,11 @@ public class R_kuaiketabController {
 			// 返回成功页面
 			return "PC/index";
 		}else if("APP".equals(i)){
-			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SYS_ERROR));
 			return "APP/login";
 		}
 		else{
-			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SYS_ERROR));
 			// 留在登陆页面
 			return "PC/login";
 			

@@ -117,11 +117,10 @@ public interface R_qiangordertabMapper {
 	 * @created 2017年5月19日 上午11:34:35
 	 * @param status
 	 *            抢单状态'状态',状态(0=抢单成功，1=抢单失败，2=等待取货，3=等待配送（点击确认配送），4=已经到达（修改下单状态2，确认到达），5=派单成功)
-	 * @param qiangorderId
-	 *            抢单ID
+	 * @param xiaId 下单id
 	 */
-	@Update("update qiangordertab set status=#{status} where qiangorderId=#{qiangorderId}")
-	public void updateStatus(@Param("status") Integer status, @Param("qiangorderId") String qiangorderId);
+	@Update("update qiangordertab set status=#{status} where xiaId=#{xiaId}")
+	public void updateStatus(@Param("status") Integer status, @Param("xiaId") String xiaId);
 
 	/**
 	 * 根据地图 进行模糊查询 匹配 附近的单子 地址 及 收货人的地址

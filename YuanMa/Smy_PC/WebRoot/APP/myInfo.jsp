@@ -44,20 +44,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<nav class="myInfo_nav">
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>0</span>
-				<p>待接单</p>
+				<span>${status.dfk }</span>
+				<p>待付款</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>0</span>
-				<p>待取货</p>
+				<span>${status.yjd }</span>
+				<p>已接单</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>0</span>
-				<p>正在派送</p>
+				<span>${status.yqh }</span>
+				<p>已取货</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span>0</span>
-				<p>代付款</p>
+				<span>${status.wpj }</span>
+				<p>未评价</p>
 			</a>
 		</nav>
 		
@@ -73,15 +73,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		<div class="myInfo_list">
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/myAddress">
 				我的地址
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_3.png" width="100%" />
+			</a>
+			<a href="RequestMappingUtil/requestNUll/APP/personalData">
+				个人资料
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_3.png" width="100%" />
 			</a>
 		</div>
 		
 		<div class="myInfo_list">
-			<a href="RequestMappingUtil/requestNUll/APP/register">
-				快客申请
+			<a href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep">
+				快客申请/完善资料
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_4.png" width="100%" />
 			</a>
 			<a href="javascript:void(0);">

@@ -9,7 +9,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>下单详细信息</title>
+    <title>下单详细信息:		
+    	${info.status==0?'未接单':''}
+		${info.status==1?'已接单,未发货':'' }
+		${info.status==2?'已到达,未确认':'' } 
+		${info.status==3?'交易结束(已确认)':'' }
+		${info.status==4?'已评论':'' }</title>
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -30,27 +35,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<!--【头部】end-->
 		<div class="courier_firsttit">
-			待取货
-		</div>
-		<!--正在派送(隐藏)-->
-		<div style="display: none;" class="courier_firsttit">
-			正在派送
-		</div>
-		<!--完成交易(隐藏)-->
-		<div style="display: none;" class="courier_firsttit">
-			完成交易
+			${info.status==0?'未接单':''}
+			${info.status==1?'已接单,未发货':'' }
+			${info.status==2?'已到达,未确认':'' } 
+			${info.status==3?'交易结束(已确认)':'' }
+			${info.status==4?'已评论':'' }
 		</div>
 		<div class="courier_firsttit_con">
 			<div class="cour_div_1"><img src="<%=basePath%>APP/images/user.jpg"/></div>
-			<div class="cour_div_2">小单</div>
+			<div class="cour_div_2">${login.kuaikeName }</div>
 			<div class="cour_div_3">
 				<span><img src="<%=basePath%>APP/images/icon/courphone.png" width="12"/></span>
-				<span>12345678911</span>
+				<span>${login.kuaikePhone }</span>
 			</div>
-			<div class="cour_div_4">快递员当前位置：</div>
+			<div class="cour_div_4">快递员的位置：</div>
 			<div class="cour_div_5">
 				<span><img src="<%=basePath%>APP/images/icon/adds_oreng.png" width="15"/></span>
-				<span>贵州省贵阳市南明区花果园E区6栋1单元3001</span>
+				<span>${info.kuaikeAddressInfo }</span>
 			</div>
 		</div>
 		<div class="courier_last">
@@ -66,10 +67,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span>建议交通工具</span>
 				</div>
 				<div>
-					<span>易碎</span>
-					<span>1</span>
-					<span>小</span>
-					<span>2kg</span>
+					<span>${info.shopType }</span>
+					<span>${info.shopNumer }</span>
+					<span>${info.shopGuige }</span>
+					<span>${info.shopzholiang }kg</span>
 					<span>无</span>
 				</div>
 			</div>

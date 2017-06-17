@@ -152,25 +152,45 @@
 				if(_this !="") {
 					$(this).next().show();
 				}
-				else {
-					$(this).next().hide();
+				if(($('#backName').val() !="") && ($('#backKahao').val() !="") && ($('#backPhone').val() !="")) {
+					$(".addBackBtn").css({
+						"background": "#418bc8",
+						"color" : "#fff"
+					});
+					$(".addBackBtn").removeAttr('disabled');
+				}
+				else if(($('#backName').val() =="") || ($('#backKahao').val() =="") || ($('#backPhone').val() =="")) {
+					$("#addBackBtn").attr('disabled',"true");
+					$(".addBackBtn").css({
+						"background": "#fff",
+						"color" : "#999"
+					});
 				}
 			})
 			
 			$(".closeIm").click(function() {
 				$(this).prev().val("");
 				$(this).hide();
-				$(".addBackBtn").removeAttr('disabled');
-				$(".addBackBtn").css({
-					"background": "#fff",
-					"color" : "#999"
-				});
+				if(($('#backName').val() !="") && ($('#backKahao').val() !="") && ($('#backPhone').val() !="")) {
+					$(".addBackBtn").css({
+						"background": "#418bc8",
+						"color" : "#fff"
+					});
+					$(".addBackBtn").removeAttr('disabled');
+				}
+				else if(($('#backName').val() =="") || ($('#backKahao').val() =="") || ($('#backPhone').val() =="")) {
+					$("#addBackBtn").attr('disabled',"true");
+					$(".addBackBtn").css({
+						"background": "#fff",
+						"color" : "#999"
+					});
+				}
 			})
 			// 文本框失去焦点
 			/*$(".addBack_list_item input").blur(function() {
-				//setTimeout(function() {
-					$(this).next().hide();
-				//},500);
+				setTimeout(function() {
+					$(this).next().css("border":"red solid 1px");
+				},1000);
 			})*/
 			
 			// 文本框得到焦点

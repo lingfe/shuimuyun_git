@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
 			<p>我的钱包</p>
-			<a class="commHeader_r" href="javascript:void(0);">
+			<a class="commHeader_r" href="RequestMappingUtil/requestNUll/APP/bankCard">
 				<p class="commHeader_r_font">银行卡</p>
 			</a>
 		</header>

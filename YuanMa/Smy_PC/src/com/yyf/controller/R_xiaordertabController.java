@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,6 +55,20 @@ public class R_xiaordertabController {
 	/***********************************       public APP和PC端共用                     ************************/
 	/***********************************************************************************************/
 	
+	/**
+	 * 
+	 * 我的个人中心里面根据订单状态统计
+	 * @author lijie     
+	 * @created 2017年6月17日 上午10:24:15  
+	 * @return url
+	 */
+	@RequestMapping(value="/getMyInfoOrderStatus",method=RequestMethod.GET)
+	public String getMyInfoOrderStatus(ModelMap model){
+		Map<String, Object> myInfoOrderStatus = r_xiaordertabService.getMyInfoOrderStatus();
+		model.addAttribute("status", myInfoOrderStatus);
+		
+		return "APP/myInfo";
+	}
 	
 	/**
 	 * 

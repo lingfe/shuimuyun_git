@@ -1,6 +1,7 @@
 package com.yyf.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,10 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	@Autowired
 	private R_qiangordertabMapper qiangordertabMapper;
 
+	@Override
+	public Map<String, Object> getMyInfoOrderStatus() {
+		return ir_xiaordertabMapper.getMyInfoOrderStatus();
+	}
 	
 	@Override
 	public List<R_xiaordertab> singleDataFuzzySearch(String searchKey) {

@@ -321,6 +321,7 @@
 	        	//定义数组
 	        	
 				var kuaikeAddressInfo = [];
+				var xiaId = [];
 				//Ajax请求后台数据 并加载地图
 				$.ajax({
 					url : 'queryXiaOrderList',
@@ -329,6 +330,8 @@
 					//请求成功后触发
 					success : function(json) {
 						kuaikeAddressInfo = json.kuaikeAddressInfo;
+						
+						xiaId=json.xiaId;
 						
 						$("#i_num").html(kuaikeAddressInfo.length);
 						//初始化地图调用JS接口
@@ -384,9 +387,9 @@
 														//地址格式转化
 														var test = result.regeocode.formattedAddress
 														//打印是否获取到地址
-														alert(test);
+														//alert(test);
 														//单击跳转页面
-														window.location.href="grabASingleRquest/APP/grabASingleOk/{xiaId}"
+											            // window.location.href="grabASingleRquest/APP/grabASingleOk/"+xiaId[0];
 														
 														//路径跳转
 														window.location.href = "APP/grabASingleOk.jsp"

@@ -50,10 +50,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
 				<img src="<%=basePath%>APP/images/icon/shipper.png" width="27"/>
 				<label>发货人信息</label></a>
+				<img class="imgPo" src="<%=basePath%>APP/images/icon/orderright.png" width="10" /> 
 			</div>
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/consignee">
 				<img src="<%=basePath%>APP/images/icon/cargo.png" width="27"/>
 				<label>收货人信息</label></a>
+				<img class="imgPo" src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 			</div>
 		</div>
 		<!--货物信息-->
@@ -139,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="order_tan_context1"  id="order_tex1">
 				<span >无</span>
 				<span>自行车</span>
-				<span>摩托车</span>
+				<span>电瓶车</span>
 			</div>
 			<div class="order_tan_context1"  id="order_tex1">
 				<span >小轿车</span>

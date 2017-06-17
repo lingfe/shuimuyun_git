@@ -370,34 +370,14 @@
 								bubble : true
 							});
 							//给地图添加双击点击事件 地图放大效果
-							map.on('dblclick', function(e) {
+							map.on('click', function(e) {
 								marker.setPosition(e.lnglat);
 								//得到坐标值
 								geocoder.getAddress(e.lnglat, function(status, result) {
 									if (status == 'complete') {
 										//地址格式转化
 										var test = result.regeocode.formattedAddress
-										//打印是否获取到地址
-										//给地图添加单点击事件 进行页面的跳转
-											map.on('click', function(e) {
-												marker.setPosition(e.lnglat);
-												//得到坐标值
-												geocoder.getAddress(e.lnglat, function(status, result) {
-													if (status == 'complete') {
-														//地址格式转化
-														var test = result.regeocode.formattedAddress
-														//打印是否获取到地址
-														//alert(test);
-														//单击跳转页面
-											            // window.location.href="grabASingleRquest/APP/grabASingleOk/"+xiaId[0];
-														
-														//路径跳转
-														window.location.href = "APP/grabASingleOk.jsp"
-													}
-												});
-											});
-										//单击跳转页面
-										//路径跳转
+										layer.msg=test;
 										return false;
 									}
 								});

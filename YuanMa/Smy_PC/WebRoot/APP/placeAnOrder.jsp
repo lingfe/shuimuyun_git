@@ -122,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="order_buttom_text" id="order_buttom_text">
 			<img src="<%=basePath%>APP/images/icon/dui.png" class="op" width="20" />
 			<img style="display: none;" src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
-			<label> 我同意 《水木云快递条约》</label>
+			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
 			<button style="margin-bottom: 0.6rem; " class="order_btn" id="ok_order">确认下单</button>
 		</div>
@@ -267,14 +267,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//得到货物类型
 				var shopType=$("#order_leixin").text();
 				//得到货物数量
-				var shopNumer=$("#zhi").text();
+				var shopNumer=$("#zhi").val();
 				//得到货物重量
-				var shopzholiang=$("#zhi1").text();
+				var shopzholiang=$("#zhi1").val();
 				//最快取货时间
 				var timeString=$("#shijian").text();
 				//url
 				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId;
-				
+				alert(url);
 				//ajax提交
 				$.ajax({
 					url : 'xiaordertab/orderSbmit/'+url,

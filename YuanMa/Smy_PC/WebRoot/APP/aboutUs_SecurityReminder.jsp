@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				overflow: hidden;
 				box-sizing: border-box;
 				padding: 20px 20px;
+				padding-top: 0.6rem;
 			}
 			.anqCont_item {
 				width: 100%;
@@ -33,11 +34,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			.anqCont_item h4 {
 				color: #333;
-				font-size: 0.12rem;
+				font-size: 0.16rem;
 			}
 			.anqCont_item p {
 				color: 666;
-				font-size: 0.11rem;
+				font-size: 0.14rem;
 				padding-top: 0.05rem;
 			}
 		</style>

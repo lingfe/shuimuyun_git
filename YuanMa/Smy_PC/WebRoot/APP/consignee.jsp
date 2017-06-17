@@ -42,9 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input id="con_phone" type="text" value="${info.shouhuoShone }" placeholder="请输入手机号"/>
 			</div>			
 			<div>
-				<img src="<%=basePath%>APP/images/icon/adds.png" width="15" class="hipper_contex_firstimg"/>
+				<img src="<%=basePath%>APP/images/icon/adds.png" width="20" class="hipper_contex_firstimg"/>
 				<input type="text" class="hipper_contex_lasttext" value="${info.shouhuoAddressInfo==null?'贵州省贵阳市南明区花果园金融街2号':info.shouhuoAddressInfo }"/>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" class="hipper_contex_lastimg" width="15"/>
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" class="hipper_contex_lastimg" width="10"/>
 			</div>			
 		</div>
 		<!-- 下单id -->

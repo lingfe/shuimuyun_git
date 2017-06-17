@@ -59,7 +59,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/install" >设置：install.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/phone" >设置_电话号码：phone.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/setPassword" >设置_密码：setPassword.jsp</a><br/>
- 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/phone" >设置_电话号码：phone.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/feedback" >意见反馈：feedback.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/feedback_neiro" >意见反馈_内容：feedback_neiro.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/serviceHelp" >我的克服-帮助：serviceHelp.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/feedback" >意见反馈：feedback.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/feedback_neiro" >意见反馈_内容：feedback_neiro.jsp</a><br/>
+ 		
  		
  		<BR><BR>
  		<h1>杨杰</h1>

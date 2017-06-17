@@ -191,11 +191,8 @@ body {
 						<td style="text-indent:40px; text-align: left;">${info.shouhuoAddressInfo }</td>
 					</tr>
 				</table>
-
 			</div>
-
 		</div>
-
 	</div>
 	<!--评价开始-->
 	<div class="wan_pingjia">
@@ -237,8 +234,7 @@ body {
 <script type="text/javascript">	${errorShow }</script>
 </body>
 </html>
-<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>PC/js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(".wan_pingjia").hide();
 	$("#pingjia").click(function() {

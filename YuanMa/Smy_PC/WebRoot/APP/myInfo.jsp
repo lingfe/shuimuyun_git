@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				服务热线
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_6.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/feedback">
 				意见反馈
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_7.png" width="100%" />
 			</a>

@@ -691,10 +691,15 @@ input {
 
 .shipper {
 	padding: 0 20px;
-	height: 0.5rem;
+	height: 0.45rem;
 	box-sizing: border-box;
 	position: relative;
 	border-top: solid 1px #eee;
+}
+.imgPo {
+	position: absolute;
+	top: 0.1rem;
+	right: 20px;
 }
 .shipper a {
 	color: #333;
@@ -705,7 +710,7 @@ input {
 } */
 
 .shipper img {
-	margin-top: .1rem;
+	margin-top: .12rem;
 }
 
 .shipper label {

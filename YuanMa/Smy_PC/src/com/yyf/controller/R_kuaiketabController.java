@@ -135,26 +135,32 @@ public class R_kuaiketabController {
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(R_kuaiketab tab,ModelMap model){
 		
-		// 查询电话号码是否存在
-		R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
-		if (selectKuaiKephone != null) {
-			// 提示
-			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+		try {
+			// 查询电话号码是否存在
+			R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
+			if (selectKuaiKephone != null) {
+				// 提示
+				model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+				return "APP/register";
+			}
+			
+			// id
+			tab.setKuaikeId(UUID.randomUUID().toString());
+			// 密码加密
+			tab.setPassword(Md5Util.md5(tab.getPassword()));
+			// 登录时间
+			tab.setLoginDate(new Date());
+			// 状态,默认
+			tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
+			//保存
+			kuaiketabService.addUser(tab);
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SBMIT_OK));
+			return "APP/register";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.ERROR));
 			return "APP/register";
 		}
-		
-		// id
-		tab.setKuaikeId(UUID.randomUUID().toString());
-		// 密码加密
-		tab.setPassword(Md5Util.md5(tab.getPassword()));
-		// 登录时间
-		tab.setLoginDate(new Date());
-		// 状态,默认
-		tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
-		//保存
-		kuaiketabService.addUser(tab);
-		
-		return "APP/login";
 	}
 	
 	/**

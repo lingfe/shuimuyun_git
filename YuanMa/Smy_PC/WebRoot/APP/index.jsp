@@ -114,11 +114,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/index_grab.png" />
 				<p>我要抢单</p>
 			</a>
-			<a href="javascript:;">
+			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<img src="<%=basePath%>APP/images/index_send.png" />
 				<p>正在派送</p>
 			</a>
-			<a href="javascript:;">
+			<a href="RequestMappingUtil/requestNUll/APP/myWallet">
 				<img src="<%=basePath%>APP/images/index_purse.png" />
 				<p>我的钱包</p>
 			</a>

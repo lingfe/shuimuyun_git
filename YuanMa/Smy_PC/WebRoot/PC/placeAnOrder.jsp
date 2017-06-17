@@ -214,6 +214,21 @@
 						</select>
 					</div>
 				</div>
+				
+				<div>
+					<div class="col-lg-3 col-sm-3 col-md-3">
+						<label class="text-right">※ 快客费用 :</label>
+					</div>
+					<div class="col-lg-3 col-sm-3 col-md-3">
+						<input type="text" name="kaikePrioes">￥
+					</div>
+					<div class="col-lg-3 col-sm-3 col-md-3">
+						<label class="lll">※ 货物价格:</label>
+					</div>
+					<div class="col-lg-3 col-sm-3 col-md-3 lll">
+						<input type="text" name="shopprices">￥
+					</div>
+				</div>
 				<div>
 					<div class="col-lg-3 col-sm-3 col-md-3">
 						<label>※ 最快取货时间:</label>
@@ -319,6 +334,7 @@
 			</div>
 			<div class="con_right col-lg-6 col-sm-6 col-md-6">
 				<!--我的信息-->
+				<input type="hidden" name="kuaikeId" value="${login.kuaikeId }">
 				<div>
 					<label>※ 我的姓名:</label> <input class="min1" name="kuaikeName"
 						type="text" /> <abbr class="tt2" style=" color: red;"></abbr>
@@ -347,7 +363,7 @@
 				</div>
 				<!--收货人信息-->
 				<div>
-					<label>※ 收货姓名:</label> <input name="shouhuoNmae" class="min2"
+					<label>※ 收货姓名:</label> <input name="shouhuoName" class="min2"
 						type="text" /> <abbr class="tt4"></abbr>
 				</div>
 				<div>

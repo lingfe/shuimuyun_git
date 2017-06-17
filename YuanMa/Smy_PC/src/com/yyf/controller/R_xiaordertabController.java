@@ -521,7 +521,15 @@ public class R_xiaordertabController {
 		tab.setShopImages(request.getContextPath() + "/upload/" + fileName1);
 
 		r_xiaordertabService.add(tab);
-		return "PC/index";
+		//防止session里的值一直保持不变 
+		//先移除session中的值
+		request.getSession().removeAttribute("pricse");
+		request.getSession().removeAttribute("xiaId");
+		//再把值-->对象存入Session中
+		request.getSession().setAttribute("pricse", tab.getShopprices());
+		request.getSession().setAttribute("xiaId", tab.getXiaId());
+		
+		return "PC/fukuan";
 	}
 
 }

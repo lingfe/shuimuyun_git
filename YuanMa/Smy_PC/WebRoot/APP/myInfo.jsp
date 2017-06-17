@@ -82,17 +82,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="myInfo_list">
 			<a href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep">
-				快客申请/完善资料
+				完善资料
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_4.png" width="100%" />
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/serviceHelp">
 				联系客服
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_5.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
-				服务热线
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_6.png" width="100%" />
-			</a>
+<!-- 			<a href="javascript:void(0);"> -->
+<!-- 				服务热线 -->
+<%-- 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_6.png" width="100%" /> --%>
+<!-- 			</a> -->
 			<a href="RequestMappingUtil/requestNUll/APP/feedback">
 				意见反馈
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_7.png" width="100%" />

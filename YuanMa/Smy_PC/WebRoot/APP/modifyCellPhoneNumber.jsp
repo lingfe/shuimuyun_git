@@ -33,21 +33,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 			<p>修改手机号</p>
 		</header>
-		<form>
+		<form action="<%=basePath %>updatePhoneBykuaikePhoneAndPassword" method="post" class="loginCont_form">
 
 		<div class="appeal_firstdiv" style="margin-top: 0.4rem">
 			<div>
-				<label>当前手机号</label><input type="text" id="lastPhone" placeholder="请输入原绑定手机号" />			</div>
+				<label>原手机号</label><input type="text" id="celllastPhone" name="lastPhone" placeholder="请输入原绑定手机号" />			</div>
 			
 			<div>
-				<label>现用手机号</label><input type="text" id="regPhone" placeholder="请输入现用手机号" />			</div>
+				<label>现用手机号</label><input type="text" id="cellPhone" name="regPhone" placeholder="请输入现用手机号" />			</div>
 			<div>
 				<label>验 证 码</label>
-				<input class="las" style="width:1.4rem" id="cellyzm" type="text" placeholder="请输入验证码" />
+				<input class="las" style="width:1.4rem" id="cellzm" name="mobile_code"  type="text" placeholder="请输入验证码" />
 				<button id="cellyzmbtn">获取验证码</button>
 			</div>
 			<div>
-				<label>当前手机号</label><input type="text" id="pwd" placeholder="请输入登录密码" />			</div>
+				<label>密码</label><input type="text" id="cellpwd" name="password" placeholder="请输入登录密码" />			</div>
 		</div>
 		<button class="order_btn" id="cellbtn">确定</button>
 		</form>
@@ -101,8 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	})
 	$("#cellyzmbtn").click(function() {
-	var cellPhone = $("#cellPhone").val();
-		if(!(cellPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(cellPhone))) {
+	var kuaikePhone = $("#cellPhone").val();
+		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
 		    layer.open({
 		    	content: '现用手机号错误',
@@ -111,6 +111,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	});
 			return false;
 		}else{
+			var mobile_code = $("#cellzm").val();
+				
+				$.ajax({
+					url : 'getCode/' + kuaikePhone,
+					type : 'POST',
+					data : {
+						mobile_code : mobile_code
+					},
+	
+					//请求成功后触发
+					success : function(data) {
+	
+						$("#cellzm").val(data);
+	
+					}
+				});
+		
 			time(this);
 		}
 	})

@@ -28,23 +28,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 			<h6>修改密码</h6>
 		</header>
-		<form>
+		<form action="<%=basePath %>updatePassWordByOldPassword" method="post">
 		<!--【头部】end-->
 		<div class="courier_firsttit">
-			当前手机号码为：<span id="pwdPhone">15223059337</span>
+			当前手机号码为：${login.kuaikePhone }
 		</div>
 		<div class="appeal_firstdiv">
+			<input type="hidden" name="kuaikePhone" id="rekuaikePhone" value="${login.kuaikePhone }">
 			<div>
-				<label>原登录密码</label><input type="text" id="lastpwd" placeholder="请输入原登录密码" />
+				<label>原登录密码</label>
+				<input type="password" id="lastpwd" style="width:1.8rem" name="password" placeholder="请输入原登录密码" />
+				<input type="hidden" name="kuaikePhone" id="rekuaikePhone" value="${login.kuaikePhone }">
+				<input type="hidden" name="kuaikeId" id="1kuaikeId" value="${login.kuaikeId }">
 			</div>
 			<div>
-				<label>新登录密码</label><input type="text" id="chpwd" placeholder="请输入新登录密码" />
+				<label>新登录密码</label><input type="password" id="chpwd" name="newPassword" placeholder="请输入新登录密码" />
 			</div>
 			<div>
-				<label>确认新密码</label><input type="text" id="yespwd" placeholder="请再次输入新登录密码" />
+				<label>确认新密码</label><input type="password" id="yespwd" placeholder="请再次输入新登录密码" />
 			</div>
 			<div>
-				<label>验 证 码</label><input class="las" style=" width:1.2rem;" id="pwdYzm" type="text" placeholder="请输入验证码" /><button id="pwdYzmBtn">获取验证码</button>
+				<label>验 证 码</label><input class="las" name="mobile_code" style=" width:1.2rem;" id="pwdYzm" type="text" placeholder="请输入验证码" /><button id="pwdYzmBtn">获取验证码</button>
 			</div>
 		</div>
 		<button class="order_btn" id="pwdbtn">提交</button>
@@ -87,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	time: 2
 		  	});
 			return false;
-		}else if(yespwd == chpwd) {
+		}else if(yespwd != chpwd) {
 			//提示
 		    layer.open({
 		    	content: '两次密码输入不一致',
@@ -107,8 +111,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	})
 	$("#pwdYzmBtn").click(function() {
-	var pwdPhone = $("#pwdPhone").html();
-		if(!(pwdPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(pwdPhone))) {
+	var kuaikePhone = $("#rekuaikePhone").val();
+		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号错误',
@@ -117,6 +121,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	});
 			return false;
 		}else{
+			var mobile_code = $("#pwdYzm").val();
+				
+				$.ajax({
+					url : 'getCode/' + kuaikePhone,
+					type : 'POST',
+					data : {
+						mobile_code : mobile_code
+					},
+	
+					//请求成功后触发
+					success : function(data) {
+	
+						$("#pwdYzm").val(data);
+	
+					}
+				});
+		
+		
 			time(this);
 		}
 	})

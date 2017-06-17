@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
-			<h6>手机号</h6>
+			<h6>手机号1</h6>
 		</header>
 		<!--【头部】end-->
 		<div class="num_pohone">

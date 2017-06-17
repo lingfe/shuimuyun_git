@@ -22,7 +22,7 @@ public interface R_xiaordertabService {
 	 * @created 2017年6月17日 上午10:24:15  
 	 * @return map
 	 */
-	Map<String, Object> getMyInfoOrderStatus();
+	Map<String, Object> getMyInfoOrderStatus(String kuaikeId);
 	
 	/**
 	 * 

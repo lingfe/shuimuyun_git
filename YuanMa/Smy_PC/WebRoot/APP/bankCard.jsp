@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		<a href="javascript:void(0);" class="addBanl">添加银行卡</a>
+		<a href="RequestMappingUtil/requestNUll/APP/bankCard_addBank" class="addBanl">添加银行卡</a>
 		<button class="bankBtn">立即提现</button>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>

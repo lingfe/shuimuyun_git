@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/feedback_neiro" >意见反馈_内容：feedback_neiro.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/serviceHelp" >我的克服-帮助：serviceHelp.jsp</a><br/>
  		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/historicalFeedback" >意见反馈_内容_历史反馈：historicalFeedback.jsp</a><br/>
- 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/feedback_neiro" >意见反馈_内容：feedback_neiro.jsp</a><br/>
+ 		<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/bankCard_addBank" >银行卡_添加银行卡：bankCard_addBank.jsp</a><br/>
  		
  		
  		<BR><BR>

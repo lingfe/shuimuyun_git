@@ -303,6 +303,8 @@ public class R_xiaordertabController {
 			tab.setXiaId(UUID.randomUUID().toString());
 			tab.setStatus(R_xiaordertabEnum.WJD.ordinal());
 			tab.setPayment(0);//未付款
+			tab.setShopDate(new Date());
+			
 			//设置id到session
 			request.getSession().setAttribute("xiaId", tab.getXiaId());
 			r_xiaordertabService.add(tab);

@@ -282,6 +282,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				margin-right: 4px;
 			}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			})
+		</script>
 	</head>
 	<body>
 		<!--【头部】-->

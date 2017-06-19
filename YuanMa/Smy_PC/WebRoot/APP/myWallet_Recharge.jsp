@@ -311,7 +311,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<!--【头部】-->
 		<header class="commHeader">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />			</a>
+				<a class="header_l" onClick="javascript :history.back(-1);">
+					<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
+				</a>
 			<h6>付款</h6>
 		</header>
 		<!--【头部】end-->

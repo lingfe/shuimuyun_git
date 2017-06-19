@@ -1,6 +1,18 @@
 package com.yyf.model;
 
 public class R_zhiordertab {
+	@Override
+	public String toString() {
+		return "R_zhiordertab [total_fee=" + total_fee + ", out_trade_no=" + out_trade_no + ", trade_state="
+				+ trade_state + ", result_code=" + result_code + ", trade_type=" + trade_type + ", cash_fee=" + cash_fee
+				+ ", time_start=" + time_start + ", time_expire=" + time_expire + ", urlCode=" + urlCode + ", time_end="
+				+ time_end + ", trade_state_desc=" + trade_state_desc + ", body=" + body + ", sign=" + sign
+				+ ", nonce_str=" + nonce_str + ", spbill_create_ip=" + spbill_create_ip + ", err_code=" + err_code
+				+ ", err_code_des=" + err_code_des + ", transaction_id=" + transaction_id + ", bank_type=" + bank_type
+				+ ", product_id=" + product_id + ", return_code=" + return_code + ", return_msg=" + return_msg
+				+ ", openid=" + openid + ", settlement_total_fee=" + settlement_total_fee + ", goods_tag=" + goods_tag
+				+ ", attach=" + attach + ", is_subscribe=" + is_subscribe + ", xiaId=" + xiaId + "]";
+	}
 	private String total_fee = ""; //标价金额
 	private String out_trade_no = "";//商户订单号  要求32个字符内
 	private String trade_state = "";//交易状态   SUCCESS—支付成功  REFUND—转入退款  NOTPAY—未支付  CLOSED—已关闭  REVOKED—已撤销（刷卡支付）  USERPAYING--用户支付中   	PAYERROR--支付失败(其他原因，如银行返回失败)
@@ -28,14 +40,14 @@ public class R_zhiordertab {
 	private String goods_tag = "";//订单优惠标记   订单优惠标记，使用代金券或立减优惠功能时需要的参数    其他情况不传
 	private String attach = "";//附加数据    附加数据，在查询API和支付通知中原样返回，可作为自定义参数使用    可不传
 	private String is_subscribe = "";//是否关注公众账号  Y  N
-	private String xia_id = "";
+	private String xiaId = "";
 	
 	
-	public String getXia_id() {
-		return xia_id;
+	public String getXiaId() {
+		return xiaId;
 	}
-	public void setXia_id(String xia_id) {
-		this.xia_id = xia_id;
+	public void setXiaId(String xiaId) {
+		this.xiaId = xiaId;
 	}
 	public String getNonce_str() {
 		return nonce_str;

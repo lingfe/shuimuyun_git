@@ -66,11 +66,12 @@ public class R_zhiordertabController {
 		String xiaId = request.getParameter("xiaid");// 下单id 商品id
 		logger.info("total_fee:" + total_fee + "xiaId:" + xiaId);
 		String out_trade_no = System.currentTimeMillis() + getRandomString(5);
+		String order_no = System.currentTimeMillis() + getRandomString(3);
 		String body = "下单申请...";// 商品信息
 		String trade_type = "NATIVE";// 交易类型
 		String product_id = getRandomString(5) + System.currentTimeMillis();
 
-		r_zhiordertabService.insertMessage(total, xiaId, out_trade_no, body, trade_type, product_id);//保存数据库
+		r_zhiordertabService.insertMessage(total, xiaId, out_trade_no, body, trade_type, product_id,order_no);//保存数据库
 
 		// 调用统一下单接口
 		SortedMap<Object, Object> packageParams = new TreeMap<Object, Object>();
@@ -141,7 +142,6 @@ public class R_zhiordertabController {
 							defaultWidthAndHeight, defaultWidthAndHeight, hints);
 					OutputStream out = response.getOutputStream();
 					MatrixToImageWriter.writeToStream(bitMatrix, "png", out);// 输出二维码
-					System.out.println("生成二维码成功");
 					out.flush();
 					out.close();
 

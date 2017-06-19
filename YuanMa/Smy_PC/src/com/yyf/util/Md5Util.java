@@ -15,12 +15,6 @@ public class Md5Util {
 		return DigestUtils.md5Hex(pwd);
 	}
 
-	public static void main(String[] args) {
-		String pwd = "123456asdasf@#4";
-		System.out.println(md5(pwd) + "//");
-		System.out.println(md5(pwd));
-	}
-
 	public static String MD5Encode(String origin, String charsetname) {
 		String resultString = null;
 		try {
@@ -57,7 +51,6 @@ public class Md5Util {
 
 	public static String sign(String text, String key, String input_charset) {
 		text = text + key;
-		System.out.println(text);
 		return DigestUtils.md5Hex(getContentBytes(text, input_charset));
 	}
 	

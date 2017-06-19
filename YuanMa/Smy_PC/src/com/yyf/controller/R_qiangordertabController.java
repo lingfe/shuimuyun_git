@@ -77,7 +77,6 @@ public class R_qiangordertabController {
 	@RequestMapping(value="r_qiangordertabController/insertAjax/{xiaId}/{kuaikeId}",method=RequestMethod.GET)
 	public @ResponseBody boolean  insertAjax(@PathVariable("xiaId")String xiaId,@PathVariable("kuaikeId")String kuaikeId){
 		try {
-			System.out.println("=====================******");
 			// 得到唯一的ID 作为抢单ID的唯一标示列
 			// 默认抢单id
 			UUID uuid1 = UUID.randomUUID();

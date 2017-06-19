@@ -146,31 +146,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath %>PC/images/ok.png" width="100"/>
 				<span class="hhh">支付成功!</span>
 			</div>
-			<div class="box_border_cen">
-				<div class="yuan">共计支付金额：<span class="yuan_qian">￥</span><span class="yuan_qian">2000000.2</span>元</div>
-				<div class="border"></div>
-			</div>
-			<div class="box_border_lef">
-				<span>以下<span>5</span>个订单已经完成</span>
-				<span>共计：<span class="b">￥</span><span class="b">2000000.2</span>元</span>
-			</div>
+<!-- 			<div class="box_border_cen"> -->
+<!-- 				<div class="yuan">共计支付金额：<span class="yuan_qian">￥</span><span class="yuan_qian">2000000.2</span>元</div> -->
+<!-- 				<div class="border"></div> -->
+<!-- 			</div> -->
+<!-- 			<div class="box_border_lef"> -->
+<!-- 				<span>以下<span>5</span>个订单已经完成</span> -->
+<!-- 				<span>共计：<span class="b">￥</span><span class="b">2000000.2</span>元</span> -->
+<!-- 			</div> -->
 			<div class="box_border_nav">
-				<span>订单号：<span>1000000</span></span>
-				<span  class="marg">在线支付：<span>￥</span><span>200.2</span>元</span>
-				<span  class="marg">商品名称：<span>老干妈</span></span>
-			</div><div class="box_border_nav">
-				<span>订单号：<span>1000000</span></span>
-				<span  class="marg">在线支付：<span>￥</span><span>200.2</span>元</span>
-				<span  class="marg">商品名称：<span>老干妈</span></span>
-			</div><div class="box_border_nav">
-				<span>订单号：<span>1000000</span></span>
-				<span  class="marg">在线支付：<span>￥</span><span>200.2</span>元</span>
-				<span  class="marg">商品名称：<span>老干妈</span></span>
-			</div><div class="box_border_nav">
-				<span>订单号：<span>1000000</span></span>
-				<span  class="marg">在线支付：<span>￥</span><span>200.2</span>元</span>
-				<span  class="marg">商品名称：<span>老干妈</span></span>
+				<span>订单号：<span>${r_zhiordertab.xiaId }</span></span>
+				<span  class="marg">在线支付：<span>￥</span><span>${r_zhiordertab.total_fee/100 }</span>元</span>
+				<span  class="marg">商品名称：<span>${r_zhiordertab.body }</span></span>
 			</div>
+<!-- 			<div class="box_border_nav"> -->
+<!-- 				<span>订单号：<span>1000000</span></span> -->
+<!-- 				<span  class="marg">在线支付：<span>￥</span><span>200.2</span>元</span> -->
+<!-- 				<span  class="marg">商品名称：<span>老干妈</span></span> -->
+<!-- 			</div><div class="box_border_nav"> -->
+<!-- 				<span>订单号：<span>1000000</span></span> -->
+<!-- 				<span  class="marg">在线支付：<span>￥</span><span>200.2</span>元</span> -->
+<!-- 				<span  class="marg">商品名称：<span>老干妈</span></span> -->
+<!-- 			</div><div class="box_border_nav"> -->
+<!-- 				<span>订单号：<span>1000000</span></span> -->
+<!-- 				<span  class="marg">在线支付：<span>￥</span><span>200.2</span>元</span> -->
+<!-- 				<span  class="marg">商品名称：<span>老干妈</span></span> -->
+<!-- 			</div> -->
 			<div class="box_border_cen">
 				<a class="cen_btn" href="<%=basePath%>RequestMappingUtil/requestData/PC/placeAnOrder ">继续下单</a>
 				<a class="link" href="<%=basePath%>PC/personalCenter.jsp">查看订单详情>></a>

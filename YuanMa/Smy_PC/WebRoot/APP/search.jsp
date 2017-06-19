@@ -204,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//清空
 				$(".oallCont_cont_list").html("");
 				
-				var kuaikeId=$("kuaikeId").val();
+				var kuaikeId=$("#kuaikeId").val();
 				
 				//发送请求
 				$.ajax({
@@ -226,11 +226,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								status = data[i].status == 3 ? '交易结束(待评价)' : status;
 								status = data[i].status == 4 ? '已评价' : status;
 								
-								
 								//确定单子类型
 								var str=data[i].status > 0 ? '派' :'快';
 								//标签拼接
-								result += "<li><a href='xiaordertab/queryIdStatus/"+kuaikeId+"/" +data[i].status+"/"+ data[i].xiaId  + "'><img class='oallCont_cont_img' title='' \
+								result += "<li><a href='xiaordertab/getXiaIdStatusList/"+kuaikeId+"/" +data[i].status+"/"+ data[i].xiaId  + "'><img class='oallCont_cont_img' title='' \
 											alt='' src='<%=basePath%>APP/images/oall001.jpg' width='100%' /> \
 											<div class='oallCont_contBox'> \
 												<p>收货人：" + data[i].shouhuoName + "</p> \

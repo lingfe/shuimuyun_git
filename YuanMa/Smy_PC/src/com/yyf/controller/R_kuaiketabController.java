@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +15,6 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -23,7 +22,6 @@ import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +36,9 @@ import com.sun.xml.xsom.impl.scd.Iterators.Map;
 import com.yyf.controller.util.ErrorShow;
 import com.yyf.controller.util.VerificationUtil;
 import com.yyf.model.R_kuaiketab;
+import com.yyf.model.R_qiangordertab;
 import com.yyf.service.R_kuaiketabService;
+import com.yyf.service.R_qiangordertabService;
 import com.yyf.util.Md5Util;
 import com.yyf.util.R_kuaiketabStatusEnum;
 
@@ -53,6 +53,10 @@ public class R_kuaiketabController {
 	/* 添加依赖注入 */
 	@Autowired
 	private R_kuaiketabService kuaiketabService;
+	
+	//抢单记录
+	@Autowired
+	private R_qiangordertabService qiangordertabService;
 
 	/**
 	 * 
@@ -911,6 +915,5 @@ public class R_kuaiketabController {
 			
 			return "APP/modifyPassword";
 		}
-	
 
 }

@@ -204,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//清空
 				$(".oallCont_cont_list").html("");
 				
-				var kuaikeId=$("kuaikeId").val();
+				var kuaikeId=$("#kuaikeId").val();
 				
 				//发送请求
 				$.ajax({

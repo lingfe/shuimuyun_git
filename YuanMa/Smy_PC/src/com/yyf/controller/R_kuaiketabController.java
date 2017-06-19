@@ -581,7 +581,6 @@ public class R_kuaiketabController {
 		if(abc>0){
 			//查询现有手机号码 和用户民去修改密码
 			R_kuaiketab tabo = kuaiketabService.selectPasswordBykuaikeInfo(kuaikeName, newkuaikePhone);
-			System.out.println(tabo);
 			model.addAttribute("tabo", tabo);
 			model.remove("mobile_code");
 			return "APP/resetPassword";
@@ -779,7 +778,6 @@ public class R_kuaiketabController {
 				new NameValuePair("mobile", kuaikePhone), new NameValuePair("content", content), };
 		method.setRequestBody(data);
 		//打印验证码
-		System.out.println(mobile_code);
 
 		try {
 			client.executeMethod(method);
@@ -794,9 +792,6 @@ public class R_kuaiketabController {
 			String msg = root.elementText("msg");
 			String smsid = root.elementText("smsid");
 			//打印返回的参数  code状态  msg提示语 smsid错误信息
-			System.out.println(code);
-			System.out.println(msg);
-			System.out.println(smsid);
 			//判断状态码是否为2 表示成功状态
 			if ("2".equals(code)) {
 				System.out.println("短信提交成功");

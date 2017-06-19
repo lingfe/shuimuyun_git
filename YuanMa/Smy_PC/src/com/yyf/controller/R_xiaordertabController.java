@@ -66,7 +66,6 @@ public class R_xiaordertabController {
 	@RequestMapping(value="/getMyInfoOrderStatus",method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> getMyInfoOrderStatus(@RequestParam(value="kuaikeId",required=false)String kuaikeId,ModelMap model){
 		Map<String, Object> myInfoOrderStatus = r_xiaordertabService.getMyInfoOrderStatus(kuaikeId);
-		System.out.println(kuaikeId);
 		return myInfoOrderStatus;
 	}
 	
@@ -297,7 +296,6 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value="/appOrderRequest/{pageName}",method=RequestMethod.GET)
 	public String appOrderRequest(R_xiaordertab tab,@PathVariable("pageName")String pageName,HttpServletRequest request,ModelMap model){
-		System.out.println("*******************");
 		//下单id
 		Object attribute = request.getSession().getAttribute("xiaId");
 		if(StringUtils.isEmpty(attribute)){
@@ -415,7 +413,6 @@ public class R_xiaordertabController {
 		
 		// 设置到page
 		page.setList(statusQuery);
-		System.out.println(page.toString());
 
 		return page;
 	}
@@ -445,7 +442,6 @@ public class R_xiaordertabController {
 		// 得到分页数据
 		List<R_xiaordertab> statusQueryPaging = r_xiaordertabService.statusQueryPaging(status,
 				((pageIndex - 1) * pageNum), pageNum);
-		System.out.println(page.toString());
 		// 设置到page
 		page.setList(statusQueryPaging);
 		return page;

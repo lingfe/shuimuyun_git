@@ -29,11 +29,11 @@ public interface R_zhiordertabMapper {
 	 * @created 2017年6月17日 下午2:41:00
 	 * @param 
 	 *            
-	 * @return 
+	 * @return order_no
 	 */
-	@Insert("insert into order_table(total_fee,xiaId,out_trade_no,body,trade_type,product_id) values(#{total_fee},#{xiaId},#{out_trade_no},#{body},#{trade_type},#{product_id})")
+	@Insert("insert into order_table(total_fee,xiaId,out_trade_no,body,trade_type,product_id,order_no) values(#{total_fee},#{xiaId},#{out_trade_no},#{body},#{trade_type},#{product_id},#{order_no})")
 	public int insertMessage(@Param("total_fee") String total_fee,@Param("xiaId") String xiaId
 			,@Param("out_trade_no") String out_trade_no,@Param("body") String body
-			,@Param("trade_type") String trade_type,@Param("product_id") String product_id);
+			,@Param("trade_type") String trade_type,@Param("product_id") String product_id,@Param("order_no") String order_no);
 
 }

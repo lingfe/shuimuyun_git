@@ -1,6 +1,5 @@
 package com.yyf.service;
 
-import com.yyf.model.Commenttab;
 import com.yyf.model.R_zhiordertab;
 
 /**
@@ -8,7 +7,7 @@ import com.yyf.model.R_zhiordertab;
  * 文件名： R_zhiordertabService.java 描述： 支付接口    修改人： tianhao 修改时间： 2017年6月17日11:19:00
  *  修改内容：
  */
-public interface R_zhiordertabService {
+public interface R_zhiorderqueryService {
 	
 //	/**
 //	 * 
@@ -26,6 +25,6 @@ public interface R_zhiordertabService {
 	 * @created 2017年6月17日 下午2:03:28  
 	 * @param tab
 	 */
-	void insertMessage(String total_fee,String xiaId,String out_trade_no,String body,String trade_type,String product_id,String order_no);
+	R_zhiordertab selectMessage(String xiaid);
 
 }

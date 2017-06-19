@@ -8,11 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yyf.mapper.IR_xiaordertabMapper;
 import com.yyf.mapper.R_qiangordertabMapper;
+import com.yyf.mapper.R_zhinotifyMapper;
+import com.yyf.mapper.R_zhiorderquertMapper;
 import com.yyf.mapper.R_zhiordertabMapper;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.model.R_zhiordertab;
 import com.yyf.service.R_xiaordertabService;
+import com.yyf.service.R_zhinotifyService;
+import com.yyf.service.R_zhiorderqueryService;
 import com.yyf.service.R_zhiordertabService;
 import com.yyf.util.R_qiangordertabEnum;
 import com.yyf.util.R_xiaordertabEnum;
@@ -23,16 +27,17 @@ import com.yyf.util.R_xiaordertabEnum;
  *  修改内容：
  */
 @Service
-public class R_zhiordertabServiceImpl implements R_zhiordertabService {
+public class R_zhiorderquertServiceImpl implements R_zhiorderqueryService {
 
 	// 自动装配，
 	@Autowired
-	private R_zhiordertabMapper zhiordertabMapper;
+	private R_zhiorderquertMapper zhiorderquertyMapper;
 
 
 
 	@Override
-	public void insertMessage(String total_fee,String xiaId,String out_trade_no,String body,String trade_type,String product_id,String order_no) {
-		zhiordertabMapper.insertMessage(total_fee,xiaId,out_trade_no,body,trade_type,product_id,order_no);
+	public R_zhiordertab selectMessage(String xiaid) {
+		R_zhiordertab zhi = zhiorderquertyMapper.SelectOrder(xiaid);
+		return zhi;
 	}
 }

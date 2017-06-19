@@ -121,7 +121,7 @@
 			<!-- 手机找回form 开始 -->
 			<form action="reupdatepass/PC" method="post">
 				<div class="zhuce_phone">
-					<label>* 手机号码：</label> <input type="text" value=" " id="phone"
+					<label>* 手机号码：</label> <input type="text" id="phone"
 						name="kuaikePhone" /> <span class="hidden2"
 						style="width: 100px;height: 30px; color: red;">不能为空</span> <span
 						class="hidden2_2" style="width: 100px;height: 30px; color: red;">输入正确的格式</span>
@@ -224,19 +224,8 @@
 				</div>
 
 				<div class="zhuce_dizhi">
-					<label>* 现居住地址：</label> <select id="sheng" name="kuaikeAddress">
-					 <c:forEach items="${province }" var="p">
-							<option value="${p.name }" >${p.name }</option>
-						</c:forEach>
-						</select> <span>省</span> <select id="shi" name="kuaikeAddress">
-						<c:forEach items="${city }" var="c">
-							<option value="${c.name }" >${c.name }</option>
-						</c:forEach>
-						</select> <span>市</span> <select id="xian" name="kuaikeAddress">
-						<c:forEach items="${area }" var="a">
-							<option value="${a.name }" >${a.name }</option>
-						</c:forEach>
-					</select> <span>县/区</span>
+					<label>* 现居住地址：</label><select id="Select1" name="kuaikeAddress"></select>　省　<select id="Select2" name="kuaikeAddress"></select>
+						　市　<select id="Select3" name="kuaikeAddress"></select>　区
 
 				</div>
 				
@@ -313,3 +302,9 @@
 
 	})
 </script>
+
+<script type="text/javascript" src="<%=basePath%>PC/js/jsAddress.js"></script>
+	<script type="text/javascript">
+								addressInit('Select1', 'Select2', 'Select3');
+	</script>
+

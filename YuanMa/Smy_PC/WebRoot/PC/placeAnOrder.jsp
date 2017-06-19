@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -25,6 +25,79 @@
 
 <!--上传图片css-->
 <style type="text/css">
+p {
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.m_zlxg ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.clearfix {
+	*zoom: 1
+}
+/* m_zlxg */
+.m_zlxg {
+	width: 93px;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+	float: left;
+	margin: 0 10px 0 0;
+	display: inline;
+	background: url(<%=basePath%>PC/images/zlxg2.jpg) no-repeat;
+}
+
+.m_zlxg p {
+	width: 71px;
+	padding-left: 10px;
+	overflow: hidden;
+	line-height: 30px;
+	color: #333333;
+	font-size: 12px;
+	font-family: "微软雅黑";
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.m_zlxg2 {
+	position: absolute;
+	top: 29px;
+	border: 1px solid #ded3c1;
+	background: #fff;
+	width: 91px;
+	display: none;
+	max-height: 224px;
+	-height: 224px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	white-space: nowrap;
+}
+
+.m_zlxg2 li {
+	line-height: 28px;
+	white-space: nowrap;
+	padding-left: 10px;
+	font-family: "微软雅黑";
+	color: #333333;
+	font-size: 12px;
+}
+
+.m_zlxg2 li:hover {
+	color: #7a5a21;
+}
+
 .container {
 	width: 100%;
 	height: 10%;
@@ -122,25 +195,27 @@
 }
 </style>
 <!-- layer -->
-<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
-<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 <body>
-<script type="text/javascript">
-	if("${login}"==""||"${login}"==null){
-		//询问框
-		//询问框
-		layer.confirm('您还木有登陆？', {
-			skin: 'layui-layer-molv' ,//样式类名
-		  	btn: ['登陆','注册'], //按钮
-		  	closeBtn: 0
-		}, function(){
-		  	window.location.href="RequestMappingUtil/requestData/PC/login";
-		}, function(){
-			window.location.href="RequestMappingUtil/requestData/PC/register";
-		});
-	}
-</script>
+	<script type="text/javascript">
+		if ("${login}" == "" || "${login}" == null) {
+			//询问框
+			//询问框
+			layer.confirm('您还木有登陆？', {
+				skin : 'layui-layer-molv', //样式类名
+				btn : [ '登陆', '注册' ], //按钮
+				closeBtn : 0
+			}, function() {
+				window.location.href = "RequestMappingUtil/requestData/PC/login";
+			}, function() {
+				window.location.href = "RequestMappingUtil/requestData/PC/register";
+			});
+		}
+	</script>
 	<!--导航开始-->
 	<header>
 	<div class="container">
@@ -157,8 +232,8 @@
 			<ul class="nav navbar-nav pull-left ren_nav">
 				<li class="active"><a href="<%=basePath%>PC/index.jsp"
 					style="color: #ff6d46;">人人配送</a></li>
-				<li><a href="<%=basePath %>PC/intro.jsp">公众号</a></li>
-				<li><a href="<%=basePath %>PC/about.jsp">关于我们</a></li>
+				<li><a href="<%=basePath%>PC/intro.jsp">公众号</a></li>
+				<li><a href="<%=basePath%>PC/about.jsp">关于我们</a></li>
 				<li><a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a></li>
 				<li class="active"><a href="http://www.smuyun.com/"
 					target="_left">商城</a></li>
@@ -214,7 +289,7 @@
 						</select>
 					</div>
 				</div>
-				
+
 				<div>
 					<div class="col-lg-3 col-sm-3 col-md-3">
 						<label class="text-right">※ 快客费用 :</label>
@@ -344,19 +419,11 @@
 						type="text" /> <abbr class="tt3"></abbr>
 				</div>
 				<div>
-					<label>※ 我的地址:</label> <select name="kuaikeAddress">
-					<c:forEach items="${province }" var="p">
-						<option value="${p.name }">${p.name }</option>
-					</c:forEach>
-					</select> <label>省</label> <select name="kuaikeAddress">
-					<c:forEach items="${city }" var="c">
-						<option value="${c.name }">${c.name }</option>
-					</c:forEach>
-					</select> <label>市</label> <select name="kuaikeAddress">
-					<c:forEach items="${area }" var="a">
-						<option value="${a.name }">${a.name }</option>
-					</c:forEach>
-					</select> <label>县/区</label>
+					<div>
+					<label>※ 我的地址:</label>
+				　<select id="Select1"></select>　省　<select id="Select2"></select>
+						　市　<select id="Select3"></select>　区　
+					</div>
 				</div>
 				<div class="rr">
 					<input name="kuaikeAddressInfo" type="text" /> <label>详细地址</label>
@@ -371,19 +438,11 @@
 						type="text" /> <abbr class="tt5"></abbr>
 				</div>
 				<div>
-					<label>※ 收货地址:</label> <select name="shouhuoAddress">
-					<c:forEach items="${province }" var="p">
-						<option value="${p.name }">${p.name }</option>
-					</c:forEach>
-					</select> <label>省</label> <select name="shouhuoAddress">
-					<c:forEach items="${city }" var="c">
-						<option value="${c.name }">${c.name }</option>
-					</c:forEach>
-					</select> <label>市</label> <select name="shouhuoAddress">
-					<c:forEach items="${area }" var="a">
-						<option value="${a.name }">${a.name }</option>
-					</c:forEach>
-					</select> <label>县/区</label>
+					<div>
+					<label>※ 收货地址:</label>
+						　<select id="cmbProvince"></select>　省　<select id="cmbCity"></select>
+						　市 　<select id="cmbArea"></select>　区
+					</div>
 				</div>
 				<div class="rr">
 					<input name="shouhuoAddressInfo" type="text" /> <label>详细地址</label>
@@ -402,8 +461,13 @@
 		<span class="d_cancel">取消</span> <span class="d_sure">确定</span>
 	</p>
 	</section> </section>
+	<script type="text/javascript" src="<%=basePath%>PC/js/jsAddress.js"></script>
 	<script type="text/javascript" src="<%=basePath%>PC/js/xiadan.js"></script>
-<!-- 提示 -->
-<script type="text/javascript">	${errorShow }</script>
+	<!-- 提示 -->
+	<script type="text/javascript">	${errorShow }</script>
+	<script type="text/javascript">
+								addressInit('cmbProvince', 'cmbCity', 'cmbArea', '陕西', '宝鸡市', '金台区');
+								addressInit('Select1', 'Select2', 'Select3');
+	</script>
 </body>
 </html>

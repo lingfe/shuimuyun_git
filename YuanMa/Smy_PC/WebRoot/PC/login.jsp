@@ -242,20 +242,8 @@
 						<img src="<%=basePath%>PC/images/g00_03.png" class="img4" />
 					</div>
 					<div class="zhuce_dizhi">
-						<label>* 现居住地址：</label> <select required="required" id="sheng" name="kuaikeAddress">
-							<c:forEach items="${province }" var="p">
-								<option value="${p.name }">${p.name }</option>
-							</c:forEach>
-						</select> <span>省</span> <select required="required" id="shi" name="kuaikeAddress">
-							<c:forEach items="${city }" var="c">
-								<option value="${c.name }">${c.name }</option>
-							</c:forEach>
-						</select> <span>市</span> <select required="required" id="xian" name="kuaikeAddress">
-							<c:forEach items="${area }" var="a">
-								<option value="${a.name }">${a.name }</option>
-							</c:forEach>
-						</select> <span>县/区</span>
-
+						<label>* 现居住地址：</label><select id="Select1" name="kuaikeAddress"></select>　省　<select id="Select2" name="kuaikeAddress"></select>
+						　市　<select id="Select3" name="kuaikeAddress"></select>　区　
 					</div>
 
 					<div class="zhuce_xiangqing">
@@ -429,3 +417,8 @@
 		return url;
 	}
 </script>
+
+<script type="text/javascript" src="<%=basePath%>PC/js/jsAddress.js"></script>
+	<script type="text/javascript">
+								addressInit('Select1', 'Select2', 'Select3');
+	</script>

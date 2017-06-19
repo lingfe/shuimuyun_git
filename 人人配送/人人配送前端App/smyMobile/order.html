@@ -13,15 +13,14 @@
 		<header class="commHeader">
 			
 			<h6>我要下单</h6>
-			<a class="commHeader_r" href="#">
+			<a class="commHeader_r" onClick="javascript :history.back(-1);">
 				<span>贵阳</span>
 				<img title="" alt="" src="images/icon/right.png" width="100%" />
 			</a>
 		</header>
 		<!--发货人信息-->
 		<div class="order_info">
-			<div class="shipper">
-				
+			<div class="shipper">			
 				<img src="images/icon/shipper.png" width="27"/>
 				<label>发货人信息</label>
 			</div>
@@ -65,6 +64,14 @@
 		<div class="order_info">
 			<div class="shipper">
 				<img src="images/icon/time.png" width="27"/>
+				<label>最晚取货时间</label>
+				<div class="order_right"id="order_right3">
+					<span id="shijian1">1小时15分</span>
+					<img src="images/icon/orderright.png"width="10" />
+				</div>
+			</div>
+			<div class="shipper">
+				<img src="images/icon/time.png" width="27"/>
 				<label>最迟到达时间</label>
 				<div class="order_right"id="order_right2">
 					<span id="shijian">1小时15分</span>
@@ -88,7 +95,7 @@
 			<label> 我同意 《水木云快递条约》</label>
 			</div>
 			<a href="#"><button class="order_btn" id="taking_btn">确认下单</button></a>
-		</div>
+		</div> 
 		<!--遮罩层-->
 		<div class="order_zhe"id="order_zhe"></div>
 		<!--弹出菜单-->
@@ -141,7 +148,25 @@
 			</div>
 			
 		</div>
-		
+		<!--弹窗四-->
+		<div class="order_tan2"id="order_tan3">
+			<div class="order_tan_clos3">
+				<span>最晚到达时间</span>
+				<span class="mui-icon mui-icon-close order_close" id="order_close3"></span>
+			</div>
+			<div class="order_tan_context3"  id="order_tex3">
+				<div class="order_shi3">
+					<span>时</span>
+					<input type="number" id="num_shi1"/>
+				</div>
+				<div class="order_fen3">
+					<span>分</span>
+					<input type="number" id="num_fen1" />
+				</div>
+				<input class="order_butt3" type="button" id="butt1" value="取消" />
+				<input class="order_buttn3" type="button" id="buttn1" value="确定" />				
+			</div>			
+		</div>		
 		<!--底部-->
 		<footer class="footerMenu">
 			<a  href="#">

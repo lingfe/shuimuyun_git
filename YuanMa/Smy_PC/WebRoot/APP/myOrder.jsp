@@ -29,7 +29,7 @@
 </head>
 <body>
 	<!--【头部】-->
-	<header class="commHeader"> <a class="commHeader_l" href="javascript:self.location=document.referrer;">
+	<header class="commHeader"> <a class="commHeader_l" onClick="javascript :history.back(-1);">
 		<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 	</a>
 	<h6>我的订单</h6>

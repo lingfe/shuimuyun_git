@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<!--【头部】-->
 		<header class="commHeader">
-			<a class="commHeader_l" href="javascript:self.location=document.referrer;">
+			<a class="commHeader_l" onClick="javascript :history.back(-1);">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
 			<p>关于我们</p>

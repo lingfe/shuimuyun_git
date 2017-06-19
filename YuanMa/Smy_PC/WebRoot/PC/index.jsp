@@ -34,6 +34,28 @@
 	charset="utf-8"></script>
 <script src="<%=basePath%>PC/js/register.js" type="text/javascript"
 	charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="<%=basePath%>PC/layer/mobile/need/layer.css" />
+<script src="<%=basePath%>PC/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$("#qiangorderBtn").click(function() {
+
+			layer.confirm("请关注我们的公众号", {
+				skin : 'layui-layer-molv', //样式类名
+				btn : [ '关注', '取消' ], //按钮
+				closeBtn : 0
+			}, function() {
+				window.location.href = "RequestMappingUtil/requestNUll/PC/intro";
+			}, function() {
+				window.location.href = "RequestMappingUtil/requestNUll/PC/index";
+			});
+
+		});
+
+
+	});
+</script>
 </head>
 <body>
 	<div class="header">
@@ -122,7 +144,7 @@
 	<!--轮播结束-->
 	<!--按钮开始-->
 	<div class="ren_aj1 flex1">
-		<a href="<%=basePath%>PC/intro.jsp"><img
+		<a href="javascript:void(0);" id="qiangorderBtn"><img
 			src="<%=basePath%>PC/images/a001_03.png" /> <span>我要抢单</span></a>
 	</div>
 	<div class="ren_aj2 flex1">

@@ -111,14 +111,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="hidden" name="shopprices" value="${sessionScope.pricse }">
 				<input type="hidden" name="xiaId" value="${sessionScope.xiaId}">
 			</div>
-			<div class="btn"><a>立即付款</a></div>
+			<div class="btn">
+			<a href="<%=basePath %>PC/index-pay-result.jsp">立即付款</a>
+			</div>
 		</div>
 		<!--遮罩层-->
-		<section class="z_mask dis">
-			<!--弹出框-->
-			<section class="z_alert erwei dis">
-				<img src="<%=basePath %>PC/images/12.png" />
-			</section>
+<!-- 		<section class="z_mask dis"> -->
+<!-- 			<!--弹出框--> -->
+<!-- 			<section class="z_alert erwei dis"> -->
+<%-- 				<img src="<%=basePath %>PC/images/12.png" /> --%>
+<!-- 			</section> -->
 		</section>
 		<script type="text/javascript" src="<%=basePath %>PC/js/fukuan.js"></script>
 		<script type="text/javascript" src="<%=basePath %>PC/js/jquery-2.1.0.js" ></script>

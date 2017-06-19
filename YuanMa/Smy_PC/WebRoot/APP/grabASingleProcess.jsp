@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			padding-left:.20rem;
 		}
 		.dom_shouhuo_ldiv div{
-			height:.3rem
+			height:.3rem;
 		}
 	</style>
 	</head>

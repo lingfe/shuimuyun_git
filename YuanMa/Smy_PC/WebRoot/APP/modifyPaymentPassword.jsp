@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<label>确认新密码</label><input type="text" id="zyespwd" placeholder="请再次输入新支付密码" />
 			</div>
 			<div>
-				<label>验 证 码</label><input class="las" id="zpwdYzm" type="text" placeholder="请输入验证码" /><button id="zpwdYzmBtn">获取验证码</button>
+				<label>验 证 码</label><input class="las" id="zpwdYzm" style="width:1.2rem;" type="text" placeholder="请输入验证码" /><button id="zpwdYzmBtn">获取验证码</button>
 			</div>
 		</div>
 		<a href="javascript:void(0);"><button class="order_btn" id="zpwdbtn">提交</button></a>

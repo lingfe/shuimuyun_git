@@ -23,6 +23,7 @@ import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -135,26 +136,32 @@ public class R_kuaiketabController {
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(R_kuaiketab tab,ModelMap model){
 		
-		// 查询电话号码是否存在
-		R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
-		if (selectKuaiKephone != null) {
-			// 提示
-			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+		try {
+			// 查询电话号码是否存在
+			R_kuaiketab selectKuaiKephone = kuaiketabService.selectKuaiKephone(tab.getKuaikePhone());
+			if (selectKuaiKephone != null) {
+				// 提示
+				model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.PHONE_OK));
+				return "APP/register";
+			}
+			
+			// id
+			tab.setKuaikeId(UUID.randomUUID().toString());
+			// 密码加密
+			tab.setPassword(Md5Util.md5(tab.getPassword()));
+			// 登录时间
+			tab.setLoginDate(new Date());
+			// 状态,默认
+			tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
+			//保存
+			kuaiketabService.addUser(tab);
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SBMIT_OK));
+			return "APP/register";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.ERROR));
 			return "APP/register";
 		}
-		
-		// id
-		tab.setKuaikeId(UUID.randomUUID().toString());
-		// 密码加密
-		tab.setPassword(Md5Util.md5(tab.getPassword()));
-		// 登录时间
-		tab.setLoginDate(new Date());
-		// 状态,默认
-		tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
-		//保存
-		kuaiketabService.addUser(tab);
-		
-		return "APP/login";
 	}
 	
 	/**
@@ -339,11 +346,11 @@ public class R_kuaiketabController {
 			// 返回成功页面
 			return "PC/index";
 		}else if("APP".equals(i)){
-			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SYS_ERROR));
 			return "APP/login";
 		}
 		else{
-			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SYS_ERROR));
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SYS_ERROR));
 			// 留在登陆页面
 			return "PC/login";
 			
@@ -450,7 +457,6 @@ public class R_kuaiketabController {
 
 		//判断是否为移动端【APP】
 		if("APP".equals(i)){
-			
 			// 返回页面
 			return "APP/login";
 			
@@ -588,7 +594,7 @@ public class R_kuaiketabController {
 	 * @param kuaikeName
 	 * @param kuaikePhone
 	 */
-	@RequestMapping(value="updatePwdByKNameAndKPhone",method=RequestMethod.POST)
+	@RequestMapping(value="/updatePwdByKNameAndKPhone",method=RequestMethod.POST)
 	public String updatePasswordByKuaikeNameAndKuaikePhone(ModelMap model,@RequestParam("password") String password,@RequestParam("kuaikeName") String kuaikeName,@RequestParam("newkuaikePhone") String newkuaikePhone){
 		
 		//对密码进行加密处理
@@ -727,7 +733,7 @@ public class R_kuaiketabController {
 	}
 
 	/**
-	 * 模拟手机接收验证码
+	 * PC AND APP手机接收验证码
 	 * 
 	 * @author 杨杰
 	 * @created 2017年5月23日 下午2:30:33
@@ -811,7 +817,7 @@ public class R_kuaiketabController {
 
 	
 	/**
-	 * 根据快客Id修改手机号码
+	 * PC 根据快客Id修改手机号码
 	 * 
 	 * @author 杨杰
 	 * @created 2017年6月1日 下午4:31:20
@@ -835,5 +841,76 @@ public class R_kuaiketabController {
 		//返回到个人中心
 		return "PC/personalCenter";
 	}
+	
+	/**
+	 * APP 根据原有手机号和密码修改手机号码
+	 * @author 杨杰     
+	 * @created 2017年6月18日 上午12:12:28  
+	 * @param regPhone 现有手机号
+	 * @param lastPhone  原有手机号
+	 * @param pass  密码
+	 * @return
+	 */
+	@RequestMapping(value="/updatePhoneBykuaikePhoneAndPassword",method=RequestMethod.POST)
+	public String updatePhoneBykuaikePhoneAndPassword(@ModelAttribute("login") R_kuaiketab ktab,
+			HttpSession session,SessionStatus sessionStatus,
+			@RequestParam("regPhone") String regPhone,
+			@RequestParam("lastPhone") String lastPhone,
+			@RequestParam("password") String password){
+		
+		//密码加密
+		String pass = Md5Util.md5(password);
+		
+		boolean flag=kuaiketabService.updatePhoneBykuaikePhoneAndPassword(regPhone,lastPhone,pass);
+		
+		if(flag){
+			
+			//清空Session域中的所有对象以及初始化 Session
+			session.removeAttribute("login");
+			//初始化Session
+			session.invalidate();
+			sessionStatus.setComplete();
+			//返回初始页【登录页】
+			return "APP/login";
+			
+		}
+		
+		return "APP/modifyCellPhoneNumber";
+	}
+	
+	
+	/**
+	 * APP 根据快客Id 和 原密码 对快客密码进行修改
+	 * @author 杨杰     
+	 * @created 2017年6月18日 上午1:01:30  
+	 * @param newPassword 新密码
+	 * @param kuaikeID   快客Id
+	 * @param password  原密码
+	 */
+	@RequestMapping(value="/updatePassWordByOldPassword",method=RequestMethod.POST)
+	public String updatePassWordByOldPassword(
+			HttpSession session,SessionStatus sessionStatus,
+			@RequestParam("newPassword") String newPassword, 
+			@RequestParam("kuaikeId") String kuaikeId, 
+			@RequestParam("password") String password) {
+			
+			String oldPass = Md5Util.md5(password);
+			String passstr = Md5Util.md5(newPassword);
+			
+			int newpass = kuaiketabService.updatePassWordByOldPassword(passstr, kuaikeId, oldPass);
+			if(newpass>0){
+				//清空Session域中的所有对象以及初始化 Session
+				session.removeAttribute("login");
+				//初始化Session
+				session.invalidate();
+				sessionStatus.setComplete();
+				//返回初始页【登录页】
+				return "APP/login";
+				
+			}
+			
+			return "APP/modifyPassword";
+		}
+	
 
 }

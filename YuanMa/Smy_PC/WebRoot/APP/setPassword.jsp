@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style type="text/css">
 		.feed{
 			width: 100%;
-			margin-top: .1rem;
+			margin-top: .5rem;
 			background: white;
 		}
 		.feed a{
@@ -51,13 +51,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form>
 		<!--【头部】end-->
 		<div class="feed">
-			<a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword">
-				<span>重置支付密码</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" />
-			</a>
+<!-- 			<a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword"> -->
+<!-- 				<span>重置支付密码</span> -->
+<%-- 				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" /> --%>
+<!-- 			</a> -->
 			<a href="RequestMappingUtil/requestNUll/APP/modifyPassword">
 				<span>重置登录密码</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" />
 			</a>
 		</div>
 		</form>

@@ -67,17 +67,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				我的订单
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_1.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/myWallet">
 				我的钱包
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_2.png" width="100%" />
 			</a>
 		</div>
 		
 		<div class="myInfo_list">
-			<a href="RequestMappingUtil/requestNUll/APP/myAddress">
-				我的地址
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_3.png" width="100%" />
-			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/personalData">
 				个人资料
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_3.png" width="100%" />
@@ -86,18 +82,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="myInfo_list">
 			<a href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep">
-				快客申请/完善资料
+				完善资料
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_4.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
+			<a href="RequestMappingUtil/requestNUll/APP/serviceHelp">
 				联系客服
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_5.png" width="100%" />
 			</a>
-			<a href="javascript:void(0);">
-				服务热线
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_6.png" width="100%" />
-			</a>
-			<a href="javascript:void(0);">
+<!-- 			<a href="javascript:void(0);"> -->
+<!-- 				服务热线 -->
+<%-- 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_6.png" width="100%" /> --%>
+<!-- 			</a> -->
+			<a href="RequestMappingUtil/requestNUll/APP/feedback">
 				意见反馈
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_7.png" width="100%" />
 			</a>
@@ -113,10 +109,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				关于我们
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
 			</a>
-			<a href="loginOut/APP">
+			<%-- <a href="loginOut/APP">
 				退出登录
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_10.png" width="100%" />
-			</a>
+			</a> --%>
 		</div>
 		<div class="myInfo_zw"></div>
 		
@@ -143,20 +139,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p class="">我的</p>
 			</a>
 		</footer>
-		
+		<!-- 快客id -->
+		<input type="hidden"  id="kuaikeId" value="${login.kuaikeId }" />
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript">
 			$(function(){
+				var kuaikeId=$("#kuaikeId").val();
 				$.ajax({
-					url : 'xiaordertab/getMyInfoOrderStatus',
+					url : 'xiaordertab/getMyInfoOrderStatus?kuaikeId='+kuaikeId,
 					type : 'get',
 					success : function(data) {
-						$("#dfk").html(data.dfk);
-						$("#yjd").html(data.yjd);
-						$("#yqh").html(data.yqh);
-						$("#wpj").html(data.wpj);
+						if(data!=null){
+							$("#dfk").html(data.dfk);//待付款
+							$("#yjd").html(data.yjd);//已接单
+							$("#yqh").html(data.yqh);//已取货
+							$("#wpj").html(data.wpj);//未评价
+						}
 					},
 					error : function(xhr, type) {
 						alert('Ajax error!');

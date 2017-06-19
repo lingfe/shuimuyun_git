@@ -48,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <section class="express-area">
             <a id="expressArea" href="javascript:void(0)">
                 <dl>
-                    <dt>选择地区：</dt>
-                    <dd id="adder"></dd>
+                    <dt style="height: 0.5rem; line-height: 0.5rem; font-size: 0.15rem">选择地区：</dt>
+                    <dd style="height: 0.5rem; line-height: 0.5rem; font-size: 0.15rem" id="adder">请选择地址</dd>
                 </dl>
             </a>
         </section>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
 			</div>			
 			<div class="edit_firstdiv_3">
-				<label>街　道 :</label>
+				<label style="font-size: 0.15rem">街　道 :</label>
 				<input type="text" placeholder="请输入详细地址" id="xadder" />
 			</div>
 		</div>

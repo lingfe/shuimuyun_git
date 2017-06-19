@@ -574,18 +574,20 @@ input {
 
 .appeal_firstdiv label {
 	display: inline-block;
-	width: 30%;
+	width:.8rem;
 	height: .4rem;
 	line-height: .4rem;
 	margin-left: 10px;
 	color: #333;
+	text-align: right;
 }
 
 .appeal_firstdiv input {
 	display: inline-block;
-	width: 60%;
+	width: calc(100% - .9rem);
 	border: none;
 	outline: none;
+	height: .35rem;
 }
 
 .appeal_lastdiv {
@@ -599,7 +601,7 @@ input {
 
 .appeal_lastdiv label {
 	display: inline-block;
-	width: 30%;
+	width:.8rem;
 	height: .4rem;
 	line-height: .4rem;
 	margin-left: 10px;
@@ -608,24 +610,21 @@ input {
 
 .appeal_lastdiv input {
 	display: inline-block;
-	width: 60%;
+	width: calc(100% - .9rem);
+	height: .38rem;
 	border: none;
 	outline: none;
+	border:red solid 1px;
 }
-
-.las {
-	width: 30% !important;
-}
-
 .appeal_firstdiv button {
-	margin-left: 5%;
-	display: inline-block;
-	width: 30%;
+	display: inline-block ;
+	width:.8rem;
 	height: .25rem;
 	margin-top: .075rem;
 	border: none;
 	background: #418bc8;
 	color: white;
+	
 }
 
 
@@ -686,15 +685,26 @@ input {
 	width: 100%;
 	background: white;
 	margin-bottom: .1rem;
-	margin-top: 0.4rem;
+	margin-top: 0.1rem;
+}
+.order_info:nth-of-type(1) {
+	margin-top: 0.5rem;
 }
 
 .shipper {
 	padding: 0 20px;
-	height: 0.5rem;
+	height: 0.45rem;
 	box-sizing: border-box;
 	position: relative;
 	border-top: solid 1px #eee;
+}
+.imgPo {
+	position: absolute;
+	top: 0.1rem;
+	right: 20px;
+}
+.shipper a {
+	color: #333;
 }
 
 /* .order_info>div:first-of-type(1) {
@@ -702,7 +712,7 @@ input {
 } */
 
 .shipper img {
-	margin-top: .1rem;
+	margin-top: .11rem;
 }
 
 .shipper label {
@@ -725,7 +735,7 @@ input {
 
 .order_num {
 	position: absolute;
-	top: .13rem;
+	top: 0.03rem;
 	left: 1.1rem;
 	color: #b5b5b5;
 }
@@ -733,30 +743,46 @@ input {
 .order_num span {
 	font-size: .1rem;
 	margin-right: .08rem;
+	font-size: 0.14rem;
 }
 
 .order_num span:nth-of-type(2) {
 	text-align: center;
-	line-height: .15rem;
+	line-height: .2rem;
 	border-radius: 50%;
-	width: .15rem;
-	height: .15rem;
+	width: .2rem;
+	height: .2rem;
+	color: #999;
+	font-size: 0.14rem;
 	border: solid #b5b5b5 1px;
 	display: inline-block;
 }
 
 .order_num span:nth-of-type(4) {
 	text-align: center;
-	line-height: .15rem;
+	line-height: .2rem;
 	border-radius: 50%;
-	width: .15rem;
-	height: .15rem;
+	width: .2rem;
+	height: .2rem;
 	border: solid #b5b5b5 1px;
 	display: inline-block;
 }
 
 .order_num_mag {
-	margin-right: .2rem !important;
+	display: inline-block;
+	width: 0.4rem;
+	margin-left: 0.1rem !important;
+}
+.order_num input {
+	display: inline-block;
+	outine: none;
+	border: none;
+	background: none !important;
+	width: 0.3rem;
+	color: #333;
+	text-align: center;
+	padding: 0;
+	font-size: 0.13rem;
 }
 
 .order_buttom {
@@ -1047,6 +1073,141 @@ input {
 .dis {
 	display: none;
 }
+/*弹出框四*/
+
+.order_tan3 {
+	width: 100%;
+	background: #fff;
+	position: fixed;
+	bottom: -1.6rem;
+	font-size: .13rem;
+	z-index: 999;
+	height: 1.6rem;
+}
+
+.order_shi3 {
+	position: absolute;
+	top: .1rem;
+	left: .4rem;
+}
+
+.order_shi3 span {
+	display: block;
+	margin-top: .1rem;
+	margin-bottom: .1rem;
+}
+
+.order_shi3 input {
+	width: .4rem;
+	height: .2rem !important;
+}
+
+.order_fen3 {
+	top: .1rem;
+	position: absolute;
+	left: 1.7rem;
+}
+
+.order_fen3 input {
+	width: .4rem;
+	height: .2rem !important;
+}
+
+.order_fen3 span {
+	margin-top: .1rem;
+	display: block;
+	margin-bottom: .1rem;
+}
+
+.order_butt3 {
+	position: absolute;
+	left: .5rem;
+	top: .8rem;
+	width: .8rem;
+	background: #f6a7b3 !important;
+}
+
+.order_buttn3 {
+	position: absolute;
+	left: 1rem;
+	top: .8rem;
+	width: .8rem;
+	background: #82cddd !important;
+}
+
+.order_tan_clos3 {
+	width: 100%;
+	height: .4rem;
+	position: relative;
+	border-bottom: solid 1px gray;
+}
+
+.order_tan_clos3 span:last-of-type {
+	position: absolute;
+	display: inline-block;
+	right: .05rem;
+	line-height: .4rem;
+	width: .3rem;
+	height: .4rem;
+}
+
+.order_tan_clos3 span:first-of-type {
+	display: inline-block;
+	height: .4rem;
+	margin-left: .2rem;
+	line-height: .4rem;
+}
+
+.order_tan_context3 {
+	width: 100%;
+	height: .7rem;
+	position: relative;
+}
+
+.order_tan_context3>div {
+	position: absolute;
+	width: 33%;
+	text-align: center;
+}
+
+.order_tan_context3_1 {
+	left: .1rem;
+}
+
+.order_tan_context3_2 {
+	left: 1rem;
+	height: .6rem;
+}
+
+.order_tan_context3_2>span {
+	width: 100%;
+	display: block;
+	margin-top: .05rem;
+}
+
+.order_tan_context3_2>span>label {
+	display: inline-block;
+}
+
+.order_tan_context3_3>span>label {
+	display: inline-block;
+}
+
+.order_tan_context3_3 {
+	left: 2rem;
+	height: .6rem;
+}
+
+.order_tan_context3_3>span {
+	width: 100%;
+	display: block;
+	margin-top: .05rem;
+}
+
+.dis {
+	display: none;
+}
+
 
 
 /*【下单】end*/
@@ -1206,9 +1367,12 @@ input {
 /*【快递员待接单页面】*/
 
 .courier_firsttit {
-	margin: .1rem 20px;
+	margin-left: 20px;
 	color: #999;
 	font-size: .12rem;
+	margin-top:.4rem;
+	height:.4rem;
+	line-height:.4rem;
 }
 
 .courier_last {
@@ -1409,7 +1573,7 @@ input {
 .commHeader p {
 	color: #fff;
 	text-align: center;
-	font-size: 0.12rem;
+	font-size: 0.15rem;
 	line-height: 0.38rem;
 }
 
@@ -1598,7 +1762,7 @@ input {
 
 .oallNav>a {
 	display: block;
-	width: 16.66%;
+	width: 20%;
 	height: 0.3rem;
 	font-size: 0.13rem;
 	text-align: center;
@@ -1606,6 +1770,9 @@ input {
 	text-decoration: none;
 	line-height: 0.3rem;
 	float: left;
+}
+.oallNavEr>a {
+	width: 25%;
 }
 
 .oallNav>.active {
@@ -1735,7 +1902,9 @@ input {
 	overflow: hidden;
 	display: none;
 }
-
+.seaCont {
+	margin-top: 0.5rem;
+}
 .oallDtev img {
 	display: block;
 	width: 1.6rem;
@@ -1773,11 +1942,19 @@ input {
 
 .header_input {
 	width: 80%;
-	margin: auto;
+	margin: 0 auto;
 	background: rgba(10, 95, 166, 0.3) !important;
 	transform: translate(.2rem, .03rem);
+	height: 0.38rem;
 }
-
+.search_Cont input {
+	display: block;
+	width: 100%;
+	height: 0.38rem;
+	margin-top: -0.1rem !important;
+	background: none;
+	border-radius: 5px;
+}
 .search {
 	width: 28%;
 	border-radius: 20px !important;
@@ -1795,8 +1972,12 @@ input {
 .search_top {
 	margin: .1rem 0;
 	color: #999;
+	padding-bottom: 0.02rem;
+	text-indent: 20px;
 }
-
+.seaCont input {
+	margin-bottom: 0.1rem !important;
+}
 .search_sousuotext {
 	display: inline-block;
 	transform: translateX(.5rem);
@@ -1815,6 +1996,7 @@ input {
 .hipper_contex input {
 	border: none;
 	outline: none;
+	height: 0.4rem;
 }
 
 .hipper_contex {
@@ -1822,14 +2004,19 @@ input {
 	width: 90%;
 	margin: auto;
 	background: white;
-	margin-top: .1rem;
+	margin-top: .5rem;
+	padding: 0 10px;
+	box-sizing: border-box;
 }
 
 .hipper_contex div {
 	width: 100%;
-	height: .3rem;
-	line-height: .3rem;
-	margin-left: .1rem;
+	height: .5rem;
+	line-height: .5rem;
+	border-bottom: #eee solid 1px;
+}
+.hipper_contex div span {
+	font-size: 0.15rem;
 }
 
 .hipper_contex>div:nth-of-type(3) {
@@ -1839,6 +2026,8 @@ input {
 .hipper_contex_lastimg {
 	position: absolute;
 	right: .2rem;
+	top: 0.17rem;
+
 }
 
 .hipper_contex_lasttext {
@@ -1846,6 +2035,8 @@ input {
 	left: .2rem;
 	display: inline-block;
 	margin-left: .05rem;
+	font-size: 0.14rem;
+	line-height: 0.5rem;
 	width: 75%;
 	overflow: hidden;
 	display: -webkit-box;
@@ -1854,11 +2045,13 @@ input {
 	white-space: normal !important;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
+	padding-top: 0.08rem;
 }
 
 .hipper_contex_firstimg {
 	position: absolute;
 	left: .05rem;
+	top: 0.13rem;
 }
 
 

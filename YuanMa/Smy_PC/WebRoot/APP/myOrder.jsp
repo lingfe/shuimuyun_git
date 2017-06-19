@@ -27,19 +27,19 @@
 	</script>
 	
 </head>
-<body>
+<body style="background: #fff">
 	<!--【头部】-->
 	<header class="commHeader"> <a class="commHeader_l" onClick="javascript :history.back(-1);">
 		<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 	</a>
-	<h6>我的订单</h6>
+	<p>我的订单</p>
 	<a class="commHeader_r" href="RequestMappingUtil/requestNUll/APP/search"> <img class="commHeader_search"
 		src="<%=basePath%>APP/images/icon/search.png" width="100%" />
 	</a> </header>
 	<!--【头部】end-->
 
 	<!--【nav】-->
-	<nav class="oallNav" id="div_statusXia"> 
+	<nav class="oallNav" id="div_statusXia" style="margin-top: 0.4rem"> 
 		<a class="active" href="javascript:void(0);" id="x0" title="x0" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/0" onclick="javascript:statusHref('x0');">全部</a> 
 		<a href="javascript:void(0);" title="x1" id="x1" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/1" onclick="javascript:statusHref('x1');">已接单</a> 
 		<a href="javascript:void(0);" title="x2" id="x2" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/2" onclick="javascript:statusHref('x2');">已到达</a> 
@@ -47,7 +47,7 @@
 		<a href="javascript:void(0);" title="x4" id="x4" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/4" onclick="javascript:statusHref('x4');">已评价</a>
 	</nav>
 	
-	<nav class="oallNav" id="div_statusQiang"  style="display: none;"> 
+	<nav class="oallNav oallNavEr" id="div_statusQiang"  style="display: none; margin-top: 0.4rem"> 
 		<a class="active" href="javascript:void(0);" id="q0" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">全部</a>
 		<a href="javascript:void(0);" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">已抢单</a> 
 		<a href="javascript:void(0);" title="q1" id="q1" url="xiaordertab/queryIdStatus/${login.kuaikeId}/1" onclick="javascript:statusHref('q1');">已取货</a> 
@@ -55,7 +55,7 @@
 	</nav>
 	<!--【nav】end-->
 
-	<div class="oallCont">
+	<div class="oallCont" style="margin-top: 0.06rem;" style="border:red solid 1px;">
 		<div class="oallCont_muen">
 			<div class="active">全部</div>
 			<div id="express">我的快递</div>

@@ -65,7 +65,7 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value="/getMyInfoOrderStatus",method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> getMyInfoOrderStatus(@RequestParam(value="kuaikeId",required=false)String kuaikeId,ModelMap model){
-		Map<String, Object> myInfoOrderStatus = r_xiaordertabService.getMyInfoOrderStatus();
+		Map<String, Object> myInfoOrderStatus = r_xiaordertabService.getMyInfoOrderStatus(kuaikeId);
 		System.out.println(kuaikeId);
 		return myInfoOrderStatus;
 	}

@@ -20,13 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
 	<link rel="stylesheet" href="<%=basePath %>APP/css/layer.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
-	
 	<script>
 		setTimeout(function() {
 				$("body").show();
 		},500);
 	</script>
-	
 	<!--  5ayer -->
 	</head>
 	<body>
@@ -64,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item banner_item">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner2.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务
@@ -72,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item banner_item">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner3.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务
@@ -80,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item banner_item">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner4.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务
@@ -88,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="mui-slider-item mui-slider-item-duplicate">
 						<a href="#">
-							<img src="<%=basePath%>APP/images/banner1.jpg">
+							<img src="<%=basePath%>APP/images/banner4.jpg">
 						</a>
 						<div class="banner_text">
 							优待自己，从这里开始——最贴心的私家服务

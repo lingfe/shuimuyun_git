@@ -22,8 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				display: block;
 				width: 1rem;
 				height: auto;
+				overflow: hidden;
 				margin: 0.15rem auto;
 				margin-bottom: 0.06rem;
+				margin-top: 0.55rem;
 			}
 			.abVbis {
 				text-align: center;
@@ -41,11 +43,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				display: block;
 				position: relative;
 				width: 100%;
-				height: 0.4rem;
-				line-height: 0.4rem;
+				height: 0.5rem;
+				line-height: 0.5rem;
 				text-decoration: none;
 				color: #666;
-				font-size: 0.12rem;
+				font-size: 0.15rem;
 				box-sizing: border-box;
 				border-bottom: 1px solid #eee;
 				padding: 0 20px;
@@ -56,14 +58,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				right: 20px;
 				content: '';
 				width: 10px;
-				height: 18px;
+				height: 16px;
 				background: url(<%=basePath%>APP/images/icon/consignee_right.png) no-repeat;
 				background-size: cover;
 				margin-top: -8px;
 			}
 			.abCont_item span {
 				float: right;
-				font-size: 0.1rem;
+				font-size: 0.13rem;
 				margin-right: 15px;
 			}
 		</style>

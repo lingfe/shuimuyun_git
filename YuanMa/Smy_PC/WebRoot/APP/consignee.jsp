@@ -42,10 +42,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input id="con_phone" type="text" value="${info.shouhuoShone }" placeholder="请输入手机号"/>
 			</div>			
 			<div>
-				<img src="<%=basePath%>APP/images/icon/adds.png" width="15" class="hipper_contex_firstimg"/>
-				<input type="text" class="hipper_contex_lasttext" value="${info.shouhuoAddressInfo==null?'贵州省贵阳市南明区花果园金融街2号':info.shouhuoAddressInfo }"/>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png" class="hipper_contex_lastimg" width="15"/>
-			</div>			
+				<img src="<%=basePath%>APP/images/icon/adds.png" width="20" class="hipper_contex_firstimg"/>
+				<input type="text" class="hipper_contex_lasttext" id="shouhuoAddressInfo" value="${info.shouhuoAddressInfo==null?'贵州省贵阳市南明区花果园金融街2号':info.shouhuoAddressInfo }"/>
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" class="hipper_contex_lastimg" width="10"/>
+			</div>
+			<div id="shouhuoAddressInfo_value"></div>			
 		</div>
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }"> 
@@ -85,6 +86,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					async:false
 				});
 			}
+			
+			//加载执行
+			$(function(){
+				$("#shouhuoAddressInfo").keydown(function(){
+					$("#shouhuoAddressInfo_value").html("");
+					$("#shouhuoAddressInfo_value").html($(this).val());
+				});
+			});
 		</script>
 		<!-- 验证身份 初级验证 -->
 		<script type="text/javascript">

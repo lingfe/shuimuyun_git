@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				overflow: hidden;
 				box-sizing: border-box;
 				padding: 20px 20px;
+				margin-top:.4rem;
 			}
 			.anqCont_item {
 				width: 100%;

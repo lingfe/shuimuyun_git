@@ -1,52 +1,118 @@
-//数量加减
-window.onload = function(){
+window.onload = function() {
 	//下单页面
 	var jia = document.querySelectorAll("#jia")
 	var jian = document.querySelectorAll("#jian")
-	var zhi =document.querySelector("#zhi");
-	var zhi1 =document.querySelector("#zhi1");
-	for(var i=0;i<jia.length;i++){
-		var s = 2;
-		jia[0].onclick=function(){
-				zhi.innerText=s;
-				s++;
-	}
-		jian[0].onclick=function(){
-			zhi.innerText=s-2;
-			if(s==2){
-				 layer.open({
-		    	content: '货物数量不能小于0',
-		    	skin: 'msg',
-		    	time: 1
-		  	});
-				return false;
-			}else{
-				s--;
-			}
-			
+	var zhi = document.querySelector("#zhi");
+	var zhi1 = document.querySelector("#zhi1");
+	for(var i = 0; i < jia.length; i++) {
+		
+		jia[0].onclick = function() {
+			zhi.value ++;
 		}
-	}	
-		for(var i=0;i<jia.length;i++){
-		var a = 2;
-		jia[1].onclick=function(){
-				zhi1.innerText=a;
-				a++;
-	}
-		jian[1].onclick=function(){
-			zhi1.innerText=a-2;
-			if(a==2){
-				 layer.open({
-		    	content: '货物重量不能小于0',
-		    	skin: 'msg',
-		    	time: 1
-		  	});
+		jian[0].onclick = function() {
+			if(zhi.value == 1) {
+				layer.open({
+					content: '亲！至少买一件吧',
+					skin: 'msg',
+					time: 1
+				});
 				return false;
-			}else{
-				a--;
+			} else {
+				zhi.value--;
 			}
-			
+
 		}
 	}
+	for(var i = 0; i < jia.length; i++) {
+		
+		jia[1].onclick = function() {
+			zhi1.value++;
+		
+		}
+		jian[1].onclick = function() {
+			
+			if(zhi1.value == 1) {
+				layer.open({
+					content: '货物重量不能小于0',
+					skin: 'msg',
+					time: 1
+				});
+				return false;
+			} else {
+				zhi1.value--;
+			}
+
+		}
+	}
+	//弹出框四
+		//最晚取货时间取值
+		$("#num_shi1").blur(function() {
+			if($(this).val() >= 24 || $(this).val() < 0) {
+				layer.open({
+					content: '请输入正确的时间',
+					skin: 'msg',
+					time: 1
+				});
+				$(this).val("");
+			}
+		})
+		$("#num_fen1").blur(function() {
+			if($(this).val() > 60 || $(this).val() < 0) {
+				layer.open({
+					content: '请输入正确的时间',
+					skin: 'msg',
+					time: 1
+				});
+				$(this).val("");
+			}
+		})
+		$("#butt1").click(function() {
+			$("#order_zhe").css("display", "none");
+			$("#order_tan3").css("transform", "translateY(1.6rem)");
+			$("#order_tan3").css("transition", "0.5s");
+		})
+		$("#buttn1").click(function() {
+			$("#order_zhe").css("display", "none");
+			$("#order_tan3").css("transform", "translateY(1.6rem)");
+			$("#order_tan3").css("transition", "0.5s");
+			var xs1 = $("#num_shi1").val();
+			var fz1 = $("#num_fen1").val();
+			var shij1;
+			if(xs1 == "" && fz1 == "") {
+				layer.open({
+					content: '请输入时间',
+					skin: 'msg',
+					time: 1
+				});
+				shij1 = "";
+			} else if(xs1 == "") {
+				shij1 = fz1 + "分";
+			} else if(fz1 == "") {
+				shij1 = xs1 + "小时";
+			} else if(xs1 == "" && fz1 == "") {
+				
+			} else {
+				shij1 = xs1 + "小时" + fz1 + "分";
+			}
+			$("#shijian1").html(shij1);
+		})
+		$("#order_right3").click(function() {
+			$("#order_zhe").css("display", "block");
+			$("#order_tan3").css("transform", "translateY(-1.6rem)");
+			$("#order_tan3").css("transition", "0.5s");
+		});
+		$("#order_zhe").click(function() {
+			$("#order_zhe").css("display", "none");
+			$("#order_tan3").css("transform", "translateY(1.6rem)");
+			$("#order_tan3").css("transition", "0.5s");
+
+		});
+		$("#order_close3").click(function() {
+			$("#order_zhe").css("display", "none");
+			$("#order_tan3").css("transform", "translateY(1.6rem)");
+			$("#order_tan3").css("transition", "0.5s");
+		})
+
 	//下单页面end		
 }
 

@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width: 100%;
 			margin-top: .1rem;
 			background: white;
+			margin-top:.4rem;
 		}
 		.feed a{
 			display: block;
@@ -78,19 +79,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<!--【头部】end-->
 		<div class="feed">
-			<a href="RequestMappingUtil/requestNUll/APP/phone">
-				<span>手机号</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" />
-			</a>
+<!-- 			<a href="RequestMappingUtil/requestNUll/APP/phone"> -->
+<!-- 				<span>手机号</span> -->
+<%-- 				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" /> --%>
+<!-- 			</a> -->
 			<a href="RequestMappingUtil/requestNUll/APP/setPassword">
 				<span>密码设置</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" />
 			</a>
 		</div>
 		<div class="feed">
 			<a class="tang_install">
 				<span>退出当前账号</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" />
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="10" />
 			</a>
 		</div>
 		<!--退出登录-->

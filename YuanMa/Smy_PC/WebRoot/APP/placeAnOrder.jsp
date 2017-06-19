@@ -44,20 +44,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--头部-->
 		<header class="commHeader">
 			<h6>我要下单</h6>
-			<a class="commHeader_r" href="javascript:;">
-				<span>贵阳</span>
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/right.png" width="100%" />
-			</a>
 		</header>
 		<!--发货人，收货人信息跳转-->
 		<div class="order_info">
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
 				<img src="<%=basePath%>APP/images/icon/shipper.png" width="27"/>
 				<label>发货人信息</label></a>
+				<img class="imgPo" src="<%=basePath%>APP/images/icon/orderright.png" width="10" /> 
 			</div>
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/consignee">
 				<img src="<%=basePath%>APP/images/icon/cargo.png" width="27"/>
 				<label>收货人信息</label></a>
+				<img class="imgPo" src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 			</div>
 		</div>
 		<!--货物信息-->
@@ -74,9 +72,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/number.png" width="27"/>
 				<label>货物数量</label>
 				<div class="order_num">
-					<span>个/件</span>
+					<span style="" class="order_num_mag">&nbsp;个/件</span>
 					<span id="jian">-</span>
-					<span id="zhi"> 1 </span>
+					<span > <input id="zhi" type=number value="1"> </span>
 					<span id="jia">+</span>
 				</div>
 			</div>
@@ -84,15 +82,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/heft.png" width="27"/>
 				<label>货物重量</label>
 				<div class="order_num">
-					<span class="order_num_mag">kg</span>
+					<span class="order_num_mag">&nbsp;kg</span>
 					<span id="jian">-</span>
-					<span id="zhi1"> 1 </span>
+					<span > <input id="zhi1" type="number" value="1"> </span>
 					<span id="jia">+</span>
 				</div>
 			</div>
 		</div>	
 		<!--到达时间-->
 		<div class="order_info">
+		<div class="shipper">
+				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
+				<label>最晚取货时间</label>
+				<div class="order_right"id="order_right3">
+					<span id="shijian1">1小时15分</span>
+					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
+				</div>
+			</div>
+		
 			<div class="shipper">
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最迟到达时间</label>
@@ -115,9 +122,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="order_buttom_text" id="order_buttom_text">
 			<img src="<%=basePath%>APP/images/icon/dui.png" class="op" width="20" />
 			<img style="display: none;" src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
-			<label> 我同意 《水木云快递条约》</label>
+			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
-			<button class="order_btn" id="ok_order">确认下单</button>
+			<button style="margin-bottom: 0.6rem; " class="order_btn" id="ok_order">确认下单</button>
 		</div>
 
 		<!--遮罩层-->
@@ -143,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="order_tan_context1"  id="order_tex1">
 				<span >无</span>
 				<span>自行车</span>
-				<span>摩托车</span>
+				<span>电瓶车</span>
 			</div>
 			<div class="order_tan_context1"  id="order_tex1">
 				<span >小轿车</span>
@@ -152,26 +159,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<!--弹窗三-->
+		
+		
 		<div class="order_tan2"id="order_tan2">
 			<div class="order_tan_clos2">
 				<span>最晚到达时间</span>
 				<span class="mui-icon mui-icon-close order_close" id="order_close2"></span>
 			</div>
 			<div class="order_tan_context2"  id="order_tex2">
-				<div class="order_tan_context2_1">今天</div>
-				<div class="order_tan_context2_2">
-					<span><label id="jiajia1">+</label><label></label></span>
-					<span><label id="xiaoshi">1</label><label class="yi">时</label></span>
-					<span><label id="jianjian1">-</label><label></label></span>
+				<div class="order_shi">
+					<span>时</span>
+					<input type="number" id="num_shi"/>
 				</div>
-				<div class="order_tan_context2_3">
-					<span><label id="jiajia2">+</label><label></label></span>
-					<span><label id="fenzhong">30</label><label class="yi">分</label></span>
-					<span><label id="jianjian2">-</label><label></label></span>
+				<div class="order_fen">
+					<span>分</span>
+					<input type="number" id="num_fen" />
 				</div>
+				<input class="order_butt" type="button" id="butt" value="取消" />
+				<input class="order_buttn" type="button" id="buttn" value="确定" />
+				
 			</div>
 			
 		</div>
+		<!--弹窗四-->
+		<div class="order_tan2"id="order_tan3">
+			<div class="order_tan_clos3">
+				<span>最迟取货达时间</span>
+				<span class="mui-icon mui-icon-close order_close" id="order_close3"></span>
+			</div>
+			<div class="order_tan_context3"  id="order_tex3">
+				<div class="order_shi3">
+					<span>时</span>
+					<input type="number" id="num_shi1"/>
+				</div>
+				<div class="order_fen3">
+					<span>分</span>
+					<input type="number" id="num_fen1" />
+				</div>
+				<input class="order_butt3" type="button" id="butt1" value="取消" />
+				<input class="order_buttn3" type="button" id="buttn1" value="确定" />				
+			</div>			
+		</div>		
+		
 		
 		<!--底部-->
 		<footer class="footerMenu">
@@ -238,14 +267,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//得到货物类型
 				var shopType=$("#order_leixin").text();
 				//得到货物数量
-				var shopNumer=$("#zhi").text();
+				var shopNumer=$("#zhi").val();
 				//得到货物重量
-				var shopzholiang=$("#zhi1").text();
+				var shopzholiang=$("#zhi1").val();
 				//最快取货时间
 				var timeString=$("#shijian").text();
 				//url
 				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId;
-				
+				alert(url);
 				//ajax提交
 				$.ajax({
 					url : 'xiaordertab/orderSbmit/'+url,

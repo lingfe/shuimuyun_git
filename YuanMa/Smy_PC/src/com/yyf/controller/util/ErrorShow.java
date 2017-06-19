@@ -42,6 +42,11 @@ public final class ErrorShow {
 	/** "参数错误！ **/
 	public static final String PARAM_ERROR="参数错误!";
 	
+	/** 提交成功！ **/
+	public static final String SBMIT_OK="提交成功！";
+	
+	/**	提交失败! **/
+	public static final String SBMIT_NO="提交失败!";
 	
 	/**
 	 * 

@@ -113,6 +113,32 @@ $(function() {
 
 	});
 	
+	//resetBtn  forgeNpwd  forgePwd
+	/*快客重置密码【通过手机换绑修改密码】*/
+	$("#resetBtn").click(function() {
+		var forgeNpwd = $("#forgeNpwd").val();
+		var forgePwd = $("#forgePwd").val();
+
+		if (forgeNpwd!=forgePwd) {
+			
+			layer.open({
+				content : '两次输入密码不一致...',
+				skin : 'msg',
+				time : 2
+			});
+			return false;
+		} else if (forgePwd == "") {
+			//提示
+			layer.open({
+				content : '请输入密码...',
+				skin : 'msg',
+				time : 2
+			});
+			return false;
+		}
+		forgeJz();
+	});
+	
 	
 	/*
 	 * 
@@ -263,8 +289,8 @@ $(function() {
 	 *
 	*/
 	$("#regYzmBtn").click(function() {
-		var forgePhone = $("#forgePhone").val();
-		if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
+		var kuaikePhone = $("#regPhone").val();
+		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号码错误',
@@ -312,7 +338,7 @@ function loginJz() {
 		skin : 'msg',
 		time : 2
 	});
-	setInterval(function() {
+	setTimeout(function() {
 		$(".loginCont_form").submit();
 	}, 2000)
 
@@ -326,7 +352,7 @@ function freeJz() {
 		skin : 'msg',
 		time : 2
 	});
-	setInterval(function() {
+	setTimeout(function() {
 		$(".loginCont_form").submit();
 	}, 2000)
 
@@ -338,8 +364,8 @@ function regJz() {
     	skin: 'msg',
     	time: 2
   	});
-  	setInterval(function() {
-		window.location.href="login.html";
+  	setTimeout(function() {
+  		$(".loginCont_form").submit();
 	},2000)
 }
 
@@ -354,8 +380,8 @@ function forgeJz() {
     	skin: 'msg',
     	time: 2
   	});
-  	setInterval(function() {
-		window.location.href="login.html";
+  	setTimeout(function() {
+  		$(".loginCont_form").submit();
 	},2000)
 }
 
@@ -369,7 +395,7 @@ function forPhoneJz() {
     	skin: 'msg',
     	time: 2
   	});
-  	setInterval(function() {
+  	setTimeout(function() {
   		$(".loginCont_form").submit();
 	},2000)
 }
@@ -384,13 +410,16 @@ function time(o) {
 	if (wait == 0) {
 		o.removeAttribute("disabled");			
 		o.value="获取验证码";
+		o.innerHTML="获取验证码";
 		wait = 60;
 	} else {
 		o.setAttribute("disabled", true);
 		o.value="重新发送(" + wait + ")";
+		o.innerHTML="重新发送(" + wait + ")";
 		wait--;
 		setTimeout(function() {
 			time(o)
 		},1000)
 	}
 }
+

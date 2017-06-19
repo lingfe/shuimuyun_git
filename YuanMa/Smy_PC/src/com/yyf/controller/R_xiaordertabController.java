@@ -119,8 +119,7 @@ public class R_xiaordertabController {
 		R_xiaordertab queryIdStatusXiaId = r_qiangordertabService.queryIdStatusXiaId(kuaikeId, status, xiaId);
 		
 		model.addAttribute("info", queryIdStatusXiaId);
-		System.out.println(kuaikeId+"******************************************************"+status
-				+"\n*************************************"+xiaId);
+	
 		return "APP/grabASingleProcess";
 	}
 	

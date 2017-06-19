@@ -282,11 +282,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				margin-right: 4px;
 			}
 		</style>
+		<script>
+			setTimeout(function() {
+				$("body").show();
+			})
+		</script>
 	</head>
 	<body>
 		<!--【头部】-->
 		<header class="commHeader">
-			<a class="commHeader_l" onClick="javascript :history.back(-1);">
+			<a class="commHeader_l" onClick="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
 			<h6>付款</h6>

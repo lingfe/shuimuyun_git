@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<!--【头部】-->
 		<header class="commHeader">
-			<a class="commHeader_l" onClick="javascript :history.back(-1);">
+			<a class="commHeader_l" onClick="javascript:self.location=document.referrer;">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
 			<h6>收货人信息</h6>

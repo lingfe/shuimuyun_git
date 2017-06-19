@@ -274,7 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var timeString=$("#shijian").text();
 				//url
 				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId;
-				alert(url);
+				//alert(url);
 				//ajax提交
 				$.ajax({
 					url : 'xiaordertab/orderSbmit/'+url,

@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
 			<header class="header headerLogin">
-				<a class="header_l" href="javascript:self.location=document.referrer;">
+				<a class="header_l" onClick="javascript :history.back(-1);">
 					<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 				</a>
 				<h1 class="header_title">完善信息</h1>

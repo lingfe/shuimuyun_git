@@ -482,7 +482,7 @@
 						$('.grabList_lisst').append(result);
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+						//alert('Ajax error!');
 					},
 					async:false
 				});
@@ -492,7 +492,7 @@
 			function qiangdanAjax(i){
 				//url
 				var url= $("#"+i).attr("title");
-				alert(url);
+				//alert(url);
 				//通过ajax添加记录
 				$.ajax({
 					url : 'r_qiangordertabController/insertAjax/'+url,
@@ -502,14 +502,18 @@
 						if(objs){
 							$("#"+i).hide(500);
 						}else{
-							alert("抢单失败!");
+							qiangdanAjax(i);
+					    	$(".grabTips").html("抢单失败");
 						}
 					},
 					error : function(xhr, type) {
 						alert('Ajax error!');
+						
 					}
 				});
 			}
+			
+			
 			
 			function gtabSingle(i) {
 	        	var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
@@ -545,5 +549,25 @@
 				},1000)
 	        }
 		</script>
+		
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+			//询问框
+			layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+		}
+	</script>
 </body>
 </html>

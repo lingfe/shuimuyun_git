@@ -117,7 +117,10 @@ public class R_xiaordertabController {
 	public  String queryIdStatusXiaId(@PathVariable("kuaikeId")String kuaikeId,@PathVariable("status")int status,@PathVariable("xiaId")String xiaId,ModelMap model){
 		//得到数据
 		R_xiaordertab queryIdStatusXiaId = r_qiangordertabService.queryIdStatusXiaId(kuaikeId, status, xiaId);
+		
 		model.addAttribute("info", queryIdStatusXiaId);
+		System.out.println(kuaikeId+"******************************************************"+status
+				+"\n*************************************"+xiaId);
 		return "APP/grabASingleProcess";
 	}
 	

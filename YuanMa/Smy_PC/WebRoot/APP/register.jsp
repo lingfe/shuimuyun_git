@@ -38,7 +38,7 @@
 	<body class="body_bg loginBody_bg">
 		<div class="contMian">
 			<header class="header headerLogin"> <a class="header_l"
-				href="javascript:self.location=document.referrer;"> <img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
+				onClick="javascript :history.back(-1);"> <img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
 			<h1 class="header_title">注册</h1>
 			</header>
@@ -70,7 +70,7 @@
 							class="right loginCont_form_itemAll mui-input-password"
 							id="regNpwd" type="password" placeholder="请确认密码" />
 					</div>
-					<button type="submit" class="mui-btn loginBtn mui-btn-block reg_btn"
+					<button type="button" class="mui-btn loginBtn mui-btn-block reg_btn"
 						id="regBtn">注册</button>
 					<a class="free_login forget_appeal" href="RequestMappingUtil/requestNUll/APP/login" >已有账号?马上登录</a>
 				</form>

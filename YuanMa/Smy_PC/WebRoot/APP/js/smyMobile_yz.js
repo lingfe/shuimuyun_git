@@ -365,7 +365,7 @@ function regJz() {
     	time: 2
   	});
   	setTimeout(function() {
-		window.location.href="login.html";
+  		$(".loginCont_form").submit();
 	},2000)
 }
 

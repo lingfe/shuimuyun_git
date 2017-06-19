@@ -155,11 +155,11 @@ public class R_kuaiketabController {
 			tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
 			//保存
 			kuaiketabService.addUser(tab);
-			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.SBMIT_OK));
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SBMIT_OK));
 			return "APP/register";
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("errorShow", ErrorShow.getLayerMsg(ErrorShow.ERROR));
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.ERROR));
 			return "APP/register";
 		}
 	}

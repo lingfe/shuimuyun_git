@@ -464,7 +464,7 @@
 						for (var i = 0; i < data.length; i++) {
 							//date 格式化时间
 							var date=new Date(data[i].okDate);
-							var dataStr=date.getUTCFullYear()+"."+date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
+							var dataStr=date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
 							addressTo+=data[i].kuaikeAddressInfo+" | "
 							url= data[i].xiaId + "/" + kuaikeId;
 							//拼接标签

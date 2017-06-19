@@ -467,7 +467,63 @@ $(function() {
 			return false;
 		}
 	})
-	//申述找回密码
+	//修改手机号
+	$("#cellbtn").click(function(){
+		var celllastPhone = $("#celllastPhone").val();
+		var cellPhone = $("#cellPhone").val();
+		var cellyzm = $("#cellzm").val();
+		var cellpwd = $("#cellpwd").val();
+		var reg=/^[\u2E80-\u9FFF]+$/;
+		if(!(celllastPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(celllastPhone))) {
+			//提示
+		    layer.open({
+		    	content: '曾用手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(!(cellPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(cellPhone))) {
+			//提示
+		    layer.open({
+		    	content: '现用手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(cellyzm == "") {
+			//提示
+		    layer.open({
+		    	content: '请填写验证码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}else if(cellpwd == "") {
+			//提示
+		    layer.open({
+		    	content: '请输入密码',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+	})
+	$("#cellyzmbtn").click(function() {
+		if(!(cellPhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(cellPhone))) {
+			//提示
+		    layer.open({
+		    	content: '现用手机号错误',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}else{
+			time(this);
+		}
+	})
+	//申述
 	$("#appeal").click(function(){
 		var userName = $("#userName").val();
 		var lastPhone = $("#lastPhone").val();

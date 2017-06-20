@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String xiaid = request.getParameter("xiaId");
-	String shouprices = request.getParameter("shouprices");
-	String body = "下单请求";
+// 	String xiaid = request.getParameter("xiaId");
+// 	String shouprices = request.getParameter("shouprices");
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
@@ -60,13 +59,13 @@ setTimeout(Start, 2000);//延迟7秒开始周期回调
 					</div>
 					        <div class="num"><span class="color1 ml16" style="font-size:15px;">订单号：<label id="xiaid" class="orange">${sessionScope.xiaId}</label></span><span class="color1 ml16">请您在提交订单后 <span class="orange">5分钟</span> 内完成支付，否则订单会自动取消。</span></div>
 				</div>
-				         <div class="title"><span class="color1 ml16" style="font-size:15px;">商品名称：<label id="body" class="orange"><%=body %></label></span></br><span class="color1 ml16" style="font-size:15px;">订单金额：<label  id = "shouprices" class="orange">${sessionScope.pricse }</label>元</span>
+				         <div class="title"><span class="color1 ml16" style="font-size:15px;">商品名称：<label id="shopName" class="orange">好吃的</label></span></br><span class="color1 ml16" style="font-size:15px;">订单金额：<label  id = "shouprices" class="orange">${sessionScope.pricse }</label>元</span>
 
 
 			</div>
 			<div class="scan">
 				<img
-					src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=${sessionScope.xiaId}&shouprices=${sessionScope.pricse }" />
+					src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=${sessionScope.xiaId}&shouprices=${sessionScope.pricse }&shopName=好吃的" />
 			</div>
 			<div class="question">
 				<div class="new">

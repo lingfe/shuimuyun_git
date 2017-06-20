@@ -11,7 +11,8 @@ public class R_zhiordertab {
 				+ ", err_code_des=" + err_code_des + ", transaction_id=" + transaction_id + ", bank_type=" + bank_type
 				+ ", product_id=" + product_id + ", return_code=" + return_code + ", return_msg=" + return_msg
 				+ ", openid=" + openid + ", settlement_total_fee=" + settlement_total_fee + ", goods_tag=" + goods_tag
-				+ ", attach=" + attach + ", is_subscribe=" + is_subscribe + ", xiaId=" + xiaId + "]";
+				+ ", attach=" + attach + ", is_subscribe=" + is_subscribe + ", xiaId=" + xiaId + ", payresult=" + payresult 
+				+ ", order_no=" + order_no + ", shopName=" + shopName+ "]";
 	}
 	private String total_fee = ""; //标价金额
 	private String out_trade_no = "";//商户订单号  要求32个字符内
@@ -40,9 +41,29 @@ public class R_zhiordertab {
 	private String goods_tag = "";//订单优惠标记   订单优惠标记，使用代金券或立减优惠功能时需要的参数    其他情况不传
 	private String attach = "";//附加数据    附加数据，在查询API和支付通知中原样返回，可作为自定义参数使用    可不传
 	private String is_subscribe = "";//是否关注公众账号  Y  N
-	private String xiaId = "";
+	private String xiaId = "";//下单id
+	private String payresult = "";//支付结果,1支付成功,0未支付
+	private String order_no = "";//订单号,成功支付页面关联
+	private String shopName = "";
 	
-	
+	public String getShopName() {
+		return shopName;
+	}
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
+	public String getPayresult() {
+		return payresult;
+	}
+	public void setPayresult(String payresult) {
+		this.payresult = payresult;
+	}
+	public String getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(String order_no) {
+		this.order_no = order_no;
+	}
 	public String getXiaId() {
 		return xiaId;
 	}

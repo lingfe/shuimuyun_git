@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
 		<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
-		<style>
+		<style type="text/css">
 		.layui-m-layer-msg .layui-m-layercont {
 			background: rgba(87, 87, 84, .5) !important;
 			border-radius: 5px;

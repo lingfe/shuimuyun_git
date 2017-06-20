@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="loginCont_form_item">
 					<span class="quickMian_arrow"></span>
 					<img class="quickMian_icon" title="" alt="" src="<%=basePath%>APP/images/icon/address.png" />
-					<input name="kuaikeAddressInfo" value="${login.kuaikeAddressInfo }" class="loginCont_form_itemAll text_1_hide right" id="quickAddress" type="text" placeholder="贵州省南明区花果园" />
+					<input name="kuaikeAddressInfo" value="${login.kuaikeAddressInfo }" class="loginCont_form_itemAll text_1_hide right" id="quickAddress" type="text" placeholder="请输入地址" />
 				</div>
 				<button class="quickBtn" id="quickBtn" type="submit">下一步</button>
 				<p class="quickMian_info">上传照片后可享受抢单服务赚取外快</p>

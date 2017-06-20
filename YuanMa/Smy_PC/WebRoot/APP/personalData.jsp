@@ -18,6 +18,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	</head>
+	<style>
+		.person_info{
+		width:1.6rem;
+		height:.3rem;
+		
+		}
+	</style>
 	<body>
 		<header class="commHeader">
 		<a class="commHeader_l" onClick="javascript :history.back(-1);">
@@ -38,10 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span>${login.kuaikeName }</span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
 				</a>
-				<a href="RequestMappingUtil/requestNUll/APP/editAddress">
+				<a href="javascript:void(0);">
 					<img src="<%=basePath%>APP/images/icon/adds_yellow.png" height="25" />
 					<span>我的地址</span>
-					<span>${login.kuaikeAddressInfo}</span>
+					<span class="person_info text_1_hide">${login.kuaikeAddressInfo}</span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
 				</a>
 				<%-- <a href="RequestMappingUtil/requestNUll/APP/modifyMailbox">

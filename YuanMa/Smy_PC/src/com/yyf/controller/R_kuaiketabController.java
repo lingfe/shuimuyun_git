@@ -73,39 +73,47 @@ public class R_kuaiketabController {
 			@RequestParam("kuaikeId") String kuaikeId,HttpServletRequest request,ModelMap model){
 		// 获取到当前服务器项目的跟路径
 		String path = request.getSession().getServletContext().getRealPath("upload");
-
-		// 文件1
-		String fileName1 = file1.getOriginalFilename();
-		File targetFile1 = new File(path, fileName1);
-		if (!targetFile1.exists()) {
-			targetFile1.mkdirs();
-		}
-
-		// 文件2
-		String fileName2 = file2.getOriginalFilename();
-		File targetFile2 = new File(path, fileName2);
-		if (!targetFile2.exists()) {
-			targetFile2.mkdirs();
-		}
-
+		System.out.println("***************************");
+		System.out.println(file1.getSize());
+		System.out.println(file2.getSize());
+		
 		// 保存
 		try {
+			// 文件1
+			String fileName1 = file1.getOriginalFilename();
+			File targetFile1 = new File(path, fileName1);
+			if (!targetFile1.exists()) {
+				targetFile1.mkdirs();
+			}
+	
+			// 文件2
+			String fileName2 = file2.getOriginalFilename();
+			File targetFile2 = new File(path, fileName2);
+			if (!targetFile2.exists()) {
+				targetFile2.mkdirs();
+			}
+
 			file1.transferTo(targetFile1);
 			file2.transferTo(targetFile2);
+			
+
+			// 身份证复印件文件
+			String kuaikeShenfenZF= request.getContextPath() + "/upload/" + fileName1;
+			// 手拿身份证图片
+			String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + fileName2;
+			
+			
+			kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);
+			R_kuaiketab selectUser = kuaiketabService.selectUser(kuaikeId);
+			model.addAttribute("login", selectUser);
+			return "APP/myInfo";
 		} catch (Exception e) {
 			e.printStackTrace();
+			// 提示
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.IMAGES_SIZE));
+			return "APP/perfectData_secondStep";
 		}
 
-		// 身份证复印件文件
-		String kuaikeShenfenZF= request.getContextPath() + "/upload/" + fileName1;
-		// 手拿身份证图片
-		String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + fileName2;
-		
-		
-		kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);
-		R_kuaiketab selectUser = kuaiketabService.selectUser(kuaikeId);
-		model.addAttribute("login", selectUser);
-		return "APP/myInfo";
 	}
 	
 	
@@ -162,7 +170,7 @@ public class R_kuaiketabController {
 			//保存
 			kuaiketabService.addUser(tab);
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SBMIT_OK));
-			return "APP/register";
+			return "APP/login";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.ERROR));

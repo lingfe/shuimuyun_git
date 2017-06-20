@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	time: 2
 		  	});
 			return false;
-		}else if(cellpwd == "") {
+		}else if(cellpwd == "" || !(/^[a-zA-Z\d_]{6,16}$/.test(cellpwd))) {
 			//提示
 		    layer.open({
 		    	content: '请输入密码',

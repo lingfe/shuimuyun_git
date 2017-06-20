@@ -19,7 +19,7 @@ $(function() {
 		  	});
 			return false;
 		}
-		else if(userPwd == "") {
+		else if(userPwd == "" || !(/^[a-zA-Z\d_]{6,16}$/.test(userPwd))) {
 			layer.open({
 		    	content: '密码错误',
 		    	skin: 'msg',
@@ -50,16 +50,16 @@ $(function() {
 		else if(forgeYzm == "") {
 			//提示
 		    layer.open({
-		    	content: '请填写密码',
+		    	content: '请填写验证码',
 		    	skin: 'msg',
 		    	time: 2
 		  	});
 			return false;
 		}
-		else if(forgePwd == "") {
+		else if(forgePwd == "" || !(/^[a-zA-Z\d_]{6,16}$/.test(forgePwd))) {
 			//提示
 		    layer.open({
-		    	content: '请填写密码',
+		    	content: '密码错误',
 		    	skin: 'msg',
 		    	time: 2
 		  	});
@@ -127,10 +127,10 @@ $(function() {
 				time : 2
 			});
 			return false;
-		} else if (forgePwd == "") {
+		} else if (forgePwd == "" || !(/^[a-zA-Z\d_]{6,16}$/.test(forgePwd))) {
 			//提示
 			layer.open({
-				content : '请输入密码...',
+				content : '密码错误',
 				skin : 'msg',
 				time : 2
 			});
@@ -262,10 +262,11 @@ $(function() {
 		  	});
 			return false;
 		}
-		else if(regPwd == "") {
+		else if(regPwd == "" || !(/^[a-zA-Z\d_]{6,16}$/.test(regPwd))) {
+			
 			//提示
 		    layer.open({
-		    	content: '请填写密码',
+		    	content: '密码错误',
 		    	skin: 'msg',
 		    	time: 2
 		  	});

@@ -63,7 +63,11 @@ public class R_zhiordertabController {
 				shopName);// 保存数据库
 
 		Properties p = new Properties();
+<<<<<<< .mine
+		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
+=======
 		InputStream input = R_zhiordertabController.class.getResourceAsStream("/payConfig.properties");
+>>>>>>> .theirs
 		InetAddress ia = null;
 		try {
 			p.load(input);

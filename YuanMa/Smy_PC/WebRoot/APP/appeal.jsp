@@ -32,17 +32,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 .appeal_firstdiv label{
 	display: inline-block;
-	width: 30%;
+	width:0.7rem;
 	height: .4rem;
 	line-height: .4rem;
-	margin-left: 10px;
+	float:left;
 	color: #333;
 }
 .appeal_firstdiv input{
 	display: inline-block;
-	width: 60%;
+	width: calc(100% - 0.8rem);
+	height: 0.38rem;
 	border: none;
 	outline: none;
+	float: right;
+	margin-bottom: 0;
+	line-height: .38rem;
 }
 .appeal_lastdiv{
 	background: white;
@@ -65,8 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	border: none;
 	outline: none;
 }
-.las{
-	width: 30% !important;
+.appeal_firstdiv .las{
+	width: calc(100% - 0.8rem - 1rem) !important;
+	float: left !important;
 }
 
 .order_btn {
@@ -81,14 +86,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 
 .appeal_firstdiv button{
-	margin-left: 5%;
 	display: inline-block;
-	width: 30%;
+	width:0.8rem;
 	height: .25rem;
-	margin-top: .075rem;
 	border: none;
 	background: #418bc8;
 	color: white;
+	float: right;
 }
 	</style>
 	<script>
@@ -113,13 +117,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="appeal_firstdiv">
 			<div>
-				<label>原手机号　 +86</label><input type="text" id="lastPhone" name="kuaikePhone" placeholder="请输入原绑定手机号" />
+				<label>原手机号</label><input type="text" id="lastPhone" name="kuaikePhone" placeholder="请输入原绑定手机号" />
 			</div>
 			<div>
 				<label>姓　名</label><input type="text" id="userName" name="kuaikeName" placeholder="请输入真实姓名" />
 			</div>
 			<div>
-				<label>现手机号　+86</label><input type="text" id="regPhone" name="newkuaikePhone" placeholder="请输入现用手机号" />
+				<label>现手机号</label><input type="text" id="regPhone" name="newkuaikePhone" placeholder="请输入现用手机号" />
 			</div>
 			<div>
 				<label>验 证 码</label><input class="las" id="regYzm" name="mobile_code" type="text" placeholder="请输入验证码" /><button id="regYzmBtn">获取验证码</button>

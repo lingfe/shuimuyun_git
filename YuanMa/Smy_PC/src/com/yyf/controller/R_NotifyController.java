@@ -69,7 +69,7 @@ public class R_NotifyController {
 		}
 		// 账号信息
 		Properties p = new Properties();
-		InputStream input = test.class.getResourceAsStream("/payConfig.properties");
+		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
 		try {
 			p.load(input);
 			String key = String.valueOf(p.get("API_KEY")); // key

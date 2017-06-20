@@ -45,7 +45,6 @@ public class R_zhiordertab {
 	private String payresult = "";//支付结果,1支付成功,0未支付
 	private String order_no = "";//订单号,成功支付页面关联
 	private String shopName = "";
-	
 	public String getShopName() {
 		return shopName;
 	}

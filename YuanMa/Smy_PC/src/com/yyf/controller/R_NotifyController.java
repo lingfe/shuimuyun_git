@@ -16,7 +16,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.jdom.JDOMException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,13 +29,11 @@ import com.yyf.service.R_zhinotifyService;
 @RequestMapping("/shuimuyun")
 public class R_NotifyController {
 	private R_zhinotifyService r_zhinotifyService;
-	public static Logger logger = Logger.getLogger(R_NotifyController.class);
 
 	@RequestMapping(value = "/zhifu", method = RequestMethod.GET)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 接收微信响应充值情况
-		logger.info("接收到Post");
 		InputStream inputStream;
 		StringBuffer sb = new StringBuffer();
 		inputStream = request.getInputStream();
@@ -47,7 +44,6 @@ public class R_NotifyController {
 		}
 		in.close();
 		inputStream.close();
-		logger.info("sb:" + sb);
 		Map<String, String> m = new HashMap<String, String>();
 		try {
 			m = XMLUtil.doXMLParse(sb.toString());
@@ -73,7 +69,6 @@ public class R_NotifyController {
 		try {
 			p.load(input);
 			String key = String.valueOf(p.get("API_KEY")); // key
-			logger.info("packageParams:" + packageParams);
 			// 判断签名是否正确
 			if (PayCommonUtil.isTenpaySign("UTF-8", packageParams, key)) {
 				// ------------------------------
@@ -101,21 +96,14 @@ public class R_NotifyController {
 					r_zhinotifyService.UpdateOrder(openid, is_subscribe, out_trade_no, bank_type, cash_fee, nonce_str,
 							result_code, return_code, sign, time_end, transaction_id, total_fee);// 保存数据库
 
-					logger.info("mch_id:" + mch_id);
-					logger.info("openid:" + openid);
-					logger.info("is_subscribe:" + is_subscribe);
-					logger.info("out_trade_no:" + out_trade_no);
-					logger.info("total_fee:" + total_fee);
 
 					// 执行自己的业务逻辑
-					logger.info("支付成功");
 
 					// 通知微信.异步确认成功.必写.不然会一直通知后台.八次之后就认为交易失败了.
 					resXml = "<xml>" + "<return_code><![CDATA[SUCCESS]]></return_code>"
 							+ "<return_msg><![CDATA[OK]]></return_msg>" + "</xml> ";
 
 				} else {
-					logger.info("支付失败,错误信息：" + packageParams.get("err_code"));
 					resXml = "<xml>" + "<return_code><![CDATA[FAIL]]></return_code>"
 							+ "<return_msg><![CDATA[报文为空]]></return_msg>" + "</xml> ";
 				}
@@ -125,7 +113,7 @@ public class R_NotifyController {
 				out.flush();
 				out.close();
 			} else {
-				logger.info("通知签名验证失败");
+				System.out.println("通知签名验证失败");
 			}
 
 		} catch (Exception e) {

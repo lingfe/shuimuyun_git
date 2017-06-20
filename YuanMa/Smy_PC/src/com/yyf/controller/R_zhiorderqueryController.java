@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +19,6 @@ import com.yyf.service.R_zhiorderqueryService;
 @Controller
 @RequestMapping("/orderselect")
 public class R_zhiorderqueryController {
-	public static Logger logger = Logger.getLogger(R_zhiorderqueryController.class);
 
 	// 支付成功查询数据、跳转页面
 	@Autowired
@@ -29,7 +27,6 @@ public class R_zhiorderqueryController {
 	@RequestMapping(value = "/query/{xiaid}", method = RequestMethod.GET)
 	protected String doGet(HttpServletRequest request, HttpServletResponse response,ModelMap model,@PathVariable("xiaid") String xiaId)
 			throws ServletException, IOException {
-		logger.info( "xiaId:" + xiaId);
 		R_zhiordertab r_zhiordertab = r_zhiorderquertService.selectMessage(xiaId);//取出总订单号
 		model.addAttribute("r_zhiordertab", r_zhiordertab);
 		return "PC/paySeccess";

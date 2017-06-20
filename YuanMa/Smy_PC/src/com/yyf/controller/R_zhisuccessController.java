@@ -7,19 +7,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.yyf.model.R_zhiordertab;
 import com.yyf.service.R_zhisuccessService;
 
 @Controller
 @RequestMapping("/payselect")
 public class R_zhisuccessController {
-	public static Logger logger = Logger.getLogger(R_zhisuccessController.class);
 
 	// 自动装配      页面自动刷新获取支付情况
 	@Autowired
@@ -38,7 +35,6 @@ public class R_zhisuccessController {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 }

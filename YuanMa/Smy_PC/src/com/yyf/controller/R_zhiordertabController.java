@@ -66,7 +66,7 @@ public class R_zhiordertabController {
 				shopName);// 保存数据库
 
 		Properties p = new Properties();
-		InputStream input = test.class.getResourceAsStream("/payConfig.properties");
+		InputStream input = R_zhiordertabController.class.getResourceAsStream("/payConfig.properties");
 		InetAddress ia = null;
 		try {
 			p.load(input);

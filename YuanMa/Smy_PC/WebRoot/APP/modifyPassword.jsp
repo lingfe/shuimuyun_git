@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var chpwd = $("#chpwd").val();
 		var yespwd = $("#yespwd").val();
 		var pwdYzm = $("#pwdYzm").val();
-		if(lastpwd=="") {
+		if(lastpwd=="" || !(/^[a-zA-Z\d_]{6,16}$/.test(lastpwd))) {
 			//提示
 		    layer.open({
 		    	content: '请输入原登录密码',
@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	});
 			return false;
 		}
-		else if(chpwd=="") {
+		else if(chpwd=="" || !(/^[a-zA-Z\d_]{6,16}$/.test(chpwd))) {
 			//提示
 		    layer.open({
 		    	content: '请输入新登录密码',
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	});
 			return false;
 		}
-		else if(yespwd == "") {
+		else if(yespwd == "" || !(/^[a-zA-Z\d_]{6,16}$/.test(yespwd))) {
 			//提示
 		    layer.open({
 		    	content: '请再次输入新登录密码',

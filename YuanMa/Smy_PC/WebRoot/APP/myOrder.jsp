@@ -265,11 +265,11 @@
 			loadmore(status);
 		}
 	</script>
-	<!-- 验证身份 初级验证 -->
-	<script type="text/javascript">
+		<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
 		if("${login}"==""||"${login}"==null){
-			//询问框
-			layer.open( {
+		//询问框
+		layer.open( {
 				anim: 'up',
 				shadeClose: false,
 				content: '您还木有登陆？',
@@ -283,8 +283,24 @@
 					window.location.href="RequestMappingUtil/requestNUll/APP/register";
 				}  
 			});
-			
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//询问框
+				layer.open( {
+					anim: 'up',
+					shadeClose: false,
+					content: '您的资料还没有完善？',
+					btn: ['完善资料','取消'],
+					yes:function(index){
+						layer.close(index);
+						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+					},
+					no:function(index){
+						layer.close(index);
+					}  
+				});
+			}
 		}
-	</script>
+		</script>
 </body>
 </html>

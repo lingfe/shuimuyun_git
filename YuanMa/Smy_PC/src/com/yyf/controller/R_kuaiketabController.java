@@ -70,7 +70,7 @@ public class R_kuaiketabController {
 	@RequestMapping(value="/updateSFZImages",method=RequestMethod.POST)
 	public String updateSFZImages(@RequestParam(value = "file1", required = false) MultipartFile file1,
 			@RequestParam(value = "file2", required = false) MultipartFile file2,
-			@RequestParam("kuaikeId") String kuaikeId,HttpServletRequest request){
+			@RequestParam("kuaikeId") String kuaikeId,HttpServletRequest request,ModelMap model){
 		// 获取到当前服务器项目的跟路径
 		String path = request.getSession().getServletContext().getRealPath("upload");
 
@@ -103,7 +103,8 @@ public class R_kuaiketabController {
 		
 		
 		kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);
-		
+		R_kuaiketab selectUser = kuaiketabService.selectUser(kuaikeId);
+		model.addAttribute("login", selectUser);
 		return "APP/myInfo";
 	}
 	
@@ -120,10 +121,11 @@ public class R_kuaiketabController {
 	 * return url
 	 */
 	@RequestMapping(value="/updataFirstStep",method=RequestMethod.POST)
-	public String updataFirst(R_kuaiketab tab){
+	public String updataFirst(R_kuaiketab tab,ModelMap model){
 		//执行修改
 		kuaiketabService.updataFirst(tab.getKuaikeName(), tab.getKuaikePhone(), tab.getKuaikeAddressInfo(), tab.getKuaikeId());
-		
+		R_kuaiketab selectUser = kuaiketabService.selectUser(tab.getKuaikeId());
+		model.addAttribute("login", selectUser);
 		return "APP/perfectData_secondStep";
 	}
 

@@ -21,7 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   		<h1>李杰</h1>
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/shipperInformation" >发货人信息：shipperInformation.jsp </a><br/>
-    	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/searchResult" >搜索结果：searchResult.jsp </a><br/>
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/search" >搜索：search.jsp </a><br/>
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/register" >注册：register.jsp </a><br/>
     	<a target="_LEFT" href="RequestMappingUtil/requestNUll/APP/placeAnOrder" >下单：placeAnOrder.jsp </a><br/>

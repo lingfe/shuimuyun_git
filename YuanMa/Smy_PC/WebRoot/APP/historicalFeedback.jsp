@@ -31,11 +31,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			margin-top: 1.5rem;
 		}
 		.his_you{
-			width: 95%;
+			width: 94%;
 			margin-left: 3%;
 			background: white;
 			height: .7rem;
-			margin-top: .1rem;
+			margin-top: .15rem;
 			position: relative;
 		}
 		.his_you p{
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="his_wu dis">
 			暂无历史记录
 		</div>
-		<div class="his_you">
+		<div class="his_you" style="margin-top: 0.6rem;">
 			<p class="text_2_hide">我的娃亏大发你娃亏大发你娃亏大发你娃亏大发你们接受对方是你UI人股东认购会丢更好的法规 贵人高度规定和 个号规格及国家瑞</p>
 			<span>2017-6-16</span>
 		</div>

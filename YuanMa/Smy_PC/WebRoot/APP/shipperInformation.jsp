@@ -119,6 +119,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}  
 			});
 			
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//询问框
+				layer.open( {
+					anim: 'up',
+					shadeClose: false,
+					content: '您的资料还没有完善？',
+					btn: ['完善资料','取消'],
+					yes:function(index){
+						layer.close(index);
+						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+					},
+					no:function(index){
+						layer.close(index);
+					}  
+				});
+			}
 		}
 	</script>
 	</body>

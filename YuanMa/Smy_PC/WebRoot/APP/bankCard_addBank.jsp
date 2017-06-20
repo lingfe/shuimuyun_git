@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				height: auto;
 				overflow: hidden;
 				background: rgb(255,255,255);
-				margin-top: 0.12rem;
+				margin-top: 0.52rem;
 			}
 			.addBack_list_item {
 				position: relative;

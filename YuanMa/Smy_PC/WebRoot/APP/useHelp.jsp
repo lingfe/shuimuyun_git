@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 		<style>
 			.anqCont {
@@ -116,7 +117,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p>6）懂社交礼仪，有服务意识，责任感强，时间观念强，言谈举止得体，仪容仪表好。</p>
 			</div>
 		</div>
-		
+		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
+		<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+		//询问框
+		layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//询问框
+				layer.open( {
+					anim: 'up',
+					shadeClose: false,
+					content: '您的资料还没有完善？',
+					btn: ['完善资料','取消'],
+					yes:function(index){
+						layer.close(index);
+						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+					},
+					no:function(index){
+						layer.close(index);
+					}  
+				});
+			}
+		}
+		</script>
 	</body>
 </html>

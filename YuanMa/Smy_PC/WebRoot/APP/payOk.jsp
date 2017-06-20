@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<body style="background: #fff; width: 100%; height: 100%;position: absolute;">
 		<!--【头部】-->
 		<header class="commHeader">
-			<a class="commHeader_l" href="#">
+			<a class="commHeader_l" href="javascript :history.back(-1);">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/arow_left.png" />
 			</a>
 			<p>充值成功</p>

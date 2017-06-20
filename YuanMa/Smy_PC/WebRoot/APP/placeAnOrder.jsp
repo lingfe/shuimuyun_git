@@ -282,7 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success : function(data) {
 						alert("下单成功");
 						//跳转到首页
-						window.location.href="RequestMappingUtil/requestNUll/APP/orderPayment";
+						window.location.href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge";
 					},
 					error : function(xhr, type) {
 						alert('Ajax error!');
@@ -360,6 +360,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					window.location.href="RequestMappingUtil/requestNUll/APP/register";
 				}  
 			});
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//询问框
+				layer.open( {
+					anim: 'up',
+					shadeClose: false,
+					content: '您的资料还没有完善？',
+					btn: ['完善资料','取消'],
+					yes:function(index){
+						layer.close(index);
+						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+					},
+					no:function(index){
+						layer.close(index);
+					}  
+				});
+			}
 		}
 		</script>
 		<script type="text/javascript">

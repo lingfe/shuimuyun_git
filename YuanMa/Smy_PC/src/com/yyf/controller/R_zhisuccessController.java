@@ -21,7 +21,7 @@ import com.yyf.service.R_zhisuccessService;
 public class R_zhisuccessController {
 	public static Logger logger = Logger.getLogger(R_zhisuccessController.class);
 
-	// 自动装配 
+	// 自动装配      页面自动刷新获取支付情况
 	@Autowired
 	private R_zhisuccessService r_zhisuccessService;
 
@@ -30,7 +30,7 @@ public class R_zhisuccessController {
 			throws ServletException, IOException {
 		String xiaid = request.getParameter("xiaid");// 下单id
 		
-		String order_no = r_zhisuccessService.selectorder(xiaid);//取出订单付款状态
+		String order_no = r_zhisuccessService.selectresult(xiaid);//取出订单付款状态
 		
 		
 		PrintWriter out = response.getWriter();

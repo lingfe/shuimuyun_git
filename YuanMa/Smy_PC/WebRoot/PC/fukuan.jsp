@@ -110,6 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<b class="yuan">${sessionScope.pricse }</b>
 				<input type="hidden" name="shopprices" value="${sessionScope.pricse }">
 				<input type="hidden" name="xiaId" value="${sessionScope.xiaId}">
+				<input type="hidden" name="shopName" value="${sessionScope.shopName}">
 			</div>
 			<div class="btn">
 			<a href="<%=basePath %>PC/index-pay-result.jsp">立即付款</a>

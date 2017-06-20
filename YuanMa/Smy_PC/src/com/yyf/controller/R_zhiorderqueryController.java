@@ -22,7 +22,7 @@ import com.yyf.service.R_zhiorderqueryService;
 public class R_zhiorderqueryController {
 	public static Logger logger = Logger.getLogger(R_zhiorderqueryController.class);
 
-	// 自动装配 创建订单、获取二维码
+	// 支付成功查询数据、跳转页面
 	@Autowired
 	private R_zhiorderqueryService r_zhiorderquertService;
 

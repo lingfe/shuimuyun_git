@@ -1,14 +1,9 @@
 package com.yyf.controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,13 +13,11 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import javax.enterprise.inject.Any;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.chainsaw.Main;
 import org.jdom.JDOMException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,9 +33,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.yyf.controller.util.HttpUtil;
 import com.yyf.controller.util.PayCommonUtil;
-import com.yyf.controller.util.PayConfigUtil;
 import com.yyf.controller.util.XMLUtil;
-import com.yyf.model.R_zhiordertab;
 import com.yyf.service.R_zhiordertabService;
 
 @Controller
@@ -54,12 +45,12 @@ public class R_zhiordertabController {
 	@Autowired
 	private R_zhiordertabService r_zhiordertabService;
 	private int defaultWidthAndHeight = 300;
-	private R_zhiordertab r_zhiordertab;
 
 	@RequestMapping(value = "/zhifuapply", method = RequestMethod.GET)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String total_fee = request.getParameter("shouprices");// 商品价格
+		String shopName = request.getParameter("shopName");// 商品名称
 		double fee = Double.parseDouble(total_fee) * 100;
 		int a = (int) fee;
 		String total = String.valueOf(a);
@@ -71,86 +62,92 @@ public class R_zhiordertabController {
 		String trade_type = "NATIVE";// 交易类型
 		String product_id = getRandomString(5) + System.currentTimeMillis();
 
-		r_zhiordertabService.insertMessage(total, xiaId, out_trade_no, body, trade_type, product_id,order_no);//保存数据库
+		r_zhiordertabService.insertMessage(total, xiaId, out_trade_no, body, trade_type, product_id, order_no,
+				shopName);// 保存数据库
 
-		// 调用统一下单接口
-		SortedMap<Object, Object> packageParams = new TreeMap<Object, Object>();
-		String nonce_str = getRandomString(16);
-		packageParams.put("appid", PayConfigUtil.APP_ID);
-		packageParams.put("mch_id", PayConfigUtil.MCH_ID);
-		packageParams.put("nonce_str", nonce_str);
-		packageParams.put("body", body);
-		packageParams.put("out_trade_no", out_trade_no);
-		packageParams.put("total_fee", total);
-		packageParams.put("spbill_create_ip", PayConfigUtil.CREATE_IP);
-		packageParams.put("notify_url", PayConfigUtil.NOTIFY_URL);
-		packageParams.put("trade_type", trade_type);
-		// packageParams.put("product_id", product_id);
-		request.setAttribute("out_trade_no", out_trade_no);
-		request.setAttribute("body", body);
-
-		String sign = PayCommonUtil.createSign("UTF-8", packageParams, PayConfigUtil.API_KEY);
-
-		packageParams.put("sign", sign);
-
-		String requestXML = PayCommonUtil.getRequestXml(packageParams);
-		logger.info(requestXML);
-
-		String resXml = HttpUtil.postData(PayConfigUtil.UFDODER_URL, requestXML);
-
-		Map map;
+		Properties p = new Properties();
+		InputStream input = test.class.getResourceAsStream("/payConfig.properties");
+		InetAddress ia = null;
 		try {
-			map = XMLUtil.doXMLParse(resXml);
+			p.load(input);
+			// 调用统一下单接口
+			SortedMap<Object, Object> packageParams = new TreeMap<Object, Object>();
+			String nonce_str = getRandomString(16);
+			packageParams.put("appid", String.valueOf(p.get("APP_ID")));
+			packageParams.put("mch_id", String.valueOf(p.get("MCH_ID")));
+			packageParams.put("nonce_str", nonce_str);
+			packageParams.put("body", body);
+			packageParams.put("out_trade_no", out_trade_no);
+			packageParams.put("total_fee", total);
+			ia = ia.getLocalHost();
+			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
+//			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
+			packageParams.put("notify_url", String.valueOf(p.get("NOTIFY_URL")));
+			packageParams.put("trade_type", trade_type);
+			// packageParams.put("product_id", product_id);
+			request.setAttribute("out_trade_no", out_trade_no);
+			request.setAttribute("body", body);
 
-			logger.info("map:" + map);
+			String sign = PayCommonUtil.createSign("UTF-8", packageParams, String.valueOf(p.get("API_KEY")));
+			packageParams.put("sign", sign);
 
-			String result_code = (String) map.get("result_code");// 返回状态码
-			if ("SUCCESS".equals(result_code)) {
-				//统一下单接口返回成功，获取二维码地址
-				String urlCode = (String) map.get("code_url");
-				String prepay_id = (String) map.get("prepay_id");// 预支付交易会话标识
-				String return_trade_type = (String) map.get("trade_type"); // 交易类型
-				logger.info("urlCode:" + urlCode);
-				logger.info("prepay_id:" + prepay_id);
-				logger.info("return_trade_type:" + return_trade_type);
-				long time_stamp = System.currentTimeMillis() / 1000; // 时间戳
-				SortedMap<Object, Object> packageParams1 = new TreeMap<Object, Object>();
-				packageParams1.put("appid", PayConfigUtil.APP_ID);
-				packageParams1.put("mch_id", PayConfigUtil.MCH_ID);
-				packageParams1.put("time_stamp", String.valueOf(time_stamp));
-				packageParams1.put("nonce_str", nonce_str);
-				packageParams1.put("product_id", product_id);
+			String requestXML = PayCommonUtil.getRequestXml(packageParams);
 
-				String QRsign = PayCommonUtil.createSign("UTF-8", packageParams1, PayConfigUtil.API_KEY);
+			String resXml = HttpUtil.postData(String.valueOf(p.get("UFDODER_URL")), requestXML);
+			Map map;
+			try {
+				map = XMLUtil.doXMLParse(resXml);
+				logger.info("map:" + map);
+				String result_code = (String) map.get("result_code");// 返回状态码
+				if ("SUCCESS".equals(result_code)) {
+					// 统一下单接口返回成功，获取二维码地址
+					String urlCode = (String) map.get("code_url");
+					String prepay_id = (String) map.get("prepay_id");// 预支付交易会话标识
+					String return_trade_type = (String) map.get("trade_type"); // 交易类型
+					logger.info("urlCode:" + urlCode);
+					logger.info("prepay_id:" + prepay_id);
+					logger.info("return_trade_type:" + return_trade_type);
+					long time_stamp = System.currentTimeMillis() / 1000; // 时间戳
+					SortedMap<Object, Object> packageParams1 = new TreeMap<Object, Object>();
+					packageParams1.put("appid", String.valueOf(p.get("APP_ID")));
+					packageParams1.put("mch_id", String.valueOf(p.get("MCH_ID")));
+					packageParams1.put("time_stamp", String.valueOf(time_stamp));
+					packageParams1.put("nonce_str", nonce_str);
+					packageParams1.put("product_id", product_id);
 
-				packageParams1.put("sign", QRsign);
+					String QRsign = PayCommonUtil.createSign("UTF-8", packageParams1, String.valueOf(p.get("API_KEY")));
 
-				// 生成参数
-				String str = ToUrlParams(packageParams1);
-				String payurl = urlCode;
+					packageParams1.put("sign", QRsign);
 
-				// logger.info("请求URL:" + payurl);
-				// 生成二维码
-				Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
-				// 指定纠错等级
-				hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-				// 指定编码格式
-				hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-				// hints.put(EncodeHintType.MARGIN, 1);
-				try {
-					BitMatrix bitMatrix = new MultiFormatWriter().encode(payurl, BarcodeFormat.QR_CODE,
-							defaultWidthAndHeight, defaultWidthAndHeight, hints);
-					OutputStream out = response.getOutputStream();
-					MatrixToImageWriter.writeToStream(bitMatrix, "png", out);// 输出二维码
-					out.flush();
-					out.close();
+					// 生成参数
+					String str = ToUrlParams(packageParams1);
+					String payurl = urlCode;
 
-				} catch (WriterException e) {
-					e.printStackTrace();
+					// logger.info("请求URL:" + payurl);
+					// 生成二维码
+					Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
+					// 指定纠错等级
+					hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+					// 指定编码格式
+					hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+					// hints.put(EncodeHintType.MARGIN, 1);
+					try {
+						BitMatrix bitMatrix = new MultiFormatWriter().encode(payurl, BarcodeFormat.QR_CODE,
+								defaultWidthAndHeight, defaultWidthAndHeight, hints);
+						OutputStream out = response.getOutputStream();
+						MatrixToImageWriter.writeToStream(bitMatrix, "png", out);// 输出二维码
+						out.flush();
+						out.close();
+
+					} catch (WriterException e) {
+						e.printStackTrace();
+					}
 				}
+			} catch (JDOMException e1) {
+				e1.printStackTrace();
 			}
-		} catch (JDOMException e1) {
-			e1.printStackTrace();
+		} catch (Exception e) {
+
 		}
 	}
 
@@ -194,6 +191,6 @@ public class R_zhiordertabController {
 		double fee = Double.parseDouble(total_fee) * 100;
 		int a = (int) fee;
 		String total = String.valueOf(a);
-		logger.info("total:"+total);
+		logger.info("total:" + total);
 	}
 }

@@ -375,7 +375,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -396,7 +396,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -420,10 +420,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$(".balModal_cont").slideDown(500);
 					}
 					else if(!($("#paymentSelect span").is(":hidden"))) {
-						alert("支付宝支付")
+						layer.open({
+				    	content: '支付宝支付！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					}
 					else if(!($("#wxSelect span").is(":hidden"))) {
-						alert("微信支付")
+						layer.open({
+				    	content: '微信支付！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					}
 				})
 				//关闭弹窗
@@ -433,7 +441,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -452,7 +460,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -479,7 +487,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -490,7 +498,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$(".balModal_contPwd input").eq(i).val("");
 						i == 0;
 					}
-					alert(i)
+					/* alert(i) */
 				});
 			})
 		</script>
@@ -501,7 +509,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -518,7 +526,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});

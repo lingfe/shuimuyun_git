@@ -443,7 +443,11 @@
 						}
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+						layer.open({
+				    	content: '提交错误！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 						
 					}
 				});

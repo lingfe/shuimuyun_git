@@ -86,7 +86,7 @@
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});
@@ -100,7 +100,7 @@
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});
@@ -115,7 +115,7 @@
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});
@@ -131,7 +131,7 @@
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});
@@ -223,7 +223,7 @@
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -240,7 +240,7 @@
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -257,7 +257,7 @@
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});

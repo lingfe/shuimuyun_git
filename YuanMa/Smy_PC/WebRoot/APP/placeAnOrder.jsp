@@ -241,7 +241,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});
@@ -251,24 +251,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//获取下单id
 				var xiaId=$("#xiaId").val();
 				if(xiaId==""){
-					alert("请填写收货人或发货人信息");
+					 layer.open({
+				    	content: '请填写收货人货发货人信息！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				var kuaikeId=$("#kuaikeId").val();
 				if(kuaikeId==""){
-					alert("请登录！");
+					 layer.open({
+				    	content: '请登录！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				
 				
 				//验证发货人是否填写
 				if(fa(xiaId)==false){
-					alert("发货人是否填写？");
+					 layer.open({
+				    	content: '请填写发货人信息！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				//验证收货人是否填写
 				if(shou(xiaId)==false){
-					alert("收货人是否填写？");
+					layer.open({
+				    	content: '请填写收货人信息！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				
@@ -330,7 +346,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				},
 				error : function(xhr, type) {
-					alert('Ajax error!');
+					layer.open({
+				    	content: '提交错误！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 				},
 				async:false
 			});
@@ -357,7 +377,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				},
 				error : function(xhr, type) {
-					alert('Ajax error!');
+					layer.open({
+				    	content: '提交错误！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 				},
 				async:false
 			});
@@ -371,7 +395,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -388,7 +412,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});

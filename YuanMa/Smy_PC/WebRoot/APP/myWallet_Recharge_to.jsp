@@ -416,10 +416,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							return false;
 	
 						}  else if (!($("#paymentSelect span").is(":hidden"))) {
-							alert("支付宝支付")
+							layer.open({
+								content : '支付宝支付',
+								skin : 'msg',
+								time : 2
+							});
 						} else if (!($("#wxSelect span").is(":hidden"))) {
-							alert("微信支付")
-						}
+							layer.open({
+								content : '微信支付',
+								skin : 'msg',
+								time : 2
+							});						}
 					
 			
 	

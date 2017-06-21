@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<form class="loginCont_form">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
-						<input class="loginCont_form_itemAll mui-input-clear right" id="userPhone" type="text" placeholder="请输入手机号码" />
+						<input class="loginCont_form_itemAll mui-input-clear right" id="userPhone" type="text" placeholder="请输入取货码" />
 					</div>
 					<a class="code_a" href="RequestMappingUtil/requestNUll/APP/endOfTransaction"><button type="button" class="codeBtn" id="codeBtn">确定</button></a>
 				</form>
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});

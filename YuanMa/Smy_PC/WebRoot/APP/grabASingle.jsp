@@ -432,7 +432,7 @@
 				
 				//url
 				var url= $("#"+i).attr("title");
-				//alert(url);
+				var str=url.toString().substring("/",url.toString().indexOf("/"));
 				//通过ajax添加记录
 				$.ajax({
 					url : 'r_qiangordertabController/insertAjax/'+url,
@@ -441,13 +441,23 @@
 					success : function(objs) {
 						if(objs){
 							$("#"+i).hide(500);
+							layer.open({
+					    		content: '抢单成功！',
+					    		skin: 'msg',
+					    		time: 2
+					  		});
+							window.location.href="xiaordertab/queryIdStatus/${login.kuaikeId}/0/"+str;
 						}else{
 							qiangdanAjax(i);
 					    	$(".grabTips").html("抢单失败");
 						}
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+						layer.open({
+				    		content: '提交错误！',
+				    		skin: 'msg',
+				    		time: 2
+				  		});
 						
 					}
 				});

@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});

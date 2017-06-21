@@ -58,6 +58,30 @@ public class R_xiaordertabController {
 	
 	/**
 	 * 
+	 * 下单付款，点击付款，传出金额
+	 * @author     lijie
+	 * @created 2017年6月21日 下午10:08:20  
+	 * @param i				APP/PC
+	 * @param pageName		页面名称
+	 * @param xiaId			下单id
+	 * @param sh			金额
+	 * @param request		请求
+	 * @return		url
+	 */
+	@RequestMapping(value="/setYuEPam/{i}/{pageName}/{xiaId}",method=RequestMethod.GET)
+	public String setYuEPam(@PathVariable("i")String i,
+			@PathVariable("pageName")String pageName,
+			@PathVariable("xiaId")String xiaId,
+			@RequestParam(value="sh",required=false,defaultValue="0.01")double sh,
+			HttpServletRequest request){
+		request.getSession().removeAttribute("sh");
+		request.getSession().setAttribute("sh", sh);
+		
+		return i+"/"+pageName;
+	}
+	
+	/**
+	 * 
 	 * 我的个人中心里面根据订单状态统计
 	 * @author lijie     
 	 * @created 2017年6月17日 上午10:24:15  

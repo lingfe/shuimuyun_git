@@ -303,7 +303,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var shopprices=$("#shopprices").val();
 				//url
 				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId+"/"+shopprices;
-				//alert(url);
 				//ajax提交
 				$.ajax({
 					url : 'xiaordertab/orderSbmit/'+url,
@@ -317,7 +316,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    	time: 2
 						  	});
 						//跳转到首页
-						window.location.href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge";
+						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;
 					},
 					error : function(xhr, type) {
 							//提示

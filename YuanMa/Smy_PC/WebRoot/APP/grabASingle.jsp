@@ -469,8 +469,8 @@
 							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
-												<p>发单地址：" + data[i].kuaikeAddressInfo + "</p> \
-												<p>收货地址：" + data[i].shouhuoAddressInfo + "kg</p> \
+												<p class='text_1_hide'>发单地址：" + data[i].kuaikeAddressInfo + "</p> \
+												<p class='text_1_hide'>收货地址：" + data[i].shouhuoAddressInfo + "kg</p> \
 												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";

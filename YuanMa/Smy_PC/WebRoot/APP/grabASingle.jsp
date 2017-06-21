@@ -459,20 +459,18 @@
 						var page = jQuery.parseJSON(objs);
 						var data = page.list;
 						var result = '';
-						var addressTo="";
 						//循环便利
 						for (var i = 0; i < data.length; i++) {
 							//date 格式化时间
-							var date=new Date(data[i].okDate);
-							var dataStr=date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
-							addressTo+=data[i].kuaikeAddressInfo+" | "
+							//var date=new Date(data[i].okDate);
+							//var dataStr=date.getMonth()+"."+date.getDate();//+"  "+date.toLocaleTimeString();
 							url= data[i].xiaId + "/" + kuaikeId;
 							//拼接标签
 							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
-												<p>最迟到达时间：" + dataStr + "</p> \
-												<p>商品总重量：" + data[i].shopzholiang + "kg</p> \
+												<p>发单地址：" + data[i].kuaikeAddressInfo + "</p> \
+												<p>收货地址：" + data[i].shouhuoAddressInfo + "kg</p> \
 												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";

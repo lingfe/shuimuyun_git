@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success : function(objs) {
 						if(objs){
 							alert("抢单成功!");
-							$(my).hide(3000);
+							window.location.href="xiaordertab/queryIdStatus/"+kuaikeId+"/0/"+xiaId;
 						}else{
 							alert("抢单失败!");
 						}

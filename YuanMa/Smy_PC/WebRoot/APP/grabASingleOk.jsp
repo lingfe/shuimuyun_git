@@ -137,13 +137,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script>
 			//抢单
 			function qiangdanAjax(my){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				//快客id
 				var kuaikeId=$("#kuaikeId").val();
 				//下单id
 				var xiaId=$("#xiaId").val();
 				
 				var url=xiaId+"/"+kuaikeId;
-				//alert(url);
 				//通过ajax添加记录
 				$.ajax({
 					url : 'r_qiangordertabController/insertAjax/'+url,
@@ -151,14 +160,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : 'html',
 					success : function(objs) {
 						if(objs){
-							alert("抢单成功!");
+							//提示
+						    layer.open({
+						    	content: '抢单成功!',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 							window.location.href="xiaordertab/queryIdStatus/"+kuaikeId+"/0/"+xiaId;
 						}else{
-							alert("抢单失败!");
+							//提示
+						    layer.open({
+						    	content: '抢单失败!',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 						}
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+						//提示
+					    layer.open({
+					    	content: 'Ajax error!',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
 					}
 				});
 			}
@@ -183,20 +207,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>

@@ -71,11 +71,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					url : 'xiaordertab/shou/'+url,
 					type : 'POST',
 					success : function(data) {
-						alert("保存成功!");
+						//提示
+					    layer.open({
+					    	content: '保存成功!',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
 						window.location.href="RequestMappingUtil/requestNUll/APP/placeAnOrder";
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+						//提示
+					    layer.open({
+					    	content: 'Ajax error!',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
 					},
 					async:false
 				});
@@ -92,8 +102,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- 验证身份 初级验证 -->
 		<script type="text/javascript">
 		if("${login}"==""||"${login}"==null){
-			//询问框
-			layer.open( {
+		//询问框
+		layer.open( {
 				anim: 'up',
 				shadeClose: false,
 				content: '您还木有登陆？',
@@ -107,23 +117,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					window.location.href="RequestMappingUtil/requestNUll/APP/register";
 				}  
 			});
-			
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>

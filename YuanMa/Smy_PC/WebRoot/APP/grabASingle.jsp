@@ -89,7 +89,7 @@
 				height: 4rem;
 				background: rgba(255,255,255,.8);
 				z-index: 990;
-				transform: translate(0,4rem);
+				transform: translate(0,0);
 			}
 			.grabList_lisst {
 				position: relative;
@@ -224,80 +224,7 @@
 			<img title="" alt="" src="<%=basePath%>APP/images/icon/grabList_title_img.jpg"
 				width="20" />
 		</div>
-		<ul class="grabList_lisst">
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-			<li><a href="#"> <img class="grabList_user" title="" alt=""
-					src="<%=basePath%>APP/images/user.jpg" width="100%" />
-					<div class="grabList_cont">
-						<p>最迟到达时间：今天 13:00</p>
-						<p>商品总重量：12kg</p>
-						<span>立即抢单</span>
-					</div>
-			</a></li>
-		</ul>
+		<ul class="grabList_lisst"></ul>
 	</div>
 	<!--【详情的list】end-->
 
@@ -469,8 +396,8 @@
 							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
-												<p>发单地址：" + data[i].kuaikeAddressInfo + "</p> \
-												<p>收货地址：" + data[i].shouhuoAddressInfo + "kg</p> \
+												<p class='text_1_hide'>发单地址：" + data[i].kuaikeAddressInfo + "</p> \
+												<p class='text_1_hide'>收货地址：" + data[i].shouhuoAddressInfo + "kg</p> \
 												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";
@@ -488,6 +415,17 @@
 			
 			//抢单
 			function qiangdanAjax(i){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '手机号码错误',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
+				
 				//url
 				var url= $("#"+i).attr("title");
 				//alert(url);
@@ -514,6 +452,16 @@
 			
 			
 			function gtabSingle(i) {
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '手机号码错误',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 	        	var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
 	        	$("body").append(jz);   //把元素加载body
 	        	setTimeout(function() {     
@@ -539,6 +487,16 @@
 	        }
 	        
 	        function gtabTips() {
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 			    var grabTips = "<div class='grabTips'></div>";
 				$("body").append(grabTips);
 				$(".grabTips").animate({opacity:"0"},1000);
@@ -547,14 +505,14 @@
 				},1000)
 	        }
 		</script>
-		
+		<!-- 验证身份 初级验证 -->
 		<script type="text/javascript">
 		if("${login}"==""||"${login}"==null){
-			//询问框
-			layer.open( {
+		//询问框
+		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -565,7 +523,34 @@
 					window.location.href="RequestMappingUtil/requestNUll/APP/register";
 				}  
 			});
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
+			}
 		}
-	</script>
+		</script>
 </body>
 </html>

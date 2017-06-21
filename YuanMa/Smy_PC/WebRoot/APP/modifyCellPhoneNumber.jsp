@@ -59,6 +59,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
 			//修改手机号
 	$("#cellbtn").click(function(){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 		var celllastPhone = $("#celllastPhone").val();
 		var cellPhone = $("#cellPhone").val();
 		var cellyzm = $("#cellzm").val();
@@ -101,6 +111,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	})
 	$("#cellyzmbtn").click(function() {
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 	var kuaikePhone = $("#cellPhone").val();
 		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
@@ -132,6 +152,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	})
 			
+		</script>
+		<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+		//询问框
+		layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
+			}
+		}
 		</script>
 	</body>
 </html>

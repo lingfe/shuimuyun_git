@@ -320,8 +320,10 @@ public class R_kuaiketabController {
 
 		// 简单判断对象是否为空
 		if (login != null) {
-			//修改快客登陆状态
-			kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(), login.getKuaikeId());
+			if(login.getKuaikeStatus()!=0){
+				//修改快客登陆状态
+				kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(), login.getKuaikeId());
+			}
 			model.addAttribute("login", login);
 
 			if ("on".equals(repassword)) {

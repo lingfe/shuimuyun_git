@@ -235,16 +235,17 @@ $(function() {
 		var regPwd = $("#regPwd").val();
 		var regNpwd = $("#regNpwd").val();
 		var reg=/^[\u2E80-\u9FFF]+$/;
-		if(userName == "" || userName.length>4 || !(reg.test(userName))) {
-			//提示
-		    layer.open({
-		    	content: '请输入真实姓名 ',
-		    	skin: 'msg',
-		    	time: 2
-		  	});
-			return false;
-		}
-		else if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
+//		if(userName == "" || userName.length>4 || !(reg.test(userName))) {
+//			//提示
+//		    layer.open({
+//		    	content: '请输入真实姓名 ',
+//		    	skin: 'msg',
+//		    	time: 2
+//		  	});
+//			return false;
+//		}
+//		else 
+			if(!(forgePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(forgePhone))) {
 			//提示
 		    layer.open({
 		    	content: '手机号码错误',

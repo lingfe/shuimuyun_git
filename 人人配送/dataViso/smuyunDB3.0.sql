@@ -77,7 +77,7 @@ DROP TABLE IF EXISTS `kuaiketab`;
 
 CREATE TABLE `kuaiketab` (
   `kuaikeId` varchar(64) NOT NULL COMMENT '快客信息表标识',
-  `kuaikeName` varchar(50) NOT NULL COMMENT '快客名称',
+  `kuaikeName` varchar(50) DEFAULT NULL COMMENT '快客名称',
   `kuaikePhone` varchar(11) NOT NULL COMMENT '快客电话',
   `kuaikeAddress` varchar(200) DEFAULT NULL COMMENT '居住地址',
   `kuaikeShenfenZF` varchar(200) DEFAULT NULL COMMENT '身份证正反面',

@@ -320,7 +320,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="paymentTop">
 			<div class="paymentTop_l">应付金额：</div>
-			<input type="text" value="￥12" />
+			<input type="text" value="￥0.01" />
 		</div>
 		
 		<div class="paymentList">
@@ -344,7 +344,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		<input class="paymentBtn" id="paymentBtn" type="button" value="立即支付" />
+		<div>
+				<samp class="sam"></samp>
+				<input type="hidden" name="shopprices" value="0.01">
+				<input type="hidden" name="xiaId" value="123456">
+				<input type="hidden" name="shopName" value="test">
+			</div>
+<!-- 		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" /> -->
+		<a class="paymentBtn" id="paymentBtn" href="<%=path%>/app/pay">立即付款</a>
 		
 		<!--【余额支付弹窗】-->
 		<div class="balModal">

@@ -22,12 +22,14 @@ public class R_zhisuccessController {
 	@Autowired
 	private R_zhisuccessService r_zhisuccessService;
 
-	@RequestMapping(value = "/query", method = RequestMethod.GET)
+	@RequestMapping(value = "/query", method = RequestMethod.POST)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String xiaid = request.getParameter("xiaid");// 下单id
 		
-		String order_no = r_zhisuccessService.selectresult(xiaid);//取出订单付款状态
+		
+		String xiaId = request.getParameter("xiaid");// 下单id
+		System.out.println("xiaid:"+xiaId);
+		String order_no = r_zhisuccessService.selectresult(xiaId);//取出订单付款状态
 		
 		
 		PrintWriter out = response.getWriter();

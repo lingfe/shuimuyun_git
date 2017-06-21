@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				margin-top: 0.5rem;
 			}
 			.paymentTop_l {
-				width: 0.7rem;
+				width: 0.8rem;
 				height: 0.4rem;
 				line-height: 0.4rem;
 				color: #999;
@@ -314,23 +314,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" onClick="javascript :history.back(-1);">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
-			<p>付款</p>
+			<p>充值</p>
 		</header>
 		<!--【头部】end-->
 		
 		<div class="paymentTop">
-			<div class="paymentTop_l">应付金额：</div>
-			<input type="text" readonly="readonly" id="sho" name="shopprices" value="${sessionScope.sh }"/>
+			<div class="paymentTop_l">充值金额：</div>
+			<input type="text"  name="shopprices" value="${sessionScope.sh }"/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
-		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<div class="paymentList">
-			<div class="paymentList_item">
-				<img title="" alt="" src="<%=basePath %>APP/images/icon/balance.png" width="25" /> 余额
-				<div class="paymentList_position" id="balaceSelect">
-					<span></span>
-				</div>
-			</div>
+			
 			<div class="paymentList_item">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/payment.png" width="25" /> 支付宝
 				<div class="paymentList_position" id="paymentSelect">
@@ -364,12 +358,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>可用余额：<i id="balance"></i>元</span>
 					</div>
 					<div class="balModal_contPwd">
-						<input type="password" value="" name="a">
-						<input type="password" value="" name="b">
-						<input type="password" value="" name="c">
-						<input type="password" value="" name="d">
-						<input type="password" value="" name="e">
-						<input type="password" value="" name="f">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
+						<input type="password" value="">
 					</div>
 					<a class="balModal_contLink" href="#">忘记密码？</a>
 					<div class="balModal_contNumer">
@@ -399,16 +393,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script>
 			$(function() {
 				$(".paymentList_position").click(function() {
-					//验证审核
-					if("${login.kuaikeStatus}"==0){
-						//提示
-					    layer.open({
-					    	content: '您的身份还没有通过审核！',
-					    	skin: 'msg',
-					    	time: 2
-					  	});
-						return false;
-					}
 					if($(this).find("span").is(":hidden")) {
 						$(this).find("span").css("display","block");
 						$(this).parent().siblings().find("span").css("display","none");
@@ -420,30 +404,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 				
 				$("#paymentBtn").click(function() {
-					//验证审核
-					if("${login.kuaikeStatus}"==0){
-						//提示
-					    layer.open({
-					    	content: '您的身份还没有通过审核！',
-					    	skin: 'msg',
-					    	time: 2
-					  	});
-						return false;
-					}
-					//快客Id
-				var kuaikeId = $("#kuaikeId").val();
-				//获取到余额值
-				var balance=$("#balance").html();
-				//余额支付Ajax请求
-				$.ajax({
-					url : 'queryBalance/' + kuaikeId,
-					type : 'POST',
-					dataType:'json',
-					//请求成功后触发
-					success : function(data) {
-						//为<i><i>添加余额值
-						$("#balance").html(data.balance);
-	
+				
+			
 						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
 	
 							layer.open({
@@ -453,173 +415,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 							return false;
 	
-						} else if (!($("#balaceSelect span").is(":hidden"))) {
-	
-							$(".balModal").show();
-							$(".balModal_cont").slideDown(500);
-	
-						} else if (!($("#paymentSelect span").is(":hidden"))) {
-							layer.open({
-				    	content: '支付宝支付！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
+						}  else if (!($("#paymentSelect span").is(":hidden"))) {
+							alert("支付宝支付")
 						} else if (!($("#wxSelect span").is(":hidden"))) {
-							layer.open({
-				    	content: '微信支付！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
+							alert("微信支付")
 						}
-					}
-				});
+					
+			
 	
 				})
 				
 				
-				//模拟输入6位密码
-				var i = 0;
-				$(".balModal_contNumer .num").click(function() {
-					//验证审核
-					if("${login.kuaikeStatus}"==0){
-						//提示
-					    layer.open({
-					    	content: '您的身份还没有通过审核！',
-					    	skin: 'msg',
-					    	time: 2
-					  	});
-						return false;
-					}
-					var len = $(".balModal_contPwd input").length;
-					//var _val = $(".balModal_contPwd input").index();
-					//var _this = $(this).index();
-					var _value = Number($(this).html());
-					i++;
-					if(i <= len) {
-						$(".balModal_contPwd input").eq(i-1).val(_value);
-						$(".balModal_contPwd input").eq(i-1).addClass("bg");
-						//alert(i)
-					}
-					if(i > len - 1) {
-						$(".balModal_contPwd input").eq(i).val("");
-						$(".balModal_contPwd input").eq(i).removeClass("bg");
-						//alert("密码超过6位了")
-						var jz = "<div class='jzCont'><span><span></div>";//创建加载元素
-	   				 	$("body").append(jz);//把元素加载body
-						setTimeout(function(){
-							$(".jzCont").remove();
-								
-								var balance=$("#balance").html()-$("#sho").val();
-							   $.ajax({
-							    url : 'updateBalance/' + balance,
-								type : 'GET',
-								dataType:'json',
-								//请求成功后触发
-								success : function(data) {
-								//为<i><i>添加余额值
-								$("#balance").html(data.balance);
-						
-										window.location.href="<%=basePath %>APP/payOk.jsp";
-						
-								}
-							   
-							   
-							   })
-							
-							
-						},800);
-					 }
-					
-				})
 				
-				$("#payDel").click(function() {
-					//验证审核
-					if("${login.kuaikeStatus}"==0){
-						//提示
-					    layer.open({
-					    	content: '您的身份还没有通过审核！',
-					    	skin: 'msg',
-					    	time: 2
-					  	});
-						return false;
-					}
-					if(i > 0) {
-						i--;
-						$(".balModal_contPwd input").eq(i).val("");
-						$(".balModal_contPwd input").eq(i).removeClass("bg");
-						i == 0;
-					}
-					//     alert(i)
-				})
-				
-				//关闭弹窗
-				$(".balModal_cont").css("display","none")
-				$(".balModal_title").click(function() {
-					//验证审核
-					if("${login.kuaikeStatus}"==0){
-						//提示
-					    layer.open({
-					    	content: '您的身份还没有通过审核！',
-					    	skin: 'msg',
-					    	time: 2
-					  	});
-						return false;
-					}
-					$(".balModal_cont").slideUp(500);
-					
-					setTimeout(function() {
-						window.location.reload();
-						$(".balModal").hide();
-					},500)
-				})
 			})
-		</script>
-		<!-- 验证身份 初级验证 -->
-		<script type="text/javascript">
-		if("${login}"==""||"${login}"==null){
-		//询问框
-		layer.open( {
-				anim: 'up',
-				shadeClose: false,
-				content: '您还没有登陆？',
-				btn: ['登录', '注册'],
-				yes:function(index){
-					layer.close(index);
-			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
-				},
-				no:function(index){
-					layer.close(index);
-					window.location.href="RequestMappingUtil/requestNUll/APP/register";
-				}  
-			});
-		}else{
-			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//验证审核
-				if("${login.kuaikeStatus}"==0){
-					//提示
-				    layer.open({
-				    	content: '您的身份还没有通过审核！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
-				}else{
-					//询问框
-					layer.open( {
-						anim: 'up',
-						shadeClose: false,
-						content: '您的资料还没有完善？',
-						btn: ['完善资料','取消'],
-						yes:function(index){
-							layer.close(index);
-							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-						},
-						no:function(index){
-							layer.close(index);
-						}  
-					});
-				}
-			}
-		}
 		</script>
 	</body>
 </html>

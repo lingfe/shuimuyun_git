@@ -14,7 +14,7 @@ a:link, a:visited, a:hover, a:active { color: #333; outline: none; }
 	.browser { width: 50%; }
 }
 @media (max-width: 720px) {
-	.browser { width: 100%; }
+	.browser { width: 100%;}
 }
 /*选择地区*/
 .express-area {background-color: #fff; margin-left: 10px;}

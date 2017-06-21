@@ -27,5 +27,19 @@ public class BalancetabServiceImpl implements BalancetabService {
 		
 		return queryBalance;
 	}
+	
+	
+	/**
+	 * 通过余额付款
+	 * @author 杨杰     
+	 * @created 2017年6月21日 下午9:39:28
+	 * @param balance 余额
+	 * @param xiaId 下单Id
+	 * @return 
+	 */
+	@Override
+	public void updateBalance(double balance,String xiaId,String zhifupwd){
+		balancetabMapper.updateBalance(balance, xiaId,zhifupwd);
+	}
  
 }

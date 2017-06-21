@@ -279,6 +279,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$.ajax({
 					url : 'xiaordertab/orderSbmit/'+url,
 					type : 'POST',
+					contentType:"application/x-www-form-urlencoded;charset=urf-8",
 					success : function(data) {
 						alert("下单成功");
 						//跳转到首页
@@ -300,6 +301,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				url : 'xiaordertab/xiaorderInfoAjax/'+xiaId,
 				type : 'POST',
 				dataType : 'html',
+				contentType:'application/x-www-form-urlencoded; charset=UTF-8',
 				success : function(data) {
 					var obj = jQuery.parseJSON(data);
 					if(obj.kuaikeName!=null){
@@ -325,6 +327,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				url : 'xiaordertab/xiaorderInfoAjax/'+xiaId,
 				type : 'POST',
 				dataType : 'html',
+				contentType:'application/x-www-form-urlencoded; charset=UTF-8',
 				success : function(data) {
 					var obj = jQuery.parseJSON(data);
 					if(obj.shouhuoName!=null){

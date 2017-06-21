@@ -40,7 +40,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a class="commHeader_l" onClick="javascript :history.back(-1);">
 				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png" />
 			</a>
-			<p>上门取货</p>
+			<p>
+			<c:if test="${info.status!=2 }">
+				上门取货
+			</c:if>
+			<c:if test="${info.status==2 }">
+				正在派单
+			</c:if>
+			</p>
 		</header>
 		<!--【头部】end-->
 		
@@ -135,11 +142,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="RequestMappingUtil/requestNUll/APP/showCode"><button class="order_btn">到达目的地</button></a>
 			</c:if>
 			
-			<c:if test="${info.status==3 }">
-				<!-- 如果有图片存放img的div -->
-				<div></div>
-				<button class="order_btn">评价</button>
-			</c:if>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>

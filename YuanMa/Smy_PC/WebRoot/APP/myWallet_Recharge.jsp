@@ -351,7 +351,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="hidden" name="shopName" value="test">
 			</div>
 <!-- 		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" /> -->
-		<a class="paymentBtn" id="paymentBtn" href="<%=path%>/app/pay">立即付款</a>
+		<a class="paymentBtn" id="paymentBtn" href="RequestMappingUtil/requestNUll/APP/payOk">立即付款</a>
 		
 		<!--【余额支付弹窗】-->
 		<div class="balModal">

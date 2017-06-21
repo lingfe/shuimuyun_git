@@ -76,15 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$.ajax({
 					url : 'xiaordertab/fa/'+url,
 					type : 'POST',
-					cache:false, 
-	     			ifModified :true ,
-					//请求成功后触发 
-					beforeSend :function(xmlHttp){ 
-				        xmlHttp.setRequestHeader("If-Modified-Since","0"); 
-				        xmlHttp.setRequestHeader("Cache-Control","no-cache");
-				     },
 					success : function(data) {
 						alert("保存成功!");
+						window.location.href="RequestMappingUtil/requestNUll/APP/placeAnOrder";
 					},
 					error : function(xhr, type) {
 						alert('Ajax error!');

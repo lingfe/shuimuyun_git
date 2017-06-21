@@ -35,6 +35,5 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/fastjson-1.2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-core-asl-1.9.13.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/Sdk4J.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

@@ -323,7 +323,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="text" readonly="readonly" id="sho" name="shopprices" value="${sessionScope.sh }"/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
-		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<div class="paymentList">
 			<div class="paymentList_item">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/balance.png" width="25" /> 余额
@@ -364,12 +363,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>可用余额：<i id="balance"></i>元</span>
 					</div>
 					<div class="balModal_contPwd">
-						<input type="password" value="" name="a">
-						<input type="password" value="" name="b">
-						<input type="password" value="" name="c">
-						<input type="password" value="" name="d">
-						<input type="password" value="" name="e">
-						<input type="password" value="" name="f">
+						<input type="password" value="" name="a" id="a">
+						<input type="password" value="" name="b" id="b">
+						<input type="password" value="" name="c" id="c">
+						<input type="password" value="" name="d" id="d">
+						<input type="password" value="" name="e" id="e">
+						<input type="password" value="" name="f" id="f">
 					</div>
 					<a class="balModal_contLink" href="#">忘记密码？</a>
 					<div class="balModal_contNumer">
@@ -501,20 +500,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						setTimeout(function(){
 							$(".jzCont").remove();
 								
-								var balance=$("#balance").html()-$("#sho").val();
+								var balance=Number($("#balance").html()-$("#sho").val());
+								var kuaikeId=$("#kuaikeId").val();
+								var zhifupwd=$("#a").val()+$("#b").val()+$("#c").val()+$("#d").val()+$("#e").val()+$("#f").val();
 							   $.ajax({
-							    url : 'updateBalance/' + balance,
-								type : 'GET',
-								dataType:'json',
+							    url : "updateBalance/"+ balance+"/"+kuaikeId+"/"+zhifupwd,
+								type : 'POST',
 								//请求成功后触发
 								success : function(data) {
-								//为<i><i>添加余额值
-								$("#balance").html(data.balance);
-						
-										window.location.href="<%=basePath %>APP/payOk.jsp";
-						
-								}
+												//提示
+								    layer.open({
+								    	content: '支付成功...',
+								    	skin: 'msg',
+								    	time: 2
+								  	});
+									window.location.href="APP/payOk.jsp";
+								},
+							   error:function(){
 							   
+							  		alert("错误");
+							   
+							   }
 							   
 							   })
 							

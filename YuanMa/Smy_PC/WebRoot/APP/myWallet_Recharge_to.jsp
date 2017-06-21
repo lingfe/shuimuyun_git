@@ -320,7 +320,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="paymentTop">
 			<div class="paymentTop_l">充值金额：</div>
-			<input type="text"  name="shopprices" value="${sessionScope.sh }"/>
+			<input type="text"  name="shopprices" value=""/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<div class="paymentList">

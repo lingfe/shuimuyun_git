@@ -33,8 +33,8 @@ public interface R_balancetabMapper {
 	 * @param xiaId 下单Id
 	 * @return 
 	 */
-	@Update("update balancetab set banance=#{balance} where xiaId=#{xiaId} and zhifupwd=#{zhifupwd}")
-	public void updateBalance(@Param("balance") double balance,@Param("xiaId") String xiaId,@Param("zhifupwd") String zhifupwd);
+	@Update("update balancetab set balance=#{balance} where kuaikeId=#{kuaikeId} and zhifupwd=#{zhifupwd}")
+	public void updateBalance(@Param("balance") double balance,@Param("kuaikeId") String kuaikeId,@Param("zhifupwd") String zhifupwd);
 	
 	
 	

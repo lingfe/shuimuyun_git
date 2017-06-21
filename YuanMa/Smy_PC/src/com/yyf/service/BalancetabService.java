@@ -31,7 +31,7 @@ public interface BalancetabService {
 	 * @param xiaId 下单Id
 	 * @return 
 	 */
-	public void updateBalance(double balance,String xiaId,String zhifupwd);
+	public void updateBalance(double balance,String kuaikeId,String zhifupwd);
 	
 	
 }

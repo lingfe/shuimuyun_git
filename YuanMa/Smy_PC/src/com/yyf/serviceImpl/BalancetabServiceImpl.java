@@ -38,8 +38,10 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @return 
 	 */
 	@Override
-	public void updateBalance(double balance,String xiaId,String zhifupwd){
-		balancetabMapper.updateBalance(balance, xiaId,zhifupwd);
+	public void updateBalance(double balance,String kuaikeId,String zhifupwd){
+		
+		balancetabMapper.updateBalance(balance, kuaikeId,zhifupwd);
+		
 	}
  
 }

@@ -190,6 +190,10 @@
 				margin-top: -0.15rem;
 				z-index: 999;
 			}
+			.text_p{
+			font-size:.11rem !important;
+			width:1.9rem;
+			}
 		</style>
 		<script>
 			setTimeout(function() {
@@ -469,8 +473,8 @@
 							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
-												<p class='text_1_hide'>发单地址：" + data[i].kuaikeAddressInfo + "</p> \
-												<p class='text_1_hide'>收货地址：" + data[i].shouhuoAddressInfo + "kg</p> \
+												<p class='text_1_hide text_p'>发：" + data[i].kuaikeAddressInfo + "</p> \
+												<p class='text_1_hide text_p'>收：" + data[i].shouhuoAddressInfo + "kg</p> \
 												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";

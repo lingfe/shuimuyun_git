@@ -1,5 +1,7 @@
 package com.yyf.controller;
 
+import javax.ws.rs.Path;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,6 +38,21 @@ public class BalancetabController {
 
 		return queryBalance;
 
+	}
+	
+	
+	/**
+	 * 通过余额付款
+	 * @author 杨杰     
+	 * @created 2017年6月21日 下午9:39:28
+	 * @param balance 余额
+	 * @param xiaId 下单Id
+	 * @return 
+	 */
+	@RequestMapping(value="updateBalance/{balance}/{xiaId}/{zhifupwd}",method=RequestMethod.GET)
+	@ResponseBody
+	public void updateBalance(@PathVariable("balance") double balance,@PathVariable("xiaId") String xiaId,@PathVariable("zhifupwd") String zhifupwd){
+		balancetabService.updateBalance(balance, xiaId,zhifupwd);
 	}
 
 }

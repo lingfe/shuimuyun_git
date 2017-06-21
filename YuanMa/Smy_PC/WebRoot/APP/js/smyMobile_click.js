@@ -45,7 +45,7 @@ window.onload = function() {
 		}
 	}
 	//弹出框四
-		//最晚取货时间取值
+		/*//最晚取货时间取值
 		$("#num_shi1").blur(function() {
 			if($(this).val() >= 24 || $(this).val() < 0) {
 				layer.open({
@@ -111,7 +111,7 @@ window.onload = function() {
 			$("#order_zhe").css("display", "none");
 			$("#order_tan3").css("transform", "translateY(1.6rem)");
 			$("#order_tan3").css("transition", "0.5s");
-		})
+		})*/
 
 	//下单页面end		
 }
@@ -167,7 +167,7 @@ $(function(){
 		$("#order_tan1").css("transition","0.5s");
 	})
 	//弹出框三
-	//最迟到达时间取值
+	/*//最迟到达时间取值
 	$("#num_shi").blur(function(){
 		if($(this).val()>=24 || $(this).val()<0){
 			layer.open({
@@ -234,7 +234,7 @@ $(function(){
 		$("#order_zhe").css("display","none");
 		$("#order_tan2").css("transform","translateY(1.6rem)");
 		$("#order_tan2").css("transition","0.5s");
-	})
+	})*/
 	//下单页面end
 	//搜索框页面
 	//搜索框效果

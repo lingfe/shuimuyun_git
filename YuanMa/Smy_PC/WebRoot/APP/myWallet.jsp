@@ -127,22 +127,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="walletCont">
 			<div class="walletCont_item">
 				<div class="walletCont_item_title">账号余额（元）</div>
-				<div class="walletCont_item_cont"><i>￥200</i></div>
+				<div class="walletCont_item_cont"><i id="ba"></i></div>
 			</div>
 			<div class="walletCont_item">
 				<button class="walletBtn">提现</button>
-				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge">充值</a></button>
+				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge_to">充值</a></button>
 			</div>
 		</div>
-		
+		<input type="hidden"  id="kuaikeId" value="${login.kuaikeId }" />
 		<div class="walletCont walletYj">
 			<div class="walletCont_item">
 				<div class="walletCont_item_title">我的押金（元）</div>
-				<div class="walletCont_item_cont"><i>￥200</i></div>
+				<div class="walletCont_item_cont"><i id="de"></i></div>
 			</div>
 			<div class="walletCont_item">
 				<button class="walletBtn">提现</button>
-				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge">充值</a></button>
+				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge_to">充值</a></button>
 			</div>
 		</div>
 		
@@ -156,5 +156,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 			})
 		</script>
+		
+		<script>
+			$(function() {
+				var kuaikeId=$("#kuaikeId").val();
+			
+				$.ajax({
+					url : 'queryBalance/' + kuaikeId,
+					type : 'post',
+					dataType:'json',
+					success : function(data) {
+						$("#ba").html("￥"+data.balance);
+						$("#de").html("￥"+data.deposit);
+					}
+				});
+			})
+		</script>
+		
+		
+		
+		
 	</body>
 </html>

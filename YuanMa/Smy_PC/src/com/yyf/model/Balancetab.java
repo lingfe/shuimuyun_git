@@ -18,6 +18,38 @@ public class Balancetab {
 	private  double balance;//余额
 	
 	private String xiaId;//下单ID
+	
+	private double deposit;//押金
+	
+	public double getDeposit() {
+		return deposit;
+	}
+
+	public void setDeposit(double deposit) {
+		this.deposit = deposit;
+	}
+
+	public Balancetab(String balanceId, String kuaikeId, String zhifupwd, double balance, String xiaId, double deposit,
+			int status) {
+		super();
+		this.balanceId = balanceId;
+		this.kuaikeId = kuaikeId;
+		this.zhifupwd = zhifupwd;
+		this.balance = balance;
+		this.xiaId = xiaId;
+		this.deposit = deposit;
+		this.status = status;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	private int status;//状态
 
 	public String getXiaId() {
 		return xiaId;
@@ -39,17 +71,10 @@ public class Balancetab {
 	@Override
 	public String toString() {
 		return "Balancetab [balanceId=" + balanceId + ", kuaikeId=" + kuaikeId + ", zhifupwd=" + zhifupwd + ", balance="
-				+ balance + ", xiaId=" + xiaId + "]";
+				+ balance + ", xiaId=" + xiaId + ", deposit=" + deposit + ", status=" + status + "]";
 	}
 
-	public Balancetab(String balanceId, String kuaikeId, String zhifupwd, double balance, String xiaId) {
-		super();
-		this.balanceId = balanceId;
-		this.kuaikeId = kuaikeId;
-		this.zhifupwd = zhifupwd;
-		this.balance = balance;
-		this.xiaId = xiaId;
-	}
+	
 
 	public void setBalanceId(String balanceId) {
 		this.balanceId = balanceId;

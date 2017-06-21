@@ -12,5 +12,7 @@ public interface R_zhinotifyService {
 	void UpdateOrder(String openid,String is_subscribe,String  out_trade_no,String bank_type,String cash_fee,String nonce_str,String result_code,
 			String return_code,String sign,String time_end,String transaction_id,String total_fee);
 	
-
+	String SelectXIa(String out_trade_no);
+	
+	void UpdatePayment(String xiaId);
 }

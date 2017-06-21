@@ -1,6 +1,7 @@
 package com.yyf.mapper;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 public interface R_zhinotifyMapper {
@@ -24,4 +25,13 @@ public interface R_zhinotifyMapper {
 			,@Param("return_code") String return_code,@Param("sign") String sign
 			,@Param("time_end") String time_end,@Param("total_fee") String total_fee
 			);
+	
+	
+	@Select("Select xiaId from order_table where out_trade_no=#{out_trade_no}")
+	public String SelectXIa(@Param("out_trade_no") String out_trade_no);
+	
+	
+	@Update("update xiaordertab set payment='1' where xiaId=#{xiaId}")
+	public void UpdatePayment(@Param("xiaId") String xiaId);
+	
 }

@@ -95,8 +95,10 @@ public class R_NotifyController {
 
 					r_zhinotifyService.UpdateOrder(openid, is_subscribe, out_trade_no, bank_type, cash_fee, nonce_str,
 							result_code, return_code, sign, time_end, transaction_id, total_fee);// 保存数据库
+					
+					String xiaXid = r_zhinotifyService.SelectXIa(out_trade_no);// 获取xiaid
 
-
+					r_zhinotifyService.UpdatePayment(xiaXid);//更改付款状态
 					// 执行自己的业务逻辑
 
 					// 通知微信.异步确认成功.必写.不然会一直通知后台.八次之后就认为交易失败了.

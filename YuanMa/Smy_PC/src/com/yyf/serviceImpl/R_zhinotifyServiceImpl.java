@@ -21,4 +21,17 @@ public class R_zhinotifyServiceImpl implements R_zhinotifyService {
 		zhinotifyMapper.UpdateOrder(openid,is_subscribe, out_trade_no,bank_type,cash_fee,nonce_str,result_code,return_code,
         		sign,time_end,total_fee);
 	}
+	
+	@Override
+	public String SelectXIa(String out_trade_no) {
+		zhinotifyMapper.SelectXIa(out_trade_no);
+		return zhinotifyMapper.SelectXIa(out_trade_no);
+	}
+	
+	@Override
+	public void UpdatePayment(String out_trade_no) {
+		zhinotifyMapper.UpdatePayment(out_trade_no);
+	}
+	
+	
 }

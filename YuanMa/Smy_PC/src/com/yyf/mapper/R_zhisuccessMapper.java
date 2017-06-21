@@ -16,6 +16,6 @@ public interface R_zhisuccessMapper {
 	 */
 	@Select(value="SELECT payresult "	
 			+ " FROM order_table "
-			+ " WHERE xiaId=#{xiaid}")
-	public String selectresult(@Param("xiaid") String xiaid);
+			+ " WHERE xiaId=#{xiaId}")
+	public String selectresult(@Param("xiaId") String xiaId);
 }

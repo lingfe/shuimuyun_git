@@ -36,6 +36,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--【头部】end-->
 		<div class="courier_firsttit">
 			${info.status==0?'未接单':''}
+			${info.payment==0?',未付款||<a href="xiaordertab/setYuEPam/APP/myWallet_Recharge/':''}
+			${info.payment==0? info.xiaId:''}?sh=
+			${info.payment==0? info.shopprices:''}
+			${info.payment==0? '">点击付款</a>':''}
+			
 			${info.status==1?'已接单,未发货':'' }
 			${info.status==2?'已到达,未确认':'' } 
 			${info.status==3?'交易结束(已确认)':'' }

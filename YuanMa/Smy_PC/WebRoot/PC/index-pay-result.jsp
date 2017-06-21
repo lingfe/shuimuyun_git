@@ -23,7 +23,7 @@
 	  var xiaid=document.getElementById("xiaid").innerHTML;
 	  $.ajax({
 	       url: "<%=path%>/payselect/query",
-	       type: "GET",
+	       type: "POST",
 	       dataType:"text",
 	       data: {
 				'xiaid':xiaid

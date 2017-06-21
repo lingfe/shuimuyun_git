@@ -14,8 +14,8 @@ public class R_zhisuccessServiceImpl implements R_zhisuccessService {
 	private R_zhisuccessMapper zhisuccessMapper;
 
 	@Override
-	public String selectresult(String xiaid) {
-		String order_no = String.valueOf(zhisuccessMapper.selectresult(xiaid));
+	public String selectresult(String xiaId) {
+		String order_no = String.valueOf(zhisuccessMapper.selectresult(xiaId));
 		return order_no;
 	}
 }

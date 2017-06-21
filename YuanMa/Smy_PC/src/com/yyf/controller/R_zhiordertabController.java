@@ -80,6 +80,7 @@ public class R_zhiordertabController {
 //			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
 			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
 			packageParams.put("notify_url", String.valueOf(p.get("NOTIFY_URL")));
+			System.out.println("notify_url:"+String.valueOf(p.get("NOTIFY_URL")));
 			packageParams.put("trade_type", trade_type);
 			// packageParams.put("product_id", product_id);
 			request.setAttribute("out_trade_no", out_trade_no);

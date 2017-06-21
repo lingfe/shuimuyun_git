@@ -111,9 +111,10 @@ public class R_kuaiketabController {
 			
 
 			// 身份证复印件文件
-			String kuaikeShenfenZF= request.getContextPath() + "/upload/" + files[0].getOriginalFilename();
+			String kuaikeShenfenZF= request.getContextPath() + "/upload/" + files[0].getOriginalFilename()+",";
+			kuaikeShenfenZF+=request.getContextPath() + "/upload/" + files[1].getOriginalFilename();
 			// 手拿身份证图片
-			String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + files[1].getOriginalFilename();
+			String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + files[2].getOriginalFilename();
 			
 			
 			kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);

@@ -94,8 +94,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<form class="quickMian quickSfMian" action="updateSFZImages" method="post"  enctype="multipart/form-data">
 				<div class="quickSf_item">
 					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId" />
+					<input class="file" type="file"  name="files"  multiple="multiple" />
+					<span>上传身份证正面</span>
+				</div>
+				<div class="quickSf_item">
 					<input class="file" type="file" value="${login.kuaikeShenfenZF }" name="files"  multiple="multiple" />
-					<span>上传身份证正反面</span>
+					<span>上传身份证反面</span>
 				</div>
 				<div class="quickSf_item">
 					<input class="file" type="file" value="${login.kuaikeShouchiSFZ }"  name="files" multiple="multiple" />

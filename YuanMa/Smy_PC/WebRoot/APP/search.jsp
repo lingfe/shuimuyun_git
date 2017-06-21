@@ -178,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -191,20 +191,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>
@@ -212,6 +222,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
 			//模糊搜索
 			function searchKey(){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
+			
 				//得到searchKey
 				var searchKey=$("#search_sousuoinput").val();
 				//隐藏,显示层
@@ -231,7 +252,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						var data = jQuery.parseJSON(objs);
 						if (data == "") {
 							$("#tishi").show(1000);
-							alert("没有数据!");
+							//提示
+						    layer.open({
+						    	content: '没有数据!',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 						} else {
 							var result = ''
 							for (var i = 0; i < data.length; i++) {
@@ -265,7 +291,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						}
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+							//提示
+						    layer.open({
+						    	content: 'Ajax error!',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 					}
 				});
 			}

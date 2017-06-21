@@ -20,10 +20,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/lCalendar.css"/>
 	<style type="text/css">
 		body{display: block;}
 		.taking_firsttit_con{
 		margin-top:.4rem;
+		}
+		.shijianint{
+			margin-left:1.8rem;
+			width: 1rem !important;
+			border: none !important;
+		}
+		.gearDate, .gearDatetime, .gearTime{
+		    background-color: rgba(0, 0, 0, 0.8) !important;
+		}
+		.shijianspan{
+			transform: translateY(10px);
 		}
 	</style>
 	<script>
@@ -85,44 +97,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>我的信息</span>
 			</div>
 			<div class="taking_div_last" id="order_right2">
-				<span>取货时间</span>
-				<span id="shijian">${ info.timeString }</span>
-				<img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" />
+				<span class="shijianspan">取货时间</span>
+				<input class="shijianint" id="de" type="text" readonly="" name="input_date" placeholder="请输入时间"/>
+				<%-- <img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" /> --%>
 			</div>
 		</div>
 		
 		<!--确定按钮-->
-		<div class="order_buttom taking_btn">
+		 <div class="order_buttom taking_btn">
 			<div class="order_buttom_text">
-			<img src="<%=basePath%>APP/images/icon/dui.png"width="20"/>
+			<img class="op" src="<%=basePath%>APP/images/icon/dui.png"width="20"/>
+			<img style="display: none;" src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
 			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
 			<button class="order_btn" onclick="qiangdanAjax(this);">确认抢单</button>
-		</div>
-		<!--遮罩层-->
-		<div class="order_zhe"id="order_zhe"></div>
-		<!--弹窗三-->
-		<!--弹窗三-->
-		<div class="order_tan2"id="order_tan2">
-			<div class="order_tan_clos2">
-				<span>最晚到达时间</span>
-				<span class="mui-icon mui-icon-close order_close" id="order_close2"></span>
-			</div>
-			<div class="order_tan_context2"  id="order_tex2">
-				<div class="order_shi">
-					<span>时</span>
-					<input type="number" id="num_shi"/>
-				</div>
-				<div class="order_fen">
-					<span>分</span>
-					<input type="number" id="num_fen" />
-				</div>
-				<input class="order_butt" type="button" id="butt" value="取消" />
-				<input class="order_buttn" type="button" id="buttn" value="确定" />
-				
-			</div>
-			
-		</div>
+		</div> 
 		<!-- 快客id -->
 		<input type="hidden" id="kuaikeId" value="${login.kuaikeId }">
 		<!-- 下单id -->
@@ -133,17 +122,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/lCalendar.js" ></script>
 		<!-- 抢单 ajax -->
 		<script>
 			//抢单
 			function qiangdanAjax(my){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				//快客id
 				var kuaikeId=$("#kuaikeId").val();
 				//下单id
 				var xiaId=$("#xiaId").val();
 				
 				var url=xiaId+"/"+kuaikeId;
-				//alert(url);
 				//通过ajax添加记录
 				$.ajax({
 					url : 'r_qiangordertabController/insertAjax/'+url,
@@ -151,14 +150,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : 'html',
 					success : function(objs) {
 						if(objs){
-							alert("抢单成功!");
-							$(my).hide(3000);
+							//提示
+						    layer.open({
+						    	content: '抢单成功!',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
+							window.location.href="xiaordertab/queryIdStatus/"+kuaikeId+"/0/"+xiaId;
 						}else{
-							alert("抢单失败!");
+							//提示
+						    layer.open({
+						    	content: '抢单失败!',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 						}
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+						//提示
+					    layer.open({
+					    	content: 'Ajax error!',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
 					}
 				});
 			}
@@ -170,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -183,22 +197,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>
+		<script>
+		var calendartime = new lCalendar();
+			calendartime.init({
+				'trigger': '#de',
+				'type': 'time'
+			});
+	</script>
+	<script type="text/javascript">
+		$(".order_buttom_text").click(function(){
+		if($(this).find(".dis").is(":hidden")) {
+			$(this).find(".dis").show();
+			$(this).find(".op").hide();
+		}
+		else {
+			$(this).find(".dis").hide();
+			$(this).find(".op").show();
+		}
+	})
+	$(".order_btn").click(function(){
+		if($(".op").is(":hidden")){
+			layer.open({
+		    	content: '同意协议',
+		    	skin: 'msg',
+		    	time: 1
+		  	});
+		  	return false;
+		}
+	})
+	</script>
 	</body>
 </html>

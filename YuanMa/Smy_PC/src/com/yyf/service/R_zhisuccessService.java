@@ -9,6 +9,6 @@ public interface R_zhisuccessService {
 	 * @created 2017年6月17日 下午2:03:28  
 	 * @param tab
 	 */
-	String selectresult(String xiaid);
+	String selectresult(String xiaId);
 
 }

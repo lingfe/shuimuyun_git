@@ -71,83 +71,9 @@
 			</div>
 		</div>
 		<!--【没有数据的样式】end-->
-
 		<div class="oallCont_cont">
 			<div class="oallCont_cont_item">
-				<ul class="oallCont_cont_list">
-					<li><a href="#"> <img class="oallCont_cont_img" title=""
-							alt="" src="<%=basePath%>APP/images/oall001.jpg" width="100%" />
-							<div class="oallCont_contBox">
-								<p>收货人：小单</p>
-								<p>电话：15700104801</p>
-								<div>
-									<span>收货地址：</span>
-									<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
-								</div>
-							</div>
-							<div class="oall_zt">发</div> <span class="oall_ztl">正在派送</span>
-					</a></li>
-					<li><a href="#"> <img class="oallCont_cont_img" title=""
-							alt="" src="<%=basePath%>APP/images/oall001.jpg" width="100%" />
-							<div class="oallCont_contBox">
-								<p>收货人：小单</p>
-								<p>电话：15700104801</p>
-								<div>
-									<span>收货地址：</span>
-									<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
-								</div>
-							</div>
-							<div class="oall_zt">快</div> <span class="oall_ztl">代付款</span>
-					</a></li>
-					<li><a href="#"> <img class="oallCont_cont_img" title=""
-							alt="" src="<%=basePath%>APP/images/oall001.jpg" width="100%" />
-							<div class="oallCont_contBox">
-								<p>收货人：小单</p>
-								<p>电话：15700104801</p>
-								<div>
-									<span>收货地址：</span>
-									<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
-								</div>
-							</div>
-							<div class="oall_zt">发</div> <span class="oall_ztl">待接单</span>
-					</a></li>
-					<li><a href="#"> <img class="oallCont_cont_img" title=""
-							alt="" src="<%=basePath%>APP/images/oall001.jpg" width="100%" />
-							<div class="oallCont_contBox">
-								<p>收货人：小单</p>
-								<p>电话：15700104801</p>
-								<div>
-									<span>收货地址：</span>
-									<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
-								</div>
-							</div>
-							<div class="oall_zt">快</div> <span class="oall_ztl">取货</span>
-					</a></li>
-					<li><a href="#"> <img class="oallCont_cont_img" title=""
-							alt="" src="<%=basePath%>APP/images/oall001.jpg" width="100%" />
-							<div class="oallCont_contBox">
-								<p>收货人：小单</p>
-								<p>电话：15700104801</p>
-								<div>
-									<span>收货地址：</span>
-									<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
-								</div>
-							</div>
-							<div class="oall_zt">发</div> <span class="oall_ztl">已完成</span>
-					</a></li>
-					<li><a href="#"> <img class="oallCont_cont_img" title=""
-							alt="" src="<%=basePath%>APP/images/oall001.jpg" width="100%" />
-							<div class="oallCont_contBox">
-								<p>收货人：小单</p>
-								<p>电话：15700104801</p>
-								<div>
-									<span>收货地址：</span>
-									<div class="text_1_hide">贵州省贵阳市花溪大道220号</div>
-								</div>
-							</div>
-							<div class="oall_zt">快</div> <span class="oall_ztl">派件</span>
-					</a></li>
-				</ul>
+				<ul class="oallCont_cont_list"></ul>
 			</div>
 		</div>
 	</div>
@@ -156,21 +82,61 @@
 	<script>
 		$(function() {
 			$(".oallNav a").click(function() {
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				$(this).addClass("active").siblings().removeClass("active");
 			});
 	
 			$(".oallCont_muen div").click(function() {
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				$(this).addClass("active").siblings().removeClass("active");
 			});
 			
 			//我的快递
 			$("#express").click(function(){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				$("#div_statusQiang").css("display","block");
 				$("#div_statusXia").css("display","none");
 			});
 			
 			//我的发货
 			$("#delivery").click(function(){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				$("#div_statusQiang").css("display","none");
 				$("#div_statusXia").css("display","block");
 			});
@@ -197,7 +163,12 @@
 					var data = jQuery.parseJSON(objs);
 					//var data = page.list;
 					if (data == "") {
-						alert("没有数据!");
+						//提示
+					    layer.open({
+					    	content: '没有数据！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
 					} else {
 						var result = ''
 						for (var i = 0; i < data.length; i++) {
@@ -231,38 +202,35 @@
 	
 	
 						}
-/* 						//分页参数
-						var x="/";
-						var frist=page.status + x + page.frist + x + page.pageNum;
-						var xia=page.status + x + page.xia   + x + page.pageNum;
-						var shang=page.status + x + page.shang + x + page.pageNum;
-						var last=page.status + x + page.last  + x + page.pageNum;
-						
-						//分页标签
-						result+="<tr> \
-				   					<th> \
-				   					<a title='" + frist + "' 	onclick='statusHref("+ frist +");'>首页</a> \
-				   					<a title='" + xia + "' 		onclick='statusHref("+ xia +");'>下一页</a> \
-				   					<a title='" + shang + "' 	onclick='statusHref("+ shang +");'>上一页</a> \
-				   					<a title='" + last + "' 	onclick='statusHref("+ last +");'>未页</a> \
-				   					</th> \
-			   					</tr>"; */
 						$('.oallCont_cont_list').append(result);
 	
 					}
 				},
 				error : function(xhr, type) {
-					alert('Ajax error!');
+						//提示
+					    layer.open({
+					    	content: 'Ajax error',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
 				}
 			});
 		}
 	
 		//状态
 		function statusHref(status) {
-			$('.oallCont_cont_list').html("");
-			//var tt=status.toString().split(".");
-			//status=tt.length>1?tt[1]:status;
-			loadmore(status);
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还没有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+						return false;
+					}			
+					$('.oallCont_cont_list').html("");
+					loadmore(status);
 		}
 	</script>
 		<!-- 验证身份 初级验证 -->
@@ -272,7 +240,7 @@
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -285,20 +253,30 @@
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>

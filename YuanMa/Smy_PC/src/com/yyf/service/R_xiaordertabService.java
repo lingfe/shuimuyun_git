@@ -83,7 +83,7 @@ public interface R_xiaordertabService {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	void orderSbmit( String xiaId,String shopType,float shopNumer, int shopzholiang,String timeString,String kuaikeId);
+	void orderSbmit( String xiaId,String shopType,float shopNumer, int shopzholiang,String timeString,String kuaikeId,double shopprices);
 	
 	/**
 	 * 

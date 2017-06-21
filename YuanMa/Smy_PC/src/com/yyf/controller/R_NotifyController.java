@@ -16,8 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.jdom.JDOMException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,14 +29,15 @@ import com.yyf.service.R_zhinotifyService;
 @Controller
 @RequestMapping("/shuimuyun")
 public class R_NotifyController {
+	
+	//自动装配
+	@Autowired
 	private R_zhinotifyService r_zhinotifyService;
-	public static Logger logger = Logger.getLogger(R_NotifyController.class);
 
-	@RequestMapping(value = "/zhifu", method = RequestMethod.GET)
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value = "/zhifu" , method = RequestMethod.POST)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 接收微信响应充值情况
-		logger.info("接收到Post");
 		InputStream inputStream;
 		StringBuffer sb = new StringBuffer();
 		inputStream = request.getInputStream();
@@ -45,9 +46,9 @@ public class R_NotifyController {
 		while ((s = in.readLine()) != null) {
 			sb.append(s);
 		}
+		
 		in.close();
 		inputStream.close();
-		logger.info("sb:" + sb);
 		Map<String, String> m = new HashMap<String, String>();
 		try {
 			m = XMLUtil.doXMLParse(sb.toString());
@@ -57,6 +58,7 @@ public class R_NotifyController {
 		}
 
 		SortedMap<Object, Object> packageParams = new TreeMap<Object, Object>();
+		
 		Iterator it = m.keySet().iterator();
 		while (it.hasNext()) {
 			String parameter = (String) it.next();
@@ -69,18 +71,19 @@ public class R_NotifyController {
 		}
 		// 账号信息
 		Properties p = new Properties();
-		InputStream input = test.class.getResourceAsStream("/payConfig.properties");
+		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
 		try {
 			p.load(input);
 			String key = String.valueOf(p.get("API_KEY")); // key
-			logger.info("packageParams:" + packageParams);
+			System.out.println("key:"+key);
 			// 判断签名是否正确
 			if (PayCommonUtil.isTenpaySign("UTF-8", packageParams, key)) {
 				// ------------------------------
 				// 处理业务开始
 				// ------------------------------
 				String resXml = "";
-				if ("SUCCESS".equals((String) packageParams.get("return_code"))) {
+				System.out.println("out_trade_no:"+packageParams.get("out_trade_no"));
+				if ("SUCCESS".equals((String) packageParams.get("result_code"))) {
 					// 支付成功 执行自己的业务逻辑
 					String appid = (String) packageParams.get("appid");
 					String mch_id = (String) packageParams.get("mch_id");
@@ -100,22 +103,19 @@ public class R_NotifyController {
 
 					r_zhinotifyService.UpdateOrder(openid, is_subscribe, out_trade_no, bank_type, cash_fee, nonce_str,
 							result_code, return_code, sign, time_end, transaction_id, total_fee);// 保存数据库
+					System.out.println("out_trade_no:"+out_trade_no);
+					String xiaXid = r_zhinotifyService.SelectXIa(out_trade_no);// 获取xiaid
 
-					logger.info("mch_id:" + mch_id);
-					logger.info("openid:" + openid);
-					logger.info("is_subscribe:" + is_subscribe);
-					logger.info("out_trade_no:" + out_trade_no);
-					logger.info("total_fee:" + total_fee);
-
+					System.out.println("xiaXid:"+xiaXid);
+					
+					r_zhinotifyService.UpdatePayment(xiaXid);//更改付款状态
 					// 执行自己的业务逻辑
-					logger.info("支付成功");
-
+					System.out.println("修改成功");
 					// 通知微信.异步确认成功.必写.不然会一直通知后台.八次之后就认为交易失败了.
 					resXml = "<xml>" + "<return_code><![CDATA[SUCCESS]]></return_code>"
 							+ "<return_msg><![CDATA[OK]]></return_msg>" + "</xml> ";
 
 				} else {
-					logger.info("支付失败,错误信息：" + packageParams.get("err_code"));
 					resXml = "<xml>" + "<return_code><![CDATA[FAIL]]></return_code>"
 							+ "<return_msg><![CDATA[报文为空]]></return_msg>" + "</xml> ";
 				}
@@ -125,7 +125,7 @@ public class R_NotifyController {
 				out.flush();
 				out.close();
 			} else {
-				logger.info("通知签名验证失败");
+				System.out.println("通知签名验证失败");
 			}
 
 		} catch (Exception e) {
@@ -133,9 +133,9 @@ public class R_NotifyController {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doget(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doPost(request, response);
 	}
 }

@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/lCalendar.css"/>
 	<script>
 			setTimeout(function() {
 				$("body").show();
@@ -36,7 +37,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: .35rem;
 			line-height: .35rem;
 		}
-		
+		.order_tan_clos input {
+			width: 1.5rem;
+			outline: none;
+			border: none; 
+		}
+		.xiadan{
+			line-height: .4rem;
+			margin-left: 20px;
+			color: #333;			
+		}
+		.mony{
+			transform: translateY(10px);
+			margin-left:20px;
+		}
+		.botto{
+			border:none;
+		}
+		.shijiankaung{
+			width: 1rem !important;
+			border: none !important;
+		}
+		.gearDate, .gearDatetime, .gearTime{
+		    background-color: rgba(0, 0, 0, 0.8) !important;
+		}
+		.shopprices{
+			text-align: right;
+		}
 	</style>
 	
 	</head>
@@ -95,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最晚取货时间</label>
 				<div class="order_right"id="order_right3">
-					<span id="shijian1">1小时15分</span>
+					<input class="shijiankaung" id="de" type="text" readonly="" name="input_date" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -104,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最迟到达时间</label>
 				<div class="order_right"id="order_right2">
-					<span id="shijian">1时15分</span>
+					<input class="shijiankaung" id="dee" type="text" readonly="" name="input_date" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -115,6 +142,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="order_clar">无</span>
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
+			</div>
+		</div>
+		<div class="order_info">
+			<div class="order_tan_clos botto">
+			<img class="mony" src="<%=basePath%>APP/images/icon/mony.png" width="30"/>
+				<a class="xiadan">下单金额</a>
+				<input class="shopprices" type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
+				<span>元</span>
 			</div>
 		</div>
 		<!--确定按钮-->
@@ -161,45 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--弹窗三-->
 		
 		
-		<div class="order_tan2"id="order_tan2">
-			<div class="order_tan_clos2">
-				<span>最晚到达时间</span>
-				<span class="mui-icon mui-icon-close order_close" id="order_close2"></span>
-			</div>
-			<div class="order_tan_context2"  id="order_tex2">
-				<div class="order_shi">
-					<span>时</span>
-					<input type="number" id="num_shi"/>
-				</div>
-				<div class="order_fen">
-					<span>分</span>
-					<input type="number" id="num_fen" />
-				</div>
-				<input class="order_butt" type="button" id="butt" value="取消" />
-				<input class="order_buttn" type="button" id="buttn" value="确定" />
-				
-			</div>
-			
-		</div>
-		<!--弹窗四-->
-		<div class="order_tan2"id="order_tan3">
-			<div class="order_tan_clos3">
-				<span>最迟取货达时间</span>
-				<span class="mui-icon mui-icon-close order_close" id="order_close3"></span>
-			</div>
-			<div class="order_tan_context3"  id="order_tex3">
-				<div class="order_shi3">
-					<span>时</span>
-					<input type="number" id="num_shi1"/>
-				</div>
-				<div class="order_fen3">
-					<span>分</span>
-					<input type="number" id="num_fen1" />
-				</div>
-				<input class="order_butt3" type="button" id="butt1" value="取消" />
-				<input class="order_buttn3" type="button" id="buttn1" value="确定" />				
-			</div>			
-		</div>		
+	
 		
 		
 		<!--底部-->
@@ -235,32 +232,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/lCalendar.js" ></script>
 		<script type="text/javascript">
 		$(function(){
 			//表单提交
 			$("#ok_order").click(function(){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				//初始化验证
 				//获取下单id
 				var xiaId=$("#xiaId").val();
 				if(xiaId==""){
-					alert("请填写收货人或发货人信息");
+					 layer.open({
+				    	content: '请填写收货人货发货人信息！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				var kuaikeId=$("#kuaikeId").val();
 				if(kuaikeId==""){
-					alert("请登录！");
+					 layer.open({
+				    	content: '请登录！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				
 				
 				//验证发货人是否填写
 				if(fa(xiaId)==false){
-					alert("发货人是否填写？");
+					 layer.open({
+				    	content: '请填写发货人信息！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				//验证收货人是否填写
 				if(shou(xiaId)==false){
-					alert("收货人是否填写？");
+					layer.open({
+				    	content: '请填写收货人信息！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					return false;
 				}
 				
@@ -271,21 +295,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//得到货物重量
 				var shopzholiang=$("#zhi1").val();
 				//最快取货时间
-				var timeString=$("#shijian").text();
+				var timeString=$("#de").val();
+				//取得下单金额
+				var shopprices=$("#shopprices").val();
 				//url
-				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId;
-				//alert(url);
+				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId+"/"+shopprices;
 				//ajax提交
 				$.ajax({
 					url : 'xiaordertab/orderSbmit/'+url,
 					type : 'POST',
+					contentType:"application/x-www-form-urlencoded;charset=urf-8",
 					success : function(data) {
-						alert("下单成功");
+							//提示
+						    layer.open({
+						    	content: '下单成功！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 						//跳转到首页
-						window.location.href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge";
+						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+							//提示
+						    layer.open({
+						    	content: 'Ajax error！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 					},
 					async:false
 				});
@@ -300,6 +336,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				url : 'xiaordertab/xiaorderInfoAjax/'+xiaId,
 				type : 'POST',
 				dataType : 'html',
+				contentType:'application/x-www-form-urlencoded; charset=UTF-8',
 				success : function(data) {
 					var obj = jQuery.parseJSON(data);
 					if(obj.kuaikeName!=null){
@@ -309,7 +346,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				},
 				error : function(xhr, type) {
-					alert('Ajax error!');
+					layer.open({
+				    	content: '提交错误！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 				},
 				async:false
 			});
@@ -325,6 +366,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				url : 'xiaordertab/xiaorderInfoAjax/'+xiaId,
 				type : 'POST',
 				dataType : 'html',
+				contentType:'application/x-www-form-urlencoded; charset=UTF-8',
 				success : function(data) {
 					var obj = jQuery.parseJSON(data);
 					if(obj.shouhuoName!=null){
@@ -335,7 +377,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				},
 				error : function(xhr, type) {
-					alert('Ajax error!');
+					layer.open({
+				    	content: '提交错误！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 				},
 				async:false
 			});
@@ -349,7 +395,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -362,20 +408,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>
@@ -400,6 +456,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	return false;
 		}
 	})
+	</script>
+	<script>
+		var calendartime = new lCalendar();
+			calendartime.init({
+				'trigger': '#de',
+				'type': 'time'
+			});
+			var calendartime = new lCalendar();
+			calendartime.init({
+				'trigger': '#dee',
+				'type': 'time'
+			});
 	</script>
 	</body>
 </html>

@@ -46,7 +46,7 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />  
 	
 	<!-- 文件上传 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	<bean id="multipartResolver" p:defaultEncoding="UTF-8" p:maxUploadSize="90000000"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 	<!--解析返回JSON -->
 	<bean

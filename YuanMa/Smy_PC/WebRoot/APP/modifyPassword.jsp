@@ -61,11 +61,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
 			//修改密码
 	$("#pwdbtn").click(function(){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 		var lastpwd = $("#lastpwd").val();
 		var chpwd = $("#chpwd").val();
 		var yespwd = $("#yespwd").val();
 		var pwdYzm = $("#pwdYzm").val();
-		if(lastpwd=="") {
+		if(lastpwd=="" || !(/^[a-zA-Z\d_]{6,16}$/.test(lastpwd))) {
 			//提示
 		    layer.open({
 		    	content: '请输入原登录密码',
@@ -74,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	});
 			return false;
 		}
-		else if(chpwd=="") {
+		else if(chpwd=="" || !(/^[a-zA-Z\d_]{6,16}$/.test(chpwd))) {
 			//提示
 		    layer.open({
 		    	content: '请输入新登录密码',
@@ -83,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	});
 			return false;
 		}
-		else if(yespwd == "") {
+		else if(yespwd == "" || !(/^[a-zA-Z\d_]{6,16}$/.test(yespwd))) {
 			//提示
 		    layer.open({
 		    	content: '请再次输入新登录密码',
@@ -111,6 +121,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	})
 	$("#pwdYzmBtn").click(function() {
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 	var kuaikePhone = $("#rekuaikePhone").val();
 		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
@@ -143,6 +163,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	})
 			
+		</script>
+		<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+		//询问框
+		layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还没有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
+			}
+		}
 		</script>
 	</body>
 </html>

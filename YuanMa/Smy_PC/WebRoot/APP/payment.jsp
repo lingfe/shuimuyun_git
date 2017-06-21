@@ -387,6 +387,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script>
 			$(function() {
 				$(".paymentList_position").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还没有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+					}
 					if($(this).find("span").is(":hidden")) {
 						$(this).find("span").css("display","block");
 						$(this).parent().siblings().find("span").css("display","none");
@@ -398,6 +407,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 				
 				$("#paymentBtn").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还没有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+					  	return false;
+					}
 					if($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
 						//var tipsFont = "请选择支付方式！";
 						//var payTipts = "<div class='payTipts'>"+tipsFont+"</div>";
@@ -416,10 +435,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$(".balModal_cont").slideDown(500);
 					}
 					else if(!($("#paymentSelect span").is(":hidden"))) {
-						alert("支付宝支付")
+						layer.open({
+				    	content: '支付宝支付！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					}
 					else if(!($("#wxSelect span").is(":hidden"))) {
-						alert("微信支付")
+						layer.open({
+				    	content: '微信支付！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 					}
 				})
 				
@@ -452,20 +479,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 				
 				$("#payDel").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还没有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+					  	return false;
+					}
 					if(i > 0) {
 						i--;
 						$(".balModal_contPwd input").eq(i).val("");
 						$(".balModal_contPwd input").eq(i).removeClass("bg");
 						i == 0;
 					}
-					alert(i)
-				})
+					/* alert(i); */
+				});
 				
 				//关闭弹窗
 				$(".balModal_cont").css("display","none")
 				$(".balModal_title").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还没有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+					  	return false;
+					}
 					$(".balModal_cont").slideUp(500);
-					
 					setTimeout(function() {
 						window.location.reload();
 						$(".balModal").hide();

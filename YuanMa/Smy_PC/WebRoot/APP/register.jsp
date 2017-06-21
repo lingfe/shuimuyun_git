@@ -44,11 +44,11 @@
 	
 			<div class="loginCont">
 				<form class="loginCont_form" action="register" method="post">
-					<div class="loginCont_form_item mui-input-row">
+<%-- 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/user.png" /> <input
 							class="loginCont_form_itemAll mui-input-clear right" id="userName"
 							type="text" name="kuaikeName" placeholder="请输入用户名" />
-					</div>
+					</div> --%>
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
 						<input class="loginCont_form_itemAll mui-input-clear right" id="forgePhone" type="text" name="kuaikePhone" placeholder="请输入手机号码" />
@@ -62,7 +62,7 @@
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/pwd.png" /> <input
 							class="right loginCont_form_itemAll mui-input-password"
-							id="regPwd" name="password" type="text" placeholder="请输入密码" />
+							id="regPwd" name="password" type="password" placeholder="请输入密码" />
 					</div>
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/oksuo.png" /> <input

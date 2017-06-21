@@ -17,7 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.jdom.JDOMException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +38,6 @@ import com.yyf.service.R_zhiordertabService;
 @Controller
 @RequestMapping("/zhiordertab")
 public class R_zhiordertabController {
-	public static Logger logger = Logger.getLogger(R_zhiordertabController.class);
 
 	// 自动装配 创建订单、获取二维码
 	@Autowired
@@ -55,7 +53,6 @@ public class R_zhiordertabController {
 		int a = (int) fee;
 		String total = String.valueOf(a);
 		String xiaId = request.getParameter("xiaid");// 下单id 商品id
-		logger.info("total_fee:" + total_fee + "xiaId:" + xiaId);
 		String out_trade_no = System.currentTimeMillis() + getRandomString(5);
 		String order_no = System.currentTimeMillis() + getRandomString(3);
 		String body = "下单申请...";// 商品信息
@@ -66,7 +63,7 @@ public class R_zhiordertabController {
 				shopName);// 保存数据库
 
 		Properties p = new Properties();
-		InputStream input = test.class.getResourceAsStream("/payConfig.properties");
+		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
 		InetAddress ia = null;
 		try {
 			p.load(input);
@@ -80,9 +77,10 @@ public class R_zhiordertabController {
 			packageParams.put("out_trade_no", out_trade_no);
 			packageParams.put("total_fee", total);
 			ia = ia.getLocalHost();
-			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
-//			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
+//			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
+			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
 			packageParams.put("notify_url", String.valueOf(p.get("NOTIFY_URL")));
+			System.out.println("notify_url:"+String.valueOf(p.get("NOTIFY_URL")));
 			packageParams.put("trade_type", trade_type);
 			// packageParams.put("product_id", product_id);
 			request.setAttribute("out_trade_no", out_trade_no);
@@ -97,16 +95,12 @@ public class R_zhiordertabController {
 			Map map;
 			try {
 				map = XMLUtil.doXMLParse(resXml);
-				logger.info("map:" + map);
 				String result_code = (String) map.get("result_code");// 返回状态码
 				if ("SUCCESS".equals(result_code)) {
 					// 统一下单接口返回成功，获取二维码地址
 					String urlCode = (String) map.get("code_url");
 					String prepay_id = (String) map.get("prepay_id");// 预支付交易会话标识
 					String return_trade_type = (String) map.get("trade_type"); // 交易类型
-					logger.info("urlCode:" + urlCode);
-					logger.info("prepay_id:" + prepay_id);
-					logger.info("return_trade_type:" + return_trade_type);
 					long time_stamp = System.currentTimeMillis() / 1000; // 时间戳
 					SortedMap<Object, Object> packageParams1 = new TreeMap<Object, Object>();
 					packageParams1.put("appid", String.valueOf(p.get("APP_ID")));
@@ -123,7 +117,6 @@ public class R_zhiordertabController {
 					String str = ToUrlParams(packageParams1);
 					String payurl = urlCode;
 
-					// logger.info("请求URL:" + payurl);
 					// 生成二维码
 					Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
 					// 指定纠错等级
@@ -191,6 +184,5 @@ public class R_zhiordertabController {
 		double fee = Double.parseDouble(total_fee) * 100;
 		int a = (int) fee;
 		String total = String.valueOf(a);
-		logger.info("total:" + total);
 	}
 }

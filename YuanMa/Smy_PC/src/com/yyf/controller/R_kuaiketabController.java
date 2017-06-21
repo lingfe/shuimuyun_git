@@ -68,44 +68,66 @@ public class R_kuaiketabController {
 	 * @param kuaikeId				快客id
 	 */
 	@RequestMapping(value="/updateSFZImages",method=RequestMethod.POST)
-	public String updateSFZImages(@RequestParam(value = "file1", required = false) MultipartFile file1,
-			@RequestParam(value = "file2", required = false) MultipartFile file2,
+	public String updateSFZImages(@RequestParam(value = "files", required = false) MultipartFile[] files,
 			@RequestParam("kuaikeId") String kuaikeId,HttpServletRequest request,ModelMap model){
 		// 获取到当前服务器项目的跟路径
 		String path = request.getSession().getServletContext().getRealPath("upload");
 
-		// 文件1
-		String fileName1 = file1.getOriginalFilename();
-		File targetFile1 = new File(path, fileName1);
-		if (!targetFile1.exists()) {
-			targetFile1.mkdirs();
-		}
-
-		// 文件2
-		String fileName2 = file2.getOriginalFilename();
-		File targetFile2 = new File(path, fileName2);
-		if (!targetFile2.exists()) {
-			targetFile2.mkdirs();
-		}
-
 		// 保存
 		try {
+			
+			for (int i = 0; i < files.length; i++) {
+				
+				MultipartFile	file=files[i];
+				// 文件1
+				String fileName = file.getOriginalFilename();
+				
+				File targetFile = new File(path, fileName);
+				if (!targetFile.exists()) {
+					targetFile.mkdirs();
+				}
+				
+				//保存
+				file.transferTo(targetFile);
+				
+			}
+			
+			/*// 文件1
+			String fileName1 = file1.getOriginalFilename();
+			File targetFile1 = new File(path, fileName1);
+			if (!targetFile1.exists()) {
+				targetFile1.mkdirs();
+			}
+	
+			// 文件2
+			String fileName2 = file2.getOriginalFilename();
+			File targetFile2 = new File(path, fileName2);
+			if (!targetFile2.exists()) {
+				targetFile2.mkdirs();
+			}
+
 			file1.transferTo(targetFile1);
-			file2.transferTo(targetFile2);
+			file2.transferTo(targetFile2);*/
+			
+
+			// 身份证复印件文件
+			String kuaikeShenfenZF= request.getContextPath() + "/upload/" + files[0].getOriginalFilename()+",";
+			kuaikeShenfenZF+=request.getContextPath() + "/upload/" + files[1].getOriginalFilename();
+			// 手拿身份证图片
+			String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + files[2].getOriginalFilename();
+			
+			
+			kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);
+			R_kuaiketab selectUser = kuaiketabService.selectUser(kuaikeId);
+			model.addAttribute("login", selectUser);
+			return "APP/myInfo";
 		} catch (Exception e) {
 			e.printStackTrace();
+			// 提示
+			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.IMAGES_SIZE));
+			return "APP/perfectData_secondStep";
 		}
 
-		// 身份证复印件文件
-		String kuaikeShenfenZF= request.getContextPath() + "/upload/" + fileName1;
-		// 手拿身份证图片
-		String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + fileName2;
-		
-		
-		kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);
-		R_kuaiketab selectUser = kuaiketabService.selectUser(kuaikeId);
-		model.addAttribute("login", selectUser);
-		return "APP/myInfo";
 	}
 	
 	
@@ -162,7 +184,7 @@ public class R_kuaiketabController {
 			//保存
 			kuaiketabService.addUser(tab);
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SBMIT_OK));
-			return "APP/register";
+			return "APP/login";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.ERROR));
@@ -298,8 +320,10 @@ public class R_kuaiketabController {
 
 		// 简单判断对象是否为空
 		if (login != null) {
-			//修改快客登陆状态
-			kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(), login.getKuaikeId());
+			if(login.getKuaikeStatus()!=0){
+				//修改快客登陆状态
+				kuaiketabService.updateKuaikeStatus(R_kuaiketabStatusEnum.ZX.ordinal(), login.getKuaikeId());
+			}
 			model.addAttribute("login", login);
 
 			if ("on".equals(repassword)) {

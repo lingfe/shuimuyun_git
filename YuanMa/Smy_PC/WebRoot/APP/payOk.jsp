@@ -76,14 +76,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<body style="background: #fff; width: 100%; height: 100%;position: absolute;">
 		<!--【头部】-->
 		<header class="commHeader">
-			<a class="commHeader_l" href="javascript :history.back(-1);">
+			<a class="commHeader_l" href="javascript:history.back(-1);">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/arow_left.png" />
 			</a>
-			<p>充值成功</p>
+			<p>交易成功</p>
 		</header>
 		<!--内容-->
 		<img class="czcg_img" src="APP/images/icon/czcg.png" width="100%" />
-		<p class="czcg_p">充值成功</p>
+		<p class="czcg_p">交易成功</p>
 		<div class="czcg_text">
 			<div class="czcg_text_div">
 				<span>银行卡</span>
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>￥0.01</span>
 			</div>
 		</div>
-		<button class="czcg_btn">完成</button>
+		<a href="RequestMappingUtil/requestNUll/APP/myOrder"><button class="czcg_btn">完成</button></a>
     
     <script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
   </body>

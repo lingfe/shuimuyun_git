@@ -68,18 +68,31 @@ public class R_kuaiketabController {
 	 * @param kuaikeId				快客id
 	 */
 	@RequestMapping(value="/updateSFZImages",method=RequestMethod.POST)
-	public String updateSFZImages(@RequestParam(value = "file1", required = false) MultipartFile file1,
-			@RequestParam(value = "file2", required = false) MultipartFile file2,
+	public String updateSFZImages(@RequestParam(value = "files", required = false) MultipartFile[] files,
 			@RequestParam("kuaikeId") String kuaikeId,HttpServletRequest request,ModelMap model){
 		// 获取到当前服务器项目的跟路径
 		String path = request.getSession().getServletContext().getRealPath("upload");
-		System.out.println("***************************");
-		System.out.println(file1.getSize());
-		System.out.println(file2.getSize());
-		
+
 		// 保存
 		try {
-			// 文件1
+			
+			for (int i = 0; i < files.length; i++) {
+				
+				MultipartFile	file=files[i];
+				// 文件1
+				String fileName = file.getOriginalFilename();
+				
+				File targetFile = new File(path, fileName);
+				if (!targetFile.exists()) {
+					targetFile.mkdirs();
+				}
+				
+				//保存
+				file.transferTo(targetFile);
+				
+			}
+			
+			/*// 文件1
 			String fileName1 = file1.getOriginalFilename();
 			File targetFile1 = new File(path, fileName1);
 			if (!targetFile1.exists()) {
@@ -94,13 +107,14 @@ public class R_kuaiketabController {
 			}
 
 			file1.transferTo(targetFile1);
-			file2.transferTo(targetFile2);
+			file2.transferTo(targetFile2);*/
 			
 
 			// 身份证复印件文件
-			String kuaikeShenfenZF= request.getContextPath() + "/upload/" + fileName1;
+			String kuaikeShenfenZF= request.getContextPath() + "/upload/" + files[0].getOriginalFilename()+",";
+			kuaikeShenfenZF+=request.getContextPath() + "/upload/" + files[1].getOriginalFilename();
 			// 手拿身份证图片
-			String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + fileName2;
+			String kuaikeShouchiSFZ=request.getContextPath() + "/upload/" + files[2].getOriginalFilename();
 			
 			
 			kuaiketabService.updateSFZImages(kuaikeShenfenZF, kuaikeShouchiSFZ, kuaikeId);

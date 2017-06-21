@@ -77,8 +77,8 @@ public class R_zhiordertabController {
 			packageParams.put("out_trade_no", out_trade_no);
 			packageParams.put("total_fee", total);
 			ia = ia.getLocalHost();
-			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
-//			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
+//			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
+			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
 			packageParams.put("notify_url", String.valueOf(p.get("NOTIFY_URL")));
 			packageParams.put("trade_type", trade_type);
 			// packageParams.put("product_id", product_id);

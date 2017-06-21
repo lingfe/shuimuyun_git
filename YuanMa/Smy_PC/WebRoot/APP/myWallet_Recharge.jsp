@@ -399,6 +399,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script>
 			$(function() {
 				$(".paymentList_position").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还木有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+						return false;
+					}
 					if($(this).find("span").is(":hidden")) {
 						$(this).find("span").css("display","block");
 						$(this).parent().siblings().find("span").css("display","none");
@@ -410,6 +420,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 				
 				$("#paymentBtn").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还木有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+						return false;
+					}
 					//快客Id
 				var kuaikeId = $("#kuaikeId").val();
 				//获取到余额值
@@ -452,6 +472,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//模拟输入6位密码
 				var i = 0;
 				$(".balModal_contNumer .num").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还木有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+						return false;
+					}
 					var len = $(".balModal_contPwd input").length;
 					//var _val = $(".balModal_contPwd input").index();
 					//var _this = $(this).index();
@@ -495,6 +525,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 				
 				$("#payDel").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还木有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+						return false;
+					}
 					if(i > 0) {
 						i--;
 						$(".balModal_contPwd input").eq(i).val("");
@@ -507,6 +547,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//关闭弹窗
 				$(".balModal_cont").css("display","none")
 				$(".balModal_title").click(function() {
+					//验证审核
+					if("${login.kuaikeStatus}"==0){
+						//提示
+					    layer.open({
+					    	content: '您的身份还木有通过审核！',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+						return false;
+					}
 					$(".balModal_cont").slideUp(500);
 					
 					setTimeout(function() {
@@ -515,6 +565,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					},500)
 				})
 			})
+		</script>
+		<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+		//询问框
+		layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还木有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
+			}
+		}
 		</script>
 	</body>
 </html>

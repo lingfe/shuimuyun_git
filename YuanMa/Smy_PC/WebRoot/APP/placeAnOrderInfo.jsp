@@ -36,6 +36,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--【头部】end-->
 		<div class="courier_firsttit">
 			${info.status==0?'未接单':''}
+			${info.payment==0?',未付款||<a href="xiaordertab/setYuEPam/APP/myWallet_Recharge/':''}
+			${info.payment==0? info.xiaId:''}?sh=
+			${info.payment==0? info.shopprices:''}
+			${info.payment==0? '">点击付款</a>':''}
+			
 			${info.status==1?'已接单,未发货':'' }
 			${info.status==2?'已到达,未确认':'' } 
 			${info.status==3?'交易结束(已确认)':'' }
@@ -108,20 +113,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>

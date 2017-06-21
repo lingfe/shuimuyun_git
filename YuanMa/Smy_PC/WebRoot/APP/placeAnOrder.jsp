@@ -237,6 +237,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(function(){
 			//表单提交
 			$("#ok_order").click(function(){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				  	return false;
+				}
 				//初始化验证
 				//获取下单id
 				var xiaId=$("#xiaId").val();
@@ -274,19 +284,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var shopprices=$("#shopprices").val();
 				//url
 				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId+"/"+shopprices;
-				//alert(url);
 				//ajax提交
 				$.ajax({
 					url : 'xiaordertab/orderSbmit/'+url,
 					type : 'POST',
 					contentType:"application/x-www-form-urlencoded;charset=urf-8",
 					success : function(data) {
-						alert("下单成功");
+							//提示
+						    layer.open({
+						    	content: '下单成功！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 						//跳转到首页
-						window.location.href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge";
+						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+							//提示
+						    layer.open({
+						    	content: 'Ajax error！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 					},
 					async:false
 				});
@@ -365,20 +384,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//询问框
-				layer.open( {
-					anim: 'up',
-					shadeClose: false,
-					content: '您的资料还没有完善？',
-					btn: ['完善资料','取消'],
-					yes:function(index){
-						layer.close(index);
-						window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-					},
-					no:function(index){
-						layer.close(index);
-					}  
-				});
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还木有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
 			}
 		}
 		</script>

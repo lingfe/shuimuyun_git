@@ -367,16 +367,17 @@ public class R_xiaordertabController {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}/{kuaikeId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}/{kuaikeId}/{shopprices}", method = RequestMethod.POST)
 	public @ResponseBody String orderSbmit(@PathVariable("xiaId") String xiaId,
 			@PathVariable("shopType") String shopType, @PathVariable("shopNumer") float shopNumer,
 			@PathVariable("shopzholiang") int shopzholiang,
 			@PathVariable("timeString") String timeString,
-			@PathVariable("kuaikeId") String kuaikeId,HttpServletRequest request) {
+			@PathVariable("kuaikeId") String kuaikeId,@PathVariable("shopprices") double shopprices,HttpServletRequest request) {
 		try {
-			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString,kuaikeId);
+			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString,kuaikeId,shopprices);
 			//清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
+			request.getSession().setAttribute("sh", shopprices);
 			request.getSession().removeValue("xiaId");
 			return "下单成功";
 		} catch (Exception e) {

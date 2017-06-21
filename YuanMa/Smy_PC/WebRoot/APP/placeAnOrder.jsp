@@ -36,6 +36,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: .35rem;
 			line-height: .35rem;
 		}
+		.order_tan_clos input {
+			width: 1.5rem;
+			outline: none;
+			border: none; 
+		}
+		.xiadan{
+			line-height: .4rem;
+			margin-left: 20px;
+			color: #333;			
+		}
 		
 	</style>
 	
@@ -115,6 +125,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="order_clar">无</span>
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
+			</div>
+		</div>
+		<div class="order_info">
+			<div class="order_tan_clos">
+				<a class="xiadan">下单金额</a>
+				<input type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
+				<span>元</span>
 			</div>
 		</div>
 		<!--确定按钮-->
@@ -272,8 +289,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var shopzholiang=$("#zhi1").val();
 				//最快取货时间
 				var timeString=$("#shijian").text();
+				//取得下单金额
+				var shopprices=$("#shopprices").val();
 				//url
-				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId;
+				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId+"/"+shopprices;
 				//alert(url);
 				//ajax提交
 				$.ajax({

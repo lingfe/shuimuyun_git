@@ -320,9 +320,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="paymentTop">
 			<div class="paymentTop_l">应付金额：</div>
-			<input type="text" value="￥0.01" />
+			<input type="text" readonly="readonly" name="shopprices" value="${sessionScope.sh }"/>
 		</div>
-		
+		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<div class="paymentList">
 			<div class="paymentList_item">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/balance.png" width="25" /> 余额
@@ -350,8 +350,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="hidden" name="xiaId" value="123456">
 				<input type="hidden" name="shopName" value="test">
 			</div>
-<!-- 		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" /> -->
-		<a class="paymentBtn" id="paymentBtn" href="RequestMappingUtil/requestNUll/APP/payOk">立即付款</a>
+		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" /> 
+<!-- 		<a class="paymentBtn" id="paymentBtn" href="RequestMappingUtil/requestNUll/APP/payOk">立即付款</a> -->
 		
 		<!--【余额支付弹窗】-->
 		<div class="balModal">
@@ -360,7 +360,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="balModal_title">请输入密码</div>
 					<div class="balModal_contBal">
 						账户余额
-						<span>可用余额：<i>35.60</i>元</span>
+						<span>可用余额：<i id="balance"></i>元</span>
 					</div>
 					<div class="balModal_contPwd">
 						<input type="password" value="">
@@ -409,29 +409,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 				
 				$("#paymentBtn").click(function() {
-					if($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
-						//var tipsFont = "请选择支付方式！";
-						//var payTipts = "<div class='payTipts'>"+tipsFont+"</div>";
-						//$(".paymentList").append(payTipts);
-						layer.open({
-					    	content: '请选择支付方式',
-					    	skin: 'msg',
-					    	time: 2
-					  	});
-						return false;
-						
+					//快客Id
+				var kuaikeId = $("#kuaikeId").val();
+				//获取到余额值
+				var balance=$("#balance").html();
+				//余额支付Ajax请求
+				$.ajax({
+					url : 'queryBalance/' + kuaikeId,
+					type : 'POST',
+					dataType:'json',
+					//请求成功后触发
+					success : function(data) {
+						//为<i><i>添加余额值
+						$("#balance").html(data.balance);
+	
+						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
+	
+							layer.open({
+								content : '请选择支付方式',
+								skin : 'msg',
+								time : 2
+							});
+							return false;
+	
+						} else if (!($("#balaceSelect span").is(":hidden"))) {
+	
+							$(".balModal").show();
+							$(".balModal_cont").slideDown(500);
+	
+						} else if (!($("#paymentSelect span").is(":hidden"))) {
+							alert("支付宝支付")
+						} else if (!($("#wxSelect span").is(":hidden"))) {
+							alert("微信支付")
+						}
 					}
-					else if(!($("#balaceSelect span").is(":hidden"))) {
-						//出现弹窗
-						$(".balModal").show();
-						$(".balModal_cont").slideDown(500);
-					}
-					else if(!($("#paymentSelect span").is(":hidden"))) {
-						alert("支付宝支付")
-					}
-					else if(!($("#wxSelect span").is(":hidden"))) {
-						alert("微信支付")
-					}
+				});
+	
 				})
 				
 				

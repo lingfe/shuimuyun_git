@@ -1,5 +1,7 @@
 package com.yyf.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,18 @@ public class BalancetabServiceImpl implements BalancetabService {
 		
 		balancetabMapper.updateBalance(balance, kuaikeId,zhifupwd);
 		
+	}
+
+
+	/**
+	 * @author 杨杰     
+	 * @created 2017年6月22日 上午11:36:18  
+	 * @return
+	 */
+	@Override
+	public List<Balancetab> queryallbalance() {
+		List<Balancetab> queryallbalance = balancetabMapper.queryallbalance();
+		return queryallbalance;
 	}
  
 }

@@ -1,11 +1,9 @@
 package com.yyf.controller;
 
-import javax.ws.rs.Path;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,12 +11,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yyf.model.Balancetab;
 import com.yyf.service.BalancetabService;
+import com.yyf.service.R_xiaordertabService;
 
 @Controller
 public class BalancetabController {
 
 	@Autowired
 	private BalancetabService balancetabService;
+	
+	//下单注入
+	@Autowired
+	private R_xiaordertabService xiaordertabService;
 
 	/**
 	 * 根据快客ID获取到个人账户的余额
@@ -34,11 +37,14 @@ public class BalancetabController {
 	public Balancetab queryBalance(ModelMap model, @PathVariable("kuaikeId") String kuaikeId) {
 
 		Balancetab queryBalance = balancetabService.queryBalance(kuaikeId);
+		
+		if(!StringUtils.isEmpty(queryBalance)){
+			
+			return queryBalance;
+		}else{
 
-		model.addAttribute("qBalance", queryBalance);
-
-		return queryBalance;
-
+			return null;
+		}
 	}
 
 	/**
@@ -52,12 +58,14 @@ public class BalancetabController {
 	 *            下单Id
 	 * @return
 	 */
-	@RequestMapping(value = "/updateBalance/{balance}/{kuaikeId}/{zhifupwd}", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateBalance/{balance}/{kuaikeId}/{zhifupwd}/{xiaId}", method = RequestMethod.POST)
 	@ResponseBody
 	public void updateBalance(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
-			@PathVariable("zhifupwd") String zhifupwd) {
-		
-		 balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
+			@PathVariable("zhifupwd") String zhifupwd,@PathVariable("xiaId") String xiaId) {
+			
+			xiaordertabService.updatePayment(xiaId);
+			
+			balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
 	
 	}
 

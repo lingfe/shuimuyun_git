@@ -17,11 +17,11 @@ a:link, a:visited, a:hover, a:active { color: #333; outline: none; }
 	.browser { width: 100%; }
 }
 /*选择地区*/
-.express-area {background-color: #fff; margin-left: 10px;}
+.express-area {background-color: #fff;}
 .express-area a { display: block; background: url(../images/icon/link-arrow.png) no-repeat 98% 50%; background-size: .1rem .1rem; }
 .express-area dl { position: relative;  }
 .express-area dl dt { position: absolute; top: 0; left: 0; font-size: .12rem;height: .3rem; line-height: .3rem; }
-.express-area dl dd {margin-left: 1.1rem; text-align: justify; font-size: .12rem; height: .3rem; line-height: .3rem; }
+.express-area dl dd {margin-left: .7rem; text-align: justify; font-size: .12rem; height: .3rem; line-height: .3rem; }
 @media (min-width: 721px) and (max-width: 1300px) {
 	.express-area dl dt { font-size: .12rem; }
 	.express-area dl dd { padding-right: .6rem; margin-left: 3rem; font-size: .12rem;  }

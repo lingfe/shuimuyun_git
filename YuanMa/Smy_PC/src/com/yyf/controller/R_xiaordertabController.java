@@ -7,13 +7,11 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -97,8 +95,9 @@ public class R_xiaordertabController {
 			@RequestParam(value="sh",required=false,defaultValue="0.01")double sh,
 			HttpServletRequest request){
 		request.getSession().removeAttribute("sh");
+		request.getSession().removeAttribute("xiaId");
 		request.getSession().setAttribute("sh", sh);
-		
+		request.getSession().setAttribute("xiaId", xiaId);
 		return i+"/"+pageName;
 	}
 	
@@ -373,13 +372,14 @@ public class R_xiaordertabController {
 	 * @param kuaikePhone
 	 * @param kuaikeAddressInfo
 	 */
-	@RequestMapping(value="/fa/{xiaId}/{kuaikeName}/{kuaikePhone}/{kuaikeAddressInfo}",method=RequestMethod.POST)
+	@RequestMapping(value="/fa/{xiaId}/{kuaikeName}/{kuaikePhone}/{kuaikeAddress}/{kuaikeAddressInfo}",method=RequestMethod.POST)
 	public @ResponseBody void fa(@PathVariable("kuaikeName")String kuaikeName,
 			@PathVariable("kuaikePhone")String kuaikePhone,
+			@PathVariable("kuaikeAddress") String kuaikeAddress,
 			@PathVariable("xiaId") String xiaId,
 			@PathVariable("kuaikeAddressInfo")String kuaikeAddressInfo){
 		//发货人信息
-		r_xiaordertabService.fa(kuaikeName, kuaikePhone, xiaId, kuaikeAddressInfo);
+		r_xiaordertabService.fa(kuaikeName, kuaikePhone,kuaikeAddress, xiaId, kuaikeAddressInfo);
 	}
 	
 	/**
@@ -391,13 +391,14 @@ public class R_xiaordertabController {
 	 * @param shouhuoPhone			收货人电话
 	 * @param shouhuoAddressInfo	收货人地址详情
 	 */
-	@RequestMapping(value="/shou/{xiaId}/{shouhuoName}/{shouhuoPhone}/{shouhuoAddressInfo}",method=RequestMethod.POST)
+	@RequestMapping(value="/shou/{xiaId}/{shouhuoName}/{shouhuoPhone}/{shouhuoAddress}/{shouhuoAddressInfo}",method=RequestMethod.POST)
 	public @ResponseBody void shou(@PathVariable("shouhuoName")String shouhuoName,
 								@PathVariable("shouhuoPhone")String shouhuoPhone,
+								@PathVariable("shouhuoAddress") String shouhuoAddress,
 								@PathVariable("xiaId") String xiaId,
 								@PathVariable("shouhuoAddressInfo")String shouhuoAddressInfo,HttpServletRequest request){
 		//收货人信息
-		r_xiaordertabService.shou(shouhuoName, shouhuoPhone, xiaId, shouhuoAddressInfo);
+		r_xiaordertabService.shou(shouhuoName, shouhuoPhone, shouhuoAddress,xiaId, shouhuoAddressInfo);
 	}
 	
 	/**

@@ -6,15 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_qiangordertab;
@@ -147,5 +140,7 @@ public interface R_qiangordertabMapper {
 	 */
 	@Select("SELECT * FROM qiangordertab AS q INNER JOIN kuaiketab k ON q.`kuaikeId`=k.`kuaikeId` where k.kuaikeId=#{kuaikeId}")
 	public List<R_qiangordertab> queryQiangOrderBykuaikeId(@Param("kuaikeId") String kuaikeId);
+	
+
 
 }

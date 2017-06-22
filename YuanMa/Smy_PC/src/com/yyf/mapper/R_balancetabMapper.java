@@ -1,5 +1,7 @@
 package com.yyf.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -36,7 +38,13 @@ public interface R_balancetabMapper {
 	@Update("update balancetab set balance=#{balance} where kuaikeId=#{kuaikeId} and zhifupwd=#{zhifupwd}")
 	public void updateBalance(@Param("balance") double balance,@Param("kuaikeId") String kuaikeId,@Param("zhifupwd") String zhifupwd);
 	
-	
+	/**
+	 * 得到所有的账户信息
+	 * @author 杨杰     
+	 * @created 2017年6月22日 上午11:34:58  
+	 * @return
+	 */
+	public List<Balancetab> queryallbalance();
 	
 	
 }

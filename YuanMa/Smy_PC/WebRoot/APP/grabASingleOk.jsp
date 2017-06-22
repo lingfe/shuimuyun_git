@@ -103,8 +103,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>我的信息</span>
 			</div>
 			<div class="taking_div_last" id="order_right2">
-				<span class="shijianspan">取货时间</span>
-				<input class="shijianint" id="de" type="text" readonly="" name="input_date" placeholder="请输入时间"/>
+				<span class="shijianspan">最晚取货时间</span>
+				<input class="shijianint" type="text" readonly=""/>
+				<%-- <img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" /> --%>
+			</div>
+			<div class="taking_div_last" id="order_right2">
+				<span class="shijianspan">最迟到达时间</span>
+				<input class="shijianint" type="text" readonly=""/>
 				<%-- <img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" /> --%>
 			</div>
 		</div>
@@ -230,13 +235,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 		</script>
-		<script>
+		<!-- <script>
 		var calendartime = new lCalendar();
 			calendartime.init({
 				'trigger': '#de',
 				'type': 'time'
 			});
-	</script>
+	</script> -->
 	<script type="text/javascript">
 		$(".order_buttom_text").click(function(){
 		if($(this).find(".dis").is(":hidden")) {

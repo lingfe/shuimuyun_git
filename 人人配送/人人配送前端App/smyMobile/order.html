@@ -8,12 +8,16 @@
 		<link rel="stylesheet" href="css/layer.css" />
 		<link rel="stylesheet" type="text/css" href="css/smyMobile.css"/>
 		<link rel="stylesheet" href="css/lCalendar.css" />
+		<link rel="stylesheet" href="css/IMGUP.css" />
 	</head>
 	<script type="text/javascript" src="js/lCalendar.js" ></script>
 	<style>
 		.shijiankaung{
 			width: 1rem !important;
 			border: none !important;
+		}
+		.order_btn_btnimg{
+			margin-bottom:.4rem;
 		}
 	</style>
 	<body>
@@ -95,6 +99,15 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="shang_img">			
+			<!--图片预览容器-->
+			<div id="div_imglook">
+				<div style="clear: both;"></div>
+			</div>
+			<!--图片选择对话框-->
+			<div id="div_imgfile">上传货物照片</div>
+		</div>
 		<!--确定按钮-->
 		<div class="order_buttom">
 			<div class="order_buttom_text" id="order_buttom_text">
@@ -102,7 +115,7 @@
 			<img src="images/icon/yuan.png"class="dis" width="19" />
 			<label> 我同意 《水木云快递条约》</label>
 			</div>
-			<a href="#"><button class="order_btn" id="taking_btn">确认下单</button></a>
+			<a href="#"><button class="order_btn order_btn_btnimg" id="taking_btn btn_ImgUpStart">确认下单</button></a>
 		</div> 
 		<!--遮罩层-->
 		<div class="order_zhe"id="order_zhe"></div>
@@ -158,12 +171,13 @@
 				<p class="ss">我的</p>
 			</a>
 		</footer>
-		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
 		<script type="text/javascript" src="js/mui.min.js" ></script>
 		<script type="text/javascript" src="js/smyMobile.js" ></script>
 		<script type="text/javascript" src="js/layer.js" ></script>
 		<script type="text/javascript" src="js/smyMobile_yz.js" ></script>
 		<script type="text/javascript" src="js/smyMobile_click.js" ></script>
+		<script type="text/javascript" src="js/IMGUP.js" ></script>
 		<script>
 		var calendartime = new lCalendar();
 			calendartime.init({

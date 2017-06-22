@@ -15,7 +15,7 @@ window.onload = function() {
 			zhi.value = s - 2;
 			if(s == 2) {
 				layer.open({
-					content: '货物数量不能小于0',
+					content: '亲至少买一件吧',
 					skin: 'msg',
 					time: 1
 				});

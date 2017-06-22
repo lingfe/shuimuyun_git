@@ -342,6 +342,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<input class="paymentBtn" id="paymentBtn" type="button" value="立即支付" />
 		
+		<div class="scan">请识别二维码支付
+				<img
+					src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=${sessionScope.xiaId}&shouprices=${sessionScope.pricse }&shopName=好吃的" />
+		</div>
+		
 		<!--【余额支付弹窗】-->
 		<div class="balModal">
 			<div class="balModal_po">

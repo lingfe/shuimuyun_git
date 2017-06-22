@@ -49,13 +49,17 @@ public class R_zhiordertabController {
 			throws ServletException, IOException {
 		String total_fee = request.getParameter("shouprices");// 商品价格
 		String shopName = request.getParameter("shopName");// 商品名称
+		String xiaId = request.getParameter("xiaid");// 下单id 商品id
+		System.out.println("xiaid:"+xiaId);
+		System.out.println("total_fee:"+total_fee);
+		System.out.println("shopName:"+shopName);
 		double fee = Double.parseDouble(total_fee) * 100;
 		int a = (int) fee;
 		String total = String.valueOf(a);
-		String xiaId = request.getParameter("xiaid");// 下单id 商品id
+		
 		String out_trade_no = System.currentTimeMillis() + getRandomString(5);
 		String order_no = System.currentTimeMillis() + getRandomString(3);
-		String body = "下单申请...";// 商品信息
+		String body = "下单请求...";// 商品信息
 		String trade_type = "NATIVE";// 交易类型
 		String product_id = getRandomString(5) + System.currentTimeMillis();
 

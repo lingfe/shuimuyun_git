@@ -6,14 +6,14 @@ window.onload = function() {
 	var zhi = document.querySelector("#zhi");
 	var zhi1 = document.querySelector("#zhi1");
 	for(var i = 0; i < jia.length; i++) {
-		var s = zhi.value;
+		/*var s = zhi.value;*/
 		jia[0].onclick = function() {
-			zhi.value = s;
-			s++;
+			zhi.value ++;
+			/*s++;*/
 		}
 		jian[0].onclick = function() {
-			zhi.value = s - 2;
-			if(s == 2) {
+			/*zhi.value = s - 2*/;
+			if(zhi.value == 1) {
 				layer.open({
 					content: '亲至少买一件吧',
 					skin: 'msg',
@@ -21,28 +21,48 @@ window.onload = function() {
 				});
 				return false;
 			} else {
-				s--;
+				zhi.value--;
 			}
 
 		}
 	}
 	for(var i = 0; i < jia.length; i++) {
-		var a = zhi1.value;
+		/*var a = zhi1.value;*/
 		jia[1].onclick = function() {
-			zhi1.value = a;
-			a++;
+			zhi1.value ++;
+			/*a++;*/
 		}
 		jian[1].onclick = function() {
-			zhi1.value = a - 2;
-			if(a == 2) {
+			/*zhi1.value = a - 2;*/
+			if(zhi1.value == 1) {
 				layer.open({
-					content: '货物重量不能小于0',
+					content: '货物重量不能小于1',
 					skin: 'msg',
 					time: 1
 				});
 				return false;
 			} else {
-				a--;
+				zhi1.value--;
+			}
+
+		}
+	}
+	for(var i = 0; i < jia.length; i++) {
+		/*var b = zhi11.value;*/
+		jia[2].onclick = function() {
+			zhi11.value ++;
+		}
+		jian[2].onclick = function() {
+			
+			if(zhi11.value == 1) {
+				layer.open({
+					content: '货物体积不能小于1',
+					skin: 'msg',
+					time: 1
+				});
+				return false;
+			} else {
+				zhi11.value --;
 			}
 
 		}

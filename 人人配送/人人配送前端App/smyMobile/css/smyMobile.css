@@ -43,28 +43,28 @@ html {
 input {
 	-webkit-appearance: none;
 }
-
+button:active {
+	opacity: 0.8;
+}
 ::-webkit-input-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.14rem;
 }
 
 ::-moz-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.14rem;
 }
 
 ::-moz-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.14rem;
 }
 
 :-ms-input-placeholder {
 	color: #929292;
-	font-size: 0.12rem;
+	font-size: 0.14rem;
 }
-
-
 /*【重定义浏览器默认样式】end*/
 
 

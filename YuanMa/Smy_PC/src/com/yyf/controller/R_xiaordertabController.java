@@ -57,6 +57,16 @@ public class R_xiaordertabController {
 	/***********************************       public APP和PC端共用                     ************************/
 	/***********************************************************************************************/
 	
+	/**
+	 * 
+	 * 抢单流程，到达目的地后修改下单抢单状态
+	 * @author lijie    
+	 * @created 2017年6月22日 上午11:41:35  
+	 * @param i				app/pc
+	 * @param pageName		页面名称
+	 * @param xiaId			下单id
+	 * @return		url
+	 */
 	@RequestMapping(value="/getShowCode/{i}/{pageName}",method=RequestMethod.GET)
 	public String getShowCode(@PathVariable("i")String i,@PathVariable("pageName")String pageName,
 			@RequestParam(value="xiaId",required=false)String xiaId){

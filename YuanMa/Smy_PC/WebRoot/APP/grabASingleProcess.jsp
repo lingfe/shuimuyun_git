@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div  class="dom_shouhuo_ldiv l">
 				${info.status==1?'已抢单,未取货':''}
 				${info.status==2?'已取货,未送达':'' }
-				${info.status==3?'已到达,未确认':'' } 
+				${info.status==3?'已送达':'' } 
 			</div>
 		<!-- 抢单状态  end -->
 		

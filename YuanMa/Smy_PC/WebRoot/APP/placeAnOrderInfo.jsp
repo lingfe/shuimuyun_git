@@ -44,7 +44,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			${info.status==1?'已接单,未发货':'' }
 			${info.status==2?'已到达,未确认':'' } 
-			${info.status==3?'交易结束(已确认)':'' }
+			${info.status==3?'交易结束(已确认)||<a href="javascript:void(0);':'' }
+			${info.status==3?'">':'' }
+			${info.status==3?'去评价':'' }
+			${info.status==3?'</a>':'' }
+			
 			${info.status==4?'已评论':'' }
 		</div>
 		<div class="courier_firsttit_con">

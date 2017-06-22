@@ -1,5 +1,7 @@
 package com.yyf.controller;
 
+import javax.ws.rs.Path;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,11 +22,12 @@ public class BalancetabController {
 
 	/**
 	 * 根据快客ID获取到个人账户的余额
-	 * @author 杨杰     
-	 * @created 2017年6月21日 下午4:02:43  
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月21日 下午4:02:43
 	 * @param model
 	 * @param kuaikeId
-	 * @return  一个实体对象  解析为json数据格式
+	 * @return 一个实体对象 解析为json数据格式
 	 */
 	@RequestMapping(value = "/queryBalance/{kuaikeId}", method = RequestMethod.POST)
 	@ResponseBody
@@ -36,6 +39,26 @@ public class BalancetabController {
 
 		return queryBalance;
 
+	}
+
+	/**
+	 * 通过余额付款
+	 * 
+	 * @author 杨杰
+	 * @created 2017年6月21日 下午9:39:28
+	 * @param balance
+	 *            余额
+	 * @param xiaId
+	 *            下单Id
+	 * @return
+	 */
+	@RequestMapping(value = "/updateBalance/{balance}/{kuaikeId}/{zhifupwd}", method = RequestMethod.POST)
+	@ResponseBody
+	public void updateBalance(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
+			@PathVariable("zhifupwd") String zhifupwd) {
+		
+		 balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
+	
 	}
 
 }

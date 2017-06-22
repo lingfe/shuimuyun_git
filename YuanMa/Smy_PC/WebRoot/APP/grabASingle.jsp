@@ -190,6 +190,10 @@
 				margin-top: -0.15rem;
 				z-index: 999;
 			}
+			.text_p{
+			font-size:.11rem !important;
+			width:1.9rem;
+			}
 		</style>
 		<script>
 			setTimeout(function() {
@@ -396,8 +400,8 @@
 							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
-												<p class='text_1_hide'>发单地址：" + data[i].kuaikeAddressInfo + "</p> \
-												<p class='text_1_hide'>收货地址：" + data[i].shouhuoAddressInfo + "kg</p> \
+												<p class='text_1_hide text_p'>发：" + data[i].kuaikeAddressInfo + "</p> \
+												<p class='text_1_hide text_p'>收：" + data[i].shouhuoAddressInfo + "kg</p> \
 												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";
@@ -428,7 +432,7 @@
 				
 				//url
 				var url= $("#"+i).attr("title");
-				//alert(url);
+				var str=url.toString().substring("/",url.toString().indexOf("/"));
 				//通过ajax添加记录
 				$.ajax({
 					url : 'r_qiangordertabController/insertAjax/'+url,
@@ -437,13 +441,23 @@
 					success : function(objs) {
 						if(objs){
 							$("#"+i).hide(500);
+							layer.open({
+					    		content: '抢单成功！',
+					    		skin: 'msg',
+					    		time: 2
+					  		});
+							window.location.href="xiaordertab/queryIdStatus/${login.kuaikeId}/0/"+str;
 						}else{
 							qiangdanAjax(i);
 					    	$(".grabTips").html("抢单失败");
 						}
 					},
 					error : function(xhr, type) {
-						alert('Ajax error!');
+						layer.open({
+				    		content: '提交错误！',
+				    		skin: 'msg',
+				    		time: 2
+				  		});
 						
 					}
 				});

@@ -2,6 +2,7 @@ package com.yyf.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.yyf.model.Balancetab;
 
@@ -23,6 +24,19 @@ public interface R_balancetabMapper {
 	 */
 	@Select("select * from balancetab where kuaikeId=#{kuaikeId}")
 	public Balancetab queryBalance(@Param("kuaikeId") String kuaikeId);
+	
+	/**
+	 * 通过余额付款
+	 * @author 杨杰     
+	 * @created 2017年6月21日 下午9:39:28
+	 * @param balance 余额
+	 * @param xiaId 下单Id
+	 * @return 
+	 */
+	@Update("update balancetab set balance=#{balance} where kuaikeId=#{kuaikeId} and zhifupwd=#{zhifupwd}")
+	public void updateBalance(@Param("balance") double balance,@Param("kuaikeId") String kuaikeId,@Param("zhifupwd") String zhifupwd);
+	
+	
 	
 	
 }

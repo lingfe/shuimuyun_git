@@ -17,15 +17,26 @@ public class Balancetab {
 	
 	private  double balance;//余额
 	
-	private String xiaId;//下单ID
-
-	public String getXiaId() {
-		return xiaId;
+	private double deposit;//押金
+	
+	public double getDeposit() {
+		return deposit;
 	}
 
-	public void setXiaId(String xiaId) {
-		this.xiaId = xiaId;
+	public void setDeposit(double deposit) {
+		this.deposit = deposit;
 	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	private int status;//状态
+
 
 	public String getBalanceId() {
 		return balanceId;
@@ -36,19 +47,23 @@ public class Balancetab {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	
+
 	@Override
 	public String toString() {
 		return "Balancetab [balanceId=" + balanceId + ", kuaikeId=" + kuaikeId + ", zhifupwd=" + zhifupwd + ", balance="
-				+ balance + ", xiaId=" + xiaId + "]";
+				+ balance + ", deposit=" + deposit + ", status=" + status + "]";
 	}
 
-	public Balancetab(String balanceId, String kuaikeId, String zhifupwd, double balance, String xiaId) {
+	public Balancetab(String balanceId, String kuaikeId, String zhifupwd, double balance, double deposit, int status) {
 		super();
 		this.balanceId = balanceId;
 		this.kuaikeId = kuaikeId;
 		this.zhifupwd = zhifupwd;
 		this.balance = balance;
-		this.xiaId = xiaId;
+		this.deposit = deposit;
+		this.status = status;
 	}
 
 	public void setBalanceId(String balanceId) {

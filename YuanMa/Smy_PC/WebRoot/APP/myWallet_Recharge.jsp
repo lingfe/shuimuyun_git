@@ -320,7 +320,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="paymentTop">
 			<div class="paymentTop_l">应付金额：</div>
-			<input type="text" readonly="readonly" name="shopprices" value="${sessionScope.sh }"/>
+			<input type="text" readonly="readonly" id="sho" name="shopprices" value="${sessionScope.sh }"/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<div class="paymentList">
@@ -363,12 +363,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span>可用余额：<i id="balance"></i>元</span>
 					</div>
 					<div class="balModal_contPwd">
-						<input type="password" value="">
-						<input type="password" value="">
-						<input type="password" value="">
-						<input type="password" value="">
-						<input type="password" value="">
-						<input type="password" value="">
+						<input type="password" value="" name="a" id="a">
+						<input type="password" value="" name="b" id="b">
+						<input type="password" value="" name="c" id="c">
+						<input type="password" value="" name="d" id="d">
+						<input type="password" value="" name="e" id="e">
+						<input type="password" value="" name="f" id="f">
 					</div>
 					<a class="balModal_contLink" href="#">忘记密码？</a>
 					<div class="balModal_contNumer">
@@ -402,7 +402,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -423,7 +423,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -458,9 +458,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							$(".balModal_cont").slideDown(500);
 	
 						} else if (!($("#paymentSelect span").is(":hidden"))) {
-							alert("支付宝支付")
+							layer.open({
+				    	content: '支付宝支付！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 						} else if (!($("#wxSelect span").is(":hidden"))) {
-							alert("微信支付")
+							layer.open({
+				    	content: '微信支付！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 						}
 					}
 				});
@@ -475,7 +483,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -499,7 +507,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   				 	$("body").append(jz);//把元素加载body
 						setTimeout(function(){
 							$(".jzCont").remove();
-							window.location.href="<%=basePath %>APP/payOk.jsp";
+								
+								var balance=Number($("#balance").html()-$("#sho").val());
+								var kuaikeId=$("#kuaikeId").val();
+								var zhifupwd=$("#a").val()+$("#b").val()+$("#c").val()+$("#d").val()+$("#e").val()+$("#f").val();
+							   $.ajax({
+							    url : "updateBalance/"+ balance+"/"+kuaikeId+"/"+zhifupwd,
+								type : 'POST',
+								//请求成功后触发
+								success : function(data) {
+												//提示
+								    layer.open({
+								    	content: '支付成功...',
+								    	skin: 'msg',
+								    	time: 2
+								  	});
+									window.location.href="APP/payOk.jsp";
+								},
+							   error:function(){
+							   
+							  		alert("错误");
+							   
+							   }
+							   
+							   })
+							
+							
 						},800);
 					 }
 					
@@ -510,7 +543,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -532,7 +565,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if("${login.kuaikeStatus}"==0){
 						//提示
 					    layer.open({
-					    	content: '您的身份还木有通过审核！',
+					    	content: '您的身份还没有通过审核！',
 					    	skin: 'msg',
 					    	time: 2
 					  	});
@@ -554,7 +587,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		layer.open( {
 				anim: 'up',
 				shadeClose: false,
-				content: '您还木有登陆？',
+				content: '您还没有登陆？',
 				btn: ['登录', '注册'],
 				yes:function(index){
 					layer.close(index);
@@ -571,7 +604,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if("${login.kuaikeStatus}"==0){
 					//提示
 				    layer.open({
-				    	content: '您的身份还木有通过审核！',
+				    	content: '您的身份还没有通过审核！',
 				    	skin: 'msg',
 				    	time: 2
 				  	});

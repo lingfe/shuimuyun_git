@@ -1,5 +1,7 @@
 package com.yyf.service;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.yyf.model.Balancetab;
 
 /**
@@ -19,6 +21,17 @@ public interface BalancetabService {
 	 * @return
 	 */
 	public Balancetab queryBalance(String kuaikeId);
+	
+	
+	/**
+	 * 通过余额付款
+	 * @author 杨杰     
+	 * @created 2017年6月21日 下午9:39:28
+	 * @param balance 余额
+	 * @param xiaId 下单Id
+	 * @return 
+	 */
+	public void updateBalance(double balance,String kuaikeId,String zhifupwd);
 	
 	
 }

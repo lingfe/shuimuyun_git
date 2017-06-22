@@ -14,7 +14,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">   
+	<!--电话标签 --> 
+	<meta name="format-detection" content="telephone=no" />
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
@@ -61,12 +63,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>地址</span>
 			</div>
 			<div>
+			<a href="tel:${info.shouhuoAddressInfo}">
 				<span>收货人：</span>
 				<span>${info.shouhuoAddressInfo}</span>
+			</a>
 			</div>
 			<div>
+			<a href="tel:${info.kuaikeAddressInfo}">
 				<span>发货人：</span>
 				<span>${info.kuaikeAddressInfo}</span>
+			</a>
 			</div>
 		</div>
 		<div class="courier_last_con taking_last_con">

@@ -141,7 +141,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param pageIndex 当前页
 	 * @param pageNum 页容量
 	 */
-	@Select("SELECT * FROM xiaordertab where status=#{status} LIMIT #{pageIndex},#{pageNum}")
+	@Select("SELECT * FROM xiaordertab where status=#{status} AND payment=1 LIMIT #{pageIndex},#{pageNum}")
 	List<R_xiaordertab> statusQueryPaging(@Param("status")int status,@Param("pageIndex") int pageIndex,@Param("pageNum")int pageNum);
 	
 	/**
@@ -230,7 +230,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @author lijie
 	 * @created 2017年5月19日 上午11:36:19
 	 * @param xiaId
-	 *            下单id
+	 * 下单id
 	 */
 	@Delete("DELETE FROM xiaordertab WHERE xiaId=#{xiaId}")
 	void delete(@Param("xiaId") String xiaId);
@@ -248,7 +248,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年6月17日 上午10:08:48  
 	 * @return
 	 */
-	@Select("SELECT * FROM xiaordertab WHERE status=0")
+	@Select("SELECT * FROM xiaordertab WHERE status=0  AND payment=1")
 	public List<R_xiaordertab> queryAllXOrderByStatusTo0();
 	
 	

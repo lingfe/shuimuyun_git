@@ -39,9 +39,9 @@
 	        });
 }
 function Start(){
-       setInterval(methodJS, 12000); 
+       setInterval(methodJS, 1000); 
 }
-setTimeout(Start, 2000);//延迟7秒开始周期回调
+setTimeout(Start, 5000);//延迟5秒开始周期回调
 	
 	
 	

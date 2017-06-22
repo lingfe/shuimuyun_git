@@ -830,10 +830,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					},
 					error : function(xhr, type) {
 						layer.open({
-				    	content: '提交错误！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
+					    	content: '提交错误！',
+					    	skin: 'msg',
+					    	time: 2
+				  		});
 					},
 					async:false
 				});

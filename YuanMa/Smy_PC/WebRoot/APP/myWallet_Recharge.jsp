@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				margin-top: 0.5rem;
 			}
 			.paymentTop_l {
-				width: 0.7rem;
+				width: 0.8rem;
 				height: 0.4rem;
 				line-height: 0.4rem;
 				color: #999;
@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				position: relative;
 				overflow: hidden;
 				width: 100%;
-				height: 1.2rem;
+				height: 1.6rem;
 				background: rgb(255,255,255);
 				font-size: 0.12rem;
 				margin-top: 0.1rem;
@@ -346,7 +346,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			
 			<div class="paymentList_item">
-				<img title="" alt="" src="<%=basePath %>APP/images/icon/qrcode.png" width="25" /> 二维码付款
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/erweima.png" width="25" /> 二维码付款
 				<div class="paymentList_position" id="wxQrcode">
 					<span></span>
 				</div>
@@ -361,8 +361,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="hidden" name="xiaId" value="123456">
 				<input type="hidden" name="shopName" value="test">
 			</div>
-<!-- 		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" />  -->
-		<a class="paymentBtn" id="paymentBtn" href="RequestMappingUtil/requestNUll/APP/qrcode">立即付款</a>
+		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" /> 
+		
 		
 		
 		
@@ -446,7 +446,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						return false;
 					}
 					
-						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
+						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden") && $("#wxQrcode").is(":hidden")) {
 	
 							layer.open({
 								content : '请选择支付方式',
@@ -472,6 +472,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    	skin: 'msg',
 						    	time: 2
 						  	});
+						}
+						 else if (!($("#wxQrcode span").is(":hidden"))) {
+							layer.open({
+						    	content: '扫码支付！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
+						  	
+						  	window.location.href="RequestMappingUtil/requestNUll/APP/qrcode";
 						}
 					//快客Id
 					var kuaikeId = $("#kuaikeId").val();

@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		${info.status==3?'交易结束(已确认)':'' }
 		${info.status==4?'已评论':'' }</title>
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <!--电话标签-->
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -50,9 +51,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="cour_div_1"><img src="<%=basePath%>APP/images/user.jpg"/></div>
 			<div class="cour_div_2">${login.kuaikeName }</div>
 			<div class="cour_div_3">
+			<a href="tel:${login.kuaikePhone }">
 				<span><img src="<%=basePath%>APP/images/icon/courphone.png" width="12"/></span>
 				<span>${login.kuaikePhone }</span>
 			</div>
+			</a>
 			<div class="cour_div_4">快递员的位置：</div>
 			<div class="cour_div_5">
 				<span><img src="<%=basePath%>APP/images/icon/adds_oreng.png" width="15"/></span>

@@ -15,8 +15,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">   
-	<!--电话标签 --> 
-	<meta name="format-detection" content="telephone=no" />
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
@@ -62,17 +60,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span><img src="<%=basePath%>APP/images/icon/adds_b.png" width="15"/></span>
 				<span>地址</span>
 			</div>
-			<div>
-			<a href="tel:${info.shouhuoAddressInfo}">
+			<div>		
 				<span>收货人：</span>
-				<span>${info.shouhuoAddressInfo}</span>
-			</a>
+				<span>${info.shouhuoAddressInfo}</span>		
 			</div>
-			<div>
-			<a href="tel:${info.kuaikeAddressInfo}">
+			<div>			
 				<span>发货人：</span>
 				<span>${info.kuaikeAddressInfo}</span>
-			</a>
 			</div>
 		</div>
 		<div class="courier_last_con taking_last_con">
@@ -112,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--确定按钮-->
 		 <div class="order_buttom taking_btn">
 			<div class="order_buttom_text">
-			<img class="op" src="<%=basePath%>APP/images/icon/dui.png"width="20"/>
+			<img class="op" src="<%=basePath%>APP/images/icon/yuandui.png"width="19"/>
 			<img style="display: none;" src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
 			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>

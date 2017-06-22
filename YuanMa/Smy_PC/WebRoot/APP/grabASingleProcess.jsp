@@ -12,6 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <title>抢单流程</title>
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <!--电话标签-->
+    <meta name="format-detection" content="telephone=no" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -65,12 +67,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="dom_shouhuo_ldiv">
 				<div class="ldiv_ren">
+				
 					<span>收货人：</span>
 					<span>${info.shouhuoName }</span>
 				</div>
 				<div class="ldiv_phone">
+				<a href="tel:${info.shouhuoShone }">
 					<img src="<%=basePath%>APP/images/icon/courphone.png" width="15" />
 					<span>${info.shouhuoShone }</span>
+					</a>
 				</div>
 				<div class="ldiv_adds">
 					<img src="<%=basePath%>APP/images/icon/adds_oreng.png" width="15" />
@@ -88,8 +93,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span>${info.kuaikeName }</span>
 				</div>
 				<div class="ldiv_phone">
+				<a href="tel:${info.kuaikePhone }">
 					<img src="<%=basePath%>APP/images/icon/courphone.png" width="15" />
 					<span>${info.kuaikePhone }</span>
+				</a>
 				</div>
 				<div class="ldiv_adds">
 					<img src="<%=basePath%>APP/images/icon/adds_oreng.png" width="15" />

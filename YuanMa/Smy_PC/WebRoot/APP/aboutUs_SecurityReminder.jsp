@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title></title>
+    <title>安全提醒</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -57,9 +57,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="anqCont_item">
 				<h4>一、通过本信息服务平台发布的事项信息所涉物品的范围重量限定</h4>
 				<p>重量限定</p>
-				<p>单件货物重量不得＞100公斤</p>
+				<p>单件货物重量不得＞50公斤</p>
 				<p>体积限定</p>
-				<p>单件货物三边之和不得＞150CM</p>
+				<p>单件货物任意一边≤100cm</p>
 				<p>金额限制</p>
 				<p>物品价值不得＞5000元人民币</p>
 				<p>区域限制</p>

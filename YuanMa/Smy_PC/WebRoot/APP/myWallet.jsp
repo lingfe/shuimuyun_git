@@ -166,8 +166,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					type : 'post',
 					dataType:'json',
 					success : function(data) {
-						$("#ba").html("￥"+data.balance);
-						$("#de").html("￥"+data.deposit);
+						if(data!="" && data!=null){
+							$("#ba").html("￥"+data.balance);
+							$("#de").html("￥"+data.deposit);
+						}else{
+							$("#ba").html("￥"+"00.00");
+							$("#de").html("￥"+"00.00");
+						
+						}
+					
+						
 					}
 				});
 			})

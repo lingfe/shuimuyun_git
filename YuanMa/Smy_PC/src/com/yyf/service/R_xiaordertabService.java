@@ -3,8 +3,7 @@ package com.yyf.service;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Select;
-
+import com.yyf.model.Balancetab;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
 
@@ -56,7 +55,7 @@ public interface R_xiaordertabService {
 	 * @param kuaikePhone			快客电话
 	 * @param kuaikeAddressInfo		快客详细地址
 	 */
-	void fa(String kuaikeName,String kuaikePhone,String xiaId,String kuaikeAddressInfo);
+	void fa(String kuaikeName,String kuaikePhone,String kuaikeAdress,String xiaId,String kuaikeAddressInfo);
 	
 	/**
 	 * 
@@ -68,7 +67,7 @@ public interface R_xiaordertabService {
 	 * @param shouhuoPhone			收货人电话
 	 * @param shouhuoAddressInfo	收货人地址详情
 	 */
-	void shou(String shouhuoName,String shouhuoPhone, String xiaId,String shouhuoAddressInfo);
+	void shou(String shouhuoName,String shouhuoPhone, String shouhuoAddress,String xiaId,String shouhuoAddressInfo);
 	
 	/**
 	 * 
@@ -210,5 +209,12 @@ public interface R_xiaordertabService {
 	 */
 	public List<R_xiaordertab> queryAllXOrderByStatusTo0();
 	
+	/**
+	 * 根据XiaId修改支付状态
+	 * @author 杨杰     
+	 * @created 2017年6月22日 上午10:15:01  
+	 * @param xiaId 下单Id
+	 */
+	public void updatePayment(String xiaId);
 
 }

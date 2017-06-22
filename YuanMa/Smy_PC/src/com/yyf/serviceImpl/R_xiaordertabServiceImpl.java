@@ -47,13 +47,13 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	}
 	
 	@Override
-	public void fa(String kuaikeName, String kuaikePhone, String xiaId, String kuaikeAddressInfo) {
-		ir_xiaordertabMapper.fa(kuaikeName, kuaikePhone, xiaId, kuaikeAddressInfo);
+	public void fa(String kuaikeName, String kuaikePhone,String kuaikeAddress, String xiaId, String kuaikeAddressInfo) {
+		ir_xiaordertabMapper.fa(kuaikeName, kuaikePhone,kuaikeAddress, xiaId, kuaikeAddressInfo);
 	}
 	
 	@Override
-	public void shou(String shouhuoName, String shouhuoPhone, String xiaId, String shouhuoAddressInfo) {
-		ir_xiaordertabMapper.shou(shouhuoName, shouhuoPhone, xiaId, shouhuoAddressInfo);
+	public void shou(String shouhuoName, String shouhuoPhone,String shouhuoAddress, String xiaId, String shouhuoAddressInfo) {
+		ir_xiaordertabMapper.shou(shouhuoName, shouhuoPhone,shouhuoAddress, xiaId, shouhuoAddressInfo);
 	}
 	
 	@Override
@@ -154,6 +154,18 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 		List<R_xiaordertab> statusTo0List = ir_xiaordertabMapper.queryAllXOrderByStatusTo0();
 		
 		return statusTo0List;
+	}
+
+	/**
+	 * 根据下单Id修改支付状态
+	 * @author 杨杰     
+	 * @created 2017年6月22日 上午10:17:47  
+	 * @param xiaId  下单Id
+	 */
+	@Override
+	public void updatePayment(String xiaId) {
+		ir_xiaordertabMapper.updatePayment(xiaId);
+		
 	}
 
 }

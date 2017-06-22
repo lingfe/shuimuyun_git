@@ -1,5 +1,7 @@
 package com.yyf.service;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.yyf.model.Balancetab;
@@ -33,5 +35,10 @@ public interface BalancetabService {
 	 */
 	public void updateBalance(double balance,String kuaikeId,String zhifupwd);
 	
-	
+	/**
+	 * @author 杨杰     
+	 * @created 2017年6月22日 上午11:35:45  
+	 * @return
+	 */
+	public List<Balancetab> queryallbalance();
 }

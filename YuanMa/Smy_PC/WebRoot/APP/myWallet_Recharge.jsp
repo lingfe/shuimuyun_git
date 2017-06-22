@@ -342,16 +342,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span></span>
 				</div>
 			</div>
+			
+			<div class="paymentList_item">
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/qrcode.png" width="25" /> 二维码付款
+				<div class="paymentList_position" id="wxQrcode">
+					<span></span>
+				</div>
+			</div>
+			
 		</div>
 		
 		<div>
+		<input type="text" style="visibility: hidden;" name="xiaId" id="xiaId" value="${sessionScope.xiaId }">
 				<samp class="sam"></samp>
 				<input type="hidden" name="shopprices" value="0.01">
 				<input type="hidden" name="xiaId" value="123456">
 				<input type="hidden" name="shopName" value="test">
 			</div>
-		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" /> 
-<!-- 		<a class="paymentBtn" id="paymentBtn" href="RequestMappingUtil/requestNUll/APP/payOk">立即付款</a> -->
+<!-- 		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" />  -->
+		<a class="paymentBtn" id="paymentBtn" href="RequestMappingUtil/requestNUll/APP/qrcode">立即付款</a>
+		
+		
+		
 		
 		<!--【余额支付弹窗】-->
 		<div class="balModal">
@@ -627,5 +639,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 		</script>
+		<div id="time"></div>
+		
 	</body>
 </html>

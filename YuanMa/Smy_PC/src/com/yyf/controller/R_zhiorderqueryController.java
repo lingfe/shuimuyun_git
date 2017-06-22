@@ -28,6 +28,7 @@ public class R_zhiorderqueryController {
 	protected String doGet(HttpServletRequest request, HttpServletResponse response,ModelMap model,@PathVariable("xiaid") String xiaId)
 			throws ServletException, IOException {
 		R_zhiordertab r_zhiordertab = r_zhiorderquertService.selectMessage(xiaId);//取出总订单号
+		System.out.println("xiaid:"+r_zhiordertab.getXiaId());
 		model.addAttribute("r_zhiordertab", r_zhiordertab);
 		return "PC/paySeccess";
 	}

@@ -314,6 +314,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  	});
 						//跳转到首页
 						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;
+// 						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;
 					},
 					error : function(xhr, type) {
 							//提示

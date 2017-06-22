@@ -310,7 +310,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    layer.open({
 						    	content: '下单成功！',
 						    	skin: 'msg',
-						    	time: 2
+						    	time: 3
 						  	});
 						//跳转到首页
 						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;

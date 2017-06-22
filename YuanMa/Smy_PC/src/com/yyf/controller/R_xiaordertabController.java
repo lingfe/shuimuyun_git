@@ -93,11 +93,10 @@ public class R_xiaordertabController {
 			@PathVariable("pageName")String pageName,
 			@PathVariable("xiaId")String xiaId,
 			@RequestParam(value="sh",required=false,defaultValue="0.01")double sh,
-			HttpServletRequest request){
-		request.getSession().removeAttribute("sh");
-		request.getSession().removeAttribute("xiaId");
-		request.getSession().setAttribute("sh", sh);
-		request.getSession().setAttribute("xiaId", xiaId);
+			ModelMap model ){
+		
+		model.addAttribute("sh", sh);
+		model.addAttribute("xiaId", xiaId);
 		return i+"/"+pageName;
 	}
 	
@@ -324,10 +323,6 @@ public class R_xiaordertabController {
 	public @ResponseBody R_xiaordertab xiaorderInfoAjax(@PathVariable("xiaId") String xiaId,HttpServletRequest request){
 		//得到下单详细
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
-		//赋值到session
-		//request.getSession().setAttribute("kuaikeName",xiaorderInfo.getKuaikeName());
-		//request.getSession().setAttribute("shouhuoName", xiaorderInfo.getShouhuoNmae());
-		
 		return xiaorderInfo;
 	}
 	
@@ -350,6 +345,9 @@ public class R_xiaordertabController {
 			tab.setPayment(0);//未付款
 			tab.setShopDate(new Date());
 			
+			//清空session
+			request.getSession().removeAttribute("xiaId");
+			request.getSession().removeValue("xiaId");
 			//设置id到session
 			request.getSession().setAttribute("xiaId", tab.getXiaId());
 			r_xiaordertabService.add(tab);
@@ -424,8 +422,8 @@ public class R_xiaordertabController {
 			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString,kuaikeId,shopprices);
 			//清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
-			request.getSession().setAttribute("sh", shopprices);
 			request.getSession().removeValue("xiaId");
+			
 			return "下单成功";
 		} catch (Exception e) {
 			e.printStackTrace();

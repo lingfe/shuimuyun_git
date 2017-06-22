@@ -321,7 +321,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="paymentTop">
 			<div class="paymentTop_l">应付金额：</div>
-			<input type="text" readonly="readonly" id="sho" name="shopprices" value="${sessionScope.sh }"/>
+			<input type="text" readonly="readonly" id="sho" name="shopprices" value="${sh }"/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<input type="hidden" id="xiaId_to" value="${xiaId }">

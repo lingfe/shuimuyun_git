@@ -75,9 +75,10 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param kuaikePhone			快客电话
 	 * @param kuaikeAddressInfo		快客详细地址
 	 */
-	@Update("UPDATE  xiaordertab SET kuaikeName=#{kuaikeName},kuaikePhone=#{kuaikePhone},kuaikeAddressInfo=#{kuaikeAddressInfo} WHERE xiaid=#{xiaId}")
+	@Update("UPDATE  xiaordertab SET kuaikeName=#{kuaikeName},kuaikePhone=#{kuaikePhone},kuaikeAddress=#{kuaikeAddress},kuaikeAddressInfo=#{kuaikeAddressInfo} WHERE xiaid=#{xiaId}")
 	public @ResponseBody void fa(@Param("kuaikeName")String kuaikeName,
 			@Param("kuaikePhone")String kuaikePhone,
+			@Param("kuaikeAddress") String kuaikeAddress,
 			@Param("xiaId") String xiaId,
 			@Param("kuaikeAddressInfo")String kuaikeAddressInfo);
 	
@@ -91,9 +92,10 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param shouhuoPhone			收货人电话
 	 * @param shouhuoAddressInfo	收货人地址详情
 	 */
-	@Update("UPDATE  xiaordertab SET shouhuoName=#{shouhuoName},shouhuoPhone=#{shouhuoPhone},shouhuoAddressInfo=#{shouhuoAddressInfo} WHERE xiaid=#{xiaId}")
+	@Update("UPDATE  xiaordertab SET shouhuoName=#{shouhuoName},shouhuoPhone=#{shouhuoPhone},shouhuoAddress=#{shouhuoAddress},shouhuoAddressInfo=#{shouhuoAddressInfo} WHERE xiaid=#{xiaId}")
 	void shou(@Param("shouhuoName")String shouhuoName,
 								@Param("shouhuoPhone")String shouhuoPhone,
+								@Param("shouhuoAddress") String shouhuoAddress,
 								@Param("xiaId") String xiaId,
 								@Param("shouhuoAddressInfo")String shouhuoAddressInfo);
 	
@@ -139,7 +141,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param pageIndex 当前页
 	 * @param pageNum 页容量
 	 */
-	@Select("SELECT * FROM xiaordertab where status=#{status} LIMIT #{pageIndex},#{pageNum}")
+	@Select("SELECT * FROM xiaordertab where status=#{status} AND payment=1 LIMIT #{pageIndex},#{pageNum}")
 	List<R_xiaordertab> statusQueryPaging(@Param("status")int status,@Param("pageIndex") int pageIndex,@Param("pageNum")int pageNum);
 	
 	/**
@@ -228,7 +230,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @author lijie
 	 * @created 2017年5月19日 上午11:36:19
 	 * @param xiaId
-	 *            下单id
+	 * 下单id
 	 */
 	@Delete("DELETE FROM xiaordertab WHERE xiaId=#{xiaId}")
 	void delete(@Param("xiaId") String xiaId);
@@ -246,7 +248,20 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年6月17日 上午10:08:48  
 	 * @return
 	 */
-	@Select("SELECT * FROM xiaordertab WHERE status=0")
+	@Select("SELECT * FROM xiaordertab WHERE status=0  AND payment=1")
 	public List<R_xiaordertab> queryAllXOrderByStatusTo0();
+	
+	
+	/**
+	 * 根据下单Id修改支付状态
+	 * @author 杨杰     
+	 * @created 2017年6月22日 上午10:12:41  
+	 * @param xiaId  下单Id
+	 */
+	@Update("update xiaordertab set payment=1 where xiaId=#{xiaId}")
+	public void updatePayment(@Param("xiaId") String xiaId);
+	
+	
+	
 
 }

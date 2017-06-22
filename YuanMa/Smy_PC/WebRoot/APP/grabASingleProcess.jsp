@@ -146,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<c:if test="${info.status==2 }">
 				<!--如果有图片存放img的div-->
 				<div></div>
-				<a href="RequestMappingUtil/requestNUll/APP/showCode"><button class="order_btn">到达目的地</button></a>
+				<button id="btn" class="order_btn">到达目的地</button>
 			</c:if>
 			
 		</div>
@@ -155,8 +155,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js"></script>
-		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/IMGUP.js" ></script>
+		<script type="text/javascript">
+		$(function(){
+			$("#btn").click(function(){
+				$.ajax({
+					url : 'getCode/${info.kuaikePhone}?xiaId=${info.xiaId}',
+					type : 'POST',
+					//请求成功后触发
+					success : function(data) {
+						if(data!=null){
+							window.location.href="RequestMappingUtil/requestNUll/APP/showCode";
+						}else{
+							//提示
+						    layer.open({
+						    	content: '错误！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
+						}
+					}
+				});
+			});
+		});
+		
+		</script>
 		<!-- 验证身份 初级验证 -->
 		<script type="text/javascript">
 		if("${login}"==""||"${login}"==null){

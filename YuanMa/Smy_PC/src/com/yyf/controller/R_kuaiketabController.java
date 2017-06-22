@@ -22,6 +22,7 @@ import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -780,7 +781,7 @@ public class R_kuaiketabController {
 	private static String Url = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
 	@RequestMapping(value = "getCode/{kuaikePhone}", method = RequestMethod.POST)
 	@ResponseBody
-	public int getCode(@PathVariable("kuaikePhone") String kuaikePhone,HttpServletRequest request) {
+	public int getCode(@PathVariable("kuaikePhone") String kuaikePhone,@RequestParam(value="xiaId",required=false)String xiaId,HttpServletRequest request) {
 		//请求体
 		//协议
 		HttpClient client = new HttpClient();
@@ -833,8 +834,13 @@ public class R_kuaiketabController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.getSession().removeAttribute("mobile_code");
 		//添加验证码到Session域中 并返回 验证码
  		request.getSession().setAttribute("mobile_code", mobile_code);
+ 		if(!StringUtils.isEmpty(xiaId)){
+ 			request.getSession().removeAttribute("xiaId");
+ 			request.getSession().setAttribute("xiaId", xiaId);
+ 		}
 		return mobile_code;
 
 	}

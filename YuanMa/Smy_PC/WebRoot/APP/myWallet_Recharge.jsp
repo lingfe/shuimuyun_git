@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -323,6 +324,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="text" readonly="readonly" id="sho" name="shopprices" value="${sessionScope.sh }"/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
+		<input type="hidden" id="xiaId_to" value="${xiaId }">
 		<div class="paymentList">
 			<div class="paymentList_item">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/balance.png" width="25" /> 余额
@@ -420,6 +422,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  	});
 						return false;
 					}
+
+					
 					if($(this).find("span").is(":hidden")) {
 						$(this).find("span").css("display","block");
 						$(this).parent().siblings().find("span").css("display","none");
@@ -441,20 +445,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  	});
 						return false;
 					}
-					//快客Id
-				var kuaikeId = $("#kuaikeId").val();
-				//获取到余额值
-				var balance=$("#balance").html();
-				//余额支付Ajax请求
-				$.ajax({
-					url : 'queryBalance/' + kuaikeId,
-					type : 'POST',
-					dataType:'json',
-					//请求成功后触发
-					success : function(data) {
-						//为<i><i>添加余额值
-						$("#balance").html(data.balance);
-	
+					
 						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
 	
 							layer.open({
@@ -471,23 +462,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 						} else if (!($("#paymentSelect span").is(":hidden"))) {
 							layer.open({
-				    	content: '支付宝支付！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
+						    	content: '支付宝支付！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 						} else if (!($("#wxSelect span").is(":hidden"))) {
 							layer.open({
-				    	content: '微信支付！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
+						    	content: '微信支付！',
+						    	skin: 'msg',
+						    	time: 2
+						  	});
 						}
-					}
-				});
+					//快客Id
+					var kuaikeId = $("#kuaikeId").val();
+					//获取到余额值
+					var balance=$("#balance").html();
+					//余额支付Ajax请求
+					$.ajax({
+						url : 'queryBalance/' + kuaikeId,
+						type : 'POST',
+						dataType:'json',
+						//请求成功后触发
+						success : function(data) {
+							//为<i></i>添加余额值
+							$("#balance").html(data.balance);
+						
+							if(data=="" && data==null){
+							$("#balance").html("00.00");
+								layer.open({
+							    	content: '你还没有账户....',
+							    	skin: 'msg',
+							    	time: 2
+							  	});
+							  	return false;
+							}else if(data.balance<=0){
+								$("#balance").html(data.balance);
+								layer.open({
+							    	content: '账户余额不足....',
+							    	skin: 'msg',
+							    	time: 2
+							  	});
+							  	return false;
+							}else if(data.deposit<200){
+								layer.open({
+							    	content: '押金不足200....',
+							    	skin: 'msg',
+							    	time: 2
+							  	});
+							}
+							
+						}
+					});
 	
-				})
-				
-				
+				});
 				//模拟输入6位密码
 				var i = 0;
 				$(".balModal_contNumer .num").click(function() {
@@ -523,18 +550,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								var balance=Number($("#balance").html()-$("#sho").val());
 								var kuaikeId=$("#kuaikeId").val();
 								var zhifupwd=$("#a").val()+$("#b").val()+$("#c").val()+$("#d").val()+$("#e").val()+$("#f").val();
+								var xiaId=$("#xiaId_to").val();
 							   $.ajax({
-							    url : "updateBalance/"+ balance+"/"+kuaikeId+"/"+zhifupwd,
+							    url : "updateBalance/"+ balance+"/"+kuaikeId+"/"+zhifupwd+"/"+xiaId,
 								type : 'POST',
 								//请求成功后触发
 								success : function(data) {
-												//提示
+									
+									if($("#balance").html()<$("#sho").val()){
+									//$("#balance").html(data.balance);
+									//提示
+									    layer.open({
+									    	content: '余额不足...请充值',
+									    	skin: 'msg',
+									    	time: 2
+									  	});
+										return false;
+									
+									}else{
+									
+									//提示
 								    layer.open({
 								    	content: '支付成功...',
 								    	skin: 'msg',
 								    	time: 2
 								  	});
 									window.location.href="APP/payOk.jsp";
+									
+									
+									}
+									
 								},
 							   error:function(){
 							   

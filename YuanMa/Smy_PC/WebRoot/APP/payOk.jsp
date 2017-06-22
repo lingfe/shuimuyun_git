@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -91,7 +92,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="czcg_text_div">
 				<span>金额</span>
-				<span>￥0.01</span>
+				<span><c:if test="${sessionScope.sh==null }">
+				00.00
+				</c:if>
+				<c:if test="${sessionScope.sh!=null }">
+						${sessionScope.sh}
+				</c:if>
+
+				</span>
 			</div>
 		</div>
 		<a href="RequestMappingUtil/requestNUll/APP/myOrder"><button class="czcg_btn">完成</button></a>

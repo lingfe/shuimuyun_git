@@ -29,6 +29,7 @@ import com.yyf.model.R_xiaordertab;
 import com.yyf.service.CityService;
 import com.yyf.service.R_qiangordertabService;
 import com.yyf.service.R_xiaordertabService;
+import com.yyf.util.R_qiangordertabEnum;
 import com.yyf.util.R_xiaordertabEnum;
 
 /**
@@ -55,6 +56,17 @@ public class R_xiaordertabController {
 	/***********************************************************************************************/
 	/***********************************       public APP和PC端共用                     ************************/
 	/***********************************************************************************************/
+	
+	@RequestMapping(value="/getShowCode/{i}/{pageName}",method=RequestMethod.GET)
+	public String getShowCode(@PathVariable("i")String i,@PathVariable("pageName")String pageName,
+			@RequestParam(value="xiaId",required=false)String xiaId){
+		if(!StringUtils.isEmpty(xiaId)){
+			//通过当前状态来修改状态，
+			r_xiaordertabService.updateStatus(R_xiaordertabEnum.YDD.ordinal(), xiaId);
+		}
+		
+		return i+"/"+pageName;
+	}
 	
 	/**
 	 * 

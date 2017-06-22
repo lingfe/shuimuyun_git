@@ -33,17 +33,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<form class="loginCont_form">
 					<div class="loginCont_form_item mui-input-row">
 						<img title="" alt="" src="<%=basePath%>APP/images/icon/phone.png" />
-						<input class="loginCont_form_itemAll mui-input-clear right" id="userPhone" type="text" placeholder="请输入取货码" />
+						<input value="${mobile_code }" class="loginCont_form_itemAll mui-input-clear right" id="mobile_code" type="text" placeholder="请输入取货码" />
 					</div>
-					<a class="code_a" href="RequestMappingUtil/requestNUll/APP/endOfTransaction"><button type="button" class="codeBtn" id="codeBtn">确定</button></a>
+					<button type="button" class="codeBtn" id="codeBtn">确定</button>
 				</form>
 			</div>
 		</div>
+		<!-- 下单id -->
+		<input type="hidden" value="${xiaId }" id="xiaId" />
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#codeBtn").click(function(){
+					var mobile_code=$("#mobile_code").val();
+					if("${mobile_code}"==mobile_code){
+						window.location.href="xiaordertab/getShowCode/APP/endOfTransaction?xiaId=${xiaId}";
+					}else{
+						//提示
+					    layer.open({
+					    	content: '取货码错误！',
+					    	skin: 'msg',
+					    	time: 3
+					  	});
+					}
+				});
+			});
+		</script>
 		<!-- 验证身份 初级验证 -->
 		<script type="text/javascript">
 		if("${login}"==""||"${login}"==null){

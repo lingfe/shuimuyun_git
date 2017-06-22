@@ -82,7 +82,7 @@ public class R_qiangordertabController {
 			UUID uuid1 = UUID.randomUUID();
 			// 强制转换
 			String uuid = uuid1.toString();
-			qiangordertabService.Insert(uuid, xiaId, kuaikeId, 0, new Date());
+			qiangordertabService.Insert(uuid, xiaId, kuaikeId, R_qiangordertabEnum.QD_OK.ordinal(), new Date());
 			
 			return true;
 		} catch (Exception e) {

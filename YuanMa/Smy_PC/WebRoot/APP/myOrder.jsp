@@ -42,8 +42,8 @@
 	<nav class="oallNav" id="div_statusXia" style="margin-top: 0.4rem"> 
 		<a class="active" href="javascript:void(0);" id="x0" title="x0" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/0" onclick="javascript:statusHref('x0');">全部</a> 
 		<a href="javascript:void(0);" title="x1" id="x1" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/1" onclick="javascript:statusHref('x1');">已接单</a> 
-		<a href="javascript:void(0);" title="x2" id="x2" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/2" onclick="javascript:statusHref('x2');">已到达</a> 
-		<a href="javascript:void(0);" title="x3" id="x3" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/3" onclick="javascript:statusHref('x3');">已确认</a> 
+		<a href="javascript:void(0);" title="x2" id="x2" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/2" onclick="javascript:statusHref('x2');">已发货</a> 
+		<a href="javascript:void(0);" title="x3" id="x3" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/3" onclick="javascript:statusHref('x3');">已到达</a> 
 		<a href="javascript:void(0);" title="x4" id="x4" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/4" onclick="javascript:statusHref('x4');">已评价</a>
 	</nav>
 	

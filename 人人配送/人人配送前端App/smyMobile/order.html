@@ -19,6 +19,47 @@
 		.order_btn_btnimg{
 			margin-bottom:.4rem;
 		}
+		.quickSf_item{
+			background: white;
+		}
+		.quickBtn:active {
+				background: rgba(65,139,200,.8);
+			}
+			.quickSf_item {
+				position: relative;
+				width: 3rem;
+				height: 1rem;
+				color: #fff;
+				font-size: 0.12rem;
+				margin: auto;
+				text-align: center;
+				line-height: 1rem;
+				background: rgba(0,0,0,.8);
+				border-radius: 5px;
+				overflow: hidden;
+				margin-bottom: 0.15rem;
+			}
+			.quickSf_item input {
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 100%;
+				width: 100%;
+				opacity: 0;
+				z-index: 999;
+			}
+			.quickSf_item img {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 1rem;
+				z-index: 5;
+			}
+		
+		
 	</style>
 	<body>
 		<!--头部-->
@@ -99,15 +140,22 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="shang_img">			
-			<!--图片预览容器-->
-			<div id="div_imglook">
-				<div style="clear: both;"></div>
-			</div>
-			<!--图片选择对话框-->
-			<div id="div_imgfile">上传货物照片</div>
-		</div>
+		<div class="quickSf_item">
+					<input class="file" type="file"  multiple="multiple" />
+					<span>上传货物图片</span>
+				</div>
+				<div class="quickSf_item">
+					<input class="file" type="file"  multiple="multiple" />
+					<span>上传货物图片</span>
+				</div>
+				<div class="quickSf_item">
+					<input class="file" type="file"  multiple="multiple" />
+					<span>上传货物图片</span>
+				</div>
+				<div class="quickSf_item">
+					<input class="file" type="file"  multiple="multiple" />
+					<span>上传货物图片</span>
+				</div>
 		<!--确定按钮-->
 		<div class="order_buttom">
 			<div class="order_buttom_text" id="order_buttom_text">
@@ -190,5 +238,35 @@
 				'type': 'time'
 			});
 	</script>
+	<script>	
+				$(function() {
+					$(".quickSf_item input").change(function() {
+						var Img = "<img src=''>";
+						$(this).parent().append(Img);
+						$(this).parent().find("span").remove();
+						var objUrl = getObjectURL(this.files[0]);
+						console.log("objUrl = "+objUrl) ;
+						if(objUrl) {
+							$(this).next("img").attr("src", objUrl);
+							//alert(objUrl)
+						}
+					});
+				});
+				
+				//建立一個可存取到該file的url
+				function getObjectURL(file) {
+					var url = null ; 
+					if(window.createObjectURL!=undefined) { // basic
+						url = window.createObjectURL(file) ;
+					}
+					else if(window.URL!=undefined) { // mozilla(firefox)
+						url = window.URL.createObjectURL(file) ;
+					}
+					else if(window.webkitURL!=undefined) { // webkit or chrome
+						url = window.webkitURL.createObjectURL(file) ;
+					}
+					return url ;
+				}
+			</script>
 	</body>
 </html>

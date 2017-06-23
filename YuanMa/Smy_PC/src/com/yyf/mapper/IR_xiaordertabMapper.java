@@ -112,13 +112,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString},kuaikeId=#{kuaikeId},shopprices=#{shopprices} WHERE xiaid=#{xiaId}")
-	void orderSbmit(@Param("xiaId") String xiaId,
-			@Param("shopType") String shopType, @Param("shopNumer") float shopNumer,
-			@Param("shopzholiang") int shopzholiang,
-			@Param("timeString") String timeString,
-			@Param("kuaikeId") String kuaikeId,
-			@Param("shopprices") double shopprices);
+	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString},kuaikeId=#{kuaikeId},shopprices=#{shopprices} ,vehicle=#{vehicle},vargoVolume=#{vargoVolume},shopImages=#{shopImages} WHERE xiaid=#{xiaId}")
+	void orderSbmit(R_xiaordertab tab);
 	
 	/**
 	 * 
@@ -186,8 +181,8 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年5月19日 上午11:34:20
 	 * @param 实体数据
 	 */
-	@Insert("insert into `xiaordertab`(`xiaId`,`kuaikeName`,`kuaikePhone`,`kuaikeAddress`,`shouhuoName`,`shouhuoPhone`,`shouhuoAddress`,`shouhuoAddressInfo`,`quhouDate`,`kaikePrioes`,`status`,`okDate`,`shopName`,`Shopzholiang`,`ShopNumer`,`Shopprices`,`shopguige`,`Shopdate`,kuaikeAddressInfo,shopType,timeString,shopImages,payment,kuaikeId) "
-			+ "values (#{xiaId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{shouhuoName},#{shouhuoPhone},#{shouhuoAddress},#{shouhuoAddressInfo},#{quhouDate},#{kaikePrioes},#{status},#{okDate},#{shopName},#{shopzholiang},#{shopNumer},#{shopprices},#{shopGuige},#{shopDate},#{kuaikeAddressInfo},#{shopType},#{timeString},#{shopImages},#{payment},#{kuaikeId})")
+	@Insert("insert into `xiaordertab`(`xiaId`,`kuaikeName`,`kuaikePhone`,`kuaikeAddress`,`shouhuoName`,`shouhuoPhone`,`shouhuoAddress`,`shouhuoAddressInfo`,`quhouDate`,`kaikePrioes`,`status`,`okDate`,`shopName`,`Shopzholiang`,`ShopNumer`,`Shopprices`,`shopguige`,`Shopdate`,kuaikeAddressInfo,shopType,timeString,shopImages,payment,kuaikeId,vehicle,vargoVolume) "
+			+ "values (#{xiaId},#{kuaikeName},#{kuaikePhone},#{kuaikeAddress},#{shouhuoName},#{shouhuoPhone},#{shouhuoAddress},#{shouhuoAddressInfo},#{quhouDate},#{kaikePrioes},#{status},#{okDate},#{shopName},#{shopzholiang},#{shopNumer},#{shopprices},#{shopGuige},#{shopDate},#{kuaikeAddressInfo},#{shopType},#{timeString},#{shopImages},#{payment},#{kuaikeId},#{vehicle},#{vargoVolume})")
 	void add(R_xiaordertab t);
 
 	/**

@@ -26,6 +26,7 @@ $("#div_imgfile").click(function () {
     if ($(".imgfile").length <= $(".lookimg").length) {//个数不足则新创建对象
         _CRE_FILE.setAttribute("type", "file");
         _CRE_FILE.setAttribute("class", "imgfile");
+        _CRE_FILE.setAttribute("name", "files");
         _CRE_FILE.setAttribute("accept", ".png,.jpg,.jpeg");
         _CRE_FILE.setAttribute("num", UP_IMGCOUNT);//记录此对象对应的编号
         $("#div_imgfile").after(_CRE_FILE);

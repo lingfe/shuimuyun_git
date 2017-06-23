@@ -57,8 +57,8 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	}
 	
 	@Override
-	public void orderSbmit(String xiaId, String shopType, float shopNumer, int shopzholiang, String timeString,String kuaikeId,double shopprices) {
-		ir_xiaordertabMapper.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString,kuaikeId,shopprices);
+	public void orderSbmit(R_xiaordertab tab) {
+		ir_xiaordertabMapper.orderSbmit(tab);
 	}
 	
 	@Override

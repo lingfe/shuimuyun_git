@@ -3,6 +3,8 @@ package com.yyf.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.yyf.model.Balancetab;
 import com.yyf.model.Commenttab;
 import com.yyf.model.R_xiaordertab;
@@ -82,7 +84,7 @@ public interface R_xiaordertabService {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	void orderSbmit( String xiaId,String shopType,float shopNumer, int shopzholiang,String timeString,String kuaikeId,double shopprices);
+	void orderSbmit(R_xiaordertab tab);
 	
 	/**
 	 * 

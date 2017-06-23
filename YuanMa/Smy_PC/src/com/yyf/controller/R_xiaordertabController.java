@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -412,22 +413,45 @@ public class R_xiaordertabController {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@RequestMapping(value = "/orderSbmit/{xiaId}/{shopType}/{shopNumer}/{shopzholiang}/{timeString}/{kuaikeId}/{shopprices}", method = RequestMethod.POST)
-	public @ResponseBody String orderSbmit(@PathVariable("xiaId") String xiaId,
-			@PathVariable("shopType") String shopType, @PathVariable("shopNumer") float shopNumer,
-			@PathVariable("shopzholiang") int shopzholiang,
-			@PathVariable("timeString") String timeString,
-			@PathVariable("kuaikeId") String kuaikeId,@PathVariable("shopprices") double shopprices,HttpServletRequest request) {
+	@RequestMapping(value = "/orderSbmit", method = RequestMethod.POST)
+	public  String orderSbmit(@RequestParam(value = "files", required = false) MultipartFile[] files,R_xiaordertab tab,HttpServletRequest request,ModelMap model) {
 		try {
-			r_xiaordertabService.orderSbmit(xiaId, shopType, shopNumer, shopzholiang, timeString,kuaikeId,shopprices);
+
+			
+			// 获取到当前服务器项目的跟路径
+			String path = request.getSession().getServletContext().getRealPath("upload");
+
+			String imagesPath="";
+			for (int i = 0; i < files.length; i++) {
+				
+				imagesPath += request.getContextPath() + "/upload/" + files[0].getOriginalFilename()+",";
+				MultipartFile	file=files[i];
+				// 文件1
+				String fileName = file.getOriginalFilename();
+				
+				File targetFile = new File(path, fileName);
+				if (!targetFile.exists()) {
+					targetFile.mkdirs();
+				}
+				
+				//保存
+				file.transferTo(targetFile);
+				
+				
+			}
+			tab.setShopImages(imagesPath);
+			
+			r_xiaordertabService.orderSbmit(tab);
 			//清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
 			request.getSession().removeValue("xiaId");
 			
-			return "下单成功";
+			model.addAttribute("xiaId", tab.getXiaId());
+			model.addAttribute("sh", tab.getShopprices());
+			return "APP/myWallet_Recharge";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "下单失败";
+			return "APP/placeAnOrder";
 		}
 	}
 

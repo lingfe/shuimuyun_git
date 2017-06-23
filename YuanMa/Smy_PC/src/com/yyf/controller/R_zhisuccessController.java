@@ -28,7 +28,6 @@ public class R_zhisuccessController {
 		
 		
 		String xiaId = request.getParameter("xiaid");// 下单id
-		System.out.println("xiaid:"+xiaId);
 		String order_no = r_zhisuccessService.selectresult(xiaId);//取出订单付款状态
 		
 		

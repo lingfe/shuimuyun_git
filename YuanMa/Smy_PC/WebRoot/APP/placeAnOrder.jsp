@@ -76,6 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<header class="commHeader">
 			<h6>我要下单</h6>
 		</header>
+		<form action="xiaordertab/orderSbmit" method="post"  enctype="multipart/form-data">
 		<!--发货人，收货人信息跳转-->
 		<div class="order_info">
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
@@ -95,7 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/type.png" width="27"/>
 				<label>货物类型</label>
 				<div class="order_right" id="order_right">
-					<span id="order_leixin">易碎</span>
+					<span></span>
+					<input type="text"  name="shopType" id="order_leixin" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 				</div>
 			</div>
@@ -105,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="order_num">
 					<span style="" class="order_num_mag">&nbsp;个/件</span>
 					<span id="jian">-</span>
-					<span > <input id="zhi" type=number value="1"> </span>
+					<span > <input id="zhi" name="shopNumer" type="number" value="1"> </span>
 					<span id="jia">+</span>
 				</div>
 			</div>
@@ -115,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="order_num">
 					<span class="order_num_mag">&nbsp;kg</span>
 					<span id="jian">-</span>
-					<span > <input id="zhi1" type="number" value="1"> </span>
+					<span > <input id="zhi1"  name="shopzholiang" type="number" value="1"> </span>
 					<span id="jia">+</span>
 				</div>
 			</div>
@@ -125,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="order_num">
 					<span class="order_num_mag">&nbsp;m</span>
 					<span id="jian">-</span>
-					<span > <input id="zhi11" type="number" value="1"> </span>
+					<span > <input id="zhi11" name="vargoVolume" class="vargoVolume" type="number" value="1"> </span>
 					<span id="jia">+</span>
 				</div>
 			</div>
@@ -136,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最晚取货时间</label>
 				<div class="order_right"id="order_right3">
-					<input class="shijiankaung" id="de" type="text" readonly="" name="input_date" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="de" type="text" readonly="" name="quhouDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -145,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/timerr.png" width="27"/>
 				<label>最迟到达时间</label>
 				<div class="order_right"id="order_right2">
-					<input class="shijiankaung" id="dee" type="text" readonly="" name="input_date" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="dee" type="text" readonly="" name="okDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -153,7 +155,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/clar.png" width="27"/>
 				<label>建议交通工具</label>
 				<div class="order_right" id="order_right1">
-					<span id="order_clar">无</span>
+					<span>无</span>
+					<input  name="vehicle" id="order_clar" class="vehicle" type="text" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -162,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="order_tan_clos botto">
 			<img class="mony" src="<%=basePath%>APP/images/icon/mony.png" width="30"/>
 				<a class="xiadan">下单金额</a>
-				<input class="shopprices" type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
+				<input class="shopprices"  type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
 				<span>元</span>
 			</div>
 		</div>
@@ -172,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="clear: both;"></div>
 			</div>
 			<!--图片选择对话框-->
-			<div id="div_imgfile">上传货物照片</div>
+			<div id="div_imgfile" >上传货物照片</div>
 		</div>
 		<!--确定按钮-->
 		<div class="order_buttom">
@@ -181,8 +184,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
 			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
-			<button style="margin-bottom: 0.6rem; " class="order_btn order_btn_btnimg" id="ok_order">确认下单</button>
-		</div>
+			<button style="margin-bottom: 0.6rem; " class="order_btn order_btn_btnimg" id="ok_order btn_ImgUpStart">确认下单</button>		</div>
+		</form>
 
 		<!--遮罩层-->
 		<div class="order_zhe"id="order_zhe"></div>
@@ -217,10 +220,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!--弹窗三-->
 		
-		
-	
-		
-		
 		<!--底部-->
 		<footer class="footerMenu">
 			<a  href="RequestMappingUtil/requestNUll/APP/index">
@@ -253,13 +252,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js" ></script>
-		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/lCalendar.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/IMGUP.js" ></script>
 		<script type="text/javascript">
 		$(function(){
 			//表单提交
-			$("#ok_order").click(function(){
+			$("#btn_ImgUpStart").click(function(){
 				//验证审核
 				if("${login.kuaikeStatus}"==0){
 					//提示
@@ -310,45 +308,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  	});
 					return false;
 				}
-				
-				//得到货物类型
-				var shopType=$("#order_leixin").text();
-				//得到货物数量
-				var shopNumer=$("#zhi").val();
-				//得到货物重量
-				var shopzholiang=$("#zhi1").val();
-				//最快取货时间
-				var timeString=$("#de").val();
-				//取得下单金额
-				var shopprices=$("#shopprices").val();
-				//url
-				var url=xiaId+"/"+shopType+"/"+shopNumer+"/"+shopzholiang+"/"+timeString+"/"+kuaikeId+"/"+shopprices;
-				//ajax提交
-				$.ajax({
-					url : 'xiaordertab/orderSbmit/'+url,
-					type : 'POST',
-					contentType:"application/x-www-form-urlencoded;charset=urf-8",
-					success : function(data) {
-							//提示
-						    layer.open({
-						    	content: '下单成功！',
-						    	skin: 'msg',
-						    	time: 3
-						  	});
-						//跳转到首页
-						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;
-// 						window.location.href="xiaordertab/setYuEPam/APP/myWallet_Recharge/"+xiaId+"?sh="+shopprices;
-					},
-					error : function(xhr, type) {
-							//提示
-						    layer.open({
-						    	content: 'Ajax error！',
-						    	skin: 'msg',
-						    	time: 2
-						  	});
-					},
-					async:false
-				});
+				return true;
 			});
 		});
 		
@@ -459,30 +419,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 		</script>
-<!-- 		<script type="text/javascript">
-		$("#order_buttom_text").click(function(){
-		if($(this).find(".dis").is(":hidden")) {
-		alert("s");
-			$(this).find(".dis").show();
-			$(this).find(".op").hide();
-			alert("a");
-		}
-		else {
-			$(this).find(".dis").hide();
-			$(this).find(".op").show();
-		}
-	})
-	$("#taking_btn").click(function(){
-		if($(".op").is(":hidden")){
-			layer.open({
-		    	content: '同意协议',
-		    	skin: 'msg',
-		    	time: 1
-		  	});
-		  	return false;
-		}
-	})
-	</script> -->
 	<script>
 		var calendartime = new lCalendar();
 			calendartime.init({

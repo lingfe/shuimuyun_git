@@ -10,16 +10,38 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class R_xiaordertab {
 
+	
+	
 	@Override
 	public String toString() {
-		return "R_xiaordertab [xiaId=" + xiaId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
-				+ ", kuaikeAddress=" + kuaikeAddress + ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone
-				+ ", shouhuoAddress=" + shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhuoDate="
-				+ quhouDate + ", kaikeProies=" + kaikePrioes + ", status=" + status + ", okDate=" + okDate
-				+ ", shopName=" + shopName + ", shopzholiang=" + shopzholiang + ", shopNumer=" + shopNumer
-				+ ", shopprices=" + shopprices + ", shopGuige=" + shopGuige + ", shopDate=" + shopDate
-				+ ", kuaikeAddressInfo=" + kuaikeAddressInfo + ", shopType=" + shopType + ", timeString=" + timeString
-				+ ", shopImages=" + shopImages + ", payment=" + payment + "]";
+		return "R_xiaordertab [vehicle=" + vehicle + ", vargoVolume=" + vargoVolume + ", xiaId=" + xiaId
+				+ ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone + ", kuaikeAddress=" + kuaikeAddress
+				+ ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone + ", shouhuoAddress="
+				+ shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhouDate=" + quhouDate
+				+ ", kaikePrioes=" + kaikePrioes + ", status=" + status + ", okDate=" + okDate + ", shopName="
+				+ shopName + ", shopzholiang=" + shopzholiang + ", shopNumer=" + shopNumer + ", shopprices="
+				+ shopprices + ", shopGuige=" + shopGuige + ", shopDate=" + shopDate + ", kuaikeAddressInfo="
+				+ kuaikeAddressInfo + ", shopType=" + shopType + ", timeString=" + timeString + ", shopImages="
+				+ shopImages + ", payment=" + payment + ", kuaikeId=" + kuaikeId + "]";
+	}
+
+	private String vehicle;//  `vehicle` VARCHAR(200) DEFAULT NULL COMMENT '交通工具',
+	public String getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(String vehicle) {
+		this.vehicle = vehicle;
+	}
+
+	private int vargoVolume;//	  `vargoVolume` INT(11) DEFAULT NULL COMMENT '货物体积'
+
+	public int getVargoVolume() {
+		return vargoVolume;
+	}
+
+	public void setVargoVolume(int vargoVolume) {
+		this.vargoVolume = vargoVolume;
 	}
 
 	private String xiaId;// 下单id `xiaId` VARCHAR(64) NOT NULL,
@@ -103,15 +125,14 @@ public class R_xiaordertab {
 		this.shouhuoAddressInfo = shouhuoAddressInfo;
 	}
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date quhouDate;// 去获取时间 `quhouDate` TIMESTAMP NOT NULL DEFAULT
+	private String quhouDate;// 去获取时间 `quhouDate` TIMESTAMP NOT NULL DEFAULT
 							// CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-	public Date getQuhuoDate() {
+	public String getQuhuoDate() {
 		return quhouDate;
 	}
 
-	public void setQuhuoDate(Date quhouDate) {
+	public void setQuhuoDate(String quhouDate) {
 		this.quhouDate = quhouDate;
 	}
 
@@ -135,15 +156,14 @@ public class R_xiaordertab {
 		this.status = status;
 	}
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date okDate;// 到达时间 `okDate` TIMESTAMP NOT NULL DEFAULT '0000-00-00
+	private String okDate;// 到达时间 `okDate` TIMESTAMP NOT NULL DEFAULT '0000-00-00
 						// 00:00:00'
 
-	public Date getOkDate() {
+	public String getOkDate() {
 		return okDate;
 	}
 
-	public void setOkDate(Date okDate) {
+	public void setOkDate(String okDate) {
 		this.okDate = okDate;
 	}
 

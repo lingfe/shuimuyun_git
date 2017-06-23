@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,6 @@ import com.yyf.model.R_xiaordertab;
 import com.yyf.service.CityService;
 import com.yyf.service.R_qiangordertabService;
 import com.yyf.service.R_xiaordertabService;
-import com.yyf.util.R_qiangordertabEnum;
 import com.yyf.util.R_xiaordertabEnum;
 
 /**
@@ -347,8 +345,8 @@ public class R_xiaordertabController {
 			tab.setShopDate(new Date());
 			
 			//清空session
-			request.getSession().removeAttribute("xiaId");
-			request.getSession().removeValue("xiaId");
+//			request.getSession().removeAttribute("xiaId");
+//			request.getSession().removeValue("xiaId");
 			//设置id到session
 			request.getSession().setAttribute("xiaId", tab.getXiaId());
 			r_xiaordertabService.add(tab);
@@ -444,8 +442,8 @@ public class R_xiaordertabController {
 			
 			r_xiaordertabService.orderSbmit(tab);
 			//清空session中的下单id
-			request.getSession().removeAttribute("xiaId");
-			request.getSession().removeValue("xiaId");
+//			request.getSession().removeAttribute("xiaId");
+//			request.getSession().removeValue("xiaId");
 			
 			model.addAttribute("xiaId", tab.getXiaId());
 			model.addAttribute("sh", tab.getShopprices());

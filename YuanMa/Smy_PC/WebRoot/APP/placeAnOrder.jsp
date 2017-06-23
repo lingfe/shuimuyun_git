@@ -105,6 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			z-index: 999;
 		}
 		
+		
 		.quickSf_item img {
 			display: block;
 			position: absolute;

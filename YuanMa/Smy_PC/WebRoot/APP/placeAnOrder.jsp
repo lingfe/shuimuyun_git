@@ -242,8 +242,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
 			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
-			<button style="margin-bottom: 0.6rem; " type="submit" class="order_btn order_btn_btnimg" id="btn_ImgUpStart">确认下单</button>
-		</div>
+			<button style="margin-bottom: 0.6rem; " class="order_btn order_btn_btnimg" id="ok_order btn_ImgUpStart">确认下单</button>		</div>
 		</form>
 
 		<!--遮罩层-->

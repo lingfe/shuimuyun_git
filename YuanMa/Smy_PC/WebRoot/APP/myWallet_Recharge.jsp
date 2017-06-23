@@ -559,6 +559,7 @@ String xiaId = request.getParameter("xiaId");
 								var kuaikeId=$("#kuaikeId").val();
 								var zhifupwd=$("#a").val()+$("#b").val()+$("#c").val()+$("#d").val()+$("#e").val()+$("#f").val();
 								var xiaId=$("#xiaId_to").val();
+								var shouprices = $("#shouprices").val();
 							   $.ajax({
 							    url : "updateBalance/"+ balance+"/"+kuaikeId+"/"+zhifupwd+"/"+xiaId,
 								type : 'POST',
@@ -583,7 +584,7 @@ String xiaId = request.getParameter("xiaId");
 								    	skin: 'msg',
 								    	time: 2
 								  	});
-									window.location.href="APP/payOk.jsp";
+									window.location.href="APP/payOk.jsp?shouprices="+shouprices;
 									
 									
 									}

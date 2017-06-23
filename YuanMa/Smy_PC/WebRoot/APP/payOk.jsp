@@ -93,13 +93,8 @@ String shouprices = request.getParameter("shouprices");
 			</div>
 			<div class="czcg_text_div">
 				<span>金额</span>
-				<span><c:if test="${sessionScope.sh==null }">
-				<%=shouprices %>
-				</c:if>
-				<c:if test="${sessionScope.sh!=null }">
-						<%=shouprices %>
-				</c:if>
-
+				<span>
+					<%=shouprices %>
 				</span>
 			</div>
 		</div>

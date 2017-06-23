@@ -20,7 +20,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/mui.min.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/lCalendar.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/IMGUP.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
 	<script>
 			setTimeout(function() {
@@ -68,6 +67,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.order_btn_btnimg{
 			margin-bottom:.4rem;
 		}
+		.order_r_inp{
+			width:1rem !important;
+			border:none !important;
+			text-align: right;
+		}
+		
+		
+		.quickBtn:active {
+			background: rgba(65, 139, 200, .8);
+		}
+		
+		.quickSf_item {
+			background: white;
+			position: relative;
+			width: 3rem;
+			height: 1rem;
+			color: #fff;
+			font-size: 0.12rem;
+			margin: auto;
+			text-align: center;
+			line-height: 1rem;
+			background: rgba(0, 0, 0, .8);
+			border-radius: 5px;
+			overflow: hidden;
+			margin-bottom: 0.15rem;
+		}
+		
+		.quickSf_item input {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			z-index: 999;
+		}
+		
+		.quickSf_item img {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 1rem;
+			z-index: 5;
+		}
 	</style>
 	
 	</head>
@@ -77,6 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h6>我要下单</h6>
 		</header>
 		<form action="xiaordertab/orderSbmit" method="post"  enctype="multipart/form-data">
+		<input type="hidden" name="kuaikeId" value="${login.kuaikeId }" />
 		<!--发货人，收货人信息跳转-->
 		<div class="order_info">
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
@@ -96,8 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/type.png" width="27"/>
 				<label>货物类型</label>
 				<div class="order_right" id="order_right">
-					<span></span>
-					<input type="text"  name="shopType" id="order_leixin" />
+					<input type="text" readonly="" class="order_r_inp" name="shopType" id="order_leixin" value="非易碎" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 				</div>
 			</div>
@@ -155,8 +201,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/clar.png" width="27"/>
 				<label>建议交通工具</label>
 				<div class="order_right" id="order_right1">
-					<span>无</span>
-					<input  name="vehicle" id="order_clar" class="vehicle" type="text" />
+					<!-- <span>无</span> -->
+					<input  name="vehicle" readonly="" id="order_clar" class="vehicle order_r_inp" type="text" value="无" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -169,13 +215,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>元</span>
 			</div>
 		</div>
-		<div class="shang_img">			
-			<!--图片预览容器-->
-			<div id="div_imglook">
-				<div style="clear: both;"></div>
-			</div>
-			<!--图片选择对话框-->
-			<div id="div_imgfile" >上传货物照片</div>
+		<div class="quickSf_item">
+			<input class="file" type="file" name="files" multiple="multiple" />
+			<img title="" alt="" src="" />
+			<span>上传货物图片</span>
+		</div>
+		<div class="quickSf_item">
+			<input class="file" type="file" name="files" multiple="multiple" />
+			<img title="" alt="" src="" />
+			<span>上传货物图片</span>
+		</div>
+		<div class="quickSf_item">
+			<input class="file" type="file" name="files" multiple="multiple" />
+			<img title="" alt="" src="" />
+			<span>上传货物图片</span>
+		</div>
+		<div class="quickSf_item">
+			<input class="file" type="file" name="files" multiple="multiple" />
+			<img title="" alt="" src="" />
+			<span>上传货物图片</span>
 		</div>
 		<!--确定按钮-->
 		<div class="order_buttom">
@@ -253,8 +311,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/lCalendar.js" ></script>
-		<script type="text/javascript" src="<%=basePath%>APP/js/IMGUP.js" ></script>
 		<script type="text/javascript">
 		$(function(){
 			//表单提交
@@ -432,6 +490,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'type': 'time'
 			});
 	</script>
+	<script>
+			$(function() {
+				$(".quickSf_item input").change(function() {
+					
+					//$(this).parent().append(Img);
+					$(this).parent().find("span").remove();
+					var objUrl = getObjectURL(this.files[0]);
+					console.log("objUrl = " + objUrl);
+					if(objUrl) {
+						$(this).next("img").attr("src", objUrl);
+						//alert(objUrl)
+					}
+				});
+			});
+
+			//建立一個可存取到該file的url
+			function getObjectURL(file) {
+				var url = null;
+				if(window.createObjectURL != undefined) { // basic
+					url = window.createObjectURL(file);
+				} else if(window.URL != undefined) { // mozilla(firefox)
+					url = window.URL.createObjectURL(file);
+				} else if(window.webkitURL != undefined) { // webkit or chrome
+					url = window.webkitURL.createObjectURL(file);
+				}
+				return url;
+			}
+		</script>
 	</body>
 </html>
 

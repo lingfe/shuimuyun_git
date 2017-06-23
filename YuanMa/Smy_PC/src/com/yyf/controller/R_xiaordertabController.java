@@ -422,22 +422,23 @@ public class R_xiaordertabController {
 			String path = request.getSession().getServletContext().getRealPath("upload");
 
 			String imagesPath="";
-			for (int i = 0; i < files.length; i++) {
-				
-				imagesPath += request.getContextPath() + "/upload/" + files[0].getOriginalFilename()+",";
-				MultipartFile	file=files[i];
-				// 文件1
-				String fileName = file.getOriginalFilename();
-				
-				File targetFile = new File(path, fileName);
-				if (!targetFile.exists()) {
-					targetFile.mkdirs();
+			if(!StringUtils.isEmpty(files)){
+				for (int i = 0; i < files.length; i++) {
+
+					MultipartFile	file=files[i];
+					// 文件1
+					String fileName = file.getOriginalFilename();
+					imagesPath += request.getContextPath() + "/upload/" + fileName+",";
+					File targetFile = new File(path, fileName);
+					if (!targetFile.exists()) {
+						targetFile.mkdirs();
+					}
+					
+					//保存
+					file.transferTo(targetFile);
+					
+					
 				}
-				
-				//保存
-				file.transferTo(targetFile);
-				
-				
 			}
 			tab.setShopImages(imagesPath);
 			

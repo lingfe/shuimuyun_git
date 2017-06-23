@@ -53,21 +53,16 @@ String shouprices = request.getParameter("shouprices");
 			<img class="qrcode" src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=<%=xiaId%>&shouprices=<%=shouprices%>&shopName=好吃的" />
 		</div>
 		
-		<div class="z dis">
-			<img class="qrcode" src="<%=basePath%>APP/images/yichang.png" />
-		</div>
-		
 		<input type="hidden" id="xiaId_to" value="<%=xiaId%>">
 		<script type="text/javascript" src="<%=basePath %>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript">
-			var xiaId = <%=xiaId%>;
+			var xiaId = "<%=xiaId%>";
 			if(!xiaId==""){
-				$(".z").hide();
 				$(".y").show();
 			}else{
 				$(".y").hide();
-				$(".z").show();
+				alert("发生异常，请联系客服");
 			}
 			</script>
 		<script type="text/javascript">

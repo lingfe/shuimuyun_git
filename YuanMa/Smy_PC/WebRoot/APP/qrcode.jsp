@@ -68,7 +68,7 @@ String shouprices = request.getParameter("shouprices");
 				},
 				success : function(data) {
 					if (data == "1") { //订单状态为1表示支付成功
-						window.location.href = "<%=basePath%>RequestMappingUtil/requestData/APP/payOk"; //页面跳转
+						window.location.href = "<%=basePath%>RequestMappingUtil/requestData/APP/payOk?shouprices="+<%=shouprices%>; //页面跳转
 					}
 				},
 				error : function() {

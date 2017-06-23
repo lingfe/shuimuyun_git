@@ -3,6 +3,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String shouprices = request.getParameter("shouprices");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -93,10 +94,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="czcg_text_div">
 				<span>金额</span>
 				<span><c:if test="${sessionScope.sh==null }">
-				00.00
+				<%=shouprices %>
 				</c:if>
 				<c:if test="${sessionScope.sh!=null }">
-						${sessionScope.sh}
+						<%=shouprices %>
 				</c:if>
 
 				</span>

@@ -50,9 +50,6 @@ public class R_zhiordertabController {
 		String total_fee = request.getParameter("shouprices");// 商品价格
 		String shopName = request.getParameter("shopName");// 商品名称
 		String xiaId = request.getParameter("xiaid");// 下单id 商品id
-		System.out.println("xiaid:"+xiaId);
-		System.out.println("total_fee:"+total_fee);
-		System.out.println("shopName:"+shopName);
 		double fee = Double.parseDouble(total_fee) * 100;
 		int a = (int) fee;
 		String total = String.valueOf(a);
@@ -67,11 +64,9 @@ public class R_zhiordertabController {
 		if(exsit==0){
 			r_zhiordertabService.insertMessage(total, xiaId, out_trade_no, body, trade_type, product_id, order_no,
 					shopName);// 保存数据库
-			System.out.println("插入数据库");
 		}else{
 			r_zhiordertabService.updateorder(total, xiaId, out_trade_no, body, trade_type, product_id, order_no,
 					shopName);// 更新数据库
-			System.out.println("修改数据库");
 		}
 		Properties p = new Properties();
 		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
@@ -91,7 +86,6 @@ public class R_zhiordertabController {
 //			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
 			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
 			packageParams.put("notify_url", String.valueOf(p.get("NOTIFY_URL")));
-			System.out.println("notify_url:"+String.valueOf(p.get("NOTIFY_URL")));
 			packageParams.put("trade_type", trade_type);
 			// packageParams.put("product_id", product_id);
 			request.setAttribute("out_trade_no", out_trade_no);

@@ -75,14 +75,12 @@ public class R_NotifyController {
 		try {
 			p.load(input);
 			String key = String.valueOf(p.get("API_KEY")); // key
-			System.out.println("key:"+key);
 			// 判断签名是否正确
 			if (PayCommonUtil.isTenpaySign("UTF-8", packageParams, key)) {
 				// ------------------------------
 				// 处理业务开始
 				// ------------------------------
 				String resXml = "";
-				System.out.println("out_trade_no:"+packageParams.get("out_trade_no"));
 				if ("SUCCESS".equals((String) packageParams.get("result_code"))) {
 					// 支付成功 执行自己的业务逻辑
 					String appid = (String) packageParams.get("appid");
@@ -103,14 +101,11 @@ public class R_NotifyController {
 
 					r_zhinotifyService.UpdateOrder(openid, is_subscribe, out_trade_no, bank_type, cash_fee, nonce_str,
 							result_code, return_code, sign, time_end, transaction_id, total_fee);// 保存数据库
-					System.out.println("out_trade_no:"+out_trade_no);
 					String xiaXid = r_zhinotifyService.SelectXIa(out_trade_no);// 获取xiaid
 
-					System.out.println("xiaXid:"+xiaXid);
 					
 					r_zhinotifyService.UpdatePayment(xiaXid);//更改付款状态
 					// 执行自己的业务逻辑
-					System.out.println("修改成功");
 					// 通知微信.异步确认成功.必写.不然会一直通知后台.八次之后就认为交易失败了.
 					resXml = "<xml>" + "<return_code><![CDATA[SUCCESS]]></return_code>"
 							+ "<return_msg><![CDATA[OK]]></return_msg>" + "</xml> ";
@@ -125,7 +120,6 @@ public class R_NotifyController {
 				out.flush();
 				out.close();
 			} else {
-				System.out.println("通知签名验证失败");
 			}
 
 		} catch (Exception e) {

@@ -3,6 +3,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String xiaId = request.getParameter("xiaId");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -325,6 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<input type="hidden" id="xiaId_to" value="${xiaId }">
+		<input type="hidden" id="shouprices" value="${sh}">
 		<div class="paymentList">
 			<div class="paymentList_item">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/balance.png" width="25" /> 余额
@@ -355,17 +357,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		<div>
-		<input type="text" style="visibility: hidden;" name="xiaId" id="xiaId" value="${sessionScope.xiaId }">
+		<input type="hidden" id="xiaId_to" value="${xiaId }">
 				<samp class="sam"></samp>
 				<input type="hidden" name="shopprices" value="0.01">
 				<input type="hidden" name="xiaId" value="123456">
 				<input type="hidden" name="shopName" value="test">
 			</div>
 		<input class="paymentBtn" id="paymentBtn" type="button" href="" value="立即支付" /> 
-		
-		
-		
-		
 		
 		<!--【余额支付弹窗】-->
 		<div class="balModal">
@@ -445,7 +443,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  	});
 						return false;
 					}
-					
+					var xiaId_to = $("#xiaId_to").val();
+					var shouprices = $("#shouprices").val();
 						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden") && $("#wxQrcode").is(":hidden")) {
 	
 							layer.open({
@@ -479,8 +478,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    	skin: 'msg',
 						    	time: 2
 						  	});
+						  	window.location.href="RequestMappingUtil/requestNUll/APP/qrcode?xiaId="+xiaId_to+"&shouprices="+shouprices;
 						  	
-						  	window.location.href="RequestMappingUtil/requestNUll/APP/qrcode";
 						}
 					//快客Id
 					var kuaikeId = $("#kuaikeId").val();

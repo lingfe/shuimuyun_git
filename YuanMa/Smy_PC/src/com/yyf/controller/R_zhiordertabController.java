@@ -63,9 +63,16 @@ public class R_zhiordertabController {
 		String trade_type = "NATIVE";// 交易类型
 		String product_id = getRandomString(5) + System.currentTimeMillis();
 
-		r_zhiordertabService.insertMessage(total, xiaId, out_trade_no, body, trade_type, product_id, order_no,
-				shopName);// 保存数据库
-
+		int exsit = r_zhiordertabService.selectExsit(xiaId);
+		if(exsit==0){
+			r_zhiordertabService.insertMessage(total, xiaId, out_trade_no, body, trade_type, product_id, order_no,
+					shopName);// 保存数据库
+			System.out.println("插入数据库");
+		}else{
+			r_zhiordertabService.updateorder(total, xiaId, out_trade_no, body, trade_type, product_id, order_no,
+					shopName);// 更新数据库
+			System.out.println("修改数据库");
+		}
 		Properties p = new Properties();
 		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
 		InetAddress ia = null;

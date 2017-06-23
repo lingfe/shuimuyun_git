@@ -3,6 +3,10 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String xiaId = request.getParameter("xiaId");
+String shouprices = request.getParameter("shouprices");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -24,11 +28,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style>
 	.qrcode{
 		width:1.5rem;
-		height:1.5rem;
+		height:auto;
 		margin:auto;
 		margin-top:1rem;
 		overflow:hidden;
 		background: white;
+	}
+	.qrcode img {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 	</style>
 	<body>
@@ -41,11 +50,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<!--【头部】end-->
 		<div class="qrcode">
-			<img src="<%=basePath %>APP/images/icon/qrcode.png"width="100%" />
+			<img src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=<%=xiaId%>&shouprices=<%=shouprices%>&shopName=好吃的" />
 		</div>
-		
+		<input type="hidden" id="xiaId_to" value="<%=xiaId%>">
 		<script type="text/javascript" src="<%=basePath %>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
-		
+		<script type="text/javascript">
+		setTimeout(Start, 5000); //延迟5秒开始周期回调
+		var xiaId_to = $("#xiaId_to").val();
+		function fun() {
+			$.ajax({
+				url : "<%=path%>/payselect/query",
+				type : "POST",
+				dataType : "text",
+				data : {
+					'xiaid' : xiaId_to
+				},
+				success : function(data) {
+					if (data == "1") { //订单状态为1表示支付成功
+						window.location.href = "<%=basePath%>RequestMappingUtil/requestData/APP/payOk"; //页面跳转
+					}
+				},
+				error : function() {
+					alert("请求订单状态出错");
+				}
+			});
+		}
+		function Start() {
+			setInterval("fun()", "1000"); //单位为毫秒
+		}
+		</script>
 	</body>
 </html>

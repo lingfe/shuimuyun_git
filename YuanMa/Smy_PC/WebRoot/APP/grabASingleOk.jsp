@@ -98,12 +98,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="taking_div_last" id="order_right2">
 				<span class="shijianspan">最晚取货时间</span>
-				<input class="shijianint" type="text" readonly=""/>
+				<input class="shijianint" type="text" readonly="readonly" value="${info.timeString }"/>
 				<%-- <img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" /> --%>
 			</div>
 			<div class="taking_div_last" id="order_right2">
 				<span class="shijianspan">最迟到达时间</span>
-				<input class="shijianint" type="text" readonly=""/>
+				<input class="shijianint" type="text" readonly="readonly" value="${info.okDate }"/>
 				<%-- <img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" /> --%>
 			</div>
 		</div>

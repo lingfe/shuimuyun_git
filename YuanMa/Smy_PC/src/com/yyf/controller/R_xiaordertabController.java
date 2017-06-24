@@ -451,7 +451,8 @@ public class R_xiaordertabController {
 			
 			model.addAttribute("xiaId", tab.getXiaId());
 			model.addAttribute("sh", tab.getShopprices());
-			
+			System.out.println(tab.getOkDate()+"*************************************");
+			System.out.println(tab.getQuhuoDate()+"/*******************************");
 			System.out.println(tab.getXiaId()+"**********************");
 			return "APP/myWallet_Recharge";
 		} catch (Exception e) {

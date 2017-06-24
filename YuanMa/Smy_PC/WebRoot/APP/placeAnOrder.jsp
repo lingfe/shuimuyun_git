@@ -197,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/timerr.png" width="27"/>
 				<label>最迟到达时间</label>
 				<div class="order_right"id="order_right2">
-					<input class="shijiankaung" id="dee" type="text" readonly="" name="okDate" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="dee" type="text"  readonly="" name="okDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -303,6 +303,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/lCalendar.js" ></script>
 		<script type="text/javascript">
 		$(function(){
+			
+		
+			
 			//表单提交
 			$("#btn_ImgUpStart").click(function(){
 				//验证审核
@@ -472,6 +475,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'trigger': '#de',
 				'type': 'time'
 			});
+			
 			var calendartime = new lCalendar();
 			calendartime.init({
 				'trigger': '#dee',

@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/lCalendar.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>APP/css/smyMobile.css"/>
+	
 	<script>
 			setTimeout(function() {
 				$("body").show();

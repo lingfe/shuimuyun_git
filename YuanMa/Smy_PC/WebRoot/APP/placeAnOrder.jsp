@@ -126,6 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<form action="xiaordertab/orderSbmit" method="post"  enctype="multipart/form-data">
 		<input type="hidden" name="kuaikeId" value="${login.kuaikeId }" />
+		<input type="hidden" name="xiaId" value="${xiaId }">
 		<!--发货人，收货人信息跳转-->
 		<div class="order_info">
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
@@ -179,6 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="jia">+</span>
 				</div>
 			</div>
+			
 		</div>	
 		<!--到达时间-->
 		<div class="order_info">
@@ -186,7 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最晚取货时间</label>
 				<div class="order_right"id="order_right3">
-					<input class="shijiankaung" id="de" type="text" readonly="" name="quhouDate" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="de" type="text" readonly="" name="timeString" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>

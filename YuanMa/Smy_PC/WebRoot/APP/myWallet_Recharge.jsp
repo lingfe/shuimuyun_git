@@ -4,6 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String xiaId = request.getParameter("xiaId");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -325,7 +326,7 @@ String xiaId = request.getParameter("xiaId");
 			<input type="text" readonly="readonly" id="sho" name="shopprices" value="${sh}"/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
-		<input type="hidden" id="xiaId_to" value="${xiaId }">
+		<input type="hidden" id="xiaId_to" name="xiaId" value="${xiaId }">
 		<input type="hidden" id="shouprices" value="${sh}">
 		<div class="paymentList">
 			<div class="paymentList_item">

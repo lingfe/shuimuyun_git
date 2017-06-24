@@ -28,7 +28,8 @@ dl {
 	list-style-type: none;
 }
 input {
-	line-height: normal;
+	line-height: normal !important;
+	vertical-align: middle !important; 
 }
 html,
 body {

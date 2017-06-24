@@ -346,10 +346,13 @@ public class R_xiaordertabController {
 			tab.setShopDate(new Date());
 			
 			//清空session
-//			request.getSession().removeAttribute("xiaId");
-//			request.getSession().removeValue("xiaId");
+			request.getSession().removeAttribute("xiaId");
+			request.getSession().removeValue("xiaId");
 			//设置id到session
 			request.getSession().setAttribute("xiaId", tab.getXiaId());
+			
+			System.out.println(tab.getXiaId()+"*********************************");
+			
 			r_xiaordertabService.add(tab);
 			return "APP/"+pageName;
 		}else{
@@ -443,11 +446,13 @@ public class R_xiaordertabController {
 			
 			r_xiaordertabService.orderSbmit(tab);
 			//清空session中的下单id
-//			request.getSession().removeAttribute("xiaId");
-//			request.getSession().removeValue("xiaId");
+			request.getSession().removeAttribute("xiaId");
+			request.getSession().removeValue("xiaId");
 			
 			model.addAttribute("xiaId", tab.getXiaId());
 			model.addAttribute("sh", tab.getShopprices());
+			
+			System.out.println(tab.getXiaId()+"**********************");
 			return "APP/myWallet_Recharge";
 		} catch (Exception e) {
 			e.printStackTrace();

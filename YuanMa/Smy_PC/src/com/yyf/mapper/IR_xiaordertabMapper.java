@@ -255,8 +255,6 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 */
 	@Update("update xiaordertab set payment=1 where xiaId=#{xiaId}")
 	public void updatePayment(@Param("xiaId") String xiaId);
-	
-	
-	
+
 
 }

@@ -2,8 +2,6 @@ package com.yyf.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.yyf.model.Balancetab;
 
 /**
@@ -41,4 +39,38 @@ public interface BalancetabService {
 	 * @return
 	 */
 	public List<Balancetab> queryallbalance();
+
+
+	/**
+	 * @author 田浩     
+	 * @created 2017年6月26日 上午11:35:45  
+	 * @return
+	 */
+	
+	public void insertBalance(String kuaikeId,String order_no);
+	
+	/**
+	 * @author 田浩     
+	 * @created 2017年6月26日 上午11:35:45  
+	 * @return
+	 */
+	
+	public void updateBalance(String out_trade_no,String total_fee);
+	
+	
+	/**
+	 * @author 田浩     
+	 * @created 2017年6月26日 上午11:35:45  
+	 * @return
+	 */
+	
+	public void updatePayStatus(String kuaikeId,String out_trade_no);
+	
+	/**
+	 * @author 田浩     
+	 * @created 2017年6月26日 上午11:35:45  
+	 * @return
+	 */
+	
+	public String selectresult(String kuaikeId);
 }

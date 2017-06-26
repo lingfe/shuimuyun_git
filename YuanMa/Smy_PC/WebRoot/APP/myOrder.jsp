@@ -58,7 +58,7 @@
 	<div class="oallCont" style="margin-top: 0.06rem;" style="border:red solid 1px;">
 		<div class="oallCont_muen">
 			<div class="active">全部</div>
-			<div id="express">我的快递</div>
+			<div id="express">我的配送</div>
 			<div id="delivery">我的发货</div>
 		</div>
 		<!--【没有数据的样式】-->

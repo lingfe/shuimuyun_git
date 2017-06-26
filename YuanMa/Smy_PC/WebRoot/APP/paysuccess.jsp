@@ -11,7 +11,7 @@ String shouprices = request.getParameter("shouprices");
   <head>
     <base href="<%=basePath%>">
     
-    <title>付款成功</title>
+    <title>充值成功</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -81,72 +81,15 @@ String shouprices = request.getParameter("shouprices");
 			<a class="commHeader_l" href="javascript:history.back(-1);">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/arow_left.png" />
 			</a>
-			<p>交易成功</p>
 		</header>
 		<!--内容-->
 		<img class="czcg_img" src="APP/images/icon/czcg.png" width="100%" />
-		<p class="czcg_p">交易成功</p>
-		<div class="czcg_text">
-			<div class="czcg_text_div">
-				<span>银行卡</span>
-				<span>农业银行 尾号1179</span>
-			</div>
-			<div class="czcg_text_div">
-				<span>金额</span>
-				<span>
-					<%=shouprices %>
-				</span>
-			</div>
-		</div>
-		<a href="RequestMappingUtil/requestNUll/APP/index"><button class="czcg_btn">完成</button></a>
-    
+		<p class="czcg_p">充值成功</p>
+		
+		<a href="RequestMappingUtil/requestNUll/APP/myWallet">
+				我的钱包
+				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_2.png" width="20%" />
+			</a>
     <script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
-  <script type="text/javascript">
-		if("${login}"==""||"${login}"==null){
-		//询问框
-		layer.open( {
-				anim: 'up',
-				shadeClose: false,
-				content: '您还没有登陆？',
-				btn: ['登录', '注册'],
-				yes:function(index){
-					layer.close(index);
-			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
-				},
-				no:function(index){
-					layer.close(index);
-					window.location.href="RequestMappingUtil/requestNUll/APP/register";
-				}  
-			});
-		}else{
-			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//验证审核
-				if("${login.kuaikeStatus}"==0){
-					//提示
-				    layer.open({
-				    	content: '您的身份还没有通过审核！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
-				}else{
-					//询问框
-					layer.open( {
-						anim: 'up',
-						shadeClose: false,
-						content: '您的资料还没有完善？',
-						btn: ['完善资料','取消'],
-						yes:function(index){
-							layer.close(index);
-							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-						},
-						no:function(index){
-							layer.close(index);
-						}  
-					});
-				}
-			}
-		}
-		</script>
-  
   </body>
 </html>

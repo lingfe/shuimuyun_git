@@ -18,7 +18,17 @@ public class Balancetab {
 	private  double balance;//余额
 	
 	private double deposit;//押金
+
+	private int paystatus;
 	
+	public int getPaystatus() {
+		return paystatus;
+	}
+
+	public void setPaystatus(int paystatus) {
+		this.paystatus = paystatus;
+	}
+
 	public double getDeposit() {
 		return deposit;
 	}

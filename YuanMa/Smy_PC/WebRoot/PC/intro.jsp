@@ -21,16 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 <link rel="stylesheet" href="<%=basePath %>PC/css/intro.css" />
   </head>
-   <style>
-  	.sssss{
-  		display:inline-block;
-  		transform: translateY(-5px);
-  	}
-  	.sasa{
-  		height: 20px !important;
-  		line-height: 20px !important;
-  	}
-  </style>
+  
   <body>
 		<!--【头部】-->
 		<header class="header">
@@ -47,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a>
 					</nav>
 					<div class="lianxi left">
-						<div class="left"><img src="<%=basePath %>PC/img/电话.png"/><a href="#">0851 8861 0341</a></div>
+						<div class="left"><img src="<%=basePath %>PC/img/电话.png"/><a href="#">400 800 600</a></div>
 						<div class="left"><img src="<%=basePath %>PC/img/邮箱.png"/><a href="#">wenpin@shuimuyun.com</a></div>
 					</div>
 				</div>
@@ -90,10 +81,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="footer_bottom">
 				<div class="footer_bCont">
-					<a  class="sasa"  href="javascript:;">公司：水木云网络科技有限公司</a>
-					<a  class="sasa"  href="javascript:;">公司地址：贵阳市南明区花果园E区6栋二单元</a>
-					<a  class="sasa"  href="javascript:;">工信部备案号 黔ICP备16008136号</a>
-					<a class="sasa" href="javascript:;"><img src="<%=basePath%>PC/images/beianhao.jpg" width=20;/><span class="sssss">贵公网安备52010202000388号</span></a>
+					<a href="javascript:;">公司：水木云网络科技有限公司</a>
+					<a href="javascript:;">公司地址：贵阳市南明区太慈桥</a>
+					<a href="javascript:;">黔ICP备16031300号 水木云版权所有</a>
+					<a href="javascript:;">黔公网安备 33010802007421号</a>
 				</div>
 			</div>
 		</footer>

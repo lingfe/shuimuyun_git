@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="cour_div_4">快递员的位置：</div>
 			<div class="cour_div_5">
 				<span><img src="<%=basePath%>APP/images/icon/adds_oreng.png" width="15"/></span>
-				<span>${info.kuaikeAddressInfo }</span>
+				<span>${info.kuaikeAddress}&nbsp;${info.kuaikeAddressInfo }</span>
 			</div>
 		</div>
 		<div class="courier_last">

@@ -13,7 +13,9 @@ header a {
 
 body {
 	background-image: url(../images/xaidanbg.png);
-	position: relative;
+	position: absolute;
+	width:100%;
+	height:100%;
 	top: 0px;
 	z-index: 999;
 }

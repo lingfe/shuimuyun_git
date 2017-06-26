@@ -106,7 +106,7 @@ p {
 
 .z_photo {
 	width: 90%;
-	height: 4rem;
+	height: 370px;
 	overflow: auto;
 	clear: both;
 	border: 1px solid #555;

@@ -22,7 +22,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="<%=basePath %>PC/css/about.css" />
 		<link rel="stylesheet" href="<%=basePath %>PC/css/video-js.css" />
   </head>
-  
+  <style>
+  	.sssss{
+  		display:inline-block;
+  		transform: translateY(-5px);
+  	}
+  	.sasa{
+  		height: 20px !important;
+  		line-height: 20px !important;
+  	}
+  </style>
   <body>
 		<!--【头部】-->
 		<header class="header">
@@ -39,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="<%=basePath%>PC/personalCenter.jsp">个人中心</a>
 					</nav>
 					<div class="lianxi left">
-						<div class="left"><img src="<%=basePath %>PC/img/电话.png"/><a href="#">400 800 600</a></div>
+						<div class="left"><img src="<%=basePath %>PC/img/电话.png"/><a href="#">0851 8861 0341</a></div>
 						<div class="left"><img src="<%=basePath %>PC/img/邮箱.png"/><a href="#">wenpin@shuimuyun.com</a></div>
 					</div>
 				</div>
@@ -62,12 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img src="<%=basePath %>PC/img/logo.png" width="180" />
 				</div>
 				<p>
-					水木云消费电子商城，正式成立于2016年9月,公司前身是深圳市一致电子科技有限公司，致力于电子产品的制造业领域长达十年.为适应市场发出趋势，公司于2011年9月成功转型，我们已全力进军互联网行业电子商务领域。依托有“世界工厂”之称的深圳和东莞制造业基地，尤其以电子产品著称。我们先后和七家工厂签约并建立长期的合作关系，为我们向您提供最优质的产品奠定了坚实的基础，同时售后服务得到保障。让您更放心。</p>
-				<p>
-					在我们不断的努力开拓下，我们的电子商务平台--------时尚消费电子商城（http://www.xfdzmall.com）是中国B2C市场电子网购专业平台之一。商城始终坚持以纯电子商务模式运营，缩减中间环节，为消费者在第一时间提供优质的产品及满意的服务。提供了灵活多样的消费者查询、购物等都将不受时间和地域的限制。依托多年打造的庞大物流体系，让您充分享受到"足不出户，网罗天下"的便捷
+									贵州水木云网络科技有限公司于2016年6月成立于中国著名的避暑之都爽爽的贵阳，创始人闻平以及联合创始团队秉承着“民以食为天，食以安为先，安以质为本，质以诚为根”的理念通过科技创新为社会提供最优质的生鲜产品服务
 				</p>
 				<p>
-					对待所有客户我们秉承提供具有价格优势的产品和满意的服务为宗旨，以一流的产品质量和精湛的服务体系在行业客户中赢得较高声誉。公司秉承“以质为根、以诚为本、以德为先、以信为生”的发展理念，奉行“进取求实 严谨团结”的工作方针，不断开拓创新。以服务为核心，为最高宗旨，竭诚提供性价比最高的商品及无微不至的服务。公司集销售、物流、售后于一体，让您买的安心，用的舒心！
+									贵州水木云网络科技有限公司（以下简称水木云）是一家集农业基地、物流运输、快递服务、互联网服务、物联网建设、科技开发为一体的综合性企业。我们把科技创新用于农业领域，种植、养殖创新（综合互联网、大数据等让农作物回归自然方式成长，不再使用农药、化肥等化学物品；动物养殖不再使用饲料；实现货物库存减少，保证优质生鲜食品），食品健康、安全、绿色是水木云的责任与使命。人人可参与农业生态资源、经济共享。物流快递创新实现物流快递行业资源再分配，人人参与物流快递业经济共享。水木云将坚持科技开发、运用，把科技产品（系统）适用于农业领域，让消费者得到更好的体验（人人参与农业种植、养殖、运输快递中）与服务。
 				</p>
 				</div>
 			</div>
@@ -88,16 +95,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	<div><img src="<%=basePath %>PC/img/肉.jpg"/></div>
 		  	<div class="about_contex_right_qiye1_xin">
 		  		<p>
-		  			<a href="#"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
+		  			<a href="javascript:void(0);"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
 		  		</p>
 		  		<p>
-		  			<a href="#"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
+		  			<a href="javascript:void(0);"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
 		  		</p>
 		  		<p>
-		  			<a href="#"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
+		  			<a href="javascript:void(0);"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
 		  		</p>
 		  		<p>
-		  			<a href="#"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
+		  			<a href="javascript:void(0);"><label>特价大甩特价大甩特价大甩特价大甩卖</label><span>2017-6-2</span></a>
 		  		</p>
 		  	</div>
 		  	</div>
@@ -123,10 +130,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="footer_bottom">
 				<div class="footer_bCont">
-					<a href="javascript:;">公司：水木云网络科技有限公司</a>
-					<a href="javascript:;">公司地址：贵阳市南明区太慈桥</a>
-					<a href="javascript:;">黔ICP备16031300号 水木云版权所有</a>
-					<a href="javascript:;">黔公网安备 33010802007421号</a>
+					<a  class="sasa"  href="javascript:;">公司：水木云网络科技有限公司</a>
+					<a  class="sasa"  href="javascript:;">公司地址：贵阳市南明区花果园E区6栋二单元</a>
+					<a  class="sasa"  href="javascript:;">工信部备案号 黔ICP备16008136号</a>
+					<a class="sasa" href="javascript:;"><img src="<%=basePath%>PC/images/beianhao.jpg" width=20;/><span class="sssss">贵公网安备52010202000388号</span></a>
 				</div>
 			</div>
 		</footer>

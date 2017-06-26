@@ -92,7 +92,7 @@
 				<li><img src="<%=basePath%>PC/images/e.png" /><a
 					href="javascript:void(0);">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a
-					href="javascript:void(0);">0851 8510 3179</a></li>
+					href="javascript:void(0);">0851 8861 0341</a></li>
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -368,11 +368,11 @@
 		<div class="fooeter4 col-lg-5 col-sm-6 col-xs-6 col-md-5">
 			<ul>
 				<li>联系我们</li>
-				<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
-				<li><span>商城客服电话:</span><a href="#"> 400 800 600</a></li>
-				<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
-				<li><span>商城关键词组:</span><a href="http://www.smuyun.com/">水木云， 水木云商城</a></li>
-				<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
+			<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
+			<li><span>商城客服电话:</span><a href="#">0851 8861 0341</a></li>
+			<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
+			 <li><span>工信部备案号</span><a>黔ICP备16008136号</ a></li>
+			 <li><span><img src="<%=basePath%>PC/images/beianhao.jpg" /></span><a>贵公网安备52010202000388号</ a></li>
 			</ul>
 		</div>
 	</footer>

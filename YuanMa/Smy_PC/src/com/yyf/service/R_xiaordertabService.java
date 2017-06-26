@@ -217,6 +217,6 @@ public interface R_xiaordertabService {
 	 * @created 2017年6月22日 上午10:15:01  
 	 * @param xiaId 下单Id
 	 */
-	public void updatePayment(String xiaId);
+	public void updatePayment(double payment,String xiaId);
 
 }

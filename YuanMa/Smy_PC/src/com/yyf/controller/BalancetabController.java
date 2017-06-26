@@ -62,10 +62,20 @@ public class BalancetabController {
 	@ResponseBody
 	public void updateBalance(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
 			@PathVariable("zhifupwd") String zhifupwd,@PathVariable("xiaId") String xiaId) {
+			Balancetab queryBalance1 = balancetabService.queryBalance(kuaikeId);
+		
+			if(queryBalance1.getBalance()>balance){
+				
+				xiaordertabService.updatePayment(1,xiaId);
+				balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
+				
+				
+			}
+			else {
+				xiaordertabService.updatePayment(0,xiaId);
 			
-			xiaordertabService.updatePayment(xiaId);
+			}
 			
-			balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
 	
 	}
 

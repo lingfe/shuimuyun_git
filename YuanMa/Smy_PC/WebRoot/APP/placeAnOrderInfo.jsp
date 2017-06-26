@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="courier_last_con_last">
 				<div class="courier_last_con_last_img">
-					<img src="<%=basePath%>APP/images/banner1.jpg" width="100%" height="100%"/>
+					<img src="${info.shopImages!=null ?info.shopImages:'APP/images/banner1.jpg'}" width="100%" height="100%"/>
 					<div>
 						该商品暂未上传图片
 					</div>

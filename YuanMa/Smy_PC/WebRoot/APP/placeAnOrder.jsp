@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: 100%;
 			width: 100%;
 			opacity: 0;
-			z-index: 99;
+			z-index: 999;
 		}
 		
 		
@@ -126,6 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<form action="xiaordertab/orderSbmit" method="post"  enctype="multipart/form-data">
 		<input type="hidden" name="kuaikeId" value="${login.kuaikeId }" />
+		<input type="hidden" name="xiaId" value="${xiaId }"/>
 		<!--发货人，收货人信息跳转-->
 		<div class="order_info">
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
@@ -173,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/huowutiji.png" width="27"/>
 				<label>货物体积</label>
 				<div class="order_num">
-					<span class="order_num_mag">&nbsp;立方</span>
+					<span class="order_num_mag">&nbsp;m</span>
 					<span id="jian">-</span>
 					<span > <input id="zhi11" name="vargoVolume" class="vargoVolume" type="number" value="1"> </span>
 					<span id="jia">+</span>
@@ -212,14 +213,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="order_info">
 			<div class="order_tan_clos botto">
 			<img class="mony" src="<%=basePath%>APP/images/icon/mony.png" width="30"/>
-				<a class="xiadan">下单金额</a>
-				<input class="shopprices"  type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
-				<span>元</span>
-			</div>
-			<div class="order_tan_clos botto">
-			<img class="mony" src="<%=basePath%>APP/images/icon/kuaid.png" width="30"/>
 				<a class="xiadan">快客费用</a>
-				<input class="shopprices"  type="text" name="" id="" placeholder="请输入金额">
+				<input class="shopprices"  type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
 				<span>元</span>
 			</div>
 		</div>

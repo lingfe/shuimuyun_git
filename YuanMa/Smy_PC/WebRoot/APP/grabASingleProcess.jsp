@@ -130,12 +130,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<c:if test="${info.status==1 }" >
 				<!-- 图片预览容器 -->
-				<!-- <div id="div_imglook">
+				<div id="div_imglook">
 					<div style="clear: both;"></div>
 				</div>
 				图片选择对话框
 				<div id="div_imgfile">上传货物照片</div> -->
-				<!--确定上传按钮<input type="button" value="确定上传"  />-->
+				<!--确定上传按钮<input type="button" value="确定上传"  />
 				
 				<!-- 确定取货 -->
 				<div class="order_buttom">

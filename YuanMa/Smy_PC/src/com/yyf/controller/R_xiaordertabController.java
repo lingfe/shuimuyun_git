@@ -425,8 +425,6 @@ public class R_xiaordertabController {
 	@RequestMapping(value = "/orderSbmit", method = RequestMethod.POST)
 	public  String orderSbmit(@RequestParam(value = "files", required = false) MultipartFile[] files,R_xiaordertab tab,HttpServletRequest request,ModelMap model) {
 		try {
-
-			
 			// 获取到当前服务器项目的跟路径
 			String path = request.getSession().getServletContext().getRealPath("upload");
 
@@ -437,7 +435,7 @@ public class R_xiaordertabController {
 					MultipartFile	file=files[i];
 					// 文件1
 					String fileName = file.getOriginalFilename();
-					imagesPath += request.getContextPath() + "/upload/" + fileName+",";
+					imagesPath += request.getContextPath() + "/upload/" + fileName;
 					File targetFile = new File(path, fileName);
 					if (!targetFile.exists()) {
 						targetFile.mkdirs();
@@ -453,9 +451,9 @@ public class R_xiaordertabController {
 			
 			r_xiaordertabService.orderSbmit(tab);
 			//清空session中的下单id
-//			request.getSession().removeAttribute("xiaId");
-//			request.getSession().removeValue("xiaId");
-			
+			request.getSession().removeAttribute("xiaId");
+			request.getSession().removeValue("xiaId");
+
 			model.addAttribute("xiaId", tab.getXiaId());
 			model.addAttribute("sh", tab.getShopprices());
 			return "APP/myWallet_Recharge";

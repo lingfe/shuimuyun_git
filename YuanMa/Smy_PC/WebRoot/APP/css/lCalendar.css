@@ -10,7 +10,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 9900;
+	z-index: 998;
 	overflow: hidden;
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both
@@ -26,28 +26,14 @@
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	z-index: 9901;
+	z-index: 999;
 	overflow: hidden;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0)
 }
 
 .slideInUp {
 	animation: slideInUp .3s ease-in;
 	-webkit-animation: slideInUp .3s ease-in
 }
-
-@-webkit-keyframes slideInUp {
-	from {
-		-webkit-transform: translate3d(0, 100%, 0);
-		transform: translate3d(0, 100%, 0)
-	}
-	to {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0)
-	}
-}
-
 .date_roll,
 .datetime_roll,
 .time_roll {

@@ -116,6 +116,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: 1rem;
 			z-index: 5;
 		}
+		.asdd{
+			color: #555;
+			text-align: center;
+		}
 	</style>
 	
 	</head>
@@ -145,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/type.png" width="27"/>
 				<label>货物类型</label>
 				<div class="order_right" id="order_right">
-					<input type="text" readonly="" class="order_r_inp" name="shopType" id="order_leixin" value="非易碎" />
+					<input type="text" readonly="" class="order_r_inp" name="shopType" id="order_leixin" value="易碎" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 				</div>
 			</div>
@@ -169,17 +173,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="jia">+</span>
 				</div>
 			</div>
-			<div class="shipper">
-				<img src="<%=basePath%>APP/images/icon/huowutiji.png" width="27"/>
-				<label>货物体积</label>
-				<div class="order_num">
-					<span class="order_num_mag">&nbsp;立方</span>
-					<span id="jian">-</span>
-					<span > <input id="zhi11" name="vargoVolume" class="vargoVolume" type="number" value="1"> </span>
-					<span id="jia">+</span>
-				</div>
+			<div class="asdd">
+				货物单边最长不超过2m
 			</div>
-		</div>	
 		<!--到达时间-->
 		<div class="order_info">
 		<div class="shipper">
@@ -216,15 +212,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input class="shopprices"  type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
 				<span>元</span>
 			</div>
-			<div class="order_tan_clos botto">
-			<img class="mony" src="<%=basePath%>APP/images/icon/kuaid.png" width="30"/>
-				<a class="xiadan">快客费用</a>
-				<input class="shopprices"  type="text" name="" id="" placeholder="请输入金额">
-				<span>元</span>
-			</div>
 		</div>
 		<div class="quickSf_item">
-			<input class="file" type="file" name="files" multiple="multiple" />
+			<input class="file" type="file" name="files" multiple="multiple" accept="image/*" />
 			<img title="" alt="" src="" />
 			<span>上传货物图片</span>
 		</div>
@@ -248,7 +238,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="order_tan_context"  id="order_tex">
 				<span>易碎</span>
-				<span>非易碎</span>
 				<span>贵重</span>
 			</div>
 		</div>

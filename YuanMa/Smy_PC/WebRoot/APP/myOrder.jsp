@@ -79,6 +79,60 @@
 	</div>
 	<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
 	<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js"></script>
+	<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
+	<!-- 验证身份 初级验证 -->
+		<script type="text/javascript">
+		if("${login}"==""||"${login}"==null){
+		//询问框
+		layer.open( {
+				anim: 'up',
+				shadeClose: false,
+				content: '您还没有登陆？',
+				btn: ['登录', '注册'],
+				yes:function(index){
+					layer.close(index);
+			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
+				},
+				no:function(index){
+					layer.close(index);
+					window.location.href="RequestMappingUtil/requestNUll/APP/register";
+				}  
+			});
+		}else{
+			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
+				//验证审核
+				if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
+				}else{
+					//询问框
+					layer.open( {
+						anim: 'up',
+						shadeClose: false,
+						content: '您的资料还没有完善？',
+						btn: ['完善资料','取消'],
+						yes:function(index){
+							layer.close(index);
+							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
+						},
+						no:function(index){
+							layer.close(index);
+						}  
+					});
+				}
+				
+				
+			}
+		}
+		</script>
+	
+	
+	
+	
 	<script>
 		$(function() {
 			$(".oallNav a").click(function() {
@@ -142,7 +196,7 @@
 			});
 		});
 	</script>
-	<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
+	
 	<!-- 下单ajax -->
 	<script type="text/javascript">
 		//默认
@@ -233,54 +287,6 @@
 					loadmore(status);
 		}
 	</script>
-		<!-- 验证身份 初级验证 -->
-		<script type="text/javascript">
-		if("${login}"==""||"${login}"==null){
-		//询问框
-		layer.open( {
-				anim: 'up',
-				shadeClose: false,
-				content: '您还没有登陆？',
-				btn: ['登录', '注册'],
-				yes:function(index){
-					layer.close(index);
-			  		window.location.href="RequestMappingUtil/requestNUll/APP/login";
-				},
-				no:function(index){
-					layer.close(index);
-					window.location.href="RequestMappingUtil/requestNUll/APP/register";
-				}  
-			});
-		}else{
-			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//验证审核
-				if("${login.kuaikeStatus}"==0){
-					//提示
-				    layer.open({
-				    	content: '您的身份还没有通过审核！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
-				}else{
-					//询问框
-					layer.open( {
-						anim: 'up',
-						shadeClose: false,
-						content: '您的资料还没有完善？',
-						btn: ['完善资料','取消'],
-						yes:function(index){
-							layer.close(index);
-							window.location.href="RequestMappingUtil/requestNUll/APP/perfectData_firstStep";
-						},
-						no:function(index){
-							layer.close(index);
-						}  
-					});
-				}
-				
-				
-			}
-		}
-		</script>
+		
 </body>
 </html>

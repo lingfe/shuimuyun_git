@@ -68,25 +68,21 @@ $(function() {
 	//弹出框一
 	$("#order_right").click(function() {
 		$("#order_zhe").css("display", "block");
-		$("#order_tan").css("transform", "translateY(-1.1rem)");
-		$("#order_tan").css("transition", "0.5s");
+		$("#order_tan").css("display", "block");
 	});
 	$("#order_zhe").click(function() {
 		$("#order_zhe").css("display", "none");
-		$("#order_tan").css("transform", "translateY(1.1rem)");
-		$("#order_tan").css("transition", "0.5s");
+		$("#order_tan").css("display", "none");
 	});
 	//货物类型取值
 	$("#order_tex span").click(function() {
 		$("#order_leixin").val($(this).html());
 		$("#order_zhe").css("display", "none");
-		$("#order_tan").css("transform", "translateY(1.1rem)");
-		$("#order_tan").css("transition", "0.5s");
+		$("#order_tan").css("display", "none");
 	})
 	$("#order_close").click(function() {
 		$("#order_zhe").css("display", "none");
-		$("#order_tan").css("transform", "translateY(1.1rem)");
-		$("#order_tan").css("transition", "0.5s");
+		$("#order_tan").css("display", "none");
 	})
 
 	//弹出框二
@@ -94,24 +90,20 @@ $(function() {
 	$("#order_tan1 #order_tex1 span").click(function() {
 		$("#order_clar").val($(this).html());
 		$("#order_zhe").css("display", "none");
-		$("#order_tan1").css("transform", "translateY(1.8rem)");
-		$("#order_tan1").css("transition", "0.5s");
+		$("#order_tan1").css("display", "none");
 	});
 
 	$("#order_right1").click(function() {
 		$("#order_zhe").css("display", "block");
-		$("#order_tan1").css("transform", "translateY(-1.8rem)");
-		$("#order_tan1").css("transition", "0.5s");
+		$("#order_tan1").css("display", "block");
 	});
 	$("#order_zhe").click(function() {
 		$("#order_zhe").css("display", "none");
-		$("#order_tan1").css("transform", "translateY(1.8rem)");
-		$("#order_tan1").css("transition", "0.5s");
+		$("#order_tan1").css("display", "none");
 	});
 	$("#order_close1").click(function() {
 		$("#order_zhe").css("display", "none");
-		$("#order_tan1").css("transform", "translateY(1.8rem)");
-		$("#order_tan1").css("transition", "0.5s");
+		$("#order_tan1").css("display", "none");
 	})
 //	//弹出框三
 //	//最迟到达时间取值

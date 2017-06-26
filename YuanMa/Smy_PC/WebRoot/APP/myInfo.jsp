@@ -144,32 +144,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
-		<script type="text/javascript">
-			$(function(){
-				var kuaikeId=$("#kuaikeId").val();
-				$.ajax({
-					url : 'xiaordertab/getMyInfoOrderStatus?kuaikeId='+kuaikeId,
-					type : 'get',
-					success : function(data) {
-						if(data!=null){
-							$("#dfk").html(data.dfk);//待付款
-							$("#yjd").html(data.yjd);//已接单
-							$("#yqh").html(data.yqh);//已取货
-							$("#wpj").html(data.wpj);//未评价
-						}
-					},
-					error : function(xhr, type) {
-						//提示
-					    layer.open({
-					    	content: 'Ajax error!',
-					    	skin: 'msg',
-					    	time: 2
-					  	});
-					},
-					async:false
-				});
-			});
-		</script>
 		<!-- 验证身份 初级验证 -->
 		<script type="text/javascript">
 		if("${login}"==""||"${login}"==null){
@@ -217,5 +191,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 		</script>
+		
+		
+		
+		
+		<script type="text/javascript">
+			$(function(){
+				var kuaikeId=$("#kuaikeId").val();
+				$.ajax({
+					url : 'xiaordertab/getMyInfoOrderStatus?kuaikeId='+kuaikeId,
+					type : 'get',
+					success : function(data) {
+						if(data!=null){
+							$("#dfk").html(data.dfk);//待付款
+							$("#yjd").html(data.yjd);//已接单
+							$("#yqh").html(data.yqh);//已取货
+							$("#wpj").html(data.wpj);//未评价
+						}
+					},
+					error : function(xhr, type) {
+						//提示
+					    layer.open({
+					    	content: 'Ajax error!',
+					    	skin: 'msg',
+					    	time: 2
+					  	});
+					},
+					async:false
+				});
+			});
+		</script>
+		
 	</body>
 </html>

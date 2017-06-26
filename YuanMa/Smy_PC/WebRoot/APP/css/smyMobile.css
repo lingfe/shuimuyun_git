@@ -824,7 +824,7 @@ input {
 	height: 100%;
 	z-index: 992;
 	background: rgba(0, 0, 0, 0.8);
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	display: none;
@@ -837,9 +837,10 @@ input {
 	width: 100%;
 	background: #fff;
 	position: fixed;
-	bottom: -1.1rem;
+	display:none; 
 	font-size: .13rem;
-	z-index: 999;
+	z-index: 997;
+	bottom:.3rem;
 }
 
 .order_tan_clos {
@@ -875,7 +876,7 @@ input {
 	width: 28%;
 	height: .3rem;
 	display: inline-block;
-	margin-left: 3%;
+	margin-left: 14%;
 	text-align: center;
 	background: gainsboro;
 	border-radius: 20px;
@@ -889,9 +890,10 @@ input {
 	width: 100%;
 	background: #fff;
 	position: fixed;
-	bottom: -1.8rem;
+	bottom: .3rem;
 	font-size: .13rem;
 	z-index: 999;
+	display: none;
 }
 
 .order_tan_clos1 {
@@ -2104,7 +2106,7 @@ input {
 	background: rgb(255, 255, 255);
 	border-top: 1px solid #e3e1e1;
 	padding: 0.02rem 0;
-	z-index: 991;
+	z-index: 999;
 }
 
 .footerMenu a {

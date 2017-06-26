@@ -356,8 +356,8 @@ public class R_xiaordertabController {
 			tab.setShopDate(new Date());
 			
 			//清空session
-//			request.getSession().removeAttribute("xiaId");
-//			request.getSession().removeValue("xiaId");
+			request.getSession().removeAttribute("xiaId");
+			request.getSession().removeValue("xiaId");
 			//设置id到session
 			request.getSession().setAttribute("xiaId", tab.getXiaId());
 			r_xiaordertabService.add(tab);

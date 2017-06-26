@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div style="clear: both;"></div>
 				</div>
 				图片选择对话框
-				<div id="div_imgfile">上传货物照片</div> -->
+				<div id="div_imgfile">上传货物照片</div>
 				<!--确定上传按钮<input type="button" value="确定上传"  />
 				
 				<!-- 确定取货 -->

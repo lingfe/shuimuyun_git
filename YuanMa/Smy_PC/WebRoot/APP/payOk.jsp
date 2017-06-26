@@ -98,7 +98,7 @@ String shouprices = request.getParameter("shouprices");
 				</span>
 			</div>
 		</div>
-		<a href="RequestMappingUtil/requestNUll/APP/myOrder"><button class="czcg_btn">完成</button></a>
+		<a href="RequestMappingUtil/requestNUll/APP/index"><button class="czcg_btn">完成</button></a>
     
     <script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
   </body>

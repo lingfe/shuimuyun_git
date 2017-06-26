@@ -37,11 +37,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="hipper_contex">
 			<div>
 				<span>收货人：</span>
-				<input style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem" id="con_name" type="text" value="${info.shouhuoName }" placeholder="请输入姓名"/>
+				<input id="con_name" type="text" value="${info.shouhuoName }" placeholder="请输入姓名"/>
 			</div>			
 			<div>
 				<span>手机号：</span>
-				<input style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem" id="con_phone" type="text" value="${info.shouhuoShone }" placeholder="请输入手机号"/>
+				<input id="con_phone" type="text" value="${info.shouhuoShone }" placeholder="请输入手机号"/>
 			</div>			
 			<div>
 				<%-- <img src="<%=basePath%>APP/images/icon/adds.png" width="20" class="hipper_contex_firstimg"/> --%>
@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>			
 			<div class="edit_firstdiv_3">
 				<label style="font-size: 0.15rem">街　道 :</label>
-				<input style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem" type="text" placeholder="请输入详细地址" id="xadder" />
+				<input type="text" placeholder="请输入详细地址" id="xadder" />
 			</div>
 			</div>
 			<div id="shouhuoAddressInfo_value"></div>			

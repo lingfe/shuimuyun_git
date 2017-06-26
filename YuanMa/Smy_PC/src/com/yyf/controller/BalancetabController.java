@@ -65,8 +65,6 @@ public class BalancetabController {
 			
 			xiaordertabService.updatePayment(xiaId);
 			
-			System.out.println(xiaId+"**......................................................");
-			
 			balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
 	
 	}

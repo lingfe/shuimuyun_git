@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -191,13 +192,22 @@ public class R_xiaordertabController {
 	 * @return URL
 	 */
 	@RequestMapping(value = "/insertCommentInfo", method = RequestMethod.POST)
-	public String insertCommentInfo(Commenttab tab) {
-		// 评论id
-		tab.setCommentId(UUID.randomUUID().toString());
-		// 评论时间
-		tab.setCommentDate(new Date());
-		r_xiaordertabService.insertCommentInfo(tab);
-		return "评论成功";
+	@ResponseBody
+	public  boolean insertCommentInfo(Commenttab tab) {
+		try {
+			// 评论id
+			tab.setCommentId(UUID.randomUUID().toString());
+			// 评论时间
+			tab.setCommentDate(new Date());
+			System.out.println(tab.toString());
+			r_xiaordertabService.insertCommentInfo(tab);
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 	
 	/**
@@ -346,12 +356,10 @@ public class R_xiaordertabController {
 			tab.setShopDate(new Date());
 			
 			//清空session
-			request.getSession().removeAttribute("xiaId");
-			request.getSession().removeValue("xiaId");
+//			request.getSession().removeAttribute("xiaId");
+//			request.getSession().removeValue("xiaId");
 			//设置id到session
 			request.getSession().setAttribute("xiaId", tab.getXiaId());
-			
-			
 			r_xiaordertabService.add(tab);
 			return "APP/"+pageName;
 		}else{
@@ -445,8 +453,8 @@ public class R_xiaordertabController {
 			
 			r_xiaordertabService.orderSbmit(tab);
 			//清空session中的下单id
-			request.getSession().removeAttribute("xiaId");
-			request.getSession().removeValue("xiaId");
+//			request.getSession().removeAttribute("xiaId");
+//			request.getSession().removeValue("xiaId");
 			
 			model.addAttribute("xiaId", tab.getXiaId());
 			model.addAttribute("sh", tab.getShopprices());

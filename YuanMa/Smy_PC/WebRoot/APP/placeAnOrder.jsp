@@ -58,14 +58,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.shijiankaung{
 			width: 1rem !important;
 			border: none !important;
-			margin-bottom:0 !important;
 		}
 		.gearDate, .gearDatetime, .gearTime{
 		    background-color: rgba(0, 0, 0, 0.8) !important;
 		}
 		.shopprices{
 			text-align: right;
-			margin-bottom:0 !important;
 		}
 		.order_btn_btnimg{
 			margin-bottom:.4rem;
@@ -128,7 +126,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<form action="xiaordertab/orderSbmit" method="post"  enctype="multipart/form-data">
 		<input type="hidden" name="kuaikeId" value="${login.kuaikeId }" />
-		<input type="hidden" name="xiaId" value="${xiaId }">
 		<!--发货人，收货人信息跳转-->
 		<div class="order_info">
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
@@ -182,7 +179,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="jia">+</span>
 				</div>
 			</div>
-			
 		</div>	
 		<!--到达时间-->
 		<div class="order_info">
@@ -190,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最晚取货时间</label>
 				<div class="order_right"id="order_right3">
-					<input class="shijiankaung" id="de" type="text" readonly="" name="timeString" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="de" type="text" readonly="" name="quhouDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -199,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/timerr.png" width="27"/>
 				<label>最迟到达时间</label>
 				<div class="order_right"id="order_right2">
-					<input class="shijiankaung" id="dee" type="text"  readonly="" name="okDate" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="dee" type="text" readonly="" name="okDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -218,12 +214,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img class="mony" src="<%=basePath%>APP/images/icon/mony.png" width="30"/>
 				<a class="xiadan">下单金额</a>
 				<input class="shopprices"  type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
-				<span>元</span>
-			</div>
-			<div class="order_tan_clos botto">
-			<img class="mony" src="<%=basePath%>APP/images/icon/kuaidi.png" width="30"/>
-				<a class="xiadan">快客费用</a>
-				<input class="shopprices"  type="text" name="kaikePrioes" id="kaikePrioes" placeholder="请输入金额">
 				<span>元</span>
 			</div>
 		</div>
@@ -311,9 +301,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/lCalendar.js" ></script>
 		<script type="text/javascript">
 		$(function(){
-			
-		
-			
 			//表单提交
 			$("#btn_ImgUpStart").click(function(){
 				//验证审核
@@ -483,7 +470,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'trigger': '#de',
 				'type': 'time'
 			});
-			
 			var calendartime = new lCalendar();
 			calendartime.init({
 				'trigger': '#dee',

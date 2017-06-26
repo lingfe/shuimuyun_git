@@ -400,8 +400,8 @@
 							result +="<li id='" + i + "' title='" + url + "'><a href='xiaordertab/grabASingleRquest/APP/grabASingleOk/" + data[i].xiaId + "'> <img class='grabList_user' title='' alt='' \
 											src='<%=basePath%>APP/images/user.jpg' width='100%' /> \
 											<div class='grabList_cont'> \
-												<p class='text_1_hide text_p'>发："  + data[i].kuaikeAddress + data[i].kuaikeAddressInfo + "</p> \
-												<p class='text_1_hide text_p'>收："  + data[i].shouhuoAddress + data[i].shouhuoAddressInfo + "</p> \
+												<p class='text_1_hide text_p'>发：" + data[i].kuaikeAddressInfo + "</p> \
+												<p class='text_1_hide text_p'>收：" + data[i].shouhuoAddressInfo + "</p> \
 												<span onclick='gtabSingle("+i+");return false;'>立即抢单</span> \
 											</div> \
 									  </a></li>";

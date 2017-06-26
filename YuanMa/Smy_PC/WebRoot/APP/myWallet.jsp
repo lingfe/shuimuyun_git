@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -166,16 +167,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					type : 'post',
 					dataType:'json',
 					success : function(data) {
-						if(data!="" && data!=null){
 							$("#ba").html("￥"+data.balance);
-							$("#de").html("￥"+data.deposit);
-						}else{
-							$("#ba").html("￥"+"00.00");
-							$("#de").html("￥"+"00.00");
-						
-						}
-					
-						
+							$("#de").html("￥"+data.deposit+".00" );
 					}
 				});
 			})

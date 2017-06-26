@@ -58,12 +58,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.shijiankaung{
 			width: 1rem !important;
 			border: none !important;
+			margin-bottom:0 !important;
 		}
 		.gearDate, .gearDatetime, .gearTime{
 		    background-color: rgba(0, 0, 0, 0.8) !important;
 		}
 		.shopprices{
 			text-align: right;
+			margin-bottom:0 !important;
 		}
 		.order_btn_btnimg{
 			margin-bottom:.4rem;
@@ -216,6 +218,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img class="mony" src="<%=basePath%>APP/images/icon/mony.png" width="30"/>
 				<a class="xiadan">下单金额</a>
 				<input class="shopprices"  type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
+				<span>元</span>
+			</div>
+			<div class="order_tan_clos botto">
+			<img class="mony" src="<%=basePath%>APP/images/icon/kuaidi.png" width="30"/>
+				<a class="xiadan">快客费用</a>
+				<input class="shopprices"  type="text" name="kaikePrioes" id="kaikePrioes" placeholder="请输入金额">
 				<span>元</span>
 			</div>
 		</div>

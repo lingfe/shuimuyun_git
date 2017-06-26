@@ -91,6 +91,8 @@ text-align: center;
 					<th>申请时间</th>
 					<th>密码</th>
 					<th>详情地址</th>
+					<th>身份正反</th>
+					<th>手持身份</th>
 					<th>状态</th>
 					
 				</tr>
@@ -122,7 +124,8 @@ text-align: center;
 					<td><fmt:formatDate value="${pm.kuaikeShengqingDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 					<td><input type="password" value="${pm.password }" readonly="readonly"></td>
 					<td>${pm.kuaikeAddressInfo }</td>
-					
+					<td><img alt="" src="${pm.kuaikeShenfenZF}" style="width: 70px;height: 20px;"></td>
+					<td><img alt="" src="${pm.kuaikeShouchiSFZ}" style="width: 70px;height: 20px;"></td>
 					<td>
 					<c:if test="${pm.kuaikeStatus>0 && pm.kuaikeStatus<4}"><font color="green">已审核</font></c:if>
 					<c:if test="${pm.kuaikeStatus<1}"><font color="red"><a href="updateKuaikeStatus/${pm.kuaikeId }" id="h">审核</a></font></c:if>

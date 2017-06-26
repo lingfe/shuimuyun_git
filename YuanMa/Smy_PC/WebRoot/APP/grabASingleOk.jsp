@@ -62,11 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div>		
 				<span>收货人：</span>
-				<span>${info.shouhuoAddressInfo}</span>		
+				<span>${info.shouhuoAddress}${info.shouhuoAddressInfo}</span>		
 			</div>
 			<div>			
 				<span>发货人：</span>
-				<span>${info.kuaikeAddressInfo}</span>
+				<span>${info.kuaikeAddress}${info.kuaikeAddressInfo}</span>
 			</div>
 		</div>
 		<div class="courier_last_con taking_last_con">
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>
 					<span>${info.shopType }</span>
 					<span>${info.shopNumer }</span>
-					<span>${info.shopGuige }</span>
+					<span>${info.vargoVolume} m³</span>
 					<span>${info.shopzholiang }kg</span>
 					<span>无</span>
 				</div>

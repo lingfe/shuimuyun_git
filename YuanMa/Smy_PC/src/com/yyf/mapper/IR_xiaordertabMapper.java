@@ -112,7 +112,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param timeString	取货时间
 	 * @return	提示
 	 */
-	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},shopzholiang=#{shopzholiang},timeString=#{timeString},okDate=#{okDate},kuaikeId=#{kuaikeId},shopprices=#{shopprices} ,vehicle=#{vehicle},vargoVolume=#{vargoVolume},shopImages=#{shopImages} WHERE xiaid=#{xiaId}")
+	@Update("UPDATE  xiaordertab SET shopType=#{shopType},shopNumer=#{shopNumer},kaikePrioes=#{kaikePrioes},shopzholiang=#{shopzholiang},timeString=#{timeString},okDate=#{okDate},kuaikeId=#{kuaikeId},shopprices=#{shopprices} ,vehicle=#{vehicle},vargoVolume=#{vargoVolume},shopImages=#{shopImages} WHERE xiaid=#{xiaId}")
 	void orderSbmit(R_xiaordertab tab);
 	
 	/**

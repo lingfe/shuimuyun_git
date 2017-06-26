@@ -65,7 +65,7 @@ public class KuaiketabController {
 	@RequestMapping(value="updateKuaikeStatus/{kuaikeId}",method=RequestMethod.GET)
 	public String updateStatus(@PathVariable("kuaikeId") String kuaikeId,ModelMap model,HttpSession session){
 		
-		kuaiketabService.updateKuaikeStatus(1, kuaikeId);
+		kuaiketabService.updateKuaikeStatus(2, kuaikeId);
 		
 		return "redirect:/queryAllKuaike/1";
 	}

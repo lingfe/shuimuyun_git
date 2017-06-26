@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yyf.mapper.R_balancetabMapper;
 import com.yyf.model.Balancetab;
@@ -57,5 +58,52 @@ public class BalancetabServiceImpl implements BalancetabService {
 		List<Balancetab> queryallbalance = balancetabMapper.queryallbalance();
 		return queryallbalance;
 	}
+
+
+	/**
+	 * @author 田浩  
+	 * @created 2017年6月26日 上午11:36:18  
+	 * @return
+	 */
+
+	@Override
+	public void insertBalance(String kuaikeId,String balanceId) {
+		balancetabMapper.insertBalance(kuaikeId,balanceId);
+	}
  
+	
+	/**
+	 * @author 田浩  
+	 * @created 2017年6月26日 上午11:36:18  
+	 * @return
+	 */
+
+	@Override
+	public void updateBalance(String out_trade_no,String total_fee) {
+		balancetabMapper.updateBalance(out_trade_no,total_fee);
+	}
+	
+	/**
+	 * @author 田浩  
+	 * @created 2017年6月26日 上午11:36:18  
+	 * @return
+	 */
+
+	@Transactional
+	@Override
+	public void updatePayStatus(String kuaikeId,String out_trade_no) {
+		balancetabMapper.updatePayStatus(kuaikeId ,out_trade_no);
+	}
+	
+	/**
+	 * @author 田浩  
+	 * @created 2017年6月26日 上午11:36:18  
+	 * @return
+	 */
+
+	@Override
+	public String selectresult(String kuaikeId) {
+		String b = balancetabMapper.selectresult(kuaikeId);
+		return b;
+	}
 }

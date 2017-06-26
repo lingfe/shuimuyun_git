@@ -320,7 +320,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="paymentTop">
 			<div class="paymentTop_l">充值金额：</div>
-			<input type="text"  name="shopprices" value=""/>
+			<input type="text"  name="shopprices" id="shopprices" value=""/>
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<div class="paymentList">
@@ -334,6 +334,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="paymentList_item">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/wx.png" width="25" /> 微信
 				<div class="paymentList_position" id="wxSelect">
+					<span></span>
+				</div>
+			</div>
+			<div class="paymentList_item">
+				<img title="" alt="" src="<%=basePath %>APP/images/icon/wx.png" width="25" /> 微信二维码
+				<div class="paymentList_position" id="wxQrcode">
 					<span></span>
 				</div>
 			</div>
@@ -404,8 +410,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				})
 				
 				$("#paymentBtn").click(function() {
-				
-			
+					var shopprices=$("#shopprices").val();
+					var kuaikeId='${login.kuaikeId }';
 						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
 	
 							layer.open({
@@ -426,7 +432,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								content : '微信支付',
 								skin : 'msg',
 								time : 2
-							});						}
+							});						
+						} else if (!($("#wxQrcode span").is(":hidden"))) {
+// 							layer.open({
+// 								content : '微信二维码支付',
+// 								skin : 'msg',
+// 								time : 2
+// 							});
+							window.location.href="RequestMappingUtil/requestNUll/APP/qrrecharge?kuaikeId="+kuaikeId+"&shopprices="+shopprices;
+						}
 					
 			
 	

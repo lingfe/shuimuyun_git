@@ -82,7 +82,7 @@ String shouprices = request.getParameter("shouprices");
 					}
 				},
 				error : function() {
-					
+					alert("请求订单状态出错");
 				}
 			});
 		}

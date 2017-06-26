@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'pingjia.jsp' starting page</title>
+    <title>评价</title>
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -75,36 +75,85 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		</style>
   <body>
-  
   <div class="contMian">
-			<header class="commHeader">
-			<a class="commHeader_l" onClick="javascript :history.back(-1);">
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png"/>
-			</a>
-			<h6>评价</h6>
-		</header>
-			<!--头部结束-->
-			<!--内容开始-->
-			<div class="pingjia_tou">
-				<img src="<%=basePath%>APP/images/myUser.png" />
-			</div>
-			<span class="pingjia_name text_1_hide">杨军</span>
-	<div class="xinxin">
-        <a href="javascript:click(1)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star1" onMouseOver="over(1)" onMouseOut="out(1)"/></a>
-        <a href="javascript:click(2)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star2" onMouseOver="over(2)" onMouseOut="out(2)" /></a>
-        <a href="javascript:click(3)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star3" onMouseOver="over(3)" onMouseOut="out(3)" /></a>
-        <a href="javascript:click(4)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star4" onMouseOver="over(4)" onMouseOut="out(4)"/></a>
-        <a href="javascript:click(5)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star5" onMouseOver="over(5)" onMouseOut="out(5)"/></a>
-        <span id="message"></span>
-    </div>
-    <div class="pingjiainput">
-    	<textarea id="pingjiatext" placeholder="请输入评论内容"></textarea>
-    </div>
-    <button class="order_btn" id="pingjiabtn">提交</button>
+	<header class="commHeader">
+		<a class="commHeader_l" onClick="javascript :history.back(-1);">
+			<img title="" alt="" src="<%=basePath%>APP/images/icon/arow_left.png"/>
+		</a>
+		<h6>评价</h6>
+	</header>
+	<!--头部结束-->
+	<!--内容开始-->
+	<div class="pingjia_tou">
+		<img src="<%=basePath%>APP/images/myUser.png" />
+	</div>
+	<span class="pingjia_name text_1_hide">杨军</span>
+	<!-- 下单id -->
+	<input type="hidden" name="xiaId" value="${xiaId }" />
+	<!-- 快客id -->
+	<input type="hidden" name="kuaikeId" value="${login.kuaikeId}"/>
+	<div class="xinxin" >
+	<!-- 星评 -->
+	<input type="hidden" id="star" name="star" value="0"/>
+	    <a href="javascript:click(1)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star1" onMouseOver="over(1)" onMouseOut="out(1)"/></a>
+	    <a href="javascript:click(2)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star2" onMouseOver="over(2)" onMouseOut="out(2)" /></a>
+	    <a href="javascript:click(3)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star3" onMouseOver="over(3)" onMouseOut="out(3)" /></a>
+	    <a href="javascript:click(4)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star4" onMouseOver="over(4)" onMouseOut="out(4)"/></a>
+	    <a href="javascript:click(5)"><img src="<%=basePath%>APP/images/icon/star.png" width="20" id="star5" onMouseOver="over(5)" onMouseOut="out(5)"/></a>
+	    <span id="message"></span>
+	</div>
+	<div class="pingjiainput">
+		<textarea name="remark" id="pingjiatext" placeholder="请输入评论内容"></textarea>
+	</div>
+	<button class="order_btn"  onclick="btnClick();"  id="pingjiabtn">提交</button>
     <script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
     <script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
     <script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
     <script>
+    function btnClick(){
+    	//下单id
+    	var xiaId ="${xiaId }";
+    	//快客id
+    	var kuaikeId="${login.kuaikeId}";
+    	//星评
+    	var star=$("#star").val();
+    	//内容
+    	var remark=$("#pingjiatext").val();
+    	
+    	$.ajax({
+			url : 'xiaordertab/insertCommentInfo',
+			type: 'post',
+			data:{"xiaId":xiaId,"kuaikeId":kuaikeId,"star":star,"remark":remark},
+			success : function(data) {
+				if(data){
+					layer.open({
+					    	content: '评价成功！',
+					    	skin: 'msg',
+					    	time: 2
+					});
+					window.location.href="xiaordertab/getXiaIdStatusList/"+kuaikeId+"/4/"+xiaId;
+				}else{
+					layer.open({
+					    	content: '评价失败！',
+					    	skin: 'msg',
+					    	time: 2
+					});
+				}
+			},
+			error : function(xhr, type) {
+				//提示
+			    layer.open({
+			    	content: 'Ajax error!',
+			    	skin: 'msg',
+			    	time: 2
+			  	});
+			},
+			async:false
+		});
+    }
+    
+    
+    
 			$("#pingjiabtn").click(function(){
 				if($("#pingjiatext").val()==""){
 					layer.open({
@@ -201,6 +250,7 @@ function out(){
 function click(param){
     time++;//记录打分次数
     check = param;//记录当前打分
+    $("#star").val(param);
     out();//设置星星数
 }
 </script>

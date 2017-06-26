@@ -2,12 +2,16 @@ package com.yyf.controller.util;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yyf.model.City;
 import com.yyf.service.CityService;
@@ -39,7 +43,13 @@ public class RequestMappingUtil {
 	 * @return
 	 */
 	@RequestMapping(value="requestNUll/{i}/{param}",method=RequestMethod.GET)
-	public String requestNUll(@PathVariable("param")String param,@PathVariable("i")String i){
+	public String requestNUll(@PathVariable("param")String param,
+			@PathVariable("i")String i,
+			@RequestParam(value="xiaId",required=false)String xiaId,
+			HttpServletRequest request){
+		if(!StringUtils.isEmpty(xiaId)){
+			request.getSession().setAttribute("xiaId", xiaId);
+		}
 		
 		return i+"/"+param;
 	}

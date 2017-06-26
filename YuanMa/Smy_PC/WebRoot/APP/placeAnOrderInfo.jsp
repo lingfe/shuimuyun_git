@@ -44,12 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			${info.payment==0? '">点击付款</a>':''}
 			
 			${info.status==1?'已接单,未发货':'' }
-			${info.status==2?'已到达,未确认':'' } 
-			${info.status==3?'交易结束(已确认)||<a href="javascript:void(0);':'' }
+			${info.status==2?'已到达,未确认':'' }
+			${info.status==3?'交易结束(已确认)||<a href="RequestMappingUtil/requestNUll/APP/pingjia?xiaId=':'' }
+			${info.status==3? info.xiaId :'' }
 			${info.status==3?'">':'' }
 			${info.status==3?'去评价':'' }
 			${info.status==3?'</a>':'' }
-			
 			${info.status==4?'已评论':'' }
 		</div>
 		<div class="courier_firsttit_con">
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="cour_div_4">快递员的位置：</div>
 			<div class="cour_div_5">
 				<span><img src="<%=basePath%>APP/images/icon/adds_oreng.png" width="15"/></span>
-				<span>${info.kuaikeAddress}&nbsp;${info.kuaikeAddressInfo }</span>
+				<span>${info.kuaikeAddressInfo }</span>
 			</div>
 		</div>
 		<div class="courier_last">

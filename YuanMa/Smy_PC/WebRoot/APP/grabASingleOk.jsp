@@ -62,11 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div>		
 				<span>收货人：</span>
-				<span>${info.shouhuoAddress}${info.shouhuoAddressInfo}</span>		
+				<span>${info.shouhuoAddressInfo}</span>		
 			</div>
 			<div>			
 				<span>发货人：</span>
-				<span>${info.kuaikeAddress}${info.kuaikeAddressInfo}</span>
+				<span>${info.kuaikeAddressInfo}</span>
 			</div>
 		</div>
 		<div class="courier_last_con taking_last_con">
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>
 					<span>${info.shopType }</span>
 					<span>${info.shopNumer }</span>
-					<span>${info.vargoVolume} m³</span>
+					<span>${info.shopGuige }</span>
 					<span>${info.shopzholiang }kg</span>
 					<span>无</span>
 				</div>
@@ -98,12 +98,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="taking_div_last" id="order_right2">
 				<span class="shijianspan">最晚取货时间</span>
-				<input class="shijianint" type="text" readonly="readonly" value="${info.timeString }"/>
+				<input class="shijianint" type="text" readonly=""/>
 				<%-- <img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" /> --%>
 			</div>
 			<div class="taking_div_last" id="order_right2">
 				<span class="shijianspan">最迟到达时间</span>
-				<input class="shijianint" type="text" readonly="readonly" value="${info.okDate }"/>
+				<input class="shijianint" type="text" readonly=""/>
 				<%-- <img src="<%=basePath%>APP/images/icon/consignee_right.png"width="15" /> --%>
 			</div>
 		</div>

@@ -48,7 +48,7 @@ public interface BalancetabService {
 	 * @param kuaikeId 快客ID
 	 * @return
 	 */
-	void insert(String kuaikeId, String out_trade_no);
+	void insert(String kuaikeId, String out_trade_no,String zhifupwd);
 	
 	
 	/**
@@ -56,7 +56,7 @@ public interface BalancetabService {
 	 * @created 2017年6月26日 上午11:35:45  
 	 * @return
 	 */
-	public void updateBalance(String out_trade_no,String total_fee);
+	public void updateBalance(String out_trade_no,double total_fee);
 	
 	
 	/**
@@ -73,4 +73,12 @@ public interface BalancetabService {
 	 */
 	
 	public String selectresult(String kuaikeId);
+	
+	/**
+	 * @author 田浩     
+	 * @created 2017年6月26日 上午11:35:45  
+	 * @return
+	 */
+	
+	public Balancetab selectfigure(String balanceId);
 }

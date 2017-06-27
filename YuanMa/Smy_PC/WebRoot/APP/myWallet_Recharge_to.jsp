@@ -2,6 +2,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String type = request.getParameter("type");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -318,10 +319,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</header>
 		<!--【头部】end-->
 		
+			
+		<%String type1 = request.getParameter("type");  
+		  if("2".equals(type1)){
+		%>
+		<div class="paymentTop">
+			<div class="paymentTop_l">充值金额：</div>
+			<input type="text"  name="shopprices" id="shopprices" value="200"/>
+		</div>
+		<%}else{%>
 		<div class="paymentTop">
 			<div class="paymentTop_l">充值金额：</div>
 			<input type="text"  name="shopprices" id="shopprices" value=""/>
 		</div>
+		<%}%>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<div class="paymentList">
 			
@@ -422,24 +433,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							return false;
 	
 						}  else if (!($("#paymentSelect span").is(":hidden"))) {
-							layer.open({
-								content : '支付宝支付',
-								skin : 'msg',
-								time : 2
-							});
+							if(shopprices>0){
+								layer.open({
+									content : '支付宝支付',
+									skin : 'msg',
+									time : 2
+								});
+							}else{
+								alert("请输入正确的金额");
+							}
 						} else if (!($("#wxSelect span").is(":hidden"))) {
-							layer.open({
-								content : '微信支付',
-								skin : 'msg',
-								time : 2
-							});						
+							if(shopprices>0){
+								layer.open({
+									content : '微信支付',
+									skin : 'msg',
+									time : 2
+								});
+							}else{
+								alert("请输入正确的金额");
+							}						
 						} else if (!($("#wxQrcode span").is(":hidden"))) {
 // 							layer.open({
 // 								content : '微信二维码支付',
 // 								skin : 'msg',
 // 								time : 2
 // 							});
-							window.location.href="RequestMappingUtil/requestNUll/APP/qrrecharge?kuaikeId="+kuaikeId+"&shopprices="+shopprices;
+							if(shopprices>0){
+								window.location.href="RequestMappingUtil/requestNUll/APP/qrrecharge?kuaikeId="+kuaikeId+"&shopprices="+shopprices;
+							}else{
+								alert("请输入正确的金额");
+							}
+						
 						}
 					
 			

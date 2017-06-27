@@ -56,10 +56,11 @@ String shopprices = request.getParameter("shopprices");
 		<input type="hidden" id="kuaikeid" value="<%=kuaikeid%>">
 		<script type="text/javascript" src="<%=basePath %>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
+		
 		<script type="text/javascript">
-		$(function(){
+		
 		setTimeout(Start, 5000); //延迟5秒开始周期回调
-		var kuaikeid = <%=kuaikeid%>;
+		var kuaikeid = $("#kuaikeid").val();
 		function fun() {
 			$.ajax({
 				url : "<%=path%>/payment/query",
@@ -70,7 +71,7 @@ String shopprices = request.getParameter("shopprices");
 				},
 				success : function(data) {
 					if (data == "2") { //订单状态为1表示支付成功
-						window.location.href = "<%=basePath%>RequestMappingUtil/requestData/APP/balance?shouprices="+<%=shopprices%>; //页面跳转
+						window.location.href = "<%=basePath%>RequestMappingUtil/requestData/APP/paysuccess?shouprices="+<%=shopprices%>; //页面跳转
 					}
 				},
 				error : function() {
@@ -82,7 +83,6 @@ String shopprices = request.getParameter("shopprices");
 			setInterval("fun()", "1000"); //单位为毫秒
 		}
 		
-		})
 		</script>
 	</body>
 </html>

@@ -37,7 +37,7 @@ public class BalancetabController {
 	@ResponseBody
 	public Balancetab queryBalance(ModelMap model, @PathVariable("kuaikeId") String kuaikeId) {
 
-		Balancetab queryBalance = balancetabService.queryBalance(kuaikeId);
+		Balancetab queryBalance = balancetabService.queryKuaikeId(kuaikeId);
 		
 		if(!StringUtils.isEmpty(queryBalance)){
 			
@@ -63,7 +63,7 @@ public class BalancetabController {
 	@ResponseBody
 	public void updateBalance(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
 			@PathVariable("zhifupwd") String zhifupwd,@PathVariable("xiaId") String xiaId) {
-			Balancetab queryBalance1 = balancetabService.queryBalance(kuaikeId);
+			Balancetab queryBalance1 = balancetabService.queryKuaikeId(kuaikeId);
 		
 			if(queryBalance1.getBalance()>balance){
 				

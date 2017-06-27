@@ -25,7 +25,7 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	
 	// 自动装配	账户信息
 	@Autowired
-	private IBalanceMapper iBalanceMapper;
+	private IBalanceMapper balanceMapper;
 
 	@Override
 	public void updateSFZImages(String kuaikeShenfenZF, String kuaikeShouchiSFZ, String kuaikeId) {
@@ -224,7 +224,7 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	public int addUser(R_kuaiketab kuaiketab) {
 		int addUser = kuaiketabMapper.addUser(kuaiketab);
 		//添加账户信息
-		iBalanceMapper.insertBalance(kuaiketab.getKuaikeId(), UUID.randomUUID().toString());
+		balanceMapper.insert(kuaiketab.getKuaikeId(), UUID.randomUUID().toString());
 		return addUser;
 	}
 

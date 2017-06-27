@@ -14,11 +14,11 @@ public class BalancetabServiceImpl implements BalancetabService {
 
 	// 自动装配	账户信息
 	@Autowired
-	private IBalanceMapper iBalanceMapper;
+	private IBalanceMapper balanceMapper;
 	
 	@Override
-	public void insertBalance(String kuaikeId, String out_trade_no) {
-		iBalanceMapper.insertBalance(kuaikeId, out_trade_no);
+	public void insert(String kuaikeId, String out_trade_no) {
+		balanceMapper.insert(kuaikeId, out_trade_no);
 	}
 	
 	/**
@@ -29,9 +29,9 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @return
 	 */
 	@Override
-	public Balancetab queryBalance(String kuaikeId) {
+	public Balancetab queryKuaikeId(String kuaikeId) {
 		
-		Balancetab queryBalance = iBalanceMapper.queryBalance(kuaikeId);
+		Balancetab queryBalance = balanceMapper.queryKuaikeId(kuaikeId);
 		
 		return queryBalance;
 	}
@@ -48,7 +48,7 @@ public class BalancetabServiceImpl implements BalancetabService {
 	@Override
 	public void updateBalance(double balance,String kuaikeId,String zhifupwd){
 		
-		iBalanceMapper.updateBalance(balance, kuaikeId,zhifupwd);
+		balanceMapper.updateBalance(balance, kuaikeId,zhifupwd);
 		
 	}
 
@@ -60,7 +60,7 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 */
 	@Override
 	public List<Balancetab> queryallbalance() {
-		List<Balancetab> queryallbalance = iBalanceMapper.queryallbalance();
+		List<Balancetab> queryallbalance = balanceMapper.queryallbalance();
 		return queryallbalance;
 	}
  
@@ -72,7 +72,7 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 */
 	@Override
 	public void updateBalance(String out_trade_no,String total_fee) {
-		iBalanceMapper.updateBalance(out_trade_no,total_fee);
+		balanceMapper.updateBalance(out_trade_no,total_fee);
 	}
 	
 	/**
@@ -81,8 +81,8 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @return
 	 */
 	@Override
-	public void updatePayStatus(String kuaikeId,String out_trade_no) {
-		iBalanceMapper.updatePayStatus(kuaikeId ,out_trade_no);
+	public void setKuaikeIdStatus(String kuaikeId,String out_trade_no) {
+		balanceMapper.setKuaikeIdStatus(kuaikeId ,out_trade_no);
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 */
 	@Override
 	public String selectresult(String kuaikeId) {
-		String b = iBalanceMapper.selectresult(kuaikeId);
+		String b = balanceMapper.selectresult(kuaikeId);
 		return b;
 	}
 }

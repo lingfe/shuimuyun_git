@@ -27,7 +27,7 @@ public interface IBalanceMapper {
 	 * @return
 	 */
 	@Select("select * from balancetab where kuaikeId=#{kuaikeId}")
-	Balancetab queryBalance(@Param("kuaikeId") String kuaikeId);
+	Balancetab queryKuaikeId(@Param("kuaikeId") String kuaikeId);
 	
 	/**
 	 * 通过余额付款
@@ -69,7 +69,7 @@ public interface IBalanceMapper {
 	 * @return
 	 */
 	@Insert("insert into balancetab(balanceId,kuaikeId,zhifupwd,balance) values(#{out_trade_no},#{kuaikeId},123456,0)")
-	void insertBalance(@Param("kuaikeId") String kuaikeId,@Param("out_trade_no") String out_trade_no);
+	void insert(@Param("kuaikeId") String kuaikeId,@Param("out_trade_no") String out_trade_no);
 	
 	
 	/**
@@ -92,7 +92,7 @@ public interface IBalanceMapper {
 	 * @return 
 	 */
 	@Update("update balancetab set paystatus=1,balanceId=#{out_trade_no} where kuaikeId=#{kuaikeId}")
-	public void updatePayStatus(@Param("kuaikeId") String kuaikeId ,@Param("out_trade_no") String out_trade_no);
+	public void setKuaikeIdStatus(@Param("kuaikeId") String kuaikeId ,@Param("out_trade_no") String out_trade_no);
 	
 	/**
 	 * 根据快客Id查询有没有该快客帐号

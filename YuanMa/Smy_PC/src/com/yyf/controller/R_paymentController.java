@@ -66,7 +66,7 @@ public class R_paymentController {
 		String product_id = getRandomString(5) + System.currentTimeMillis();
 		Balancetab balancetab = balancetabService.queryKuaikeId(kuaikeId);
 		if(balancetab==null){
-			balancetabService.insert(kuaikeId,out_trade_no,zhifupwd);
+			balancetabService.insert(kuaikeId,out_trade_no,md5);
 		}else{
 			balancetabService.setKuaikeIdStatus(kuaikeId, out_trade_no);
 		}

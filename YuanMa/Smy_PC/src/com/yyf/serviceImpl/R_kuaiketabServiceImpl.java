@@ -1,11 +1,14 @@
 package com.yyf.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yyf.mapper.R_kuaiketabMapper;
+import com.yyf.mapper.IBalanceMapper;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.service.R_kuaiketabService;
 
@@ -19,6 +22,10 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	/* 自动添加依赖注入 */
 	@Autowired
 	private R_kuaiketabMapper kuaiketabMapper;
+	
+	// 自动装配	账户信息
+	@Autowired
+	private IBalanceMapper balanceMapper;
 
 	@Override
 	public void updateSFZImages(String kuaikeShenfenZF, String kuaikeShouchiSFZ, String kuaikeId) {
@@ -213,8 +220,11 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	 * @return
 	 */
 	@Override
+	@Transactional
 	public int addUser(R_kuaiketab kuaiketab) {
 		int addUser = kuaiketabMapper.addUser(kuaiketab);
+		//添加账户信息
+		balanceMapper.insertBalance(kuaiketab.getKuaikeId(), UUID.randomUUID().toString());
 		return addUser;
 	}
 

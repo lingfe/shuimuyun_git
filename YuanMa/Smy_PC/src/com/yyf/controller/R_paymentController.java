@@ -35,7 +35,7 @@ import com.yyf.controller.util.HttpUtil;
 import com.yyf.controller.util.PayCommonUtil;
 import com.yyf.controller.util.XMLUtil;
 import com.yyf.model.Balancetab;
-import com.yyf.service.balanceService;
+import com.yyf.service.BalancetabService;
 
 @Controller
 @RequestMapping("/payment")
@@ -43,7 +43,7 @@ public class R_paymentController {
 
 	// 自动装配 创建订单、获取二维码
 	@Autowired
-	private balanceService balancetabService;
+	private BalancetabService balancetabService;
 	
 	
 	private int defaultWidthAndHeight = 300;

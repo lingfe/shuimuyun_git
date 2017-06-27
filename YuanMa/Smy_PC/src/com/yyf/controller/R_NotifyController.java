@@ -26,7 +26,6 @@ import com.yyf.controller.util.PayCommonUtil;
 import com.yyf.controller.util.XMLUtil;
 import com.yyf.service.BalancetabService;
 import com.yyf.service.R_zhinotifyService;
-import com.yyf.service.balanceService;
 
 @Controller
 @RequestMapping("/shuimuyun")
@@ -35,7 +34,7 @@ public class R_NotifyController {
 	//自动装配
 	@Autowired
 	private R_zhinotifyService r_zhinotifyService;
-	private balanceService balancetabservice;
+	private BalancetabService balancetabservice;
 
 	@RequestMapping(value = "/zhifu" , method = RequestMethod.POST)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

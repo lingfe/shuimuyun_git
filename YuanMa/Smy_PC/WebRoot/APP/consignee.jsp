@@ -143,53 +143,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="box_div">
 				<span>街 道：</span>
-				<input type="text" id="xadder" placeholder="请输入详细地址"/>
+				<input type="text" id="xadder" value="${ info.shouhuoAddressInfo }" placeholder="请输入详细地址"/>
 			</div>
 		
 		</div>
-		<%-- <div class="hipper_contex">
-			<div>
-				<span>收货人：</span>
-				<input id="con_name" type="text" value="${info.shouhuoName }" placeholder="请输入姓名"/>
-			</div>			
-			<div>
-				<span>手机号：</span>
-				<input id="con_phone" type="text" value="${info.shouhuoShone }" placeholder="请输入手机号"/>
-			</div>			
-			<div>
-				<img src="<%=basePath%>APP/images/icon/adds.png" width="20" class="hipper_contex_firstimg"/>
-				<div class="browser">
-        <!--选择地区-->
-        <section class="express-area">
-            <a id="expressArea" href="javascript:void(0)">
-                <dl>
-                    <dt style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem">选择地区：</dt>
-                    <dd style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem" id="adder">请选择地址</dd>
-                </dl>
-            </a>
-        </section>
-        <!--选择地区弹层-->
-        <section id="areaLayer" class="express-area-box">
-            <header>
-                <h3>选择地区</h3>
-                <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
-                <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
-            </header>
-            <article id="areaBox">
-                <ul id="areaList" class="area-list"></ul>
-            </article>
-        </section>
-        <!--遮罩层-->
-        <div id="areaMask" class="mask"></div>
-   </div>
-			</div>			
-			<div class="edit_firstdiv_3">
-				<label style="font-size: 0.15rem">街　道 :</label>
-				<input type="text" placeholder="请输入详细地址" id="xadder" />
-			</div>
-			</div>
-			<div id="shouhuoAddressInfo_value"></div>			
-		</div> --%>
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }"> 
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>

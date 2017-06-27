@@ -39,7 +39,7 @@ public interface IBalanceMapper {
 	 * @return 
 	 */
 	@Update("update balancetab set balance=#{balance} where kuaikeId=#{kuaikeId} and zhifupwd=#{zhifupwd}")
-	public void updateBalance(@Param("balance") double balance,@Param("kuaikeId") String kuaikeId,@Param("zhifupwd") String zhifupwd);
+	public void updateBalance1(@Param("balance") double balance,@Param("kuaikeId") String kuaikeId,@Param("zhifupwd") String zhifupwd);
 	
 	
 	

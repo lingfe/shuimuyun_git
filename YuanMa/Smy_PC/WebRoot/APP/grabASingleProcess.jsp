@@ -172,20 +172,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img title="" alt="" src="" />
 			<span>上传货物图片</span>
 		</div>
-		<div class="quickSf_item">
-			<input class="file" type="file" name="files" multiple="multiple" accept="image/*" />
-			<img title="" alt="" src="" />
-			<span>上传货物图片</span>
-		</div>
-		<!--上传图片-->
+
 		<div class="shang_img">		
 			<c:if test="${info.status==1 }" >
-				<!-- 图片预览容器 -->
-				<div id="div_imglook">
-					<div style="clear: both;"></div>
-				</div>
-				图片选择对话框
-				<div id="div_imgfile">上传货物照片</div>
 				<!-- 确定取货 -->
 				<div class="order_buttom">
 					<a href="xiaordertab/updateXiaQiangStatus/${info.xiaId}/${info.status}/${login.kuaikeId}"><button id="btn_ImgUpStart" class="order_btn">确定取货</button></a>

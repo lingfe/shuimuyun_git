@@ -46,9 +46,9 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @return 
 	 */
 	@Override
-	public void updateBalance(double balance,String kuaikeId,String zhifupwd){
+	public void updateBalance1(double balance,String kuaikeId,String zhifupwd){
 		
-		balanceMapper.updateBalance(balance, kuaikeId,zhifupwd);
+		balanceMapper.updateBalance1(balance,kuaikeId,zhifupwd);
 		
 	}
 

@@ -27,18 +27,17 @@ String shouprices = request.getParameter("shouprices");
 	</head>
 	<style>
 	.qrcode{
+		display: block;
 		width:1.5rem;
 		height:auto;
 		margin:auto;
 		margin-top:1rem;
 		overflow:hidden;
 		background: white;
-		border:red solid 1px;
 	}
-	.qrcode img {
-		display: block;
+	.dis {
 		width: 100%;
-		height: auto;
+
 	}
 	</style>
 	<body>
@@ -50,7 +49,7 @@ String shouprices = request.getParameter("shouprices");
 			<p>扫码支付</p>
 		</header>
 		<!--【头部】end-->
-		<div class="y dis">
+		<div class="y_1 dis">
 			<img class="qrcode" src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=<%=xiaId%>&shouprices=<%=shouprices%>&shopName=123" />
 		</div>
 		
@@ -60,9 +59,9 @@ String shouprices = request.getParameter("shouprices");
 		<script type="text/javascript">
 			var xiaId = "<%=xiaId%>";
 			if(!xiaId==""){
-				$(".y").show();
+				$(".y_1").show();
 			}else{
-				$(".y").hide();
+				$(".y_1").hide();
 				alert("发生异常，请联系客服");
 			}
 			</script>

@@ -17,8 +17,8 @@ public class BalancetabServiceImpl implements BalancetabService {
 	private IBalanceMapper balanceMapper;
 	
 	@Override
-	public void insert(String kuaikeId, String out_trade_no) {
-		balanceMapper.insert(kuaikeId, out_trade_no);
+	public void insert(String kuaikeId, String out_trade_no,String zhifupwd) {
+		balanceMapper.insert(kuaikeId, out_trade_no,zhifupwd);
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @return
 	 */
 	@Override
-	public void updateBalance(String out_trade_no,String total_fee) {
+	public void updateBalance(String out_trade_no,double total_fee) {
 		balanceMapper.updateBalance(out_trade_no,total_fee);
 	}
 	
@@ -94,5 +94,17 @@ public class BalancetabServiceImpl implements BalancetabService {
 	public String selectresult(String kuaikeId) {
 		String b = balanceMapper.selectresult(kuaikeId);
 		return b;
+	}
+	
+	/**
+	 * @author 田浩  
+	 * @created 2017年6月26日 上午11:36:18  
+	 * @return
+	 */
+	@Override
+	public Balancetab selectfigure(String balanceId) {
+		System.out.println("444");
+		Balancetab balance = balanceMapper.selectfigure(balanceId);
+		return balance;
 	}
 }

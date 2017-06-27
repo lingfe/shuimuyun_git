@@ -70,7 +70,7 @@ public interface IBalanceMapper {
 	 * @param kuaikeId 快客ID
 	 * @return
 	 */
-	@Insert("insert into balancetab(balanceId,kuaikeId,zhifupwd,balance) values(#{out_trade_no},#{kuaikeId},123456,0)")
+	@Insert("insert into balancetab(balanceId,kuaikeId,zhifupwd,balance,deposit,status,paystatus) values(#{out_trade_no},#{kuaikeId},'e10adc3949ba59abbe56e057f20f883e',0.0,0.0,0,0)")
 	void insert(@Param("kuaikeId") String kuaikeId,@Param("out_trade_no") String out_trade_no);
 	
 	
@@ -83,7 +83,7 @@ public interface IBalanceMapper {
 	 * @return 
 	 */
 	@Update("update balancetab set balance=#{total_fee},paystatus=2 where balanceId=#{out_trade_no}")
-	public void updateBalance(@Param("out_trade_no") String out_trade_no,@Param("total_fee") String total_fee);
+	public void updateBalance(@Param("out_trade_no") String out_trade_no,@Param("total_fee") double total_fee);
 	
 	/**
 	 * 修改充值状态为充值中
@@ -106,6 +106,14 @@ public interface IBalanceMapper {
 	@Select("select paystatus from balancetab where kuaikeId=#{kuaikeId}")
 	public String selectresult(@Param("kuaikeId") String kuaikeId);
 	
-	
+	/**
+	 * 根据快客Id查询余额
+	 * @author 田浩
+	 * @created 2017年6月26日 上午11:43:42  
+	 * @param kuaikeId 快客ID
+	 * @return
+	 */
+	@Select("select balance from balancetab where balanceId=#{balanceId}")
+	public Balancetab selectfigure(@Param("balanceId") String balanceId);
 
 }

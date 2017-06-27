@@ -70,6 +70,12 @@ String shouprices = request.getParameter("shouprices");
 		.czcg_btn:active {
 			opacity: 0.8;
 		}
+		.qianbao{
+		display:block;
+			font-size: .12rem;
+			text-align: right;
+			margin-right:.2rem ;
+		}
 	</style>
 
   </head>
@@ -84,11 +90,10 @@ String shouprices = request.getParameter("shouprices");
 		</header>
 		<!--内容-->
 		<img class="czcg_img" src="APP/images/icon/czcg.png" width="100%" />
-		<p class="czcg_p">充值成功</p>
+		<p class="czcg_p">充值成功<%=shouprices%>元</p>
 		
-		<a href="RequestMappingUtil/requestNUll/APP/myWallet">
-				我的钱包
-				<img title="" alt="" src="<%=basePath%>APP/images/icon/myInfo_2.png" width="20%" />
+		<a class="qianbao" href="RequestMappingUtil/requestNUll/APP/myWallet">
+				查看余额>>>				
 			</a>
     <script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
   </body>

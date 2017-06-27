@@ -50,7 +50,7 @@ String shouprices = request.getParameter("shouprices");
 		</header>
 		<!--【头部】end-->
 		<div class="y dis">
-			<img class="qrcode" src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=<%=xiaId%>&shouprices=<%=shouprices%>&shopName=好吃的" />
+			<img class="qrcode" src="<%=basePath%>/zhiordertab/zhifuapply?xiaid=<%=xiaId%>&shouprices=<%=shouprices%>&shopName=123" />
 		</div>
 		
 		<input type="hidden" id="xiaId_to" value="<%=xiaId%>">
@@ -82,7 +82,7 @@ String shouprices = request.getParameter("shouprices");
 					}
 				},
 				error : function() {
-					alert("请求订单状态出错");
+					
 				}
 			});
 		}

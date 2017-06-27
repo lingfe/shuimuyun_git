@@ -209,6 +209,7 @@ $(function() {
 
 	//收货人  发货人
 	$(".hipper_xia").click(function() {
+		var reg=/^[\u2E80-\u9FFF]+$/;
 		if($("#con_name").val() == "") {
 			layer.open({
 				content: '请输入姓名',
@@ -216,7 +217,15 @@ $(function() {
 				time: 1
 			});
 			return false;
-		}
+		} else if(!(reg.test($("#con_name").val())))
+			{
+			layer.open({
+				content: '姓名格式错误！',
+				skin: 'msg',
+				time: 1
+			});
+			return false;
+			}
 		if($("#con_phone").val() == "") {
 			layer.open({
 				content: '请输入电话号码',
@@ -228,6 +237,14 @@ $(function() {
 			//提示
 			layer.open({
 				content: '手机号码错误',
+				skin: 'msg',
+				time: 1
+			});
+			return false;
+		}
+		if($("#xadder").val()==""){
+			layer.open({
+				content: '请输入详细地址',
 				skin: 'msg',
 				time: 1
 			});

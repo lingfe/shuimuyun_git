@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: 100%;
 			width: 100%;
 			opacity: 0;
-			z-index: 999;
+			z-index: 99;
 		}
 		
 		
@@ -118,7 +118,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		.asdd{
 			color: #555;
-			text-align: center;
+			text-indent:20px;
+			padding-bottom: .1rem;
+			font-size: .13rem;
 		}
 	</style>
 	
@@ -174,6 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="jia">+</span>
 				</div>
 			</div>
+			<div class="asdd">货物最长单边不超过一米</div>
 			</div>
 		<!--到达时间-->
 		<div class="order_info">
@@ -224,7 +227,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<img src="<%=basePath%>APP/images/icon/yuan.png"class="dis" width="19" />
 			<label> 我同意 《<a href="RequestMappingUtil/requestNUll/APP/serviceXy">水木云快递条约</a>》</label>
 			</div>
-			<button style="margin-bottom: 0.6rem; " class="order_btn order_btn_btnimg" id="ok_order btn_ImgUpStart">确认下单</button>		</div>
+			<button style="margin-bottom: 0.6rem; " class="order_btn order_btn_btnimg" id="btn_ImgUpStart">确认下单</button>		</div>
 		</form>
 
 		<!--遮罩层-->

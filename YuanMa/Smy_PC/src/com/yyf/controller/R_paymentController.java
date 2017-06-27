@@ -35,7 +35,7 @@ import com.yyf.controller.util.HttpUtil;
 import com.yyf.controller.util.PayCommonUtil;
 import com.yyf.controller.util.XMLUtil;
 import com.yyf.model.Balancetab;
-import com.yyf.service.balanceService;
+import com.yyf.service.BalancetabService;
 
 @Controller
 @RequestMapping("/payment")
@@ -43,7 +43,7 @@ public class R_paymentController {
 
 	// 自动装配 创建订单、获取二维码
 	@Autowired
-	private balanceService balancetabService;
+	private BalancetabService balancetabService;
 	
 	
 	private int defaultWidthAndHeight = 300;
@@ -64,12 +64,12 @@ public class R_paymentController {
 		String body = "充值付款";// 商品信息
 		String trade_type = "NATIVE";// 交易类型
 		String product_id = getRandomString(5) + System.currentTimeMillis();
-		Balancetab balancetab = balancetabService.queryBalance(kuaikeId);
+		Balancetab balancetab = balancetabService.queryKuaikeId(kuaikeId);
 		System.out.println("balancetab:"+balancetab);
 		if(balancetab==null){
-			balancetabService.insertBalance(kuaikeId,out_trade_no);
+			balancetabService.insert(kuaikeId,out_trade_no);
 		}else{
-			balancetabService.updatePayStatus(kuaikeId, out_trade_no);
+			balancetabService.setKuaikeIdStatus(kuaikeId, out_trade_no);
 		}
 		System.out.println("go");
 		Properties p = new Properties();

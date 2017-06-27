@@ -163,8 +163,8 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	 * @param xiaId  下单Id
 	 */
 	@Override
-	public void updatePayment(String xiaId) {
-		ir_xiaordertabMapper.updatePayment(xiaId);
+	public void updatePayment(double payment,String xiaId) {
+		ir_xiaordertabMapper.updatePayment(payment,xiaId);
 		
 	}
 

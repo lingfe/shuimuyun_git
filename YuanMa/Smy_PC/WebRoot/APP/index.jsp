@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script>
 		setTimeout(function() {
 				$("body").show();
-		},500);
+		},1000);
 	</script>
 	<!--  5ayer -->
 	</head>

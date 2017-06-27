@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width: 0.5rem;
 				margin: 0.4rem auto;
 			}
-			.quickTop .quick_user {
+			.quickTop input {
 				display: block;
 				position: absolute;
 				top: 0;

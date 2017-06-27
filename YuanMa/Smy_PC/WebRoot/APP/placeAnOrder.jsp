@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: 100%;
 			width: 100%;
 			opacity: 0;
-			z-index: 999;
+			z-index: 99;
 		}
 		
 		
@@ -118,7 +118,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		.asdd{
 			color: #555;
-			text-align: center;
+			text-indent:20px;
+			padding-bottom: .1rem;
+			font-size: .13rem;
 		}
 	</style>
 	
@@ -174,6 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="jia">+</span>
 				</div>
 			</div>
+			<div class="asdd">货物最长单边不超过一米</div>
 			</div>
 		<!--到达时间-->
 		<div class="order_info">

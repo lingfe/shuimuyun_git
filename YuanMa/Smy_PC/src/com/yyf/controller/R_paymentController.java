@@ -53,32 +53,26 @@ public class R_paymentController {
 			throws ServletException, IOException {
 		String total_fee = request.getParameter("shouprices");// 商品价格
 		String kuaikeId = request.getParameter("kuaikeid");// 快客id
-		System.out.println("total_fee:"+total_fee);
 		System.out.println("kuaikeid:"+kuaikeId);
 		double fee = Double.parseDouble(total_fee) * 100;
 		int a = (int) fee;
 		String total = String.valueOf(a);
-		
-		String order_no = System.currentTimeMillis() + getRandomString(3);
 		String out_trade_no = System.currentTimeMillis() + getRandomString(5);
 		String body = "充值付款";// 商品信息
 		String trade_type = "NATIVE";// 交易类型
 		String product_id = getRandomString(5) + System.currentTimeMillis();
 		Balancetab balancetab = balancetabService.queryKuaikeId(kuaikeId);
-		System.out.println("balancetab:"+balancetab);
 		if(balancetab==null){
 			balancetabService.insert(kuaikeId,out_trade_no);
 		}else{
 			balancetabService.setKuaikeIdStatus(kuaikeId, out_trade_no);
 		}
-		System.out.println("go");
 		Properties p = new Properties();
-		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
+		InputStream input = R_paymentController.class.getResourceAsStream("/payConfig.properties");
 		InetAddress ia = null;
 		try {
 			p.load(input);
 			// 调用统一下单接口
-			System.out.println("调用统一下单接口");
 			SortedMap<Object, Object> packageParams = new TreeMap<Object, Object>();
 			String nonce_str = getRandomString(16);
 			packageParams.put("appid", String.valueOf(p.get("APP_ID")));
@@ -100,9 +94,7 @@ public class R_paymentController {
 			packageParams.put("sign", sign);
 
 			String requestXML = PayCommonUtil.getRequestXml(packageParams);
-			System.out.println("requestXML:"+requestXML);
 			String resXml = HttpUtil.postData(String.valueOf(p.get("UFDODER_URL")), requestXML);
-			System.out.println("resXml:"+resXml);
 			Map map;
 			try {
 				map = XMLUtil.doXMLParse(resXml);
@@ -138,7 +130,6 @@ public class R_paymentController {
 								defaultWidthAndHeight, defaultWidthAndHeight, hints);
 						OutputStream out = response.getOutputStream();
 						MatrixToImageWriter.writeToStream(bitMatrix, "png", out);// 输出二维码
-						System.out.println("二维码生成成功");
 						out.flush();
 						out.close();
 

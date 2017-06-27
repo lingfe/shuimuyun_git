@@ -34,6 +34,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.dom_shouhuo_ldiv div{
 			height:.3rem;
 		}
+		.quickBtn:active {
+			background: rgba(65, 139, 200, .8);
+		}
+		
+		.quickSf_item {
+			background: white;
+			position: relative;
+			width: 3rem;
+			height: 1rem;
+			color: #fff;
+			font-size: 0.12rem;
+			margin: auto;
+			text-align: center;
+			line-height: 1rem;
+			background: rgba(0, 0, 0, .8);
+			border-radius: 5px;
+			overflow: hidden;
+			margin-bottom: 0.15rem;
+		}
+		
+		.quickSf_item input {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			z-index: 99;
+		}
+		
+		
+		.quickSf_item img {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 1rem;
+			z-index: 5;
+		}
 	</style>
 	</head>
 	<body>
@@ -126,6 +167,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<!--上传图片-->
+		<div class="quickSf_item">
+			<input class="file" type="file" name="files" multiple="multiple" accept="image/*" />
+			<img title="" alt="" src="" />
+			<span>上传货物图片</span>
+		</div>
+		<div class="quickSf_item">
+			<input class="file" type="file" name="files" multiple="multiple" accept="image/*" />
+			<img title="" alt="" src="" />
+			<span>上传货物图片</span>
+		</div>
+		<%-- <!--上传图片-->
 		<div class="shang_img">		
 			
 			<c:if test="${info.status==1 }" >
@@ -143,11 +195,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</c:if>
 			
-			<c:if test="${info.status==2 }">
+			<c:if test="${info.status==2 }"> --%>
 				<!--如果有图片存放img的div-->
 				<div></div>
 				<button id="btn" class="order_btn">到达目的地</button>
-			</c:if>
+		<%-- 	</c:if> --%>
 			
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>
@@ -156,6 +208,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_yz.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/IMGUP.js" ></script>
+		<script>
+			$(function() {
+				$(".quickSf_item input").change(function() {
+					
+					//$(this).parent().append(Img);
+					$(this).parent().find("span").remove();
+					var objUrl = getObjectURL(this.files[0]);
+					console.log("objUrl = " + objUrl);
+					if(objUrl) {
+						$(this).next("img").attr("src", objUrl);
+						//alert(objUrl)
+					}
+				});
+			});
+
+			//建立一個可存取到該file的url
+			function getObjectURL(file) {
+				var url = null;
+				if(window.createObjectURL != undefined) { // basic
+					url = window.createObjectURL(file);
+				} else if(window.URL != undefined) { // mozilla(firefox)
+					url = window.URL.createObjectURL(file);
+				} else if(window.webkitURL != undefined) { // webkit or chrome
+					url = window.webkitURL.createObjectURL(file);
+				}
+				return url;
+			}
+		</script>
 		<script type="text/javascript">
 		$(function(){
 			$("#btn").click(function(){
@@ -227,5 +307,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 		</script>
+		
 	</body>
 </html>

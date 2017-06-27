@@ -144,8 +144,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="box_div" >
 					<span>地址：</span>
-					<input type="text" id="adder" value="${info.kuaikeAddress }" readonly="readonly" placeholder="请选择地址"/>
-			</div>
 			<div class="box_div">
 					<span>街 道：</span>
 					<input type="text" id="xadder" value="${ info.kuaikeAddressInfo }" placeholder="请输入详细地址"/>
@@ -161,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
 		<script type="text/javascript">
 			/*三级联动*/
-			$("#adder").cityPicker({
+			$("#xadder").cityPicker({
 			   title: "请选择发货地址"
 			});
 			//ajax提交
@@ -186,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//快客详细地址
 				var kuaikeAddressInfo=$("#xadder").val();
 				//发货人地址
-				var kuaikeAddress=$("#adder").val();
+				var kuaikeAddress=$("#adder").html();
 				//url
 				var url=xiaId+"/"+kuaikeName+"/"+kuaikePhone+"/"+kuaikeAddress+"/"+kuaikeAddressInfo;
 				$.ajax({

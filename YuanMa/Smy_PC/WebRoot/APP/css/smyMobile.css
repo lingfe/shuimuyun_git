@@ -1757,9 +1757,11 @@ input {
 /*【订单】*/
 
 .oallNav {
-	width: 100%;
+	width: calc(100% - 40px);
 	height: 0.3rem;
-	background: rgb(65, 139, 200);
+	background: #e1e1e1;
+	border-radius: 5px;
+	margin: auto;
 }
 
 .oallNav>a {
@@ -1768,7 +1770,7 @@ input {
 	height: 0.3rem;
 	font-size: 0.13rem;
 	text-align: center;
-	color: #fff;
+	color: #555;
 	text-decoration: none;
 	line-height: 0.3rem;
 	float: left;
@@ -1779,39 +1781,40 @@ input {
 
 .oallNav>.active {
 	border-radius: 5px 5px 0 0;
-	color: #444;
-	background: rgb(255, 255, 255);
+	color: #fff;
+	background: #418bc8;
 }
 
 .oallCont {
 	width: 100%;
 	height: auto;
 	overflow: hidden;
-	margin-top: 0.4rem;
 }
 
 .oallCont_muen {
-	width: calc(100% - 40px);
+	width: 100%;
 	height: 0.3rem;
-	background: #e1e1e1;
-	border-radius: 5px;
+	background: #418bc8;
 	overflow: hidden;
 	margin: 0.2rem auto;
+	margin-top: 0.4rem;
 }
 
 .oallCont_muen div {
 	width: 33.3333%;
 	height: 0.3rem;
 	font-size: 0.13rem;
-	color: #666;
+	overflow: hidden;
+	color: #fff;
 	line-height: 0.3rem;
 	text-align: center;
+	border-radius: 5px 5px 0 0;
 	float: left;
 }
 
 .oallCont_muen .active {
-	background: rgb(65, 139, 200);
-	color: #fff;
+	background: #fff;
+	color: #555;
 }
 
 .oallCont_cont {

@@ -62,22 +62,13 @@ public class BalancetabController {
 	 *            下单Id
 	 * @return
 	 */
-	@RequestMapping(value = "/updateBalance/{balance}/{kuaikeId}/{zhifupwd}/{xiaId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateBalance1/{balance}/{kuaikeId}/{zhifupwd}/{xiaId}", method = RequestMethod.POST)
 	@ResponseBody
-	public void updateBalance(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
+	public void updateBalance1(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
 			@PathVariable("zhifupwd") String zhifupwd,@PathVariable("xiaId") String xiaId) {
-			Balancetab queryBalance1 = balancetabService.queryKuaikeId(kuaikeId);
-		
-			if(queryBalance1.getBalance()>balance){
-				
-				balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
-				
-				
-			}
-			else {
-				xiaordertabService.updatePayment(0,xiaId);
 			
-			}
+				xiaordertabService.updatePayment(1,xiaId);
+				balancetabService.updateBalance1(balance, kuaikeId, zhifupwd);
 			
 	
 	}

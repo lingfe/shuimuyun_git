@@ -11,9 +11,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>收货人信息</title>
-	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
-	<link rel="stylesheet" href="<%=basePath%>APP/css/style.css" />	
+	<link rel="stylesheet" href="<%=basePath%>APP/css/weui.min.css" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/jquery-weui.min.css" />	
+	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	</head>
 	<script>
 			setTimeout(function() {
@@ -50,6 +51,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			outline: none;
 			font-size: .13rem;
 		}
+				/*城市联动*/
+		.weui-toast {
+	width: 100px;
+	height: 100px;
+}
+.weui-icon_toast {
+	font-size: 55px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.weui-toast_content {
+	font-size: 14px;
+}
+.weui-dialog__hd {
+	background: #418bc8;
+	height: 20px;
+	color: #fff;
+}
+.weui-dialog__title {
+	font-size: 16px;
+	line-height: 20px;
+}
+.weui-dialog__bd {
+	font-size: 14px;
+	height: 25px;
+	line-height: 50px;
+}
+.weui-dialog__ft {
+	font-size: 14px;
+}
+.toolbar .toolbar-inner {
+	height: 0.4rem;
+}
+.toolbar .title {
+	height: 0.4rem;
+	line-height: 0.4rem;
+	font-size: 0.15rem;
+}
+.toolbar .picker-button {
+	height: 0.4rem;
+	line-height: 0.4rem;
+	font-size: 0.13rem;
+}
+.weui-picker-modal {
+	height: 2rem;
+}
+.toolbar {
+	line-height: 0.4rem;
+}
+.weui-picker-modal .picker-items {
+	font-size: 0.14rem;
+}
+.weui-picker-modal .picker-modal-inner {
+	height: 1.6rem;
+}
+.weui-picker-modal .picker-items {
+	text-align: center;
+}
+.weui-toptips {
+	padding: 0;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
 	</style>
 	<body>
 		<!--【头部】-->
@@ -73,30 +137,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="text" placeholder="请输入手机号" id="con_phone" type="text" value="${info.shouhuoShone }"/>
 			</div>
 		<!--三级联动-->
-		<div class="browser">
-        	<!--选择地区-->
-        	<section class="express-area">
-            	<a id="expressArea" href="javascript:void(0)">
-                	<dl>
-                    	<dt style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem; text-indent: 10px;">选择地区：</dt>
-                    	<dd style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem; text-indent: 10px;"  id="adder">请选择地址</dd>
-                	</dl>
-            	</a>
-       	 </section>
-        <!--选择地区弹层-->
-        <section id="areaLayer" class="express-area-box">
-            <header>
-                <h3>选择地区</h3>
-                <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
-                <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
-            </header>
-            <article id="areaBox">
-                <ul id="areaList" class="area-list"></ul>
-            </article>
-        </section>
-        <!--遮罩层-->
-        <div id="areaMask" class="mask"></div>
-   			</div>
+			<div class="box_div">
+				<span>地址：</span>
+				<input type="text" id="xadder" readonly="readonly" placeholder="请选择地址"/>
+			</div>
 			<div class="box_div">
 				<span>街 道：</span>
 				<input type="text" id="xadder" value="${ info.shouhuoAddressInfo }" placeholder="请输入详细地址"/>
@@ -106,11 +150,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }"> 
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>
-		<script type="text/javascript" src="<%=basePath%>APP/js/jquery.area.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-weui.min.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/city-picker.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
 		<script type="text/javascript">
+		/*三级联动*/
+			$("#xadder").cityPicker({
+			   title: "请选择发货地址"
+			});
 			//ajax提交
 			function shou(){
 				//下单id

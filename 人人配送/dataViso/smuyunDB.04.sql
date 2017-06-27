@@ -23,24 +23,23 @@ DROP TABLE IF EXISTS `balancetab`;
 CREATE TABLE `balancetab` (
   `balanceId` varchar(64) NOT NULL COMMENT '账户表标识',
   `kuaikeId` varchar(64) DEFAULT NULL COMMENT '快客id',
-  `zhifupwd` varchar(20) DEFAULT NULL COMMENT '支付密码',
+  `zhifupwd` varchar(255) DEFAULT NULL COMMENT '支付密码',
   `balance` decimal(8,2) DEFAULT NULL COMMENT '余额',
   `deposit` decimal(8,2) DEFAULT '200.00' COMMENT '押金',
   `status` int(11) DEFAULT NULL COMMENT '快客账户状态(0=未交押金，1=已交押金)',
   `paystatus` int(4) DEFAULT '0' COMMENT '充值支付状态,1充值中,2充值成功',
-  `out_trade_no` varchar(32) NOT NULL DEFAULT '0' COMMENT '二维码支付订单号',
   PRIMARY KEY (`balanceId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `balancetab` */
 
-insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`,`out_trade_no`) values ('07e28659-ba62-4e0b-aaa0-1398a7f2402d','07e28659-ba62-4e0b-aaa0-1398a7f2402a','123456','0.00','200.00',1,0,'');
-insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`,`out_trade_no`) values ('14984746954691abop','2860c7e3-bb3e-4f17-b86c-66e7fe2cd3c2','123456','0.00','200.00',NULL,1,'0');
-insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`,`out_trade_no`) values ('1498525744094sb16a','a76d26d3-b9d8-46a9-a6e9-eced697dae22','123456','99948.00','200.00',1,1,'');
-insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`,`out_trade_no`) values ('5ba7796e-a0f2-4d16-9a18-66e6bd7d65d000','5ba7796e-a0f2-4d16-9a18-66e6bd7d65d0','123456','999977.99','200.00',1,0,'');
-insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`,`out_trade_no`) values ('65b22e82-5940-414b-bd7f-c0044358147b12','65b22e82-5940-414b-bd7f-c0044358147b','123456','99992.00','200.00',1,0,'');
-insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`,`out_trade_no`) values ('aaa86a78-3b06-4749-95e6-a6704b0f1847','aaa86a78-3b06-4749-95e6-a6704b0f1848','123456','999999.99','200.00',1,0,'');
-insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`,`out_trade_no`) values ('b3736ef1-6935-4426-a4d0-224ec1fa953200','b3736ef1-6935-4426-a4d0-224ec1fa9532','123456','999999.99','200.00',1,0,'');
+insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`) values ('07e28659-ba62-4e0b-aaa0-1398a7f2402d','07e28659-ba62-4e0b-aaa0-1398a7f2402a','123456','0.00','200.00',1,0);
+insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`) values ('14984746954691abop','2860c7e3-bb3e-4f17-b86c-66e7fe2cd3c2','123456','0.00','200.00',NULL,1);
+insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`) values ('1498525744094sb16a','a76d26d3-b9d8-46a9-a6e9-eced697dae22','123456','99948.00','200.00',1,1);
+insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`) values ('5ba7796e-a0f2-4d16-9a18-66e6bd7d65d000','5ba7796e-a0f2-4d16-9a18-66e6bd7d65d0','123456','999977.99','200.00',1,0);
+insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`) values ('65b22e82-5940-414b-bd7f-c0044358147b12','65b22e82-5940-414b-bd7f-c0044358147b','123456','99992.00','200.00',1,0);
+insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`) values ('aaa86a78-3b06-4749-95e6-a6704b0f1847','aaa86a78-3b06-4749-95e6-a6704b0f1848','123456','999999.99','200.00',1,0);
+insert  into `balancetab`(`balanceId`,`kuaikeId`,`zhifupwd`,`balance`,`deposit`,`status`,`paystatus`) values ('b3736ef1-6935-4426-a4d0-224ec1fa953200','b3736ef1-6935-4426-a4d0-224ec1fa9532','123456','999999.99','200.00',1,0);
 
 /*Table structure for table `city` */
 

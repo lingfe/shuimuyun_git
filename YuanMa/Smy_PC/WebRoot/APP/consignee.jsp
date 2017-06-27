@@ -21,6 +21,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			},500);
 	</script>
 	<style>
+		.box{
+			margin-top:.6rem !important;
+			margin:auto;
+			width:calc(100% - 40px);
+			height:1.6rem;
+			background: #fff;
+		}
+		.box_div{
+			width:100%;
+			height: .4rem;
+			border-bottom:  solid 1px #eee; 
+		}
+		.box_div span{
+			display:inline-block;
+			width:.7rem;
+			height: .4rem;
+			line-height: .4rem;
+			text-indent: 10px;
+			font-size: .13rem;
+		}
+		.box_div input{
+			display:inline-block;
+			width:calc(100% - .8rem);
+			height: .3rem;
+			line-height: .3rem;
+			border: none;
+			outline: none;
+			font-size: .13rem;
+		}
 	</style>
 	<body>
 		<!--【头部】-->
@@ -34,7 +63,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</header>
 		<!--【头部】end-->
-		<div class="hipper_contex">
+		<div class="box">
+			<div class="box_div">
+				<span>发货人：</span>
+				<input type="text" placeholder="请输入姓名" id="con_name" type="text" value="${info.shouhuoName }"/>
+			</div>
+			<div class="box_div">
+				<span>手机号：</span>
+				<input type="text" placeholder="请输入手机号" id="con_phone" type="text" value="${info.shouhuoShone }"/>
+			</div>
+		<!--三级联动-->
+		<div class="browser">
+        	<!--选择地区-->
+        	<section class="express-area">
+            	<a id="expressArea" href="javascript:void(0)">
+                	<dl>
+                    	<dt style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem; text-indent: 10px;">选择地区：</dt>
+                    	<dd style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem; text-indent: 10px;"  id="adder">请选择地址</dd>
+                	</dl>
+            	</a>
+       	 </section>
+        <!--选择地区弹层-->
+        <section id="areaLayer" class="express-area-box">
+            <header>
+                <h3>选择地区</h3>
+                <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
+                <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+            </header>
+            <article id="areaBox">
+                <ul id="areaList" class="area-list"></ul>
+            </article>
+        </section>
+        <!--遮罩层-->
+        <div id="areaMask" class="mask"></div>
+   			</div>
+			<div class="box_div">
+				<span>街 道：</span>
+				<input type="text" id="xadder" placeholder="请输入详细地址"/>
+			</div>
+		
+		</div>
+		<%-- <div class="hipper_contex">
 			<div>
 				<span>收货人：</span>
 				<input id="con_name" type="text" value="${info.shouhuoName }" placeholder="请输入姓名"/>
@@ -44,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input id="con_phone" type="text" value="${info.shouhuoShone }" placeholder="请输入手机号"/>
 			</div>			
 			<div>
-				<%-- <img src="<%=basePath%>APP/images/icon/adds.png" width="20" class="hipper_contex_firstimg"/> --%>
+				<img src="<%=basePath%>APP/images/icon/adds.png" width="20" class="hipper_contex_firstimg"/>
 				<div class="browser">
         <!--选择地区-->
         <section class="express-area">
@@ -76,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			</div>
 			<div id="shouhuoAddressInfo_value"></div>			
-		</div>
+		</div> --%>
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }"> 
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>

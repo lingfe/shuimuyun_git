@@ -144,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="box_div" >
 					<span>地址：</span>
-					<input type="text" id="xadder" readonly="readonly" placeholder="请选择地址"/>
+					<input type="text"  id="xadder" readonly="readonly" placeholder="请选择地址"/>
 			</div>
 			<div class="box_div">
 					<span>街 道：</span>

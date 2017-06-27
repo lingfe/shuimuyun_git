@@ -227,15 +227,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//验证审核
-				if("${login.kuaikeStatus}"==0){
-					//提示
-				    layer.open({
-				    	content: '您的身份还没有通过审核！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
-				}else{
 					//询问框
 					layer.open( {
 						anim: 'up',
@@ -250,6 +241,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							layer.close(index);
 						}  
 					});
+				}else if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 				}
 			}
 		}

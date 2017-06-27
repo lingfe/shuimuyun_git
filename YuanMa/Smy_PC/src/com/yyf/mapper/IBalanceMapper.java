@@ -70,8 +70,8 @@ public interface IBalanceMapper {
 	 * @param kuaikeId 快客ID
 	 * @return
 	 */
-	@Insert("insert into balancetab(balanceId,kuaikeId,zhifupwd,balance) values(#{out_trade_no},#{kuaikeId},123456,0)")
-	void insert(@Param("kuaikeId") String kuaikeId,@Param("out_trade_no") String out_trade_no);
+	@Insert("insert into balancetab(balanceId,kuaikeId,zhifupwd,balance) values(#{out_trade_no},#{kuaikeId},#{zhifupwd},0)")
+	void insert(@Param("kuaikeId") String kuaikeId,@Param("out_trade_no") String out_trade_no,@Param("zhifupwd") String zhifupwd);
 	
 	
 	/**

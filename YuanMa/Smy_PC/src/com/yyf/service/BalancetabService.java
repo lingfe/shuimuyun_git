@@ -48,7 +48,7 @@ public interface BalancetabService {
 	 * @param kuaikeId 快客ID
 	 * @return
 	 */
-	void insert(String kuaikeId, String out_trade_no);
+	void insert(String kuaikeId, String out_trade_no,String zhifupwd);
 	
 	
 	/**

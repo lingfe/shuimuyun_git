@@ -17,8 +17,8 @@ public class BalancetabServiceImpl implements BalancetabService {
 	private IBalanceMapper balanceMapper;
 	
 	@Override
-	public void insert(String kuaikeId, String out_trade_no) {
-		balanceMapper.insert(kuaikeId, out_trade_no);
+	public void insert(String kuaikeId, String out_trade_no,String zhifupwd) {
+		balanceMapper.insert(kuaikeId, out_trade_no,zhifupwd);
 	}
 	
 	/**

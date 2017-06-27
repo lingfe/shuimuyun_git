@@ -36,6 +36,7 @@ import com.yyf.controller.util.PayCommonUtil;
 import com.yyf.controller.util.XMLUtil;
 import com.yyf.model.Balancetab;
 import com.yyf.service.BalancetabService;
+import com.yyf.util.Md5Util;
 
 @Controller
 @RequestMapping("/payment")
@@ -55,6 +56,8 @@ public class R_paymentController {
 		String kuaikeId = request.getParameter("kuaikeid");// 快客id
 		System.out.println("total_fee:"+total_fee);
 		System.out.println("kuaikeid:"+kuaikeId);
+		String zhifupwd="123456";
+		String md5 = Md5Util.md5(zhifupwd);
 		double fee = Double.parseDouble(total_fee) * 100;
 		int a = (int) fee;
 		String total = String.valueOf(a);
@@ -67,7 +70,7 @@ public class R_paymentController {
 		Balancetab balancetab = balancetabService.queryKuaikeId(kuaikeId);
 		System.out.println("balancetab:"+balancetab);
 		if(balancetab==null){
-			balancetabService.insert(kuaikeId,out_trade_no);
+			balancetabService.insert(kuaikeId,out_trade_no,zhifupwd);
 		}else{
 			balancetabService.setKuaikeIdStatus(kuaikeId, out_trade_no);
 		}

@@ -223,8 +223,7 @@ public class R_kuaiketabServiceImpl implements R_kuaiketabService {
 	@Transactional
 	public int addUser(R_kuaiketab kuaiketab) {
 		int addUser = kuaiketabMapper.addUser(kuaiketab);
-		//添加账户信息
-		balanceMapper.insert(kuaiketab.getKuaikeId(), UUID.randomUUID().toString());
+		
 		return addUser;
 	}
 

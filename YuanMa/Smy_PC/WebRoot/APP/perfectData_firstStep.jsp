@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</header>
 			<form class="quickMian" action="updataFirstStep" method="POST" >
 				<div class="quickTop">
-					<input type="file"  multiple="multiple" accept="image/*"  capture="camera" />
+					<input type="file" id="quickImg1"  multiple="multiple" accept="image/*"  capture="camera" />
 					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId"  />
 					<img class="quick_user" title="" alt="" src="<%=basePath%>APP/images/myUser.png" width="100%" />
 				</div>
@@ -133,11 +133,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<script>
 			$(function() {
-					$(".quickTop input").change(function() {
+					$("#quickImg1").change(function() {
 						var objUrl = getObjectURL(this.files[0]);
 						console.log("objUrl = "+objUrl) ;
 						if(objUrl) {
-							$(this).next("img").attr("src", objUrl);
+							$(".quick_user").attr("src", objUrl);
 							//alert(objUrl)
 						}
 					});

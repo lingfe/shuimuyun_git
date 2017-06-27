@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.yyf.mapper.IBalanceMapper;
 import com.yyf.model.Balancetab;
@@ -15,7 +14,12 @@ public class BalancetabServiceImpl implements BalancetabService {
 
 	// 自动装配	账户信息
 	@Autowired
-	private IBalanceMapper balanceMapper;
+	private IBalanceMapper iBalanceMapper;
+	
+	@Override
+	public void insertBalance(String kuaikeId, String out_trade_no) {
+		iBalanceMapper.insertBalance(kuaikeId, out_trade_no);
+	}
 	
 	/**
 	 * 根据快客Id得到账户余额
@@ -27,7 +31,7 @@ public class BalancetabServiceImpl implements BalancetabService {
 	@Override
 	public Balancetab queryBalance(String kuaikeId) {
 		
-		Balancetab queryBalance = balanceMapper.queryBalance(kuaikeId);
+		Balancetab queryBalance = iBalanceMapper.queryBalance(kuaikeId);
 		
 		return queryBalance;
 	}
@@ -44,7 +48,7 @@ public class BalancetabServiceImpl implements BalancetabService {
 	@Override
 	public void updateBalance(double balance,String kuaikeId,String zhifupwd){
 		
-		balanceMapper.updateBalance(balance, kuaikeId,zhifupwd);
+		iBalanceMapper.updateBalance(balance, kuaikeId,zhifupwd);
 		
 	}
 
@@ -56,20 +60,8 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 */
 	@Override
 	public List<Balancetab> queryallbalance() {
-		List<Balancetab> queryallbalance = balanceMapper.queryallbalance();
+		List<Balancetab> queryallbalance = iBalanceMapper.queryallbalance();
 		return queryallbalance;
-	}
-
-
-	/**
-	 * @author 田浩  
-	 * @created 2017年6月26日 上午11:36:18  
-	 * @return
-	 */
-
-	@Override
-	public void insertBalance(String kuaikeId,String balanceId) {
-		balanceMapper.insertBalance(kuaikeId,balanceId);
 	}
  
 	
@@ -78,10 +70,9 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @created 2017年6月26日 上午11:36:18  
 	 * @return
 	 */
-
 	@Override
 	public void updateBalance(String out_trade_no,String total_fee) {
-		balanceMapper.updateBalance(out_trade_no,total_fee);
+		iBalanceMapper.updateBalance(out_trade_no,total_fee);
 	}
 	
 	/**
@@ -89,11 +80,9 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @created 2017年6月26日 上午11:36:18  
 	 * @return
 	 */
-
-	@Transactional
 	@Override
 	public void updatePayStatus(String kuaikeId,String out_trade_no) {
-		balanceMapper.updatePayStatus(kuaikeId ,out_trade_no);
+		iBalanceMapper.updatePayStatus(kuaikeId ,out_trade_no);
 	}
 	
 	/**
@@ -101,10 +90,9 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 * @created 2017年6月26日 上午11:36:18  
 	 * @return
 	 */
-
 	@Override
 	public String selectresult(String kuaikeId) {
-		String b = balanceMapper.selectresult(kuaikeId);
+		String b = iBalanceMapper.selectresult(kuaikeId);
 		return b;
 	}
 }

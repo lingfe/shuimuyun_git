@@ -27,7 +27,7 @@ public interface IBalanceMapper {
 	 * @return
 	 */
 	@Select("select * from balancetab where kuaikeId=#{kuaikeId}")
-	public Balancetab queryBalance(@Param("kuaikeId") String kuaikeId);
+	Balancetab queryBalance(@Param("kuaikeId") String kuaikeId);
 	
 	/**
 	 * 通过余额付款
@@ -69,7 +69,7 @@ public interface IBalanceMapper {
 	 * @return
 	 */
 	@Insert("insert into balancetab(balanceId,kuaikeId,zhifupwd,balance) values(#{out_trade_no},#{kuaikeId},123456,0)")
-	public void insertBalance(@Param("kuaikeId") String kuaikeId,@Param("out_trade_no") String out_trade_no);
+	void insertBalance(@Param("kuaikeId") String kuaikeId,@Param("out_trade_no") String out_trade_no);
 	
 	
 	/**

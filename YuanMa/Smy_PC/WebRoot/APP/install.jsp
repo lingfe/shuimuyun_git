@@ -98,8 +98,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--遮罩-->
 		<div class="install_ze dis"></div>
 			<div class="install_tang dis">
-			<div><a href="RequestMappingUtil/requestNUll/APP/login">换个账号登录</a></div>
-			<div><a href="RequestMappingUtil/requestNUll/APP/login">退出登录</a></div>
+			<div><a href="loginOut/APP">换个账号登录</a></div>
+			<div><a href="loginOut/APP">退出登录</a></div>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/mui.min.js"></script>

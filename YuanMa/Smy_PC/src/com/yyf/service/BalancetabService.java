@@ -20,7 +20,7 @@ public interface BalancetabService {
 	 * @param kuaikeId
 	 * @return
 	 */
-	public Balancetab queryBalance(String kuaikeId);
+	public Balancetab queryKuaikeId(String kuaikeId);
 	
 	
 	/**
@@ -31,7 +31,7 @@ public interface BalancetabService {
 	 * @param xiaId 下单Id
 	 * @return 
 	 */
-	public void updateBalance(double balance,String kuaikeId,String zhifupwd);
+	public void updateBalance1(double balance,String kuaikeId,String zhifupwd);
 	
 	/**
 	 * @author 杨杰     
@@ -42,19 +42,20 @@ public interface BalancetabService {
 
 
 	/**
-	 * @author 田浩     
-	 * @created 2017年6月26日 上午11:35:45  
+	 * 插入该快客id的账户
+	 * @author 田浩
+	 * @created 2017年6月26日 上午11:43:42  
+	 * @param kuaikeId 快客ID
 	 * @return
 	 */
+	void insert(String kuaikeId, String out_trade_no);
 	
-	public void insertBalance(String kuaikeId,String order_no);
 	
 	/**
 	 * @author 田浩     
 	 * @created 2017年6月26日 上午11:35:45  
 	 * @return
 	 */
-	
 	public void updateBalance(String out_trade_no,String total_fee);
 	
 	
@@ -63,8 +64,7 @@ public interface BalancetabService {
 	 * @created 2017年6月26日 上午11:35:45  
 	 * @return
 	 */
-	
-	public void updatePayStatus(String kuaikeId,String out_trade_no);
+	public void setKuaikeIdStatus(String kuaikeId,String out_trade_no);
 	
 	/**
 	 * @author 田浩     

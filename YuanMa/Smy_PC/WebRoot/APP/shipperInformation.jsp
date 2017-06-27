@@ -16,16 +16,110 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
+	<meta http-equiv="description" content="This is my page">	
 	<link rel="stylesheet" href="<%=basePath%>APP/css/layer.css" />
-	<link rel="stylesheet" href="<%=basePath%>APP/css/style.css" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/weui.min.css" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/jquery-weui.min.css" />
+	<link rel="stylesheet" href="<%=basePath%>APP/css/smyMobile.css" />
 	<script>
 			setTimeout(function() {
 				$("body").show();
 			},500);
 		</script>
-	
+		<style>
+		.box{
+			margin-top:.6rem !important;
+			margin:auto;
+			width:calc(100% - 40px);
+			height:1.6rem;
+			background: #fff;
+		}
+		.box_div{
+			width:100%;
+			height: .4rem;
+			border-bottom:  solid 1px #eee; 
+		}
+		.box_div span{
+			display:inline-block;
+			width:.7rem;
+			height: .4rem;
+			line-height: .4rem;
+			text-indent: 10px;
+			font-size: .13rem;
+		}
+		.box_div input{
+			display:inline-block;
+			width:calc(100% - .8rem);
+			height: .3rem;
+			line-height: .3rem;
+			border: none;
+			outline: none;
+			font-size: .13rem;
+		}
+		/*城市联动*/
+		.weui-toast {
+	width: 100px;
+	height: 100px;
+}
+.weui-icon_toast {
+	font-size: 55px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.weui-toast_content {
+	font-size: 14px;
+}
+.weui-dialog__hd {
+	background: #418bc8;
+	height: 20px;
+	color: #fff;
+}
+.weui-dialog__title {
+	font-size: 16px;
+	line-height: 20px;
+}
+.weui-dialog__bd {
+	font-size: 14px;
+	height: 25px;
+	line-height: 50px;
+}
+.weui-dialog__ft {
+	font-size: 14px;
+}
+.toolbar .toolbar-inner {
+	height: 0.4rem;
+}
+.toolbar .title {
+	height: 0.4rem;
+	line-height: 0.4rem;
+	font-size: 0.15rem;
+}
+.toolbar .picker-button {
+	height: 0.4rem;
+	line-height: 0.4rem;
+	font-size: 0.13rem;
+}
+.weui-picker-modal {
+	height: 2rem;
+}
+.toolbar {
+	line-height: 0.4rem;
+}
+.weui-picker-modal .picker-items {
+	font-size: 0.14rem;
+}
+.weui-picker-modal .picker-modal-inner {
+	height: 1.6rem;
+}
+.weui-picker-modal .picker-items {
+	text-align: center;
+}
+.weui-toptips {
+	padding: 0;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
+	</style>
 	</head>
 	<body>
 		<!--【头部】-->
@@ -39,57 +133,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</header>
 		<!--【头部】end-->
-		<div class="hipper_contex">
-			<div>
+		<div class="box">
+			<div class="box_div">
 				<span>发货人：</span>
-				<input id="con_name" type="text" value="${info.kuaikeName }" placeholder="请输入姓名"/>
-			</div>			
-			<div>
+				<input type="text" placeholder="请输入姓名" id="con_name" value="${info.kuaikeName }"/>
+			</div>
+			<div class="box_div">
 				<span>手机号：</span>
-				<input id="con_phone" type="text" value="${info.kuaikePhone }" placeholder="请输入手机号"/>
-			</div>			
-			<div>
-				<div class="browser">
-        <!--选择地区-->
-        <section class="express-area">
-            <a id="expressArea" href="javascript:void(0)">
-                <dl>
-                    <dt style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem">选择地区：</dt>
-                    <dd style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem" id="adder">请选择地址</dd>
-                </dl>
-            </a>
-        </section>
-        <!--选择地区弹层-->
-        <section id="areaLayer" class="express-area-box">
-            <header>
-                <h3>选择地区</h3>
-                <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
-                <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
-            </header>
-            <article id="areaBox">
-                <ul id="areaList" class="area-list"></ul>
-            </article>
-        </section>
-        <!--遮罩层-->
-        <div id="areaMask" class="mask"></div>
-   </div>
-			</div>			
-			<div class="edit_firstdiv_3">
-				<label style="font-size: 0.15rem">街　道 :</label>
-				<input type="text" placeholder="请输入详细地址" id="xadder" />
+				<input type="text" placeholder="请输入手机号" id="con_phone" value="${info.kuaikePhone }"/>
 			</div>
-		</div>
+			<div class="box_div" >
+					<span>地址：</span>
+					<input type="text" id="adder" value="${info.kuaikeAddress }" readonly="readonly" placeholder="请选择地址"/>
 			</div>
-			<div id="kuaikeAddressInfo_value"></div>			
+			<div class="box_div">
+					<span>街 道：</span>
+					<input type="text" id="xadder" value="${ info.kuaikeAddressInfo }" placeholder="请输入详细地址"/>
+			</div>
 		</div>
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }"> 
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>
-		<script type="text/javascript" src="<%=basePath%>APP/js/jquery.area.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-weui.min.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/city-picker.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
 		<script type="text/javascript">
+			/*三级联动*/
+			$("#adder").cityPicker({
+			   title: "请选择发货地址"
+			});
 			//ajax提交
 			function fa(){
 				//验证审核
@@ -112,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//快客详细地址
 				var kuaikeAddressInfo=$("#xadder").val();
 				//发货人地址
-				var kuaikeAddress=$("#adder").html();
+				var kuaikeAddress=$("#adder").val();
 				//url
 				var url=xiaId+"/"+kuaikeName+"/"+kuaikePhone+"/"+kuaikeAddress+"/"+kuaikeAddressInfo;
 				$.ajax({
@@ -167,15 +241,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//验证审核
-				if("${login.kuaikeStatus}"==0){
-					//提示
-				    layer.open({
-				    	content: '您的身份还没有通过审核！',
-				    	skin: 'msg',
-				    	time: 2
-				  	});
-				}else{
 					//询问框
 					layer.open( {
 						anim: 'up',
@@ -190,6 +255,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							layer.close(index);
 						}  
 					});
+				}else if("${login.kuaikeStatus}"==0){
+					//提示
+				    layer.open({
+				    	content: '您的身份还没有通过审核！',
+				    	skin: 'msg',
+				    	time: 2
+				  	});
 				}
 			}
 		}

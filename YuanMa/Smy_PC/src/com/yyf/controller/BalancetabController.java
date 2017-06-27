@@ -22,7 +22,8 @@ public class BalancetabController {
 	//下单注入
 	@Autowired
 	private R_xiaordertabService xiaordertabService;
-
+	
+	
 	/**
 	 * 根据快客ID获取到个人账户的余额
 	 * 
@@ -36,7 +37,10 @@ public class BalancetabController {
 	@ResponseBody
 	public Balancetab queryBalance(ModelMap model, @PathVariable("kuaikeId") String kuaikeId) {
 
-		Balancetab queryBalance = balancetabService.queryBalance(kuaikeId);
+		Balancetab queryBalance = balancetabService.queryKuaikeId(kuaikeId);
+		
+		
+		System.out.println("*********************************");
 		
 		if(!StringUtils.isEmpty(queryBalance)){
 			
@@ -58,23 +62,13 @@ public class BalancetabController {
 	 *            下单Id
 	 * @return
 	 */
-	@RequestMapping(value = "/updateBalance/{balance}/{kuaikeId}/{zhifupwd}/{xiaId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateBalance1/{balance}/{kuaikeId}/{zhifupwd}/{xiaId}", method = RequestMethod.POST)
 	@ResponseBody
-	public void updateBalance(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
+	public void updateBalance1(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
 			@PathVariable("zhifupwd") String zhifupwd,@PathVariable("xiaId") String xiaId) {
-			Balancetab queryBalance1 = balancetabService.queryBalance(kuaikeId);
-		
-			if(queryBalance1.getBalance()>balance){
-				
-				xiaordertabService.updatePayment(1,xiaId);
-				balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
-				
-				
-			}
-			else {
-				xiaordertabService.updatePayment(0,xiaId);
 			
-			}
+				xiaordertabService.updatePayment(1,xiaId);
+				balancetabService.updateBalance1(balance, kuaikeId, zhifupwd);
 			
 	
 	}

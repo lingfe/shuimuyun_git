@@ -560,11 +560,7 @@ String xiaId = request.getParameter("xiaId");
 								var zhifupwd=$("#a").val()+$("#b").val()+$("#c").val()+$("#d").val()+$("#e").val()+$("#f").val();
 								var xiaId=$("#xiaId_to").val();
 								var shouprices = $("#shouprices").val();
-							   $.ajax({
-							    url : "updateBalance/"+ balance+"/"+kuaikeId+"/"+zhifupwd+"/"+xiaId,
-								type : 'POST',
-								//请求成功后触发
-								success : function(data) {
+							  
 									
 									if($("#balance").html()<$("#sho").val()){
 									//$("#balance").html(data.balance);
@@ -577,7 +573,11 @@ String xiaId = request.getParameter("xiaId");
 										return false;
 									
 									}else{
-									
+									 $.ajax({
+							    url : "updateBalance1/"+ balance+"/"+kuaikeId+"/"+zhifupwd+"/"+xiaId,
+								type : 'POST',
+								//请求成功后触发
+								success : function(data) {
 									//提示
 								    layer.open({
 								    
@@ -587,20 +587,10 @@ String xiaId = request.getParameter("xiaId");
 								  	});
 									window.location.href="APP/payOk.jsp?shouprices="+shouprices;
 									
-									
+									}})
 									}
 									
-								},
-							   error:function(){
-							   
-							  		alert("错误");
-							   
-							   }
-							   
-							   })
-							
-							
-						},800);
+								},800);
 					 }
 					
 				})

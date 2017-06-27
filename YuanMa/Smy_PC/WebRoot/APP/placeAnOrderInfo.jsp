@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -59,8 +60,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="tel:${login.kuaikePhone }">
 				<span><img src="<%=basePath%>APP/images/icon/courphone.png" width="12"/></span>
 				<span>${login.kuaikePhone }</span>
-			</div>
 			</a>
+			</div>
 			<div class="cour_div_4">快递员的位置：</div>
 			<div class="cour_div_5">
 				<span><img src="<%=basePath%>APP/images/icon/adds_oreng.png" width="15"/></span>
@@ -88,12 +89,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="courier_last_con_last">
-				<div class="courier_last_con_last_img">
-					<img src="${info.shopImages!=null ?info.shopImages:'APP/images/banner1.jpg'}" width="100%" height="100%"/>
-					<div>
-						该商品暂未上传图片
+				<c:if test="${info.shopImages!=null }">
+					<div class="courier_last_con_last_img">
+						<img src="${info.shopImages}" width="100%" height="100%"/>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${info.shopImages == null }">
+					<div class="courier_last_con_last_img">
+						<img src="<%=basePath%>APP/images/banner1.jpg" width="100%" height="100%"/>
+						<div>
+							该商品暂未上传图片
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js"></script>

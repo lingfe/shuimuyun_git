@@ -135,14 +135,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				图片选择对话框
 				<div id="div_imgfile">上传货物照片</div>
-				<!--确定上传按钮<input type="button" value="确定上传"  />
-				
 				<!-- 确定取货 -->
 				<div class="order_buttom">
 					<a href="xiaordertab/updateXiaQiangStatus/${info.xiaId}/${info.status}/${login.kuaikeId}"><button id="btn_ImgUpStart" class="order_btn">确定取货</button></a>
 				</div>
 			</c:if>
-			
 			<c:if test="${info.status==2 }">
 				<!--如果有图片存放img的div-->
 				<div></div>

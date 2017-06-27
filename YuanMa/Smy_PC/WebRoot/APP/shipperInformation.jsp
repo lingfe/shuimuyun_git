@@ -80,8 +80,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		<!--三级联动-->
 		<div class="browser">
-        	<!--选择地区-->
-        	<section class="express-area">
+        <!--选择地区-->
+        <section class="express-area">
             	<a id="expressArea" href="javascript:void(0)">
                 	<dl>
                     	<dt style="height: 0.4rem; line-height: 0.4rem; font-size: 0.13rem; text-indent: 10px;">选择地区：</dt>
@@ -107,7 +107,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>街 道：</span>
 				<input type="text" id="xadder" value="${ info.kuaikeAddressInfo }" placeholder="请输入详细地址"/>
 			</div>
-		
 		</div>
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }"> 

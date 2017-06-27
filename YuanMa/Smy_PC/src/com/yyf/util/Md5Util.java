@@ -15,6 +15,10 @@ public class Md5Util {
 		return DigestUtils.md5Hex(pwd);
 	}
 
+	public static void main(String[] args) {
+		System.out.println(md5("123456"));
+	}
+	
 	public static String MD5Encode(String origin, String charsetname) {
 		String resultString = null;
 		try {

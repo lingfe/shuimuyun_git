@@ -78,7 +78,7 @@ $(function() {
 	});
 	/*获取验证码*/
 	$("#forgeYzmBtn").click(function() {
-
+			
 		var kuaikePhone = $("#forgePhone").val();
 		if (!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
@@ -90,7 +90,7 @@ $(function() {
 			});
 			return false;
 		} else {
-
+			$("#forgePhone").attr("readonly",true);
 			var mobile_code = $("#forgeYzm").val();
 			
 			$.ajax({
@@ -109,6 +109,10 @@ $(function() {
 			});
 
 			time(this);
+			setTimeout(function() {
+				$("#forgePhone").attr("readonly",false);
+				$("#forgeYzm").val("");
+			},60000)
 		}
 
 	});
@@ -225,8 +229,7 @@ $(function() {
 	 * 
 	 * 注册页面验证
 	 * 
-	*/
-	
+	*/	
 	$("#regBtn").click(function() {
 		//alert("sfddf")
 		var userName = $("#userName").val();

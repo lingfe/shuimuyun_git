@@ -27,17 +27,13 @@ String shopprices = request.getParameter("shopprices");
 	</head>
 	<style>
 	.qrcode{
-		width:1.5rem;
-		height:auto;
-		margin:auto;
-		margin-top:1rem;
-		overflow:hidden;
-		background: white;
-	}
-	.qrcode img {
 		display: block;
-		width: 100%;
+		width: 1.5rem;
 		height: auto;
+		overflow: hidden;
+		background: white;
+		margin: 0 auto;
+		margin-top: 1rem;
 	}
 	</style>
 	<body>
@@ -49,9 +45,8 @@ String shopprices = request.getParameter("shopprices");
 			<p>微信扫码支付</p>
 		</header>
 		<!--【头部】end-->
-		<div class="y">
-			<img class="qrcode" src="<%=basePath%>payment/qrcode?kuaikeid=<%=kuaikeid%>&shouprices=<%=shopprices%>" />
-		</div>
+		
+		<img class="qrcode" src="<%=basePath%>payment/qrcode?kuaikeid=<%=kuaikeid%>&shouprices=<%=shopprices%>" />
 		
 		<input type="hidden" id="kuaikeid" value="<%=kuaikeid%>">
 		<script type="text/javascript" src="<%=basePath %>APP/js/jquery-1.11.0.js" ></script>
@@ -59,7 +54,7 @@ String shopprices = request.getParameter("shopprices");
 		
 		<script type="text/javascript">
 		
-		setTimeout(Start, 5000); //延迟5秒开始周期回调
+		setTimeout(Start, 555000); //延迟5秒开始周期回调
 		var kuaikeid = $("#kuaikeid").val();
 		function fun() {
 			$.ajax({

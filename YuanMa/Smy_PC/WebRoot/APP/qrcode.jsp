@@ -33,6 +33,7 @@ String shouprices = request.getParameter("shouprices");
 		margin-top:1rem;
 		overflow:hidden;
 		background: white;
+		border:red solid 1px;
 	}
 	.qrcode img {
 		display: block;

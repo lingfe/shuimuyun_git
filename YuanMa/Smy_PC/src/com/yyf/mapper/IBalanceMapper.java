@@ -49,6 +49,7 @@ public interface IBalanceMapper {
 	 * @created 2017年6月22日 上午11:34:58  
 	 * @return
 	 */
+	@Select("select * from balancetab")
 	public List<Balancetab> queryallbalance();
 	
 	/**

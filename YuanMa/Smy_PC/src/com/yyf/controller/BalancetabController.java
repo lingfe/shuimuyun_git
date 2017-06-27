@@ -39,6 +39,9 @@ public class BalancetabController {
 
 		Balancetab queryBalance = balancetabService.queryKuaikeId(kuaikeId);
 		
+		
+		System.out.println("*********************************");
+		
 		if(!StringUtils.isEmpty(queryBalance)){
 			
 			return queryBalance;
@@ -67,7 +70,6 @@ public class BalancetabController {
 		
 			if(queryBalance1.getBalance()>balance){
 				
-				xiaordertabService.updatePayment(1,xiaId);
 				balancetabService.updateBalance(balance, kuaikeId, zhifupwd);
 				
 				

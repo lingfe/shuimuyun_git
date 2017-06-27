@@ -18,6 +18,7 @@ import com.yyf.model.Balancetab;
  */
 public interface R_balancetabMapper {
 
+	
 	/**
 	 * 根据快客Id查询个人账户余额
 	 * @author 杨杰     

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,9 +36,7 @@ import com.sun.xml.xsom.impl.scd.Iterators.Map;
 import com.yyf.controller.util.ErrorShow;
 import com.yyf.controller.util.VerificationUtil;
 import com.yyf.model.R_kuaiketab;
-import com.yyf.model.R_qiangordertab;
 import com.yyf.service.R_kuaiketabService;
-import com.yyf.service.R_qiangordertabService;
 import com.yyf.util.Md5Util;
 import com.yyf.util.R_kuaiketabStatusEnum;
 
@@ -55,10 +52,6 @@ public class R_kuaiketabController {
 	@Autowired
 	private R_kuaiketabService kuaiketabService;
 	
-	//抢单记录
-	@Autowired
-	private R_qiangordertabService qiangordertabService;
-
 	/**
 	 * 
 	 * 修改身份证正反面，手持身份证
@@ -184,6 +177,7 @@ public class R_kuaiketabController {
 			tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
 			//保存
 			kuaiketabService.addUser(tab);
+			
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SBMIT_OK));
 			return "APP/login";
 		} catch (Exception e) {

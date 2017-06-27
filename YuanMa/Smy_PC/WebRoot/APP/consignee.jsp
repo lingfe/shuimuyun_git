@@ -139,7 +139,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--三级联动-->
 			<div class="box_div">
 				<span>地址：</span>
-				<input type="text" id="xadder" readonly="readonly" placeholder="请选择地址"/>			</div>
+				<input type="text" id="adder" readonly="readonly" placeholder="请选择地址"/>			
+			</div>
 			<div class="box_div">
 				<span>街 道：</span>
 				<input type="text" id="xadder" value="${ info.shouhuoAddressInfo }" placeholder="请输入详细地址"/>
@@ -249,7 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  	});
 				}
 			}
-		}
+		
 		</script>
 	</body>
 </html>

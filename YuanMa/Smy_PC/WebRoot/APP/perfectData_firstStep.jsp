@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width: 0.5rem;
 				margin: 0.4rem auto;
 			}
-			.quickTop input {
+			.quickTop .quick_user {
 				display: block;
 				position: absolute;
 				top: 0;
@@ -103,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</header>
 			<form class="quickMian" action="updataFirstStep" method="POST" >
 				<div class="quickTop">
-					<input type="file"  multiple="multiple" />
-					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId" />
+					<input type="file"  multiple="multiple" accept="image/*"  capture="camera" />
+					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId"  />
 					<img class="quick_user" title="" alt="" src="<%=basePath%>APP/images/myUser.png" width="100%" />
 				</div>
 				<div class="loginCont_form_item mui-input-row">

@@ -168,7 +168,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!--上传图片-->
 		<div class="quickSf_item">
-			<input class="file" type="file" name="files" multiple="multiple" accept="image/*" />
+			<input class="file" type="file" name="files" accept="image/*"  capture="camera" />
+			<img title="" alt="" src="" />
+			<span>上传货物图片</span>
+		</div>
+		<div class="quickSf_item">
+			<input class="file" type="file" name="files" accept="image/*"  capture="camera" />
 			<img title="" alt="" src="" />
 			<span>上传货物图片</span>
 		</div>

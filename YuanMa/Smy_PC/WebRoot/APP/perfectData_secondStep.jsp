@@ -57,8 +57,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				border-radius: 5px;
 				overflow: hidden;
 				margin-bottom: 0.15rem;
+				
+				
 			}
-			.quickSf_item input {
+			.quickSf_item .file {
 				display: block;
 				position: absolute;
 				top: 0;
@@ -93,16 +95,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<form class="quickMian quickSfMian" action="updateSFZImages" method="post"  enctype="multipart/form-data">
 				<div class="quickSf_item">
-					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId" />
-					<input class="file" type="file"  name="files"  multiple="multiple" />
+					<input type="hidden" value="${login.kuaikeId }" name="kuaikeId"  />
+					<input class="file" type="file"  name="files"  accept="image/*"  capture="camera" />
 					<span>上传身份证正面</span>
 				</div>
 				<div class="quickSf_item">
-					<input class="file" type="file" value="${login.kuaikeShenfenZF }" name="files"  multiple="multiple" />
+					<input class="file" type="file" value="${login.kuaikeShenfenZF }" name="files"  accept="image/*"  capture="camera" />
 					<span>上传身份证反面</span>
 				</div>
 				<div class="quickSf_item">
-					<input class="file" type="file" value="${login.kuaikeShouchiSFZ }"  name="files" multiple="multiple" />
+					<input class="file" type="file" value="${login.kuaikeShouchiSFZ }"  name="files" accept="image/*"  capture="camera" />
 					<span>上传手持身份证正</span>
 				</div>
 				<button class="quickBtn" id="" type="submit">提交</button>

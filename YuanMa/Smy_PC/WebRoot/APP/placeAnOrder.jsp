@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/type.png" width="27"/>
 				<label>货物类型</label>
 				<div class="order_right" id="order_right">
-					<input type="text" readonly="" class="order_r_inp" name="shopType" id="order_leixin" value="易碎" />
+					<input type="text" readonly="readonly" class="order_r_inp" name="shopType" id="order_leixin" value="易碎" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 				</div>
 			</div>
@@ -184,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最晚取货时间</label>
 				<div class="order_right"id="order_right3">
-					<input class="shijiankaung" id="de" type="text" readonly="" name="quhouDate" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="de" type="text" readonly="readonly" name="quhouDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -193,7 +193,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/timerr.png" width="27"/>
 				<label>最迟到达时间</label>
 				<div class="order_right"id="order_right2">
-					<input class="shijiankaung" id="dee" type="text" readonly="" name="okDate" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="dee" type="text" readonly="readonly" name="okDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -202,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<label>建议交通工具</label>
 				<div class="order_right" id="order_right1">
 					<!-- <span>无</span> -->
-					<input  name="vehicle" readonly="" id="order_clar" class="vehicle order_r_inp" type="text" value="无" />
+					<input  name="vehicle" readonly="readonly" id="order_clar" class="vehicle order_r_inp" type="text" value="无" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>
@@ -216,7 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<div class="quickSf_item">
-			<input class="file" type="file" name="files" multiple="multiple" accept="image/*" />
+			<input class="file" type="file" name="files" accept="image/*"  capture="camera" />
 			<img title="" alt="" src="" />
 			<span>上传货物图片</span>
 		</div>
@@ -434,8 +434,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}else{
 			if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
-				//验证审核
-				if("${login.kuaikePhone}"==""||"${login.kuaikeAddressInfo}"==""||"${login.kuaikeShenfenZF}"==""||"${login.kuaikeShouchiSFZ}"==""){
 					//询问框
 					layer.open( {
 						anim: 'up',

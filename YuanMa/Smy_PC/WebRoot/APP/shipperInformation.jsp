@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width:calc(100% - 40px);
 			height:1.6rem;
 			background: #fff;
+			
 		}
 		.box_div{
 			width:100%;
@@ -45,16 +46,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: .4rem;
 			line-height: .4rem;
 			text-indent: 10px;
+			text-align: right;
 			font-size: .13rem;
 		}
 		.box_div input{
 			display:inline-block;
 			width:calc(100% - .8rem);
-			height: .3rem;
-			line-height: .3rem;
+			height: .4rem;
+			line-height: .4rem;
 			border: none;
 			outline: none;
 			font-size: .13rem;
+			float: right;
 		}
 		/*城市联动*/
 		.weui-toast {

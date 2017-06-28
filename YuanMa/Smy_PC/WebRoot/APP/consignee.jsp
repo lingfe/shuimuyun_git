@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width:calc(100% - 40px);
 			height:1.6rem;
 			background: #fff;
-			border:red solid 1px !important;
+			
 		}
 		.box_div{
 			width:100%;
@@ -41,16 +41,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: .4rem;
 			line-height: .4rem;
 			text-indent: 10px;
+			text-align: right;
 			font-size: .13rem;
 		}
 		.box_div input{
 			display:inline-block;
 			width:calc(100% - .8rem);
-			height: .3rem;
-			line-height: .3rem;
+			height: .4rem;
+			line-height: .4rem;
 			border: none;
 			outline: none;
 			font-size: .13rem;
+			float: right;
 		}
 				/*城市联动*/
 		.weui-toast {
@@ -116,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	line-height: 0.4rem;
 }
 	</style>
-	<body style="height: auto;">
+	<body>
 		<!--【头部】-->
 		<header class="commHeader">
 			<a class="commHeader_l" onClick="javascript:self.location=document.referrer;">
@@ -128,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</header>
 		<!--【头部】end-->
-		<div class="box" style="height: 2rem">
+		<div class="box">
 			<div class="box_div">
 				<span>发货人：</span>
 				<input type="text" placeholder="请输入姓名" id="con_name" type="text" value="${info.shouhuoName }"/>

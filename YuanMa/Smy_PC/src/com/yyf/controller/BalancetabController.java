@@ -1,5 +1,7 @@
 package com.yyf.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -80,11 +82,13 @@ public class BalancetabController {
 		
 		String m = Md5Util.md5(newzhifupwd);
 		String d = Md5Util.md5(zhifupwd);
-		
+		HttpServletRequest request = null;
 		boolean flag=balancetabService.updateZhifupwd(m, kuaikeId, d);
 		
 		if(flag){
-			
+			request.getSession().removeAttribute("mobile_code");
+			request.getSession().removeValue("mobile_code");
+			model.remove("mobile_code");
 			return "APP/personalData";
 		}
 		

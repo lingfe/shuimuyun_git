@@ -325,7 +325,7 @@ String type = request.getParameter("type");
 		%>
 		<div class="paymentTop">
 			<div class="paymentTop_l">充值金额：</div>
-			<input type="text"  name="shopprices" id="shopprices" value="200"/>
+			<span class="paymentTop_l" id="shopprices" >200</span>
 		</div>
 		<%}else{%>
 		<div class="paymentTop">
@@ -421,7 +421,13 @@ String type = request.getParameter("type");
 				})
 				
 				$("#paymentBtn").click(function() {
-					var shopprices=$("#shopprices").val();
+					var shopprices="";
+					var type=<%=type%>;
+					if(type==2){
+						var shopprices=200;
+					}else{
+						var shopprices=$("#shopprices").val();
+					}
 					var kuaikeId='${login.kuaikeId }';
 						if ($("#balaceSelect span").is(":hidden") && $("#paymentSelect span").is(":hidden") && $("#wxSelect span").is(":hidden")) {
 	
@@ -459,7 +465,7 @@ String type = request.getParameter("type");
 // 								time : 2
 // 							});
 							if(shopprices>0){
-								window.location.href="RequestMappingUtil/requestNUll/APP/qrrecharge?kuaikeId="+kuaikeId+"&shopprices="+shopprices;
+								window.location.href="RequestMappingUtil/requestNUll/APP/qrrecharge?kuaikeId="+kuaikeId+"&shopprices="+shopprices+"&type="+type;
 							}else{
 								alert("请输入正确的金额");
 							}

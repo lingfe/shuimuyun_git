@@ -54,7 +54,8 @@ public class R_paymentController {
 			throws ServletException, IOException {
 		String total_fee = request.getParameter("shouprices");// 商品价格
 		String kuaikeId = request.getParameter("kuaikeid");// 快客id
-		System.out.println("kuaikeid:"+kuaikeId);
+		String type = request.getParameter("type");// 充值类型，1：充值余额，2：充值押金
+		System.out.println("kuaikeid:"+kuaikeId+",type:"+type);
 		String zhifupwd="123456";
 		String md5 = Md5Util.md5(zhifupwd);
 		double fee = Double.parseDouble(total_fee) * 100;
@@ -84,6 +85,7 @@ public class R_paymentController {
 			packageParams.put("body", body);
 			packageParams.put("out_trade_no", out_trade_no);
 			packageParams.put("total_fee", total);
+			packageParams.put("attach", type);//充值类型
 			ia = ia.getLocalHost();
 //			packageParams.put("spbill_create_ip", ia.getLocalHost());//服务器ip
 			packageParams.put("spbill_create_ip",  String.valueOf(p.get("CREATE_IP")));//本地测试ip
@@ -182,6 +184,18 @@ public class R_paymentController {
 			throws ServletException, IOException {
 		String kuaikeid = request.getParameter("kuaikeid");// 下单id
 		String selectresult = balancetabService.selectresult(kuaikeid);//取出订单付款状态
+		PrintWriter out = response.getWriter();
+		out.print(selectresult);
+	}
+	
+	
+	@RequestMapping(value = "/querydeposit", method = RequestMethod.POST)
+	protected void querydeposit(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String kuaikeid = request.getParameter("kuaikeid");// 下单id
+		System.out.println("kuaikeid:"+kuaikeid);
+		String selectresult = balancetabService.selectdeposit(kuaikeid);//取出订单付款状态
+		System.out.println("selectresult:"+selectresult);
 		PrintWriter out = response.getWriter();
 		out.print(selectresult);
 	}

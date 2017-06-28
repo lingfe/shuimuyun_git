@@ -6,7 +6,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 String kuaikeid = request.getParameter("kuaikeId");
 String shopprices = request.getParameter("shopprices");
-
+String type = request.getParameter("type");
+String deposit = request.getParameter("deposit");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -46,14 +47,13 @@ String shopprices = request.getParameter("shopprices");
 		</header>
 		<!--【头部】end-->
 		
-		<img class="qrcode" src="<%=basePath%>payment/qrcode?kuaikeid=<%=kuaikeid%>&shouprices=<%=shopprices%>" />
+		<img class="qrcode" src="<%=basePath%>payment/qrcode?kuaikeid=<%=kuaikeid%>&shouprices=<%=shopprices%>&type=<%=type%>" />
 		
 		<input type="hidden" id="kuaikeid" value="<%=kuaikeid%>">
 		<script type="text/javascript" src="<%=basePath %>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
 		
 		<script type="text/javascript">
-		
 		setTimeout(Start, 5000); //延迟5秒开始周期回调
 		var kuaikeid = $("#kuaikeid").val();
 		function fun() {

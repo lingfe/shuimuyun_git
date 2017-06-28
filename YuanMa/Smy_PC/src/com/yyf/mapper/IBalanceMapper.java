@@ -136,7 +136,7 @@ public interface IBalanceMapper {
 	 * @param kuaikeId
 	 * @return 
 	 */
-	@Update("update balancetab set status=1,deposit=200 where balanceId=#{out_trade_no}")
+	@Update("update balancetab set status=1,deposit=200,paystatus=2 where balanceId=#{out_trade_no}")
 	public void setstatus(@Param("out_trade_no") String out_trade_no);
 	
 	/**

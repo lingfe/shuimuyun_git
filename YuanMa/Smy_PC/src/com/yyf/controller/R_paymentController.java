@@ -55,7 +55,6 @@ public class R_paymentController {
 		String total_fee = request.getParameter("shouprices");// 商品价格
 		String kuaikeId = request.getParameter("kuaikeid");// 快客id
 		String type = request.getParameter("type");// 充值类型，1：充值余额，2：充值押金
-		System.out.println("kuaikeid:"+kuaikeId+",type:"+type);
 		String zhifupwd="123456";
 		String md5 = Md5Util.md5(zhifupwd);
 		double fee = Double.parseDouble(total_fee) * 100;
@@ -99,6 +98,7 @@ public class R_paymentController {
 			packageParams.put("sign", sign);
 
 			String requestXML = PayCommonUtil.getRequestXml(packageParams);
+			System.out.println("requestXML:"+requestXML);
 			String resXml = HttpUtil.postData(String.valueOf(p.get("UFDODER_URL")), requestXML);
 			Map map;
 			try {

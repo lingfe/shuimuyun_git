@@ -73,11 +73,12 @@ public class R_rechargeController {
 		}
 		// 账号信息
 		Properties p = new Properties();
-		InputStream input = R_NotifyController.class.getResourceAsStream("/payConfig.properties");
+		InputStream input = R_rechargeController.class.getResourceAsStream("/payConfig.properties");
 		try {
 			p.load(input);
 			String key = String.valueOf(p.get("API_KEY")); // key
 			// 判断签名是否正确
+			System.out.println("packageParams:"+packageParams.toString());
 			if (PayCommonUtil.isTenpaySign("UTF-8", packageParams, key)) {
 				// ------------------------------
 				// 处理业务开始
@@ -101,19 +102,14 @@ public class R_rechargeController {
 					String transaction_id = (String) packageParams.get("transaction_id");
 
 					String fee = (String) packageParams.get("total_fee");
-
+					System.out.println("attach:"+attach);
 					if("1".equals(attach)){
-						System.out.println(fee+","+out_trade_no);
 	//					double balance = balancetabservice.selectfigure(out_trade_no);
 						Balancetab b = balancetabservice.selectfigure(out_trade_no);
 						double balance = b.getBalance();
-						System.out.println("balance:"+balance);
 						double total_fee = balance+Double.valueOf(fee)/100;
-						System.out.println("total_fee:"+total_fee);
 						balancetabservice.updateBalance(out_trade_no,total_fee);// 保存数据库
-						System.out.println("修改成功");
 					}else{
-						System.out.println("押金充值");
 						balancetabservice.setstatus(out_trade_no);// 保存数据库
 					}
 					// 执行自己的业务逻辑

@@ -103,7 +103,6 @@ public class BalancetabServiceImpl implements BalancetabService {
 	 */
 	@Override
 	public Balancetab selectfigure(String balanceId) {
-		System.out.println("444");
 		Balancetab balance = balanceMapper.selectfigure(balanceId);
 		return balance;
 	}

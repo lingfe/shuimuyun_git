@@ -137,13 +137,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="order_info">
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/shipperInformation">
 				<img src="<%=basePath%>APP/images/icon/shipper.png" width="27"/>
-				<label>发货人信息</label></a>
+				<label>发货人信息</label>
 				<img class="imgPo" src="<%=basePath%>APP/images/icon/orderright.png" width="10" /> 
+				</a>
 			</div>
 			<div class="shipper"><a href="xiaordertab/appOrderRequest/consignee">
 				<img src="<%=basePath%>APP/images/icon/cargo.png" width="27"/>
-				<label>收货人信息</label></a>
+				<label>收货人信息</label>
 				<img class="imgPo" src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
+				</a>
 			</div>
 		</div>
 		<!--货物信息-->

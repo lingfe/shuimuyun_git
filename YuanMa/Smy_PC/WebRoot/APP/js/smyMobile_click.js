@@ -115,8 +115,6 @@ $(function() {
 		$("#order_zhe").css("display", "none");
 		$("#order_tan1").css("display", "none");
 	})
-	var sssss = document.getElementById("de");
-		sssss.blur();
 	//下单页面end
 	//搜索框页面
 	//搜索框效果
@@ -206,6 +204,16 @@ $(function() {
 		}
 	})
 	$("#taking_btn").click(function() {
+		if($(".op").is(":hidden")) {
+			layer.open({
+				content: '同意协议',
+				skin: 'msg',
+				time: 1
+			});
+			return false;
+		}
+	})
+	$("#btn_ImgUpStart").click(function() {
 		if($(".op").is(":hidden")) {
 			layer.open({
 				content: '同意协议',

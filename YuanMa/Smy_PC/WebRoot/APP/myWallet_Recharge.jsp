@@ -564,6 +564,7 @@ String xiaId = request.getParameter("xiaId");
 									
 									if($("#balance").html()<$("#sho").val()){
 									//$("#balance").html(data.balance);
+									alert($("#sho").val());
 									//提示
 									    layer.open({
 									    	content: '余额不足...请充值',
@@ -574,20 +575,21 @@ String xiaId = request.getParameter("xiaId");
 									
 									}else{
 									 $.ajax({
-							    url : "updateBalance1/"+ balance+"/"+kuaikeId+"/"+zhifupwd+"/"+xiaId,
-								type : 'POST',
-								//请求成功后触发
-								success : function(data) {
-									//提示
-								    layer.open({
-								    
-								    	content: '支付成功...',
-								    	skin: 'msg',
-								    	time: 2
-								  	});
-									window.location.href="APP/payOk.jsp?shouprices="+shouprices;
-									
-									}})
+									    url : "updateBalance1/"+ balance+"/"+kuaikeId+"/"+zhifupwd+"/"+xiaId,
+										type : 'POST',
+										//请求成功后触发
+										success : function(data) {
+											//提示
+										    layer.open({
+										    
+										    	content: '支付成功...',
+										    	skin: 'msg',
+										    	time: 2
+										  	});
+											window.location.href="APP/payOk.jsp?shouprices="+shouprices;
+											
+											}
+										})
 									}
 									
 								},800);

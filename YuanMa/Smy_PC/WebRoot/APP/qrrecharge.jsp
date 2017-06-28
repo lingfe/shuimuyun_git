@@ -54,7 +54,7 @@ String shopprices = request.getParameter("shopprices");
 		
 		<script type="text/javascript">
 		
-		setTimeout(Start, 555000); //延迟5秒开始周期回调
+		setTimeout(Start, 5000); //延迟5秒开始周期回调
 		var kuaikeid = $("#kuaikeid").val();
 		function fun() {
 			$.ajax({

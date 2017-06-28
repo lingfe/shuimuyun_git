@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yyf.model.Balancetab;
 import com.yyf.service.BalancetabService;
 import com.yyf.service.R_xiaordertabService;
+import com.yyf.util.Md5Util;
 
 @Controller
 public class BalancetabController {
 
 	@Autowired
 	private BalancetabService balancetabService;
-	
-	//下单注入
+
+	// 下单注入
 	@Autowired
 	private R_xiaordertabService xiaordertabService;
-	
-	
+
 	/**
 	 * 根据快客ID获取到个人账户的余额
 	 * 
@@ -39,13 +39,9 @@ public class BalancetabController {
 
 		Balancetab queryBalance = balancetabService.queryKuaikeId(kuaikeId);
 		
-		
-		System.out.println("*********************************");
-		
-		if(!StringUtils.isEmpty(queryBalance)){
-			
+		if (!StringUtils.isEmpty(queryBalance)) {
 			return queryBalance;
-		}else{
+		} else {
 
 			return null;
 		}
@@ -64,13 +60,13 @@ public class BalancetabController {
 	 */
 	@RequestMapping(value = "/updateBalance1/{balance}/{kuaikeId}/{zhifupwd}/{xiaId}", method = RequestMethod.POST)
 	@ResponseBody
-	public void updateBalance1(@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
-			@PathVariable("zhifupwd") String zhifupwd,@PathVariable("xiaId") String xiaId) {
+	public void updateBalance1(ModelMap model,@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
+			@PathVariable("zhifupwd") String zhifupwd, @PathVariable("xiaId") String xiaId) {
 			
-				xiaordertabService.updatePayment(1,xiaId);
-				balancetabService.updateBalance1(balance, kuaikeId, zhifupwd);
-			
-	
+			String md5 = Md5Util.md5(zhifupwd);
+			System.out.println(md5+"\n11111111111111111111111111111111");
+			xiaordertabService.updatePayment(1, xiaId);
+			balancetabService.updateBalance1(balance, kuaikeId, md5);
 	}
 
 }

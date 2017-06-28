@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yyf.model.Balancetab;
 import com.yyf.model.City;
 import com.yyf.model.Commenttab;
 import com.yyf.model.PageModel;
 import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_xiaordertab;
+import com.yyf.service.BalancetabService;
 import com.yyf.service.CityService;
 import com.yyf.service.R_qiangordertabService;
 import com.yyf.service.R_xiaordertabService;
@@ -48,6 +50,9 @@ public class R_xiaordertabController {
 	// 自动装配 地址
 	@Autowired
 	private CityService cityService;
+	//账户信息注入
+	@Autowired
+	private BalancetabService balancetabService;
 	
 	
 	// TODO	public APP和PC端共用 
@@ -427,6 +432,16 @@ public class R_xiaordertabController {
 		try {
 			// 获取到当前服务器项目的跟路径
 			String path = request.getSession().getServletContext().getRealPath("upload");
+			
+			String kuaikeId=request.getParameter("kuaikeId");
+			
+			Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
+			
+			System.out.println(queryKuaikeId.getZhifupwd()+"****************************");
+			
+			request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
+			
+			System.out.println(kuaikeId);
 
 			String imagesPath="";
 			if(!StringUtils.isEmpty(files)){

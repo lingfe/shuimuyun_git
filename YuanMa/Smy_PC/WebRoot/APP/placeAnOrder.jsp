@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="<%=basePath%>APP/images/icon/time.png" width="27"/>
 				<label>最晚取货时间</label>
 				<div class="order_right"id="order_right3">
-					<input class="shijiankaung" id="de" type="text" readonly="readonly" name="quhouDate" placeholder="请输入时间"/>	
+					<input class="shijiankaung" id="de" type="text" readonly="readonly" name="quhuoDate" placeholder="请输入时间"/>	
 					<img src="<%=basePath%>APP/images/icon/orderright.png"width="10" />
 				</div>
 			</div>

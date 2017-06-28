@@ -7,7 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 String kuaikeid = request.getParameter("kuaikeId");
 String shopprices = request.getParameter("shopprices");
 String type = request.getParameter("type");
-String deposit = request.getParameter("deposit");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

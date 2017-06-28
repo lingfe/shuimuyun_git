@@ -41,15 +41,15 @@
 		<input type="hidden" id="rekuaikePhone" name="kuaikePhone"
 			value="${login.kuaikePhone }">
 		<div class="appeal_firstdiv">
-			<div>
+			<div class="bindChange">
 				<label>原支付密码</label><input type="password" id="zlastpwd"
 					name="zhifupwd" placeholder="请输入原支付密码" />
 			</div>
-			<div>
+			<div class="bindChange">
 				<label>新支付密码</label><input type="password" id="zchpwd"
 					name="newzhifupwd" placeholder="请输入新支付密码" />
 			</div>
-			<div>
+			<div class="bindChange">
 				<label>确认新密码</label><input type="password" id="zyespwd" name="repwd"
 					placeholder="请再次输入新支付密码" />
 			</div>
@@ -57,7 +57,7 @@
 				<label>验 证 码</label><input class="las" id="zpwdYzm"
 					style="width:1.2rem;" type="text" name="mobile_code"
 					value="${mobile_code }" placeholder="请输入验证码" />
-				<button id="zpwdYzmBtn">获取验证码</button>
+				<button id="zpwdYzmBtn" disabled>获取验证码</button>
 			</div>
 		</div>
 		<button class="order_btn" id="zpwdbtn">提交</button>
@@ -71,6 +71,18 @@
 	<script type="text/javascript"
 		src="<%=basePath%>APP/js/smyMobile_yz.js"></script>
 	<script type="text/javascript">
+	$(".bindChange input").bind('input propertychange',function() {
+			if($("#zlastpwd").val() != "" && $("#zchpwd").val() != "" && $("#zyespwd").val() != "") {
+				$("#zpwdYzmBtn").css({"background": "#418bc8","color": "#fff"});
+				$("#zpwdYzmBtn").removeAttr('disabled');
+			}
+			else if($("#zlastpwd").val() == "" || $("#zchpwd").val() == "" || $("#zyespwd").val() == "") {
+				$("#zpwdYzmBtn").attr('disabled',"true");
+				$("#zpwdYzmBtn").css({"background": "#418bc8","color": "#fff"});
+			}
+		}) 
+	
+	
 		//修改支付密码
 		$("#zpwdbtn").click(function() {
 			//验证审核

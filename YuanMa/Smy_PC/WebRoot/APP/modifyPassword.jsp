@@ -131,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  	});
 				  	return false;
 				}
-	var kuaikePhone = $("#rekuaikePhone").val();
+		var kuaikePhone = $("#rekuaikePhone").val();
 		if(!(kuaikePhone && /^1(3[0-9]|4[57]|5[0-35-9]|7[6-8]|8[0-9])\d{8}$/.test(kuaikePhone))) {
 			//提示
 		    layer.open({

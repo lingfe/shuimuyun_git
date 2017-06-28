@@ -2,6 +2,8 @@ package com.yyf.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.yyf.model.Balancetab;
 
 /**
@@ -32,6 +34,18 @@ public interface BalancetabService {
 	 * @return 
 	 */
 	public void updateBalance1(double balance,String kuaikeId,String zhifupwd);
+	
+	
+	/**
+	 * 根据快客Id和旧支付密码修改支付密码
+	 * @author 杨杰     
+	 * @created 2017年6月28日 下午4:51:48  
+	 * @param newzhifupwd 新支付密码
+	 * @param kuaikeId  快客Id
+	 * @param zhiufpwd  旧支付密码
+	 * @return
+	 */
+	public boolean updateZhifupwd(String newzhifupwd,String kuaikeId,String zhifupwd);
 	
 	/**
 	 * @author 杨杰     

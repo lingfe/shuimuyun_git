@@ -97,6 +97,31 @@ $(function() {
 		$("#order_zhe").css("display", "none");
 		$("#order_tan1").css("display", "none");
 	})
+	//弹出框三
+	//距离取值
+	$("#order_tan2 #order_tex2 span").click(function() {
+		$("#order_juli").val($(this).html());
+		$("#order_zhe").css("display", "none");
+		$("#order_tan2").css("display", "none");
+	});
+
+	$("#order_right2").click(function() {
+		$("#order_zhe").css("display", "block");
+		$("#order_tan2").css("display", "block");
+/*		textField.enabled = NO;
+		tapGestureRecognizer.cancelsTouchesInView = NO;  
+		$("#order_clar").click(function(){
+			this.blur();
+		})*/
+	});
+	$("#order_zhe").click(function() {
+		$("#order_zhe").css("display", "none");
+		$("#order_tan2").css("display", "none");
+	});
+	$("#order_close2").click(function() {
+		$("#order_zhe").css("display", "none");
+		$("#order_tan2").css("display", "none");
+	})
 	//下单页面end
 	//搜索框页面
 	//搜索框效果

@@ -7,6 +7,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yyf.model.Balancetab;
@@ -36,9 +37,10 @@ public class BalancetabController {
 	@RequestMapping(value = "/queryBalance/{kuaikeId}", method = RequestMethod.POST)
 	@ResponseBody
 	public Balancetab queryBalance(ModelMap model, @PathVariable("kuaikeId") String kuaikeId) {
-
-		Balancetab queryBalance = balancetabService.queryKuaikeId(kuaikeId);
 		
+		//根据快客Id获取到账户信息
+		Balancetab queryBalance = balancetabService.queryKuaikeId(kuaikeId);
+		//判断非空
 		if (!StringUtils.isEmpty(queryBalance)) {
 			return queryBalance;
 		} else {
@@ -62,11 +64,34 @@ public class BalancetabController {
 	@ResponseBody
 	public void updateBalance1(ModelMap model,@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
 			@PathVariable("zhifupwd") String zhifupwd, @PathVariable("xiaId") String xiaId) {
-			
+			//支付密码加密
 			String md5 = Md5Util.md5(zhifupwd);
-			System.out.println(md5+"\n11111111111111111111111111111111");
+			//修改支付状态
 			xiaordertabService.updatePayment(1, xiaId);
+			//支付
 			balancetabService.updateBalance1(balance, kuaikeId, md5);
+	}
+	
+	
+	//根据快客Id 账户电话号码修改账户支付密码
+	@RequestMapping(value="/updateZhifupwd",method=RequestMethod.POST)
+	public String updateZhifupwd(ModelMap model,@RequestParam("newzhifupwd") String newzhifupwd, @RequestParam("kuaikeId") String kuaikeId,
+			@RequestParam("zhifupwd") String zhifupwd){
+		
+		String m = Md5Util.md5(newzhifupwd);
+		String d = Md5Util.md5(zhifupwd);
+		
+		boolean flag=balancetabService.updateZhifupwd(m, kuaikeId, d);
+		
+		if(flag){
+			
+			return "APP/personalData";
+		}
+		
+		return "APP/modifyPaymentPassword";
+		
+		
+	
 	}
 
 }

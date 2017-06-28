@@ -42,6 +42,18 @@ public interface IBalanceMapper {
 	public void updateBalance1(@Param("balance") double balance,@Param("kuaikeId") String kuaikeId,@Param("zhifupwd") String zhifupwd);
 	
 	
+	/**
+	 * 根据快客Id和旧支付密码修改支付密码
+	 * @author 杨杰     
+	 * @created 2017年6月28日 下午4:51:48  
+	 * @param newzhifupwd 新支付密码
+	 * @param kuaikeId  快客Id
+	 * @param zhiufpwd  旧支付密码
+	 * @return
+	 */
+	@Update("update balancetab set zhifupwd=#{newzhifupwd} where kuaikeId=#{kuaikeId} and zhifupwd=#{zhifupwd}")
+	public boolean updateZhifupwd(@Param("newzhifupwd") String newzhifupwd,@Param("kuaikeId") String kuaikeId,@Param("zhifupwd") String zhifupwd);
+	
 	
 	/**
 	 * 得到所有的账户信息

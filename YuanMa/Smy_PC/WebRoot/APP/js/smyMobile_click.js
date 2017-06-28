@@ -42,24 +42,6 @@ window.onload = function() {
 
 		}
 	}
-	for(var i = 0; i < jia.length; i++) {
-		jia[2].onclick = function() {
-			zhi11.value ++;
-		}
-		jian[2].onclick = function() {
-			if(zhi11.value == 1) {
-				layer.open({
-					content: '货物重量不能小于1',
-					skin: 'msg',
-					time: 1
-				});
-				return false;
-			} else {
-				zhi11.value--;
-			}
-
-		}
-	}
 	//下单页面end		
 }
 

@@ -327,6 +327,7 @@ String xiaId = request.getParameter("xiaId");
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<input type="hidden" id="xiaId_to" value="${xiaId }">
 		<input type="hidden" id="shouprices" value="${sh}">
+		<input type="hidden"  id="zhifumima" value="${sessionScope.zhifumima }">
 		<div class="paymentList">
 			<div class="paymentList_item">
 				<img title="" alt="" src="<%=basePath %>APP/images/icon/balance.png" width="25" /> 余额
@@ -375,12 +376,12 @@ String xiaId = request.getParameter("xiaId");
 						<span>可用余额：<i id="balance"></i>元</span>
 					</div>
 					<div class="balModal_contPwd">
-						<input type="password" value="" name="a" id="a">
-						<input type="password" value="" name="b" id="b">
-						<input type="password" value="" name="c" id="c">
-						<input type="password" value="" name="d" id="d">
-						<input type="password" value="" name="e" id="e">
-						<input type="password" value="" name="f" id="f">
+						<input type="password" value=""  id="a">
+						<input type="password" value="" id="b">
+						<input type="password" value=""  id="c">
+						<input type="password" value=""  id="d">
+						<input type="password" value=""  id="e">
+						<input type="password" value=""  id="f">
 					</div>
 					<a class="balModal_contLink" href="#">忘记密码？</a>
 					<div class="balModal_contNumer">
@@ -407,6 +408,7 @@ String xiaId = request.getParameter("xiaId");
 		<script type="text/javascript" src="<%=basePath %>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/layer.js" ></script>
 		<script type="text/javascript" src="<%=basePath %>APP/js/smyMobile.js" ></script>
+		<script type="text/javascript" src="<%=basePath %>APP/js/jquery.md5.js"></script>
 		<script>
 			$(function() {
 				$(".paymentList_position").click(function() {
@@ -494,8 +496,9 @@ String xiaId = request.getParameter("xiaId");
 						success : function(data) {
 							//为<i></i>添加余额值
 							$("#balance").html(data.balance);
-						
+							
 							if(data=="" && data==null){
+							
 							$("#balance").html("00.00");
 								layer.open({
 							    	content: '你还没有账户....',
@@ -554,17 +557,14 @@ String xiaId = request.getParameter("xiaId");
 	   				 	$("body").append(jz);//把元素加载body
 						setTimeout(function(){
 							$(".jzCont").remove();
-								
-								var balance=Number($("#balance").html()-$("#sho").val());
-								var kuaikeId=$("#kuaikeId").val();
-								var zhifupwd=$("#a").val()+$("#b").val()+$("#c").val()+$("#d").val()+$("#e").val()+$("#f").val();
-								var xiaId=$("#xiaId_to").val();
-								var shouprices = $("#shouprices").val();
-							  
-									
-									if($("#balance").html()<$("#sho").val()){
-									//$("#balance").html(data.balance);
-									alert($("#sho").val());
+									var balance=Number($("#balance").html()-$("#sho").val());
+									var kuaikeId=$("#kuaikeId").val();
+									var zfmima=$("#a").val()+$("#b").val()+$("#c").val()+$("#d").val()+$("#e").val()+$("#f").val();
+									var zhifupwd=$.md5(zfmima);	
+									var xiaId=$("#xiaId_to").val();
+									var shouprices = $("#shouprices").val();
+									var zhifumima=$("#zhifumima").val();
+									if(Number($("#balance").html())<$("#sho").val()){
 									//提示
 									    layer.open({
 									    	content: '余额不足...请充值',
@@ -573,7 +573,15 @@ String xiaId = request.getParameter("xiaId");
 									  	});
 										return false;
 									
+									}else if(zhifupwd!=($("#zhifumima").val())){
+										 layer.open({
+										    	content: '密码错误....',
+										    	skin: 'msg',
+										    	time: 2
+										  	});
+										  	return false;
 									}else{
+									
 									 $.ajax({
 									    url : "updateBalance1/"+ balance+"/"+kuaikeId+"/"+zhifupwd+"/"+xiaId,
 										type : 'POST',
@@ -581,8 +589,7 @@ String xiaId = request.getParameter("xiaId");
 										success : function(data) {
 											//提示
 										    layer.open({
-										    
-										    	content: '支付成功...',
+										    	content: '支付成功...',   
 										    	skin: 'msg',
 										    	time: 2
 										  	});
@@ -590,6 +597,10 @@ String xiaId = request.getParameter("xiaId");
 											
 											}
 										})
+									
+									
+									
+									
 									}
 									
 								},800);

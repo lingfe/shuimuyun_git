@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width:calc(100% - 40px);
 			height:1.6rem;
 			background: #fff;
+			border:red solid 1px !important;
 		}
 		.box_div{
 			width:100%;
@@ -115,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	line-height: 0.4rem;
 }
 	</style>
-	<body>
+	<body style="height: auto;">
 		<!--【头部】-->
 		<header class="commHeader">
 			<a class="commHeader_l" onClick="javascript:self.location=document.referrer;">
@@ -127,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 		</header>
 		<!--【头部】end-->
-		<div class="box">
+		<div class="box" style="height: 2rem">
 			<div class="box_div">
 				<span>发货人：</span>
 				<input type="text" placeholder="请输入姓名" id="con_name" type="text" value="${info.shouhuoName }"/>
@@ -149,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!-- 下单id -->
 		<input type="hidden" id="xiaId" value="${xiaId }"> 
-		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>
+		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.11.0.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-weui.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/city-picker.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>

@@ -63,12 +63,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span></span>
 					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
 				</a>
-				<%-- <a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword">
-					<img src="<%=basePath%>APP/images/icon/suo_green.png" height="25" />
-					<span>修改支付密码</span>
-					<span></span>
-					<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" />
-				</a> --%>
+				<a href="RequestMappingUtil/requestNUll/APP/modifyPaymentPassword"> 
+					<img src="<%=basePath%>APP/images/icon/suo_green.png" height="25" /> 
+					<span>修改支付密码</span> 
+					<span></span> 
+				<img src="<%=basePath%>APP/images/icon/consignee_right.png" height="16" /> 
+			</a> 
 			</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile.js" ></script>
 	</body>

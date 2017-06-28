@@ -35,9 +35,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sun.xml.xsom.impl.scd.Iterators.Map;
 import com.yyf.controller.util.ErrorShow;
 import com.yyf.controller.util.VerificationUtil;
+import com.yyf.model.Balancetab;
 import com.yyf.model.R_kuaiketab;
+import com.yyf.service.BalancetabService;
 import com.yyf.service.R_kuaiketabService;
-import com.yyf.service.R_xiaordertabService;
 import com.yyf.util.Md5Util;
 import com.yyf.util.R_kuaiketabStatusEnum;
 
@@ -52,6 +53,10 @@ public class R_kuaiketabController {
 	/* 添加依赖注入 */
 	@Autowired
 	private R_kuaiketabService kuaiketabService;
+	
+	
+	@Autowired
+	private BalancetabService balancetabService;
 
 	/**
 	 * 
@@ -321,7 +326,12 @@ public class R_kuaiketabController {
 				request.getSession().setAttribute("namea", login.getKuaikeName());
 				// 用户Id
 				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
-
+				
+				String kuaikeId=login.getKuaikeId();
+				
+				Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
+				
+				request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
 				// 清空文本框中的验证码
 				request.getSession().removeAttribute("mobile_code");
 				model.remove("mobile_code");
@@ -335,6 +345,13 @@ public class R_kuaiketabController {
 					// 保存登陆用户的姓名 以便于 提示谁还在登陆该网站
 					request.getSession().setAttribute("namea", login.getKuaikeName());
 					request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
+					
+					String kuaikeId=login.getKuaikeId();
+					
+					Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
+					
+					request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
+					
 					// 清空文本框中的验证码
 					request.getSession().removeAttribute("mobile_code");
 					model.remove("mobile_code");

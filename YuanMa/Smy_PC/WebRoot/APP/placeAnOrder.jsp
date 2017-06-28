@@ -122,6 +122,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			padding-bottom: .1rem;
 			font-size: .13rem;
 		}
+		.juli{
+			display:inline-block;
+			position: absolute;
+			left:1.28rem;
+			top:.1rem;
+			color: #b5b5b5;
+		}
 	</style>
 	
 	</head>
@@ -159,6 +166,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="shipper">
+				<img src="<%=basePath%>APP/images/icon/jl.png" width="27"/>
+				<label>派送距离</label>
+				<span class="juli">km</span>
+				<div class="order_right" id="order_right2">
+					<input type="text" readonly="readonly" class="order_r_inp" name="juli" id="order_juli" value="0-5" />
+					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
+				</div>
+			</div>
+			<div class="shipper">
 				<img src="<%=basePath%>APP/images/icon/number.png" width="27"/>
 				<label>货物数量</label>
 				<div class="order_num">
@@ -178,6 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="jia">+</span>
 				</div>
 			</div>
+			
 			<div class="asdd">货物最长单边不超过一米</div>
 			</div>
 		<!--到达时间-->
@@ -243,6 +260,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="order_tan_context"  id="order_tex">
 				<span>易碎</span>
 				<span>贵重</span>
+			</div>
+		</div>
+		<div class="order_tan2" id="order_tan2">
+			<div class="order_tan_clos2">
+				<span>派送距离</span>
+				<span class="mui-icon mui-icon-close order_close" id="order_close2"></span>
+			</div>
+			<div class="order_tan_context2"  id="order_tex2">
+				<span>0-5</span>
+				<span>5-15</span>
+				<span>15-35</span>
+				<span>35-60</span>
 			</div>
 		</div>
 		<!--弹出菜单二-->
@@ -459,7 +488,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  	});
 				}
 			}
-		}
+		
 		</script>
 	<script>
 		var calendartime = new lCalendar();

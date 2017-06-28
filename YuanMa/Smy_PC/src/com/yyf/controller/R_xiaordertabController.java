@@ -433,16 +433,6 @@ public class R_xiaordertabController {
 			// 获取到当前服务器项目的跟路径
 			String path = request.getSession().getServletContext().getRealPath("upload");
 			
-			String kuaikeId=request.getParameter("kuaikeId");
-			
-			Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
-			
-			System.out.println(queryKuaikeId.getZhifupwd()+"****************************");
-			
-			request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
-			
-			System.out.println(kuaikeId);
-
 			String imagesPath="";
 			if(!StringUtils.isEmpty(files)){
 				for (int i = 0; i < files.length; i++) {

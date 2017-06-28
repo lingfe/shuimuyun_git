@@ -115,5 +115,25 @@ public interface IBalanceMapper {
 	 */
 	@Select("select balance from balancetab where balanceId=#{balanceId}")
 	public Balancetab selectfigure(@Param("balanceId") String balanceId);
-
+	
+	/**
+	 * 修改押金状态为已交押金
+	 * @author 田浩     
+	 * @created 2017年6月28日 上午09:39:28
+	 * @param balance 余额
+	 * @param kuaikeId
+	 * @return 
+	 */
+	@Update("update balancetab set status=1,deposit=200 where balanceId=#{out_trade_no}")
+	public void setstatus(@Param("out_trade_no") String out_trade_no);
+	
+	/**
+	 * 根据快客Id查询有没有该快客帐号有没有交押金
+	 * @author 田浩
+	 * @created 2017年6月26日 上午11:43:42  
+	 * @param kuaikeId 快客ID
+	 * @return
+	 */
+	@Select("select deposit from balancetab where kuaikeId=#{kuaikeId}")
+	public String selectdeposit(@Param("kuaikeId") String kuaikeId);
 }

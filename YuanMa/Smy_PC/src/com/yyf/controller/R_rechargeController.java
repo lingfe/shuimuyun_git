@@ -95,22 +95,27 @@ public class R_rechargeController {
 					String nonce_str = (String) packageParams.get("nonce_str");
 					String result_code = (String) packageParams.get("result_code");
 					String return_code = (String) packageParams.get("return_code");
+					String attach = (String) packageParams.get("attach");
 					String sign = (String) packageParams.get("sign");
 					String time_end = (String) packageParams.get("time_end");
 					String transaction_id = (String) packageParams.get("transaction_id");
 
 					String fee = (String) packageParams.get("total_fee");
 
-					System.out.println(fee+","+out_trade_no);
-//					double balance = balancetabservice.selectfigure(out_trade_no);
-					Balancetab b = balancetabservice.selectfigure(out_trade_no);
-					double balance = b.getBalance();
-					System.out.println("balance:"+balance);
-					double total_fee = balance+Double.valueOf(fee)/100;
-					System.out.println("total_fee:"+total_fee);
-					balancetabservice.updateBalance(out_trade_no,total_fee);// 保存数据库
-					System.out.println("修改成功");
-					
+					if("1".equals(attach)){
+						System.out.println(fee+","+out_trade_no);
+	//					double balance = balancetabservice.selectfigure(out_trade_no);
+						Balancetab b = balancetabservice.selectfigure(out_trade_no);
+						double balance = b.getBalance();
+						System.out.println("balance:"+balance);
+						double total_fee = balance+Double.valueOf(fee)/100;
+						System.out.println("total_fee:"+total_fee);
+						balancetabservice.updateBalance(out_trade_no,total_fee);// 保存数据库
+						System.out.println("修改成功");
+					}else{
+						System.out.println("押金充值");
+						balancetabservice.setstatus(out_trade_no);// 保存数据库
+					}
 					// 执行自己的业务逻辑
 					// 通知微信.异步确认成功.必写.不然会一直通知后台.八次之后就认为交易失败了.
 					resXml = "<xml>" + "<return_code><![CDATA[SUCCESS]]></return_code>"

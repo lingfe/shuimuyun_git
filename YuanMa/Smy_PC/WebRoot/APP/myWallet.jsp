@@ -2,6 +2,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String a = String.valueOf(request.getAttribute("a"));
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -135,7 +136,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="walletCont_item">
 				<button class="walletBtn">提现</button>
-				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge_to?type=1">充值</a></button>
+				
+				<button class="walletBtn">
+					
+				<a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge_to?type=1">充值</a>
+				</button>
 			</div>
 		</div>
 		<input type="hidden"  id="kuaikeId" value="${login.kuaikeId }" />
@@ -146,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="walletCont_item">
 				<button class="walletBtn">提现</button>
-				<button class="walletBtn"><a href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge_to?type=2">充值</a></button>
+				<input class="walletBtn" type="submit"  onclick="querydeposit()" value="充值" style="background:#77c841;">
 			</div>
 		</div>
 		
@@ -235,6 +240,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 			})
+			
+			function  querydeposit(){  
+				var kuaikeId=$("#kuaikeId").val();
+				$.ajax({
+					url : 'payment/querydeposit',
+					type : "POST",
+					dataType : "text",
+					data : {
+						'kuaikeid' : kuaikeId
+					},
+					success : function(data) {
+						if(data==0){
+							window.location.href="RequestMappingUtil/requestNUll/APP/myWallet_Recharge_to?type=2";
+						}else{
+							alert("押金已交");
+						}
+					}
+				});
+			}
 		</script>
 		
 		

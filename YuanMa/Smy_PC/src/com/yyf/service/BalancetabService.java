@@ -81,4 +81,19 @@ public interface BalancetabService {
 	 */
 	
 	public Balancetab selectfigure(String balanceId);
+	
+	/**
+	 * @author 田浩     
+	 * @created 2017年6月26日 上午11:35:45  
+	 * @return
+	 */
+	public void setstatus(String out_trade_no );
+	
+	/**
+	 * @author 田浩     
+	 * @created 2017年6月26日 上午11:35:45  
+	 * @return
+	 */
+	
+	public String selectdeposit(String kuaikeId);
 }

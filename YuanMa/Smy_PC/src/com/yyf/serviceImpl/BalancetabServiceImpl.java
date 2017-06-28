@@ -107,4 +107,26 @@ public class BalancetabServiceImpl implements BalancetabService {
 		Balancetab balance = balanceMapper.selectfigure(balanceId);
 		return balance;
 	}
+	
+	/**
+	 * @author 田浩  
+	 * @created 2017年6月26日 上午11:36:18  
+	 * @return
+	 */
+	@Override
+	public void setstatus(String out_trade_no) {
+		balanceMapper.setstatus(out_trade_no);
+	}
+	
+	/**
+	 * @author 田浩  
+	 * @created 2017年6月26日 上午11:36:18  
+	 * @return
+	 */
+	@Override
+	public String selectdeposit(String kuaikeId) {
+		String b = balanceMapper.selectdeposit(kuaikeId);
+		return b;
+	}
+	
 }

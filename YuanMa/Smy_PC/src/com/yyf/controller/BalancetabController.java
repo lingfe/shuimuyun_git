@@ -82,13 +82,9 @@ public class BalancetabController {
 		
 		String m = Md5Util.md5(newzhifupwd);
 		String d = Md5Util.md5(zhifupwd);
-		HttpServletRequest request = null;
 		boolean flag=balancetabService.updateZhifupwd(m, kuaikeId, d);
 		
 		if(flag){
-			request.getSession().removeAttribute("mobile_code");
-			request.getSession().removeValue("mobile_code");
-			model.remove("mobile_code");
 			return "APP/personalData";
 		}
 		

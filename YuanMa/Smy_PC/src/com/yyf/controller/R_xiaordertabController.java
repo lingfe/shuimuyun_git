@@ -458,7 +458,14 @@ public class R_xiaordertabController {
 			//清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
 			request.getSession().removeValue("xiaId");
-
+			String parameter = request.getParameter("kuaikeId");
+			Balancetab queryKuaikeId = balancetabService.queryKuaikeId(parameter);
+			
+			if(!"".equals(queryKuaikeId) && queryKuaikeId!=null){
+				
+				request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
+				
+			}
 			model.addAttribute("xiaId", tab.getXiaId());
 			model.addAttribute("sh", tab.getShopprices());
 			return "APP/myWallet_Recharge";

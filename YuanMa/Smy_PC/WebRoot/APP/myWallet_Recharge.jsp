@@ -326,7 +326,7 @@ String xiaId = request.getParameter("xiaId");
 		</div>
 		<input type="hidden" name="kuaikeId" id="kuaikeId" value="${login.kuaikeId }">
 		<input type="hidden" id="xiaId_to" value="${xiaId }">
-		<input type="hidden" id="shouprices" value="${sh}">
+		<input type="text" id="shouprices" value="${sh}">
 		<input type="hidden"  id="zhifumima" value="${sessionScope.zhifumima }">
 		<div class="paymentList">
 			<div class="paymentList_item">

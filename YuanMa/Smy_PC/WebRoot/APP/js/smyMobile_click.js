@@ -5,6 +5,7 @@ window.onload = function() {
 	var jian = document.querySelectorAll("#jian")
 	var zhi = document.querySelector("#zhi");
 	var zhi1 = document.querySelector("#zhi1");
+	var zhi11 = document.querySelector("#zhi11");
 	for(var i = 0; i < jia.length; i++) {
 		jia[0].onclick = function() {
 			zhi.value ++;	
@@ -38,6 +39,25 @@ window.onload = function() {
 				return false;
 			} else {
 				zhi1.value--;
+			}
+
+		}
+	}
+	//距离
+	for(var i = 0; i < jia.length; i++) {
+		jia[2].onclick = function() {
+			zhi11.value ++;
+		}
+		jian[2].onclick = function() {
+			if(zhi11.value == 0) {
+				layer.open({
+					content: '派送距离不能小于0',
+					skin: 'msg',
+					time: 1
+				});
+				return false;
+			} else {
+				zhi11.value--;
 			}
 
 		}
@@ -98,30 +118,6 @@ $(function() {
 		$("#order_tan1").css("display", "none");
 	})
 	//弹出框三
-	//距离取值
-	$("#order_tan2 #order_tex2 span").click(function() {
-		$("#order_juli").val($(this).html());
-		$("#order_zhe").css("display", "none");
-		$("#order_tan2").css("display", "none");
-	});
-
-	$("#order_right2").click(function() {
-		$("#order_zhe").css("display", "block");
-		$("#order_tan2").css("display", "block");
-/*		textField.enabled = NO;
-		tapGestureRecognizer.cancelsTouchesInView = NO;  
-		$("#order_clar").click(function(){
-			this.blur();
-		})*/
-	});
-	$("#order_zhe").click(function() {
-		$("#order_zhe").css("display", "none");
-		$("#order_tan2").css("display", "none");
-	});
-	$("#order_close2").click(function() {
-		$("#order_zhe").css("display", "none");
-		$("#order_tan2").css("display", "none");
-	})
 	//下单页面end
 	//搜索框页面
 	//搜索框效果

@@ -27,7 +27,6 @@ public class XiaordertabService {
 	 * @param PageSize  页显示条数大小
 	 * @return
 	 */
-	@Transactional
 	public List<Xiaordertab> queryXiaOrder(@Param("PageNo") int PageNo,@Param("PageSize") int PageSize){
 		
 		List<Xiaordertab> orderList = xiaordertabMapper.queryXiaOrder(PageNo, PageSize);

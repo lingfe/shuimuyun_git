@@ -165,15 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 				</div>
 			</div>
-			<div class="shipper">
-				<img src="<%=basePath%>APP/images/icon/jl.png" width="27"/>
-				<label>派送距离</label>
-				<span class="juli">km</span>
-				<div class="order_right" id="order_right2">
-					<input type="text" readonly="readonly" class="order_r_inp" name="juli" id="order_juli" value="0-5" />
-					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
-				</div>
-			</div>
+			
 			<div class="shipper">
 				<img src="<%=basePath%>APP/images/icon/number.png" width="27"/>
 				<label>货物数量</label>
@@ -194,7 +186,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="jia">+</span>
 				</div>
 			</div>
-			
+			<!--距离-->
+			<div class="shipper">
+				<img src="<%=basePath%>APP/images/icon/jl.png" width="27"/>
+				<label>派送距离</label>
+				<div class="order_num">
+					<span class="order_num_mag">&nbsp;km</span>
+					<span id="jian">-</span>
+					<span > <input id="zhi11"  name="distance" type="number" value="1"> </span>
+					<span id="jia">+</span>
+				</div>
+			</div>
 			<div class="asdd">货物最长单边不超过一米</div>
 			</div>
 		<!--到达时间-->
@@ -230,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="order_tan_clos botto">
 			<img class="mony" src="<%=basePath%>APP/images/icon/mony.png" width="30"/>
 				<a class="xiadan">快客费用</a>
-				<input class="shopprices"  type="text" name="shopprices" id="shopprices" placeholder="请输入金额">
+				<input class="shopprices" readonly="readonly" onfocus="this.blur();" type="text" value="8.00" name="shopprices" id="shopprices">
 				<span>元</span>
 			</div>
 		</div>
@@ -262,18 +264,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span>贵重</span>
 			</div>
 		</div>
-		<div class="order_tan2" id="order_tan2">
-			<div class="order_tan_clos2">
-				<span>派送距离</span>
-				<span class="mui-icon mui-icon-close order_close" id="order_close2"></span>
-			</div>
-			<div class="order_tan_context2"  id="order_tex2">
-				<span>0-5</span>
-				<span>5-15</span>
-				<span>15-35</span>
-				<span>35-60</span>
-			</div>
-		</div>
+		
 		<!--弹出菜单二-->
 		<div class="order_tan1"id="order_tan1">
 			<div class="order_tan_clos1">

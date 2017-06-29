@@ -326,12 +326,6 @@ public class R_kuaiketabController {
 				request.getSession().setAttribute("namea", login.getKuaikeName());
 				// 用户Id
 				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
-				
-				String kuaikeId=login.getKuaikeId();
-				
-				Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
-				
-				request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
 				// 清空文本框中的验证码
 				request.getSession().removeAttribute("mobile_code");
 				model.remove("mobile_code");
@@ -350,8 +344,11 @@ public class R_kuaiketabController {
 					
 					Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
 					
-					request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
-					
+					if(!"".equals(queryKuaikeId) && queryKuaikeId!=null){
+						
+						request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
+						
+					}
 					// 清空文本框中的验证码
 					request.getSession().removeAttribute("mobile_code");
 					model.remove("mobile_code");

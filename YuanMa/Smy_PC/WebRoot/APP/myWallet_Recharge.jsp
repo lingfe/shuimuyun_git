@@ -520,6 +520,7 @@ String xiaId = request.getParameter("xiaId");
 							    	skin: 'msg',
 							    	time: 2
 							  	});
+							  	return false;
 							}
 							
 						}

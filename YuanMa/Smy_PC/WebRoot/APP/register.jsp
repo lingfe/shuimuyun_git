@@ -69,6 +69,16 @@
 							class="right loginCont_form_itemAll mui-input-password"
 							id="regNpwd" type="password" placeholder="请确认密码" />
 					</div>
+					<div class="loginCont_form_item mui-input-row">
+						<img title="" alt="" src="<%=basePath%>APP/images/icon/pwd.png" /> <input
+							class="right loginCont_form_itemAll mui-input-password"
+							id="zhipwd" name="zhipassword" type="password" placeholder="请输入支付密码" />
+					</div>
+					<div class="loginCont_form_item mui-input-row">
+						<img title="" alt="" src="<%=basePath%>APP/images/icon/oksuo.png" /> <input
+							class="right loginCont_form_itemAll mui-input-password"
+							id="zhinpwd" type="password" placeholder="请确认支付密码" />
+					</div>
 					<button type="button" class="mui-btn loginBtn mui-btn-block reg_btn"
 						id="regBtn">注册</button>
 					<a class="free_login forget_appeal" href="RequestMappingUtil/requestNUll/APP/login" >已有账号?马上登录</a>

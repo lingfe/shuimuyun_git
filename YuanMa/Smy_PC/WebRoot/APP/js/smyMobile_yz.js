@@ -237,6 +237,9 @@ $(function() {
 		var regYzm = $("#regYzm").val();
 		var regPwd = $("#regPwd").val();
 		var regNpwd = $("#regNpwd").val();
+		var zhipwd = $("#zhipwd").val();
+		var zhinpwd = $("#zhinpwd").val();
+		//var text = /^\\d{6}$/;
 		var reg=/^[\u2E80-\u9FFF]+$/;
 //		if(userName == "" || userName.length>4 || !(reg.test(userName))) {
 //			//提示
@@ -280,6 +283,24 @@ $(function() {
 			//提示
 		    layer.open({
 		    	content: '密码不一致',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		} 
+		else if(/[^0-9]/g.test(zhipwd) || zhipwd.length != 6) {
+			//提示
+		    layer.open({
+		    	content: '支付密码必须6位数字',
+		    	skin: 'msg',
+		    	time: 2
+		  	});
+			return false;
+		}
+		else if(zhipwd != zhinpwd) {
+			//提示
+		    layer.open({
+		    	content: '两次支付密码不一致',
 		    	skin: 'msg',
 		    	time: 2
 		  	});

@@ -16,6 +16,17 @@ public class R_kuaiketab {
 	private String kuaikeShenfenZF;// 身份证正反面
 	private String kuaikeShouchiSFZ;// 手持身份证正反面
 	private Integer kuaikeStatus;// 状态
+	private String zhipassword;
+	
+	
+	public String getZhipassword() {
+		return zhipassword;
+	}
+
+	public void setZhipassword(String zhipassword) {
+		this.zhipassword = zhipassword;
+	}
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date kuaikeShengqingDate;// 快客申请时间
 	private String password;// 密码

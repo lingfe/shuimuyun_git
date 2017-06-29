@@ -172,6 +172,9 @@ public class R_kuaiketabController {
 			tab.setKuaikeStatus(R_kuaiketabStatusEnum.NO_NO.ordinal());
 			// 保存
 			kuaiketabService.addUser(tab);
+			String out_trade_no = System.currentTimeMillis() + R_paymentController.getRandomString(5);
+			String md5 = Md5Util.md5(tab.getZhipassword());
+			balancetabService.insert(tab.getKuaikeId(),out_trade_no,md5);
 			
 			model.addAttribute("errorShow", ErrorShow.getAlert(ErrorShow.SBMIT_OK));
 			return "APP/login";
@@ -327,11 +330,6 @@ public class R_kuaiketabController {
 				// 用户Id
 				request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
 				
-				String kuaikeId=login.getKuaikeId();
-				
-				Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
-				
-				request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
 				// 清空文本框中的验证码
 				request.getSession().removeAttribute("mobile_code");
 				model.remove("mobile_code");
@@ -347,10 +345,14 @@ public class R_kuaiketabController {
 					request.getSession().setAttribute("kuaikeId", login.getKuaikeId());
 					
 					String kuaikeId=login.getKuaikeId();
-					
 					Balancetab queryKuaikeId = balancetabService.queryKuaikeId(kuaikeId);
 					
-					request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
+					if(!"".equals(queryKuaikeId) && queryKuaikeId!=null){
+						
+						request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
+						
+						
+					}
 					
 					// 清空文本框中的验证码
 					request.getSession().removeAttribute("mobile_code");

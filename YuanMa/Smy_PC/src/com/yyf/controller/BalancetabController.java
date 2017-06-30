@@ -66,12 +66,10 @@ public class BalancetabController {
 	@ResponseBody
 	public void updateBalance1(ModelMap model,@PathVariable("balance") double balance, @PathVariable("kuaikeId") String kuaikeId,
 			@PathVariable("zhifupwd") String zhifupwd, @PathVariable("xiaId") String xiaId) {
-			//支付密码加密
-			String md5 = Md5Util.md5(zhifupwd);
 			//修改支付状态
 			xiaordertabService.updatePayment(1, xiaId);
 			//支付
-			balancetabService.updateBalance1(balance, kuaikeId, md5);
+			balancetabService.updateBalance1(balance, kuaikeId, zhifupwd);
 	}
 	
 	

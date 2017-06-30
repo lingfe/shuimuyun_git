@@ -1,15 +1,49 @@
 package com.smy.model;
 
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
-  * 文件名：Xiaordertab.java
-  * 描述： 下单实体
-  * 修改人： YangJie
-  * 修改时间：2017年6月9日 下午6:01:05
-  * 修改内容：
+ * 
+ * 文件名： R_xiaordertab.java 描述： 下单实体表 修改人： lijie 修改时间： 2017年5月16日 下午3:49:20 修改内容：
  */
 public class Xiaordertab {
+
 	
+	
+	@Override
+	public String toString() {
+		return "R_xiaordertab [vehicle=" + vehicle + ", vargoVolume=" + vargoVolume + ", xiaId=" + xiaId
+				+ ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone + ", kuaikeAddress=" + kuaikeAddress
+				+ ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone + ", shouhuoAddress="
+				+ shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhouDate=" + quhouDate
+				+ ", kaikePrioes=" + kaikePrioes + ", status=" + status + ", okDate=" + okDate + ", shopName="
+				+ shopName + ", shopzholiang=" + shopzholiang + ", shopNumer=" + shopNumer + ", shopprices="
+				+ shopprices + ", shopGuige=" + shopGuige + ", shopDate=" + shopDate + ", kuaikeAddressInfo="
+				+ kuaikeAddressInfo + ", shopType=" + shopType + ", timeString=" + timeString + ", shopImages="
+				+ shopImages + ", payment=" + payment + ", kuaikeId=" + kuaikeId + "]";
+	}
+
+	private String vehicle;//  `vehicle` VARCHAR(200) DEFAULT NULL COMMENT '交通工具',
+	public String getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(String vehicle) {
+		this.vehicle = vehicle;
+	}
+
+	private int vargoVolume;//	  `vargoVolume` INT(11) DEFAULT NULL COMMENT '货物体积'
+
+	public int getVargoVolume() {
+		return vargoVolume;
+	}
+
+	public void setVargoVolume(int vargoVolume) {
+		this.vargoVolume = vargoVolume;
+	}
+
 	private String xiaId;// 下单id `xiaId` VARCHAR(64) NOT NULL,
 
 	public String getXiaId() {
@@ -62,18 +96,8 @@ public class Xiaordertab {
 
 	private String shouhuoPhone;// 收货人电话 `shouhuoShone` VARCHAR(11) NOT NULL,
 
-	
-
 	public String getShouhuoPhone() {
 		return shouhuoPhone;
-	}
-
-	public Date getQuhouDate() {
-		return quhouDate;
-	}
-
-	public void setQuhouDate(Date quhouDate) {
-		this.quhouDate = quhouDate;
 	}
 
 	public void setShouhuoPhone(String shouhuoPhone) {
@@ -101,14 +125,14 @@ public class Xiaordertab {
 		this.shouhuoAddressInfo = shouhuoAddressInfo;
 	}
 
-	private Date quhouDate;// 去获取时间 `quhouDate` TIMESTAMP NOT NULL DEFAULT
+	private String quhouDate;// 去获取时间 `quhouDate` TIMESTAMP NOT NULL DEFAULT
 							// CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-	public Date getQuhuoDate() {
+	public String getQuhuoDate() {
 		return quhouDate;
 	}
 
-	public void setQuhuoDate(Date quhouDate) {
+	public void setQuhuoDate(String quhouDate) {
 		this.quhouDate = quhouDate;
 	}
 
@@ -132,14 +156,14 @@ public class Xiaordertab {
 		this.status = status;
 	}
 
-	private Date okDate;// 到达时间 `okDate` TIMESTAMP NOT NULL DEFAULT '0000-00-00
+	private String okDate;// 到达时间 `okDate` TIMESTAMP NOT NULL DEFAULT '0000-00-00
 						// 00:00:00'
 
-	public Date getOkDate() {
+	public String getOkDate() {
 		return okDate;
 	}
 
-	public void setOkDate(Date okDate) {
+	public void setOkDate(String okDate) {
 		this.okDate = okDate;
 	}
 
@@ -155,8 +179,6 @@ public class Xiaordertab {
 
 	private float shopzholiang;// `Shopzholiang` FLOAT NOT NULL COMMENT '商品重量',
 
-	
-
 	public float getShopzholiang() {
 		return shopzholiang;
 	}
@@ -166,8 +188,6 @@ public class Xiaordertab {
 	}
 
 	private int shopNumer;// `ShopNumer`INT(11) NOT NULL DEFAULT 0 COMMENT '库存',
-
-	
 
 	public int getShopNumer() {
 		return shopNumer;
@@ -197,6 +217,8 @@ public class Xiaordertab {
 	public void setShopGuige(String shopGuige) {
 		this.shopGuige = shopGuige;
 	}
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date shopDate;// `Shopdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00
 							// 00:00:00' COMMENT '上架时间',
 
@@ -208,7 +230,9 @@ public class Xiaordertab {
 		this.shopDate = shopDate;
 	}
 
-
+	/****************************/
+	/** add lijie 2017-05-24 ******/
+	/****************************/
 
 	private String kuaikeAddressInfo;// `kuaikeAddressInfo` VARCHAR(200) DEFAULT
 										// NULL COMMENT '快客详细地址',
@@ -264,80 +288,13 @@ public class Xiaordertab {
 		this.payment = payment;
 	}
 	
-	/**
-	 * 
-	 * @param xiaId
-	 * @param kuaikeName
-	 * @param kuaikePhone
-	 * @param kuaikeAddress
-	 * @param shouhuoName
-	 * @param shouhuoPhone
-	 * @param shouhuoAddress
-	 * @param shouhuoAddressInfo
-	 * @param quhouDate
-	 * @param kaikePrioes
-	 * @param status
-	 * @param okDate
-	 * @param shopName
-	 * @param shopzholiang
-	 * @param shopNumer
-	 * @param shopprices
-	 * @param shopGuige
-	 * @param shopDate
-	 * @param kuaikeAddressInfo
-	 * @param shopType
-	 * @param timeString
-	 * @param shopImages
-	 * @param payment
-	 */
-	public Xiaordertab(String xiaId, String kuaikeName, String kuaikePhone, String kuaikeAddress, String shouhuoName,
-			String shouhuoPhone, String shouhuoAddress, String shouhuoAddressInfo, Date quhouDate, Float kaikePrioes,
-			int status, Date okDate, String shopName, float shopzholiang, int shopNumer, float shopprices,
-			String shopGuige, Date shopDate, String kuaikeAddressInfo, String shopType, String timeString,
-			String shopImages, int payment) {
-		super();
-		this.xiaId = xiaId;
-		this.kuaikeName = kuaikeName;
-		this.kuaikePhone = kuaikePhone;
-		this.kuaikeAddress = kuaikeAddress;
-		this.shouhuoName = shouhuoName;
-		this.shouhuoPhone = shouhuoPhone;
-		this.shouhuoAddress = shouhuoAddress;
-		this.shouhuoAddressInfo = shouhuoAddressInfo;
-		this.quhouDate = quhouDate;
-		this.kaikePrioes = kaikePrioes;
-		this.status = status;
-		this.okDate = okDate;
-		this.shopName = shopName;
-		this.shopzholiang = shopzholiang;
-		this.shopNumer = shopNumer;
-		this.shopprices = shopprices;
-		this.shopGuige = shopGuige;
-		this.shopDate = shopDate;
-		this.kuaikeAddressInfo = kuaikeAddressInfo;
-		this.shopType = shopType;
-		this.timeString = timeString;
-		this.shopImages = shopImages;
-		this.payment = payment;
+	private String kuaikeId;//ALTER TABLE xiaordertab ADD kuaikeId VARCHAR(200) NOT NULL COMMENT '快客id';
+	
+	public String getKuaikeId() {
+		return kuaikeId;
 	}
 
-
-	public Xiaordertab() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setKuaikeId(String kuaikeId) {
+		this.kuaikeId = kuaikeId;
 	}
-	
-	@Override
-	public String toString() {
-		return "Xiaordertab [xiaId=" + xiaId + ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone
-				+ ", kuaikeAddress=" + kuaikeAddress + ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone
-				+ ", shouhuoAddress=" + shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhouDate="
-				+ quhouDate + ", kaikePrioes=" + kaikePrioes + ", status=" + status + ", okDate=" + okDate
-				+ ", shopName=" + shopName + ", shopzholiang=" + shopzholiang + ", shopNumer=" + shopNumer
-				+ ", shopprices=" + shopprices + ", shopGuige=" + shopGuige + ", shopDate=" + shopDate
-				+ ", kuaikeAddressInfo=" + kuaikeAddressInfo + ", shopType=" + shopType + ", timeString=" + timeString
-				+ ", shopImages=" + shopImages + ", payment=" + payment + "]";
-	}
-	
-	
 }

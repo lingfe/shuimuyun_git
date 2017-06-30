@@ -151,20 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</table>
 
 
-		<div class="pagin">
-			
-			<table width="100%">
-   				<tr align="right">
-   					<td>第${Pagenum }页/${sumPage}页
-	   					<a href="queryComment/1">首页</a>
-	   					<a href="queryComment/${Pagenum-1} ">上一页</a>
-	   					<a href="queryComment/${Pagenum+1}">下一页</a>
-	   					<a href="queryComment/${sumPage}">尾页</a>
-   					</td>
-   				</tr>
-   			</table>
-		</div>
-</form>
+		</form>
 
 		<div class="tip">
 			<div class="tiptop">

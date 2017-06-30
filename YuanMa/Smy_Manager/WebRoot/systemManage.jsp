@@ -61,7 +61,7 @@
 				<li><cite></cite><a href="<%=basePath%>queryAllKuaike/1" target="rightFrame">快客列表</a><i></i></li>
 				<li><cite></cite><a href="<%=basePath%>queryOrderList/1" target="rightFrame">下单列表</a><i></i></li>
 				<li><cite></cite><a href="<%=basePath%>queryQiangorder/1" target="rightFrame">抢单列表</a><i></i></li>
-				<li><cite></cite><a href="<%=basePath%>queryComment/1" target="rightFrame">评论列表</a><i></i></li>
+				<li><cite></cite><a href="<%=basePath%>queryComment" target="rightFrame">评论列表</a><i></i></li>
 				<li><cite></cite><a href="<%=basePath%>error.jsp" target="rightFrame">404页面</a><i></i></li>
 			</ul>
 		</dd>

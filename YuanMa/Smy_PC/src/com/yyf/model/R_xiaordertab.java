@@ -14,7 +14,7 @@ public class R_xiaordertab {
 	
 	@Override
 	public String toString() {
-		return "R_xiaordertab [vehicle=" + vehicle + ", vargoVolume=" + vargoVolume + ", xiaId=" + xiaId
+		return "R_xiaordertab [vehicle=" + vehicle + ", distance=" + distance + ", xiaId=" + xiaId
 				+ ", kuaikeName=" + kuaikeName + ", kuaikePhone=" + kuaikePhone + ", kuaikeAddress=" + kuaikeAddress
 				+ ", shouhuoName=" + shouhuoName + ", shouhuoPhone=" + shouhuoPhone + ", shouhuoAddress="
 				+ shouhuoAddress + ", shouhuoAddressInfo=" + shouhuoAddressInfo + ", quhouDate=" + quhouDate
@@ -34,14 +34,14 @@ public class R_xiaordertab {
 		this.vehicle = vehicle;
 	}
 
-	private int vargoVolume;//	  `vargoVolume` INT(11) DEFAULT NULL COMMENT '货物体积'
+	private int distance;//	  `distance` INT(11) DEFAULT NULL COMMENT '货物体积'
 
-	public int getVargoVolume() {
-		return vargoVolume;
+	public int getDistance() {
+		return distance;
 	}
 
-	public void setVargoVolume(int vargoVolume) {
-		this.vargoVolume = vargoVolume;
+	public void setDistance(int distance) {
+		this.distance = distance;
 	}
 
 	private String xiaId;// 下单id `xiaId` VARCHAR(64) NOT NULL,

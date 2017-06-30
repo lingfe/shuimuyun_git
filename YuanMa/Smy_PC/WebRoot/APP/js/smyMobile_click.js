@@ -5,6 +5,8 @@ window.onload = function() {
 	var jian = document.querySelectorAll("#jian")
 	var zhi = document.querySelector("#zhi");
 	var zhi1 = document.querySelector("#zhi1");
+	var zhi11 = document.querySelector("#zhi11");
+	var shopprices = document.querySelector("#shopprices");
 	for(var i = 0; i < jia.length; i++) {
 		jia[0].onclick = function() {
 			zhi.value ++;	
@@ -27,6 +29,40 @@ window.onload = function() {
 	for(var i = 0; i < jia.length; i++) {
 		jia[1].onclick = function() {
 			zhi1.value ++;
+			if(zhi1.value<=50){
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
+				} 
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*1.5+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*2+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*3+0+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value<=5 && zhi1.value<5){
+					shopprices.value=8;
+				}
+				if(zhi11.value<=5 && zhi1.value>5){
+					shopprices.value=0+(zhi1.value-5)*0.5+8;
+				}
+			}else{
+				zhi11.value=50;
+				layer.open({
+					content: '货物过重',
+					skin: 'msg',
+					time: 1
+				});
+				return false;
+			}
 		}
 		jian[1].onclick = function() {
 			if(zhi1.value == 1) {
@@ -38,6 +74,107 @@ window.onload = function() {
 				return false;
 			} else {
 				zhi1.value--;
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
+				} 
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*1.5+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*2+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*3+0+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value<=5 && zhi1.value<5){
+					shopprices.value=8;
+				}
+				if(zhi11.value<=5 && zhi1.value>5){
+					shopprices.value=0+(zhi1.value-5)*0.5+8;
+				}
+			}
+
+		}
+	}	
+	//距离
+	for(var i = 0; i < jia.length; i++) {
+		jia[2].onclick = function() {
+			zhi11.value ++;
+			if(zhi11.value<=60){
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
+				} 
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*1.5+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*2+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*3+0+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value<=5 && zhi1.value<5){
+					shopprices.value=8;
+				}
+				if(zhi11.value<=5 && zhi1.value>5){
+					shopprices.value=0+(zhi1.value-5)*0.5+8;
+				}
+			}else{
+				zhi11.value=60;
+				layer.open({
+					content: '派送距离过远',
+					skin: 'msg',
+					time: 1
+				});
+				return false;
+			}	
+		}
+		jian[2].onclick = function() {
+			if(zhi11.value == 0) {
+				layer.open({
+					content: '派送距离不能小于0',
+					skin: 'msg',
+					time: 1
+				});
+				return false;
+			} else {
+				zhi11.value--;
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
+				} 
+				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*1.5+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*2+0+8;
+				}
+				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
+					shopprices.value=(zhi11.value-5)*3+0+8;
+				}
+				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
+					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
+				}
+				if(zhi11.value<=5 && zhi1.value<5){
+					shopprices.value=8;
+				}
+				if(zhi11.value<=5 && zhi1.value>5){
+					shopprices.value=0+(zhi1.value-5)*0.5+8;
+				}
 			}
 
 		}
@@ -98,30 +235,6 @@ $(function() {
 		$("#order_tan1").css("display", "none");
 	})
 	//弹出框三
-	//距离取值
-	$("#order_tan2 #order_tex2 span").click(function() {
-		$("#order_juli").val($(this).html());
-		$("#order_zhe").css("display", "none");
-		$("#order_tan2").css("display", "none");
-	});
-
-	$("#order_right2").click(function() {
-		$("#order_zhe").css("display", "block");
-		$("#order_tan2").css("display", "block");
-/*		textField.enabled = NO;
-		tapGestureRecognizer.cancelsTouchesInView = NO;  
-		$("#order_clar").click(function(){
-			this.blur();
-		})*/
-	});
-	$("#order_zhe").click(function() {
-		$("#order_zhe").css("display", "none");
-		$("#order_tan2").css("display", "none");
-	});
-	$("#order_close2").click(function() {
-		$("#order_zhe").css("display", "none");
-		$("#order_tan2").css("display", "none");
-	})
 	//下单页面end
 	//搜索框页面
 	//搜索框效果

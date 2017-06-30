@@ -85,29 +85,25 @@ width: 47px;
 		</div>
 
 
-		<table class="tablelist" border="1">
+		<table class="tablelist" style="text-align: center;">
 			<thead>
 				<tr>
 					<th><input name="" type="checkbox" value="" /></th>
-					
-					<th>(下)姓名</th>
-					<th>(下)电话</th>
-					<th>(下)地址</th>
-					<th>(收)姓名</th>
-					<th>(收)电话</th>
-					<th>(收)地址</th>
-					<th>取货时间</th>
-					<th>支付费用</th>
-					<th>状态</th>
+					<th>下单人名称</th>
+					<th>下单人电话</th>
+					<th>下单人地址</th>
+					<th>收货人姓名</th>
+					<th>收货人电话</th>
+					<th>收货人地址</th>
 					<th>最迟到达时间</th>
-					<th>商品名称</th>
+					<th>状态</th>
 					<th>商品重量</th>
 					<th>商品数量</th>
-					<th>商品价格</th>
-					<th>上架时间</th>
+					<th>支付费用</th>
 					<th>货物类型</th>
 					<th>最快取货时间</th>
 					<th>是否支付</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -118,33 +114,26 @@ width: 47px;
 					
 					<td>${o.kuaikeName }</td>
 					<td>${o.kuaikePhone }</td>
-					<td>${o.kuaikeAddress }</td>
+					<td>${o.kuaikeAddress }${o.kuaikeAddressInfo }</td>
 					<td>${o.shouhuoName }</td>
 					<td>${o.shouhuoPhone }</td>
+					
 					<td>${o.shouhuoAddress }${o.shouhuoAddressInfo }</td>
 					<td>
-					<fmt:formatDate value="${o.quhuoDate }" pattern="yyyy-MM-dd HH:mm:ss"/>	
+						${o.quhuoDate }
 					</td>
-					<td>${o.kaikePrioes }</td>
 					<td>${o.status }</td>
-					<td>
-					<fmt:formatDate value="${o.okDate }" pattern="yyyy-MM-dd HH:mm:ss"/>
-					</td>
-					<td>${o.shopName }</td>
 					<td>${o.shopzholiang }</td>
 					<td>${o.shopNumer }</td>
 					<td>${o.shopprices }</td>
-					<td>
-					<fmt:formatDate value="${o.shopDate }" pattern="yyyy-MM-dd HH:mm:ss"/>
-					</td>
 					<td>${o.shopType }</td>
 					<td>${o.timeString }</td>
 					<td>${o.payment }</td>
+					<td>操作</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-
 
 		<div class="pagin">
 			

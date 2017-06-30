@@ -26,27 +26,21 @@ public class CommenttabController {
 	@Autowired
 	private CommenttabService commenttabService;
 	
-	@RequestMapping(value="queryComment/{Pagenum}",method=RequestMethod.GET)
-	public String queryComment(ModelMap model,@PathVariable("Pagenum") int Pagenum){
-		Integer PageSize =20; // 每页显示的条数
-		// 计算总条数
-		Integer count = commenttabService.getCount();
-		// 总页数
-		Integer sumPage = count % PageSize == 0 ? count / PageSize : count / PageSize + 1;
-		if (Pagenum - 1 <= 0) {
-			Pagenum = 1;
-		}
-		if (Pagenum > sumPage) {
-			Pagenum = sumPage;
-		}
+	@RequestMapping(value="queryComment",method=RequestMethod.GET)
+	public String queryComment(ModelMap model){
+		
 		// 计算当前页面数据
-		List<Commenttab> commentList = commenttabService.queryComment((Pagenum - 1) * PageSize, PageSize);
+		List<Commenttab> commentList = commenttabService.queryComment();
+	
+			
+			model.addAttribute("comment", commentList);
+			
+		
 
-		model.addAttribute("sumPage", sumPage);
-		model.addAttribute("comment", commentList);
-		model.addAttribute("Pagenum", Pagenum);
+			return "commentList";
+	
 
-		return "commentList";
+		
 	}
 	
 	// 批量删除

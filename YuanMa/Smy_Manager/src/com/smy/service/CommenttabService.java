@@ -23,9 +23,9 @@ public class CommenttabService {
 	private CommenttabMapper commenttabMapper;
 	
 	@Transactional
-	public List<Commenttab> queryComment(@Param("PageNo") int PageNo,@Param("PageSize") int PageSize){
+	public List<Commenttab> queryComment(){
 		
-		List<Commenttab> commentList = commenttabMapper.queryComment(PageNo, PageSize);
+		List<Commenttab> commentList = commenttabMapper.queryComment();
 		
 		return commentList;
 	}

@@ -338,6 +338,46 @@
 			 location.href=location.href+"?xyz="+Math.random();
 		  }
 		}
+		var zhi1 = document.querySelector("#zhi1");
+		var distance = document.querySelector("#distance");
+		var shopprices = document.querySelector("#shopprices");
+		if(distance.value<60){
+				if(zhi1.value<=5 && distance.value<=5){
+						qian=8;
+						shopprices.value = qian.toFixed(2)
+					}
+					else if(zhi1.value<=5 && distance.value>5 && distance.value<=15){
+						qian=8+(distance.value-5)*1.5;
+						shopprices.value = qian.toFixed(2)
+					}
+					else if(zhi1.value<=5 && distance.value>15 && distance.value<=35){
+						qian=8+(distance.value-5)*2;
+						shopprices.value = qian.toFixed(2)
+					}
+					else if(zhi1.value<=5 && distance.value>35 && distance.value<=60){
+						qian=8+(distance.value-5)*3;
+						shopprices.value = qian.toFixed(2)
+					}
+					else if(zhi1.value>5 && distance.value>5 && distance.value<=15){
+						qian=8+(distance.value-5)*1.5+(zhi1.value-5)*0.5;
+						shopprices.value = qian.toFixed(2)
+					}
+					else if(zhi1.value>5 && distance.value>15 && distance.value<=35){
+						qian=8+(distance.value-5)*2+(zhi1.value-5)*0.5;
+						shopprices.value = qian.toFixed(2)
+					}
+					else if(zhi1.value>5 && distance.value>35 && distance.value<=60){
+						qian=8+(distance.value-5)*3+(zhi1.value-5)*0.5;
+						shopprices.value = qian.toFixed(2)
+					}
+			}else{
+					layer.open({
+					content: '距离过远',
+					skin: 'msg',
+					time: 1
+				});
+			}
+		
 	</script>
 	<script type="text/javascript">
 		$(function() {
@@ -556,11 +596,7 @@
 					dataType : 'html',
 					contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 					success : function(data) {
-						if(data==-1){
 						
-						}else{
-							distance.val(data);
-						}
 					},
 					error : function(xhr, type) {
 						layer.open({

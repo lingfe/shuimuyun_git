@@ -1,11 +1,10 @@
-//数量加减
-window.onload = function() {
+//数量加减	
 	//下单页面
 	var jia = document.querySelectorAll("#jia")
 	var jian = document.querySelectorAll("#jian")
 	var zhi = document.querySelector("#zhi");
 	var zhi1 = document.querySelector("#zhi1");
-	var zhi11 = document.querySelector("#zhi11");
+	var distance = document.querySelector("#distance");
 	var shopprices = document.querySelector("#shopprices");
 	for(var i = 0; i < jia.length; i++) {
 		jia[0].onclick = function() {
@@ -29,41 +28,44 @@ window.onload = function() {
 	for(var i = 0; i < jia.length; i++) {
 		jia[1].onclick = function() {
 			zhi1.value ++;
-			if(zhi1.value<=50){
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
-				} 
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*1.5+0+8;
+			if(zhi1.value<50){
+				if(zhi1.value<=5 && distance.value<=5){
+					qian=8;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*2+0+8;
+				else if(zhi1.value<=5 && distance.value>5 && distance.value<=15){
+					qian=8+(distance.value-5)*1.5;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
+				else if(zhi1.value<=5 && distance.value>15 && distance.value<=35){
+					qian=8+(distance.value-5)*2;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*3+0+8;
+				else if(zhi1.value<=5 && distance.value>35 && distance.value<=60){
+					qian=8+(distance.value-5)*3;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
+				else if(zhi1.value>5 && distance.value>5 && distance.value<=15){
+					qian=8+(distance.value-5)*1.5+(zhi1.value-5)*0.5;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value<=5 && zhi1.value<5){
-					shopprices.value=8;
+				else if(zhi1.value>5 && distance.value>15 && distance.value<=35){
+					qian=8+(distance.value-5)*2+(zhi1.value-5)*0.5;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value<=5 && zhi1.value>5){
-					shopprices.value=0+(zhi1.value-5)*0.5+8;
+				else if(zhi1.value>5 && distance.value>35 && distance.value<=60){
+					qian=8+(distance.value-5)*3+(zhi1.value-5)*0.5;
+					shopprices.value = qian.toFixed(2)
 				}
 			}else{
-				zhi11.value=50;
+				zhi1.value=50;
 				layer.open({
-					content: '货物过重',
+					content: '货物重量过重',
 					skin: 'msg',
 					time: 1
 				});
-				return false;
 			}
-		}
+			
 		jian[1].onclick = function() {
 			if(zhi1.value == 1) {
 				layer.open({
@@ -72,115 +74,44 @@ window.onload = function() {
 					time: 1
 				});
 				return false;
-			} else {
-				zhi1.value--;
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
-				} 
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*1.5+0+8;
+			} else{
+				zhi1.value --;
+				if(zhi1.value<=5 && distance.value<=5){
+					qian=8;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*2+0+8;
+				else if(zhi1.value<=5 && distance.value>5 && distance.value<=15){
+					qian=8+(distance.value-5)*1.5;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
+				else if(zhi1.value<=5 && distance.value>15 && distance.value<=35){
+					qian=8+(distance.value-5)*2;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*3+0+8;
+				else if(zhi1.value<=5 && distance.value>35 && distance.value<=60){
+					qian=8+(distance.value-5)*3;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
+				else if(zhi1.value>5 && distance.value>5 && distance.value<=15){
+					qian=8+(distance.value-5)*1.5+(zhi1.value-5)*0.5;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value<=5 && zhi1.value<5){
-					shopprices.value=8;
+				else if(zhi1.value>5 && distance.value>15 && distance.value<=35){
+					qian=8+(distance.value-5)*2+(zhi1.value-5)*0.5;
+					shopprices.value = qian.toFixed(2)
 				}
-				if(zhi11.value<=5 && zhi1.value>5){
-					shopprices.value=0+(zhi1.value-5)*0.5+8;
+				else if(zhi1.value>5 && distance.value>35 && distance.value<=60){
+					qian=8+(distance.value-5)*3+(zhi1.value-5)*0.5;
+					shopprices.value = qian.toFixed(2)
 				}
-			}
-
+				
+				}
+		}
 		}
 	}	
-	//距离
-	for(var i = 0; i < jia.length; i++) {
-		jia[2].onclick = function() {
-			zhi11.value ++;
-			if(zhi11.value<=60){
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
-				} 
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*1.5+0+8;
-				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*2+0+8;
-				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
-				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*3+0+8;
-				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
-				}
-				if(zhi11.value<=5 && zhi1.value<5){
-					shopprices.value=8;
-				}
-				if(zhi11.value<=5 && zhi1.value>5){
-					shopprices.value=0+(zhi1.value-5)*0.5+8;
-				}
-			}else{
-				zhi11.value=60;
-				layer.open({
-					content: '派送距离过远',
-					skin: 'msg',
-					time: 1
-				});
-				return false;
-			}	
-		}
-		jian[2].onclick = function() {
-			if(zhi11.value == 0) {
-				layer.open({
-					content: '派送距离不能小于0',
-					skin: 'msg',
-					time: 1
-				});
-				return false;
-			} else {
-				zhi11.value--;
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*1.5+(zhi1.value-5)*0.5+8;
-				} 
-				if(zhi11.value>5 && zhi11.value<=15 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*1.5+0+8;
-				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*2+0+8;
-				}
-				if(zhi11.value>15 && zhi11.value<=35 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*2+(zhi1.value-5)*0.5+8;
-				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value<5){
-					shopprices.value=(zhi11.value-5)*3+0+8;
-				}
-				if(zhi11.value>35 && zhi11.value<=60 &&zhi1.value>5){
-					shopprices.value=(zhi11.value-5)*3+(zhi1.value-5)*0.5+8;
-				}
-				if(zhi11.value<=5 && zhi1.value<5){
-					shopprices.value=8;
-				}
-				if(zhi11.value<=5 && zhi1.value>5){
-					shopprices.value=0+(zhi1.value-5)*0.5+8;
-				}
-			}
-
-		}
-	}
+	
 	//下单页面end		
-}
+
 
 $(function() {
 	//下单页面

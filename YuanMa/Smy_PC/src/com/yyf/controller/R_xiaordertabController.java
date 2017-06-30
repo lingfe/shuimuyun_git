@@ -791,12 +791,11 @@ public class R_xiaordertabController {
 	private static double rad(double d) {
 		return d * Math.PI / 180.0;
 	}
-
 	
-	public static void main(String[] args) {
-		
-		double d = 0.0;
-		int i = (int) d;
-		System.out.println(i);
-	}
+	
+	
+	
+	
+	
+	
 }

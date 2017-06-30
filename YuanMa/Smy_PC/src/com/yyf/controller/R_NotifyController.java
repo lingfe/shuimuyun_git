@@ -35,6 +35,7 @@ public class R_NotifyController {
 	@Autowired
 	private R_zhinotifyService r_zhinotifyService;
 
+	//获取充值回调
 	@RequestMapping(value = "/zhifu" , method = RequestMethod.POST)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

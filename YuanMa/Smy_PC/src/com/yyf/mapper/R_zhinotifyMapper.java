@@ -26,10 +26,24 @@ public interface R_zhinotifyMapper {
 			,@Param("time_end") String time_end,@Param("total_fee") String total_fee
 			);
 	
+	/**
+	 * 
+	 * 根据订单号获取下单id
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	
 	@Select("Select xiaId from order_table where out_trade_no=#{out_trade_no}")
 	public String SelectXIa(@Param("out_trade_no") String out_trade_no);
 	
+	/**
+	 * 
+	 * 修改付款状态
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	
 	@Update("update xiaordertab set payment='1' where xiaId=#{xiaId}")
 	public void UpdatePayment(@Param("xiaId") String xiaId);

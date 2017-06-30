@@ -13,6 +13,13 @@ public class R_zhisuccessServiceImpl implements R_zhisuccessService {
 	@Autowired
 	private R_zhisuccessMapper zhisuccessMapper;
 
+	/**
+	 * 
+	 * 取得订单支付状态
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	@Override
 	public String selectresult(String xiaId) {
 		String order_no = String.valueOf(zhisuccessMapper.selectresult(xiaId));

@@ -324,7 +324,7 @@
 								geocoder.getAddress(e.lnglat, function(status, result) {
 									if (status == 'complete') {
 										//地址格式转化
-										var test = result.regeocode.formattedAddress
+										var test = result.regeocode.formattedAddress;
 										layer.msg=test;
 										return false;
 									}

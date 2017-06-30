@@ -12,7 +12,22 @@ public interface R_zhinotifyService {
 	void UpdateOrder(String openid,String is_subscribe,String  out_trade_no,String bank_type,String cash_fee,String nonce_str,String result_code,
 			String return_code,String sign,String time_end,String transaction_id,String total_fee);
 	
+	/**
+	 * 
+	 * 根据订单号获取下单id
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	String SelectXIa(String out_trade_no);
 	
+	
+	/**
+	 * 
+	 * 修改付款状态
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	void UpdatePayment(String xiaId);
 }

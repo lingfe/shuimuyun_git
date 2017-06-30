@@ -297,4 +297,62 @@ public class R_xiaordertab {
 	public void setKuaikeId(String kuaikeId) {
 		this.kuaikeId = kuaikeId;
 	}
+	
+	private double shoulng;//收获经度
+	
+	private double shoulat;//收获纬度
+	
+	private double falng;//发货经度
+	
+	private double falat;//发货纬度
+	public String getShouhuoPhone() {
+		return shouhuoPhone;
+	}
+
+	public void setShouhuoPhone(String shouhuoPhone) {
+		this.shouhuoPhone = shouhuoPhone;
+	}
+
+	public String getQuhouDate() {
+		return quhouDate;
+	}
+
+	public void setQuhouDate(String quhouDate) {
+		this.quhouDate = quhouDate;
+	}
+
+	public double getShoulng() {
+		return shoulng;
+	}
+
+	public void setShoulng(double shoulng) {
+		this.shoulng = shoulng;
+	}
+
+	public double getShoulat() {
+		return shoulat;
+	}
+
+	public void setShoulat(double shoulat) {
+		this.shoulat = shoulat;
+	}
+
+	public double getFalng() {
+		return falng;
+	}
+
+	public void setFalng(double falng) {
+		this.falng = falng;
+	}
+
+	public double getFalat() {
+		return falat;
+	}
+
+	public void setFalat(double falat) {
+		this.falat = falat;
+	}
+	
+	
+	
 }

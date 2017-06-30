@@ -57,7 +57,7 @@ public interface R_xiaordertabService {
 	 * @param kuaikePhone			快客电话
 	 * @param kuaikeAddressInfo		快客详细地址
 	 */
-	void fa(String kuaikeName,String kuaikePhone,String kuaikeAdress,String xiaId,String kuaikeAddressInfo);
+	void fa(String kuaikeName,String kuaikePhone,String kuaikeAdress,String xiaId,String kuaikeAddressInfo,double falng,double falat);
 	
 	/**
 	 * 
@@ -69,7 +69,7 @@ public interface R_xiaordertabService {
 	 * @param shouhuoPhone			收货人电话
 	 * @param shouhuoAddressInfo	收货人地址详情
 	 */
-	void shou(String shouhuoName,String shouhuoPhone, String shouhuoAddress,String xiaId,String shouhuoAddressInfo);
+	void shou(String shouhuoName,String shouhuoPhone, String shouhuoAddress,String xiaId,String shouhuoAddressInfo,double shoulng,double shoulat);
 	
 	/**
 	 * 
@@ -219,4 +219,14 @@ public interface R_xiaordertabService {
 	 */
 	public void updatePayment(double payment,String xiaId);
 
+	
+	/**
+	 * 根据下单Id、快客id查经纬度
+	 * @author tianhao    
+	 * @created 2017年6月30日 上午9:21:44  
+	 * @param kuaikeId	快客id
+	 * @param xiaId		下单id
+	 * @return	数据
+	 */
+	public R_xiaordertab getlnglat(String kuaikeId,String xiaId);
 }

@@ -75,12 +75,14 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param kuaikePhone			快客电话
 	 * @param kuaikeAddressInfo		快客详细地址
 	 */
-	@Update("UPDATE  xiaordertab SET kuaikeName=#{kuaikeName},kuaikePhone=#{kuaikePhone},kuaikeAddress=#{kuaikeAddress},kuaikeAddressInfo=#{kuaikeAddressInfo} WHERE xiaid=#{xiaId}")
+	@Update("UPDATE  xiaordertab SET kuaikeName=#{kuaikeName},kuaikePhone=#{kuaikePhone},kuaikeAddress=#{kuaikeAddress},kuaikeAddressInfo=#{kuaikeAddressInfo},falng=#{falng},falat=#{falat} WHERE xiaid=#{xiaId}")
 	public @ResponseBody void fa(@Param("kuaikeName")String kuaikeName,
 			@Param("kuaikePhone")String kuaikePhone,
 			@Param("kuaikeAddress") String kuaikeAddress,
 			@Param("xiaId") String xiaId,
-			@Param("kuaikeAddressInfo")String kuaikeAddressInfo);
+			@Param("kuaikeAddressInfo")String kuaikeAddressInfo,
+			@Param("falng")double falng,
+			@Param("falat")double falat);
 	
 	/**
 	 * 
@@ -92,12 +94,14 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @param shouhuoPhone			收货人电话
 	 * @param shouhuoAddressInfo	收货人地址详情
 	 */
-	@Update("UPDATE  xiaordertab SET shouhuoName=#{shouhuoName},shouhuoPhone=#{shouhuoPhone},shouhuoAddress=#{shouhuoAddress},shouhuoAddressInfo=#{shouhuoAddressInfo} WHERE xiaid=#{xiaId}")
+	@Update("UPDATE  xiaordertab SET shouhuoName=#{shouhuoName},shouhuoPhone=#{shouhuoPhone},shouhuoAddress=#{shouhuoAddress},shouhuoAddressInfo=#{shouhuoAddressInfo},shoulng=#{shoulng},shoulat=#{shoulat} WHERE xiaid=#{xiaId}")
 	void shou(@Param("shouhuoName")String shouhuoName,
 								@Param("shouhuoPhone")String shouhuoPhone,
 								@Param("shouhuoAddress") String shouhuoAddress,
 								@Param("xiaId") String xiaId,
-								@Param("shouhuoAddressInfo")String shouhuoAddressInfo);
+								@Param("shouhuoAddressInfo")String shouhuoAddressInfo,
+								@Param("shoulng")double shoulng,
+								@Param("shoulat")double shoulat);
 	
 	/**
 	 * 
@@ -257,6 +261,14 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	public void updatePayment(@Param("payment") double payment,@Param("xiaId") String xiaId);
 	
 	
-	
+	/**
+	 * 根据下单Id、快客id查经纬度
+	 * 
+	 * @author 田浩
+	 * @created 2017年6月30日 上午10:08:48  
+	 * @return
+	 */
+	@Select("SELECT * FROM xiaordertab WHERE kuaikeId=#{kuaikeId}  AND xiaId=#{xiaId}")
+	public R_xiaordertab getlnglat(@Param("kuaikeId") String kuaikeId,@Param("xiaId") String xiaId);
 
 }

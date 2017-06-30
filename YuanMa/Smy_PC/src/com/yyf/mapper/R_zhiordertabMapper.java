@@ -24,11 +24,28 @@ public interface R_zhiordertabMapper {
 			,@Param("out_trade_no") String out_trade_no,@Param("body") String body
 			,@Param("trade_type") String trade_type,@Param("product_id") String product_id,@Param("order_no") String order_no,@Param("shopName") String shopName);
 
-	
+	/**
+	 * 用户点击充值判断账户是否存在
+	 * 
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:41:00
+	 * @param 
+	 *            
+	 * @return order_no
+	 */
 	@Select("select count(*) from order_table where xiaId=#{xiaId}")
 	public int selectExsit(@Param("xiaId") String xiaId);
 	
 	
+	
+	/**
+	 * 增加用户充值记录
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:41:00
+	 * @param 
+	 *            
+	 * @return order_no
+	 */
 	@Update("UPDATE order_table SET total_fee=#{total_fee},out_trade_no=#{out_trade_no},body=#{body},trade_type=#{trade_type}"
 			+ ",product_id=#{product_id},order_no=#{order_no},shopName=#{shopName}"
 			+ " WHERE xiaId=#{xiaId}")

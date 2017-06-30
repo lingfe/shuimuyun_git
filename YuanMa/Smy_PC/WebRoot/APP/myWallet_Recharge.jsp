@@ -525,7 +525,6 @@ String xiaId = request.getParameter("xiaId");
 							
 						}
 					});
-	
 				});
 				//模拟输入6位密码
 				var i = 0;

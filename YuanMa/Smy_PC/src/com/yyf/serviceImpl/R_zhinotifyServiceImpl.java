@@ -15,6 +15,13 @@ public class R_zhinotifyServiceImpl implements R_zhinotifyService {
 
 
 
+	/**
+	 * 
+	 * 修改订单信息
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	@Override
 	public void UpdateOrder(String openid,String is_subscribe,String  out_trade_no,String bank_type,String cash_fee,String nonce_str,String result_code,
 			String return_code,String sign,String time_end,String transaction_id,String total_fee) {
@@ -22,12 +29,26 @@ public class R_zhinotifyServiceImpl implements R_zhinotifyService {
         		sign,time_end,total_fee);
 	}
 	
+	/**
+	 * 
+	 * 根据订单号获取下单id
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	@Override
 	public String SelectXIa(String out_trade_no) {
 		zhinotifyMapper.SelectXIa(out_trade_no);
 		return zhinotifyMapper.SelectXIa(out_trade_no);
 	}
 	
+	/**
+	 * 
+	 * 修改付款状态
+	 * @author 田浩
+	 * @created 2017年6月17日 下午2:03:28  
+	 * @param tab
+	 */
 	@Override
 	public void UpdatePayment(String out_trade_no) {
 		zhinotifyMapper.UpdatePayment(out_trade_no);

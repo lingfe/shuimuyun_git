@@ -47,13 +47,13 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	}
 	
 	@Override
-	public void fa(String kuaikeName, String kuaikePhone,String kuaikeAddress, String xiaId, String kuaikeAddressInfo) {
-		ir_xiaordertabMapper.fa(kuaikeName, kuaikePhone,kuaikeAddress, xiaId, kuaikeAddressInfo);
+	public void fa(String kuaikeName, String kuaikePhone,String kuaikeAddress, String xiaId, String kuaikeAddressInfo,double falng,double falat) {
+		ir_xiaordertabMapper.fa(kuaikeName, kuaikePhone,kuaikeAddress, xiaId, kuaikeAddressInfo,falng,falat);
 	}
 	
 	@Override
-	public void shou(String shouhuoName, String shouhuoPhone,String shouhuoAddress, String xiaId, String shouhuoAddressInfo) {
-		ir_xiaordertabMapper.shou(shouhuoName, shouhuoPhone,shouhuoAddress, xiaId, shouhuoAddressInfo);
+	public void shou(String shouhuoName, String shouhuoPhone,String shouhuoAddress, String xiaId, String shouhuoAddressInfo,double shoulng,double shoulat) {
+		ir_xiaordertabMapper.shou(shouhuoName, shouhuoPhone,shouhuoAddress, xiaId, shouhuoAddressInfo,shoulng,shoulat);
 	}
 	
 	@Override
@@ -168,4 +168,14 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 		
 	}
 
+	/**
+	 * 根据下单Id、快客id查经纬度
+	 * @author 田浩
+	 * @created 2017年6月30日 上午10:17:47  
+	 * @param xiaId  下单Id  kuaikeId  快客id
+	 */
+	@Override
+	public R_xiaordertab getlnglat(String kuaikeId,String xiaId) {
+		return ir_xiaordertabMapper.getlnglat(kuaikeId, xiaId);
+	}
 }

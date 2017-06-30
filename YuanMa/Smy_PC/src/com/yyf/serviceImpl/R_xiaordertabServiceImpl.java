@@ -178,4 +178,15 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	public R_xiaordertab getlnglat(String xiaId) {
 		return ir_xiaordertabMapper.getlnglat( xiaId);
 	}
+	
+	/**
+	 * 根据下单Id修改取货发货距离
+	 * @author 田浩
+	 * @created 2017年6月30日 上午10:17:47  
+	 * @param xiaId  下单Id  kuaikeId  快客id
+	 */
+	@Override
+	public void setDistance(String xiaId,double distance) {
+		ir_xiaordertabMapper.setDistance( xiaId,distance);
+	}
 }

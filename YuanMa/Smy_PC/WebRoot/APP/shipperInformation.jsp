@@ -147,11 +147,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="box_div" >
 					<span>地址：</span>
-					<input type="text" id="xadder" onclick="document.activeElement.blur();" readonly="readonly" placeholder="请选择地址"/>
+					<input type="text" id="adder" onclick="document.activeElement.blur();" readonly="readonly" placeholder="请选择地址"/>
 			</div>
 			<div class="box_div">
 					<span>街 道：</span>
-					<input type="text" id="xadder" value="${ info.kuaikeAddressInfo }" placeholder="请输入详细地址"/>
+					<input type="text" id="xadder" value="${info.kuaikeAddressInfo }" placeholder="请输入详细地址"/>
 			</div>
 		</div>
 		<!-- 下单id -->
@@ -164,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=basePath%>APP/js/smyMobile_click.js" ></script>
 		<script type="text/javascript">
 			/*三级联动*/
-			$("#xadder").cityPicker({
+			$("#adder").cityPicker({
 			   title: "请选择发货地址"
 			});
 			//ajax提交
@@ -189,7 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//快客详细地址
 				var kuaikeAddressInfo=$("#xadder").val();
 				//发货人地址
-				var kuaikeAddress=$("#adder").html();
+				var kuaikeAddress=$("#adder").val();
 				//url
 				var url=xiaId+"/"+kuaikeName+"/"+kuaikePhone+"/"+kuaikeAddress+"/"+kuaikeAddressInfo;
 				$.ajax({

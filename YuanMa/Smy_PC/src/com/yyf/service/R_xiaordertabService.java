@@ -229,4 +229,15 @@ public interface R_xiaordertabService {
 	 * @return	数据
 	 */
 	public R_xiaordertab getlnglat(String xiaId);
+	
+	
+	/**
+	 * 根据下单Id修改距离
+	 * @author tianhao    
+	 * @created 2017年6月30日 上午9:21:44  
+	 * @param kuaikeId	快客id
+	 * @param xiaId		下单id
+	 * @return	数据
+	 */
+	public void setDistance(String xiaId,double distance);
 }

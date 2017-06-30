@@ -189,6 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    	time: 2
 					  	});
 						window.location.href="RequestMappingUtil/requestNUll/APP/placeAnOrder";
+						window.close();
 					},
 					error : function(xhr, type) {
 						//提示

@@ -271,4 +271,14 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	@Select("SELECT * FROM xiaordertab WHERE xiaId=#{xiaId}")
 	public R_xiaordertab getlnglat(@Param("xiaId") String xiaId);
 
+	
+	/**
+	 * 根据下单Id修改距离
+	 * @author 杨杰     
+	 * @created 2017年6月22日 上午10:12:41  
+	 * @param xiaId  下单Id
+	 */
+	@Update("update xiaordertab set distance=#{distance} where xiaId=#{xiaId}")
+	public void setDistance(@Param("xiaId") String xiaId,@Param("distance") double distance);
+	
 }

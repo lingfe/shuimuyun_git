@@ -228,5 +228,5 @@ public interface R_xiaordertabService {
 	 * @param xiaId		下单id
 	 * @return	数据
 	 */
-	public R_xiaordertab getlnglat(String kuaikeId,String xiaId);
+	public R_xiaordertab getlnglat(String xiaId);
 }

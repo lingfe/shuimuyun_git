@@ -268,7 +268,7 @@ public interface IR_xiaordertabMapper extends InterJDBC<R_xiaordertab> {
 	 * @created 2017年6月30日 上午10:08:48  
 	 * @return
 	 */
-	@Select("SELECT * FROM xiaordertab WHERE kuaikeId=#{kuaikeId}  AND xiaId=#{xiaId}")
-	public R_xiaordertab getlnglat(@Param("kuaikeId") String kuaikeId,@Param("xiaId") String xiaId);
+	@Select("SELECT * FROM xiaordertab WHERE xiaId=#{xiaId}")
+	public R_xiaordertab getlnglat(@Param("xiaId") String xiaId);
 
 }

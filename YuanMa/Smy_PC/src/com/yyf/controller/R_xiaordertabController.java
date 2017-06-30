@@ -736,11 +736,9 @@ public class R_xiaordertabController {
 	 * @return
 	 */
 	@RequestMapping(value = "/distance", method = RequestMethod.POST)
-	public String distance() {
-		String xiaId = "";
-		String kuaikeId = "";
+	public String distance(@RequestParam(value = "xiaId", required = false) String xiaId) {
 		String distance = "";
-		R_xiaordertab xiatab = r_xiaordertabService.getlnglat(xiaId, kuaikeId);
+		R_xiaordertab xiatab = r_xiaordertabService.getlnglat(xiaId);
 		double shoulng = xiatab.getShoulng();// 收获经度
 
 		double shoulat = xiatab.getShoulat();// 收获纬度

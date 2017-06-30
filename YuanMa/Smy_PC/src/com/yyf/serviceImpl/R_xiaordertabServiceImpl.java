@@ -175,7 +175,7 @@ public class R_xiaordertabServiceImpl implements R_xiaordertabService {
 	 * @param xiaId  下单Id  kuaikeId  快客id
 	 */
 	@Override
-	public R_xiaordertab getlnglat(String kuaikeId,String xiaId) {
-		return ir_xiaordertabMapper.getlnglat(kuaikeId, xiaId);
+	public R_xiaordertab getlnglat(String xiaId) {
+		return ir_xiaordertabMapper.getlnglat( xiaId);
 	}
 }

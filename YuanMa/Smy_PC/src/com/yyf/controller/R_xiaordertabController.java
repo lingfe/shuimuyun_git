@@ -443,12 +443,16 @@ public class R_xiaordertabController {
 	public @ResponseBody void fa(@PathVariable("kuaikeName") String kuaikeName,
 			@PathVariable("kuaikePhone") String kuaikePhone, @PathVariable("kuaikeAddress") String kuaikeAddress,
 			@PathVariable("xiaId") String xiaId, @PathVariable("kuaikeAddressInfo") String kuaikeAddressInfo,HttpServletRequest request) {
+		
+		System.out.println(kuaikeAddress+kuaikeAddressInfo);
 		// 发货人信息
 		Map<String, Double> map = getLngAndLat((kuaikeAddress+kuaikeAddressInfo).replace(" ", ""));
+		
 		double falng = map.get("lng");
 		double falat = map.get("lat");
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
+		
 		r_xiaordertabService.fa(kuaikeName, kuaikePhone, kuaikeAddress, xiaId, kuaikeAddressInfo, falng, falat);
 	}
 
@@ -471,6 +475,7 @@ public class R_xiaordertabController {
 			@PathVariable("xiaId") String xiaId, @PathVariable("shouhuoAddressInfo") String shouhuoAddressInfo,
 			HttpServletRequest request) {
 		// 收货人信息
+		System.out.println(shouhuoAddress+shouhuoAddressInfo);
 		Map<String, Double> map = getLngAndLat((shouhuoAddress+shouhuoAddressInfo).replace(" ", ""));
 		double shoulng = map.get("lng");
 		double shoulat = map.get("lat");
@@ -697,7 +702,7 @@ public class R_xiaordertabController {
 	public static Map<String, Double> getLngAndLat(String address) {
 		Map<String, Double> map = new HashMap<String, Double>();
 		String url = "http://api.map.baidu.com/geocoder/v2/?address=" + address
-				+ "&output=json&ak=4rcKAZKG9OIl0wDkICSLx8BA";
+				+ "&output=json&ak=Yog3Re4RxEwS79CETmcwBaxIpl70VDra";
 		String json = loadJSON(url);
 		JSONObject obj = JSONObject.fromObject(json);
 		if (obj.get("status").toString().equals("0")) {

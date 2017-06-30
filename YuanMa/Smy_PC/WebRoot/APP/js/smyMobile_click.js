@@ -304,15 +304,14 @@ $(function() {
 			});
 			return false;
 		}
-		if($("#xadder").val()==""){
+		if($("#adder").val()==""){
 			layer.open({
-				content: '请输入详细地址',
+				content: '请选择地址',
 				skin: 'msg',
 				time: 1
 			});
 			return false;
 		}
-
 	})
 	$("#order_buttom_text").click(function() {
 		if($(this).find(".dis").is(":hidden")) {

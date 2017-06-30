@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--【头部】end-->
 		<div class="box">
 			<div class="box_div">
-				<span>发货人：</span>
+				<span>收货人：</span>
 				<input type="text" placeholder="请输入姓名" id="con_name" type="text" value="${info.shouhuoName }"/>
 			</div>
 			<div class="box_div">

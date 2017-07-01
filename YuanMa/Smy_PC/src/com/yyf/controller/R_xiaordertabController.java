@@ -18,6 +18,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yyf.model.Balancetab;
@@ -93,12 +95,14 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value = "/getShowCode/{i}/{pageName}", method = RequestMethod.GET)
 	public String getShowCode(@PathVariable("i") String i, @PathVariable("pageName") String pageName,
-			@RequestParam(value = "xiaId", required = false) String xiaId) {
+			@RequestParam(value = "xiaId", required = false) String xiaId,
+			HttpServletRequest request) {
 		if (!StringUtils.isEmpty(xiaId)) {
 			// 通过当前状态来修改状态，
 			r_xiaordertabService.updateStatus(R_xiaordertabEnum.YDD.ordinal(), xiaId);
 		}
-
+		request.getSession().removeAttribute("xiaId");
+		request.getSession().removeValue("xiaId");
 		return i + "/" + pageName;
 	}
 
@@ -159,11 +163,13 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value = "/updateXiaQiangStatus/{xiaId}/{status}/{kuaikeId}", method = RequestMethod.GET)
 	public String updateXiaQiangStatus(@PathVariable("xiaId") String xiaId, @PathVariable("status") int status,
-			@PathVariable("kuaikeId") String kuaikeId, ModelMap model) {
+			@PathVariable("kuaikeId") String kuaikeId, ModelMap model,HttpServletRequest request) {
 		// 调用接口修改下单状态,抢单状态
 		r_xiaordertabService.updateStatus(status, xiaId);
 		// 得到数据
 		R_xiaordertab queryIdStatusXiaId = r_qiangordertabService.queryIdStatusXiaId(kuaikeId, status, xiaId);
+		request.getSession().removeAttribute("xiaId");
+		request.getSession().removeValue("xiaId");
 		model.addAttribute("info", queryIdStatusXiaId);
 		return "APP/grabASingleProcess";
 	}
@@ -552,7 +558,12 @@ public class R_xiaordertabController {
 			// 清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
 			request.getSession().removeValue("xiaId");
+			
+			request.getSession().removeAttribute("xiainfo");
+			request.getSession().removeValue("xiainfo");
 			model.remove("xiainfo");
+			
+			
 			String parameter = request.getParameter("kuaikeId");
 			Balancetab queryKuaikeId = balancetabService.queryKuaikeId(parameter);
 

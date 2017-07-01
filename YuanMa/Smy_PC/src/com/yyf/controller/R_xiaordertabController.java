@@ -96,11 +96,14 @@ public class R_xiaordertabController {
 	
 	@RequestMapping(value = "/getShowCode/{i}/{pageName}", method = RequestMethod.GET)
 	public String getShowCode(@PathVariable("i") String i, @PathVariable("pageName") String pageName,
+			@RequestParam(value = "xiaId", required = false) String xiaId,
+			HttpServletRequest request) {
 		if (!StringUtils.isEmpty(xiaId)) {
-			model.remove("xiainfo");
 			// 通过当前状态来修改状态，
 			r_xiaordertabService.updateStatus(R_xiaordertabEnum.YDD.ordinal(), xiaId);
 		}
+		request.getSession().removeAttribute("xiaId");
+		request.getSession().removeValue("xiaId");
 		return i + "/" + pageName;
 	}
 
@@ -166,6 +169,8 @@ public class R_xiaordertabController {
 		r_xiaordertabService.updateStatus(status, xiaId);
 		// 得到数据
 		R_xiaordertab queryIdStatusXiaId = r_qiangordertabService.queryIdStatusXiaId(kuaikeId, status, xiaId);
+		request.getSession().removeAttribute("xiaId");
+		request.getSession().removeValue("xiaId");
 		model.addAttribute("info", queryIdStatusXiaId);
 		return "APP/grabASingleProcess";
 	}
@@ -204,7 +209,7 @@ public class R_xiaordertabController {
 			@PathVariable("xiaId") String xiaId, ModelMap model) {
 		// 得到数据
 		R_xiaordertab queryIdStatusXiaId = r_qiangordertabService.queryIdStatusXiaId(kuaikeId, status, xiaId);
-		model.remove("xiainfo");
+
 		model.addAttribute("info", queryIdStatusXiaId);
 
 		return "APP/grabASingleProcess";
@@ -222,9 +227,8 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value = "/queryIdStatus/{kuaikeId}/{status}", method = RequestMethod.GET)
 	public @ResponseBody List<R_xiaordertab> queryIdStatus(@PathVariable("kuaikeId") String kuaikeId,
-			@PathVariable("status") int status,ModelMap model) {
+			@PathVariable("status") int status) {
 		// 得到数据
-		model.remove("xiainfo");
 		List<R_xiaordertab> queryIdStatus = r_qiangordertabService.queryIdStatus(kuaikeId, status);
 		return queryIdStatus;
 	}
@@ -333,7 +337,6 @@ public class R_xiaordertabController {
 			@PathVariable("xiaId") String xiaId, ModelMap model) {
 		// 得到数据
 		R_xiaordertab statusQueryXiaId = r_xiaordertabService.statusQueryXiaId(status, kuaikeId, xiaId);
-		model.remove("xiainfo");
 		model.addAttribute("info", statusQueryXiaId);
 		return "APP/placeAnOrderInfo";
 	}
@@ -373,8 +376,6 @@ public class R_xiaordertabController {
 			@PathVariable("xiaId") String xiaId, ModelMap model) {
 		// 得到数据
 		R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(xiaId);
-		
-		model.remove("xiainfo");
 		// 设置到map
 		model.addAttribute("info", xiaorderInfo);
 		//

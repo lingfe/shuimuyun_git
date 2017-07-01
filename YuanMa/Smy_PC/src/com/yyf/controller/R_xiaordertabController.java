@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -442,7 +443,7 @@ public class R_xiaordertabController {
 	@RequestMapping(value = "/fa/{xiaId}/{kuaikeName}/{kuaikePhone}/{kuaikeAddress}/{kuaikeAddressInfo}", method = RequestMethod.POST)
 	public @ResponseBody void fa(@PathVariable("kuaikeName") String kuaikeName,
 			@PathVariable("kuaikePhone") String kuaikePhone, @PathVariable("kuaikeAddress") String kuaikeAddress,
-			@PathVariable("xiaId") String xiaId, @PathVariable("kuaikeAddressInfo") String kuaikeAddressInfo,HttpServletRequest request) {
+			@PathVariable("xiaId") String xiaId, @PathVariable("kuaikeAddressInfo") String kuaikeAddressInfo,HttpServletRequest request,HttpServletResponse response) {
 		
 		System.out.println(kuaikeAddress+kuaikeAddressInfo);
 		// 发货人信息
@@ -452,8 +453,14 @@ public class R_xiaordertabController {
 		double falat = map.get("lat");
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		
-		r_xiaordertabService.fa(kuaikeName, kuaikePhone, kuaikeAddress, xiaId, kuaikeAddressInfo, falng, falat);
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			r_xiaordertabService.fa(kuaikeName, kuaikePhone, kuaikeAddress, xiaId, kuaikeAddressInfo, falng, falat);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -473,7 +480,7 @@ public class R_xiaordertabController {
 	public @ResponseBody void shou(@PathVariable("shouhuoName") String shouhuoName,
 			@PathVariable("shouhuoPhone") String shouhuoPhone, @PathVariable("shouhuoAddress") String shouhuoAddress,
 			@PathVariable("xiaId") String xiaId, @PathVariable("shouhuoAddressInfo") String shouhuoAddressInfo,
-			HttpServletRequest request) {
+			HttpServletRequest request,HttpServletResponse response) {
 		// 收货人信息
 		System.out.println(shouhuoAddress+shouhuoAddressInfo);
 		Map<String, Double> map = getLngAndLat((shouhuoAddress+shouhuoAddressInfo).replace(" ", ""));
@@ -481,8 +488,16 @@ public class R_xiaordertabController {
 		double shoulat = map.get("lat");
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		r_xiaordertabService.shou(shouhuoName, shouhuoPhone, shouhuoAddress, xiaId, shouhuoAddressInfo, shoulng,
-				shoulat);
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+
+			r_xiaordertabService.shou(shouhuoName, shouhuoPhone, shouhuoAddress, xiaId, shouhuoAddressInfo, shoulng,
+					shoulat);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

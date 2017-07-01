@@ -34,10 +34,54 @@ public class R_xiaordertab {
 		this.vehicle = vehicle;
 	}
 
-	private int distance;//	  `distance` INT(11) DEFAULT NULL COMMENT '货物体积'
+	private double distance;//	  `distance` INT(11) DEFAULT NULL COMMENT '货物体积'
 
-	public int getDistance() {
+	public double getDistance() {
 		return distance;
+	}
+
+	public R_xiaordertab(String vehicle, double distance, String xiaId, String kuaikeName, String kuaikePhone,
+			String kuaikeAddress, String shouhuoName, String shouhuoPhone, String shouhuoAddress,
+			String shouhuoAddressInfo, String quhouDate, Float kaikePrioes, int status, String okDate, String shopName,
+			float shopzholiang, int shopNumer, float shopprices, String shopGuige, Date shopDate,
+			String kuaikeAddressInfo, String shopType, String timeString, String shopImages, int payment,
+			String kuaikeId, double shoulng, double shoulat, double falng, double falat) {
+		super();
+		this.vehicle = vehicle;
+		this.distance = distance;
+		this.xiaId = xiaId;
+		this.kuaikeName = kuaikeName;
+		this.kuaikePhone = kuaikePhone;
+		this.kuaikeAddress = kuaikeAddress;
+		this.shouhuoName = shouhuoName;
+		this.shouhuoPhone = shouhuoPhone;
+		this.shouhuoAddress = shouhuoAddress;
+		this.shouhuoAddressInfo = shouhuoAddressInfo;
+		this.quhouDate = quhouDate;
+		this.kaikePrioes = kaikePrioes;
+		this.status = status;
+		this.okDate = okDate;
+		this.shopName = shopName;
+		this.shopzholiang = shopzholiang;
+		this.shopNumer = shopNumer;
+		this.shopprices = shopprices;
+		this.shopGuige = shopGuige;
+		this.shopDate = shopDate;
+		this.kuaikeAddressInfo = kuaikeAddressInfo;
+		this.shopType = shopType;
+		this.timeString = timeString;
+		this.shopImages = shopImages;
+		this.payment = payment;
+		this.kuaikeId = kuaikeId;
+		this.shoulng = shoulng;
+		this.shoulat = shoulat;
+		this.falng = falng;
+		this.falat = falat;
+	}
+
+	public R_xiaordertab() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public void setDistance(int distance) {

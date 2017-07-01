@@ -6,6 +6,7 @@
 	var zhi1 = document.querySelector("#zhi1");
 	var distance = document.querySelector("#distance");
 	var shopprices = document.querySelector("#shopprices");
+	var qian = 0;
 	for(var i = 0; i < jia.length; i++) {
 		jia[0].onclick = function() {
 			zhi.value ++;	
@@ -43,6 +44,10 @@
 				}
 				else if(zhi1.value<=5 && distance.value>35 && distance.value<=60){
 					qian=8+(distance.value-5)*3;
+					shopprices.value = qian.toFixed(2)
+				}
+				else if(zhi1.value>5 && distance.value<=5){
+					qian=8+(zhi1.value-5)*0.5;
 					shopprices.value = qian.toFixed(2)
 				}
 				else if(zhi1.value>5 && distance.value>5 && distance.value<=15){

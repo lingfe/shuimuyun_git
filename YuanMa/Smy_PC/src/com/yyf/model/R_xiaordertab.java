@@ -34,13 +34,13 @@ public class R_xiaordertab {
 		this.vehicle = vehicle;
 	}
 
-	private int distance;//	  `distance` INT(11) DEFAULT NULL COMMENT '货物体积'
+	private double distance;//	  `distance` INT(11) DEFAULT NULL COMMENT '货物体积'
 
-	public int getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 
-	public void setDistance(int distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
 
@@ -305,6 +305,7 @@ public class R_xiaordertab {
 	private double falng;//发货经度
 	
 	private double falat;//发货纬度
+	
 	public String getShouhuoPhone() {
 		return shouhuoPhone;
 	}

@@ -442,17 +442,18 @@ public class R_xiaordertabController {
 	@RequestMapping(value = "/fa/{xiaId}/{kuaikeName}/{kuaikePhone}/{kuaikeAddress}/{kuaikeAddressInfo}", method = RequestMethod.POST)
 	public @ResponseBody void fa(@PathVariable("kuaikeName") String kuaikeName,
 			@PathVariable("kuaikePhone") String kuaikePhone, @PathVariable("kuaikeAddress") String kuaikeAddress,
-			@PathVariable("xiaId") String xiaId, @PathVariable("kuaikeAddressInfo") String kuaikeAddressInfo,HttpServletRequest request) {
-		
-		System.out.println(kuaikeAddress+kuaikeAddressInfo);
+			@PathVariable("xiaId") String xiaId, @PathVariable("kuaikeAddressInfo") String kuaikeAddressInfo,
+			HttpServletRequest request) {
+
+		System.out.println(kuaikeAddress + kuaikeAddressInfo);
 		// 发货人信息
-		Map<String, Double> map = getLngAndLat((kuaikeAddress+kuaikeAddressInfo).replace(" ", ""));
-		
+		Map<String, Double> map = getLngAndLat((kuaikeAddress + kuaikeAddressInfo).replace(" ", ""));
+
 		double falng = map.get("lng");
 		double falat = map.get("lat");
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		
+
 		r_xiaordertabService.fa(kuaikeName, kuaikePhone, kuaikeAddress, xiaId, kuaikeAddressInfo, falng, falat);
 	}
 
@@ -475,8 +476,8 @@ public class R_xiaordertabController {
 			@PathVariable("xiaId") String xiaId, @PathVariable("shouhuoAddressInfo") String shouhuoAddressInfo,
 			HttpServletRequest request) {
 		// 收货人信息
-		System.out.println(shouhuoAddress+shouhuoAddressInfo);
-		Map<String, Double> map = getLngAndLat((shouhuoAddress+shouhuoAddressInfo).replace(" ", ""));
+		System.out.println(shouhuoAddress + shouhuoAddressInfo);
+		Map<String, Double> map = getLngAndLat((shouhuoAddress + shouhuoAddressInfo).replace(" ", ""));
 		double shoulng = map.get("lng");
 		double shoulat = map.get("lat");
 		request.getSession().removeAttribute("distance");
@@ -741,45 +742,34 @@ public class R_xiaordertabController {
 	 * @author tianhao
 	 * @created 2017年6月30日 上午9:12:24
 	 * @param
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/distance", method = RequestMethod.POST)
-	public void distance(HttpServletRequest request, HttpServletResponse response
-			) throws IOException {
-		double distance = -1;
+	public void distance(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		double distance = 0;
 		String xiaId = request.getParameter("xiaId");
 		R_xiaordertab xiatab = r_xiaordertabService.getlnglat(xiaId);
 		double shou = xiatab.getShoulng();
 		double fa = xiatab.getFalng();
-		int shouaa = (int) shou;
-		int faaa = (int) fa;
-		if(shouaa!=0 && faaa!=0){
+		if (shou != 0 && fa != 0) {
 			double shoulng = xiatab.getShoulng();// 收获经度
 			double shoulat = xiatab.getShoulat();// 收获纬度
 			double falng = xiatab.getFalng();// 发货经度
 			double falat = xiatab.getFalat();// 发货纬度
-			distance = getDistance(shoulng, shoulat, falng, falat)/1000;
-			r_xiaordertabService.setDistance(xiaId,distance);
+			distance = getDistance(shoulng, shoulat, falng, falat) / 1000;
+			r_xiaordertabService.setDistance(xiaId, distance);
 		}
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		DecimalFormat df = new DecimalFormat("######0.00");   
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		int a = (int) distance;
-		System.out.println("a:"+a);
-		if(a!=-1){
-			System.out.println("存入session");
-			request.getSession().setAttribute("distance",  df.format(distance));
-		}else{
-			System.out.println("存入空格");
-			request.getSession().setAttribute("distance",  " ");
-		}
-		out.print(a);
+		System.out.println("存入session");
+		request.getSession().setAttribute("distance", distance);
+		out.print(distance);
 
 	}
 
-	//根据经纬度获取两点间的直线距离
+	// 根据经纬度获取两点间的直线距离
 	public static double getDistance(double lng1, double lat1, double lng2, double lat2) {
 		double radLat1 = rad(lat1);
 		double radLat2 = rad(lat2);
@@ -796,11 +786,5 @@ public class R_xiaordertabController {
 	private static double rad(double d) {
 		return d * Math.PI / 180.0;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }

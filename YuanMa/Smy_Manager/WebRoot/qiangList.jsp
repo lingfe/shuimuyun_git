@@ -124,7 +124,7 @@
 					</td>
 					
 					<td>
-					<a href="#" class="tablelink">查看</a> 
+					<a href="querydetail/${qiang.qiangId }" class="tablelink">查看</a> 
 					<a href="#"	class="tablelink"> 删除</a>
 					</td>
 				</tr>

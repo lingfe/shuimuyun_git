@@ -28,4 +28,9 @@ public class QiangordertabService {
 		int count=qiangordertabMapper.queryCount();
 		return count;
 	}
+
+	public Qiangordertab queryDetail(String qiangId) {
+		Qiangordertab queryDetail=qiangordertabMapper.queryDetail(qiangId);
+		return queryDetail;
+	}
 }

@@ -21,4 +21,16 @@ public interface QiangordertabMapper {
 	@Select("select count(*) from qiangordertab")
 	public int queryCount();
 
+	
+	
+	
+	
+	//根据ID查询商品详细
+	@Select("SELECT q.qiangId,q.xiaId,q.kuaikeId,q.status,q.qiangDate ," +
+			"q.xiaId as \"Xiaordertab.xiaId\"," +
+			"i.kuaikeName as \"xiaordertab.kuaikeName\"," +
+			"i.kuaikePhone as \"xiaordertab.kuaikePhone\"," +
+			"i.kuaikeAddress as \"xiaordertab.kuaikeAddress\" "+"FROM qiangordertab AS q INNER JOIN xiaordertab AS i ON  q.`xiaId`=i.`xiaId` WHERE q.qiangId=#{qiangId}")
+	public Qiangordertab queryDetail(@Param("qiangId") String qiangId);
+
 }

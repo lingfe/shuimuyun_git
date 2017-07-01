@@ -1,6 +1,7 @@
 package com.smy.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -45,4 +46,28 @@ public class QiangordertabController {
 
 		return "qiangList";
 	}
+	
+	
+	/**
+	 * 根据抢单Id得到抢单详情
+	 * @param map 集合对象
+	 * @param qiangId 抢单Id
+	 * @return
+	 */
+	@RequestMapping(value="querydetail/{qiangId}",method=RequestMethod.GET)
+	public String qiangDetail(Map<String,Object> map,@PathVariable("qiangId") String qiangId) {
+		
+		Qiangordertab qiangTell=qiangordertabService.queryDetail(qiangId);
+		
+		map.put("qiangTell", qiangTell);
+		
+		System.out.println( qiangTell);
+		
+		
+		return "qiangDetail";
+	}
+	
+	
+	
+	
 }

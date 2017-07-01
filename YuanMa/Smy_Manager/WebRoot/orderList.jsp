@@ -101,7 +101,7 @@ width: 47px;
 					<th>商品数量</th>
 					<th>支付费用</th>
 					<th>货物类型</th>
-					<th>最快取货时间</th>
+					<th>最迟取货时间</th>
 					<th>是否支付</th>
 					<th>操作</th>
 				</tr>
@@ -120,14 +120,14 @@ width: 47px;
 					
 					<td>${o.shouhuoAddress }${o.shouhuoAddressInfo }</td>
 					<td>
-						${o.quhuoDate }
+						${o.okDate }
 					</td>
 					<td>${o.status }</td>
 					<td>${o.shopzholiang }</td>
 					<td>${o.shopNumer }</td>
 					<td>${o.shopprices }</td>
 					<td>${o.shopType }</td>
-					<td>${o.timeString }</td>
+					<td>${o.quhuoDate }</td>
 					<td>${o.payment }</td>
 					<td>操作</td>
 				</tr>

@@ -56,6 +56,76 @@
 
 	});
 </script>
+<style>
+.footer {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+}
+.footer_top {
+	background: #161616;
+	height: auto;
+	overflow: hidden;
+	padding: 10px 0;
+}
+.foote_cont {
+	width: 1200px;
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.footer_map {
+	width: 100%;
+	height: auto;
+}
+.footer_map a {
+	display: block;
+	width: auto;
+	height: 13px;
+	line-height: 13px;
+	color: #757575;
+	font-size: 12px;
+	text-decoration: none;
+	padding-right: 10px;
+	border-right: 1px solid #757575;
+	float: left;
+	margin-right: 10px;
+}
+.footer_map a:hover,
+.footer_bCont a:hover{
+	color: #ff6d46;
+}
+.footer_map .footer_map_last {
+	border: none;
+}
+.footer_bottom {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background-color: rgba(0,0,0,.8);
+}
+.footer_bCont {
+	width: 1200px;
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+.footer_bCont a {
+	display: block;
+	width: auto;
+	height: 13px;
+	line-height: 13px;
+	color: #757575;
+	font-size: 12px;
+	text-decoration: none;
+	float: left;
+	margin-right: 20px;
+}
+
+</style>
 </head>
 <body>
 	<div class="header">
@@ -68,7 +138,7 @@
 				<li><img src="<%=basePath%>PC/images/e.png" /><a
 					href="javascript:void(0);">wenping@smuyun.com</a></li>
 				<li><img src="<%=basePath%>PC/images/p.png" /><a
-					href="javascript:void(0);">0851 8510 3179</a></li>
+					href="javascript:void(0);">0851 8861 0341</a></li>
 			</ul>
 		</div>
 		<div style="clear: both;"></div>
@@ -152,42 +222,29 @@
 			src="<%=basePath%>PC/images/a002_03.png" /> <span>我要下单</span></a>
 	</div>
 	<div style="clear: both;"></div>
-	<!--底部开始-->
-	<footer>
-	<div class="col-lg-1"></div>
-	<div class="fooeter1 col-lg-2 col-sm-6 col-xs-6 col-md-2">
-		<ul>
-			<li>关于我们</li>
-			<li><a href="#">关于我们的详情</a></li>
-		</ul>
-	</div>
-	<div class="fooeter2 col-lg-2 col-sm-6 col-xs-6 col-md-2">
-		<ul>
-			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">帮助信息</a></li>
-			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">注册帮助</a></li>
-			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">登录帮助</a></li>
-			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">认证帮助</a></li>
-			<li><img src="<%=basePath%>PC/images/004_03.png" /><a href="#">更多</a></li>
-		</ul>
-
-	</div>
-	<div class="fooeter3 col-lg-2 col-sm-6 col-xs-6 col-md-2">
-		<ul>
-			<li>帮助信息</li>
-		</ul>
-	</div>
-	<div class="fooeter4 col-lg-5 col-sm-6 col-xs-6 col-md-5">
-		<ul>
-			<li>联系我们</li>
-			<li><span>商城名称:</span><a href="http://www.smuyun.com/">水木云</a></li>
-			<li><span>商城客服电话:</span><a href="#"> 0851 8510 3179</a></li>
-			<li><span>商城客服邮箱:</span><a href="#">wenping@smuyun.com</a></li>
-			<li><span>商城关键词组:</span><a href="http://www.smuyun.com/">水木云， 水木云商城</a></li>
-			<li><span>商城简要说明:</span><a href="#">水木云实体社区服务商城</a></li>
-		</ul>
-	</div>
-
-	</footer>
+	<!--【底部】-->
+		<footer class="footer">
+			<div class="footer_top">
+				<div class="foote_cont">
+					<div class="footer_map">
+						<a href="<%=basePath %>PC/index.jsp">首页</a>
+						<a href="<%=basePath %>PC/index.jsp">人人配送</a>
+						<a href="<%=basePath %>PC/intro.jsp">公众号</a>
+						<a href="<%=basePath %>PC/index.jsp">网站地图</a>
+						<a class="footer_map_last" href="<%=basePath %>PC/index.jsp">SITEAPM</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer_bottom">
+				<div class="footer_bCont">
+					<a href="javascript:;">公司：水木云网络科技有限公司</a>
+					<a href="javascript:;">公司地址：贵州省贵阳市花果园E区二单元</a>
+					<a href="javascript:;">工信部备案号黔ICP备16008136号</a>
+					<a href="javascript:;"><span><img alt="" src="<%=basePath%>PC/images/beianhao.jpg" width="15"></span>贵公网安备52010202000388号</a>
+				</div>
+			</div>
+		</footer>
+		<!--【底部】end-->
 	<!-- 提示 -->
 	<script type="text/javascript">	${errorShow }</script>
 </body>

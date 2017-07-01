@@ -28,7 +28,7 @@ header ul li{text-align: center; width: 20%;}
 .ren_aj2 img{right: 20px;position: relative;top: -8px;}
 .ren_aj2 span{color: #ffffff;font-size:30px;font-family: "华文中宋";}
 /*底部开始*/
-footer{background: #e5e5e5; width: 100%;min-height:300px;margin-top: 60px;background-size:cover; clear: both;}
+footer{background: #e5e5e5; width: 100%;margin-top: 60px;background-size:cover; clear: both;}
 .fooeter1 ul li{text-align:center;line-height: 40px; font-size: 1.2em;color: #8f8f8f;}
 .fooeter1 ul li a{color: #8f8f8f;font-size: 0.8em;}
 .fooeter1 ul{margin-top: 20px;border-right: 1px solid #bebebe;}

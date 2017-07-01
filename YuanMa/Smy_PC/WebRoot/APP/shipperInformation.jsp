@@ -139,19 +139,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="box">
 			<div class="box_div">
 				<span>发货人：</span>
-				<input type="text" placeholder="请输入姓名" id="con_name" value="${info.kuaikeName }"/>
+				<input type="text" placeholder="请输入姓名" id="con_name" value="${xiainfo.kuaikeName }"/>
 			</div>
 			<div class="box_div">
 				<span>手机号：</span>
-				<input type="text" placeholder="请输入手机号" id="con_phone" value="${info.kuaikePhone }"/>
+				<input type="text" placeholder="请输入手机号" id="con_phone" value="${xiainfo.kuaikePhone }"/>
 			</div>
 			<div class="box_div" >
 					<span>地址：</span>
-					<input type="text" id="adder" onclick="document.activeElement.blur();" readonly="readonly" placeholder="请选择地址"/>
+					<input type="text" id="adder" onclick="document.activeElement.blur();" value="${xiainfo.kuaikeAddress }" readonly="readonly" placeholder="请选择地址"/>
 			</div>
 			<div class="box_div">
 					<span>街 道：</span>
-					<input type="text" id="xadder" value="${info.kuaikeAddressInfo }" placeholder="请输入详细地址"/>
+					<input type="text" id="xadder" value="${xiainfo.kuaikeAddressInfo }" placeholder="请输入详细地址"/>
 			</div>
 		</div>
 		<!-- 下单id -->

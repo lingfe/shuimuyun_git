@@ -423,7 +423,7 @@ public class R_xiaordertabController {
 			return "APP/" + pageName;
 		} else {
 			R_xiaordertab xiaorderInfo = r_xiaordertabService.xiaorderInfo(attribute.toString());
-			model.addAttribute("info", xiaorderInfo);
+			model.addAttribute("xiainfo", xiaorderInfo);
 			request.getSession().setAttribute("xiaId", attribute);
 			return "APP/" + pageName;
 		}
@@ -552,6 +552,7 @@ public class R_xiaordertabController {
 			// 清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
 			request.getSession().removeValue("xiaId");
+			model.remove("xiainfo");
 			String parameter = request.getParameter("kuaikeId");
 			Balancetab queryKuaikeId = balancetabService.queryKuaikeId(parameter);
 
@@ -560,6 +561,8 @@ public class R_xiaordertabController {
 				request.getSession().setAttribute("zhifumima", queryKuaikeId.getZhifupwd());
 
 			}
+			request.getSession().removeAttribute("distance");
+			request.getSession().removeValue("distance");
 			model.addAttribute("xiaId", tab.getXiaId());
 			model.addAttribute("sh", tab.getShopprices());
 			return "APP/myWallet_Recharge";
@@ -769,6 +772,7 @@ public class R_xiaordertabController {
 		double shou = xiatab.getShoulng();
 		double fa = xiatab.getFalng();
 		if (shou != 0 && fa != 0) {
+			System.out.println("获取距离");
 			double shoulng = xiatab.getShoulng();// 收获经度
 			double shoulat = xiatab.getShoulat();// 收获纬度
 			double falng = xiatab.getFalng();// 发货经度
@@ -780,7 +784,8 @@ public class R_xiaordertabController {
 		PrintWriter out = response.getWriter();
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		System.out.println("存入session");
+		System.out.println("存入session:"+distance);
+		
 		request.getSession().setAttribute("distance", distance);
 		out.print(distance);
 

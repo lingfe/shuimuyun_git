@@ -40,6 +40,7 @@ public class R_xiaordertab {
 		return distance;
 	}
 
+
 	public R_xiaordertab(String vehicle, double distance, String xiaId, String kuaikeName, String kuaikePhone,
 			String kuaikeAddress, String shouhuoName, String shouhuoPhone, String shouhuoAddress,
 			String shouhuoAddressInfo, String quhouDate, Float kaikePrioes, int status, String okDate, String shopName,
@@ -84,9 +85,6 @@ public class R_xiaordertab {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setDistance(int distance) {
-		this.distance = distance;
-	}
 
 	private String xiaId;// 下单id `xiaId` VARCHAR(64) NOT NULL,
 
@@ -349,6 +347,7 @@ public class R_xiaordertab {
 	private double falng;//发货经度
 	
 	private double falat;//发货纬度
+	
 	public String getShouhuoPhone() {
 		return shouhuoPhone;
 	}

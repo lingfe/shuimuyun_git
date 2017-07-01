@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -75,7 +76,8 @@ public class R_qiangordertabController {
 	 * @return
 	 */
 	@RequestMapping(value="r_qiangordertabController/insertAjax/{xiaId}/{kuaikeId}",method=RequestMethod.GET)
-	public @ResponseBody boolean  insertAjax(@PathVariable("xiaId")String xiaId,@PathVariable("kuaikeId")String kuaikeId){
+	public @ResponseBody boolean  insertAjax(@PathVariable("xiaId")String xiaId,@PathVariable("kuaikeId")String kuaikeId,
+		ModelMap model,HttpServletRequest request){
 		try {
 			// 得到唯一的ID 作为抢单ID的唯一标示列
 			// 默认抢单id
@@ -83,7 +85,9 @@ public class R_qiangordertabController {
 			// 强制转换
 			String uuid = uuid1.toString();
 			qiangordertabService.Insert(uuid, xiaId, kuaikeId, R_qiangordertabEnum.QD_OK.ordinal(), new Date());
-			
+			model.remove("xiainfo");
+			request.getSession().removeAttribute("xiaId");
+			request.getSession().removeValue("xiaId");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

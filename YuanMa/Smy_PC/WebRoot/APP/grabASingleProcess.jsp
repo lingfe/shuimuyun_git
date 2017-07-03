@@ -75,6 +75,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: 1rem;
 			z-index: 5;
 		}
+		.quebtn {
+			 width: 94%;
+		    background: #418bc8;
+		    color: white;
+		    border: none;
+		    outline: none;
+		    font-size: 0.15rem;
+		    margin-left: 3%;
+		    border-radius: 10px;
+		    height: .4rem;
+		    line-height: .4rem;
+		}
+		.simg{
+			width: 96%;
+			margin:2%;
+		}
 	</style>
 	</head>
 	<body>
@@ -166,33 +182,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		<!--上传图片-->
-		<div class="quickSf_item">
-			<input class="file" type="file" name="files" accept="image/*"  capture="camera" />
-			<img title="" alt="" src="" />
-			<span>上传货物图片</span>
-		</div>
-		<div class="quickSf_item">
-			<input class="file" type="file" name="files" accept="image/*"  capture="camera" />
-			<img title="" alt="" src="" />
-			<span>上传货物图片</span>
-		</div>
-		<div class="quickSf_item">
-			<input class="file" type="file" name="files" multiple="multiple" accept="image/*" />
-			<img title="" alt="" src="" />
-			<span>上传货物图片</span>
+		<!--如果有图片存放img的div-->
+		<div class="simg">
+			<img src="<%=basePath%>APP/images/banner1.jpg" width="100%">
 		</div>
 		<div class="shang_img">		
 			<c:if test="${info.status==1 }" >
 				<!-- 确定取货 -->
 				<div class="order_buttom">
-					<a href="xiaordertab/updateXiaQiangStatus/${info.xiaId}/${info.status}/${login.kuaikeId}"><button id="btn_ImgUpStart" class="order_btn">确定取货</button></a>
+					<a href="xiaordertab/updateXiaQiangStatus/${info.xiaId}/${info.status}/${login.kuaikeId}"><button id="btn_ImgUpStart" class="quebtn">确定取货</button></a>
 				</div>
 			</c:if>
 			<c:if test="${info.status==2 }">
-				<!--如果有图片存放img的div-->
+				
 				<div></div>
-				<button id="btn" class="order_btn">到达目的地</button>
+				<button id="btn" class="quebtn">到达目的地</button>
 			</c:if>
 		</div>
 		<script type="text/javascript" src="<%=basePath%>APP/js/jquery-1.7.2.min.js" ></script>

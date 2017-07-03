@@ -23,14 +23,26 @@ public interface QiangordertabMapper {
 
 	
 	
-	
-	
 	//根据ID查询商品详细
 	@Select("SELECT q.qiangId,q.xiaId,q.kuaikeId,q.status,q.qiangDate ," +
 			"q.xiaId as \"Xiaordertab.xiaId\"," +
 			"i.kuaikeName as \"xiaordertab.kuaikeName\"," +
 			"i.kuaikePhone as \"xiaordertab.kuaikePhone\"," +
-			"i.kuaikeAddress as \"xiaordertab.kuaikeAddress\" "+"FROM qiangordertab AS q INNER JOIN xiaordertab AS i ON  q.`xiaId`=i.`xiaId` WHERE q.qiangId=#{qiangId}")
+			"i.kuaikeAddress as \"xiaordertab.kuaikeAddress\" ,"+
+			"i.shouhuoName as \"xiaordertab.shouhuoName\","+
+			"i.shouhuoPhone as \"Xiaordertab.shouhuoPhone\"," +
+			
+			"i.shouhuoAddress as \"xiaordertab.shouhuoAddress\"," +
+			"i.shouhuoAddressInfo as \"xiaordertab.shouhuoAddressInfo\"," +
+			"i.quhouDate as \"xiaordertab.quhouDate\" ,"+
+			"i.status as \"xiaordertab.status\","+
+			
+			"i.shopzholiang as \"xiaordertab.shopzholiang\"," +
+			"i.shopNumer as \"xiaordertab.shopNumer\"," +
+			"i.kuaikeAddressInfo as \"xiaordertab.kuaikeAddressInfo\" ,"+
+			"i.shopType as \"xiaordertab.shopType\","+
+			"i.shopImages as \"Xiaordertab.shopImages\" " +
+			"FROM qiangordertab AS q INNER JOIN xiaordertab AS i ON  q.`xiaId`=i.`xiaId` WHERE q.qiangId=#{qiangId}")
 	public Qiangordertab queryDetail(@Param("qiangId") String qiangId);
 
 }

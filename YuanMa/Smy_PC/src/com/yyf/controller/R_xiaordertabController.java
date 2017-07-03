@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -796,6 +797,7 @@ public class R_xiaordertabController {
 		R_xiaordertab xiatab = r_xiaordertabService.getlnglat(xiaId);
 		double shou = xiatab.getShoulng();
 		double fa = xiatab.getFalng();
+		String dist  = "";
 		if (shou != 0 && fa != 0) {
 			System.out.println("获取距离");
 			double shoulng = xiatab.getShoulng();// 收获经度
@@ -804,15 +806,19 @@ public class R_xiaordertabController {
 			double falat = xiatab.getFalat();// 发货纬度
 			distance = getDistance(shoulng, shoulat, falng, falat) / 1000;
 			r_xiaordertabService.setDistance(xiaId, distance);
+			NumberFormat nf = NumberFormat.getNumberInstance();
+			// 保留两位小数
+	        nf.setMaximumFractionDigits(2); 
+			dist= nf.format(distance);
 		}
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		System.out.println("存入session:" + distance);
+		System.out.println("存入session:" + dist);
 
-		request.getSession().setAttribute("distance", distance);
-		out.print(distance);
+		request.getSession().setAttribute("distance", dist);
+		out.print(dist);
 
 	}
 

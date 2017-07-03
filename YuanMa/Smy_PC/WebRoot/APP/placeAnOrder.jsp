@@ -178,7 +178,7 @@
 				<img src="<%=basePath%>APP/images/icon/type.png" width="27" /> <label>货物类型</label>
 				<div class="order_right" id="order_right">
 					<input type="text" onfocus="this.blur();" readonly="readonly"
-						class="order_r_inp" name="shopType" id="order_leixin" value="易碎" />
+						class="order_r_inp" name="shopType" id="order_leixin" value="无" />
 					<img src="<%=basePath%>APP/images/icon/orderright.png" width="10" />
 				</div>
 			</div>
@@ -278,8 +278,9 @@
 				id="order_close"></span>
 		</div>
 		<div class="order_tan_context" id="order_tex">
-			<span>易碎</span> <span>贵重</span>
+			<span>无</span> <span>易碎</span> <span>贵重</span> 
 		</div>
+		
 	</div>
 
 	<!--弹出菜单二-->

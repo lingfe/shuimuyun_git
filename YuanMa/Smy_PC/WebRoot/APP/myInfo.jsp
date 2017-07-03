@@ -43,24 +43,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<p class="myInfo_info">下单、抢单从这里开始——水木云物流配送服务</p>
 		</div>
 		
-		<nav class="myInfo_nav">
-			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span id="dfk">0</span>
-				<p>待付款</p>
-			</a>
-			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span id="yjd">0</span>
-				<p>已接单</p>
-			</a>
-			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span id="yqh">0</span>
-				<p>已发货</p>
-			</a>
-			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
-				<span id="wpj">0</span>
-				<p>未评价</p>
-			</a>
-		</nav>
 		
 		<div class="myInfo_list">
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">

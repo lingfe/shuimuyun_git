@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smy.mapper.XiaordertabMapper;
+import com.smy.model.Qiangordertab;
 import com.smy.model.Xiaordertab;
 
 /**
@@ -37,6 +38,11 @@ public class XiaordertabService {
 	public int queryCount() {
 		int count=xiaordertabMapper.queryCount();
 		return count;
+	}
+	
+	public Xiaordertab queryDetail(String xiaId) {
+		Xiaordertab queryDetail=xiaordertabMapper.queryDetail(xiaId);
+		return queryDetail;
 	}
 	
 }

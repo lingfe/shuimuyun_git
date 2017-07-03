@@ -23,4 +23,11 @@ public interface XiaordertabMapper {
 	 */
 	@Select("select count(*) from xiaordertab")
 	public int queryCount(); 
+	
+	/**
+	 * 查询商品信息
+	 * @return
+	 */
+	@Select("select * from xiaordertab where xiaId=#{xiaId}")
+	public Xiaordertab queryDetail(@Param("xiaId")String xiaId); 
 }

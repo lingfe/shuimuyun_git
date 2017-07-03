@@ -25,7 +25,11 @@
 			$("body").show();
 		},500);
 	</script>
-	
+	<style type="text/css">
+		.aaa a{
+			width: 33.33%;
+		}
+	</style>
 </head>
 <body style="background: #fff">
 	<!--【头部】-->
@@ -39,8 +43,7 @@
 	<!--【头部】end-->
 	
 	<div class="oallCont_muen">
-		<div class="active">全部</div>
-		<div id="express">我的配送</div>
+		<div id="express" class="active">我的配送</div>
 		<div id="delivery">我的发货</div>
 	</div>
 
@@ -49,21 +52,19 @@
 	<div class="oallCont">
 		
 		
-		<!--【nav】-->
-	<nav class="oallNav" id="div_statusXia"> 
-		<a class="active" href="javascript:void(0);" id="x0" title="x0" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/0" onclick="javascript:statusHref('x0');">全部</a> 
+ 	<!--【nav】--> 
+ 	<nav class="oallNav" id="div_statusXia">  
+ 		<a class="active" href="javascript:void(0);" title="x2" id="x2" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/2" onclick="javascript:statusHref('x2');">已发货</a> 
 		<a href="javascript:void(0);" title="x1" id="x1" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/1" onclick="javascript:statusHref('x1');">已接单</a> 
-		<a href="javascript:void(0);" title="x2" id="x2" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/2" onclick="javascript:statusHref('x2');">已发货</a> 
 		<a href="javascript:void(0);" title="x3" id="x3" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/3" onclick="javascript:statusHref('x3');">已到达</a> 
 		<a href="javascript:void(0);" title="x4" id="x4" url="xiaordertab/getXiaIdStatusList/${login.kuaikeId}/4" onclick="javascript:statusHref('x4');">已评价</a>
-	</nav>
+ 	</nav> 
 	
-	<nav class="oallNav oallNavEr" id="div_statusQiang"  style="display: none;"> 
-		<a class="active" href="javascript:void(0);" id="q0" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">全部</a>
-		<a href="javascript:void(0);" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">已抢单</a> 
+	<nav class="oallNav oallNavEr aaa" id="div_statusQiang"  style="display: none;"> 
+		<a class="active" href="javascript:void(0);" title="q0" url="xiaordertab/queryIdStatus/${login.kuaikeId}/0" onclick="javascript:statusHref('q0');">已抢单</a> 
 		<a href="javascript:void(0);" title="q1" id="q1" url="xiaordertab/queryIdStatus/${login.kuaikeId}/1" onclick="javascript:statusHref('q1');">已取货</a> 
 		<a href="javascript:void(0);" title="q2" id="q2" url="xiaordertab/queryIdStatus/${login.kuaikeId}/2" onclick="javascript:statusHref('q2');">已派单</a> 
-	</nav>
+	</nav> 
 	<!--【nav】end-->
 		
 		

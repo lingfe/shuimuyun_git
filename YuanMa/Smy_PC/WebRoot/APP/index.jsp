@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myOrder">
 				<img src="<%=basePath%>APP/images/index_send.png" />
-				<p>正在派送</p>
+				<p>我的订单</p>
 			</a>
 			<a href="RequestMappingUtil/requestNUll/APP/myWallet">
 				<img src="<%=basePath%>APP/images/index_purse.png" />

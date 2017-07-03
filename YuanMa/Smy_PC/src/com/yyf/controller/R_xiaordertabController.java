@@ -41,6 +41,7 @@ import com.yyf.model.R_kuaiketab;
 import com.yyf.model.R_xiaordertab;
 import com.yyf.service.BalancetabService;
 import com.yyf.service.CityService;
+import com.yyf.service.R_kuaiketabService;
 import com.yyf.service.R_qiangordertabService;
 import com.yyf.service.R_xiaordertabService;
 import com.yyf.util.R_xiaordertabEnum;
@@ -49,13 +50,16 @@ import net.sf.json.JSONObject;
 
 /**
  * 
- * 文件名： R_xiaordertabController.java 描述： 下单，表现层 修改人： lijie 修改时间： 2017年5月16日
+ * 文件名： R_xiaordertabController.java 描述： 下单，表现层 修改人： tianhao 修改时间： 2017年5月16日
  * 下午4:49:39 修改内容：
  */
 @Controller
 @RequestMapping("/xiaordertab")
 public class R_xiaordertabController {
 
+	// 自动装配 取发货人默认信息
+	@Autowired
+	private R_kuaiketabService kuaiketabService;
 	// 自动装配 下单
 	@Autowired
 	private R_xiaordertabService r_xiaordertabService;
@@ -83,7 +87,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 抢单流程，到达目的地后修改下单抢单状态
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月22日 上午11:41:35
 	 * @param i
 	 *            app/pc
@@ -93,11 +97,10 @@ public class R_xiaordertabController {
 	 *            下单id
 	 * @return url
 	 */
-	
+
 	@RequestMapping(value = "/getShowCode/{i}/{pageName}", method = RequestMethod.GET)
 	public String getShowCode(@PathVariable("i") String i, @PathVariable("pageName") String pageName,
-			@RequestParam(value = "xiaId", required = false) String xiaId,
-			HttpServletRequest request) {
+			@RequestParam(value = "xiaId", required = false) String xiaId, HttpServletRequest request) {
 		if (!StringUtils.isEmpty(xiaId)) {
 			// 通过当前状态来修改状态，
 			r_xiaordertabService.updateStatus(R_xiaordertabEnum.YDD.ordinal(), xiaId);
@@ -111,7 +114,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 下单付款，点击付款，传出金额
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月21日 下午10:08:20
 	 * @param i
 	 *            APP/PC
@@ -139,7 +142,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 我的个人中心里面根据订单状态统计
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月17日 上午10:24:15
 	 * @return url
 	 */
@@ -154,7 +157,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 根据下单id修改指定状态下单单子，抢单单子的status状态
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月16日 下午5:43:00
 	 * @param xiaId
 	 *            下单id
@@ -164,7 +167,7 @@ public class R_xiaordertabController {
 	 */
 	@RequestMapping(value = "/updateXiaQiangStatus/{xiaId}/{status}/{kuaikeId}", method = RequestMethod.GET)
 	public String updateXiaQiangStatus(@PathVariable("xiaId") String xiaId, @PathVariable("status") int status,
-			@PathVariable("kuaikeId") String kuaikeId, ModelMap model,HttpServletRequest request) {
+			@PathVariable("kuaikeId") String kuaikeId, ModelMap model, HttpServletRequest request) {
 		// 调用接口修改下单状态,抢单状态
 		r_xiaordertabService.updateStatus(status, xiaId);
 		// 得到数据
@@ -179,7 +182,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 下单数据模糊搜索
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月16日 下午1:40:06
 	 * @param searchKey
 	 *            搜索条件
@@ -195,7 +198,7 @@ public class R_xiaordertabController {
 	/**
 	 * 根据快客Id,下单id以及抢单状态，得到抢单记录，返回下单单子数据
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月5日 下午3:30:05
 	 * @param kuaikeId
 	 *            快客Id
@@ -218,7 +221,7 @@ public class R_xiaordertabController {
 	/**
 	 * 根据快客Id以及抢单状态，得到抢单记录，返回下单单子数据 ajax
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月5日 下午3:30:05
 	 * @param kuaikeId
 	 *            快客Id
@@ -237,7 +240,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 添加下单评论记录
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年5月23日 下午2:40:36
 	 * @param tab
 	 * @return URL
@@ -264,7 +267,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 根据下单id删除
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年5月19日 下午5:09:23
 	 * @param xiaId下单id
 	 * @return
@@ -286,7 +289,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 修改下单状态
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年5月19日 上午11:47:32
 	 * @return URL
 	 */
@@ -302,7 +305,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 获取下单数据集合
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年5月18日 下午3:13:16
 	 * @return list
 	 */
@@ -322,7 +325,7 @@ public class R_xiaordertabController {
 	/**
 	 * app根据下单状态，快客id，下单id查询下单数据
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月15日 下午3:01:44
 	 * @param kuaikeId
 	 *            快客id
@@ -344,7 +347,7 @@ public class R_xiaordertabController {
 	/**
 	 * app根据快客id以及状态得到下单数据
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月15日 下午3:01:44
 	 * @param kuaikeId
 	 *            快客id
@@ -363,7 +366,7 @@ public class R_xiaordertabController {
 	/**
 	 * app根据下单id跳转到抢单页面
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月14日 上午9:53:42
 	 * @param xiaId
 	 *            下单id
@@ -386,7 +389,7 @@ public class R_xiaordertabController {
 	 * 
 	 * app根据下单id得到下单详细详细，ajax
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月12日 下午2:20:33
 	 * @param xiaId
 	 * @param request
@@ -403,8 +406,8 @@ public class R_xiaordertabController {
 	 * 
 	 * app跳转下单页面初始化
 	 * 
-	 * @author lijie
-	 * @created 2017年6月12日 上午11:16:28
+	 * @author tianhao
+	 * @created 2017年7月3日 下午17:25:28
 	 * @param pageName
 	 *            页面名称
 	 * @return
@@ -414,6 +417,16 @@ public class R_xiaordertabController {
 			HttpServletRequest request, ModelMap model) {
 		// 下单id
 		Object attribute = request.getSession().getAttribute("xiaId");
+
+		R_kuaiketab selectUser = kuaiketabService
+				.selectUser(String.valueOf(request.getSession().getAttribute("kuaikeId")));
+		if("shipperInformation".equals(pageName)){
+			// 清空session
+			request.getSession().setAttribute("fahuoname", selectUser.getKuaikeName());
+			request.getSession().setAttribute("fahuophone", selectUser.getKuaikePhone());
+			request.getSession().setAttribute("fahuoadress", selectUser.getKuaikeAddress());
+			request.getSession().setAttribute("fahuoadressinfo", selectUser.getKuaikeAddressInfo());
+		}
 		if (StringUtils.isEmpty(attribute)) {
 			// 初始化值
 			tab.setXiaId(UUID.randomUUID().toString());
@@ -441,7 +454,7 @@ public class R_xiaordertabController {
 	 * 
 	 * app下单发货人信息ajax
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月12日 上午10:56:33
 	 * @param kuaikeName
 	 * @param kuaikePhone
@@ -451,7 +464,7 @@ public class R_xiaordertabController {
 	public @ResponseBody void fa(@PathVariable("kuaikeName") String kuaikeName,
 			@PathVariable("kuaikePhone") String kuaikePhone, @PathVariable("kuaikeAddress") String kuaikeAddress,
 			@PathVariable("xiaId") String xiaId, @PathVariable("kuaikeAddressInfo") String kuaikeAddressInfo,
-			HttpServletRequest request,HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response) {
 
 		System.out.println(kuaikeAddress + kuaikeAddressInfo);
 		// 发货人信息
@@ -461,23 +474,24 @@ public class R_xiaordertabController {
 		double falat = map.get("lat");
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		
-			try {
-				request.setCharacterEncoding("UTF-8");
 
-				response.setContentType("text/html;charset=UTF-8");
-			
-				r_xiaordertabService.fa(kuaikeName, kuaikePhone, kuaikeAddress, xiaId, kuaikeAddressInfo, falng, falat);
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			request.setCharacterEncoding("UTF-8");
+
+			response.setContentType("text/html;charset=UTF-8");
+
+			r_xiaordertabService.fa(kuaikeName, kuaikePhone, kuaikeAddress, xiaId, kuaikeAddressInfo, falng, falat);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+
 	/**
 	 * 
 	 * app下单收货人信息ajax
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月12日 上午10:44:44
 	 * @param shouhuoName
 	 *            收货人名称
@@ -490,7 +504,7 @@ public class R_xiaordertabController {
 	public @ResponseBody void shou(@PathVariable("shouhuoName") String shouhuoName,
 			@PathVariable("shouhuoPhone") String shouhuoPhone, @PathVariable("shouhuoAddress") String shouhuoAddress,
 			@PathVariable("xiaId") String xiaId, @PathVariable("shouhuoAddressInfo") String shouhuoAddressInfo,
-			HttpServletRequest request,HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response) {
 		// 收货人信息
 		System.out.println(shouhuoAddress + shouhuoAddressInfo);
 		Map<String, Double> map = getLngAndLat((shouhuoAddress + shouhuoAddressInfo).replace(" ", ""));
@@ -514,7 +528,7 @@ public class R_xiaordertabController {
 	 * 
 	 * app下单的提交ajax
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月12日 上午10:14:53
 	 * @param xiaId
 	 *            下单id
@@ -559,12 +573,11 @@ public class R_xiaordertabController {
 			// 清空session中的下单id
 			request.getSession().removeAttribute("xiaId");
 			request.getSession().removeValue("xiaId");
-			
+
 			request.getSession().removeAttribute("xiainfo");
 			request.getSession().removeValue("xiainfo");
 			model.remove("xiainfo");
-			
-			
+
 			String parameter = request.getParameter("kuaikeId");
 			Balancetab queryKuaikeId = balancetabService.queryKuaikeId(parameter);
 
@@ -593,7 +606,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 通过ajax请求，根据状态返回集合
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年5月28日 上午9:05:17
 	 * @param status
 	 * @return
@@ -619,7 +632,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 通过ajax请求，根据状态返回分页集合
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年6月7日 上午11:12:16
 	 * @param status
 	 *            下单状态
@@ -653,7 +666,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 下单的详细信息
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年5月19日 下午3:05:32
 	 * @param xiaId
 	 *            下单id
@@ -688,7 +701,7 @@ public class R_xiaordertabController {
 	 * 
 	 * 添加下单纪录
 	 * 
-	 * @author lijie
+	 * @author tianhao
 	 * @created 2017年5月16日 下午5:12:24
 	 * @param 实体数据
 	 * @return URL
@@ -796,8 +809,8 @@ public class R_xiaordertabController {
 		PrintWriter out = response.getWriter();
 		request.getSession().removeAttribute("distance");
 		request.getSession().removeValue("distance");
-		System.out.println("存入session:"+distance);
-		
+		System.out.println("存入session:" + distance);
+
 		request.getSession().setAttribute("distance", distance);
 		out.print(distance);
 
